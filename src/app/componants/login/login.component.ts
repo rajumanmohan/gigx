@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  type: any
   constructor() { }
 
   ngOnInit() {
+    this.type = 'talent';
   }
-
+  gigx(logtype) {
+    this.type = logtype;
+  }
 }

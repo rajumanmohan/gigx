@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: Muli-Black;
+    src: url(/assets/fonts/Muli-Black.ttf);
+}
+@font-face {
+    font-family: Muli-Regular;
+    src: url(/assets/fonts/Muli-Regular.ttf);
+}
+@font-face {
+    font-family: Muli-Light;
+    src: url(/assets/fonts/Muli-Light);
+}
+body{
+    font-family: Muli-Regular;
+}
+button , input ,textarea ,a{
+    box-shadow: none!important;
+        outline: none!important;
+}

@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-coverpage',
   templateUrl: './coverpage.component.html',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoverpageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {
   }
