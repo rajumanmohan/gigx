@@ -1,0 +1,46 @@
+.profile {
+    h1{
+        font-weight: 600;
+        margin-top: 4%;
+    }
+img{
+    border-radius: 50%;
+    width: 150px;
+}
+}
+
+.contact-details {
+    h2{
+        width:100%;
+        background:#f1f1f1;
+        font-size: 22px;
+        padding: 10px;
+    }
+    span{
+        font-weight: bold;
+        margin-right: 12px;
+    }
+    td{
+        color:#8f8f8f;
+    }
+}
+.contact-title {
+    font-weight:600;
+    width:30%;
+    color:#000000!important;
+   
+}
+
+// HEADER CSS
+
+.login-list{
+    margin-top: 3px;
+    font-size: 24px;
+}
+.main-header {
+    box-shadow: 2px 3px 6px 0px #e1e1e1;
+a{
+    font-size:19px;
+    color:#000000;
+}
+}

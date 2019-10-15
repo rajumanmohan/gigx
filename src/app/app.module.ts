@@ -10,6 +10,10 @@ import { HeaderComponent } from './componants/header/header.component';
 import { PaymentHistoryComponent } from './componants/payment-history/payment-history.component';
 import { MatStepperModule, MatIconModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ChangepasswordComponent } from './componants/changepassword/changepassword.component';
+import { CreateaccountComponent } from './componants/createaccount/createaccount.component';
+import { ProfileComponent } from './componants/profile/profile.component';
+import { CompanyregistrationComponent } from './componants/companyregistration/companyregistration.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +22,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     CoverpageComponent,
     HeaderComponent,
-    PaymentHistoryComponent
+    PaymentHistoryComponent,
+    ChangepasswordComponent,
+    CreateaccountComponent,
+    ProfileComponent,
+    CompanyregistrationComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,63 @@
+.login {
+    h1{
+        font-weight: 600;
+        margin-top: 4%;
+        text-align: center;
+        font-size: 32px;
+    }
+    button{
+        border-radius:50px!important;
+        font-weight:600;
+        }
+        input {
+           margin-bottom:12px;
+            border: 1px solid #dbdbdb;
+            padding: 24px 10px;
+            margin: 0px auto;
+            box-shadow: 1px 1px 1px 0px #dbdbdb!important;
+        }
+         select{
+            margin-bottom: 12px;
+            border: 1px solid #dbdbdb;
+            padding: 0px 7px;
+            margin: 0px auto;
+            height: 50px;
+            box-shadow: 1px 1px 1px 0px #dbdbdb !important;
+         }
+         button{
+            width: 100%;
+            border: 0px;
+            border-radius: 3px !important;
+            padding: 10px;
+            background: #fed501!important;
+            color: #000000;
+            font-size: 20px;
+        }
+}
+.company-registration {
+    .form-group{
+        margin-bottom:28px;
+    }
+    .custom-control-input:checked~.custom-control-label::before {
+        color: #fff;
+        border-color: #77706c;
+        background-color: #77706c;
+    }
+    .input-group-prepend {
+        margin-right: -1px;
+        width: 14%;
+        select{
+            border-radius:0px;
+            border-right:0px;
+        }
+    }
+    a{
+        color:#fed501!important
+    }
+}
+.upload-image{
+    height: 100%;
+    border-radius: 9px;
+    border: 2px dotted #a4a4a4;
+    padding: 21px;
+}

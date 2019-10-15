@@ -1,15 +1,18 @@
 import { PaymentHistoryComponent } from './componants/payment-history/payment-history.component';
+import { CompanyregistrationComponent } from './componants/companyregistration/companyregistration.component';
+import { ProfileComponent } from './componants/profile/profile.component';
+import { CreateaccountComponent } from './componants/createaccount/createaccount.component';
+import { ChangepasswordComponent } from './componants/changepassword/changepassword.component';
+import { HeaderComponent } from './componants/header/header.component';
 import { CoverpageComponent } from './componants/coverpage/coverpage.component';
-
 import { LoginComponent } from './componants/login/login.component';
 import { HomeComponent } from './componants/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 const routes: Routes = [
   // {
   //   path: '',
-  //   component: HomeComponent
+  //   component: HeaderComponent
   // },
   {
     path: '',
@@ -23,7 +26,22 @@ const routes: Routes = [
     path: 'paymentHistory',
     component: PaymentHistoryComponent
   },
-
+  {
+    path: 'changepassword',
+    component: ChangepasswordComponent
+  },
+  {
+    path: 'createaccount',
+    component: CreateaccountComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
+    path: 'companyregistration',
+    component: CompanyregistrationComponent
+  },
 ];
 
 @NgModule({
