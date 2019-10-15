@@ -7,6 +7,9 @@ import { HomeComponent } from './componants/home/home.component';
 import { LoginComponent } from './componants/login/login.component';
 import { CoverpageComponent } from './componants/coverpage/coverpage.component';
 import { HeaderComponent } from './componants/header/header.component';
+import { PaymentHistoryComponent } from './componants/payment-history/payment-history.component';
+import { MatStepperModule, MatIconModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -14,11 +17,15 @@ import { HeaderComponent } from './componants/header/header.component';
     HomeComponent,
     LoginComponent,
     CoverpageComponent,
-    HeaderComponent
+    HeaderComponent,
+    PaymentHistoryComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatStepperModule,
+    MatIconModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

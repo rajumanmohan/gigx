@@ -1,3 +1,4 @@
+import { PaymentHistoryComponent } from './componants/payment-history/payment-history.component';
 import { CoverpageComponent } from './componants/coverpage/coverpage.component';
 
 import { LoginComponent } from './componants/login/login.component';
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'paymentHistory',
+    component: PaymentHistoryComponent
   },
 
 ];

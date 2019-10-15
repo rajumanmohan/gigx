@@ -1,0 +1,31 @@
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatHorizontalStepper, MatStep } from '@angular/material';
+
+@Component({
+  selector: 'app-payment-history',
+  templateUrl: './payment-history.component.html',
+  styleUrls: ['./payment-history.component.scss']
+})
+export class PaymentHistoryComponent implements OnInit {
+  // stepper: any;
+  @ViewChild(MatHorizontalStepper, MatStep) stepper: MatHorizontalStepper;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+  step1Completed = false;
+
+  isLinear = true;
+
+  complete() {
+    this.stepper.selected.completed = true;
+    this.stepper.selected.editable = false;
+    this.stepper.next();
+  }
+
+  next() {
+    this.stepper.next()
+  }
+
+}
