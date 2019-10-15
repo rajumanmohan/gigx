@@ -8,7 +8,7 @@ import { MatHorizontalStepper, MatStep } from '@angular/material';
 })
 export class PaymentHistoryComponent implements OnInit {
   // stepper: any;
-  @ViewChild(MatHorizontalStepper, MatStep) stepper: MatHorizontalStepper;
+  @ViewChild(MatHorizontalStepper, { static: false }) stepper: MatHorizontalStepper;
 
   constructor() { }
 
