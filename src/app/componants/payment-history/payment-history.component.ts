@@ -14,18 +14,6 @@ export class PaymentHistoryComponent implements OnInit {
 
   ngOnInit() {
   }
-  step1Completed = false;
 
-  isLinear = true;
-
-  complete() {
-    this.stepper.selected.completed = true;
-    this.stepper.selected.editable = false;
-    this.stepper.next();
-  }
-
-  next() {
-    this.stepper.next()
-  }
 
 }

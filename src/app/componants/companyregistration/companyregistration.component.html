@@ -8,32 +8,35 @@
                 <form>
                     <div class="form-group">
                         <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type">
+                            <option value="company" disabled>Industry type</option>
                             <option value="company">Company </option>
                             <option value="individual"> Individual</option>
-
                         </select>
                     </div>
                     <div class="form-group">
                         <p>Company Type</p>
-                        <div class="custom-control custom-radio custom-control-inline">
+                        <div class="custom-control custom-radio custom-control-inline" (change)="changeType($event)">
                             <input type="radio" id="customRadioInline1" name="customRadioInline1"
-                                class="custom-control-input">
+                                class="custom-control-input" value="company" [checked]='true'>
                             <label class="custom-control-label" for="customRadioInline1">Company</label>
                         </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline2" name="customRadioInline1"
+                        <div class="custom-control custom-radio custom-control-inline" (change)="changeType($event)">
+                            <input type="radio" id="customRadioInline2" value="consultant" name="customRadioInline1"
                                 class="custom-control-input">
                             <label class="custom-control-label" for="customRadioInline2">Consultant</label>
                         </div>
-                        <div class="custom-control custom-radio custom-control-inline">
-                            <input type="radio" id="customRadioInline3" name="customRadioInline1"
+                        <div class="custom-control custom-radio custom-control-inline" (change)="changeType($event)">
+                            <input type="radio" id="customRadioInline3" value="individual" name="customRadioInline1"
                                 class="custom-control-input">
                             <label class="custom-control-label" for="customRadioInline3">Individual</label>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="comType=='company'">
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Company Enter Id">
+                            placeholder="Company Email Id">
+                    </div>
+                    <div class="form-group" *ngIf="comType=='individual'">
+                        <input type="text" class="form-control" placeholder="Email Id">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" id="exampleInputPassword1"
@@ -42,18 +45,22 @@
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Company Name">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="comType=='company'">
                         <input type="text" class="form-control" placeholder="Email Id">
                     </div>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Designation">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="comType=='individual'">
                         <input type="text" class="form-control" placeholder="Address">
+                    </div>
+                    <div class="form-group" *ngIf="comType=='company'">
+                        <input type="text" class="form-control" placeholder="Office address">
                     </div>
                     <div class="row form-group">
                         <div class="col-md-6">
                             <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type">
+                                <option value="malaysia" disabled>Country </option>
                                 <option value="malaysia">Malaysia </option>
                                 <option value="india"> India</option>
 
@@ -61,6 +68,7 @@
                         </div>
                         <div class="col-md-6">
                             <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type">
+                                <option value="malaysia" disabled>State </option>
                                 <option value="malaysia">Kuala Lumpur </option>
                                 <option value="india"> Labuan</option>
                                 <option value="india"> Johor</option>
@@ -72,6 +80,7 @@
                     <div class="row form-group">
                         <div class="col-md-6">
                             <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type">
+                                <option value="malaysia" disabled>City </option>
                                 <option value="malaysia">Kuala Lumpur </option>
                                 <option value="india"> Victoria</option>
                                 <option value="india"> Johor Bahru </option>
@@ -95,10 +104,17 @@
                         </div>
                         <input type="text" class="form-control" placeholder="Mobile Number">
                     </div>
+                    <!-- vamshi upload img -->
                     <div class="row form-group">
                         <div class="col-md-4">
                             <div class="upload-image text-center">
-                                <img src="../../../assets/images/upload.png">
+
+                                <button class="btn"> <img *ngIf="!url1==true" src="/assets/images/upload.png"></button>
+                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                                    (change)="readUrl($event)" class="upload-photo" />
+
+                                <img *ngIf="url1" [src]="url1" height="60">
+
                                 <p>Upload Photo</p>
                             </div>
                         </div>
@@ -110,6 +126,27 @@
                             </ul>
                         </div>
                     </div>
+                    <!-- vamshi upload img -->
+                    <!-- manmohan upload img -->
+
+                    <!-- <div class="group-gap">
+
+
+                        <div class="avatar-upload">
+                            <div class="avatar-edit">
+                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                                    (change)="uploadFile($event)" />
+                            </div>
+                            <div class="avatar-preview">
+                                <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-danger btn-lg btn-block" (click)="fileInput.click()">Upload
+                        Image</button> -->
+                    <!-- manmohan upload img -->
+
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="customCheck1">

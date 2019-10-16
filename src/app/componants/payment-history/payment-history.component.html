@@ -51,41 +51,6 @@
                 </tbody>
             </table>
         </div>
-        <section>
-            <mat-horizontal-stepper linear id="stepper">
 
-                <ng-template matStepperIcon="done" let-index="index">
-                    {{index + 10}}
-                </ng-template>
-
-
-                <ng-template matStepperIcon="edit">
-                    <mat-icon>insert_drive_file</mat-icon>
-                </ng-template>
-
-                <ng-template matStepperIcon="done">
-                    <mat-icon>done_all</mat-icon>
-                </ng-template>
-
-                <mat-step label="Step 1">
-                    <p>Step 1</p>
-                    <button mat-button (click)="complete()" mat-raised-button color="primary">Complete</button>
-                    <button mat-button (click)="next()" mat-raised-button color="primary">NextB</button>
-                </mat-step>
-
-                <mat-step #step2 label="Step 2">
-                    <h3>Step 2</h3>
-                    <button mat-button (click)="complete()" mat-raised-button color="primary">Complete</button>
-                </mat-step>
-                <mat-step #step3 label="Step 3">
-                    <h3>Step 3</h3>
-                    <button mat-button (click)="complete()" mat-raised-button color="primary">Complete</button>
-                </mat-step>
-                <mat-step #step3 label="Step 3">
-                    <h3>Step 3</h3>
-                    <button mat-button (click)="complete()" mat-raised-button color="primary">Complete</button>
-                </mat-step>
-            </mat-horizontal-stepper>
-        </section>
     </div>
 </section>

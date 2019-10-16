@@ -1,4 +1,4 @@
-.login {
+.talent {
     h1{
         font-weight: 600;
         margin-top: 4%;
@@ -84,7 +84,7 @@
     cursor: pointer !important;
         position: relative;
         overflow: hidden;
-        display: inline-block;
+        // display: inline-block;
       .btn {
         color: gray;
         background-color: white;
@@ -111,7 +111,95 @@
         font-size: 20px;
     }
 }
-.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-    width: 90% !important;
-    height: 90% !important;
+.add-details {
+    background: #f1f1f1;
+    padding: 7px;
+    font-weight: bold;
+}
+.add-another {
+    background: #f1f1f1;
+    padding: 7px;
+    color: #818181;
+}
+button.btnpicker.btnpickerenabled {
+    padding: 1px;
+    margin: 14px;
+}
+.or-tag {
+    margin-top: 56px;
+    font-size: 26px;
+    color: gray;
+}
+.file-select {
+    font-size: 14px;
+    border: 1px solid;
+    color: gray;
+}
+.drag {
+    color: gray;
+    font-size: 14px;
+}
+.dark-col{
+    color: #818181;
+}
+
+.skills {
+    display: inline-flex;
+    margin-right: 10px ;
+    .skill-dot {
+        border-radius: 2px;
+        border: 2px dotted #a4a4a4;
+        padding: 3px;
+        width: fit-content;
+        font-size: 11px;
+        padding: 0px;
+        margin: 7px;
+        cursor: pointer;
+    }
+}
+.profile{
+    text-align: center;
+   
+}
+
+.upload-image1 {
+    cursor: pointer !important;
+        position: relative;
+        overflow: hidden;
+        // display: inline-block;
+      .btn {
+        color: gray;
+        background-color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      
+      input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+      }
+    button{
+        width: 100%;
+        border: 0px!important;
+        border-radius: 3px !important;
+        padding: 10px;
+        background: none!important;
+        color: #000000;
+        font-size: 20px;
+    }
+    img.attch-img{
+        position: absolute !important;
+        bottom: 6% !important;
+        left: 53% !important;
+    }
+    .uploaded-img {
+        border-radius: 50%;
+    height: 125px;
+    width: 125px;
+    }
 }

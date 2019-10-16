@@ -14,7 +14,9 @@ import { ChangepasswordComponent } from './componants/changepassword/changepassw
 import { CreateaccountComponent } from './componants/createaccount/createaccount.component';
 import { ProfileComponent } from './componants/profile/profile.component';
 import { CompanyregistrationComponent } from './componants/companyregistration/companyregistration.component';
-
+import { TelentregistrationComponent } from './componants/telentregistration/telentregistration.component';
+import { MyDatePickerModule } from 'mydatepicker';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,14 +28,17 @@ import { CompanyregistrationComponent } from './componants/companyregistration/c
     ChangepasswordComponent,
     CreateaccountComponent,
     ProfileComponent,
-    CompanyregistrationComponent
+    CompanyregistrationComponent,
+    TelentregistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MatStepperModule,
     MatIconModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MyDatePickerModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

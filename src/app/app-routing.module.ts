@@ -1,3 +1,4 @@
+import { TelentregistrationComponent } from './componants/telentregistration/telentregistration.component';
 import { PaymentHistoryComponent } from './componants/payment-history/payment-history.component';
 import { CompanyregistrationComponent } from './componants/companyregistration/companyregistration.component';
 import { ProfileComponent } from './componants/profile/profile.component';
@@ -9,6 +10,7 @@ import { LoginComponent } from './componants/login/login.component';
 import { HomeComponent } from './componants/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 const routes: Routes = [
   // {
   //   path: '',
@@ -41,6 +43,10 @@ const routes: Routes = [
   {
     path: 'companyregistration',
     component: CompanyregistrationComponent
+  },
+  {
+    path: 'talentregistration',
+    component: TelentregistrationComponent
   },
 ];
 
