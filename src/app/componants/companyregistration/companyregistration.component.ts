@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -11,7 +11,7 @@ export class CompanyregistrationComponent implements OnInit {
   url1;
   indType;
   comType;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.comType = 'company';
@@ -34,5 +34,9 @@ export class CompanyregistrationComponent implements OnInit {
   changeType(type) {
     this.comType = type.target.value;
   }
-
+  submit() {
+    // if (this.comType == 'company') {
+    this.router.navigate(['/profile'], { queryParams: { page: this.comType } })
+    // }
+  }
 }
