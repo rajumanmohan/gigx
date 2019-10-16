@@ -17,6 +17,13 @@ import { CompanyregistrationComponent } from './componants/companyregistration/c
 import { TelentregistrationComponent } from './componants/telentregistration/telentregistration.component';
 import { MyDatePickerModule } from 'mydatepicker';
 import { FormsModule } from '@angular/forms';
+import { PostagigComponent } from './componants/postagig/postagig.component';
+import { TalentsearchComponent } from './componants/talentsearch/talentsearch.component';
+import { TalentdetailsComponent } from './componants/talentdetails/talentdetails.component';
+import { RatingsComponent } from './componants/ratings/ratings.component';
+import { SubscriptionsComponent } from './componants/subscriptions/subscriptions.component';
+import { PaymentComponent } from './componants/payment/payment.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +36,13 @@ import { FormsModule } from '@angular/forms';
     CreateaccountComponent,
     ProfileComponent,
     CompanyregistrationComponent,
-    TelentregistrationComponent
+    TelentregistrationComponent,
+    PostagigComponent,
+    TalentsearchComponent,
+    TalentdetailsComponent,
+    RatingsComponent,
+    SubscriptionsComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

@@ -11,6 +11,7 @@ export class CoverpageComponent implements OnInit {
   constructor(public router: Router) { }
 
   ngOnInit() {
+    window.scroll(0,0);
   }
 
 }

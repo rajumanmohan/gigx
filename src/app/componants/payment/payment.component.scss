@@ -1,0 +1,93 @@
+// HEADER CSS
+
+.login-list{
+    margin-top: 3px;
+    font-size: 24px;
+}
+.main-header {
+    box-shadow: 2px 3px 6px 0px #e1e1e1;
+a{
+    font-size:19px;
+    color:#000000;
+}
+}
+
+.group-buttons{
+    text-align: center;
+    background: #f1f1f1;
+    padding: 13px 18px;
+    border-radius: 50px;
+    margin-top:7%;
+    button{
+        border-radius: 50px!important;
+    }
+   .btn-group{
+    width: 100%;
+   }
+}
+
+
+.login {
+    h1{
+        font-weight: 600;
+        margin-top: 4%;
+        text-align: center;
+        font-size: 32px;
+    }
+   
+         button{
+            width: 100%;
+        font-weight: 600;
+            border: 0px;
+            border-radius: 3px ;
+            padding: 9px;
+            color: #000000;
+            font-size: 20px;
+            background: #fed501!important;
+        }
+  
+
+}
+.payment-method{
+    h1{
+        text-align: left;
+        font-weight: 600;
+        font-size: 23px;
+        padding: 9px;
+        background: #f1f1f1;
+        margin-top: 2%;
+     }
+     .contact-title {
+        font-weight:600;
+        color:#000000!important;
+       
+    }
+    hr{
+        margin:0px;
+    }
+    .custom-control-input:checked~.custom-control-label::before {
+        color: #fff;
+        border-color: #77706c;
+        background-color: #77706c;
+    }
+    .custom-radio .custom-control-label::before {
+        border-radius: 50%;
+        background: #d4d4d4;
+    }
+    .custom-checkbox .custom-control-label::before {
+      
+        background: #d4d4d4;
+    }
+
+}
+
+.select-payment{
+    border: 1px solid #707070;
+    padding: 30px;
+    margin-top: 12px;
+    cursor:pointer;
+    .custom-control.custom-radio {
+        margin-bottom: 25px;
+        font-size: 17px;
+    }
+}

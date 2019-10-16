@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -14,6 +15,7 @@ export class CompanyregistrationComponent implements OnInit {
 
   ngOnInit() {
     this.comType = 'company';
+    window.scroll(0, 0);
   }
   image;
   readUrl(event: any) {

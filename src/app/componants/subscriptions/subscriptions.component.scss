@@ -1,0 +1,92 @@
+// HEADER CSS
+
+.login-list{
+    margin-top: 3px;
+    font-size: 24px;
+}
+.main-header {
+    box-shadow: 2px 3px 6px 0px #e1e1e1;
+a{
+    font-size:19px;
+    color:#000000;
+}
+}
+
+.group-buttons{
+    text-align: center;
+    background: #f1f1f1;
+    padding: 13px 18px;
+    border-radius: 50px;
+    margin-top:7%;
+    button{
+        border-radius: 50px!important;
+    }
+   .btn-group{
+    width: 100%;
+   }
+}
+
+
+.login {
+    h1{
+        font-weight: 600;
+        margin-top: 4%;
+        text-align: center;
+        font-size: 32px;
+    }
+   
+         button{
+            width: 100%;
+        font-weight: 600;
+            border: 0px;
+            border-radius: 3px ;
+            padding: 6px;
+            color: #000000;
+            font-size: 20px;
+        }
+     
+
+}
+.subscription-plan:hover{
+    transition: 0.8s;
+    border: 1px solid #fed501;
+    h2{
+        background: #fed501;
+    }
+}
+.subscription-plan {
+    box-shadow: 0px 0px 6px 0px #cccbcb;
+    border-radius: 5px;
+    padding-bottom: 22%;
+    h1{
+        text-align: center;
+        font-weight: 600;
+        padding: 16px;
+    }
+    h2{
+        text-align: center;
+    font-weight: 600;
+    background: #fef2f2;
+    padding: 16px;
+    font-size: 30px;
+    margin-bottom:18px;
+    }
+    span{
+        font-weight:500;
+        font-size: 14px;
+        color:#000000;
+    }
+    .divider{
+        font-size: 30px;
+        color: #736f6e;
+        font-weight: 100;
+    }
+    p{
+        text-align:center;
+    }
+}
+.account{
+    background:#fed501;
+    font-weight: 600;
+    border-radius:3px!important;
+}

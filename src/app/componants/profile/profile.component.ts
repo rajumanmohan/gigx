@@ -11,6 +11,7 @@ export class ProfileComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    window.scroll(0,0);
   }
 
 }

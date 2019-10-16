@@ -1,0 +1,159 @@
+
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+// HEADER CSS
+
+.login-list{
+    margin-top: 3px;
+    font-size: 24px;
+}
+.main-header {
+    box-shadow: 2px 3px 6px 0px #e1e1e1;
+a{
+    font-size:19px;
+    color:#000000;
+}
+}
+
+
+
+.login {
+    h1{
+        font-weight: 600;
+        margin-top: 4%;
+        text-align: center;
+        font-size: 32px;
+    }
+    button{
+        border-radius:50px!important;
+        font-weight:600;
+        }
+        input {
+           margin-bottom:12px;
+            border: 1px solid #dbdbdb;
+            padding: 20px 10px;
+            margin: 0px auto;
+            box-shadow: 1px 1px 1px 0px #dbdbdb!important;
+        }
+        textarea{
+            margin-bottom:12px;
+            border: 1px solid #dbdbdb;
+            padding: 6px 13px;
+            margin: 0px auto;
+            box-shadow: 1px 1px 1px 0px #dbdbdb!important;
+        }
+         select{
+            margin-bottom: 12px;
+            border: 1px solid #dbdbdb;
+            padding: 0px 7px;
+            margin: 0px auto;
+            box-shadow: 1px 1px 1px 0px #dbdbdb !important;
+         }
+         button{
+            width: 100%;
+            border: 0px;
+            border-radius: 3px !important;
+            padding: 6px;
+            background: #fed501;
+            color: #000000;
+            font-size: 20px;
+        }
+        .page-item.active .page-link {
+            color: #000000;
+            background-color: #fed501;
+            border-color: #fed501;
+        }
+
+        .page-link {
+            color: #000000;
+        }
+
+}
+
+.search-category{
+    button{
+        border-radius:50px!important;
+        background:none;
+    }
+    button:hover{
+        background:#fed501!important;
+    }
+}
+.review{
+    border-bottom: 1px solid #d6d6d6;
+    padding-bottom: 13px;
+    margin-top: 23px;
+    img{
+        width: 105px;
+        border-radius: 50%;
+    }
+    p{
+        font-weight:600;
+        margin: 0px;
+        span{
+            color:#b2b2b2;
+        }
+    }
+    ul{
+        list-style: none;
+        padding: 0px;
+        margin: 0px;
+li{
+    display: inline-block;
+    margin-right: 4%;
+}
+    }
+    .star{
+        img{
+            width: 26px !important;
+            margin-bottom: 39px;
+            margin-right: 7px;
+        }
+    }
+}
+.review:last-child {
+    border-bottom: 0px;
+}
+
+.rating-star{
+img{
+    margin-top: 22px;
+}
+}
+
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 27px;
+  font-family: FontAwesome;
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+  color: #ddd; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
