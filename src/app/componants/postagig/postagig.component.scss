@@ -12,7 +12,14 @@
         input {
            margin-bottom:12px;
             border: 1px solid #dbdbdb;
-            padding: 24px 10px;
+            padding: 20px 10px;
+            margin: 0px auto;
+            box-shadow: 1px 1px 1px 0px #dbdbdb!important;
+        }
+        textarea{
+            margin-bottom:12px;
+            border: 1px solid #dbdbdb;
+            padding: 6px 13px;
             margin: 0px auto;
             box-shadow: 1px 1px 1px 0px #dbdbdb!important;
         }
@@ -21,20 +28,23 @@
             border: 1px solid #dbdbdb;
             padding: 0px 7px;
             margin: 0px auto;
-            height: 50px;
             box-shadow: 1px 1px 1px 0px #dbdbdb !important;
          }
          button{
             width: 100%;
             border: 0px;
             border-radius: 3px !important;
-            padding: 10px;
+            padding: 6px;
             background: #fed501!important;
             color: #000000;
             font-size: 20px;
         }
 }
 .company-registration {
+    .custom-control-inline {
+        width: 23%;
+        vertical-align: -webkit-baseline-middle;
+    }
     .form-group{
         margin-bottom:28px;
     }
@@ -47,6 +57,10 @@
         border-radius: 50%;
         background: #d4d4d4;
     }
+    .custom-checkbox .custom-control-label::before {
+      
+        background: #d4d4d4;
+    }
     .input-group-prepend {
         margin-right: -1px;
         width: 14%;
@@ -55,8 +69,19 @@
             border-right:0px;
         }
     }
+  
     a{
         color:#fed501!important
+    }
+    h2{
+        font-weight: 600;
+        font-size: 23px;
+        padding: 9px;
+        background: #f1f1f1;
+    
+    }
+    .col-form-label{
+        font-weight:600;
     }
 }
 .upload-image{
@@ -64,4 +89,31 @@
     border-radius: 9px;
     border: 2px dotted #a4a4a4;
     padding: 21px;
+}
+
+.experience {
+    button{
+background:#f1f1f1!important;
+    }
+}
+
+.hiring{
+    .custom-checkbox{
+        width:18%
+    }
+}
+
+
+// HEADER CSS
+
+.login-list{
+    margin-top: 3px;
+    font-size: 24px;
+}
+.main-header {
+    box-shadow: 2px 3px 6px 0px #e1e1e1;
+a{
+    font-size:19px;
+    color:#000000;
+}
 }

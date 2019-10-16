@@ -1,0 +1,105 @@
+
+// HEADER CSS
+
+.login-list{
+    margin-top: 3px;
+    font-size: 24px;
+}
+.main-header {
+    box-shadow: 2px 3px 6px 0px #e1e1e1;
+a{
+    font-size:19px;
+    color:#000000;
+}
+}
+
+.login {
+    h1{
+        font-weight: 600;
+        margin-top: 4%;
+        text-align: center;
+        font-size: 32px;
+    }
+  
+    
+         button{
+            width: 100%;
+            border: 0px;
+            border-radius: 3px !important;
+            padding: 6px;
+            background: #fed501!important;
+            color: #000000;
+            font-size: 20px;
+            font-weight:600;
+        }
+        img{
+            margin-bottom: 16px;
+            width: 150px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+}
+
+.talent-profile-details{
+    h3{
+        font-weight:600;
+    }
+    .maps{
+        width: auto;
+    vertical-align: sub;
+    }
+    h3 {
+        font-weight:600;
+        font-size:27px;
+    }
+    p{
+        font-weight: 600;
+        margin: 0px;
+        font-size: 20px;
+        margin-top: 12px;
+    }
+    .text-color-light{
+        color: #878787;;
+    }
+    .review {
+        background: #e5e5e5 !important;
+        border-radius: 4px !important;
+        margin-top: 21px;
+        font-weight: 600;
+        width: 39%
+    }
+    ul{
+        list-style: none;
+        margin:0px;
+        text-align: left;
+        margin-top: 14px;
+        margin-bottom: 14px;
+        li{
+            width:20%;
+            margin-left:0px;
+            margin-right:5%;
+            margin-top:12px;
+            display: inline-block;
+            p{
+                font-weight:600
+                }
+        }
+    }
+    h2{
+        font-weight: 600;
+    font-size: 23px;
+    padding: 9px;
+    background: #f1f1f1;
+    margin-top:2%;
+    }
+    .professional-details{
+        p{
+            font-weight: 500;
+            font-size: 16px;
+        }
+    }
+    h5{
+        margin-top: 31px;
+    }
+}

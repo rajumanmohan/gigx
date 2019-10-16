@@ -14,6 +14,12 @@ import { ChangepasswordComponent } from './componants/changepassword/changepassw
 import { CreateaccountComponent } from './componants/createaccount/createaccount.component';
 import { ProfileComponent } from './componants/profile/profile.component';
 import { CompanyregistrationComponent } from './componants/companyregistration/companyregistration.component';
+import { PostagigComponent } from './componants/postagig/postagig.component';
+import { TalentsearchComponent } from './componants/talentsearch/talentsearch.component';
+import { TalentdetailsComponent } from './componants/talentdetails/talentdetails.component';
+import { RatingsComponent } from './componants/ratings/ratings.component';
+import { SubscriptionsComponent } from './componants/subscriptions/subscriptions.component';
+import { PaymentComponent } from './componants/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +32,13 @@ import { CompanyregistrationComponent } from './componants/companyregistration/c
     ChangepasswordComponent,
     CreateaccountComponent,
     ProfileComponent,
-    CompanyregistrationComponent
+    CompanyregistrationComponent,
+    PostagigComponent,
+    TalentsearchComponent,
+    TalentdetailsComponent,
+    RatingsComponent,
+    SubscriptionsComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
