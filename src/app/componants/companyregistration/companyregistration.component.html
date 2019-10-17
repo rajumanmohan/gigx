@@ -9,8 +9,10 @@
                     <div class="form-group">
                         <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type">
                             <option value="company" disabled>Industry type</option>
-                            <option value="Software">Software </option>
-                            <option value="Hardware"> Hardware</option>
+                            <option value="company">IT Industry </option>
+                            <option value="individual"> Electrical </option>
+                            <option value="individual"> Networking </option>
+
                         </select>
                     </div>
                     <div class="form-group">
@@ -42,8 +44,14 @@
                         <input type="password" class="form-control" id="exampleInputPassword1"
                             placeholder="Create Password">
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" *ngIf="comType=='company'">
                         <input type="text" class="form-control" placeholder="Company Name">
+                    </div>
+                    <div class="form-group" *ngIf="comType=='company'">
+                        <input type="text" class="form-control" placeholder="Company Url">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Contact Person Name">
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
                         <input type="text" class="form-control" placeholder="Email Id">
@@ -115,14 +123,14 @@
 
                                 <img *ngIf="url1" [src]="url1" height="60">
 
-                                <p>Upload Photo</p>
+                                <p>Upload Logo</p>
                             </div>
                         </div>
                         <div class="col-md-8">
                             <ul>
                                 <li>40% more relevent responses by candidates</li>
                                 <li>Get spotted easily in pool of recruiters</li>
-                                <li>Trusted more by jobseekers</li>
+                                <li>Trusted more by </li>
                             </ul>
                         </div>
                     </div>

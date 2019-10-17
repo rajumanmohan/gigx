@@ -38,7 +38,7 @@
                 </h1>
             </div>
         </div>
-        <div class="row payment-method">
+        <div class="row payment-method" *ngIf="showPaymentType">
             <!-- total payable amount -->
             <div class="col-md-8">
                 <h1>Order Details</h1>
@@ -50,7 +50,7 @@
                             <tr class="">
                                 <td class="b-0 contact-title">Premier Plan</td>
                                 <td class="b-0">1 year</td>
-                                <td class="b-0 text-right">999/-</td>
+                                <td class="b-0 text-right">XXX/-</td>
                             </tr>
                         </tbody>
                     </table>
@@ -62,11 +62,11 @@
                         <tbody class="b-0">
                             <tr class="">
                                 <td class="b-0 contact-title">Tax Payable</td>
-                                <td class="b-0 text-right">29/-</td>
+                                <td class="b-0 text-right">X/-</td>
                             </tr>
                             <tr class="">
                                 <td class="b-0 contact-title">Other Charges</td>
-                                <td class="b-0 text-right">0/-</td>
+                                <td class="b-0 text-right">X/-</td>
                             </tr>
                         </tbody>
                     </table>
@@ -78,7 +78,7 @@
                         <tbody class="b-0">
                             <tr class="">
                                 <td class="b-0 contact-title">Total Payable</td>
-                                <td class="b-0 text-right">1028/-</td>
+                                <td class="b-0 text-right">XXXX/-</td>
                             </tr>
                         </tbody>
                     </table>
@@ -118,9 +118,15 @@
             </div>
             <!-- payment type -->
         </div>
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center mt-5" *ngIf="showPaymentType">
             <div class="col-md-6">
-                <button type="submit" class="btn ">PROCEED & PAY</button>
+                <button type="submit" class="btn " (click)="showpaymentmethod()">PROCEED & PAY</button>
+            </div>
+        </div>
+
+        <div class="row" *ngIf="Showpaymentgateway">
+            <div class="col-md-12 payment-method" routerLink="/talentaccount">
+                <img src="../../../assets/images/paybuz.png">
             </div>
         </div>
     </div>

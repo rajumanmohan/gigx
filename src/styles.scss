@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+body{
+    font-family: Muli-Regular;
 @font-face {
     font-family: Muli-Black;
     src: url(/assets/fonts/Muli-Black.ttf);
@@ -37,8 +40,34 @@ button , input ,textarea ,a{
     padding: 22px !important;
 }
 .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-    width: 90% !important;
-    height: 90% !important;
+    width: 72px !important;
+    height: 72px !important;
+}
+.mat-step-header .mat-step-icon {
+    width: 72px !important;
+    height: 72px !important;
+    background-color: #fed501 !important;
+    color: #000;
+}
+.mat-stepper-horizontal-line {
+    border-top-width: 1px;
+    border-color:#e6dddd;
+    border-top-style: dashed!important;
+}
+.mat-step-header.cdk-keyboard-focused, .mat-step-header.cdk-program-focused, .mat-step-header:hover {
+     background-color: transparent!important; 
+}
+.mat-horizontal-stepper-header {
+    display: block!important;
+}
+// .mat-step-icon-content{
+
+//     span{
+//         display:none;
+//     }
+// }
+// HEADER CSS
+
 }
 .mat-step-header .mat-step-icon {
     width: 90% !important;

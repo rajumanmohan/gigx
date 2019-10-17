@@ -1,3 +1,9 @@
+import { JobalertsComponent } from './componants/jobalerts/jobalerts.component';
+import { CreateajobalertComponent } from './componants/createajobalert/createajobalert.component';
+import { IntrestedjobsComponent } from './componants/intrestedjobs/intrestedjobs.component';
+import { AppliedjobsComponent } from './componants/appliedjobs/appliedjobs.component';
+import { TalentprofileComponent } from './componants/talentprofile/talentprofile.component';
+import { JobsearchComponent } from './componants/jobsearch/jobsearch.component';
 import { TelentregistrationComponent } from './componants/telentregistration/telentregistration.component';
 import { PaymentComponent } from './componants/payment/payment.component';
 import { SubscriptionsComponent } from './componants/subscriptions/subscriptions.component';
@@ -16,20 +22,14 @@ import { LoginComponent } from './componants/login/login.component';
 import { HomeComponent } from './componants/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 const routes: Routes = [
   // {
   //   path: '',
   //   component: HeaderComponent
   // },
-
   {
     path: '',
     component: CoverpageComponent
-  },
-  {
-    path: 'index',
-    component: HomeComponent
   },
   {
     path: 'login',
@@ -83,7 +83,35 @@ const routes: Routes = [
     path: 'payment',
     component: PaymentComponent
   },
+  {
+    path: 'jobsearch',
+    component: JobsearchComponent
+  },
+  {
+    path: 'talentaccount',
+    component: TalentprofileComponent
 
+  },
+  {
+    path: 'appliedjobs',
+    component: AppliedjobsComponent
+
+  },
+  {
+    path: 'intrestedjobs',
+    component: IntrestedjobsComponent
+
+  },
+  {
+    path: 'createajobalert',
+    component: CreateajobalertComponent
+
+  },
+  {
+    path: 'jobalerts',
+    component: JobalertsComponent
+
+  },
 ];
 
 @NgModule({

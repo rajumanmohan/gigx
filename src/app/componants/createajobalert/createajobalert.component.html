@@ -1,0 +1,83 @@
+<!-- heADER -->
+<div class="container-fluid main-header">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+
+            <a class="navbar-brand" routerLink=""><img src="../../../assets/images/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" routerLink="">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item login-list">|</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/createajobalert">Create a Job Alert</a>
+                    </li>
+                    <li class="nav-item login-list">|</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/jobsearch">Job Serach</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!-- HEADER -->
+<section class="login company-registration mt-3 mb-5">
+    <div class="container create-account">
+        <div class="row justify-content-center ">
+            <div class="col-md-6">
+                <h1 class="text-center mb-5">CREATE A JOB ALERT
+                </h1>
+
+                <form>
+
+
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Keywords">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Location">
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-6">
+                            <label>Work Experience</label>
+                            <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type">
+                                <option value="malaysia" disabled>years </option>
+                                <option value="malaysia">2019 </option>
+                                <option value="india"> 2018</option>
+                                <option value="india"> 2017</option>
+                                <option value="india"> 2016</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label> Expected Salary</label>
+                            <input type="text" class="form-control" placeholder="Per Annual">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="exampleInputPassword1"
+                            placeholder="Create Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Job Category">
+                    </div>
+
+
+
+
+                    <button type="submit" class="btn btn-primary" routerLink="/jobalerts">CONTINUE</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

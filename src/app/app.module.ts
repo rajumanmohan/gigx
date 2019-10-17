@@ -23,7 +23,15 @@ import { TalentdetailsComponent } from './componants/talentdetails/talentdetails
 import { RatingsComponent } from './componants/ratings/ratings.component';
 import { SubscriptionsComponent } from './componants/subscriptions/subscriptions.component';
 import { PaymentComponent } from './componants/payment/payment.component';
-import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { JobsearchComponent } from './componants/jobsearch/jobsearch.component';
+import { TalentprofileComponent } from './componants/talentprofile/talentprofile.component';
+import { AppliedjobsComponent } from './componants/appliedjobs/appliedjobs.component';
+import { IntrestedjobsComponent } from './componants/intrestedjobs/intrestedjobs.component';
+import { CreateajobalertComponent } from './componants/createajobalert/createajobalert.component';
+import { JobalertsComponent } from './componants/jobalerts/jobalerts.component';
+import { TalentdashboardComponent } from './componants/talentdashboard/talentdashboard.component';
+
+// import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 // import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 @NgModule({
   declarations: [
@@ -43,6 +51,14 @@ import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recap
     TalentdetailsComponent,
     RatingsComponent,
     SubscriptionsComponent,
+    PaymentComponent,
+    JobsearchComponent,
+    TalentprofileComponent,
+    AppliedjobsComponent,
+    IntrestedjobsComponent,
+    CreateajobalertComponent,
+    JobalertsComponent,
+    TalentdashboardComponent,
     PaymentComponent
   ],
   imports: [
@@ -52,15 +68,15 @@ import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recap
     MatIconModule,
     BrowserAnimationsModule,
     MyDatePickerModule,
-    FormsModule,
-    RecaptchaModule
+    FormsModule
   ],
-  providers: [{
-    provide: RECAPTCHA_SETTINGS,
-    useValue: {
-      siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
-    } as RecaptchaSettings,
-  }
+  providers: [
+    //   {
+    //   provide: RECAPTCHA_SETTINGS,
+    //   useValue: {
+    //     siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+    //   } as RecaptchaSettings,
+    // }
 
   ],
   bootstrap: [AppComponent]

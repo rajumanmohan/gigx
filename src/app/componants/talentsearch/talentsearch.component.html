@@ -366,15 +366,19 @@
                     <div class="col-md-10">
                         <div class="row">
                             <div class="col-md-4">
-                                <button type="submit" class="btn"> SEARCH</button>
+                                <button type="submit" class="btn" (click)="search()"
+                                    [ngStyle]="{'background': ShowSearchScreen == true?'#fed501':''}"> SEARCH</button>
                             </div>
                             <div class="col-md-4">
-                                <button type="submit" class="btn"> MY HIRES</button>
+                                <button type="submit" class="btn" (click)="myhires()"
+                                    [ngStyle]="{'background': ShowMyHiresScreen == true?'#fed501':''}"> MY
+                                    HIRES</button>
 
                             </div>
 
                             <div class="col-md-4">
-                                <button type="submit" class="btn"> SAVED</button>
+                                <button type="submit" class="btn" (click)="saved()"
+                                    [ngStyle]="{'background': ShowSavedScreen == true?'#fed501':''}"> SAVED</button>
 
                             </div>
 
@@ -407,7 +411,8 @@
                     </div>
                 </div>
                 <!-- details sorting -->
-                <div class="row">
+                <!-- search results -->
+                <div class="row " *ngIf="ShowSearchScreen">
                     <!-- talent preview -->
                     <div class="col-md-12 mt-3">
                         <div class=" talent-result " routerLink="/talentprofile">
@@ -768,6 +773,261 @@
                     </div>
                     <!-- talent preview -->
                 </div>
+                <!-- search results -->
+                <!-- my hires -->
+                <div class="row " *ngIf="ShowMyHiresScreen">
+                    <!-- talent preview -->
+                    <div class="col-md-12 mt-3">
+                        <div class=" talent-result " routerLink="/talentprofile">
+                            <div class="row">
+                                <!-- talent image -->
+                                <div class="col-md-2">
+                                    <img src="../../../assets/images/profile-image.jpg">
+                                </div>
+                                <!-- talent image -->
+
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <!-- talent details -->
+                                        <div class="col-md-8">
+                                            <h3>John Mark</h3>
+                                            <p>React | Angular | Vue | Node Js | ASP.NET | Java Developer</p>
+                                            <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
+                                            <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
+                                                Lumpur
+                                            </p>
+                                            <ul>
+                                                <li>
+                                                    <p class="text-color-light">$34.00</p>
+                                                    <p class="text-color-light">Hourly rate</p>
+                                                </li>
+                                                <li>
+                                                    <p class="text-color-light">$2k+</p>
+                                                    <p class="text-color-light">Total earned</p>
+                                                </li>
+                                                <li>
+                                                    <p class="text-color-light">13</p>
+                                                    <p class="text-color-light">Jobs</p>
+                                                </li>
+                                                <li>
+                                                    <p class="text-color-light">54</p>
+                                                    <p class="text-color-light">Hours Worked</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- talent details -->
+                                        <!-- invite job -->
+                                        <div class="col-md-4">
+                                            <button class="btn invite-job">INVITE TO JOB</button>
+                                            <button class="btn review" routerLink="/ratingsreview">RATINGS &
+                                                REVIEWS</button>
+                                        </div>
+                                        <!-- invite job -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p>I have 8 years of experience in developing web & mobile applications for
+                                                ecommerce , health , transport , education and games industries. For
+                                                Past 3 Years ...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- talent preview -->
+                    <!-- talent preview -->
+                    <div class="col-md-12 mt-3">
+                        <div class=" talent-result " routerLink="/talentprofile">
+                            <div class="row">
+                                <!-- talent image -->
+                                <div class="col-md-2">
+                                    <img src="../../../assets/images/profile-image.jpg">
+                                </div>
+                                <!-- talent image -->
+
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <!-- talent details -->
+                                        <div class="col-md-8">
+                                            <h3>John Mark</h3>
+                                            <p>React | Angular | Vue | Node Js | ASP.NET | Java Developer</p>
+                                            <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
+                                            <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
+                                                Lumpur
+                                            </p>
+                                            <ul>
+                                                <li>
+                                                    <p class="text-color-light">$34.00</p>
+                                                    <p class="text-color-light">Hourly rate</p>
+                                                </li>
+                                                <li>
+                                                    <p class="text-color-light">$2k+</p>
+                                                    <p class="text-color-light">Total earned</p>
+                                                </li>
+                                                <li>
+                                                    <p class="text-color-light">13</p>
+                                                    <p class="text-color-light">Jobs</p>
+                                                </li>
+                                                <li>
+                                                    <p class="text-color-light">54</p>
+                                                    <p class="text-color-light">Hours Worked</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- talent details -->
+                                        <!-- invite job -->
+                                        <div class="col-md-4">
+                                            <button class="btn invite-job">INVITE TO JOB</button>
+                                            <button class="btn review" routerLink="/ratingsreview">RATINGS &
+                                                REVIEWS</button>
+                                        </div>
+                                        <!-- invite job -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p>I have 8 years of experience in developing web & mobile applications for
+                                                ecommerce , health , transport , education and games industries. For
+                                                Past 3 Years ...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- talent preview -->
+                    <!-- talent preview -->
+                    <div class="col-md-12 mt-3">
+                        <div class=" talent-result" routerLink="/talentprofile">
+                            <div class="row">
+                                <!-- talent image -->
+                                <div class="col-md-2">
+                                    <img src="../../../assets/images/profile-image.jpg">
+                                </div>
+                                <!-- talent image -->
+
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <!-- talent details -->
+                                        <div class="col-md-8">
+                                            <h3>John Mark</h3>
+                                            <p>React | Angular | Vue | Node Js | ASP.NET | Java Developer</p>
+                                            <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
+                                            <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
+                                                Lumpur
+                                            </p>
+                                            <ul>
+                                                <li>
+                                                    <p class="text-color-light">$34.00</p>
+                                                    <p class="text-color-light">Hourly rate</p>
+                                                </li>
+                                                <li>
+                                                    <p class="text-color-light">$2k+</p>
+                                                    <p class="text-color-light">Total earned</p>
+                                                </li>
+                                                <li>
+                                                    <p class="text-color-light">13</p>
+                                                    <p class="text-color-light">Jobs</p>
+                                                </li>
+                                                <li>
+                                                    <p class="text-color-light">54</p>
+                                                    <p class="text-color-light">Hours Worked</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- talent details -->
+                                        <!-- invite job -->
+                                        <div class="col-md-4">
+                                            <button class="btn invite-job">INVITE TO JOB</button>
+                                            <button class="btn review">RATINGS & REVIEWS</button>
+                                        </div>
+                                        <!-- invite job -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p>I have 8 years of experience in developing web & mobile applications for
+                                                ecommerce , health , transport , education and games industries. For
+                                                Past 3 Years ...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- talent preview -->
+
+
+
+                </div>
+                <!-- my hires -->
+                <!-- saved jobs -->
+                <div class="row " *ngIf="ShowSavedScreen">
+                    <!-- talent preview -->
+                    <div class="col-md-12 mt-3">
+                        <div class=" talent-result " routerLink="/talentprofile">
+                            <div class="row">
+                                <!-- talent image -->
+                                <div class="col-md-2">
+                                    <img src="../../../assets/images/profile-image.jpg">
+                                </div>
+                                <!-- talent image -->
+
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <!-- talent details -->
+                                        <div class="col-md-8">
+                                            <h3>John Mark</h3>
+                                            <p>React | Angular | Vue | Node Js | ASP.NET | Java Developer</p>
+                                            <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
+                                            <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
+                                                Lumpur
+                                            </p>
+                                            <ul>
+                                                <li>
+                                                    <p class="text-color-light">$34.00</p>
+                                                    <p class="text-color-light">Hourly rate</p>
+                                                </li>
+                                                <li>
+                                                    <p class="text-color-light">$2k+</p>
+                                                    <p class="text-color-light">Total earned</p>
+                                                </li>
+                                                <li>
+                                                    <p class="text-color-light">13</p>
+                                                    <p class="text-color-light">Jobs</p>
+                                                </li>
+                                                <li>
+                                                    <p class="text-color-light">54</p>
+                                                    <p class="text-color-light">Hours Worked</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <!-- talent details -->
+                                        <!-- invite job -->
+                                        <div class="col-md-4">
+                                            <button class="btn invite-job">INVITE TO JOB</button>
+                                            <button class="btn review" routerLink="/ratingsreview">RATINGS &
+                                                REVIEWS</button>
+                                        </div>
+                                        <!-- invite job -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <p>I have 8 years of experience in developing web & mobile applications for
+                                                ecommerce , health , transport , education and games industries. For
+                                                Past 3 Years ...</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- talent preview -->
+
+
+
+
+                </div>
+                <!-- saved jobs -->
             </div>
 
             <!-- search details -->

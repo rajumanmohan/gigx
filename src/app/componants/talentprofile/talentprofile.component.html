@@ -1,0 +1,271 @@
+<!-- heADER -->
+<div class="container-fluid main-header">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+
+            <a class="navbar-brand" routerLink=""><img src="../../../assets/images/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" routerLink="">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item login-list">|</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/talentaccount">Profile</a>
+                    </li>
+                    <li class="nav-item login-list">|</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/jobsearch">Job Serach</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+
+<!-- HEADER -->
+<section class="login mt-2">
+    <div class="container profile">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">MY PROFILE</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center  mt-2 mb-2">
+            <div class="col-md-6 text-center">
+                <img src="../../../assets/images/profile-image.jpg">
+
+                <h3>JOHN PETER</h3>
+                <p>PHP Developer</p>
+            </div>
+
+        </div>
+
+        <!-- search results buttons -->
+        <div class="row search-category justify-content-center">
+            <div class="col-md-12">
+                <ul>
+                    <li><button type="submit" class="btn" (click)="personaldetails()"
+                            [ngStyle]="{'background': showPersonalDetails == true?'#fed501':''}"> PERSONAL
+                            DETAILS</button>
+                    </li>
+                    <li><button type="submit" class="btn" (click)="education()"
+                            [ngStyle]="{'background': showEducationDetails == true?'#fed501':''  }">EDUCATION
+                            DETAILS</button></li>
+
+                    <li> <button type="submit" class="btn" (click)="workexperience()"
+                            [ngStyle]="{'background': showWorkExperienceDetails == true?'#fed501':''}"> WORK
+                            EXPERIENCE</button>
+                    </li>
+
+                    <li> <button type="submit" class="btn" (click)="bankdetails()"
+                            [ngStyle]="{'background': showBankDetails == true?'#fed501':''}"> BANK DETAILS</button></li>
+
+                    <li> <button type="submit" class="btn" (click)="gigstalent()"
+                            [ngStyle]="{'background': showGigsTrackDetails == true?'#fed501':''}"> GIGS TRACK
+                            HISTORY</button></li>
+
+                </ul>
+
+            </div>
+        </div>
+        <!-- search results buttons -->
+        <!-- personal details -->
+        <div class="row contact-details mt-5" *ngIf="showPersonalDetails">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table b-0">
+
+                        <tbody class="b-0">
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">FULL NAME</td>
+                                <td class="b-0"><span>:</span> John Peter</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">EMAIL</td>
+                                <td class="b-0"><span>:</span>Johnpeter@gmail.com</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">MOBILE NO</td>
+                                <td class="b-0"><span>:</span> 9630571452</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">LOCATION</td>
+                                <td class="b-0"><span>:</span> Hyderabad, India</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">DATE OF BIRTH</td>
+                                <td class="b-0"><span>:</span>17-07-1990</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">MARITAL STATUS</td>
+                                <td class="b-0"><span>:</span> Un Married</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">GENDER</td>
+                                <td class="b-0"><span>:</span>MALE</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+        </div>
+        <!-- personal details-->
+        <!-- education details -->
+        <div class="row contact-details mt-5" *ngIf="showEducationDetails">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table b-0">
+
+                        <tbody class="b-0">
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">QUALIFICATION</td>
+                                <td class="b-0"><span>:</span> Bachelor of Engineering
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">SPECIALIZATION</td>
+                                <td class="b-0"><span>:</span>Computer Science</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">INSTITUTION</td>
+                                <td class="b-0"><span>:</span> University of Brooklyn</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">YEAR OF PASSING</td>
+                                <td class="b-0"><span>:</span>2016</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- education details-->
+
+
+        <!-- work experience details -->
+        <div class="row contact-details mt-5" *ngIf="showWorkExperienceDetails">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table b-0">
+
+                        <tbody class="b-0">
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">DESIGNATION</td>
+                                <td class="b-0"><span>:</span> PHP Developer
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">CURRENT COMPANY</td>
+                                <td class="b-0"><span>:</span>Versatile Mobitech Pvt. Ltd.</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">SALARY</td>
+                                <td class="b-0"><span>:</span> RM 9,00,000</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">WORK EXPERIENCE</td>
+                                <td class="b-0"><span>:</span>5 years</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">SKILLS</td>
+                                <td class="b-0"><span>:</span>HTML5, CSS3 ,Bootstrap , Jquery , Angular , PHP </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">INDUSTRY</td>
+                                <td class="b-0"><span>:</span>IT Software Industry</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- work experience details-->
+        <!-- Bank details -->
+        <div class="row contact-details mt-5" *ngIf="showBankDetails">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table b-0">
+
+                        <tbody class="b-0">
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">ACCOUNT HOLDER NAME</td>
+                                <td class="b-0"><span>:</span> John Peter
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">ACCOUNT NUMBER</td>
+                                <td class="b-0"><span>:</span>018301484098</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">BANK NAME</td>
+                                <td class="b-0"><span>:</span>HDFC</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">IFSC CODE</td>
+                                <td class="b-0"><span>:</span>HDFC022</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">BRANCH</td>
+                                <td class="b-0"><span>:</span>Kuala Lumpur , Malaysia </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">LOCATION</td>
+                                <td class="b-0"><span>:</span>Kuala Lumpur , Malaysia</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Bank details-->
+        <!-- GigsTrack details -->
+        <div class="row contact-details mt-5" *ngIf="showGigsTrackDetails">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table b-0">
+
+                        <tbody class="b-0">
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">NO. OF PROJECTS</td>
+                                <td class="b-0"><span>:</span> 06
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">NO. OF JOBS APPLIED</td>
+                                <td class="b-0"><span>:</span>12</td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">NO. OF JOBS VIEWED</td>
+                                <td class="b-0"><span>:</span>34</td>
+                            </tr>
+
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- GigsTrack details-->
+
+
+        <div class="row justify-content-center mb-5 mt-3">
+            <div class="col-md-4 text-center edit-profile">
+                <button type="submit" class="btn ">EDIT PROFILE</button>
+            </div>
+        </div>
+    </div>
+</section>

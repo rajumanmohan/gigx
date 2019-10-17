@@ -9,21 +9,21 @@
                 {{index + 10}}
             </ng-template> -->
 
-            <ng-template matStepperIcon="user">
-                <mat-icon>bubble_chart</mat-icon>
+            <ng-template matStepperIcon="home">
+                <mat-icon>home</mat-icon>
             </ng-template>
-            <ng-template matStepperIcon="user">
+            <ng-template matStepperIcon="home">
                 <mat-icon>home</mat-icon>
             </ng-template>
 
-            <ng-template matStepperIcon="done">
-                <mat-icon>done_all</mat-icon>
+            <ng-template matStepperIcon="home">
+                <mat-icon>home</mat-icon>
             </ng-template>
-            <ng-template matStepperIcon="user">
-                <mat-icon>user</mat-icon>
+            <ng-template matStepperIcon="home">
+                <mat-icon>home</mat-icon>
             </ng-template>
 
-            <mat-step label="" state="user">
+            <mat-step label="" state="home">
                 <!-- <p>Step 1</p> -->
                 <section class="login company-registration mt-3 mb-5">
                     <div class="container create-account">
@@ -94,7 +94,7 @@
                                         <p>Gender</p>
                                         <div class="custom-control custom-radio custom-control-inline">
                                             <input type="radio" id="customRadioInline1" name="customRadioInline1"
-                                                class="custom-control-input">
+                                                class="custom-control-input" checked>
                                             <label class="custom-control-label" for="customRadioInline1">Male</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
@@ -105,45 +105,11 @@
                                     </div>
                                     <div class="form-group">
                                         <my-date-picker class="my-date-picker" name="mydate"
-                                            (dateChanged)="onDateChanged($event)" [selDate]="selDate" required>
+                                            (dateChanged)="onDateChanged($event)" placeholder="Date of Birth"
+                                            [selDate]="selDate" required>
                                         </my-date-picker>
                                     </div>
-                                    <div class="form-group">
-                                        <select class="form-control" id="exampleFormControlSelect1"
-                                            placeholder="Industry Type">
-                                            <option value="company">Married </option>
-                                            <option value="individual"> Un married</option>
-
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <select class="form-control" id="exampleFormControlSelect1"
-                                            placeholder="Industry Type">
-                                            <option value="company">Category </option>
-                                            <option value="individual">Category1</option>
-
-                                        </select>
-                                    </div>
                                     <!-- vamshi upload img -->
-                                    <!-- manmohan upload img -->
-
-                                    <!-- <div class="group-gap">
-                    
-                    
-                                            <div class="avatar-upload">
-                                                <div class="avatar-edit">
-                                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
-                                                        (change)="uploadFile($event)" />
-                                                </div>
-                                                <div class="avatar-preview">
-                                                    <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-danger btn-lg btn-block" (click)="fileInput.click()">Upload
-                                            Image</button> -->
-                                    <!-- manmohan upload img -->
 
                                     <div class="form-group">
                                         <div class="custom-control custom-checkbox">
@@ -191,10 +157,25 @@
                                             placeholder="Institution">
                                     </div>
                                     <div class="form-group">
-                                        <p>Job type</p>
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                            placeholder="Industry Type">
+                                            <option value="company">Year of Completion </option>
+                                            <option value="individual">2019</option>
+                                            <option value="individual">2018</option>
+                                            <option value="individual">2017</option>
+                                            <option value="individual">2016</option>
+                                            <option value="individual">2015</option>
+                                            <option value="individual">2014</option>
+
+
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <p>Type of Degree</p>
                                         <div class="custom-control custom-radio custom-control-inline">
                                             <input type="radio" id="customRadioInline4" name="customRadioInline4"
-                                                class="custom-control-input">
+                                                class="custom-control-input" checked>
                                             <label class="custom-control-label" for="customRadioInline4">Full
                                                 time</label>
                                         </div>
@@ -212,14 +193,6 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <select class="form-control" id="exampleFormControlSelect1"
-                                            placeholder="Industry Type">
-                                            <option value="company">Passing year </option>
-                                            <option value="individual">2018</option>
-
-                                        </select>
-                                    </div>
 
                                     <div>
                                         <p class="add-another text-center"> + ADD ANOTHER EDUCATION</p>
@@ -255,8 +228,8 @@
                                                 <select class="form-control" id="exampleFormControlSelect1"
                                                     placeholder="Industry Type">
                                                     <option value="company" disabled>INR </option>
-                                                    <option value="individual">20,000</option>
-                                                    <option value="individual">30,000</option>
+                                                    <option value="individual">$</option>
+                                                    <option value="individual">RM</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -322,17 +295,23 @@
                                     <div class="form-group">
                                         <select class="form-control" id="exampleFormControlSelect1"
                                             placeholder="Industry Type">
-                                            <option value="company" disabled>Industry </option>
-                                            <option value="individual">Software</option>
-                                            <option value="individual">Hardware</option>
+                                            <option value="individual">Oil and Gas</option>
+                                            <option value="individual">IT</option>
+                                            <option value="individual">Marketing</option>
+
                                         </select>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="exampleInputPassword1"
-                                            placeholder="Role">
+                                        <select class="form-control" id="exampleFormControlSelect1"
+                                            placeholder="Industry Type">
+                                            <option value="individual">Associate Manager</option>
+                                            <option value="individual">Senior Architect</option>
+                                            <option value="individual">Marketing Manager</option>
+
+                                        </select>
                                     </div>
                                     <div>
-                                        <p class="add-another text-center"> + ADD ANOTHER EMPLOYMENT</p>
+                                        <p class="add-another text-center"> + ADD EMPLOYMENT</p>
                                     </div>
                                 </form>
                                 <button type="submit" class="btn btn-primary mt-5"
@@ -379,30 +358,10 @@
                                             placeholder="Role">
                                     </div>
                                     <div class="form-group">
-                                        <p class="dark-col">Desired job type</p>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline8" name="customRadioInline8"
-                                                class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadioInline8">Gig</label>
-                                        </div>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline9" name="customRadioInline8"
-                                                class="custom-control-input">
-                                            <label class="custom-control-label"
-                                                for="customRadioInline9">Contract</label>
-                                        </div>
-                                        <div class="custom-control custom-radio custom-control-inline">
-                                            <input type="radio" id="customRadioInline10" name="customRadioInline8"
-                                                class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadioInline10">Full
-                                                time</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         <p class="dark-col">Desired employment type</p>
                                         <div class="custom-control custom-radio custom-control-inline">
                                             <input type="radio" id="customRadioInline12" name="customRadioInline17"
-                                                class="custom-control-input">
+                                                class="custom-control-input" checked>
                                             <label class="custom-control-label" for="customRadioInline12">Gig</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline">
@@ -442,8 +401,8 @@
                                         <p class="skill-dot" (click)="add('ANGULAR 4')">ANGULAR 4</p>
                                     </div>
                                 </form>
-                                <button type="submit" class="btn btn-primary mt-5"
-                                    (click)="complete()">CONTINUE</button>
+                                <button type="submit" class="btn btn-primary mt-5" (click)="complete()"
+                                    routerLink="/subscriptions">CONTINUE</button>
                             </div>
 
                         </div>

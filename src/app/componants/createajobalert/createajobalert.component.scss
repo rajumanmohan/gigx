@@ -1,0 +1,71 @@
+.login {
+    h1{
+        font-weight: 600;
+        margin-top: 4%;
+        font-size: 32px;
+    }
+    button{
+        border-radius:50px!important;
+        font-weight:600;
+        }
+        input {
+           margin-bottom:12px;
+            border: 1px solid #dbdbdb;
+            padding: 24px 10px;
+            margin: 0px auto;
+            box-shadow: 1px 1px 1px 0px #dbdbdb!important;
+        }
+        textarea{
+            margin-bottom:12px;
+            border: 1px solid #dbdbdb;
+            padding: 6px 13px;
+            margin: 0px auto;
+            box-shadow: 1px 1px 1px 0px #dbdbdb!important;
+        }
+         select{
+            margin-bottom: 12px;
+            border: 1px solid #dbdbdb;
+            padding: 0px 7px;
+            margin: 0px auto;
+            height: 50px;
+            box-shadow: 1px 1px 1px 0px #dbdbdb !important;
+         }
+         button{
+            width: 100%;
+            border: 0px;
+            border-radius: 3px !important;
+            padding: 10px;
+            background: #fed501!important;
+            color: #000000!important;
+            font-size: 20px;
+        }
+        .page-item.active .page-link {
+            color: #000000;
+            background-color: #fed501;
+            border-color: #fed501;
+        }
+
+        .page-link {
+            color: #000000;
+        }
+label{
+    color:#717171;
+}
+.form-group {
+    margin-bottom: 1rem;
+    margin-bottom: 29px;
+}
+}
+// HEADER CSS
+
+.login-list{
+    margin-top: 3px;
+    font-size: 24px;
+}
+.main-header {
+    box-shadow: 2px 3px 6px 0px #e1e1e1;
+a{
+    font-size:19px;
+    color:#000000;
+}
+}
