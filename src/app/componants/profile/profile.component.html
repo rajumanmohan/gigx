@@ -1,0 +1,328 @@
+<!-- heADER -->
+<div class="container-fluid main-header">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+
+            <a class="navbar-brand" routerLink=""><img src="../../../assets/images/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" routerLink="">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item login-list">|</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/postagig">Post a Gig</a>
+                    </li>
+                    <li class="nav-item login-list">|</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/talentsearch">Talent Search</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!-- HEADER -->
+<section class="login mt-2" *ngIf="page=='individual'">
+    <div class="container profile">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">INDIVIDUAL PROFILE</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center  mt-2 mb-2">
+            <div class="col-md-6 text-center">
+                <img src="../../../assets/images/profile-image.jpg">
+
+                <h3>SRIKANTH DOROLA</h3>
+                <p>Hyderabad</p>
+            </div>
+
+        </div>
+        <div class="row contact-details">
+            <div class="col-md-12">
+                <h2>CONTACT DETAILS</h2>
+                <div class="table-responsive">
+                    <table class="table b-0">
+
+                        <tbody class="b-0">
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">PERSON NAME</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">Sriknath Dorola</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="Sriknath Dorola" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Sriknath Dorola">
+                                    </span>
+                                </td>
+
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">DESIGNATION</td>
+                                <td class="b-0"><span>:</span>
+
+                                    <span *ngIf="edit==false">Project Manager</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="Project Manager" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Sriknath Dorola">
+                                    </span></td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">EMAIL</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">Srikanth@gmail.com</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="Srikanth@gmail.com" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Sriknath Dorola">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">MOBILE NO</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">9630571452</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="9630571452" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Sriknath Dorola">
+                                    </span>
+                                </td>
+                            </tr>
+
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">INDUSTRY TYPE</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">Individual</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="Individual" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Sriknath Dorola">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">ADDRESS</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">Kondapur,Hyderabad</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="Kondapur,Hyderabad" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Sriknath Dorola">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">COUNTRY</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">India</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="India" class="form-control" id="exampleInputPassword1"
+                                            placeholder="Sriknath Dorola">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">PINCODE</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">500036</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="500036" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Sriknath Dorola">
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+
+        </div>
+        <div class="row justify-content-center mt-5 mb-5">
+            <div class="col-md-6 text-center" *ngIf="edit==false">
+                <button type="submit" class="btn " (click)="editProfile()">EDIT PROFILE</button>
+            </div>
+            <div class="col-md-6 text-center" *ngIf="edit==true">
+                <button type="submit" class="btn " (click)="showData()">Save</button>
+            </div>
+            <div class="col-md-6 text-center" *ngIf="edit==true">
+                <button type="submit" class="btn " (click)="showData()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="login mt-2" *ngIf="page=='company'">
+    <div class="container profile">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">COMPANY PROFILE</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center  mt-2 mb-2">
+            <div class="col-md-6 text-center">
+                <img src="../../../assets/images/vm-logo.png">
+
+                <h3>VERSATILE MOBITECH PVT.LTD</h3>
+                <p>Hyderabad</p>
+            </div>
+
+        </div>
+        <div class="row contact-details">
+            <div class="col-md-12">
+                <h2>COMPANY DETAILS</h2>
+                <div class="table-responsive">
+                    <table class="table b-0">
+
+                        <tbody class="b-0">
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">COMPANY NAME</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">Versatile mobitech</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="Versatile mobitech" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Name">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">URL</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">https://www.versatilemobitech.com/</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="https://www.versatilemobitech.com/"
+                                            class="form-control" id="exampleInputPassword1" placeholder="Url">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">EMAIL</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">verstile@gmail.com</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="verstile@gmail.com" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Email">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">INDUSTRY TYPE</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">Company</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="Company" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Industry type">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">COUNTRY</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">India</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="India" class="form-control" id="exampleInputPassword1"
+                                            placeholder="Country">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">PINCODE</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">500036</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="500036" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Pincode">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">SST NO</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">N0098746885565</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="N0098746885565" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Sst no">
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="row contact-details">
+            <div class="col-md-12">
+                <h2>CONTACT DETAILS</h2>
+                <div class="table-responsive">
+                    <table class="table b-0">
+
+                        <tbody class="b-0">
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">NAME</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">Richard joe</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="Richard joe" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Name">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">DESIGNATION</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">Human Resources</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="Human Resources" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Designation">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">EMAIL</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">richordjoe@gmail.com</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="richordjoe@gmail.com" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Email">
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">MOBILE NUMBER</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">9845635420</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text" value="9845635420" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Mobile number">
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="row justify-content-center mt-5 mb-5">
+            <div class="col-md-6 text-center" *ngIf="edit==false">
+                <button type="submit" class="btn " (click)="editProfile()">EDIT PROFILE</button>
+            </div>
+            <div class="col-md-6 text-center" *ngIf="edit==true">
+                <button type="submit" class="btn " (click)="showData()">Save</button>
+            </div>
+            <div class="col-md-6 text-center" *ngIf="edit==true">
+                <button type="submit" class="btn " (click)="showData()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,109 @@
+<!-- heADER -->
+<div class="container-fluid main-header">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+
+            <a class="navbar-brand" routerLink=""><img src="../../../assets/images/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" routerLink="">Home<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item login-list">|</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/postagig">Post a Gig</a>
+                    </li>
+                    <li class="nav-item login-list">|</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/talentsearch">Talent Search</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!-- HEADER -->
+<section class="login  mt-3 mb-3">
+    <div class="container subscriptions">
+        <div class="row justify-content-center ">
+            <div class="col-md-6">
+                <h1 class="text-center mb-2">SUBSCRIPTIONS
+                </h1>
+            </div>
+        </div>
+        <!-- switch buttons  -->
+        <div class="row justify-content-center">
+            <div class="col-md-6 group-buttons">
+                <div class="btn-group" role="group" aria-label="Basic example">
+                    <button type="button" (click)="gigx('talent')" class="btn"
+                        [ngStyle]="{'background':type=='talent'?'#fed501':''}">GIGX
+                        TALENT</button>
+                    <button type="button" (click)="gigx('employer')"
+                        [ngStyle]="{'background':type=='employer'?'#fed501':''}" class="btn ">COMPANY</button>
+                </div>
+            </div>
+
+        </div>
+        <!-- switch buttons -->
+        <!-- subscriptions plans -->
+        <div class="row mt-5">
+            <!-- plan 1 -->
+            <div class="col-md-4">
+                <div class="subscription-plan">
+                    <h1>Basic</h1>
+                    <h2>RM XXXX <span class="divider">/</span><span> Year</span></h2>
+                    <p>Postings 01-30</p>
+                    <p>Basic Static</p>
+                    <p>Email Support</p>
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-md-8 text-right">
+                            <button type="submit" class="btn account" routerLink="/payment">SUBSCRIBE NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- plan 1 -->
+            <!-- plan 2 -->
+            <div class="col-md-4">
+                <div class="subscription-plan">
+                    <h1>Standard</h1>
+                    <h2>RM XXXX <span class="divider">/</span><span> Year</span></h2>
+                    <p>Postings 31-60</p>
+                    <p>Basic Static</p>
+                    <p>Email Support</p>
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-md-8 text-right">
+                            <button type="submit" class="btn account" routerLink="/payment">SUBSCRIBE NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- plan 2 -->
+            <!-- plan 3 -->
+            <div class="col-md-4">
+                <div class="subscription-plan">
+                    <h1>Premium </h1>
+                    <h2>RM XXXX <span class="divider">/</span><span> Year</span></h2>
+                    <p>Postings 60-150</p>
+                    <p>Basic Static</p>
+                    <p>Email Support</p>
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-md-8 text-right">
+                            <button type="submit" class="btn account" routerLink="/payment">SUBSCRIBE NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- plan 3 -->
+
+        </div>
+        <!-- subscriptions plans -->
+    </div>
+</section>

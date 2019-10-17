@@ -1,0 +1,205 @@
+.talent {
+    h1{
+        font-weight: 600;
+        margin-top: 4%;
+        text-align: center;
+        font-size: 32px;
+    }
+    button{
+        border-radius:50px!important;
+        font-weight:600;
+        }
+        input {
+           margin-bottom:12px;
+            border: 1px solid #dbdbdb;
+            padding: 24px 10px;
+            margin: 0px auto;
+            box-shadow: 1px 1px 1px 0px #dbdbdb!important;
+        }
+         select{
+            margin-bottom: 12px;
+            border: 1px solid #dbdbdb;
+            padding: 0px 7px;
+            margin: 0px auto;
+            height: 50px;
+            box-shadow: 1px 1px 1px 0px #dbdbdb !important;
+         }
+         button{
+            width: 100%;
+            border: 0px;
+            border-radius: 3px !important;
+            padding: 10px;
+            background: #fed501!important;
+            color: #000000;
+            font-size: 20px;
+        }
+}
+.company-registration {
+    .form-group{
+        margin-bottom:28px;
+    }
+    .custom-control-input:checked~.custom-control-label::before {
+        color: #fff;
+        border-color: #77706c;
+        background-color: #77706c;
+    }
+    .input-group-prepend {
+        margin-right: -1px;
+        width: 14%;
+        select{
+            border-radius:0px;
+            border-right:0px;
+        }
+    }
+    a{
+        color:#fed501!important
+    }
+}
+.upload-image{
+    height: 100%;
+    border-radius: 9px;
+    border: 1px dashed #a4a4a4;
+    padding: 21px;
+}
+// upload image
+.avatar-upload .avatar-preview {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border-radius: 100%;
+    overflow: hidden;
+    border: 12px solid #fff;
+    -webkit-box-shadow: 0 0 45px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 0 45px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 45px rgba(0, 0, 0, .2);
+}
+.login[_ngcontent-yhx-c1] input[_ngcontent-yhx-c1] {
+    margin-bottom: 12px;
+    border: none !important;
+    padding: 24px 10px;
+    margin: 0px auto;
+    /* box-shadow: none !important; */
+}
+.upload-image {
+    cursor: pointer !important;
+        position: relative;
+        overflow: hidden;
+        // display: inline-block;
+      .btn {
+        color: gray;
+        background-color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      
+      input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+      }
+    button{
+        width: 100%;
+        border: 0px!important;
+        border-radius: 3px !important;
+        padding: 10px;
+        background: none!important;
+        color: #000000;
+        font-size: 20px;
+    }
+}
+.add-details {
+    background: #f1f1f1;
+    padding: 7px;
+    font-weight: bold;
+}
+.add-another {
+    background: #f1f1f1;
+    padding: 7px;
+    color: #818181;
+}
+button.btnpicker.btnpickerenabled {
+    padding: 1px;
+    margin: 14px;
+}
+.or-tag {
+    margin-top: 56px;
+    font-size: 26px;
+    color: gray;
+}
+.file-select {
+    font-size: 14px;
+    border: 1px solid;
+    color: gray;
+}
+.drag {
+    color: gray;
+    font-size: 14px;
+}
+.dark-col{
+    color: #818181;
+}
+
+.skills {
+    display: inline-flex;
+    margin-right: 10px ;
+    .skill-dot {
+        border-radius: 2px;
+        border: 2px dotted #a4a4a4;
+        padding: 3px;
+        width: fit-content;
+        font-size: 11px;
+        padding: 0px;
+        margin: 7px;
+        cursor: pointer;
+    }
+}
+.profile{
+    text-align: center;
+   
+}
+
+.upload-image1 {
+    cursor: pointer !important;
+        position: relative;
+        overflow: hidden;
+        // display: inline-block;
+      .btn {
+        color: gray;
+        background-color: white;
+        padding: 8px 20px;
+        border-radius: 8px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      
+      input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+      }
+    button{
+        width: 100%;
+        border: 0px!important;
+        border-radius: 3px !important;
+        padding: 10px;
+        background: none!important;
+        color: #000000;
+        font-size: 20px;
+    }
+    img.attch-img{
+        position: absolute !important;
+        bottom: 6% !important;
+        left: 53% !important;
+    }
+    .uploaded-img {
+        border-radius: 50%;
+    height: 125px;
+    width: 125px;
+    }
+}

@@ -1,0 +1,103 @@
+.login {
+    h1{
+        font-weight: 600;
+        margin-top: 4%;
+    }
+    button{
+        border-radius:50px!important;
+        font-weight:600;
+        }
+        input{
+           
+            border: 1px solid #dbdbdb;
+            padding: 24px 40px;
+            margin: 0px auto;
+            box-shadow: 1px 1px 1px 0px #dbdbdb!important;
+        }
+}
+.group-buttons{
+    text-align: center;
+    background: #f1f1f1;
+    padding: 13px 18px;
+    border-radius: 50px;
+    margin-top:7%;
+   .btn-group{
+    width: 100%;
+   }
+}
+.forgot-password {
+
+    a{
+        color:inherit;
+        font-weight:600 ;
+    }
+}
+.email-field{
+    background-image: url(../../../assets/images/man-user.png)!important;
+    background-position: 2% 50% !important;
+    background-repeat: no-repeat !important;
+}
+.password-field {
+    background-image: url(../../../assets/images/lock.png)!important;
+    background-position: 2% 50% !important;
+    background-repeat: no-repeat !important;
+}
+.login-form {
+    button{
+        width: 100%;
+        border: 0px;
+        border-radius: 3px !important;
+        padding: 10px;
+        background: #fed501!important;
+        color: #000000!important;
+        font-size: 20px;
+    }
+    p{
+        font-weight:600;
+    }
+}
+.account{
+    background: #e3e3e3 !important;
+    padding: 4px 14px!important;
+    width: auto!important;
+    font-size: 15px!important;
+}
+.b-0{
+    border:0px!important;
+}
+// modal css
+.forgot-modal{
+    h5  {
+        text-align:center;
+        width:100%;
+        font-weight:600;
+    }
+    input{
+           
+        border: 1px solid #dbdbdb;
+        padding: 24px 40px;
+        margin: 0px auto;
+        box-shadow: 1px 1px 1px 0px #dbdbdb!important;
+    }
+    .modal-dialog {
+      padding: 12px;
+        top: 12%;
+    }
+    .modal-content{
+        padding:13px
+    }
+  .modal-footer{
+      width:100%;
+    button{
+        width: 100%;
+        border: 0px;
+        border-radius: 3px !important;
+        padding: 10px;
+        background: #fed501;
+        color: #000000;
+        font-weight: 600;
+        font-size: 20px;
+    }
+  }
+}
+

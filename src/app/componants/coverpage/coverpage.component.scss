@@ -1,0 +1,23 @@
+.login-register {
+    position: absolute;
+    /* left: 50%; */
+    width: 100%;
+    top: 22%;
+    button{
+       font-family: Muli-Regular;
+        box-shadow: none;
+        outline: none;
+        width: 100%;
+        font-weight:600;
+    }
+    .login {
+        background: #fed501;
+    }
+    .signup{
+        background: #e3e3e3;
+    }
+    p{
+        font-weight:600;
+        font-size:21px;
+    }
+}

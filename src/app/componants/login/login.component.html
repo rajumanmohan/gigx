@@ -1,0 +1,84 @@
+<app-header></app-header>
+<section class="login mt-5">
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <h1>LOG IN TO AN EXISTING ACCOUNT</h1>
+            <div class="col-md-8">
+                <!-- switch buttons  -->
+                <div class="row justify-content-center">
+                    <div class="col-md-6 group-buttons">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" (click)="gigx('talent')" class="btn"
+                                [ngStyle]="{'background':type=='talent'?'#fed501':''}">GIGX
+                                TALENT</button>
+                            <button type="button" (click)="gigx('employer')"
+                                [ngStyle]="{'background':type=='employer'?'#fed501':''}" class="btn ">COMPANY</button>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- switch buttons -->
+                <div class="row login-form justify-content-center  mt-3">
+                    <div class="col-md-8 mt-3">
+                        <form>
+                            <div class="form-group">
+                                <input type="email" class="form-control email-field" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" class="form-control password-field" id="exampleInputPassword1"
+                                    placeholder="Password">
+                            </div>
+                            <div class="form-group forgot-password text-right">
+                                <a href="#" data-toggle="modal" data-target="#exampleModal">Forgot Password?</a>
+                            </div>
+                            <div class="form-group text-center ">
+                                <button type="submit" class="btn btn-primary">LOGIN</button>
+                            </div>
+                        </form>
+                        <div class="row mt-5">
+                            <div class="col-md-7">
+                                <p>Don't have an account?</p>
+                            </div>
+                            <div class="col-md-5 text-right">
+                                <button type="submit" class="btn account" routerLink="/createaccount">Sign Up</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- forgot password -->
+
+<!-- Modal -->
+<div class="modal fade forgot-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <div class="modal-content">
+            <div class="modal-header b-0">
+                <h5 class="modal-title" id="exampleModalLabel">FORGOT PASSWORD</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="email" class="form-control email-field" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" placeholder="Email">
+            </div>
+            <div class="modal-footer b-0">
+                <div class="w-100 text-center ">
+                    <button type="submit" class="btn btn-primary" data-dismiss="modal"
+                        aria-label="Close">SUBMIT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- forgot password -->
