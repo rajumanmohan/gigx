@@ -13,6 +13,7 @@
 }
 body{
     font-family: Muli-Regular;
+    overflow-x: hidden!important;
 }
 button , input ,textarea ,a{
     box-shadow: none!important;
@@ -45,11 +46,21 @@ button , input ,textarea ,a{
     background-color: #fed501!important ;
     color: #fff;
 }
-// .mat-step-icon-content{
-
-//     span{
-//         display:none;
-//     }
-// }
-// HEADER CSS
-
+.rc-anchor-alert {
+    display: none !important;
+}
+#rc-anchor-alert, .rc-anchor-alert {
+    bottom: 0;
+    color:green !important;
+    font-size: 13px;
+    position: absolute;
+    display: none;
+    display: none;
+}
+.dropdown-toggle::after {
+    content: "" !important;
+    color: black !important;
+    width: 0% !important;
+    display: inline-block !important; 
+    background: none !important;
+}

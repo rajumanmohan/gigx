@@ -22,9 +22,14 @@ const routes: Routes = [
   //   path: '',
   //   component: HeaderComponent
   // },
+
   {
     path: '',
     component: CoverpageComponent
+  },
+  {
+    path: 'index',
+    component: HomeComponent
   },
   {
     path: 'login',

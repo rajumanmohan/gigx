@@ -23,7 +23,8 @@ import { TalentdetailsComponent } from './componants/talentdetails/talentdetails
 import { RatingsComponent } from './componants/ratings/ratings.component';
 import { SubscriptionsComponent } from './componants/subscriptions/subscriptions.component';
 import { PaymentComponent } from './componants/payment/payment.component';
-
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+// import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,9 +52,17 @@ import { PaymentComponent } from './componants/payment/payment.component';
     MatIconModule,
     BrowserAnimationsModule,
     MyDatePickerModule,
-    FormsModule
+    FormsModule,
+    RecaptchaModule
   ],
-  providers: [],
+  providers: [{
+    provide: RECAPTCHA_SETTINGS,
+    useValue: {
+      siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+    } as RecaptchaSettings,
+  }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
