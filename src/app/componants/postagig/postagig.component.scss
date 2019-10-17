@@ -39,6 +39,9 @@
             color: #000000;
             font-size: 20px;
         }
+        .recapcha{
+            padding: 6px;
+        }
 }
 .company-registration {
     .custom-control-inline {
@@ -116,4 +119,15 @@ a{
     font-size:19px;
     color:#000000;
 }
+}
+.rc-anchor-alert {
+    display: none !important;
+}
+#rc-anchor-alert, .rc-anchor-alert {
+    bottom: 0;
+    color:green !important;
+    font-size: 13px;
+    position: absolute;
+    display: none;
+    display: none;
 }

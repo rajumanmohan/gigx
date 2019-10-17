@@ -31,6 +31,8 @@ import { CreateajobalertComponent } from './componants/createajobalert/createajo
 import { JobalertsComponent } from './componants/jobalerts/jobalerts.component';
 import { TalentdashboardComponent } from './componants/talentdashboard/talentdashboard.component';
 
+// import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+// import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,8 @@ import { TalentdashboardComponent } from './componants/talentdashboard/talentdas
     IntrestedjobsComponent,
     CreateajobalertComponent,
     JobalertsComponent,
-    TalentdashboardComponent
+    TalentdashboardComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,15 @@ import { TalentdashboardComponent } from './componants/talentdashboard/talentdas
     MyDatePickerModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    //   {
+    //   provide: RECAPTCHA_SETTINGS,
+    //   useValue: {
+    //     siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+    //   } as RecaptchaSettings,
+    // }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
