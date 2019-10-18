@@ -30,6 +30,7 @@ import { IntrestedjobsComponent } from './componants/intrestedjobs/intrestedjobs
 import { CreateajobalertComponent } from './componants/createajobalert/createajobalert.component';
 import { JobalertsComponent } from './componants/jobalerts/jobalerts.component';
 import { TalentdashboardComponent } from './componants/talentdashboard/talentdashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 // import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 // import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
@@ -68,7 +69,8 @@ import { TalentdashboardComponent } from './componants/talentdashboard/talentdas
     MatIconModule,
     BrowserAnimationsModule,
     MyDatePickerModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     //   {
