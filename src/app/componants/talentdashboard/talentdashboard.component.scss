@@ -242,7 +242,7 @@ li.nav-item {
     .review {
         background: #fed501 !important;
         border-radius: 4px !important;
-        width: 41%;
+        width: auto;
         padding: 12px;
         a{
             color:#000000!important;
@@ -323,13 +323,13 @@ li.nav-item {
         font-weight: 600;
         font-size: 22px;
     }
-    .img-fluid{
-        height:auto!important;
-    }
+   
 }
 .account-settings{
     padding:6px;
-  
+  img{
+    height:auto!important;
+  }
 }
 .bell{
     vertical-align: sub;
@@ -375,8 +375,82 @@ margin-top: 12px;
 
  }
  @media (max-width: 1361.98px) { 
-
+    .online[_ngcontent-xcj-c1] {
+        top: 95px;
+    }
  .company-profile {
     padding: 33px;
+    button{
+        font-size:18px;
+    }
 }
  }
+
+ // Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {
+    .company-profile {
+        height:400px;
+        button{
+            margin-bottom: -19px;
+            width:100%;
+        }
+        h4{
+            font-size: 15px;
+            margin:0px;
+        }
+        p{
+            margin:0px;
+            font-size: 13px;
+        }
+    }
+    .talent-result{
+        height:400px;
+    }
+    .account-settings{
+    img{
+        width: 114px!important;
+        height: 31px;
+    }
+        
+    }
+    .dashboard{
+        padding:0px;
+    }
+
+  }
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+    svg {
+        width: 161px!important;
+    }
+    .talent-result{
+        height:500px;
+    }
+    .company-profile {
+        height:500px;
+        h3{
+            font-size:14px;
+        }
+        h4{
+            font-size:14px;
+        }
+        p{
+            font-size:13px!important;
+        }
+    }
+    .account-settings{
+        .col-md-2{
+            display:none;
+        }
+    }
+  }
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+    .talent-result{
+        height:auto;
+    }
+    .company-profile {
+        height:auto;
+    }
+  }
+@media (max-width: 575.98px) {  }

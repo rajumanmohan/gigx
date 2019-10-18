@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-body{
-    font-family: Muli-Regular;
+
 @font-face {
     font-family: Muli-Black;
     src: url(/assets/fonts/Muli-Black.ttf);
@@ -23,7 +22,9 @@ button , input ,textarea ,a{
         outline: none!important;
 }
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
-
+.login{
+    width:100%;
+}
 .b-0{
     border:0px!important;
 }
@@ -39,13 +40,10 @@ button , input ,textarea ,a{
 .mydp .selection {
     padding: 22px !important;
 }
-.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
-    width: 72px !important;
-    height: 72px !important;
-}
+
 .mat-step-header .mat-step-icon {
-    width: 72px !important;
-    height: 72px !important;
+    width: 72px ;
+    height: 72px ;
     background-color: #fed501 !important;
     color: #000;
 }
@@ -68,13 +66,7 @@ button , input ,textarea ,a{
 // }
 // HEADER CSS
 
-}
-.mat-step-header .mat-step-icon {
-    width: 90% !important;
-    height: 90% !important;
-    background-color: #fed501!important ;
-    color: #fff;
-}
+
 .rc-anchor-alert {
     display: none !important;
 }
@@ -93,3 +85,53 @@ button , input ,textarea ,a{
     display: inline-block !important; 
     background: none !important;
 }
+@media (max-width: 1199.98px) { 
+    .login{
+        width:100%;
+    }
+}
+
+
+@media (max-width: 991.98px) { 
+    .container-fluid.main-header {
+      
+        background: #fed501de;
+    }
+    .login-list {
+       display: none;
+    }
+    svg {
+        width: 125px!important;
+    }
+    .mat-step-header .mat-step-icon {
+        width: 38px !important;
+        height: 38px !important;
+        background-color: #fed501 !important;
+        color: #000;
+        top: 16px!important;
+    }
+    input{
+font-size:14px!important
+    }
+    select{
+
+    }
+    textarea{
+
+    }
+    p{
+        font-size:14px!important
+    }
+    span{
+        font-size:14px!important
+    }
+ }
+
+ @media (max-width: 575.98px) { 
+   
+    body.mat-step-header .mat-step-icon {
+        width: 38px !important;
+        height: 38px !important;
+      
+    }
+ }

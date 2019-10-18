@@ -315,6 +315,8 @@ margin-top: 12px;
   
 }
 
+
+
 @media (max-width: 1654.98px) { 
 
     .talent-result{
@@ -324,8 +326,93 @@ margin-top: 12px;
 
  }
  @media (max-width: 1361.98px) { 
-
+    .online[_ngcontent-xcj-c1] {
+        top: 95px;
+    }
  .company-profile {
     padding: 33px;
+    button{
+        font-size:18px;
+    }
 }
  }
+
+ // Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {
+    .company-profile {
+        height:400px;
+        button{
+            margin-bottom: -19px;
+            width:100%;
+        }
+        h4{
+            font-size: 15px;
+            margin:0px;
+        }
+        p{
+            margin:0px;
+            font-size: 13px;
+        }
+    }
+    .talent-result{
+        height:400px;
+        img{
+            width:100%;
+        }
+    }
+    .account-settings{
+    img{
+        width: 114px!important;
+        height: 31px;
+    }
+        
+    }
+
+
+  }
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+    svg {
+        width: 161px!important;
+    }
+    .talent-result{
+        height:400px;
+        img{
+            width:100% ;
+        }
+    }
+    .company-profile {
+        height:400px;
+        h3{
+            font-size:14px;
+        }
+        h4{
+            font-size:14px;
+        }
+        p{
+            font-size: 13px !important;
+            margin-bottom: 32px;
+        }
+    }
+    .account-settings{
+        .col-md-2{
+            display:none;
+        }
+    }
+    .dashboard{
+        padding:0px;
+    }
+  }
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) {
+    .talent-result{
+        height:auto;
+        img{
+            width:125px ;
+        }
+    }
+    .company-profile {
+        height:auto;
+    }
+  }
+@media (max-width: 575.98px) {  }

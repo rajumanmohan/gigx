@@ -21,3 +21,33 @@
         font-size:21px;
     }
 }
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {
+    button{
+     font-size:14px;
+     }
+
+
+  }
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) { 
+    .login-list {
+       display: none;
+    }
+ }
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) { 
+    button{
+        margin-bottom: 40px;
+        }
+ 
+    
+ }
+@media (max-width: 575.98px) { 
+
+ }
+
+
+
+

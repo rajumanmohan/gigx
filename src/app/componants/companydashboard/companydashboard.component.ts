@@ -12,5 +12,7 @@ export class CompanydashboardComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  gotoProfile() {
+    this.router.navigate(['/profile'], { queryParams: { page: 'company' } });
+  }
 }

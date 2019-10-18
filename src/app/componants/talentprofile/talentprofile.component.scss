@@ -76,3 +76,45 @@ a{
     color:#000000;
 }
 }
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) { 
+    
+ }
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) { 
+
+    .search-category{
+        li{
+width:30%!important;
+        }
+    }
+ }
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) { 
+    .search-category{
+        li{
+width:50%!important;
+        }
+    }
+.contact-details {
+td{
+    font-size:14px;
+}
+}
+
+
+ }
+@media (max-width: 575.98px) { 
+    .search-category{
+        li{
+            width: 100% !important;
+            text-align: center;
+            margin-bottom: 13px;
+        }
+    }
+ }
+
+ 
+
+

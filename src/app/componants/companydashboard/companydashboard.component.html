@@ -22,7 +22,8 @@
 
 
                 </ul>
-                <span class="navbar-text"> <a href="#"><img src="../../../assets/images/bell.png" class="bell"></a></span>
+                <span class="navbar-text"> <a href="#"><img src="../../../assets/images/bell.png"
+                            class="bell"></a></span>
                 <span class="navbar-text">
                     <div class="dropdown dropdown-button">
                         <a class="nav-item " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
@@ -32,7 +33,7 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#" routerLink="/profile">My Profile</a>
+                            <a class="dropdown-item" (click)="gotoProfile()">My Profile</a>
                             <a class="dropdown-item" href="#" routerLink="/changepassword">Change Password</a>
                             <a class="dropdown-item" href="#" routerLink="/subscriptions">Subscriptions</a>
                             <a class="dropdown-item" href="#" routerLink="">Logout</a>
@@ -354,7 +355,7 @@
                             <h3>Versatile Mobitech Pvt. Ltd.</h3>
                             <p>UX / UI Designer</p>
                             <p>Secunderabad , Telangana, India</p>
-                            <button class="btn review" routerLink="/ratingsreview">EDIT PROFILE</button>
+                            <button class="btn review" (click)="gotoProfile()">EDIT PROFILE</button>
                         </div>
                     </div>
 

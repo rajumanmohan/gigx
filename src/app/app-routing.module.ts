@@ -32,11 +32,11 @@ const routes: Routes = [
   //   component: HeaderComponent
   // },
   {
-    path: '',
+    path: 'coverpage',
     component: CoverpageComponent
   },
   {
-    path: 'index',
+    path: '',
     component: HomeComponent
   },
   {

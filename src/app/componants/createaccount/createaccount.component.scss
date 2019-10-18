@@ -101,3 +101,12 @@ h2{
 .empty-space{
 
 }
+
+@media (max-width: 991.98px) {
+    .login {
+        h1{
+            font-size:28px;
+            text-align:center;
+        }
+    }
+}

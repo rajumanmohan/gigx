@@ -160,7 +160,7 @@
     outline: none;
     box-shadow: none;
     img{
-        width: 100%;
+        width: 125px;
         border-radius: 50%;
         text-align: center;
     }
@@ -226,6 +226,7 @@ a{
 }
 
 .image-talent {
+    text-align: center;
     h4{
         color: #2ba81e;
         font-size: 20px;
@@ -247,3 +248,30 @@ a{
         }
     }
 }
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {  }
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+
+    .talent-result{
+        img{
+            width: 100%;
+        }
+        }
+
+  }
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) { 
+    .talent-result{
+        img{
+            width: 125px;
+        }
+        }
+        .search-results{
+            li{
+                margin-bottom:12px;
+            }
+        }
+ }
+@media (max-width: 575.98px) {  }
