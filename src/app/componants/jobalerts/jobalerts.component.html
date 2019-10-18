@@ -16,11 +16,11 @@
                     </li>
                     <li class="nav-item login-list">|</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" routerLink="/createajobalert">Create a Job Alert</a>
+                        <a class="nav-link" href="#" routerLink="/createajobalert">Create a Gig Alert</a>
                     </li>
                     <li class="nav-item login-list">|</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" routerLink="/jobsearch">Job Serach</a>
+                        <a class="nav-link" href="#" routerLink="/jobsearch">Gig Serach</a>
                     </li>
 
                 </ul>
@@ -34,7 +34,7 @@
     <div class="container create-account">
         <div class="row justify-content-center ">
             <div class="col-md-6">
-                <h1 class="text-center mb-5">INTRESTED JOBS
+                <h1 class="text-center mb-5"> GIG AlERTS
                 </h1>
             </div>
         </div>
@@ -57,42 +57,32 @@
             <!-- search details -->
             <div class="col-md-12 search-results">
 
-                <div class="row">
+                <div class="row justify-content-center">
                     <!-- job preview -->
-                    <div class="col-md-12 mt-3">
+                    <div class="col-md-10 mt-3" *ngIf="Showalert1">
                         <div class=" talent-result ">
 
                             <div class="row">
                                 <!-- job details -->
                                 <div class="col-md-8">
-                                    <h3>UX / UI Designer</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Photoshop</p>
-                                        </li>
-                                        <li>
-                                            <p>Adobe illustrartor</p>
-                                        </li>
-                                        <li>
-                                            <p>Adobe XD</p>
-                                        </li>
-                                    </ul>
+
+                                    <p><span class="text-color-light">Keywords</span> : PHP,HTMLJAVASCRIPT</p>
+                                    <p><span class="text-color-light">Experience</span> : 4yr(s)</p>
+                                    <p><span class="text-color-light">Expected Salary</span> : 6 lakh(s)</p>
+                                    <p><span class="text-color-light">Location</span> : Hyderabad / Secunderabad</p>
+                                    <p><span class="text-color-light">Industry</span> : IT Software Services</p>
+                                    <p><span class="text-color-light">Gig Category</span> : IT Software - All Jobs</p>
+                                    <p><span class="text-color-light">Role </span> : Software Developer</p>
+
+                                    <p><span class="text-color-light">Email </span> : johnpark@gmail.com</p>
+
                                 </div>
                                 <!-- job details -->
                                 <!-- apply job -->
                                 <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right" (click)="hide1()"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        2days ago <span><img
+                                    <button class="btn invite-job text-right" (click)="hide1()"> <span><img
                                                 src="../../../assets/images/cancel-button.png"></span></button>
-                                    <button class="btn review" routerLink="/ratingsreview">APPLY</button>
+                                    <button class="btn review" routerLink="/createajobalert">MODIFY</button>
                                 </div>
                                 <!-- apply job -->
                             </div>
@@ -101,7 +91,37 @@
                         </div>
                     </div>
                     <!-- job preview -->
+                    <div class="col-md-10 mt-3" *ngIf="Showalert2">
+                        <div class=" talent-result ">
 
+                            <div class="row">
+                                <!-- job details -->
+                                <div class="col-md-8">
+
+                                    <p><span class="text-color-light">Keywords</span> : PHP,HTMLJAVASCRIPT</p>
+                                    <p><span class="text-color-light">Experience</span> : 4yr(s)</p>
+                                    <p><span class="text-color-light">Expected Salary</span> : 6 lakh(s)</p>
+                                    <p><span class="text-color-light">Location</span> : Hyderabad / Secunderabad</p>
+                                    <p><span class="text-color-light">Industry</span> : IT Software Services</p>
+                                    <p><span class="text-color-light">Gig Category</span> : IT Software - All Jobs</p>
+                                    <p><span class="text-color-light">Role </span> : Software Developer</p>
+
+                                    <p><span class="text-color-light">Email </span> : johnpark@gmail.com</p>
+
+                                </div>
+                                <!-- job details -->
+                                <!-- apply job -->
+                                <div class="col-md-4 text-right">
+                                    <button class="btn invite-job text-right" (click)="hide2()"> <span><img
+                                                src="../../../assets/images/cancel-button.png"></span></button>
+                                    <button class="btn review" routerLink="/createajobalert">MODIFY</button>
+                                </div>
+                                <!-- apply job -->
+                            </div>
+
+
+                        </div>
+                    </div>
                 </div>
             </div>
 

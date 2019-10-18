@@ -9,11 +9,16 @@ import { Component, OnInit } from '@angular/core';
 export class SubscriptionsComponent implements OnInit {
   type: any
   constructor(public router: Router) { }
-
+  comType;
   ngOnInit() {
     this.type = 'talent';
   }
   gigx(logtype) {
     this.type = logtype;
+  }
+  submit() {
+    // if (this.comType == 'company') {
+    this.router.navigate(['/profile'], { queryParams: { page: this.comType } })
+    // }
   }
 }

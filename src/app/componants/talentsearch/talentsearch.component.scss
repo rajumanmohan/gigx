@@ -225,3 +225,25 @@ a{
 }
 }
 
+.image-talent {
+    h4{
+        color: #2ba81e;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 12px;
+        
+    }
+    .test-score{
+        text-align:center;
+        h5{
+            background: #ffffff;
+            width: 50px;
+            padding: 14px;
+            border-radius: 50%;
+            height: 50px;
+            margin: 0px auto;
+            box-shadow: 0px 0px 3px;
+        }
+    }
+}
