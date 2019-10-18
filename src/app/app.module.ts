@@ -30,15 +30,12 @@ import { IntrestedjobsComponent } from './componants/intrestedjobs/intrestedjobs
 import { CreateajobalertComponent } from './componants/createajobalert/createajobalert.component';
 import { JobalertsComponent } from './componants/jobalerts/jobalerts.component';
 import { TalentdashboardComponent } from './componants/talentdashboard/talentdashboard.component';
-<<<<<<< HEAD
 import { HttpClientModule } from '@angular/common/http';
-=======
 import { GetstartedComponent } from './componants/getstarted/getstarted.component';
 import { CompanydashboardComponent } from './componants/companydashboard/companydashboard.component';
 import { TakeatestComponent } from './componants/takeatest/takeatest.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
->>>>>>> 054d49fee08665192aca780af9398c9b0378647d
 
 @NgModule({
   declarations: [
@@ -79,9 +76,7 @@ import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recap
     BrowserAnimationsModule,
     MyDatePickerModule,
     FormsModule,
-<<<<<<< HEAD
-    HttpClientModule
-=======
+    HttpClientModule,
     RecaptchaModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
@@ -92,7 +87,6 @@ import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recap
       innerStrokeColor: "#C7E596",
       animationDuration: 300,
     })
->>>>>>> 054d49fee08665192aca780af9398c9b0378647d
   ],
   providers: [
     {
