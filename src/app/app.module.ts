@@ -38,6 +38,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 import { ToastrModule } from 'ngx-toastr';
 import { ToastrService } from 'ngx-toastr';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { ToastrService } from 'ngx-toastr';
     FormsModule,
     HttpClientModule,
     RecaptchaModule,
-    ToastrModule.forRoot(), ,
+    ToastrModule.forRoot(),
+    ReactiveFormsModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 100,
