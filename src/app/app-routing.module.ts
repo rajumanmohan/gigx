@@ -1,3 +1,7 @@
+import { TakeatestComponent } from './componants/takeatest/takeatest.component';
+import { TalentdashboardComponent } from './componants/talentdashboard/talentdashboard.component';
+import { CompanydashboardComponent } from './componants/companydashboard/companydashboard.component';
+import { GetstartedComponent } from './componants/getstarted/getstarted.component';
 import { JobalertsComponent } from './componants/jobalerts/jobalerts.component';
 import { CreateajobalertComponent } from './componants/createajobalert/createajobalert.component';
 import { IntrestedjobsComponent } from './componants/intrestedjobs/intrestedjobs.component';
@@ -112,10 +116,29 @@ const routes: Routes = [
     component: JobalertsComponent
 
   },
+  {
+    path: 'getstarted',
+    component: GetstartedComponent
+
+  },
+  {
+    path: 'companydashboard',
+    component: CompanydashboardComponent
+  },
+  {
+    path: 'talentdashboard',
+    component: TalentdashboardComponent
+
+  },
+  {
+    path: 'takeatest',
+    component: TakeatestComponent
+
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

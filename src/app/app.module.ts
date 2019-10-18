@@ -30,9 +30,12 @@ import { IntrestedjobsComponent } from './componants/intrestedjobs/intrestedjobs
 import { CreateajobalertComponent } from './componants/createajobalert/createajobalert.component';
 import { JobalertsComponent } from './componants/jobalerts/jobalerts.component';
 import { TalentdashboardComponent } from './componants/talentdashboard/talentdashboard.component';
+import { GetstartedComponent } from './componants/getstarted/getstarted.component';
+import { CompanydashboardComponent } from './componants/companydashboard/companydashboard.component';
+import { TakeatestComponent } from './componants/takeatest/takeatest.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
 
-// import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
-// import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +62,10 @@ import { TalentdashboardComponent } from './componants/talentdashboard/talentdas
     CreateajobalertComponent,
     JobalertsComponent,
     TalentdashboardComponent,
-    PaymentComponent
+    PaymentComponent,
+    GetstartedComponent,
+    CompanydashboardComponent,
+    TakeatestComponent
   ],
   imports: [
     BrowserModule,
@@ -68,15 +74,25 @@ import { TalentdashboardComponent } from './componants/talentdashboard/talentdas
     MatIconModule,
     BrowserAnimationsModule,
     MyDatePickerModule,
-    FormsModule
+    FormsModule,
+    RecaptchaModule,
+    NgCircleProgressModule.forRoot({
+      // set defaults here
+      radius: 100,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 8,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300,
+    })
   ],
   providers: [
-    //   {
-    //   provide: RECAPTCHA_SETTINGS,
-    //   useValue: {
-    //     siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
-    //   } as RecaptchaSettings,
-    // }
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
+      } as RecaptchaSettings,
+    }
 
   ],
   bootstrap: [AppComponent]
