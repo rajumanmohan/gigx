@@ -5,29 +5,28 @@
             <div class="col-md-6">
                 <h1 class="text-center mb-5">COMPANY REGISTRATION
                 </h1>
-                <form>
-                    <div class="form-group">
-                        <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type"
-                            [(ngModel)]="indType" name="indType">
+                <form [formGroup]="registrationForm" (ngSubmit)="registration()">
+                    <div class="form-group" class="form-group">
+                        <select id="exampleFormControlSelect1" class="form-control" placeholder="Industry Type"
+                            formControlName="industry_type"
+                            [ngClass]="{ 'is-invalid': submitted && f.industry_type.errors }">
                             <option value="" [selected]=true [disabled]="true">Industry type</option>
-                            <option [ngValue]="company">IT Industry </option>
-                            <option [ngValue]="Electrical"> Electrical </option>
-                            <option [ngValue]="Networking"> Networking </option>
-
+                            <option value="IT Industry">IT Industry </option>
+                            <option value="Electrical"> Electrical </option>
+                            <option value="Networking"> Networking </option>
                         </select>
+                        <div *ngIf="submitted && f.industry_type.errors" class="invalid-feedback">
+                            <div *ngIf="f.industry_type.errors.required">Industry type is required</div>
+                        </div>
                     </div>
+
                     <div class="form-group">
-                        <p>Company Type</p>
+                        <p>Employer Type</p>
                         <div class="custom-control custom-radio custom-control-inline" (change)="changeType($event)">
                             <input type="radio" id="customRadioInline1" name="customRadioInline1"
                                 class="custom-control-input" value="company" [checked]='true'>
                             <label class="custom-control-label" for="customRadioInline1">Company</label>
                         </div>
-                        <!-- <div class="custom-control custom-radio custom-control-inline" (change)="changeType($event)">
-                            <input type="radio" id="customRadioInline2" value="consultant" name="customRadioInline1"
-                                class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline2">Consultant</label>
-                        </div> -->
                         <div class="custom-control custom-radio custom-control-inline" (change)="changeType($event)">
                             <input type="radio" id="customRadioInline3" value="individual" name="customRadioInline1"
                                 class="custom-control-input">
@@ -35,92 +34,162 @@
                         </div>
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
-                        <input type="email" [(ngModel)]="compEmail" name="compEmail" class="form-control"
+                        <input type="text" formControlName="company_name"
+                            [ngClass]="{ 'is-invalid': submitted && f.company_name.errors }" class="form-control"
+                            id="exampleInputPassword1" placeholder="Company name">
+                        <div *ngIf="submitted && f.company_name.errors" class="invalid-feedback">
+                            <div *ngIf="f.company_name.errors.required">Company name is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" *ngIf="comType=='company'">
+                        <input type="number" formControlName="company_registration"
+                            [ngClass]="{ 'is-invalid': submitted && f.company_registration.errors }"
+                            class="form-control" id="exampleInputPassword1" placeholder="Company registration number">
+                        <div *ngIf="submitted && f.company_registration.errors" class="invalid-feedback">
+                            <div *ngIf="f.company_registration.errors.required">Company registration number is required
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" *ngIf="comType=='company'">
+                        <input type="email" formControlName="contact_email"
+                            [ngClass]="{ 'is-invalid': submitted && f.contact_email.errors }" class="form-control"
                             id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Company Email Id">
+                        <div *ngIf="submitted && f.contact_email.errors" class="invalid-feedback">
+                            <div *ngIf="f.contact_email.errors.required">Company email is required</div>
+                            <div *ngIf="f.contact_email.errors.email">Email must be a valid email address</div>
+                        </div>
                     </div>
-                    <div class="form-group" *ngIf="comType=='individual'">
-                        <input type="text" [(ngModel)]="Email" name="Email" class="form-control" placeholder="Email Id">
-                    </div>
+
                     <div class="form-group">
-                        <input type="password" [(ngModel)]="password" name="password" class="form-control"
+                        <input type="password" formControlName="password"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" class="form-control"
                             id="exampleInputPassword1" placeholder="Create Password">
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
-                        <input type="text" [(ngModel)]="compName" name="compName" class="form-control"
-                            placeholder="Company Name">
-                    </div>
-                    <div class="form-group" *ngIf="comType=='company'">
-                        <input type="text" [(ngModel)]="compUrl" name="compUrl" class="form-control"
+                        <input type="text" formControlName="company_url"
+                            [ngClass]="{ 'is-invalid': submitted && f.company_url.errors }" class="form-control"
                             placeholder="Company Url">
+                        <div *ngIf="submitted && f.company_url.errors" class="invalid-feedback">
+                            <div *ngIf="f.company_url.errors.required">Company url is required</div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" [(ngModel)]="contactPerson" name="contactPerson" class="form-control"
-                            placeholder="Contact Person Name">
-                    </div>
-                    <div class="form-group" *ngIf="comType=='company'">
-                        <input type="text" class="form-control" [(ngModel)]="email" name="email" placeholder="Email Id">
+                        <input type="text" formControlName="contact_person_name"
+                            [ngClass]="{ 'is-invalid': submitted && f.contact_person_name.errors }"
+                            name="contact_person_name" class="form-control" placeholder="Contact Person Name">
+                        <div *ngIf="submitted && f.contact_person_name.errors" class="invalid-feedback">
+                            <div *ngIf="f.contact_person_name.errors.required">Contact person name is required</div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" [(ngModel)]="designation" name="designation" class="form-control"
+                        <input type="text" formControlName="email"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control"
+                            placeholder="Email Id">
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required"> Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="designation"
+                            [ngClass]="{ 'is-invalid': submitted && f.designation.errors }" class="form-control"
                             placeholder="Designation">
+                        <div *ngIf="submitted && f.designation.errors" class="invalid-feedback">
+                            <div *ngIf="f.designation.errors.required"> Designation is required</div>
+                        </div>
                     </div>
-                    <div class="form-group" *ngIf="comType=='individual'">
-                        <input type="text" class="form-control" placeholder="Address" [(ngModel)]="Address"
-                            name="Address">
-                    </div>
-                    <div class="form-group" *ngIf="comType=='company'">
-                        <input type="text" class="form-control" placeholder="Office address" [(ngModel)]="offAddr"
-                            name="offAddr">
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="address"
+                            [ngClass]="{ 'is-invalid': submitted && f.address.errors }" placeholder="Address">
+                        <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                            <div *ngIf="f.address.errors.required"> Address is required</div>
+                        </div>
                     </div>
                     <div class="row form-group country-city">
                         <div class="col-md-6">
-                            <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type"
-                                [(ngModel)]="Country" name="Country">
+                            <select class="form-control" id="exampleFormControlSelect1" formControlName="country"
+                                [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
                                 <option value="" [selected]=true [disabled]="true">Country </option>
                                 <option value="malaysia">Malaysia </option>
                                 <option value="india"> India</option>
-
                             </select>
+                            <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                                <div *ngIf="f.country.errors.required">Country is required</div>
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type"
-                                [(ngModel)]="state" name="state">
+                            <select class="form-control" id="exampleFormControlSelect1" formControlName="state"
+                                [ngClass]="{ 'is-invalid': submitted && f.state.errors }">
                                 <option value="" [selected]=true [disabled]="true">State </option>
                                 <option value="Labuan"> Labuan</option>
                                 <option value="Johor"> Johor</option>
                                 <option value="Kedah"> Kedah</option>
                             </select>
+                            <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+                                <div *ngIf="f.state.errors.required">State is required</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row form-group country-city">
+                    <div class="row ">
                         <div class="col-md-6">
-                            <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type"
-                                [(ngModel)]="city" name="city">
-                                <option value="" [selected]=true [disabled]="true">City </option>
-                                <option value="Kuala Lumpur">Kuala Lumpur </option>
-                                <option value="Victoria"> Victoria</option>
-                                <option value=" Johor Bahru"> Johor Bahru </option>
-                                <option value="Alor Setar"> Alor Setar</option>
-                            </select>
+                            <div class="form-group">
+                                <select class="form-control" id="exampleFormControlSelect1" formControlName="city"
+                                    [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
+                                    <option value="" [selected]=true [disabled]="true">City </option>
+                                    <option value="Kuala Lumpur">Kuala Lumpur </option>
+                                    <option value="Victoria"> Victoria</option>
+                                    <option value=" Johor Bahru"> Johor Bahru </option>
+                                    <option value="Alor Setar"> Alor Setar</option>
+                                </select>
+                                <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                                    <div *ngIf="f.city.errors.required">City is required</div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <input type="number" class="form-control" [(ngModel)]="Pincode" name="Pincode"
-                                placeholder="Pincode">
+                            <div class="form-group">
+                                <input type="number" class="form-control" formControlName="pincode"
+                                    [ngClass]="{ 'is-invalid': submitted && f.pincode.errors }" placeholder="Pincode">
+                                <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
+                                    <div *ngIf="f.pincode.errors.required"> Pincode is required</div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="mobileCode"
+                            <select class="custom-select" id="inputGroupSelect01" (change)="changeMobCode($event)"
                                 name="mobileCode">
-                                <!-- <option [ngValue]="" [selected]=true [disabled]=" true">+61</option> -->
                                 <option [ngValue]="+91" [selected]="true">+91 </option>
                                 <option [ngValue]="+852">+852</option>
                                 <option [ngValue]="+60"> +60</option>
                             </select>
                         </div>
-                        <input type="number" class="form-control" placeholder="Mobile Number" [(ngModel)]="mobile"
-                            name="mobile">
+                        <input type="text" class="form-control" placeholder="Mobile Number" name="mobile"
+                            formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
+                            maxlength="10" max="10">
+                        <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                            <div *ngIf="f.mobile.errors.required"> Mobile number is required</div>
+                            <div *ngIf="f.mobile.errors.maxlength">Mobile number must be 10 digits</div>
+                        </div>
+                    </div>
+                    <div class="form-group" *ngIf="comType=='company'">
+                        <div class="custom-control custom-radio custom-control-inline" (change)="changeType1($event)">
+                            <input type="radio" id="customRadioInline9" name="customRadioInline9"
+                                class="custom-control-input" value="SST Unregistered" [checked]='true'>
+                            <label class="custom-control-label" for="customRadioInline9">SST Unregistered</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline" (change)="changeType1($event)">
+                            <input type="radio" id="customRadioInline10" value="SST Resgistered"
+                                name="customRadioInline9" class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline10">SST Resgistered</label>
+                        </div>
                     </div>
                     <!-- vamshi upload img -->
                     <div class="row form-group">
@@ -132,7 +201,17 @@
                                 <img *ngIf="url1" [src]="url1" height="60">
                                 <p>Upload Logo</p>
                             </div>
+
                         </div>
+                        <!-- <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" formControlName="test" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.test.errors }" />
+                            <div *ngIf="submitted && f.test.errors" class="invalid-feedback">
+                                <div *ngIf="f.test.errors.required">test is required</div>
+                                <div *ngIf="f.test.errors.minlength">Password must be at least 6 characters</div>
+                            </div>
+                        </div> -->
                         <div class="col-md-8">
                             <ul>
                                 <li>40% more relevent responses by candidates</li>
@@ -143,23 +222,6 @@
                     </div>
                     <!-- vamshi upload img -->
                     <!-- manmohan upload img -->
-
-                    <!-- <div class="group-gap">
-
-
-                        <div class="avatar-upload">
-                            <div class="avatar-edit">
-                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
-                                    (change)="uploadFile($event)" />
-                            </div>
-                            <div class="avatar-preview">
-                                <div id="imagePreview" [style.backgroundImage]="'url('+ imageUrl +')'">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-danger btn-lg btn-block" (click)="fileInput.click()">Upload
-                        Image</button> -->
                     <!-- manmohan upload img -->
 
                     <div class="form-group">
@@ -167,11 +229,12 @@
                             <input type="checkbox" class="custom-control-input" id="customCheck1">
                             <label class="custom-control-label" for="customCheck1">I agreed to the <span><a
                                         href="">Terms
-                                        and Conditions </a></span> governing the use of gigx.com, I have reviewed the
+                                        and Conditions </a></span> governing the use of gigx.com, I have reviewed
+                                the
                                 default mailer & Communications settings</label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" (click)="registration()">Submit</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
 

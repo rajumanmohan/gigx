@@ -36,6 +36,9 @@ import { CompanydashboardComponent } from './componants/companydashboard/company
 import { TakeatestComponent } from './componants/takeatest/takeatest.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { ToastrModule } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -78,6 +81,8 @@ import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recap
     FormsModule,
     HttpClientModule,
     RecaptchaModule,
+    ToastrModule.forRoot(),
+    ReactiveFormsModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 100,
@@ -94,8 +99,8 @@ import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recap
       useValue: {
         siteKey: '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI',
       } as RecaptchaSettings,
-    }
-
+    },
+    ToastrService
   ],
   bootstrap: [AppComponent]
 })
