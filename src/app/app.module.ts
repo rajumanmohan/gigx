@@ -30,6 +30,7 @@ import { IntrestedjobsComponent } from './componants/intrestedjobs/intrestedjobs
 import { CreateajobalertComponent } from './componants/createajobalert/createajobalert.component';
 import { JobalertsComponent } from './componants/jobalerts/jobalerts.component';
 import { TalentdashboardComponent } from './componants/talentdashboard/talentdashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 import { GetstartedComponent } from './componants/getstarted/getstarted.component';
 import { CompanydashboardComponent } from './componants/companydashboard/companydashboard.component';
 import { TakeatestComponent } from './componants/takeatest/takeatest.component';
@@ -75,6 +76,7 @@ import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recap
     BrowserAnimationsModule,
     MyDatePickerModule,
     FormsModule,
+    HttpClientModule,
     RecaptchaModule,
     NgCircleProgressModule.forRoot({
       // set defaults here

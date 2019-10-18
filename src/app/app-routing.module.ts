@@ -36,6 +36,10 @@ const routes: Routes = [
     component: CoverpageComponent
   },
   {
+    path: 'index',
+    component: HomeComponent
+  },
+  {
     path: 'login',
     component: LoginComponent
   },

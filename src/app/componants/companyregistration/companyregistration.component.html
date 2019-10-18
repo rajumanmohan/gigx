@@ -7,11 +7,12 @@
                 </h1>
                 <form>
                     <div class="form-group">
-                        <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type">
-                            <option value="company" disabled>Industry type</option>
-                            <option value="company">IT Industry </option>
-                            <option value="individual"> Electrical </option>
-                            <option value="individual"> Networking </option>
+                        <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type"
+                            [(ngModel)]="indType" name="indType">
+                            <option value="" [selected]=true [disabled]="true">Industry type</option>
+                            <option [ngValue]="company">IT Industry </option>
+                            <option [ngValue]="Electrical"> Electrical </option>
+                            <option [ngValue]="Networking"> Networking </option>
 
                         </select>
                     </div>
@@ -34,95 +35,101 @@
                         </div>
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Company Email Id">
+                        <input type="email" [(ngModel)]="compEmail" name="compEmail" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Company Email Id">
                     </div>
                     <div class="form-group" *ngIf="comType=='individual'">
-                        <input type="text" class="form-control" placeholder="Email Id">
+                        <input type="text" [(ngModel)]="Email" name="Email" class="form-control" placeholder="Email Id">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" id="exampleInputPassword1"
-                            placeholder="Create Password">
+                        <input type="password" [(ngModel)]="password" name="password" class="form-control"
+                            id="exampleInputPassword1" placeholder="Create Password">
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
-                        <input type="text" class="form-control" placeholder="Company Name">
+                        <input type="text" [(ngModel)]="compName" name="compName" class="form-control"
+                            placeholder="Company Name">
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
-                        <input type="text" class="form-control" placeholder="Company Url">
+                        <input type="text" [(ngModel)]="compUrl" name="compUrl" class="form-control"
+                            placeholder="Company Url">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Contact Person Name">
+                        <input type="text" [(ngModel)]="contactPerson" name="contactPerson" class="form-control"
+                            placeholder="Contact Person Name">
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
-                        <input type="text" class="form-control" placeholder="Email Id">
+                        <input type="text" class="form-control" [(ngModel)]="email" name="email" placeholder="Email Id">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Designation">
+                        <input type="text" [(ngModel)]="designation" name="designation" class="form-control"
+                            placeholder="Designation">
                     </div>
                     <div class="form-group" *ngIf="comType=='individual'">
-                        <input type="text" class="form-control" placeholder="Address">
+                        <input type="text" class="form-control" placeholder="Address" [(ngModel)]="Address"
+                            name="Address">
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
-                        <input type="text" class="form-control" placeholder="Office address">
+                        <input type="text" class="form-control" placeholder="Office address" [(ngModel)]="offAddr"
+                            name="offAddr">
                     </div>
                     <div class="row form-group">
                         <div class="col-md-6">
-                            <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type">
-                                <option value="malaysia" disabled>Country </option>
+                            <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type"
+                                [(ngModel)]="Country" name="Country">
+                                <option value="" [selected]=true [disabled]="true">Country </option>
                                 <option value="malaysia">Malaysia </option>
                                 <option value="india"> India</option>
 
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type">
-                                <option value="malaysia" disabled>State </option>
-                                <option value="malaysia">Kuala Lumpur </option>
-                                <option value="india"> Labuan</option>
-                                <option value="india"> Johor</option>
-                                <option value="india"> Kedah</option>
-
+                            <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type"
+                                [(ngModel)]="state" name="state">
+                                <option value="" [selected]=true [disabled]="true">State </option>
+                                <option value="Labuan"> Labuan</option>
+                                <option value="Johor"> Johor</option>
+                                <option value="Kedah"> Kedah</option>
                             </select>
                         </div>
                     </div>
                     <div class="row form-group">
                         <div class="col-md-6">
-                            <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type">
-                                <option value="malaysia" disabled>City </option>
-                                <option value="malaysia">Kuala Lumpur </option>
-                                <option value="india"> Victoria</option>
-                                <option value="india"> Johor Bahru </option>
-                                <option value="india"> Alor Setar</option>
-
+                            <select class="form-control" id="exampleFormControlSelect1" placeholder="Industry Type"
+                                [(ngModel)]="city" name="city">
+                                <option value="" [selected]=true [disabled]="true">City </option>
+                                <option value="Kuala Lumpur">Kuala Lumpur </option>
+                                <option value="Victoria"> Victoria</option>
+                                <option value=" Johor Bahru"> Johor Bahru </option>
+                                <option value="Alor Setar"> Alor Setar</option>
                             </select>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" placeholder="Pincode">
+                            <input type="number" class="form-control" [(ngModel)]="Pincode" name="Pincode"
+                                placeholder="Pincode">
                         </div>
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <select class="custom-select" id="inputGroupSelect01">
-                                <option selected>+61</option>
-                                <option value="1">+91 </option>
-                                <option value="2">+852</option>
-                                <option value="3"> +62</option>
+                            <select class="custom-select" id="inputGroupSelect01" [(ngModel)]="mobileCode"
+                                name="mobileCode">
+                                <!-- <option [ngValue]="" [selected]=true [disabled]=" true">+61</option> -->
+                                <option [ngValue]="+91" [selected]="true">+91 </option>
+                                <option [ngValue]="+852">+852</option>
+                                <option [ngValue]="+60"> +60</option>
                             </select>
                         </div>
-                        <input type="text" class="form-control" placeholder="Mobile Number">
+                        <input type="number" class="form-control" placeholder="Mobile Number" [(ngModel)]="mobile"
+                            name="mobile">
                     </div>
                     <!-- vamshi upload img -->
                     <div class="row form-group">
                         <div class="col-md-4">
                             <div class="upload-image text-center">
-
                                 <button class="btn"> <img *ngIf="!url1==true" src="/assets/images/upload.png"></button>
                                 <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
                                     (change)="readUrl($event)" class="upload-photo" />
-
                                 <img *ngIf="url1" [src]="url1" height="60">
-
                                 <p>Upload Logo</p>
                             </div>
                         </div>
@@ -164,7 +171,7 @@
                                 default mailer & Communications settings</label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
+                    <button type="submit" class="btn btn-primary" (click)="registration()">Submit</button>
                 </form>
             </div>
 
