@@ -11,6 +11,7 @@ export class CompanydashboardComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
+    window.scroll(0, 0);
   }
   gotoProfile() {
     this.router.navigate(['/profile'], { queryParams: { page: 'company' } });

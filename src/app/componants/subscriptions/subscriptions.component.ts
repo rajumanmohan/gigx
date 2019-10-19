@@ -12,6 +12,7 @@ export class SubscriptionsComponent implements OnInit {
   comType;
   ngOnInit() {
     this.type = 'talent';
+    window.scroll(0, 0);
   }
   gigx(logtype) {
     this.type = logtype;
