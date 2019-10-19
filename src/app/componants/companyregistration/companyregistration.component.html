@@ -5,7 +5,7 @@
             <div class="col-md-6">
                 <h1 class="text-center mb-5">COMPANY REGISTRATION
                 </h1>
-                <form [formGroup]="registrationForm" (ngSubmit)="registration()">
+                <form [formGroup]="registrationForm" (ngSubmit)="registration()" *ngIf="comType=='company'">
                     <div class="form-group" class="form-group">
                         <select id="exampleFormControlSelect1" class="form-control" placeholder="Industry Type"
                             formControlName="industry_type"
@@ -14,6 +14,7 @@
                             <option value="IT Industry">IT Industry </option>
                             <option value="Electrical"> Electrical </option>
                             <option value="Networking"> Networking </option>
+                            <option value="Others"> Others </option>
                         </select>
                         <div *ngIf="submitted && f.industry_type.errors" class="invalid-feedback">
                             <div *ngIf="f.industry_type.errors.required">Industry type is required</div>
@@ -43,7 +44,7 @@
                         </div>
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
-                        <input type="number" formControlName="company_registration"
+                        <input type="text" formControlName="company_registration"
                             [ngClass]="{ 'is-invalid': submitted && f.company_registration.errors }"
                             class="form-control" id="exampleInputPassword1" placeholder="Company registration number">
                         <div *ngIf="submitted && f.company_registration.errors" class="invalid-feedback">
@@ -122,16 +123,28 @@
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <select class="form-control" id="exampleFormControlSelect1" formControlName="state"
-                                [ngClass]="{ 'is-invalid': submitted && f.state.errors }">
+                            <select class="form-control" id="exampleFormControlSelect1" formControlName="state">
                                 <option value="" [selected]=true [disabled]="true">State </option>
-                                <option value="Labuan"> Labuan</option>
                                 <option value="Johor"> Johor</option>
                                 <option value="Kedah"> Kedah</option>
+                                <option value="Kelantan"> Kelantan</option>
+                                <option value="Kuala Lumpur"> Kuala Lumpur</option>
+                                <option value="Labuan"> Labuan</option>
+                                <option value="Melaka"> Melaka </option>
+                                <option value="Negeri"> Negeri</option>
+                                <option value="Pahang"> Pahang</option>
+                                <option value="Perak"> Perak </option>
+                                <option value="Perlis"> Perlis</option>
+                                <option value="Pulau "> Pulau </option>
+                                <option value="Putrajaya "> Putrajaya </option>
+                                <option value="Sabah "> Sabah </option>
+                                <option value="Sarawak "> Sarawak </option>
+                                <option value="Selangor "> Selangor </option>
+                                <option value="Terengganu "> Terengganu </option>
                             </select>
-                            <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+                            <!-- <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
                                 <div *ngIf="f.state.errors.required">State is required</div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="row ">
@@ -144,6 +157,7 @@
                                     <option value="Victoria"> Victoria</option>
                                     <option value=" Johor Bahru"> Johor Bahru </option>
                                     <option value="Alor Setar"> Alor Setar</option>
+                                    <option value="Other"> Other</option>
                                 </select>
                                 <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
                                     <div *ngIf="f.city.errors.required">City is required</div>
@@ -153,9 +167,9 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <input type="number" class="form-control" formControlName="pincode"
-                                    [ngClass]="{ 'is-invalid': submitted && f.pincode.errors }" placeholder="Pincode">
+                                    [ngClass]="{ 'is-invalid': submitted && f.pincode.errors }" placeholder="Post code">
                                 <div *ngIf="submitted && f.pincode.errors" class="invalid-feedback">
-                                    <div *ngIf="f.pincode.errors.required"> Pincode is required</div>
+                                    <div *ngIf="f.pincode.errors.required"> Post code is required</div>
                                 </div>
                             </div>
 
@@ -171,12 +185,14 @@
                                 <option [ngValue]="+60"> +60</option>
                             </select>
                         </div>
-                        <input type="text" class="form-control" placeholder="Mobile Number" name="mobile"
+                        <input myNumberOnly type="text" class="form-control" placeholder="Mobile Number" name="mobile"
                             formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
-                            maxlength="10" max="10">
+                            maxlength="10" max="10" min="10">
                         <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
                             <div *ngIf="f.mobile.errors.required"> Mobile number is required</div>
                             <div *ngIf="f.mobile.errors.maxlength">Mobile number must be 10 digits</div>
+                            <div *ngIf="f.mobile.errors.minlength">Mobile number must be 10 digits</div>
+
                         </div>
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
@@ -214,9 +230,9 @@
                         </div> -->
                         <div class="col-md-8">
                             <ul>
-                                <li>40% more relevent responses by candidates</li>
-                                <li>Get spotted easily in pool of recruiters</li>
-                                <li>Trusted more by </li>
+                                <li>40% more relevent responses by talents</li>
+                                <li>Get spotted easily in pool of talents</li>
+                                <li>Trusted more by talent</li>
                             </ul>
                         </div>
                     </div>
@@ -227,9 +243,209 @@
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
                             <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">I agreed to the <span><a
-                                        href="">Terms
+                            <label class="custom-control-label" for="customCheck1">I agree to the <span><a href="">Terms
                                         and Conditions </a></span> governing the use of gigx.com, I have reviewed
+                                the
+                                default mailer & Communications settings</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+                <!-- individual -->
+
+                <form [formGroup]="individualReg" (ngSubmit)="registration1()" *ngIf="comType=='individual'">
+                    <div class="form-group" class="form-group">
+                        <select id="exampleFormControlSelect20" class="form-control" placeholder="Industry Type"
+                            formControlName="industry_type"
+                            [ngClass]="{ 'is-invalid': submitted1 && f1.industry_type.errors }">
+                            <option value="" [selected]=true [disabled]="true">Industry type</option>
+                            <option value="IT Industry">IT Industry </option>
+                            <option value="Electrical"> Electrical </option>
+                            <option value="Networking"> Networking </option>
+                        </select>
+                        <div *ngIf="submitted1 && f1.industry_type.errors" class="invalid-feedback">
+                            <div *ngIf="f1.industry_type.errors.required">Industry type is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <p>Employer Type</p>
+                        <div class="custom-control custom-radio custom-control-inline" (change)="changeType($event)">
+                            <input type="radio" id="customRadioInline20" name="customRadioInline20"
+                                class="custom-control-input" value="company">
+                            <label class="custom-control-label" for="customRadioInline20">Company</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline" (change)="changeType($event)">
+                            <input type="radio" id="customRadioInline21" [checked]='true' value="individual"
+                                name="customRadioInline20" class="custom-control-input">
+                            <label class="custom-control-label" for="customRadioInline21">Individual</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" formControlName="email"
+                            [ngClass]="{ 'is-invalid': submitted1 && f1.email.errors }" class="form-control"
+                            placeholder="Email Id">
+                        <div *ngIf="submitted1 && f1.email.errors" class="invalid-feedback">
+                            <div *ngIf="f1.email.errors.required"> Email is required</div>
+                            <div *ngIf="f1.email.errors.email">Email must be a valid email address</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" formControlName="password"
+                            [ngClass]="{ 'is-invalid': submitted1 && f1.password.errors }" class="form-control"
+                            id="exampleInputPassword1" placeholder="Create Password">
+                        <div *ngIf="submitted1 && f1.password.errors" class="invalid-feedback">
+                            <div *ngIf="f1.password.errors.required">Password is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" formControlName="contact_person_name"
+                            [ngClass]="{ 'is-invalid': submitted1 && f1.contact_person_name.errors }"
+                            name="contact_person_name" class="form-control" placeholder="Contact Person Name">
+                        <div *ngIf="submitted1 && f1.contact_person_name.errors" class="invalid-feedback">
+                            <div *ngIf="f1.contact_person_name.errors.required">Contact person name is required</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" formControlName="designation"
+                            [ngClass]="{ 'is-invalid': submitted1 && f1.designation.errors }" class="form-control"
+                            placeholder="Designation">
+                        <div *ngIf="submitted1 && f1.designation.errors" class="invalid-feedback">
+                            <div *ngIf="f1.designation.errors.required"> Designation is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" formControlName="address"
+                            [ngClass]="{ 'is-invalid': submitted1 && f1.address.errors }" placeholder="Address">
+                        <div *ngIf="submitted1 && f1.address.errors" class="invalid-feedback">
+                            <div *ngIf="f1.address.errors.required"> Address is required</div>
+                        </div>
+                    </div>
+                    <div class="row form-group country-city">
+                        <div class="col-md-6">
+                            <select class="form-control" id="exampleFormControlSelect1" formControlName="country"
+                                [ngClass]="{ 'is-invalid': submitted1 && f1.country.errors }">
+                                <option value="" [selected]=true [disabled]="true">Country </option>
+                                <option value="malaysia">Malaysia </option>
+                                <option value="india"> India</option>
+                            </select>
+                            <div *ngIf="submitted1 && f1.country.errors" class="invalid-feedback">
+                                <div *ngIf="f1.country.errors.required">Country is required</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-control" id="exampleFormControlSelect21" formControlName="state">
+                                <option value="" [selected]=true [disabled]="true">State </option>
+                                <option value="Johor"> Johor</option>
+                                <option value="Kedah"> Kedah</option>
+                                <option value="Kelantan"> Kelantan</option>
+                                <option value="Kuala Lumpur"> Kuala Lumpur</option>
+                                <option value="Labuan"> Labuan</option>
+                                <option value="Melaka"> Melaka </option>
+                                <option value="Negeri"> Negeri</option>
+                                <option value="Pahang"> Pahang</option>
+                                <option value="Perak"> Perak </option>
+                                <option value="Perlis"> Perlis</option>
+                                <option value="Pulau "> Pulau </option>
+                                <option value="Putrajaya "> Putrajaya </option>
+                                <option value="Sabah "> Sabah </option>
+                                <option value="Sarawak "> Sarawak </option>
+                                <option value="Selangor "> Selangor </option>
+                                <option value="Terengganu "> Terengganu </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <select class="form-control" id="exampleFormControlSelect22" formControlName="city"
+                                    [ngClass]="{ 'is-invalid': submitted1 && f1.city.errors }">
+                                    <option value="" [selected]=true [disabled]="true">City </option>
+                                    <option value="Kuala Lumpur">Kuala Lumpur </option>
+                                    <option value="Victoria"> Victoria</option>
+                                    <option value=" Johor Bahru"> Johor Bahru </option>
+                                    <option value="Alor Setar"> Alor Setar</option>
+                                    <option value="Other"> Other</option>
+                                </select>
+                                <div *ngIf="submitted1 && f1.city.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.city.errors.required">City is required</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input type="number" class="form-control" formControlName="pincode"
+                                    [ngClass]="{ 'is-invalid': submitted1 && f1.pincode.errors }"
+                                    placeholder="Post code">
+                                <div *ngIf="submitted1 && f1.pincode.errors" class="invalid-feedback">
+                                    <div *ngIf="f1.pincode.errors.required"> Post code is required</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <select class="custom-select" id="inputGroupSelect01" (change)="changeMobCode($event)"
+                                name="mobileCode">
+                                <option [ngValue]="+91" [selected]="true">+91 </option>
+                                <option [ngValue]="+852">+852</option>
+                                <option [ngValue]="+60"> +60</option>
+                            </select>
+                        </div>
+                        <input myNumberOnly type="text" class="form-control" placeholder="Mobile Number" name="mobile"
+                            formControlName="mobile" [ngClass]="{ 'is-invalid': submitted1 && f1.mobile.errors }"
+                            maxlength="10" max="10" min="10">
+                        <div *ngIf="submitted1 && f1.mobile.errors" class="invalid-feedback">
+                            <div *ngIf="f1.mobile.errors.required"> Mobile number is required</div>
+                            <div *ngIf="f1.mobile.errors.maxlength">Mobile number must be 10 digits</div>
+                            <div *ngIf="f1.mobile.errors.minlength">Mobile number must be 10 digits</div>
+
+                        </div>
+                    </div>
+
+                    <!-- vamshi upload img -->
+                    <div class="row form-group">
+                        <div class="col-md-4">
+                            <div class="upload-image text-center">
+                                <button class="btn"> <img *ngIf="!url1==true" src="/assets/images/upload.png"></button>
+                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                                    (change)="readUrl($event)" class="upload-photo" />
+                                <img *ngIf="url1" [src]="url1" height="60">
+                                <p>Upload Logo</p>
+                            </div>
+
+                        </div>
+                        <!-- <div class="form-group">
+                            <label>Password</label>
+                            <input type="password" formControlName="test" class="form-control"
+                                [ngClass]="{ 'is-invalid': submitted && f.test.errors }" />
+                            <div *ngIf="submitted && f.test.errors" class="invalid-feedback">
+                                <div *ngIf="f.test.errors.required">test is required</div>
+                                <div *ngIf="f.test.errors.minlength">Password must be at least 6 characters</div>
+                            </div>
+                        </div> -->
+                        <div class="col-md-8">
+                            <ul>
+                                <li>40% more relevent responses by talents</li>
+                                <li>Get spotted easily in pool of talents</li>
+                                <li>Trusted more by talents</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- vamshi upload img -->
+                    <!-- manmohan upload img -->
+                    <!-- manmohan upload img -->
+
+                    <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck1">
+                            <label class="custom-control-label" for="customCheck1">I agree to the <span><a href="">Terms
+                                        and Conditions </a></span> governing the use of gigxglobal.com, I have reviewed
                                 the
                                 default mailer & Communications settings</label>
                         </div>

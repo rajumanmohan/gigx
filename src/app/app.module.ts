@@ -1,3 +1,4 @@
+import { NumberOnlyDirective } from './directives/number';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -39,6 +40,7 @@ import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recap
 import { ToastrModule } from 'ngx-toastr';
 import { ToastrService } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RegistrationDataComponent } from './componants/registration-data/registration-data.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     PaymentComponent,
     GetstartedComponent,
     CompanydashboardComponent,
-    TakeatestComponent
+    TakeatestComponent,
+    NumberOnlyDirective,
+    RegistrationDataComponent
   ],
   imports: [
     BrowserModule,

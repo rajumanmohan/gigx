@@ -14,6 +14,8 @@ export class TelentregistrationComponent implements OnInit {
   Data = [];
   url2;
   url3;
+  multiEducation = [];
+  multiEmployee = [];
   constructor() { }
 
   ngOnInit() {
@@ -78,5 +80,15 @@ export class TelentregistrationComponent implements OnInit {
     this.newArr.push(text);
     console.log(this.newArr)
     this.getData();
+  }
+  addEducation() {
+    this.multiEducation.push({
+      highQul: ''
+    })
+  }
+  addEmployee() {
+    this.multiEmployee.push({
+      designation: ''
+    })
   }
 }
