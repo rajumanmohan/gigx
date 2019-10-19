@@ -11,6 +11,7 @@ export class TalentprofileComponent implements OnInit {
   showWorkExperienceDetails = false;
   showBankDetails = false;
   showGigsTrackDetails = false;
+  edit = false;
   constructor() { }
 
   ngOnInit() {
@@ -21,6 +22,7 @@ export class TalentprofileComponent implements OnInit {
     this.showWorkExperienceDetails = false;
     this.showBankDetails = false;
     this.showGigsTrackDetails = false;
+    this.edit = false;
   }
 
   education() {
@@ -29,6 +31,7 @@ export class TalentprofileComponent implements OnInit {
     this.showWorkExperienceDetails = false;
     this.showBankDetails = false;
     this.showGigsTrackDetails = false;
+    this.edit = false;
   }
 
   workexperience() {
@@ -37,6 +40,7 @@ export class TalentprofileComponent implements OnInit {
     this.showWorkExperienceDetails = true;
     this.showBankDetails = false;
     this.showGigsTrackDetails = false;
+    this.edit = false;
   }
 
   bankdetails() {
@@ -45,14 +49,22 @@ export class TalentprofileComponent implements OnInit {
     this.showWorkExperienceDetails = false;
     this.showBankDetails = true;
     this.showGigsTrackDetails = false;
+    this.edit = false;
   }
 
 
   gigstalent() {
-    this.showPersonalDetails = false ;
+    this.showPersonalDetails = false;
     this.showEducationDetails = false;
     this.showWorkExperienceDetails = false;
     this.showBankDetails = false;
     this.showGigsTrackDetails = true;
+    this.edit = false;
+  }
+  editProfile() {
+    this.edit = true;
+  }
+  showData() {
+    this.edit = false;
   }
 }

@@ -33,32 +33,47 @@ export class CompanyregistrationComponent implements OnInit {
   registrationForm: FormGroup;
   submitted = false;
   registerForm: FormGroup;
+  individualReg: FormGroup;
   sstType = "SST Unregistered"
-  mobcode = +91
+  mobcode = +91;
+  submitted1 = false;
   constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService, private fb: FormBuilder) { }
 
   ngOnInit() {
     window.scroll(0, 0);
     this.registrationForm = this.fb.group({
+      company_type: [''],
       industry_type: ['', Validators.required],
-      contact_email: ['', [Validators.required, Validators.email]],
+      contact_email: [null, [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      company_name: ['', Validators.required],
-      company_url: ['', Validators.required],
+      company_name: [null, Validators.required],
+      company_url: [null, Validators.required],
       contact_person_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       designation: ['', Validators.required],
       country: ['', Validators.required],
-      state: ['', Validators.required],
+      state: [''],
       city: ['', Validators.required],
       pincode: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.maxLength(10), Validators.pattern("^[0-9]*$")],],
+      mobile: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
       address: ['', Validators.required],
-      company_registration: ['', Validators.required],
-      sst: [this.sstType, ''],
-      company_type: [this.comType, '']
+      company_registration: [null, Validators.required],
     });
-
+    // individual
+    this.individualReg = this.fb.group({
+      company_type: [''],
+      industry_type: ['', Validators.required],
+      password: ['', Validators.required],
+      contact_person_name: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      designation: ['', Validators.required],
+      country: ['', Validators.required],
+      state: [''],
+      city: ['', Validators.required],
+      pincode: ['', Validators.required],
+      mobile: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+      address: ['', Validators.required],
+    });
   }
   image;
   readUrl(event: any) {
@@ -75,6 +90,8 @@ export class CompanyregistrationComponent implements OnInit {
   }
   changeType(type1) {
     this.comType = type1.target.value;
+    this.registrationForm.reset();
+    this.submitted = false;
   }
   changeType1(sst) {
     this.sstType = sst.target.value;
@@ -91,39 +108,58 @@ export class CompanyregistrationComponent implements OnInit {
   get f() { return this.registrationForm.controls; }
 
   registration() {
-    this.registrationForm.value.company_image = this.url1;
     this.registrationForm.value.mobile_code = this.mobcode;
-    console.log(this.registrationForm.value);
-
+    this.registrationForm.value.sst = this.sstType,
+      this.registrationForm.value.company_type = this.comType;
+    this.registrationForm.value.company_image = this.url1;
     this.submitted = true;
-    // if (this.comType == "company") { delete this.registrationForm.value.compReg }
+
     if (this.registrationForm.invalid) {
       return;
     }
-
-
-    this.appSer.registration(this.registrationForm.value).subscribe((res) => {
-      if (res['status'] == 200) {
-        this.toast.success(res['message'], "Success");
-        this.registrationForm.reset();
-        this.submitted = false;
-        this.url1 = '';
-      } else {
-        this.toast.error(res['message'], "error");
-      }
-    })
-
+    if (this.registrationForm.value.company_image == undefined) {
+      this.toast.warning("Upload image is required", "Warning");
+    } else {
+      this.appSer.registration(this.registrationForm.value).subscribe((res) => {
+        if (res['status'] == 200) {
+          this.toast.success(res['message'], "Success");
+          this.registrationForm.reset();
+          this.submitted = false;
+          this.url1 = '';
+          this.router.navigate(['/companydashboard']);
+        } else {
+          this.toast.error(res['message'], "error");
+        }
+      })
+    }
   }
-  // get f() { return this.registerForm.controls; }
+  get f1() { return this.individualReg.controls; }
 
-  // onSubmit() {
-  //   this.submitted = true;
+  registration1() {
+    this.individualReg.value.company_type = this.comType;
+    this.individualReg.value.company_image = this.url1;
 
-  //   // stop here if form is invalid
-  //   if (this.registerForm.invalid) {
-  //     return;
-  //   }
+    console.log(this.individualReg.value)
 
-  //   // alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value))
-  // }
+    this.submitted1 = true;
+    if (this.individualReg.invalid) {
+      return;
+    }
+    if (this.individualReg.value.company_image == undefined) {
+      this.toast.warning("Upload image is required", "Warning");
+    } else {
+      this.appSer.registration(this.individualReg.value).subscribe((res) => {
+        if (res['status'] == 200) {
+          this.toast.success(res['message'], "Success");
+          this.individualReg.reset();
+          this.submitted1 = false;
+          this.url1 = '';
+          this.router.navigate(['/companydashboard']);
+        } else {
+          this.toast.error(res['message'], "error");
+        }
+      })
+    }
+  }
+
 }

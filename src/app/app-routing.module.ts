@@ -1,3 +1,4 @@
+import { RegistrationDataComponent } from './componants/registration-data/registration-data.component';
 import { TakeatestComponent } from './componants/takeatest/takeatest.component';
 import { TalentdashboardComponent } from './componants/talentdashboard/talentdashboard.component';
 import { CompanydashboardComponent } from './componants/companydashboard/companydashboard.component';
@@ -137,6 +138,11 @@ const routes: Routes = [
   {
     path: 'takeatest',
     component: TakeatestComponent
+
+  },
+  {
+    path: 'resgitrationData',
+    component: RegistrationDataComponent
 
   },
 ];

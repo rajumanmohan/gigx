@@ -194,10 +194,67 @@
                                     </div>
 
 
-                                    <div>
-                                        <p class="add-another text-center"> + ADD ANOTHER EDUCATION</p>
-                                    </div>
+
                                 </form>
+                                <div>
+                                    <p class="add-another text-center" (click)="addEducation()"> + ADD ANOTHER
+                                        EDUCATION</p>
+                                    <div *ngFor="let education of multiEducation" class="muti-education mb-5">
+                                        <form>
+
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                                    aria-describedby="emailHelp" [(ngModel)]="education.highQul"
+                                                    [ngModelOptions]="{standalone:true}"
+                                                    placeholder="Highest qualification">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Specialization">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Institution">
+                                            </div>
+                                            <div class="form-group">
+                                                <select class="form-control" id="exampleFormControlSelect1"
+                                                    placeholder="Industry Type">
+                                                    <option value="company">Year of Completion </option>
+                                                    <option value="individual">2019</option>
+                                                    <option value="individual">2018</option>
+                                                    <option value="individual">2017</option>
+                                                    <option value="individual">2016</option>
+                                                    <option value="individual">2015</option>
+                                                    <option value="individual">2014</option>
+
+
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <p>Type of Degree</p>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="customRadioInline4"
+                                                        name="customRadioInline4" class="custom-control-input" checked>
+                                                    <label class="custom-control-label" for="customRadioInline4">Full
+                                                        time</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="customRadioInline5"
+                                                        name="customRadioInline4" class="custom-control-input">
+                                                    <label class="custom-control-label" for="customRadioInline5">Part
+                                                        time</label>
+                                                </div>
+                                                <div class="custom-control custom-radio custom-control-inline">
+                                                    <input type="radio" id="customRadioInline6"
+                                                        name="customRadioInline4" class="custom-control-input">
+                                                    <label class="custom-control-label" for="customRadioInline6">
+                                                        Correspandence</label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                                 <button type="submit" class="btn btn-primary mt-5"
                                     (click)="complete()">CONTINUE</button>
                             </div>
@@ -312,7 +369,143 @@
                                         </select>
                                     </div>
                                     <div>
-                                        <p class="add-another text-center"> + ADD EMPLOYMENT</p>
+                                        <p class="add-another text-center" (click)="addEmployee()"> + ADD EMPLOYMENT</p>
+                                    </div>
+                                    <div *ngFor="let employee of multiEmployee" class="muti-education mb-5">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" placeholder="Current designation"
+                                                [(ngModel)]="employee.designation" [ngModelOptions]="{standalone:true}">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Current company">
+                                        </div>
+                                        <p>Annual Salary</p>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="exampleFormControlSelect1"
+                                                        placeholder="Industry Type">
+                                                        <option value="company" disabled>INR </option>
+                                                        <option value="individual">$</option>
+                                                        <option value="individual">RM</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="exampleFormControlSelect1"
+                                                        placeholder="Industry Type">
+                                                        <option value="company" disabled>Laks </option>
+                                                        <option value="individual">2</option>
+                                                        <option value="individual">3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="exampleFormControlSelect1"
+                                                        placeholder="Industry Type">
+                                                        <option value="company" disabled>Thousands </option>
+                                                        <option value="individual">2</option>
+                                                        <option value="individual">3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>Working from</p>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="exampleFormControlSelect1"
+                                                        placeholder="Industry Type">
+                                                        <option value="company" disabled>Date </option>
+                                                        <option value="individual">2</option>
+                                                        <option value="individual">3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="exampleFormControlSelect1"
+                                                        placeholder="Industry Type">
+                                                        <option value="company" disabled>Month </option>
+                                                        <option value="individual">2</option>
+                                                        <option value="individual">3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="exampleFormControlSelect1"
+                                                        placeholder="Industry Type">
+                                                        <option value="company" disabled>Year </option>
+                                                        <option value="individual">1999</option>
+                                                        <option value="individual">2000</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p>Working to</p>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="exampleFormControlSelect1"
+                                                        placeholder="Industry Type">
+                                                        <option value="company" disabled>Date </option>
+                                                        <option value="individual">2</option>
+                                                        <option value="individual">3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="exampleFormControlSelect1"
+                                                        placeholder="Industry Type">
+                                                        <option value="company" disabled>Month </option>
+                                                        <option value="individual">2</option>
+                                                        <option value="individual">3</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="form-group">
+                                                    <select class="form-control" id="exampleFormControlSelect1"
+                                                        placeholder="Industry Type">
+                                                        <option value="company" disabled>Year </option>
+                                                        <option value="individual">1999</option>
+                                                        <option value="individual">2000</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Location">
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control" id="exampleFormControlSelect1"
+                                                placeholder="Industry Type">
+                                                <option value="individual" selected disabled>Industry Type</option>
+                                                <option value="individual">Oil and Gas</option>
+                                                <option value="individual">IT</option>
+                                                <option value="individual">Marketing</option>
+
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <select class="form-control" id="exampleFormControlSelect1"
+                                                placeholder="Role">
+                                                <option value="individual" selected disabled>Role</option>
+                                                <option value="individual">Associate Manager</option>
+                                                <option value="individual">Senior Architect</option>
+                                                <option value="individual">Marketing Manager</option>
+
+                                            </select>
+                                        </div>
                                     </div>
                                 </form>
                                 <button type="submit" class="btn btn-primary mt-5"

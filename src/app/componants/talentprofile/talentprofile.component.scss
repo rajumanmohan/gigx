@@ -102,9 +102,13 @@ td{
     font-size:14px;
 }
 }
-
-
  }
+ .edit-input {
+    display: inline-block ;
+    padding: 0px;
+    margin: 0px;
+    width:90%;
+}
 @media (max-width: 575.98px) { 
     .search-category{
         li{

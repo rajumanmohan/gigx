@@ -1,3 +1,4 @@
+import { NumberOnlyDirective } from './directives/number';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -40,6 +41,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { ToastrService } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
+import { RegistrationDataComponent } from './componants/registration-data/registration-data.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,7 +72,9 @@ import { NgxSpinnerModule } from "ngx-spinner";
     PaymentComponent,
     GetstartedComponent,
     CompanydashboardComponent,
-    TakeatestComponent
+    TakeatestComponent,
+    NumberOnlyDirective,
+    RegistrationDataComponent
   ],
   imports: [
     NgxSpinnerModule,
