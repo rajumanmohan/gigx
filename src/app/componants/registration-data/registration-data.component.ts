@@ -7,14 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./registration-data.component.scss']
 })
 export class RegistrationDataComponent implements OnInit {
-
+  companyData: any;
   constructor(private appSer: AppServiceService) { }
 
   ngOnInit() {
+    this.getcompanydata();
   }
   getcompanydata() {
     this.appSer.getCompanyData().subscribe(res => {
-
+      this.companyData = res;
     })
   }
 
