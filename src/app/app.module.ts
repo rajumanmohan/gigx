@@ -42,6 +42,8 @@ import { ToastrService } from 'ngx-toastr';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { RegistrationDataComponent } from './componants/registration-data/registration-data.component';
+import { IndividualRegistrationsComponent } from './componants/individual-registrations/individual-registrations.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,8 @@ import { RegistrationDataComponent } from './componants/registration-data/regist
     CompanydashboardComponent,
     TakeatestComponent,
     NumberOnlyDirective,
-    RegistrationDataComponent
+    RegistrationDataComponent,
+    IndividualRegistrationsComponent
   ],
   imports: [
     NgxSpinnerModule,
@@ -89,6 +92,7 @@ import { RegistrationDataComponent } from './componants/registration-data/regist
     RecaptchaModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
+    NgxPaginationModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 100,

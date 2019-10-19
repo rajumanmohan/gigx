@@ -1,3 +1,4 @@
+import { IndividualRegistrationsComponent } from './componants/individual-registrations/individual-registrations.component';
 import { RegistrationDataComponent } from './componants/registration-data/registration-data.component';
 import { TakeatestComponent } from './componants/takeatest/takeatest.component';
 import { TalentdashboardComponent } from './componants/talentdashboard/talentdashboard.component';
@@ -141,8 +142,13 @@ const routes: Routes = [
 
   },
   {
-    path: 'resgitrationData',
+    path: 'companyRegistrations',
     component: RegistrationDataComponent
+
+  },
+  {
+    path: 'individualRegistrations',
+    component: IndividualRegistrationsComponent
 
   },
 ];
