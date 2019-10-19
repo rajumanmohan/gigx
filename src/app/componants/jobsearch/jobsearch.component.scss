@@ -215,6 +215,11 @@
         width: 62%;
         margin-top: 25%;
     }
+    .card.card-body {
+        border: 0px;
+        background: none;
+        text-align:left;
+    }
 }
 .filter-section{
     ul{
@@ -257,6 +262,12 @@ a{
     font-size:19px;
     color:#000000;
 }
+}
+.hover-effect {
+    color:#000000;
+    img{
+        width:16px!important;
+    }
 }
 
 // Large devices (desktops, less than 1200px)

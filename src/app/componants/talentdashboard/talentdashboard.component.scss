@@ -186,13 +186,24 @@ li.nav-item {
     box-shadow: 1px 1px 1px 0px #dbdbdb !important;
     }
 }
+.hover-effect {
+    color:#000000;
+    img{
+        width:16px!important;
+    }
+}
 
 .talent-result{
     background: #ffffff;
-    padding: 41px;
+    padding: 28px;
     outline: none;
     margin-top: 13px;
     box-shadow: 0px 0px 6px #dbdbdb;
+    .card.card-body {
+        border: 0px;
+        background: none;
+        text-align:left;
+    }
     .maps{
         width: auto;
     vertical-align: sub;

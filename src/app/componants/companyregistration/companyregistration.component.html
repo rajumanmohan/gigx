@@ -14,6 +14,7 @@
                             <option value="IT Industry">IT Industry </option>
                             <option value="Electrical"> Electrical </option>
                             <option value="Networking"> Networking </option>
+                            <option value="Others"> Others </option>
                         </select>
                         <div *ngIf="submitted && f.industry_type.errors" class="invalid-feedback">
                             <div *ngIf="f.industry_type.errors.required">Industry type is required</div>
@@ -43,7 +44,7 @@
                         </div>
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
-                        <input type="number" formControlName="company_registration"
+                        <input type="text" formControlName="company_registration"
                             [ngClass]="{ 'is-invalid': submitted && f.company_registration.errors }"
                             class="form-control" id="exampleInputPassword1" placeholder="Company registration number">
                         <div *ngIf="submitted && f.company_registration.errors" class="invalid-feedback">
@@ -226,9 +227,9 @@
 
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">I agreed to the <span><a
-                                        href="">Terms
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" checked>
+                            <label class="custom-control-label" for="customCheck1">I agreed to the <span><a href=""
+                                        data-toggle="modal" data-target=".bd-example-modal-lg"> Terms
                                         and Conditions </a></span> governing the use of gigx.com, I have reviewed
                                 the
                                 default mailer & Communications settings</label>
@@ -241,3 +242,50 @@
         </div>
     </div>
 </section>
+
+
+<!-- Large modal -->
+<div class="modal forgot-modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header b-0">
+                <h5 class="modal-title" id="exampleModalLabel">Terms and Conditions</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4>Lorem Ipsum</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <h4>Lorem Ipsum</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <h4>Lorem Ipsum</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <h4>Lorem Ipsum</h4>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            </div>
+
+        </div>
+    </div>
+</div>

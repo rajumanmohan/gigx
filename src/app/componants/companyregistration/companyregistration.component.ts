@@ -52,7 +52,7 @@ export class CompanyregistrationComponent implements OnInit {
       state: ['', Validators.required],
       city: ['', Validators.required],
       pincode: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.maxLength(6), Validators.pattern("^[0-9]*$")],],
+      mobile: ['', [Validators.required, Validators.maxLength(10), Validators.pattern("^[0-9]*$")],],
       address: ['', Validators.required],
       company_registration: ['', Validators.required],
       sst: [this.sstType, ''],

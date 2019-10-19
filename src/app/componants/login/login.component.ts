@@ -16,4 +16,7 @@ export class LoginComponent implements OnInit {
   gigx(logtype) {
     this.type = logtype;
   }
+  gotoProfile() {
+    this.router.navigate(['/profile'], { queryParams: { page: 'company' } });
+  }
 }

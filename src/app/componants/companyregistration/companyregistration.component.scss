@@ -119,6 +119,44 @@
     width: 90% !important;
     height: 90% !important;
 }
+
+// modal css
+.forgot-modal{
+    h5  {
+        text-align:center;
+        width:100%;
+        font-weight:600;
+    }
+    input{
+           
+        border: 1px solid #dbdbdb;
+        padding: 24px 40px;
+        margin: 0px auto;
+        box-shadow: 1px 1px 1px 0px #dbdbdb!important;
+    }
+    .modal-dialog {
+      padding: 12px;
+        top: 6%;
+    }
+    .modal-content{
+        padding: 13px;
+        height: 550px;
+        overflow-y: scroll;
+    }
+  .modal-footer{
+      width:100%;
+    button{
+        width: 100%;
+        border: 0px;
+        border-radius: 3px !important;
+        padding: 10px;
+        background: #fed501;
+        color: #000000;
+        font-weight: 600;
+        font-size: 20px;
+    }
+  }
+}
 // Large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) {
 
