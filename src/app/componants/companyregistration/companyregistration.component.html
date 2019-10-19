@@ -53,12 +53,12 @@
                         </div>
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
-                        <input type="email" formControlName="contact_email"
-                            [ngClass]="{ 'is-invalid': submitted && f.contact_email.errors }" class="form-control"
-                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Company Email Id">
-                        <div *ngIf="submitted && f.contact_email.errors" class="invalid-feedback">
-                            <div *ngIf="f.contact_email.errors.required">Company email is required</div>
-                            <div *ngIf="f.contact_email.errors.email">Email must be a valid email address</div>
+                        <input type="email" formControlName="email"
+                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control"
+                            id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Company Email Address">
+                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                            <div *ngIf="f.email.errors.required">Company email is required</div>
+                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
                         </div>
                     </div>
 
@@ -87,12 +87,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <input type="text" formControlName="email"
-                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" class="form-control"
-                            placeholder="Email Id">
-                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                            <div *ngIf="f.email.errors.required"> Email is required</div>
-                            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                        <input type="text" formControlName="contact_email"
+                            [ngClass]="{ 'is-invalid': submitted && f.contact_email.errors }" class="form-control"
+                            placeholder="Email Address">
+                        <div *ngIf="submitted && f.contact_email.errors" class="invalid-feedback">
+                            <div *ngIf="f.contact_email.errors.required"> Email is required</div>
+                            <div *ngIf="f.contact_email.errors.email">Email must be a valid email address</div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -242,9 +242,10 @@
 
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">I agree to the <span><a href="">Terms
-                                        and Conditions </a></span> governing the use of gigx.com, I have reviewed
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" [checked]="true">
+                            <label class="custom-control-label" for="customCheck1">I agree to the <span><a href=""
+                                        data-toggle="modal" data-target=".bd-example-modal-lg">Terms
+                                        and Conditions </a></span> governing the use of gigxglobal.com, I have reviewed
                                 the
                                 default mailer & Communications settings</label>
                         </div>
@@ -262,6 +263,7 @@
                             <option value="IT Industry">IT Industry </option>
                             <option value="Electrical"> Electrical </option>
                             <option value="Networking"> Networking </option>
+                            <option value="Others"> Others </option>
                         </select>
                         <div *ngIf="submitted1 && f1.industry_type.errors" class="invalid-feedback">
                             <div *ngIf="f1.industry_type.errors.required">Industry type is required</div>
@@ -284,7 +286,7 @@
                     <div class="form-group">
                         <input type="text" formControlName="email"
                             [ngClass]="{ 'is-invalid': submitted1 && f1.email.errors }" class="form-control"
-                            placeholder="Email Id">
+                            placeholder="Email Address">
                         <div *ngIf="submitted1 && f1.email.errors" class="invalid-feedback">
                             <div *ngIf="f1.email.errors.required"> Email is required</div>
                             <div *ngIf="f1.email.errors.email">Email must be a valid email address</div>
@@ -443,8 +445,9 @@
 
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="customCheck1">
-                            <label class="custom-control-label" for="customCheck1">I agree to the <span><a href="">Terms
+                            <input type="checkbox" class="custom-control-input" id="customCheck1" [checked]="true">
+                            <label class="custom-control-label" for="customCheck1">I agree to the <span><a href=""
+                                        data-toggle="modal" data-target=".bd-example-modal-lg">Terms
                                         and Conditions </a></span> governing the use of gigxglobal.com, I have reviewed
                                 the
                                 default mailer & Communications settings</label>
