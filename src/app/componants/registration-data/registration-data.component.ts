@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AppServiceService } from './../../Services/app-service.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,15 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationDataComponent implements OnInit {
   companyData: any;
-  constructor(private appSer: AppServiceService) { }
+  config: any;
+  imgBaseUrl = "http://gigxglobal.com/company/";
+  constructor(private appSer: AppServiceService, private router: Router) {
+
+  }
 
   ngOnInit() {
     this.getcompanydata();
   }
   getcompanydata() {
     this.appSer.getCompanyData().subscribe(res => {
-      this.companyData = res;
+      this.companyData = res['companies'];
     })
   }
+
 
 }

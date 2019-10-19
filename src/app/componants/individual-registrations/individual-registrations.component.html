@@ -27,7 +27,7 @@
     </div>
 </div>
 <section class="payment">
-    <h1 class="text-center"> COMPANY REGISTRATION LIST</h1>
+    <h1 class="text-center">INDIVIDUAL REGISTRATION LIST</h1>
     <div class="container-fluid">
         <div class="row mt-5">
             <div class="col-md-12">
@@ -35,15 +35,13 @@
                     <table class="table">
                         <thead class="table-head">
                             <tr>
-                                <th scope="col">Company name</th>
+                                <!-- <th scope="col">Company name</th>
                                 <th scope="col">Registration number</th>
-                                <th scope="col">Url</th>
+                                <th scope="col">Url</th> -->
                                 <th scope="col">Email</th>
                                 <th scope="col">Mobile number</th>
                                 <th scope="col">Industry type</th>
-                                <th scope="col">SST</th>
                                 <th scope="col">Contact person</th>
-                                <th scope="col">Contact Email</th>
                                 <th scope="col">Designation</th>
                                 <th scope="col">Logo</th>
                                 <th scope="col">Address</th>
@@ -52,15 +50,13 @@
                         <tbody>
                             <tr *ngFor="let company of companyData| paginate:
                             { itemsPerPage: 10, currentPage: p };let i=index">
-                                <td>{{company.company_name}}</td>
+                                <!-- <td>{{company.company_name}}</td>
                                 <td>{{company.company_registration}}</td>
-                                <td>{{company.company_url}}</td>
+                                <td>{{company.company_url}}</td> -->
                                 <td>{{company.email}}</td>
                                 <td>{{company.mobile}}</td>
                                 <td>{{company.industry_type}}</td>
-                                <td>{{company.sst}}</td>
                                 <td>{{company.contact_person}}</td>
-                                <td>{{company.contact_email}}</td>
                                 <td>{{company.designation}}</td>
                                 <td><img class=" logo-img" [src]="imgBaseUrl+''+company.image " />
                                 </td>
