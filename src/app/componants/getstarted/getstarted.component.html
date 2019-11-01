@@ -9,22 +9,25 @@
                 </h1>
                 <h3>Get Started for free</h3>
 
-                <form>
-
-
+                <form [formGroup]="getStartForm" (ngSubmit)="start()">
                     <div class="form-group mt-5">
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder=" Email">
+                            placeholder=" Email" formControlName="email"
+                            [ngClass]="{'is-invalid':f.email.errors&& submit}">
+                        <div class="invalid-feedback" *ngIf="f.email.errors">
+                            <div *ngIf="f.email.errors.required">Email is required</div>
+                            <div *ngIf="f.email.errors.email">Email is invalid</div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" class="form-control" placeholder="Password" formControlName="password"
+                            [ngClass]="{'is-invalid':f.password.errors&& submit}">
+                        <div class="invalid-feedback" *ngIf="f.password.errors">
+                            <div *ngIf="f.password.errors.required">Password is required</div>
+                        </div>
                     </div>
 
-
-
-
-
-                    <button type="submit" class="btn btn-primary" routerLink="/talentregistration">GET STARTED</button>
+                    <button type="submit" class="btn btn-primary">GET STARTED</button>
                 </form>
 
             </div>
