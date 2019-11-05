@@ -29,4 +29,11 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.get(this.apiUrl + 'getRegisteredIndividuals.php', { headers })
   }
+  registrationTalent(params) {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post('http://gigxglobal.com/api/talent_registration.php', params, { headers })
+  }
 }
