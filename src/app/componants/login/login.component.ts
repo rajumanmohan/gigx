@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.type = 'talent';
-    this.loginForm  = this.formBuilder.group({
+    this.loginForm  = this.formBuilder.group ({
 
     })
   }
