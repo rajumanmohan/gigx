@@ -90,7 +90,7 @@
                                     <div class="row form-group">
                                         <div class="col-md-5">
                                             <div class="upload-image text-center">
-                                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg,.pdf"
                                                     #fileInput (change)="readUrl1($event)" />
                                                 <img *ngIf="!url2==true" src="/assets/images/upload.png">
                                                 <img *ngIf="url2" [src]="url2" height="60">
@@ -105,7 +105,7 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="upload-image text-center">
-                                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg"
+                                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg,video/mp4"
                                                     #fileInput (change)="readUrl2($event)" />
                                                 <img *ngIf="!url3==true" src="/assets/images/upload.png" class="mt-3">
                                                 <img *ngIf="url3" [src]="url3" height="60">
@@ -134,7 +134,7 @@
                                     </div>
                                     <div class="form-group">
                                         <my-date-picker name="mydate" (dateChanged)="onDateChanged($event)"
-                                            [selDate]="selDate" required></my-date-picker>
+                                            [selDate]="mydate" required placeholder="2019-08-08"></my-date-picker>
                                     </div>
                                     <!-- vamshi upload img -->
 
@@ -185,7 +185,7 @@
                                             formControlName="highQul"
                                             [ngClass]="{'is-invalid':f1.highQul.errors&& submitted1}">
                                         <div class="invalid-feedback" *ngIf="f1.highQul.errors">
-                                            <div *ngIf="f1.highQul.errors.required">highQul is required
+                                            <div *ngIf="f1.highQul.errors.required">Qualification is required
                                             </div>
                                         </div>
                                     </div>
@@ -261,10 +261,10 @@
                                                     <div class="col-md-10">
                                                         <h5>Education details:{{i+1}}</h5>
                                                     </div>
-                                                    <div class="col-md-2">
+                                                    <!-- <div class="col-md-2">
                                                         <i class="fa fa-times-circle delete-icon"
                                                             (click)="remove(i)"></i>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" aria-describedby="emailHelp"
@@ -337,16 +337,22 @@
 
                                                 <div class="form-group">
                                                     <p>Type of Degree</p>
-                                                    <div class="custom-control custom-radio custom-control-inline"
-                                                        (change)="chnageDegree($event)">
-                                                        <input type="radio" id="customRadioInliney{{i+3}}"
-                                                            name="customRadioInliney{{i}}" class="custom-control-input"
-                                                            checked value="Full time">
-                                                        <label class="custom-control-label"
-                                                            for="customRadioInliney{{i+3}}">Full
-                                                            time</label>
+                                                    <!-- <div class="custom-control custom-radio custom-control-inline"
+                                                        (change)="chnageDegree($event)"
+                                                        *ngFor="let radio of degreeArray;let i=index;">
+                                                        <input type="radio" id="radio{{i}}" [name]="radio"
+                                                            class="custom-control-input" [checked]="radio=='Full time'"
+                                                            [value]="i">
+                                                        <label class="custom-control-label" for="radio{{i}}">
+                                                            {{radio}}</label>
+                                                    </div> -->
+
+                                                    <div *ngFor="let radiobutton of radioItems;let i=index;">
+                                                        <input type="radio" value="{{radiobutton}}"
+                                                            [name]='"fxc"+i'>{{radiobutton}}
                                                     </div>
-                                                    <div class="custom-control custom-radio custom-control-inline"
+
+                                                    <!-- <div class="custom-control custom-radio custom-control-inline"
                                                         (change)="chnageDegree($event)">
                                                         <input type="radio" id="customRadioInliney{{i+1}}"
                                                             name="customRadioInliney{{i}}" class="custom-control-input"
@@ -363,7 +369,7 @@
                                                         <label class="custom-control-label"
                                                             for="customRadioInliney{{i+2}}">
                                                             Correspandence</label>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
 
 
@@ -377,7 +383,9 @@
                                     <button type="submit" class="btn btn-primary mt-5">CONTINUE</button>
 
                                 </form>
-
+                                <div *ngFor="let radiobutton of degreeArray;let i=index;">
+                                    <input type="radio" value="{{radiobutton}}" [name]='"fxc"+i'>{{radiobutton}}
+                                </div>
                             </div>
 
                         </div>
@@ -403,10 +411,10 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="exampleInputPassword1"
-                                            placeholder="Current company" formControlName="company"
-                                            [ngClass]="{'is-invalid':f3.company.errors&& submitted3}">
-                                        <div class="invalid-feedback" *ngIf="f3.company.errors">
-                                            <div *ngIf="f3.company.errors.required">Company is required
+                                            placeholder="Current company" formControlName="current_company"
+                                            [ngClass]="{'is-invalid':f3.current_company.errors&& submitted3}">
+                                        <div class="invalid-feedback" *ngIf="f3.current_company.errors">
+                                            <div *ngIf="f3.current_company.errors.required">Company is required
                                             </div>
                                         </div>
                                     </div>
@@ -586,10 +594,11 @@
                                             </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="exampleInputPassword1"
-                                                    placeholder="Current company" formControlName="company"
-                                                    [ngClass]="{'is-invalid':employee.controls.company.errors&& submitted3}">
-                                                <div class="invalid-feedback" *ngIf="employee.controls.company.errors">
-                                                    <div *ngIf="employee.controls.company.errors.required">
+                                                    placeholder="Current company" formControlName="current_company"
+                                                    [ngClass]="{'is-invalid':employee.controls.current_company.errors&& submitted3}">
+                                                <div class="invalid-feedback"
+                                                    *ngIf="employee.controls.current_company.errors">
+                                                    <div *ngIf="employee.controls.current_company.errors.required">
                                                         Company
                                                         is
                                                         required
@@ -883,11 +892,11 @@
                     <div class="container create-account">
                         <div class="profile">
                             <div class="upload-image1 text-center">
-                                <img *ngIf="!url2==true" src="../../../assets/images/user.png" />
+                                <img *ngIf="!url1==true" src="../../../assets/images/user.png" />
                                 <img class="attch-img" src="../../../assets/images/camera.png" />
                                 <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
-                                    (change)="readUrl1($event)" />
-                                <img *ngIf="url2" [src]="url2" class="uploaded-img">
+                                    (change)="readUrl($event)" />
+                                <img *ngIf="url1" [src]="url1" class="uploaded-img">
                             </div>
 
                         </div>

@@ -1,3 +1,4 @@
+import { AppServiceService } from './../../Services/app-service.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatHorizontalStepper, MatStep } from '@angular/material';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
@@ -24,6 +25,7 @@ export class TelentregistrationComponent implements OnInit {
   registrationForm1: FormGroup;
   jobPreferrences: FormGroup;
   employeeForm: FormGroup;
+  education: FormGroup;
   educationArr = [];
   obj2 = {};
   degree = "Full time";
@@ -39,7 +41,11 @@ export class TelentregistrationComponent implements OnInit {
   obj3 = {};
   array2 = [];
   object2 = {};
-  constructor(private fb: FormBuilder, private toast: ToastrService) { }
+  mydate;
+  degreeArray = ["Full time", "Part time", "Correspandence"];
+  radioItems = ["Full time", "Part time", "Correspandence"];
+
+  constructor(private fb: FormBuilder, private toast: ToastrService, private appSer: AppServiceService) { }
   // Step 1 -> full_name,email,password,mobile_code,mobile,location,talent_attachment,talent_attachment_video,gender,dob
   // routerLink="/talentdashboard"
   ngOnInit() {
@@ -65,11 +71,12 @@ export class TelentregistrationComponent implements OnInit {
       preference_location: ['', Validators.required],
       preference_industry_type: ['', Validators.required],
       preference_role: ['', Validators.required],
-      employment_type: ['']
+      desired_employment_type: [''],
+      talent_image: ['']
     });
     this.employeeForm = this.fb.group({
       current_designation: ['', Validators.required],
-      company: ['', Validators.required],
+      current_company: ['', Validators.required],
       currency_type: ['', Validators.required],
       currency_type1: ['', Validators.required],
       currency_type2: ['', Validators.required],
@@ -82,7 +89,8 @@ export class TelentregistrationComponent implements OnInit {
       month: ['', Validators.required],
       year: ['', Validators.required]
 
-    })
+    });
+    this.selDate = "2019-08-08";
     // radioArr = ["Full time",""]
   }
 
@@ -144,7 +152,6 @@ export class TelentregistrationComponent implements OnInit {
   }
   add(text) {
     this.newArr.push(text);
-    console.log(this.newArr);
     this.getData();
   }
   addEducation() {
@@ -163,6 +170,7 @@ export class TelentregistrationComponent implements OnInit {
   }
   remove(i) {
     this.f2.controls.splice(i, 1);
+    console.log(this.f2.controls);
   }
   addEmployee() {
     // this.multiEmployee.push({
@@ -170,7 +178,7 @@ export class TelentregistrationComponent implements OnInit {
     // })
     this.f5.push(this.fb.group({
       current_designation: ['', Validators.required],
-      company: ['', Validators.required],
+      current_company: ['', Validators.required],
       currency_type: ['', Validators.required],
       currency_type1: ['', Validators.required],
       currency_type2: ['', Validators.required],
@@ -195,13 +203,15 @@ export class TelentregistrationComponent implements OnInit {
     this.registrationForm.value.talent_attachment = this.url2;
     this.registrationForm.value.gender = this.gender;
     this.registrationForm.value.talent_attachment_video = this.url3;
-    this.registrationForm.value.dob = this.selDate;
+    this.registrationForm.value.dob = (this.selDate);
+    this.registrationForm.value.mobile = JSON.parse(this.registrationForm.value.mobile);
+
     delete this.registrationForm.value.termsConditions;
     if (this.registrationForm.invalid) {
       return;
     }
 
-    if (this.registrationForm.value.talent_attachment == undefined || this.registrationForm.value.talent_attachment_video == undefined) {
+    if (this.registrationForm.value.talent_attachment || this.registrationForm.value.talent_attachment_video == undefined) {
       this.toast.warning("Upload image or video is missing", "Warning");
     } else {
       this.complete();
@@ -220,11 +230,12 @@ export class TelentregistrationComponent implements OnInit {
   }
   employeeType(event) {
     this.empType = event.target.value;
+    console.log(this.empType);
   }
   registration1() {
     this.registrationForm1.value.degree = this.degree;
     this.obj2['high_qualification'] = this.registrationForm1.value.highQul;
-    this.obj2['specialization '] = this.registrationForm1.value.specialization;
+    this.obj2['specialization'] = this.registrationForm1.value.specialization;
     this.obj2['institution'] = this.registrationForm1.value.institution
     this.obj2['year_of_complition'] = this.registrationForm1.value.yearOfComplition;
     this.obj2['degree'] = this.registrationForm1.value.degree;
@@ -245,8 +256,9 @@ export class TelentregistrationComponent implements OnInit {
   get f4() { return this.jobPreferrences.controls; }
 
   submitJob() {
-    this.jobPreferrences.value.employment_type = this.employeeType;
-    this.jobPreferrences.value.skills = this.newArr;
+    this.jobPreferrences.value.desired_employment_type = this.empType;
+    this.jobPreferrences.value.skills = this.newArr.toString();
+    this.jobPreferrences.value.talent_image = this.url1;
     this.submitted4 = true;
     if (this.jobPreferrences.invalid) {
       return;
@@ -281,7 +293,7 @@ export class TelentregistrationComponent implements OnInit {
     }
 
     this.obj3['current_designation'] = this.employeeForm.value.current_designation;
-    this.obj3['company'] = this.employeeForm.value.company;
+    this.obj3['current_company'] = this.employeeForm.value.current_company;
     this.obj3['annual_salary'] = this.employeeForm.value.annual_salary;
     this.obj3['working_period'] = this.employeeForm.value.working_period;
     this.obj3['location'] = this.employeeForm.value.location;
@@ -304,11 +316,27 @@ export class TelentregistrationComponent implements OnInit {
   }
   onDateChanged(date) {
     // var newDate = date.date['year'] + "-" + date.date['month'] + "-" + date.date['date'];
-    this.selDate = date.date;
+    this.mydate = date.date;
+    this.selDate = (this.mydate['year']) + "-" + (this.mydate['month']) + "-" + (this.mydate['day']) || "2019-08-08";
+
+
   }
   registerTalent() {
-    var overObjet = {};
-    var test = Object.assign(this.object1, this.object2);
-    console.log(test)
+    var overObjet = this.object1;
+    Object.assign(overObjet, this.object2);
+    // this.registrationForm1.value.qualifications  (org)
+    overObjet['qualifications'] = this.registrationForm1.value.qualifications;
+    // this.employeeForm.value.job_details (org)
+    overObjet['job_details'] = this.employeeForm.value.job_details;
+    console.log(overObjet);
+    var obj =
+      this.appSer.registrationTalent(overObjet).subscribe(res => {
+        if (res['status'] == 200) {
+          this.toast.success(res['message'], "success");
+        } else {
+          this.toast.error(res['message'], "error");
+
+        }
+      })
   }
 }
