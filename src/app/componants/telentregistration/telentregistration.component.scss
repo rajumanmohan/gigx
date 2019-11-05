@@ -209,6 +209,11 @@ button.btnpicker.btnpickerenabled {
 .add-another{
     cursor: pointer;
 }
+.delete-icon{
+    font-size: 20px !important;
+    color: darkred !important;
+    float: right !important;
+}
 // Large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) {  }
 // Medium devices (tablets, less than 992px)

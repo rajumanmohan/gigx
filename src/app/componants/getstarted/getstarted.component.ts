@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { transition, trigger, useAnimation } from '@angular/animations';
@@ -19,10 +21,25 @@ import {
   ]
 })
 export class GetstartedComponent implements OnInit {
+  getStartForm: FormGroup;
+  submit = false;
 
-  constructor() { }
+  // routerLink="/talentregistration"
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit() {
+    this.getStartForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    })
   }
-
+  get f() { return this.getStartForm.controls; }
+  start() {
+    this.submit = true;
+    if (this.getStartForm.invalid) {
+      return;
+    } else {
+      this.router.navigate(['/talentregistration']);
+    }
+  }
 }
