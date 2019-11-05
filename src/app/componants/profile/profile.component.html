@@ -30,7 +30,7 @@
 </div>
 
 <!-- HEADER -->
-<section class="login mt-2" *ngIf="page=='individual'|| ''">
+<section class="login mt-2" *ngIf="page=='individual'|| ''" [@fadeInAndOut]>
     <div class="container profile">
         <div class="row">
             <div class="col-md-12">
@@ -157,7 +157,7 @@
         </div>
     </div>
 </section>
-<section class="login mt-2" *ngIf="page=='company'">
+<section class="login mt-2" *ngIf="page=='company'" [@fadeInAndOut]>
     <div class="container profile">
         <div class="row">
             <div class="col-md-12">
@@ -196,8 +196,8 @@
                                 <td class="b-0"><span>:</span>
                                     <span *ngIf="edit==false">https://www.Sorgainnovation.com/</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="https://www.Sorgainnovation.com/"
-                                            class="form-control" id="exampleInputPassword1" placeholder="Url">
+                                        <input type="text" value="https://www.Sorgainnovation.com/" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Url">
                                     </span>
                                 </td>
                             </tr>
@@ -226,8 +226,8 @@
                                 <td class="b-0"><span>:</span>
                                     <span *ngIf="edit==false">Malaysia</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Malaysia" class="form-control" id="exampleInputPassword1"
-                                            placeholder="Country">
+                                        <input type="text" value="Malaysia" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Country">
                                     </span>
                                 </td>
                             </tr>

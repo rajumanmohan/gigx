@@ -32,7 +32,7 @@
 
 
 <!-- HEADER -->
-<section class="login mt-2">
+<section class="login mt-2" [@fadeInAndOut]>
     <div class="container profile">
         <div class="row">
             <div class="col-md-12">
@@ -41,10 +41,10 @@
         </div>
         <div class="row justify-content-center  mt-2 mb-2">
             <div class="col-md-6 text-center">
-                <img src="../../../assets/images/profile-image.jpg">
+                <img src="../../../assets/images/shareen.jpg">
 
-                <h3>JOHN PETER</h3>
-                <p>PHP Developer</p>
+                <h3>SHAREEN ABDUL GHANI</h3>
+                <p>Talent Specialist</p>
             </div>
 
         </div>
@@ -88,9 +88,9 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">FULL NAME</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">John Peter</span>
+                                    <span *ngIf="edit==false">Shareen Abdul Ghani</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="John Peter" class="form-control"
+                                        <input type="text" value="Shareen Abdul Ghani" class="form-control"
                                             id="exampleInputPassword1" placeholder="John Peter">
                                     </span>
                                 </td>
@@ -98,10 +98,10 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">EMAIL</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Johnpeter@gmail.com</span>
+                                    <span *ngIf="edit==false">Shareenabdulghani@gmail.com</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Johnpeter@gmail.com" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Johnpeter@gmail.com">
+                                        <input type="text" value="Shareenabdulghani@gmail.com" class="form-control"
+                                            id="exampleInputPassword1" placeholder="email">
                                     </span>
                                 </td>
                             </tr>
@@ -118,40 +118,31 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">LOCATION</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Hyderabad, India</span>
+                                    <span *ngIf="edit==false">Kuala Lumpur , Malaysia</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Hyderabad, India" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Hyderabad, India">
+                                        <input type="text" value="Kuala Lumpur , Malaysia" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Location">
                                     </span>
                                 </td>
                             </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">DATE OF BIRTH</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">17-07-1990</span>
+                                    <span *ngIf="edit==false">17-07-1970</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="17-07-1990" class="form-control"
-                                            id="exampleInputPassword1" placeholder="17-07-1990">
+                                        <input type="text" value="17-07-1970" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Date of Birth">
                                     </span>
                                 </td>
                             </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">MARITAL STATUS</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Un Married</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Un Married" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Un Married">
-                                    </span>
-                                </td>
-                            </tr>
+
                             <tr class="b-0">
                                 <td class="b-0 contact-title">GENDER</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">MALE</span>
+                                    <span *ngIf="edit==false">FEMALE</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="MALE" class="form-control" id="exampleInputPassword1"
-                                            placeholder="MALE">
+                                        <input type="text" value="FEMALE" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Gender">
                                     </span>
                                 </td>
                             </tr>
@@ -204,10 +195,10 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">YEAR OF PASSING</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">2016</span>
+                                    <span *ngIf="edit==false">1990</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="2016" class="form-control" id="exampleInputPassword1"
-                                            placeholder="2016">
+                                        <input type="text" value="1990" class="form-control" id="exampleInputPassword1"
+                                            placeholder="year">
                                     </span>
                                 </td>
                             </tr>
@@ -230,20 +221,20 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">DESIGNATION</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">PHP Developer</span>
+                                    <span *ngIf="edit==false">Talent Specialist</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="PHP Developer" class="form-control"
-                                            id="exampleInputPassword1" placeholder="PHP Developer">
+                                        <input type="text" value="Talent Specialist" class="form-control"
+                                            id="exampleInputPassword1" placeholder="description">
                                     </span>
                                 </td>
                             </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">CURRENT COMPANY</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Versatile Mobitech Pvt. Ltd.</span>
+                                    <span *ngIf="edit==false">Sorga Innovation Sdh Bhd</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Versatile Mobitech Pvt. Ltd." class="form-control"
-                                            id="exampleInputPassword1" placeholder="Versatile Mobitech Pvt. Ltd.">
+                                        <input type="text" value="Sorga Innovation Sdh Bhd" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Sorga Innovation Sdh Bhd">
                                     </span>
                                 </td>
                             </tr>
@@ -260,21 +251,22 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">WORK EXPERIENCE</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">5 years</span>
+                                    <span *ngIf="edit==false">20 years</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="5 years" class="form-control"
-                                            id="exampleInputPassword1" placeholder="5 years">
+                                        <input type="text" value="20 years" class="form-control"
+                                            id="exampleInputPassword1" placeholder="years">
                                     </span>
                                 </td>
                             </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">SKILLS</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">HTML5, CSS3 ,Bootstrap , Jquery , Angular , PHP</span>
+                                    <span *ngIf="edit==false">Screening, Sourcing, Interviewing, and Determining the
+                                        ideal candidate for a position in their company.</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="HTML5, CSS3 ,Bootstrap , Jquery , Angular , PHP"
-                                            class="form-control" id="exampleInputPassword1"
-                                            placeholder="HTML5, CSS3 ,Bootstrap , Jquery , Angular , PHP">
+                                        <input type="text"
+                                            value="screening, sourcing, interviewing, and determining the ideal candidate for a position in their company."
+                                            class="form-control" id="exampleInputPassword1" placeholder="Skills">
                                     </span>
                                 </td>
                             </tr>
@@ -305,9 +297,9 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">ACCOUNT HOLDER NAME</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">John Peter</span>
+                                    <span *ngIf="edit==false">Shareen Abdul Ghani</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="John Peter" class="form-control"
+                                        <input type="text" value="Shareen Abdul Ghanir" class="form-control"
                                             id="exampleInputPassword1" placeholder="John Peter">
                                     </span>
                                 </td>
@@ -325,20 +317,20 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">BANK NAME</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">HDFC</span>
+                                    <span *ngIf="edit==false">HSBC</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="HDFC" class="form-control" id="exampleInputPassword1"
-                                            placeholder="HDFC">
+                                        <input type="text" value="HSBC" class="form-control" id="exampleInputPassword1"
+                                            placeholder="Bank Name">
                                     </span>
                                 </td>
                             </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">IFSC CODE</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">HDFC022</span>
+                                    <span *ngIf="edit==false">HSBC022</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="HDFC022" class="form-control"
-                                            id="exampleInputPassword1" placeholder="HDFC022">
+                                        <input type="text" value="HSBC022" class="form-control"
+                                            id="exampleInputPassword1" placeholder="IFCS CODE">
                                     </span>
                                 </td>
                             </tr>

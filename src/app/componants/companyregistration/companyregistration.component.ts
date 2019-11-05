@@ -1,13 +1,27 @@
 import { ToastrService } from 'ngx-toastr';
+import { transition, trigger, useAnimation } from '@angular/animations';
 import { AppServiceService } from './../../Services/app-service.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
+import {
+  bounceInAndOut, enterAndLeaveFromLeft, enterAndLeaveFromRight, fadeInAndOut,
+  fadeInThenOut, growInShrinkOut, swingInAndOut
+} from '../../triggers';
 
 @Component({
   selector: 'app-companyregistration',
   templateUrl: './companyregistration.component.html',
-  styleUrls: ['./companyregistration.component.scss']
+  styleUrls: ['./companyregistration.component.scss'],
+  animations: [
+    growInShrinkOut, fadeInThenOut, swingInAndOut, fadeInAndOut,
+    enterAndLeaveFromLeft, enterAndLeaveFromRight, bounceInAndOut,
+    trigger('enterFromLeftLeaveToRight', [
+      transition(':enter', useSlideFadeInAnimation('1000ms', '20px')),
+      transition(':leave', useAnimation(slideFadeOut, { params: { time: '1000ms', endPos: '100px' } })),
+    ]),
+  ]
 })
 export class CompanyregistrationComponent implements OnInit {
   strImage;
@@ -115,6 +129,7 @@ export class CompanyregistrationComponent implements OnInit {
     this.submitted = true;
 
     if (this.registrationForm.invalid) {
+      window.scroll(0, 0);
       return;
     }
     if (this.registrationForm.value.company_image == undefined) {
@@ -143,6 +158,7 @@ export class CompanyregistrationComponent implements OnInit {
 
     this.submitted1 = true;
     if (this.individualReg.invalid) {
+      window.scroll(0, 0);
       return;
     }
     if (this.individualReg.value.company_image == undefined) {

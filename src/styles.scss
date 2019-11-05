@@ -17,6 +17,13 @@ body{
     font-family: Muli-Regular;
     overflow-x: hidden!important;
 }
+.talent-result{
+    box-shadow: 0 0 5px rgba(0,0,0,.05), 2px 2px 5px rgba(0,0,0,.1)!important;
+}
+.talent-result:hover{
+box-shadow: 2px 2px 5px #f2f2f2, 0px 0px 0px #f2f2f2, 0px 0px 0px #f2f2f2!important;
+transition: 0.5s;
+}
 button , input ,textarea ,a{
     box-shadow: none!important;
         outline: none!important;
@@ -89,6 +96,12 @@ button , input ,textarea ,a{
     .login{
         width:100%;
     }
+    .header-block.carousel-caption-txt  {
+	p{
+        font-size: 32px;
+    }
+		
+	}
 }
 
 

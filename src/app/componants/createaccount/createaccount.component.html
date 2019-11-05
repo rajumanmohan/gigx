@@ -1,5 +1,5 @@
 <app-header></app-header>
-<section class="login mt-5">
+<section [@fadeInAndOut] class="login mt-5">
     <div class="container create-account">
         <div class="row justify-content-center mt-5">
             <h1>CREATE YOUR ACCOUNT</h1>
@@ -7,23 +7,20 @@
                 <div class="row mt-3 text-center">
                     <div class="col-md-6 ">
 
-                        <div class="talent" routerLink="/getstarted">
+                        <div class="talent" routerLink="/getstarted" (click)="registrationType('talent')">
 
                             <img src="../../../assets/images/degree.png">
                             <h2>Gigx Talent</h2>
-
-
                         </div>
 
                     </div>
                     <div class="col-md-6">
 
-                        <div class="company talent" routerLink="/companyregistration">
+                        <div class="company talent" routerLink="/companyregistration"
+                            (click)="registrationType('company')">
 
                             <img src="../../../assets/images/briefcase.png">
                             <h2>Company</h2>
-
-
                         </div>
 
 

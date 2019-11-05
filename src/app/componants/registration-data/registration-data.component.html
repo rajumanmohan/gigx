@@ -28,13 +28,14 @@
 </div>
 <section class="payment">
     <h1 class="text-center"> COMPANY REGISTRATION LIST</h1>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row mt-5">
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table">
                         <thead class="table-head">
                             <tr>
+                                <th scope="col">S.No</th>
                                 <th scope="col">Company name</th>
                                 <th scope="col">Registration number</th>
                                 <th scope="col">Url</th>
@@ -51,7 +52,8 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let company of companyData| paginate:
-                            { itemsPerPage: 10, currentPage: p };let i=index">
+                            { itemsPerPage: 25, currentPage: p };let i=index">
+                                <td>{{i+1}}</td>
                                 <td>{{company.company_name}}</td>
                                 <td>{{company.company_registration}}</td>
                                 <td>{{company.company_url}}</td>
