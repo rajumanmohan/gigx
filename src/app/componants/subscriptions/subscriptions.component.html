@@ -28,7 +28,7 @@
 </div>
 
 <!-- HEADER -->
-<section class="login  mt-3 mb-3">
+<section class="login  mt-3 mb-2">
     <div class="container subscriptions">
         <div class="row justify-content-center ">
             <div class="col-md-6">
@@ -37,29 +37,51 @@
             </div>
         </div>
         <!-- switch buttons  -->
-        <div class="row justify-content-center">
+        <!-- <div class="row justify-content-center">
             <div class="col-md-6 group-buttons">
                 <div class="btn-group" role="group" aria-label="Basic example">
                     <button type="button" (click)="gigx('talent')" class="btn"
                         [ngStyle]="{'background':type=='talent'?'#fed501':''}">GIGX
                         TALENT</button>
-                    <button type="button" (click)="gigx('employer')"
-                        [ngStyle]="{'background':type=='employer'?'#fed501':''}" class="btn ">COMPANY</button>
+                    <button type="button" (click)="gigx('company')"
+                        [ngStyle]="{'background':type=='company'?'#fed501':''}" class="btn ">COMPANY</button>
                 </div>
             </div>
 
-        </div>
+        </div> -->
         <!-- switch buttons -->
         <!-- subscriptions plans -->
-        <div class="row mt-5">
+        <div class="row mt-5 individual-features" *ngIf="type=='company'">
+            <div class="col-md-12 individual-plans mb-5">
+                <div class="row justify-content-center" [@fadeInAndOut]>
+                    <div class="col-md-8">
+                        <div class="subscription-plan">
+                            <ul>
+                                <li>
+                                    <h1>Individual Package</h1>
+                                </li>
+                                <li>
+                                    <h2>RM 300 / Gig</h2>
+                                </li>
+                                <li> <button type="submit" class="btn account" routerLink="/payment">SUBSCRIBE
+                                        NOW</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
             <!-- plan 1 -->
-            <div class="col-md-4">
+            <div class="col-md-3" [@fadeInAndOut]>
                 <div class="subscription-plan">
-                    <h1>Standard Membership</h1>
-                    <h2>RM 100 <span class="divider">/</span><span> Year</span></h2>
-                    <!-- <p>Postings 01-30</p>
-                    <p>Basic Static</p>
-                    <p>Email Support</p> -->
+                    <h1>Basic</h1>
+                    <h2>RM 5,000 <span class="divider">/</span><span> Year</span></h2>
+                    <div class="plans">
+                        <p>Up to 30 postings</p>
+                        <p>Reviews & Ratings</p>
+                        <p>Analytics & Trend Report </p>
+                    </div>
+
                     <div class="row justify-content-center mt-5">
                         <div class="col-md-8 text-right">
                             <button type="submit" class="btn account" routerLink="/payment">SUBSCRIBE NOW</button>
@@ -69,13 +91,16 @@
             </div>
             <!-- plan 1 -->
             <!-- plan 2 -->
-            <div class="col-md-4">
+            <div class="col-md-3" [@fadeInAndOut]>
                 <div class="subscription-plan">
-                    <h1>Premium Membership </h1>
-                    <h2>RM 150 <span class="divider">/</span><span> Year</span></h2>
-                    <!-- <p>Postings 31-60</p>
-                    <p>Basic Static</p>
-                    <p>Email Support</p> -->
+                    <h1> Standard </h1>
+                    <h2>RM 8,000 <span class="divider">/</span><span> Year</span></h2>
+                    <div class="plans">
+                        <p>31-60 postings</p>
+                        <p>Reviews & Ratings</p>
+                        <p>Analytics & Trend Report </p>
+                        <p>Knowledge Portal & content </p>
+                    </div>
                     <div class="row justify-content-center mt-5">
                         <div class="col-md-8 text-right">
                             <button type="submit" class="btn account" routerLink="/payment">SUBSCRIBE NOW</button>
@@ -85,13 +110,105 @@
             </div>
             <!-- plan 2 -->
             <!-- plan 3 -->
-            <div class="col-md-4">
+            <div class="col-md-3" [@fadeInAndOut]>
                 <div class="subscription-plan">
-                    <h1>Platinum Membership </h1>
+                    <h1>Premium </h1>
+                    <h2>RM 15,000 <span class="divider">/</span><span> Year</span></h2>
+                    <div class="plans">
+                        <p>61-150 postings</p>
+                        <p>Reviews & Ratings</p>
+                        <p>Analytics & Trend Report </p>
+                        <p>Knowledge Portal & content </p>
+                        <p>Premium Positioning of Gigs</p>
+                    </div>
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-md-8 text-right">
+                            <button type="submit" class="btn account" routerLink="/payment">SUBSCRIBE NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- plan 3 -->
+            <div class="col-md-3" [@fadeInAndOut]>
+                <div class="subscription-plan">
+                    <h1>Platinum </h1>
+                    <h2>RM 30,000 <span class="divider">/</span><span> Year</span></h2>
+                    <div class="plans">
+                        <p>150-250 postings</p>
+                        <p>Reviews & Ratings</p>
+                        <p>Analytics & Trend Report </p>
+                        <p>Knowledge Portal & content </p>
+                        <p>Premium Positioning of Gigs</p>
+                        <p>Promotional Corporate content and banner</p>
+                    </div>
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-md-8 text-right">
+                            <button type="submit" class="btn account" routerLink="/payment">SUBSCRIBE NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mt-5" [@fadeInAndOut]>
+                <div class="cutom-package">
+                    <p>For customised package, please contact us at <a
+                            href="mailto:expert@gigxglobal.com">expert@gigxglobal.com</a></p>
+                </div>
+            </div>
+        </div>
+        <!-- subscriptions plans -->
+
+
+        <!-- subscriptions plans -->
+        <div class="row mt-5" *ngIf="type=='talent'">
+            <!-- plan 1 -->
+            <div class="col-md-4" [@fadeInAndOut]>
+                <div class="subscription-plan">
+                    <h1>Basic</h1>
+                    <h2>RM 100 <span class="divider">/</span><span> Year</span></h2>
+                    <div class="plans">
+
+                        <p>Apply Gigs</p>
+                        <p>Knowledge Platform</p>
+                    </div>
+
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-md-8 text-right">
+                            <button type="submit" class="btn account" routerLink="/payment">SUBSCRIBE NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- plan 1 -->
+            <!-- plan 2 -->
+            <div class="col-md-4" [@fadeInAndOut]>
+                <div class="subscription-plan">
+                    <h1> Standard </h1>
+                    <h2>RM 150 <span class="divider">/</span><span> Year</span></h2>
+                    <div class="plans">
+                        <p>Profiling Reviews</p>
+                        <p>Apply Gigs</p>
+                        <p>Knowledge Platform</p>
+                    </div>
+                    <div class="row justify-content-center mt-5">
+                        <div class="col-md-8 text-right">
+                            <button type="submit" class="btn account" routerLink="/payment">SUBSCRIBE NOW</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- plan 2 -->
+            <!-- plan 3 -->
+            <div class="col-md-4" [@fadeInAndOut]>
+                <div class="subscription-plan">
+                    <h1>Premium </h1>
                     <h2>RM 250 <span class="divider">/</span><span> Year</span></h2>
-                    <!-- <p>Postings 60-150</p>
-                    <p>Basic Static</p>
-                    <p>Email Support</p> -->
+                    <div class="plans">
+
+                        <p>Performance Ratings</p>
+                        <p>Profiling Reviews</p>
+                        <p>Apply Gigs</p>
+                        <p>Knowledge Platform</p>
+                    </div>
                     <div class="row justify-content-center mt-5">
                         <div class="col-md-8 text-right">
                             <button type="submit" class="btn account" routerLink="/payment">SUBSCRIBE NOW</button>

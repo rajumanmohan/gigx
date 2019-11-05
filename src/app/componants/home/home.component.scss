@@ -21,7 +21,7 @@ ul li {
 }
 .nav-item {
 	a:hover{
-color:#ffffff!important;
+color:#000000!important;
 	}
 }
 /* navbar styles start */
@@ -92,10 +92,11 @@ color:#ffffff!important;
 	border: none;
 	border-radius: 100%;
 	line-height: 30px;
-	color: #fff;
+	color: #000000;
 	background-color: #fff;
 	transition: all 0.25s ease;
 	font-size: 10px;
+	opacity:1;
 	line-height: 16px
 }
 .header-block .carousel-indicators-numbers li.active,
@@ -117,7 +118,7 @@ color:#ffffff!important;
 	top: 94%;
 	right: 70px !important;
     font-size: 14px;
-    color:#ffffff!important;
+    color:#000000!important;
     opacity: 1;
     img{
         margin-left: 4px;
@@ -146,17 +147,39 @@ img.img-responsive {
 	right: 0%;
 	bottom: 22px;
 	text-align: center;
-	color: #fff
+	color: #000000
+}
+
+.carousel-caption-main{
+    // background: url(/assets/images/cloud.png);
+    // height: 500px;
+    // width: 510px;
+    // background-repeat: no-repeat;
+    // background-position: 100%;
+}
+.banner-cloud{
+    position: absolute;
+    left: 9%;
+    top: 21%;
+    width: 100%;
+    padding: -12px;
+    font-size: 60px;
+    z-index: 1;
+	img{
+		width: 74%;
+		height: 526px;
+	}
 }
 .header-block .carousel-caption-main {
 	position: absolute;
 	left: 20%;
 	top: 38%;
 	font-size: 60px;
+	z-index:9999;
 }
 .header-block .carousel-caption-txt {
     position: relative;
-    color:#fff;
+    color:#000000;
     font-family: serif;
 }
 .header-block .carousel-caption-main ul {
@@ -165,9 +188,9 @@ img.img-responsive {
 	left: 95%;
 }
 .header-block .carousel-caption-main ul li {
-	font-size: 60px;
-	font-weight: 600;
-    line-height: 60px;
+	font-size: 83px;
+    font-weight: 600;
+    line-height: 93px;
     font-family: serif;
 }
 .custom-color {
@@ -186,10 +209,10 @@ img.img-responsive {
 }
 
 .sm-text {
-	font-size: 14px;
+	font-size: 22px;
 	position: absolute;
     margin-top: -20px;
-    color:#fff;
+    color:#000000;
     font-family: serif;
 }
 /*slider style end */
@@ -315,12 +338,13 @@ img.img-responsive {
 	color: #1e7faa;
 }
 .marketplace-block .Marketplace-sub-tile .Marketplace-sub-heading {
-	font-size: 18px;
+	font-size: 15px;
 	font-weight: 600;
 }
 
 .marketplace-block .Marketplace-sub-tile .para {
 	color: #767676;
+	font-size:14px;
 }
 /* Marketplace style end */
 
@@ -420,7 +444,6 @@ img.img-responsive {
 	padding: 5px 10px;
 	margin: 0px 5px 0px;
 	color: #000;
-	margin-top: 12px;
 }
 .pre-footer-block h5 {
 	padding: 15px 0px 20px;
@@ -469,8 +492,63 @@ img.img-responsive {
     margin-bottom: 0px;
     padding-top: 15px;
 }
+
+.banner-content{
+	ul{
+		list-style:none;
+		margin:0px;
+	}
+	li{
+		display: inline-block;
+	}
+}
+
+@media (max-width: 1600px) {
+
+.header-block .carousel-caption-main ul li {
+	font-size: 62px;
+}
+}
+@media (max-width: 1400px) {
+
+	.header-block .carousel-caption-main ul li {
+		font-size: 62px;
+	}
+	.banner-cloud{
+		position: absolute;
+		left: 7%;
+		top: 11%;
+		img{
+			width:93%;
+		}
+	}
+	}
+
+
+	@media (max-width: 1199px) {
+	.carousel-caption-main {
+	p{
+		font-size: 32px;
+	}
+		
+	}
+	.header-block .carousel-caption-main ul li {
+		font-size: 41px;
+		line-height: 53px;
+	}
+	.banner-cloud{
+		
+		img{
+			height:361px
+		}
+	}
+}
 /* pre footer block style end*/
 @media (max-width: 991px) {
+	.header-block .carousel-caption-main {
+	
+		z-index: 9;
+	}
     .header-block .carousel-caption-main ul li {
         font-size: 40px!important;
         line-height: 50px;
@@ -489,6 +567,13 @@ img.img-responsive {
 	.main-menu {
 		li{
 			margin-left: 0px;
+		}
+	}
+	.banner-cloud{
+	display:none;
+		img {
+			width:93%;
+			height: 334px;
 		}
 	}
 }
@@ -597,7 +682,8 @@ img.img-responsive {
 .container-fluid.main-header {
     position: absolute;
     top: 0px;
-    z-index: 99;
+	z-index: 99;
+	background: #ffffffc2;
 }
 a.nav-link {
     font-weight: bold;
@@ -636,3 +722,17 @@ a.nav-link {
 	margin-top: 20px;
   }
   
+  .floating {  
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+@keyframes floating {
+    from { transform: translate(0,  0px); }
+    65%  { transform: translate(0, 15px); }
+    to   { transform: translate(0, -0px); }    
+}

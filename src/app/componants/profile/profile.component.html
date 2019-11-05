@@ -30,7 +30,7 @@
 </div>
 
 <!-- HEADER -->
-<section class="login mt-2" *ngIf="page=='individual'|| ''">
+<section class="login mt-2" *ngIf="page=='individual'|| ''" [@fadeInAndOut]>
     <div class="container profile">
         <div class="row">
             <div class="col-md-12">
@@ -126,7 +126,7 @@
                                 </td>
                             </tr>
                             <tr class="b-0">
-                                <td class="b-0 contact-title">PINCODE</td>
+                                <td class="b-0 contact-title">POSTCODE</td>
                                 <td class="b-0"><span>:</span>
                                     <span *ngIf="edit==false">500036</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
@@ -157,7 +157,7 @@
         </div>
     </div>
 </section>
-<section class="login mt-2" *ngIf="page=='company'">
+<section class="login mt-2" *ngIf="page=='company'" [@fadeInAndOut]>
     <div class="container profile">
         <div class="row">
             <div class="col-md-12">
@@ -166,10 +166,11 @@
         </div>
         <div class="row justify-content-center  mt-2 mb-2">
             <div class="col-md-6 text-center">
-                <img src="../../../assets/images/vm-logo.png">
+                <img src="../../../assets/images/sorga-logo.jpg">
 
-                <h3>VERSATILE MOBITECH PVT.LTD</h3>
-                <p>Hyderabad</p>
+                <h3>SORGA INNOVATION SDN BHD</h3>
+                <p>Kuala
+                    Lumpur, Malaysia</p>
             </div>
 
         </div>
@@ -183,9 +184,9 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">COMPANY NAME</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Versatile mobitech</span>
+                                    <span *ngIf="edit==false">Sorga Innovation Sdh Bhd</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Versatile mobitech" class="form-control"
+                                        <input type="text" value="Sorga Innovation Sdh Bhd" class="form-control"
                                             id="exampleInputPassword1" placeholder="Name">
                                     </span>
                                 </td>
@@ -193,19 +194,19 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">URL</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">https://www.versatilemobitech.com/</span>
+                                    <span *ngIf="edit==false">https://www.Sorgainnovation.com/</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="https://www.versatilemobitech.com/"
-                                            class="form-control" id="exampleInputPassword1" placeholder="Url">
+                                        <input type="text" value="https://www.Sorgainnovation.com/" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Url">
                                     </span>
                                 </td>
                             </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">EMAIL</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">verstile@gmail.com</span>
+                                    <span *ngIf="edit==false">Sorgainnovation@gmail.com</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="verstile@gmail.com" class="form-control"
+                                        <input type="text" value="Sorgainnovation@gmail.com" class="form-control"
                                             id="exampleInputPassword1" placeholder="Email">
                                     </span>
                                 </td>
@@ -223,20 +224,20 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">COUNTRY</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">India</span>
+                                    <span *ngIf="edit==false">Malaysia</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="India" class="form-control" id="exampleInputPassword1"
-                                            placeholder="Country">
+                                        <input type="text" value="Malaysia" class="form-control"
+                                            id="exampleInputPassword1" placeholder="Country">
                                     </span>
                                 </td>
                             </tr>
                             <tr class="b-0">
-                                <td class="b-0 contact-title">PINCODE</td>
+                                <td class="b-0 contact-title">POSTCODE</td>
                                 <td class="b-0"><span>:</span>
                                     <span *ngIf="edit==false">500036</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="500036" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Pincode">
+                                            id="exampleInputPassword1" placeholder="POSTCODE">
                                     </span>
                                 </td>
                             </tr>
@@ -268,9 +269,9 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">NAME</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Richard joe</span>
+                                    <span *ngIf="edit==false">ShareenAbdul Ghani</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Richard joe" class="form-control"
+                                        <input type="text" value="ShareenAbdul Ghani" class="form-control"
                                             id="exampleInputPassword1" placeholder="Name">
                                     </span>
                                 </td>
@@ -288,9 +289,9 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">EMAIL</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">richordjoe@gmail.com</span>
+                                    <span *ngIf="edit==false">ShareenAbdul@gmail.com</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="richordjoe@gmail.com" class="form-control"
+                                        <input type="text" value="ShareenAbdul@gmail.com" class="form-control"
                                             id="exampleInputPassword1" placeholder="Email">
                                     </span>
                                 </td>

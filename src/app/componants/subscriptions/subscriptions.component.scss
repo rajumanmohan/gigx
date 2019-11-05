@@ -26,7 +26,9 @@ a{
    }
 }
 
-
+.plans{
+    height: 125px;
+}
 .login {
     h1{
         font-weight: 600;
@@ -42,7 +44,7 @@ a{
             border-radius: 3px ;
             padding: 6px;
             color: #000000;
-            font-size: 20px;
+            font-size: 17px;
         }
      
 
@@ -52,6 +54,44 @@ a{
     border: 1px solid #fed501;
     h2{
         background: #fed501;
+    }
+}
+
+.individual-plans{
+    .subscription-plan {
+        box-shadow: none!important;
+    border-radius: 5px;
+        padding-bottom: 2%;
+        h2{
+        background: none;
+        }
+    }
+    li{
+       display: inline-block;
+    }
+    ul{
+    margin: 0px auto;
+    }
+    .subscription-plan:hover{
+        transition: 0;
+        border: 0px solid #fed501;
+        h2{
+            background: none!important;
+        }
+    }
+    button{
+        margin-bottom:12px;
+    }
+}
+.individual-features{
+    .plans{
+        height:238px;
+    }
+}
+.cutom-package{
+    text-align:right;
+    a{
+        color:#fed501;
     }
 }
 .subscription-plan {

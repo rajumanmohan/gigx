@@ -1,7 +1,6 @@
 import { NumberOnlyDirective } from './directives/number';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './componants/home/home.component';
@@ -44,6 +43,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { RegistrationDataComponent } from './componants/registration-data/registration-data.component';
 import { IndividualRegistrationsComponent } from './componants/individual-registrations/individual-registrations.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { CompanysubscriptionsComponent } from './componants/companysubscriptions/companysubscriptions.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +77,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     TakeatestComponent,
     NumberOnlyDirective,
     RegistrationDataComponent,
-    IndividualRegistrationsComponent
+    IndividualRegistrationsComponent,
+    CompanysubscriptionsComponent
   ],
   imports: [
     NgxSpinnerModule,

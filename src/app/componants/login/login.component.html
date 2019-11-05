@@ -1,5 +1,5 @@
 <app-header></app-header>
-<section class="login mt-5">
+<section class="login mt-5" [@fadeInAndOut]>
     <div class="container">
         <div class="row justify-content-center mt-5">
             <h1>LOG INTO AN EXISTING ACCOUNT</h1>
@@ -33,7 +33,7 @@
                                 <a href="#" data-toggle="modal" data-target="#exampleModal">Forgot Password?</a>
                             </div>
                             <div class="form-group text-center ">
-                                <button type="submit" class="btn btn-primary"  (click)="gotoProfile()">LOGIN</button>
+                                <button type="submit" class="btn btn-primary" (click)="gotoProfile()">LOGIN</button>
                             </div>
                         </form>
                         <div class="row mt-5 new-account">

@@ -373,9 +373,17 @@ margin-top: 12px;
     text-decoration:none;
 }
 
-
-
-
+.profile-name {
+    h4{
+        color: #000000;
+        background: #fed501;
+        border-radius: 50%;
+        padding: 7px 7px;
+        margin-left: 7px;
+        margin-top: 12px;
+        font-size: 18px;
+    }
+}
 
 @media (max-width: 1654.98px) { 
 
@@ -400,7 +408,7 @@ margin-top: 12px;
  // Large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) {
     .company-profile {
-        height:400px;
+        height:444px;
         button{
             margin-bottom: -19px;
             width:100%;
@@ -415,7 +423,7 @@ margin-top: 12px;
         }
     }
     .talent-result{
-        height:400px;
+        height:444px;
     }
     .account-settings{
     img{

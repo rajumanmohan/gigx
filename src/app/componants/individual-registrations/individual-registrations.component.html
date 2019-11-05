@@ -28,7 +28,7 @@
 </div>
 <section class="payment">
     <h1 class="text-center">INDIVIDUAL REGISTRATION LIST</h1>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row mt-5">
             <div class="col-md-12">
                 <div class="table-responsive">
@@ -36,8 +36,8 @@
                         <thead class="table-head">
                             <tr>
                                 <!-- <th scope="col">Company name</th>
-                                <th scope="col">Registration number</th>
-                                <th scope="col">Url</th> -->
+                                <th scope="col">Registration number</th>-->
+                                <th scope="col">S.No</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Mobile number</th>
                                 <th scope="col">Industry type</th>
@@ -49,10 +49,10 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let company of companyData| paginate:
-                            { itemsPerPage: 10, currentPage: p };let i=index">
+                            { itemsPerPage: 25, currentPage: p };let i=index">
                                 <!-- <td>{{company.company_name}}</td>
-                                <td>{{company.company_registration}}</td>
-                                <td>{{company.company_url}}</td> -->
+                                <td>{{company.company_registration}}</td>-->
+                                <td>{{i+1}}</td>
                                 <td>{{company.email}}</td>
                                 <td>{{company.mobile}}</td>
                                 <td>{{company.industry_type}}</td>
