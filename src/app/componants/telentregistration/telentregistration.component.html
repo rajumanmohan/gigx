@@ -22,7 +22,7 @@
                 <mat-icon>home</mat-icon>
             </ng-template>
             <!-- temp [stepControl]="registrationForm"  -->
-            <mat-step label="" state="phone">
+            <mat-step label="" state="phone" [stepControl]="registrationForm">
                 <!-- <p>Step 1</p> -->
                 <section [@fadeInAndOut] class="login company-registration mt-3 mb-5">
                     <div class="container create-account">
@@ -184,7 +184,7 @@
                 </section>
             </mat-step>
             <!-- temp [stepControl]="registrationForm1"  -->
-            <mat-step #step2 label="">
+            <mat-step #step2 label="" [stepControl]="registrationForm1">
                 <!-- <h3>Step 2</h3> -->
 
                 <section [@fadeInAndOut] class="login company-registration mt-3 mb-5">
@@ -379,7 +379,7 @@
                 </section>
             </mat-step>
             <!-- temp [stepControl]="employeeForm" -->
-            <mat-step #step3 label="">
+            <mat-step #step3 label="" [stepControl]="employeeForm">
                 <section [@fadeInAndOut] class="login company-registration mt-3 mb-5">
                     <div class="container create-account">
                         <div class="row justify-content-center ">
