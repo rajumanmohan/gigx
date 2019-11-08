@@ -214,6 +214,37 @@ button.btnpicker.btnpickerenabled {
     color: darkred !important;
     float: right !important;
 }
+.mydp .icon-mydpremove:before,.mydp .icon-mydpremove:after,.icon-mydpremove {
+    display: none !important;
+}
+.text-area{
+    height: auto;
+    ul {
+    padding: 18px;
+    padding: 0px;
+    word-wrap: break-word;
+    /* display: inline-block; */
+    white-space: initial;
+
+    li{
+        list-style: none;
+        background: #e6e6e6;
+        padding: 1px;
+        padding: 4px 13px;
+        display: inline-block;
+        margin-right: 19px;
+        border-radius: 8%;
+        margin-top: 12px;
+    
+    }
+    }
+    .close {
+        position: absolute;
+    margin-top: -7px;
+    margin-left: -13px;
+    font-size: 19px;
+    }
+}
 // Large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) {  }
 // Medium devices (tablets, less than 992px)
