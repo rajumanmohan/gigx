@@ -41,10 +41,9 @@
         </div>
         <div class="row justify-content-center  mt-2 mb-2">
             <div class="col-md-6 text-center">
-                <img src="../../../assets/images/shareen.jpg">
-
-                <h3>SHAREEN ABDUL GHANI</h3>
-                <p>Talent Specialist</p>
+                <img [src]="talentJobPreference[0].image">
+                <h3>{{talentPersonalDetails.full_name}}</h3>
+                <p>{{talentJobPreference[0].role}}</p>
             </div>
 
         </div>
@@ -88,7 +87,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">FULL NAME</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Shareen Abdul Ghani</span>
+                                    <span *ngIf="edit==false">{{talentPersonalDetails.full_name}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="Shareen Abdul Ghani" class="form-control"
                                             id="exampleInputPassword1" placeholder="John Peter">
@@ -98,7 +97,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">EMAIL</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Shareenabdulghani@gmail.com</span>
+                                    <span *ngIf="edit==false">{{talentPersonalDetails.email}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="Shareenabdulghani@gmail.com" class="form-control"
                                             id="exampleInputPassword1" placeholder="email">
@@ -108,7 +107,8 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">MOBILE NO</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">9630571452</span>
+                                    <span *ngIf="edit==false">{{talentPersonalDetails.mobile_code}}
+                                        {{talentPersonalDetails.mobile}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="9630571452" class="form-control"
                                             id="exampleInputPassword1" placeholder="9630571452">
@@ -118,7 +118,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">LOCATION</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Kuala Lumpur , Malaysia</span>
+                                    <span *ngIf="edit==false">{{talentPersonalDetails.location}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="Kuala Lumpur , Malaysia" class="form-control"
                                             id="exampleInputPassword1" placeholder="Location">
@@ -128,7 +128,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">DATE OF BIRTH</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">17-07-1970</span>
+                                    <span *ngIf="edit==false">{{talentPersonalDetails.dob}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="17-07-1970" class="form-control"
                                             id="exampleInputPassword1" placeholder="Date of Birth">
@@ -139,7 +139,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">GENDER</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">FEMALE</span>
+                                    <span *ngIf="edit==false">{{talentPersonalDetails.gender}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="FEMALE" class="form-control"
                                             id="exampleInputPassword1" placeholder="Gender">
@@ -161,11 +161,14 @@
                 <div class="table-responsive">
                     <table class="table b-0">
 
-                        <tbody class="b-0">
+                        <tbody class="b-0" *ngFor="let data of talentEducationDetails ; let i = index">
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">QUALIFICATION DETAILS {{i+1}}</td>
+                            </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">QUALIFICATION</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Bachelor of Engineering</span>
+                                    <span *ngIf="edit==false">{{data.highest_qualification}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="Bachelor of Engineering" class="form-control"
                                             id="exampleInputPassword1" placeholder="Bachelor of Engineering">
@@ -175,7 +178,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">SPECIALIZATION</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Computer Science</span>
+                                    <span *ngIf="edit==false">{{data.specialization}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="Computer Science" class="form-control"
                                             id="exampleInputPassword1" placeholder="Computer Science">
@@ -185,7 +188,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">INSTITUTION</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">University of Brooklyn</span>
+                                    <span *ngIf="edit==false">{{data.institution}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="University of Brooklyn" class="form-control"
                                             id="exampleInputPassword1" placeholder="University of Brooklyn">
@@ -195,7 +198,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">YEAR OF PASSING</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">1990</span>
+                                    <span *ngIf="edit==false">{{data.year_of_completion}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="1990" class="form-control" id="exampleInputPassword1"
                                             placeholder="year">
@@ -217,11 +220,14 @@
                 <div class="table-responsive">
                     <table class="table b-0">
 
-                        <tbody class="b-0">
+                        <tbody class="b-0" *ngFor="let data of talentJobDetails ; let i = index">
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">WORK EXPERIENCE DETAILS {{i+1}}</td>
+                            </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">DESIGNATION</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Talent Specialist</span>
+                                    <span *ngIf="edit==false">{{data.current_designation}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="Talent Specialist" class="form-control"
                                             id="exampleInputPassword1" placeholder="description">
@@ -231,7 +237,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">CURRENT COMPANY</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Sorga Innovation Sdh Bhd</span>
+                                    <span *ngIf="edit==false">{{data.current_company}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="Sorga Innovation Sdh Bhd" class="form-control"
                                             id="exampleInputPassword1" placeholder="Sorga Innovation Sdh Bhd">
@@ -241,7 +247,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">SALARY</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">RM 9,00,000</span>
+                                    <span *ngIf="edit==false">{{data.annual_salary}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="RM 9,00,000" class="form-control"
                                             id="exampleInputPassword1" placeholder="RM 9,00,000">
@@ -251,29 +257,18 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">WORK EXPERIENCE</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">20 years</span>
+                                    <span *ngIf="edit==false">{{data.working_period}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="20 years" class="form-control"
                                             id="exampleInputPassword1" placeholder="years">
                                     </span>
                                 </td>
                             </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">SKILLS</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Screening, Sourcing, Interviewing, and Determining the
-                                        ideal candidate for a position in their company.</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text"
-                                            value="screening, sourcing, interviewing, and determining the ideal candidate for a position in their company."
-                                            class="form-control" id="exampleInputPassword1" placeholder="Skills">
-                                    </span>
-                                </td>
-                            </tr>
+
                             <tr class="b-0">
                                 <td class="b-0 contact-title">INDUSTRY</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">IT Software Industry</span>
+                                    <span *ngIf="edit==false">{{data.industry_type}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="IT Software Industry" class="form-control"
                                             id="exampleInputPassword1" placeholder="IT Software Industry">
@@ -281,6 +276,21 @@
                                 </td>
                             </tr>
 
+                        </tbody>
+                    </table>
+                    <table class="table b-0">
+                        <tbody class="b-0">
+                            <tr class="b-0">
+                                <td class="b-0 contact-title">SKILLS</td>
+                                <td class="b-0"><span>:</span>
+                                    <span *ngIf="edit==false">{{talentJobPreference[0].skills}}</span>
+                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                        <input type="text"
+                                            value="screening, sourcing, interviewing, and determining the ideal candidate for a position in their company."
+                                            class="form-control" id="exampleInputPassword1" placeholder="Skills">
+                                    </span>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

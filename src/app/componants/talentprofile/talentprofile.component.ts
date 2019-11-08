@@ -1,3 +1,6 @@
+import { ToastrService } from 'ngx-toastr';
+import { AppServiceService } from './../../Services/app-service.service';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { transition, trigger, useAnimation } from '@angular/animations';
@@ -24,10 +27,15 @@ export class TalentprofileComponent implements OnInit {
   showWorkExperienceDetails = false;
   showBankDetails = false;
   showGigsTrackDetails = false;
-  edit = false;
-  constructor() { }
+  edit = false; talentId; loginType;
+  constructor(private route: ActivatedRoute, private appSer: AppServiceService, private toast: ToastrService) {
+
+    this.talentId = localStorage.getItem('talent_id');
+    this.loginType = localStorage.getItem('industry_type');
+  }
 
   ngOnInit() {
+    this.showtalentProfile();
   }
   personaldetails() {
     this.showPersonalDetails = true;
@@ -80,4 +88,19 @@ export class TalentprofileComponent implements OnInit {
   showData() {
     this.edit = false;
   }
+  talentPersonalDetails = []; talentEducationDetails; talentJobDetails; talentJobPreference;
+  showtalentProfile() {
+    let params = {
+      talent_id: this.talentId
+    }
+    this.appSer.TalentProfile(params).subscribe((res) => {
+      this.talentPersonalDetails = res['step1'];
+      this.talentEducationDetails = res['step2'].educationaldetails;
+      this.talentJobDetails = res['step3'].jobdetails;
+      this.talentJobPreference = res['step4'].jobpreferences;
+    
+    })
+  }
+
+
 }

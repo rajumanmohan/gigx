@@ -39,10 +39,10 @@
         </div>
         <div class="row justify-content-center  mt-2 mb-2">
             <div class="col-md-6 text-center">
-                <img src="../../../assets/images/profile-image.jpg">
+                <img [src]="profileDetails.logo">
 
-                <h3>SRIKANTH DOROLA</h3>
-                <p>Hyderabad</p>
+                <h3>{{profileDetails.contact_person}}</h3>
+                <p>{{profileDetails.city}}</p>
             </div>
 
         </div>
@@ -56,7 +56,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">PERSON NAME</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Sriknath Dorola</span>
+                                    <span *ngIf="edit==false">{{profileDetails.contact_person}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="Sriknath Dorola" class="form-control"
                                             id="exampleInputPassword1" placeholder="Sriknath Dorola">
@@ -68,7 +68,7 @@
                                 <td class="b-0 contact-title">DESIGNATION</td>
                                 <td class="b-0"><span>:</span>
 
-                                    <span *ngIf="edit==false">Project Manager</span>
+                                    <span *ngIf="edit==false">{{profileDetails.designation}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="Project Manager" class="form-control"
                                             id="exampleInputPassword1" placeholder="Sriknath Dorola">
@@ -77,7 +77,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">EMAIL</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Srikanth@gmail.com</span>
+                                    <span *ngIf="edit==false">{{profileDetails.email}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="Srikanth@gmail.com" class="form-control"
                                             id="exampleInputPassword1" placeholder="Sriknath Dorola">
@@ -87,7 +87,8 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">MOBILE NO</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">9630571452</span>
+                                    <span
+                                        *ngIf="edit==false">{{profileDetails.mobile}}{{profileDetails.mobile_code}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="9630571452" class="form-control"
                                             id="exampleInputPassword1" placeholder="Sriknath Dorola">
@@ -98,7 +99,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">INDUSTRY TYPE</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Individual</span>
+                                    <span *ngIf="edit==false">{{profileDetails.industry_type}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="Individual" class="form-control"
                                             id="exampleInputPassword1" placeholder="Sriknath Dorola">
@@ -108,7 +109,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">ADDRESS</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Kondapur,Hyderabad</span>
+                                    <span *ngIf="edit==false">{{profileDetails.address}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="Kondapur,Hyderabad" class="form-control"
                                             id="exampleInputPassword1" placeholder="Sriknath Dorola">
@@ -118,7 +119,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">COUNTRY</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">India</span>
+                                    <span *ngIf="edit==false">{{profileDetails.country}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="India" class="form-control" id="exampleInputPassword1"
                                             placeholder="Sriknath Dorola">
@@ -128,7 +129,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">POSTCODE</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">500036</span>
+                                    <span *ngIf="edit==false">{{profileDetails.postal_code}}</span>
                                     <span class="form-group edit-input" *ngIf="edit==true">
                                         <input type="text" value="500036" class="form-control"
                                             id="exampleInputPassword1" placeholder="Sriknath Dorola">
@@ -138,6 +139,18 @@
                         </tbody>
                     </table>
                 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -159,171 +172,244 @@
 </section>
 <section class="login mt-2" *ngIf="page=='company'" [@fadeInAndOut]>
     <div class="container profile">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center">COMPANY PROFILE</h1>
+        <form [formGroup]="editCompanyForm">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center">COMPANY PROFILE</h1>
+                </div>
             </div>
-        </div>
-        <div class="row justify-content-center  mt-2 mb-2">
-            <div class="col-md-6 text-center">
-                <img src="../../../assets/images/sorga-logo.jpg">
+            <div class="row justify-content-center  mt-2 mb-2">
+                <div class="col-md-6 text-center">
+                    <img [src]="profileDetails.logo">
 
-                <h3>SORGA INNOVATION SDN BHD</h3>
-                <p>Kuala
-                    Lumpur, Malaysia</p>
-            </div>
-
-        </div>
-        <div class="row contact-details">
-            <div class="col-md-12">
-                <h2>COMPANY DETAILS</h2>
-                <div class="table-responsive">
-                    <table class="table b-0">
-
-                        <tbody class="b-0">
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">COMPANY NAME</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Sorga Innovation Sdh Bhd</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Sorga Innovation Sdh Bhd" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Name">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">URL</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">https://www.Sorgainnovation.com/</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="https://www.Sorgainnovation.com/" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Url">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">EMAIL</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Sorgainnovation@gmail.com</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Sorgainnovation@gmail.com" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Email">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">INDUSTRY TYPE</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Company</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Company" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Industry type">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">COUNTRY</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Malaysia</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Malaysia" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Country">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">POSTCODE</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">500036</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="500036" class="form-control"
-                                            id="exampleInputPassword1" placeholder="POSTCODE">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">SST NO</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">N0098746885565</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="N0098746885565" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Sst no">
-                                    </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <h3>{{profileDetails.company_name}}</h3>
+                    <p>{{profileDetails.country}}</p>
                 </div>
 
-
-
             </div>
-        </div>
-        <div class="row contact-details">
-            <div class="col-md-12">
-                <h2>CONTACT DETAILS</h2>
-                <div class="table-responsive">
-                    <table class="table b-0">
+            <div class="row contact-details">
+                <div class="col-md-12">
+                    <h2>COMPANY DETAILS</h2>
+                    <div class="table-responsive">
+                        <table class="table b-0">
 
-                        <tbody class="b-0">
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">NAME</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">ShareenAbdul Ghani</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="ShareenAbdul Ghani" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Name">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">DESIGNATION</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Human Resources</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Human Resources" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Designation">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">EMAIL</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">ShareenAbdul@gmail.com</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="ShareenAbdul@gmail.com" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Email">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">MOBILE NUMBER</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">9845635420</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="9845635420" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Mobile number">
-                                    </span>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            <tbody class="b-0">
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">COMPANY NAME</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{profileDetails.company_name}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" value="Sorga Innovation Sdh Bhd" class="form-control"
+                                                id="exampleInputPassword1" placeholder="Name"
+                                                formControlName="company_name"
+                                                [ngClass]="{'is-invalid':f1.company_name.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f1.company_name.errors">
+                                                <div *ngIf="f1.company_name.errors.required">Company Name is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">URL</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{profileDetails.company_url}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" value="https://www.Sorgainnovation.com/"
+                                                class="form-control" id="exampleInputPassword1" placeholder="Url"
+                                                formControlName="company_url"
+                                                [ngClass]="{'is-invalid':f1.company_url.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f1.company_url.errors">
+                                                <div *ngIf="f1.company_url.errors.required">Company Name is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">EMAIL</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{profileDetails.email}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" value="Sorgainnovation@gmail.com" class="form-control"
+                                                id="exampleInputPassword1" placeholder="Email" formControlName="email"
+                                                [ngClass]="{'is-invalid':f1.email.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f1.email.errors">
+                                                <div *ngIf="f1.email.errors.required">Company Name is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">INDUSTRY TYPE</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{profileDetails.industry_type}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" value="Company" class="form-control"
+                                                id="exampleInputPassword1" placeholder="Industry type"
+                                                formControlName="industry_type"
+                                                [ngClass]="{'is-invalid':f1.industry_type.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f1.industry_type.errors">
+                                                <div *ngIf="f1.industry_type.errors.required">Company Name is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">COUNTRY</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{profileDetails.country}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" value="Malaysia" class="form-control"
+                                                id="exampleInputPassword1" placeholder="Country"
+                                                formControlName="country"
+                                                [ngClass]="{'is-invalid':f1.country.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f1.country.errors">
+                                                <div *ngIf="f1.country.errors.required">Company Name is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">POSTCODE</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{profileDetails.postal_code}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" value="500036" class="form-control"
+                                                id="exampleInputPassword1" placeholder="POSTCODE"
+                                                formControlName="postal_code"
+                                                [ngClass]="{'is-invalid':f1.postal_code.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f1.postal_code.errors">
+                                                <div *ngIf="f1.postal_code.errors.required">Company Name is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">COMPANY REGISTRATION NO</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{profileDetails.company_registration}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" value="N0098746885565" class="form-control"
+                                                id="exampleInputPassword1" placeholder="Sst no"
+                                                formControlName="company_registration"
+                                                [ngClass]="{'is-invalid':f1.company_registration.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f1.company_registration.errors">
+                                                <div *ngIf="f1.company_registration.errors.required">Company Name is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+
                 </div>
+            </div>
+            <div class="row contact-details">
+                <div class="col-md-12">
+                    <h2>CONTACT DETAILS</h2>
+                    <div class="table-responsive">
+                        <table class="table b-0">
+
+                            <tbody class="b-0">
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">NAME</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{profileDetails.contact_person}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" value="ShareenAbdul Ghani" class="form-control"
+                                                id="exampleInputPassword1" placeholder="Name"
+                                                formControlName="contact_person"
+                                                [ngClass]="{'is-invalid':f1.contact_person.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f1.contact_person.errors">
+                                                <div *ngIf="f1.contact_person.errors.required">Company Name is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">DESIGNATION</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{profileDetails.designation}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" value="Human Resources" class="form-control"
+                                                id="exampleInputPassword1" placeholder="Designation"
+                                                formControlName="designation"
+                                                [ngClass]="{'is-invalid':f1.designation.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f1.designation.errors">
+                                                <div *ngIf="f1.designation.errors.required">Company Name is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">EMAIL</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{profileDetails.contact_email}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" value="ShareenAbdul@gmail.com" class="form-control"
+                                                id="exampleInputPassword1" placeholder="Email"
+                                                formControlName="contact_email"
+                                                [ngClass]="{'is-invalid':f1.contact_email.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f1.contact_email.errors">
+                                                <div *ngIf="f1.contact_email.errors.required">Company Name is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">MOBILE NUMBER</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false"> {{profileDetails.mobile_code}}
+                                            {{profileDetails.mobile}}
+                                        </span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" value="9845635420" class="form-control"
+                                                id="exampleInputPassword1" placeholder="Mobile number"
+                                                formControlName="mobile"
+                                                [ngClass]="{'is-invalid':f1.mobile.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f1.mobile.errors">
+                                                <div *ngIf="f1.mobile.errors.required">Company Name is
+                                                    required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
 
 
+                </div>
             </div>
-        </div>
-        <div class="row justify-content-center mt-5 mb-5">
-            <div class="col-md-6 text-center" *ngIf="edit==false">
-                <button type="submit" class="btn " (click)="editProfile()">EDIT PROFILE</button>
+            <div class="row justify-content-center mt-5 mb-5">
+                <div class="col-md-6 text-center" *ngIf="edit==false">
+                    <button type="submit" class="btn " (click)="editProfile()">EDIT PROFILE</button>
+                </div>
+                <div class="col-md-6 text-center" *ngIf="edit==true">
+                    <button type="submit" class="btn " (click)="showData()">Save</button>
+                </div>
+                <div class="col-md-6 text-center" *ngIf="edit==true">
+                    <button type="submit" class="btn " (click)="showData()">Cancel</button>
+                </div>
             </div>
-            <div class="col-md-6 text-center" *ngIf="edit==true">
-                <button type="submit" class="btn " (click)="showData()">Save</button>
-            </div>
-            <div class="col-md-6 text-center" *ngIf="edit==true">
-                <button type="submit" class="btn " (click)="showData()">Cancel</button>
-            </div>
-        </div>
+        </form>
     </div>
 </section>

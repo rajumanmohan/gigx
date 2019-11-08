@@ -11,8 +11,8 @@
                             <button type="button" (click)="gigx('talent')" class="btn"
                                 [ngStyle]="{'background':type=='talent'?'#fed501':''}">GIGX
                                 TALENT</button>
-                            <button type="button" (click)="gigx('employer')"
-                                [ngStyle]="{'background':type=='employer'?'#fed501':''}" class="btn ">COMPANY</button>
+                            <button type="button" (click)="gigx('company')"
+                                [ngStyle]="{'background':type=='company'?'#fed501':''}" class="btn ">COMPANY</button>
                         </div>
                     </div>
 
@@ -20,20 +20,28 @@
                 <!-- switch buttons -->
                 <div class="row login-form justify-content-center  mt-3">
                     <div class="col-md-8 mt-3">
-                        <form>
+                        <form [formGroup]="loginForm">
                             <div class="form-group">
                                 <input type="email" class="form-control email-field" id="exampleInputEmail1"
-                                    aria-describedby="emailHelp" placeholder="Email">
+                                    aria-describedby="emailHelp" placeholder="Email" formControlName="email"
+                                    [ngClass]="{'is-invalid':f.email.errors&& submit}">
+                                <div class="invalid-feedback" *ngIf="f.email.errors">
+                                    <div *ngIf="f.email.errors.required">Email is required</div>
+                                    <div *ngIf="f.email.errors.email">Enter a valid Email</div>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <input type="password" class="form-control password-field" id="exampleInputPassword1"
-                                    placeholder="Password">
+                                <input type="password" class="form-control password-field" placeholder="Password"
+                                    formControlName="password" [ngClass]="{'is-invalid':f.password.errors&& submit}">
+                                <div class="invalid-feedback" *ngIf="f.password.errors">
+                                    <div *ngIf="f.password.errors.required">Password is required</div>
+                                </div>
                             </div>
                             <div class="form-group forgot-password text-right">
                                 <a href="#" data-toggle="modal" data-target="#exampleModal">Forgot Password?</a>
                             </div>
                             <div class="form-group text-center ">
-                                <button type="submit" class="btn btn-primary" (click)="gotoProfile()">LOGIN</button>
+                                <button type="submit" class="btn btn-primary" (click)="login()">LOGIN</button>
                             </div>
                         </form>
                         <div class="row mt-5 new-account">
@@ -66,16 +74,24 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <input type="email" class="form-control email-field" id="exampleInputEmail1"
-                    aria-describedby="emailHelp" placeholder="Email">
-            </div>
-            <div class="modal-footer b-0">
-                <div class="w-100 text-center ">
-                    <button type="submit" class="btn btn-primary" data-dismiss="modal"
-                        aria-label="Close">SUBMIT</button>
+            <form [formGroup]="forgotForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input type="email" class="form-control email-field" id="exampleInputEmail1"
+                            aria-describedby="emailHelp" placeholder="Email" formControlName="email"
+                            [ngClass]="{'is-invalid':f1.email.errors&& submitted}">
+                        <div class="invalid-feedback" *ngIf="f1.email.errors">
+                            <div *ngIf="f1.email.errors.required">Email is required</div>
+                            <div *ngIf="f1.email.errors.email">Enter a valid Email</div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+                <div class="modal-footer b-0">
+                    <div class="w-100 text-center ">
+                        <button type="submit" class="btn btn-primary" (click)="forgotPassword()">SUBMIT</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

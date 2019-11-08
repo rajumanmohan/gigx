@@ -25,21 +25,21 @@
                 <span class="navbar-text"> <img src="../../../assets/images/bell.png" class="bell"></span>
                 <span class="navbar-text">
                     <div class="profile-name">
-                        <h4>SI</h4>
+                        <h4>{{profilename}}</h4>
                     </div>
                 </span>
                 <span class="navbar-text">
                     <div class="dropdown dropdown-button">
                         <a class="nav-item " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            Sorga <img src="../../../assets/images/down-arrow.png">
+                            {{companyName}} <img src="../../../assets/images/down-arrow.png">
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" (click)="gotoProfile()">My Profile</a>
                             <a class="dropdown-item" href="#" routerLink="/changepassword">Change Password</a>
                             <a class="dropdown-item" href="#" routerLink="/subscriptions">Subscriptions</a>
-                            <a class="dropdown-item" href="#" routerLink="/coverpage">Logout</a>
+                            <a class="dropdown-item" (click)="logout()">Logout</a>
 
                         </div>
                     </div>
@@ -72,7 +72,7 @@
 
         <div class="row justify-content-center ">
             <div class="col-md-6">
-                <h1 class="text-center mb-3">Welcome, Sorga Innovation!
+                <h1 class="text-center mb-3">Welcome, {{companyName}}!
                 </h1>
             </div>
         </div>
@@ -318,11 +318,11 @@
                 <div class="company-profile">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <img src="../../../assets/images/sorga-logo.jpg">
+                            <img [src]="profileDetails.logo">
                             <div class="online"></div>
-                            <h3>SORGA INNOVATION SDN BHD</h3>
+                            <h3> {{companyName}}</h3>
 
-                            <p>Kuala Lumpur , Malaysia</p>
+                            <p>{{profileDetails.address}}</p>
                             <button class="btn review" (click)="gotoProfile()">EDIT PROFILE</button>
                         </div>
                     </div>

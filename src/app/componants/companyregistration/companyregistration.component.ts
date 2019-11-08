@@ -141,7 +141,7 @@ export class CompanyregistrationComponent implements OnInit {
           this.registrationForm.reset();
           this.submitted = false;
           this.url1 = '';
-          this.router.navigate(['/companydashboard']);
+          this.router.navigate(['/login']);
         } else {
           this.toast.error(res['message'], "error");
         }
