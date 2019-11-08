@@ -21,7 +21,7 @@
             <ng-template matStepperIcon="phone">
                 <mat-icon>home</mat-icon>
             </ng-template>
-
+            <!-- temp [stepControl]="registrationForm"  -->
             <mat-step label="" state="phone">
                 <!-- <p>Step 1</p> -->
                 <section [@fadeInAndOut] class="login company-registration mt-3 mb-5">
@@ -59,7 +59,7 @@
                                         <div class="input-group-prepend">
                                             <select class="custom-select" id="inputGroupSelect01"
                                                 formControlName="mobile_code">
-                                                <option [ngValue]="+61" [selected]="+61">+61</option>
+                                                <option [ngValue]="+601" [selected]="+601">+601</option>
                                                 <option [ngValue]="+91">+91 </option>
                                                 <option [ngValue]="+852">+852</option>
                                                 <option [ngValue]="+62"> +62</option>
@@ -90,10 +90,11 @@
                                     <div class="row form-group">
                                         <div class="col-md-5">
                                             <div class="upload-image text-center">
-                                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg,.pdf"
-                                                    #fileInput (change)="readUrl1($event)" />
+                                                <input type='file' id="imageUpload" name="ds" accept=".pdf" #fileInput
+                                                    (change)="readUrl1($event)" />
                                                 <img *ngIf="!url2==true" src="/assets/images/upload.png">
-                                                <img *ngIf="url2" [src]="url2" height="60">
+                                                <!-- <img *ngIf="url2" [src]="url2" height="60"> -->
+                                                <p *ngIf="url2">{{path}}</p>
 
                                                 <p class="drag">Drag & Drop file here</p>
                                                 <p class="file-select">or select file to upload</p>
@@ -105,10 +106,10 @@
                                         </div>
                                         <div class="col-md-5">
                                             <div class="upload-image text-center">
-                                                <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg,video/mp4"
+                                                <input type='file' id="imageUpload" name="ds" accept="video/mp4"
                                                     #fileInput (change)="readUrl2($event)" />
                                                 <img *ngIf="!url3==true" src="/assets/images/upload.png" class="mt-3">
-                                                <img *ngIf="url3" [src]="url3" height="60">
+                                                <p *ngIf="url3">{{path1}}</p>
 
                                                 <p class="drag mt-3">upload video</p>
                                             </div>
@@ -131,10 +132,23 @@
                                                 (change)="changeGender($event)">
                                             <label class="custom-control-label" for="customRadioInline2">Female</label>
                                         </div>
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="customRadioInline3" name="customRadioInline1"
+                                                class="custom-control-input" value="Others"
+                                                (change)="changeGender($event)">
+                                            <label class="custom-control-label" for="customRadioInline3">Others</label>
+                                        </div>
                                     </div>
                                     <div class="form-group">
+                                        <label>Date of birth</label>
                                         <my-date-picker name="mydate" (dateChanged)="onDateChanged($event)"
-                                            [selDate]="mydate" required placeholder="2019-08-08"></my-date-picker>
+                                            [selDate]="dob" formControlName="dob" required placeholder="2019-08-08"
+                                            [ngClass]="{'is-invalid':f.dob.errors&& submitted}">
+                                        </my-date-picker>
+                                        <div class="invalid-feedback" *ngIf="f.dob.errors">
+                                            <div *ngIf="f.dob.errors.required">Dob is required
+                                            </div>
+                                        </div>
                                     </div>
                                     <!-- vamshi upload img -->
 
@@ -169,7 +183,7 @@
                     </div>
                 </section>
             </mat-step>
-
+            <!-- temp [stepControl]="registrationForm1"  -->
             <mat-step #step2 label="">
                 <!-- <h3>Step 2</h3> -->
 
@@ -177,7 +191,7 @@
                     <div class="container create-account">
                         <div class="row justify-content-center ">
                             <div class="col-md-6">
-                                <form [formGroup]="registrationForm1" (ngSubmit)="registration1()">
+                                <form [formGroup]="registrationForm1" (ngSubmit)="registration1(f2)">
 
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="exampleInputEmail1"
@@ -209,8 +223,8 @@
                                     </div>
                                     <div class="form-group">
                                         <select class="form-control" id="exampleFormControlSelect1"
-                                            placeholder="Industry Type" formControlName="yearOfComplition"
-                                            [ngClass]="{'is-invalid':f1.yearOfComplition.errors&& submitted1}">
+                                            placeholder="Industry Type" formControlName="year_of_completion"
+                                            [ngClass]="{'is-invalid':f1.year_of_completion.errors&& submitted1}">
                                             <option value="company" [disabled]="true" [selected]="true">Year of
                                                 Completion
                                             </option>
@@ -221,8 +235,9 @@
                                             <option value="2015">2015</option>
                                             <option value="2014">2014</option>
                                         </select>
-                                        <div *ngIf="submitted1 && f1.yearOfComplition.errors" class="invalid-feedback">
-                                            <div *ngIf="f1.yearOfComplition.errors.required">Year of complition is
+                                        <div *ngIf="submitted1 && f1.year_of_completion.errors"
+                                            class="invalid-feedback">
+                                            <div *ngIf="f1.year_of_completion.errors.required">Year of complition is
                                                 required</div>
                                         </div>
                                     </div>
@@ -256,15 +271,15 @@
 
                                         <div *ngFor="let education of f2.controls;let i=index;"
                                             class="muti-education mb-5">
-                                            <div [formGroup]="education">
+                                            <div [formGroup]="education" #f2="ngForm">
                                                 <div class="row">
                                                     <div class="col-md-10">
                                                         <h5>Education details:{{i+1}}</h5>
                                                     </div>
-                                                    <!-- <div class="col-md-2">
+                                                    <div class="col-md-2">
                                                         <i class="fa fa-times-circle delete-icon"
                                                             (click)="remove(i)"></i>
-                                                    </div> -->
+                                                    </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="text" class="form-control" aria-describedby="emailHelp"
@@ -312,8 +327,8 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <select class="form-control" id="exampleFormControlSelect1"
-                                                        placeholder="Industry Type" formControlName="year_of_complition"
-                                                        [ngClass]="{'is-invalid':education.controls.year_of_complition.errors&& submitted1}">
+                                                        placeholder="Industry Type" formControlName="year_of_completion"
+                                                        [ngClass]="{'is-invalid':education.controls.year_of_completion.errors&& submitted1}">
                                                         <option value="company" [disabled]="true" [selected]="true">Year
                                                             of
                                                             Completion
@@ -325,54 +340,28 @@
                                                         <option value="2015">2015</option>
                                                         <option value="2014">2014</option>
                                                     </select>
-                                                    <div *ngIf="submitted1 && education.controls.year_of_complition.errors"
+                                                    <div *ngIf="submitted1 && education.controls.year_of_completion.errors"
                                                         class="invalid-feedback">
                                                         <div
-                                                            *ngIf="education.controls.year_of_complition.errors.required">
+                                                            *ngIf="education.controls.year_of_completion.errors.required">
                                                             Year of
                                                             complition is
                                                             required</div>
                                                     </div>
                                                 </div>
-
+                                                <p>Type of Degree</p>
                                                 <div class="form-group">
-                                                    <p>Type of Degree</p>
-                                                    <!-- <div class="custom-control custom-radio custom-control-inline"
-                                                        (change)="chnageDegree($event)"
-                                                        *ngFor="let radio of degreeArray;let i=index;">
-                                                        <input type="radio" id="radio{{i}}" [name]="radio"
-                                                            class="custom-control-input" [checked]="radio=='Full time'"
-                                                            [value]="i">
-                                                        <label class="custom-control-label" for="radio{{i}}">
-                                                            {{radio}}</label>
-                                                    </div> -->
-
-                                                    <div *ngFor="let radiobutton of radioItems;let i=index;">
-                                                        <input type="radio" value="{{radiobutton}}"
-                                                            [name]='"fxc"+i'>{{radiobutton}}
-                                                    </div>
-
-                                                    <!-- <div class="custom-control custom-radio custom-control-inline"
-                                                        (change)="chnageDegree($event)">
-                                                        <input type="radio" id="customRadioInliney{{i+1}}"
-                                                            name="customRadioInliney{{i}}" class="custom-control-input"
-                                                            value="Part time">
-                                                        <label class="custom-control-label"
-                                                            for="customRadioInliney{{i+1}}">Part
-                                                            time</label>
-                                                    </div>
                                                     <div class="custom-control custom-radio custom-control-inline"
-                                                        (change)="chnageDegree($event)">
-                                                        <input type="radio" id="customRadioInliney{{i+2}}"
-                                                            name="customRadioInliney{{i}}" class="custom-control-input"
-                                                            value="Correspandence">
+                                                        (change)="chnageDegree1($event)"
+                                                        *ngFor="let radio of radioItems">
+                                                        <input type="radio" id="radio_{{radio}}_{{i+type_id}}"
+                                                            [name]="'type_degree'+'_'+i" class="custom-control-input"
+                                                            value="{{radio}}" [checked]="radio=='Full time'">
                                                         <label class="custom-control-label"
-                                                            for="customRadioInliney{{i+2}}">
-                                                            Correspandence</label>
-                                                    </div> -->
+                                                            for="radio_{{radio}}_{{i+type_id}}">
+                                                            {{radio}}</label>
+                                                    </div>
                                                 </div>
-
-
 
                                             </div>
                                         </div>
@@ -383,15 +372,13 @@
                                     <button type="submit" class="btn btn-primary mt-5">CONTINUE</button>
 
                                 </form>
-                                <div *ngFor="let radiobutton of degreeArray;let i=index;">
-                                    <input type="radio" value="{{radiobutton}}" [name]='"fxc"+i'>{{radiobutton}}
-                                </div>
                             </div>
 
                         </div>
                     </div>
                 </section>
             </mat-step>
+            <!-- temp [stepControl]="employeeForm" -->
             <mat-step #step3 label="">
                 <section [@fadeInAndOut] class="login company-registration mt-3 mb-5">
                     <div class="container create-account">
@@ -443,7 +430,7 @@
                                                 <select class="form-control" id="exampleFormControlSelect1"
                                                     placeholder="Industry Type" formControlName="currency_type1"
                                                     [ngClass]="{'is-invalid':f3.currency_type1.errors&& submitted3}">
-                                                    <option value="company" [disabled]="true" [selected]="true">Laks
+                                                    <option value="company" [disabled]="true" [selected]="true">Lakhs
                                                     </option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
@@ -505,7 +492,7 @@
                                                     <option value="company" [disabled]="true" [selected]="true">Month
                                                     </option>
                                                     <option value="01">01</option>
-                                                    <option value="01">01</option>
+                                                    <option value="01">02</option>
                                                     <option value="03">03</option>
                                                     <option value="04">04</option>
 
@@ -521,10 +508,12 @@
                                                 <select class="form-control" id="exampleFormControlSelect1"
                                                     placeholder="Industry Type" formControlName="year"
                                                     [ngClass]="{'is-invalid':f3.year.errors&& submitted3}">
-                                                    <option value="company" [disabled]="true" [selected]="true">
-                                                    <option value="company" disabled>Year </option>
+                                                    <option value="company" [disabled]="true" [selected]="true">Year
+                                                    </option>
                                                     <option value="1999">1999</option>
                                                     <option value="2000">2000</option>
+                                                    <option value="2001">2001</option>
+
                                                 </select>
                                                 <div class="invalid-feedback" *ngIf="f3.year.errors">
                                                     <div *ngIf="f3.year.errors.required">Year is required
@@ -549,7 +538,7 @@
                                             [ngClass]="{'is-invalid':f3.industry_type.errors&& submitted3}">
                                             <option value="individual" [selected]="true" [disabled]="true">Industry Type
                                             </option>
-                                            <option value=">Oil and Gas">Oil and Gas</option>
+                                            <option value="Oil and Gas">Oil and Gas</option>
                                             <option value="IT">IT</option>
                                             <option value="Marketing">Marketing</option>
                                         </select>
@@ -577,7 +566,14 @@
 
                                     <div *ngFor="let employee of f5.controls;let i=index;" class="muti-education mb-5">
                                         <div [formGroup]="employee">
-                                            <h5>Employee Details {{i+1}}</h5>
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <h5>Employee Details:{{i+1}}</h5>
+                                                </div>
+                                                <div class="col-md-2">
+                                                    <i class="fa fa-times-circle delete-icon" (click)="remove1(i)"></i>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="exampleInputEmail1"
                                                     aria-describedby="emailHelp" placeholder="Current designation"
@@ -637,7 +633,7 @@
                                                             placeholder="Industry Type" formControlName="currency_type1"
                                                             [ngClass]="{'is-invalid':employee.controls.currency_type1.errors&& submitted3}">
                                                             <option value="company" [disabled]="true" [selected]="true">
-                                                                Laks
+                                                                Lakhs
                                                             </option>
                                                             <option value="2">2</option>
                                                             <option value="3">3</option>
@@ -690,10 +686,10 @@
                                                             placeholder="Industry Type" formControlName="date"
                                                             [ngClass]="{'is-invalid':employee.controls.date.errors&& submitted3}">
                                                             <option value="company" [disabled]="true" [selected]="true">
-                                                                date
+                                                                Date
                                                             </option>
                                                             <option value="01">01</option>
-                                                            <option value="01">01</option>
+                                                            <option value="01">02</option>
                                                             <option value="03">03</option>
                                                             <option value="04">04</option>
 
@@ -712,10 +708,10 @@
                                                             placeholder="Industry Type" formControlName="month"
                                                             [ngClass]="{'is-invalid':employee.controls.month.errors&& submitted3}">
                                                             <option value="company" [disabled]="true" [selected]="true">
-                                                                month
+                                                                Month
                                                             </option>
                                                             <option value="01">01</option>
-                                                            <option value="01">01</option>
+                                                            <option value="01">02</option>
                                                             <option value="03">03</option>
                                                             <option value="04">04</option>
 
@@ -735,7 +731,7 @@
                                                             placeholder="Industry Type" formControlName="year"
                                                             [ngClass]="{'is-invalid':employee.controls.year.errors&& submitted3}">
                                                             <option value="company" [disabled]="true" [selected]="true">
-                                                                year
+                                                                Year
                                                             </option>
                                                             <option value="1999">1999</option>
                                                             <option value="2000">2000</option>
@@ -760,10 +756,10 @@
                                                             placeholder="Industry Type" formControlName="date1"
                                                             [ngClass]="{'is-invalid':employee.controls.date1.errors&& submitted3}">
                                                             <option value="company" [disabled]="true" [selected]="true">
-                                                                date
+                                                                Date
                                                             </option>
                                                             <option value="01">01</option>
-                                                            <option value="01">01</option>
+                                                            <option value="02">02</option>
                                                             <option value="03">03</option>
                                                             <option value="04">04</option>
 
@@ -782,10 +778,10 @@
                                                             placeholder="Industry Type" formControlName="month1"
                                                             [ngClass]="{'is-invalid':employee.controls.month1.errors&& submitted3}">
                                                             <option value="company" [disabled]="true" [selected]="true">
-                                                                month
+                                                                Month
                                                             </option>
                                                             <option value="01">01</option>
-                                                            <option value="01">01</option>
+                                                            <option value="02">02</option>
                                                             <option value="03">03</option>
                                                             <option value="04">04</option>
 
@@ -805,7 +801,7 @@
                                                             placeholder="Industry Type" formControlName="year1"
                                                             [ngClass]="{'is-invalid':employee.controls.year1.errors&& submitted3}">
                                                             <option value="company" [disabled]="true" [selected]="true">
-                                                                year
+                                                                Year
                                                             </option>
                                                             <option value="1999">1999</option>
                                                             <option value="2000">2000</option>
@@ -841,7 +837,7 @@
                                                     <option value="individual" [selected]="true" [disabled]="true">
                                                         Industry Type
                                                     </option>
-                                                    <option value=">Oil and Gas">Oil and Gas</option>
+                                                    <option value="Oil and Gas">Oil and Gas</option>
                                                     <option value="IT">IT</option>
                                                     <option value="Marketing">Marketing</option>
                                                 </select>
@@ -887,7 +883,7 @@
                     </div>
                 </section>
             </mat-step>
-            <mat-step #step4 label="" state="user">
+            <mat-step #step4 label="" [stepControl]="jobPreferrences" state="user">
                 <section [@fadeInAndOut] class="login company-registration mt-3 mb-5">
                     <div class="container create-account">
                         <div class="profile">
@@ -980,10 +976,20 @@
                                         <label for="exampleFormControlTextarea2"> Select 10 to 20 Skills to help
                                             algorithms match you with opportunities</label>
                                         <div>
-                                            <textarea class="form-control rounded-0" value="newArr" name="newArr"
+                                            <!-- <textarea class="form-control rounded-0" value="newArr" name="newArr"
                                                 id="exampleFormControlTextarea2" rows="3">
 {{Data}}
-                                        </textarea>
+                                        </textarea> -->
+                                            <div class="form-control text-area">
+                                                <ul>
+                                                    <li *ngFor="let skill of newArr;let i=index;">
+                                                        <!-- <button type="button" class="close" aria-label="Close"> -->
+                                                        <span class="close" aria-hidden="true"
+                                                            (click)="closeSkill(i)">&times;</span>
+                                                        <!-- </button> -->
+                                                        {{skill}}</li>
+                                                </ul>
+                                            </div>
                                         </div>
 
                                     </div>

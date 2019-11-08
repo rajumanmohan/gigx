@@ -139,6 +139,9 @@ font-size:14px!important
  .form-control.is-invalid, .was-validated .form-control:invalid {
     border-color: #dc3545 !important;
 }
+.mydp .icon-mydpremove:before,.mydp .icon-mydpremove:after,.icon-mydpremove {
+    display: none !important;
+}
  @media (max-width: 575.98px) { 
    
     body.mat-step-header .mat-step-icon {
