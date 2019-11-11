@@ -199,10 +199,9 @@
                                     <td class="b-0"><span>:</span>
                                         <span *ngIf="edit==false">{{profileDetails.company_name}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
-                                            <input type="text" value="Sorga Innovation Sdh Bhd" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Name"
-                                                formControlName="company_name"
-                                                [ngClass]="{'is-invalid':f1.company_name.errors&& submitted}">
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Name" formControlName="company_name"
+                                                [ngClass]="{'is-invalid':f1.company_name.errors}">
                                             <div class="invalid-feedback" *ngIf="f1.company_name.errors">
                                                 <div *ngIf="f1.company_name.errors.required">Company Name is required
                                                 </div>
@@ -215,9 +214,8 @@
                                     <td class="b-0"><span>:</span>
                                         <span *ngIf="edit==false">{{profileDetails.company_url}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
-                                            <input type="text" value="https://www.Sorgainnovation.com/"
-                                                class="form-control" id="exampleInputPassword1" placeholder="Url"
-                                                formControlName="company_url"
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Url" formControlName="company_url"
                                                 [ngClass]="{'is-invalid':f1.company_url.errors&& submitted}">
                                             <div class="invalid-feedback" *ngIf="f1.company_url.errors">
                                                 <div *ngIf="f1.company_url.errors.required">Company Name is required
@@ -229,13 +227,13 @@
                                 <tr class="b-0">
                                     <td class="b-0 contact-title">EMAIL</td>
                                     <td class="b-0"><span>:</span>
-                                        <span *ngIf="edit==false">{{profileDetails.email}}</span>
+                                        <span *ngIf="edit==false">{{profileDetails.company_email}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
-                                            <input type="text" value="Sorgainnovation@gmail.com" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Email" formControlName="email"
-                                                [ngClass]="{'is-invalid':f1.email.errors&& submitted}">
-                                            <div class="invalid-feedback" *ngIf="f1.email.errors">
-                                                <div *ngIf="f1.email.errors.required">Company Name is required
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Email" formControlName="company_email"
+                                                [ngClass]="{'is-invalid':f1.company_email.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f1.company_email.errors">
+                                                <div *ngIf="f1.company_email.errors.required">Company Name is required
                                                 </div>
                                             </div>
                                         </span>
@@ -246,9 +244,8 @@
                                     <td class="b-0"><span>:</span>
                                         <span *ngIf="edit==false">{{profileDetails.industry_type}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
-                                            <input type="text" value="Company" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Industry type"
-                                                formControlName="industry_type"
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Industry type" formControlName="industry_type"
                                                 [ngClass]="{'is-invalid':f1.industry_type.errors&& submitted}">
                                             <div class="invalid-feedback" *ngIf="f1.industry_type.errors">
                                                 <div *ngIf="f1.industry_type.errors.required">Company Name is required
@@ -262,9 +259,8 @@
                                     <td class="b-0"><span>:</span>
                                         <span *ngIf="edit==false">{{profileDetails.country}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
-                                            <input type="text" value="Malaysia" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Country"
-                                                formControlName="country"
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Country" formControlName="country"
                                                 [ngClass]="{'is-invalid':f1.country.errors&& submitted}">
                                             <div class="invalid-feedback" *ngIf="f1.country.errors">
                                                 <div *ngIf="f1.country.errors.required">Company Name is required
@@ -278,9 +274,8 @@
                                     <td class="b-0"><span>:</span>
                                         <span *ngIf="edit==false">{{profileDetails.postal_code}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
-                                            <input type="text" value="500036" class="form-control"
-                                                id="exampleInputPassword1" placeholder="POSTCODE"
-                                                formControlName="postal_code"
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="POSTCODE" formControlName="postal_code"
                                                 [ngClass]="{'is-invalid':f1.postal_code.errors&& submitted}">
                                             <div class="invalid-feedback" *ngIf="f1.postal_code.errors">
                                                 <div *ngIf="f1.postal_code.errors.required">Company Name is required
@@ -294,9 +289,8 @@
                                     <td class="b-0"><span>:</span>
                                         <span *ngIf="edit==false">{{profileDetails.company_registration}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
-                                            <input type="text" value="N0098746885565" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Sst no"
-                                                formControlName="company_registration"
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Sst no" formControlName="company_registration"
                                                 [ngClass]="{'is-invalid':f1.company_registration.errors&& submitted}">
                                             <div class="invalid-feedback" *ngIf="f1.company_registration.errors">
                                                 <div *ngIf="f1.company_registration.errors.required">Company Name is
@@ -326,9 +320,8 @@
                                     <td class="b-0"><span>:</span>
                                         <span *ngIf="edit==false">{{profileDetails.contact_person}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
-                                            <input type="text" value="ShareenAbdul Ghani" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Name"
-                                                formControlName="contact_person"
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Name" formControlName="contact_person"
                                                 [ngClass]="{'is-invalid':f1.contact_person.errors&& submitted}">
                                             <div class="invalid-feedback" *ngIf="f1.contact_person.errors">
                                                 <div *ngIf="f1.contact_person.errors.required">Company Name is
@@ -343,9 +336,8 @@
                                     <td class="b-0"><span>:</span>
                                         <span *ngIf="edit==false">{{profileDetails.designation}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
-                                            <input type="text" value="Human Resources" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Designation"
-                                                formControlName="designation"
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Designation" formControlName="designation"
                                                 [ngClass]="{'is-invalid':f1.designation.errors&& submitted}">
                                             <div class="invalid-feedback" *ngIf="f1.designation.errors">
                                                 <div *ngIf="f1.designation.errors.required">Company Name is
@@ -360,9 +352,8 @@
                                     <td class="b-0"><span>:</span>
                                         <span *ngIf="edit==false">{{profileDetails.contact_email}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
-                                            <input type="text" value="ShareenAbdul@gmail.com" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Email"
-                                                formControlName="contact_email"
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Email" formControlName="contact_email"
                                                 [ngClass]="{'is-invalid':f1.contact_email.errors&& submitted}">
                                             <div class="invalid-feedback" *ngIf="f1.contact_email.errors">
                                                 <div *ngIf="f1.contact_email.errors.required">Company Name is
@@ -379,9 +370,8 @@
                                             {{profileDetails.mobile}}
                                         </span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
-                                            <input type="text" value="9845635420" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Mobile number"
-                                                formControlName="mobile"
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Mobile number" formControlName="mobile"
                                                 [ngClass]="{'is-invalid':f1.mobile.errors&& submitted}">
                                             <div class="invalid-feedback" *ngIf="f1.mobile.errors">
                                                 <div *ngIf="f1.mobile.errors.required">Company Name is
@@ -404,7 +394,7 @@
                     <button type="submit" class="btn " (click)="editProfile()">EDIT PROFILE</button>
                 </div>
                 <div class="col-md-6 text-center" *ngIf="edit==true">
-                    <button type="submit" class="btn " (click)="showData()">Save</button>
+                    <button type="submit" class="btn " (click)="getCompanyProfile()">Save</button>
                 </div>
                 <div class="col-md-6 text-center" *ngIf="edit==true">
                     <button type="submit" class="btn " (click)="showData()">Cancel</button>

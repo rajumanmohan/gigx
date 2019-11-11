@@ -24,7 +24,9 @@ import {
 })
 export class ProfileComponent implements OnInit {
   page; companyId; loginType;
+  editCompanyForm: FormGroup; submit = false;
   edit = false;
+  submitted = false;
   constructor(private route: ActivatedRoute, private appSer: AppServiceService, private toast: ToastrService, private formBuilder: FormBuilder) {
     this.route.queryParams.subscribe(params => {
       this.page = params['page'];
@@ -37,15 +39,34 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0);
     this.getCompanyProfile();
+    this.editCompanyForm = this.formBuilder.group({
+      company_name: [null, Validators.required],
+      company_url: [null, Validators.required],
+      contact_email: [null, [Validators.required, Validators.email]],
+      industry_type: ['', Validators.required],
+      country: ['', Validators.required],
+      pincode: ['', Validators.required],
+      company_registration: [null, Validators.required],
+      contact_person_name: ['', Validators.required],
+      designation: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      mobile: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+    });
+
   }
   editProfile() {
     this.edit = true;
-    
   }
+  profileDetails = []; profileFormDetails;
+  get f1() { return this.editCompanyForm.controls; }
   showData() {
-    this.edit = false;
+    // this.edit = false;
+    if (this.editCompanyForm.invalid) {
+      return;
+    }
+    this.submitted == true;
+    this.getCompanyProfile();
   }
-  profileDetails = [];
   getCompanyProfile() {
     let params = {
       company_type: this.loginType,
@@ -53,10 +74,22 @@ export class ProfileComponent implements OnInit {
     }
     this.appSer.CompanyProfile(params).subscribe((res) => {
       this.profileDetails = res['data'];
-
+      this.profileFormDetails = this.profileDetails;
+      this.editCompanyForm = this.formBuilder.group({
+        company_name: [this.profileFormDetails.company_name, Validators.required],
+        company_url: [this.profileFormDetails.company_url, Validators.required],
+        contact_email: [this.profileFormDetails.contact_email, Validators.required, Validators.email],
+        industry_type: [this.profileFormDetails.industry_type, Validators.required],
+        country: [this.profileFormDetails.country, Validators.required],
+        pincode: [this.profileFormDetails.pincode, Validators.required],
+        company_registration: [this.profileFormDetails.company_registration, Validators.required],
+        contact_person_name: [this.profileFormDetails.contact_person_name, Validators.required],
+        designation: [this.profileFormDetails.designation, Validators.required],
+        email: [this.profileFormDetails.email, Validators.required, Validators.email],
+        mobile: [this.profileFormDetails.mobile, Validators.required, Validators.maxLength(10), Validators.minLength(10)]
+      });
     })
   }
-
 
 
 }
