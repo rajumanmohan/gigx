@@ -62,6 +62,7 @@ export class TelentregistrationComponent implements OnInit {
   test1 = "5666666"
   degreeArray = ["Full time", "Part time", "Correspandence"];
   radioItems = ["Full time", "Part time", "Correspandence"];
+
   nestedForm;
   constructor(private fb: FormBuilder, private toast: ToastrService, private appSer: AppServiceService, private router: Router) { }
   // Step 1 -> full_name,email,password,mobile_code,mobile,location,talent_attachment,talent_attachment_video,gender,dob
