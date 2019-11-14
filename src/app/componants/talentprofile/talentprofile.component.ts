@@ -382,9 +382,7 @@ export class TalentprofileComponent implements OnInit {
       this.talentEducationDetails = res['step2'].educationaldetails;
       this.talentJobDetails = res['step3'].jobdetails;
       this.talentJobPreference = res['step4'].jobpreferences[0];
-      console.log(this.talentJobPreference)
-      this.talentJobPreference = res['step4'].jobpreferences;
-      this.talentBankDetails = res['step5'].bankdetails[0];
+      this.talentBankDetails = res['step5'].bankdetails[0] || [];
       this.editBankDetailsForm = this.fb.group({
         account_holder_name: [this.talentBankDetails.account_holder_name, Validators.required],
         account_number: [this.talentBankDetails.account_number, Validators.required],

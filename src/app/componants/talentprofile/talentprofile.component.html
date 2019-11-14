@@ -866,12 +866,12 @@
             <div class="col-md-12">
                 <div class="profile">
                     <div class="upload-image1 text-center">
-                        <img *ngIf="!url1==true&&!talentJobPreference.image" src="../../../assets/images/user.png" />
+                        <!-- <img *ngIf="!url1==true" src="../../../assets/images/user.png" /> -->
                         <img class="attch-img" src="../../../assets/images/camera.png" />
                         <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
                             (change)="readUrl($event)" />
                         <img *ngIf="url1" [src]="url1" class="uploaded-img">
-                        <img *ngIf="!url1" [src]="talentJobPreference.image" class="uploaded-img">
+                        <img *ngIf="!url1" src="{{talentJobPreference?.image}}" class="uploaded-img" />
 
                     </div>
 
