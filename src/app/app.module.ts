@@ -44,7 +44,7 @@ import { RegistrationDataComponent } from './componants/registration-data/regist
 import { IndividualRegistrationsComponent } from './componants/individual-registrations/individual-registrations.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CompanysubscriptionsComponent } from './componants/companysubscriptions/companysubscriptions.component';
-
+import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -81,6 +81,7 @@ import { CompanysubscriptionsComponent } from './componants/companysubscriptions
     CompanysubscriptionsComponent
   ],
   imports: [
+    NgSelectModule,
     NgxSpinnerModule,
     BrowserModule,
     AppRoutingModule,

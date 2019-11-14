@@ -113,35 +113,28 @@
                     <div class="row form-group country-city">
                         <div class="col-md-6">
                             <select class="form-control" id="exampleFormControlSelect1" formControlName="country"
+                                (change)="changeCountryList($event.target.value)"
                                 [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
                                 <option value="" [selected]=true [disabled]="true">Country </option>
-                                <option value="malaysia">Malaysia </option>
-                                <option value="india"> India</option>
+                                <option *ngFor="let data of CountiresList" [value]="data.country_id">
+                                    {{data.country_name}}
+                                </option>
                             </select>
+                            <!-- <ng-select [items]="CountiresList" (change)="changeCountryList1($event)"
+                                bindLabel="country_name" formControlName="country" placeholder="Select Country">
+                            </ng-select> -->
                             <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
                                 <div *ngIf="f.country.errors.required">Country is required</div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <select class="form-control" id="exampleFormControlSelect1" formControlName="state">
+                            <select class="form-control" id="exampleFormControlSelect1" formControlName="state"
+                                (change)="changeStateList($event.target.value)">
                                 <option value="" [selected]=true [disabled]="true">State </option>
-                                <option value="Johor"> Johor</option>
-                                <option value="Kedah"> Kedah</option>
-                                <option value="Kelantan"> Kelantan</option>
-                                <option value="Kuala Lumpur"> Kuala Lumpur</option>
-                                <option value="Labuan"> Labuan</option>
-                                <option value="Melaka"> Melaka </option>
-                                <option value="Negeri"> Negeri</option>
-                                <option value="Pahang"> Pahang</option>
-                                <option value="Perak"> Perak </option>
-                                <option value="Perlis"> Perlis</option>
-                                <option value="Pulau "> Pulau </option>
-                                <option value="Putrajaya "> Putrajaya </option>
-                                <option value="Sabah "> Sabah </option>
-                                <option value="Sarawak "> Sarawak </option>
-                                <option value="Selangor "> Selangor </option>
-                                <option value="Terengganu "> Terengganu </option>
+                                <option *ngFor="let data of statesList" [value]="data.state_id"> {{data.state}}</option>
+
                             </select>
+
                             <!-- <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
                                 <div *ngIf="f.state.errors.required">State is required</div>
                             </div> -->
@@ -153,11 +146,8 @@
                                 <select class="form-control" id="exampleFormControlSelect1" formControlName="city"
                                     [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
                                     <option value="" [selected]=true [disabled]="true">City </option>
-                                    <option value="Kuala Lumpur">Kuala Lumpur </option>
-                                    <option value="Victoria"> Victoria</option>
-                                    <option value=" Johor Bahru"> Johor Bahru </option>
-                                    <option value="Alor Setar"> Alor Setar</option>
-                                    <option value="Other"> Other</option>
+                                    <option *ngFor="let data of citiesList" [value]="data.city_id"> {{data.city}}
+                                    </option>
                                 </select>
                                 <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
                                     <div *ngIf="f.city.errors.required">City is required</div>
@@ -187,7 +177,7 @@
                         </div>
                         <input myNumberOnly type="text" class="form-control" placeholder="Mobile Number" name="mobile"
                             formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
-                            maxlength="10" max="10" min="10">
+                            maxlength="15" max="10" min="10">
                         <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
                             <div *ngIf="f.mobile.errors.required"> Mobile number is required</div>
                             <div *ngIf="f.mobile.errors.maxlength">Mobile number must be 10 digits</div>
@@ -329,48 +319,34 @@
                     <div class="row form-group country-city">
                         <div class="col-md-6">
                             <select class="form-control" id="exampleFormControlSelect1" formControlName="country"
+                                (change)="changeCountryList($event.target.value)"
                                 [ngClass]="{ 'is-invalid': submitted1 && f1.country.errors }">
                                 <option value="" [selected]=true [disabled]="true">Country </option>
-                                <option value="malaysia">Malaysia </option>
-                                <option value="india"> India</option>
+                                <option *ngFor="let data of CountiresList" [value]="data.country_id">
+                                    {{data.country_name}}
+                                </option>
                             </select>
                             <div *ngIf="submitted1 && f1.country.errors" class="invalid-feedback">
                                 <div *ngIf="f1.country.errors.required">Country is required</div>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <select class="form-control" id="exampleFormControlSelect21" formControlName="state">
+                            <select class="form-control" id="exampleFormControlSelect1" formControlName="state"
+                                (change)="changeStateList($event.target.value)">
                                 <option value="" [selected]=true [disabled]="true">State </option>
-                                <option value="Johor"> Johor</option>
-                                <option value="Kedah"> Kedah</option>
-                                <option value="Kelantan"> Kelantan</option>
-                                <option value="Kuala Lumpur"> Kuala Lumpur</option>
-                                <option value="Labuan"> Labuan</option>
-                                <option value="Melaka"> Melaka </option>
-                                <option value="Negeri"> Negeri</option>
-                                <option value="Pahang"> Pahang</option>
-                                <option value="Perak"> Perak </option>
-                                <option value="Perlis"> Perlis</option>
-                                <option value="Pulau "> Pulau </option>
-                                <option value="Putrajaya "> Putrajaya </option>
-                                <option value="Sabah "> Sabah </option>
-                                <option value="Sarawak "> Sarawak </option>
-                                <option value="Selangor "> Selangor </option>
-                                <option value="Terengganu "> Terengganu </option>
+                                <option *ngFor="let data of statesList" [value]="data.state_id"> {{data.state}}</option>
+
                             </select>
                         </div>
                     </div>
                     <div class="row ">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <select class="form-control" id="exampleFormControlSelect22" formControlName="city"
+                                <select class="form-control" id="exampleFormControlSelect1" formControlName="city"
                                     [ngClass]="{ 'is-invalid': submitted1 && f1.city.errors }">
                                     <option value="" [selected]=true [disabled]="true">City </option>
-                                    <option value="Kuala Lumpur">Kuala Lumpur </option>
-                                    <option value="Victoria"> Victoria</option>
-                                    <option value=" Johor Bahru"> Johor Bahru </option>
-                                    <option value="Alor Setar"> Alor Setar</option>
-                                    <option value="Other"> Other</option>
+                                    <option *ngFor="let data of citiesList" [value]="data.city_id"> {{data.city}}
+                                    </option>
                                 </select>
                                 <div *ngIf="submitted1 && f1.city.errors" class="invalid-feedback">
                                     <div *ngIf="f1.city.errors.required">City is required</div>
@@ -401,7 +377,7 @@
                         </div>
                         <input myNumberOnly type="text" class="form-control" placeholder="Mobile Number" name="mobile"
                             formControlName="mobile" [ngClass]="{ 'is-invalid': submitted1 && f1.mobile.errors }"
-                            maxlength="10" max="10" min="10">
+                            maxlength="15" max="10" min="10">
                         <div *ngIf="submitted1 && f1.mobile.errors" class="invalid-feedback">
                             <div *ngIf="f1.mobile.errors.required"> Mobile number is required</div>
                             <div *ngIf="f1.mobile.errors.maxlength">Mobile number must be 10 digits</div>

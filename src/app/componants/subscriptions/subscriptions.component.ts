@@ -21,9 +21,11 @@ import {
 })
 export class SubscriptionsComponent implements OnInit {
   type: any;
-  role = sessionStorage.getItem('role');
 
-  constructor(public router: Router) { }
+  role;
+  constructor(public router: Router) {
+    this.role = localStorage.getItem('industry_type');
+  }
   comType;
   showTalentSubscription = false;
   showCompanySubscription = false;
