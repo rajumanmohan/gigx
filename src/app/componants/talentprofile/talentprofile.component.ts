@@ -55,6 +55,7 @@ export class TalentprofileComponent implements OnInit {
   editPreferences = false;
   submitted1 = false;
   newArr = [];
+  editBankDetailsForm: FormGroup;
   constructor(private route: ActivatedRoute, private appSer: AppServiceService, private toast: ToastrService, private fb: FormBuilder) {
 
     this.talentId = localStorage.getItem('talent_id');
@@ -87,6 +88,15 @@ export class TalentprofileComponent implements OnInit {
     })
     console.log(this.educationForm.value.other)
     this.showtalentProfile();
+    this.editBankDetailsForm = this.fb.group({
+
+      account_holder_name: ['', Validators.required],
+      account_number: ['', Validators.required],
+      bank_name: ['', Validators.required],
+      ifsc: ['', Validators.required],
+      branch: ['', Validators.required],
+      location: ['', Validators.required]
+    })
   }
   personaldetails() {
     this.showPersonalDetails = true;
@@ -360,7 +370,8 @@ export class TalentprofileComponent implements OnInit {
     this.editEdu = false;
     this.showEducationDetails = true;
   }
-  talentPersonalDetails = []; talentEducationDetails; talentJobDetails; talentJobPreference;
+
+  talentPersonalDetails = []; talentEducationDetails; talentJobDetails; talentJobPreference; talentBankDetails;
   showtalentProfile() {
     let params = {
       talent_id: this.talentId
@@ -372,6 +383,17 @@ export class TalentprofileComponent implements OnInit {
       this.talentJobDetails = res['step3'].jobdetails;
       this.talentJobPreference = res['step4'].jobpreferences[0];
       console.log(this.talentJobPreference)
+      this.talentJobPreference = res['step4'].jobpreferences;
+      this.talentBankDetails = res['step5'].bankdetails[0];
+      this.editBankDetailsForm = this.fb.group({
+        account_holder_name: [this.talentBankDetails.account_holder_name, Validators.required],
+        account_number: [this.talentBankDetails.account_number, Validators.required],
+        bank_name: [this.talentBankDetails.bank_name, Validators.required],
+        ifsc: [this.talentBankDetails.ifsc, Validators.required],
+        branch: [this.talentBankDetails.branch, Validators.required],
+        location: [this.talentBankDetails.location, Validators.required],
+
+      })
     })
   }
   get f() { return this.personalForm.controls }
@@ -383,11 +405,33 @@ export class TalentprofileComponent implements OnInit {
   }
 
   onDateChanged(date) {
-    // var newDate = date.date['year'] + "-" + date.date['month'] + "-" + date.date['date'];
-
     this.mydate = date.date;
     this.selDate = (this.mydate['year']) + "-" + (this.mydate['month']) + "-" + (this.mydate['day']);
+    // var newDate = date.date['year'] + "-" + date.date['month'] + "-" + date.date['date'];
   }
+  get f5() { return this.editBankDetailsForm.controls; };
+  addBankAccount() {
+    this.submitted = true;
+    if (this.editBankDetailsForm.invalid) {
+      return;
+    }
+    this.editBankDetailsForm.value.form_type = 'step6',
+      this.editBankDetailsForm.value.talent_id = this.talentId;
+    this.appSer.addBankDetails(this.editBankDetailsForm.value).subscribe((res) => {
+      if (res['status'] == 200) {
+        this.toast.success(res['message'], "Success");
+        this.showtalentProfile();
+        this.edit = false;
+      }
+      else {
+        this.toast.error(res['message'], "error");
+        this.edit = false;
+      }
+    })
+  }
+
+
+
 
   readUrl(event: any) {
     console.log('readUrl');

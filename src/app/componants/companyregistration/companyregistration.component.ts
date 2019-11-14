@@ -50,10 +50,12 @@ export class CompanyregistrationComponent implements OnInit {
   individualReg: FormGroup;
   sstType = "SST Unregistered"
   mobcode = +91;
-  submitted1 = false;
+  submitted1 = false; CountiresList;
+
   constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService, private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.getCountries();
     window.scroll(0, 0);
     this.registrationForm = this.fb.group({
       company_type: [''],
@@ -69,7 +71,7 @@ export class CompanyregistrationComponent implements OnInit {
       state: [''],
       city: ['', Validators.required],
       pincode: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+      mobile: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(10)]],
       address: ['', Validators.required],
       company_registration: [null, Validators.required],
     });
@@ -85,7 +87,7 @@ export class CompanyregistrationComponent implements OnInit {
       state: [''],
       city: ['', Validators.required],
       pincode: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+      mobile: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(10)]],
       address: ['', Validators.required],
     });
   }
@@ -109,10 +111,44 @@ export class CompanyregistrationComponent implements OnInit {
   }
   changeType1(sst) {
     this.sstType = sst.target.value;
-
   }
   changeMobCode(mob) {
     this.mobcode = mob.target.value;
+  }
+  getCountries() {
+    this.appSer.countriesList().subscribe((res) => {
+      this.CountiresList = res['countries'];
+    })
+  }
+  countryId; statesList;
+  changeCountryList(id) {
+    this.countryId = id;
+    let params = {
+      country_id: this.countryId,
+    }
+    this.appSer.statesList(params).subscribe((res) => {
+      this.statesList = res['states'];
+    })
+  }
+  changeCountryList1(name) {
+    this.countryId = name['country_id'];
+
+    let params = {
+      country_id: this.countryId,
+    }
+    this.appSer.statesList(params).subscribe((res) => {
+      this.statesList = res['states'];
+    })
+  }
+  stateId; citiesList;
+  changeStateList(id) {
+    this.stateId = id;
+    let params = {
+      state_id: this.stateId,
+    }
+    this.appSer.citiesList(params).subscribe((res) => {
+      this.citiesList = res['cities'];
+    })
   }
   submit() {
     // if (this.comType == 'company') {
@@ -170,7 +206,7 @@ export class CompanyregistrationComponent implements OnInit {
           this.individualReg.reset();
           this.submitted1 = false;
           this.url1 = '';
-          this.router.navigate(['/companydashboard']);
+          this.router.navigate(['/login']);
         } else {
           this.toast.error(res['message'], "error");
         }

@@ -74,7 +74,7 @@ export class TelentregistrationComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       mobile_code: [+61],
-      mobile: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+      mobile: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(10)]],
       location: ['', Validators.required],
       dob: [{ date: { year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate() } }, Validators.required],
       termsConditions: [false, Validators.requiredTrue]

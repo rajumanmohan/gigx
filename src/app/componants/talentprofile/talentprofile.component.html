@@ -1035,74 +1035,127 @@
         <!-- Bank details -->
         <div class="row contact-details mt-5" *ngIf="showBankDetails">
             <div class="col-md-12">
-                <div class="table-responsive">
-                    <table class="table b-0">
+                <form [formGroup]="editBankDetailsForm">
+                    <div class="table-responsive">
+                        <table class="table b-0">
 
-                        <tbody class="b-0">
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">ACCOUNT HOLDER NAME</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Shareen Abdul Ghani</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Shareen Abdul Ghanir" class="form-control"
-                                            id="exampleInputPassword1" placeholder="John Peter">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">ACCOUNT NUMBER</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">018301484098</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="018301484098" class="form-control"
-                                            id="exampleInputPassword1" placeholder="018301484098">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">BANK NAME</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">HSBC</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="HSBC" class="form-control" id="exampleInputPassword1"
-                                            placeholder="Bank Name">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">IFSC CODE</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">HSBC022</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="HSBC022" class="form-control"
-                                            id="exampleInputPassword1" placeholder="IFCS CODE">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">BRANCH</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Kuala Lumpur , Malaysia</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Kuala Lumpur , Malaysia" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Kuala Lumpur , Malaysia">
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">LOCATION</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">Kuala Lumpur , Malaysia</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="Kuala Lumpur , Malaysia" class="form-control"
-                                            id="exampleInputPassword1" placeholder="Kuala Lumpur , Malaysia">
-                                    </span>
-                                </td>
-                            </tr>
+                            <tbody class="b-0">
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">ACCOUNT HOLDER NAME</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{talentBankDetails.account_holder_name}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Name" formControlName="account_holder_name"
+                                                [ngClass]="{'is-invalid':f5.account_holder_name.errors && submitted}">
+                                            <div class="invalid-feedback" *ngIf="f5.account_holder_name.errors">
+                                                <div *ngIf="f5.account_holder_name.errors.required">Account Holder Name
+                                                    is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">ACCOUNT NUMBER</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{talentBankDetails.account_number}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Account Number" formControlName="account_number"
+                                                [ngClass]="{'is-invalid':f5.account_number.errors && submitted}">
+                                            <div class="invalid-feedback" *ngIf="f5.account_number.errors">
+                                                <div *ngIf="f5.account_number.errors.required">Account Number
+                                                    is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">BANK NAME</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{talentBankDetails.bank_name}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Bank Name" formControlName="bank_name"
+                                                [ngClass]="{'is-invalid':f5.bank_name.errors && submitted}">
+                                            <div class="invalid-feedback" *ngIf="f5.bank_name.errors">
+                                                <div *ngIf="f5.bank_name.errors.required">Bank Name
+                                                    is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">IFSC CODE</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{talentBankDetails.ifsc}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="IFCS CODE" formControlName="ifsc"
+                                                [ngClass]="{'is-invalid':f5.ifsc.errors && submitted}">
+                                            <div class="invalid-feedback" *ngIf="f5.ifsc.errors">
+                                                <div *ngIf="f5.ifsc.errors.required">IFSC CODE
+                                                    is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">BRANCH</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{talentBankDetails.branch}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" value="Kuala Lumpur , Malaysia" class="form-control"
+                                                id="exampleInputPassword1" placeholder="Kuala Lumpur , Malaysia"
+                                                formControlName="branch"
+                                                [ngClass]="{'is-invalid':f5.branch.errors && submitted}">
+                                            <div class="invalid-feedback" *ngIf="f5.branch.errors">
+                                                <div *ngIf="f5.branch.errors.required">Branch
+                                                    is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">LOCATION</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span *ngIf="edit==false">{{talentBankDetails.location}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="Kuala Lumpur , Malaysia" formControlName="location"
+                                                [ngClass]="{'is-invalid':f5.location.errors && submitted}">
+                                            <div class="invalid-feedback" *ngIf="f5.location.errors">
+                                                <div *ngIf="f5.location.errors.required">Location
+                                                    is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
 
-                        </tbody>
-                    </table>
-                </div>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="row justify-content-center mb-5 mt-3">
+                        <div class="col-md-4 text-center edit-profile" *ngIf="edit==false">
+                            <button type="submit" class="btn " (click)="editProfile()">EDIT PROFILE</button>
+                        </div>
+
+                        <div class="col-md-6 text-center edit-profile" *ngIf="edit==true">
+                            <button type="submit" class="btn " (click)="addBankAccount()">Save</button>
+                        </div>
+                        <div class="col-md-6 text-center edit-profile" *ngIf="edit==true">
+                            <button type="submit" class="btn " (click)="showData()">Cancel</button>
+                        </div>
+                    </div>
+                </form>
+
             </div>
         </div>
         <!-- Bank details-->

@@ -90,9 +90,16 @@ export class AppServiceService {
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    return this.httpClient.post(this.apiUrl + 'company_editt_profile.php', params, { headers })
+    return this.httpClient.post(this.apiUrl + 'company_edit_profile.php', params, { headers })
   }
   talentEditEducation(params) {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'talent_edit_profile.php', params, { headers })
+  }
+  addBankDetails(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -105,6 +112,27 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'talent_edit_profile.php', params, { headers })
+  }
+  countriesList() {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'countries.php', { headers })
+  }
+  statesList(params) {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'states.php', params, { headers })
+  }
+  citiesList(params) {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'cities.php', params, { headers })
   }
 
 }
