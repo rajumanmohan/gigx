@@ -1,4 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import {
@@ -22,8 +24,13 @@ export class TalentsearchComponent implements OnInit {
   ShowSearchScreen = true;
   ShowMyHiresScreen = false;
   ShowSavedScreen = false;
-  constructor() { }
-
+  constructor(private router: Router, private toast: ToastrService) {
+    if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
+      this.toast.warning('Please Login', "warning");
+      this.router.navigate(['/coverpage']);
+    } else {
+    }
+  }
   ngOnInit() {
     window.scroll(0, 0);
   }

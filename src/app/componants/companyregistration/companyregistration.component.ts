@@ -24,7 +24,7 @@ import {
   ]
 })
 export class CompanyregistrationComponent implements OnInit {
-  strImage;
+  strImage; IndustryList;
   url1;
   indType = "";
   comType = "company"
@@ -53,8 +53,10 @@ export class CompanyregistrationComponent implements OnInit {
   submitted1 = false; CountiresList;
 
   constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService, private fb: FormBuilder) { }
-
+  showEye = true;
   ngOnInit() {
+    window.scroll(0, 0);
+    this.getIndustryData();
     this.getCountries();
     window.scroll(0, 0);
     this.registrationForm = this.fb.group({
@@ -71,7 +73,7 @@ export class CompanyregistrationComponent implements OnInit {
       state: [''],
       city: ['', Validators.required],
       pincode: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(10)]],
+      mobile: ['', Validators.required],
       address: ['', Validators.required],
       company_registration: [null, Validators.required],
     });
@@ -87,9 +89,16 @@ export class CompanyregistrationComponent implements OnInit {
       state: [''],
       city: ['', Validators.required],
       pincode: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(10)]],
+      mobile: ['', Validators.required],
       address: ['', Validators.required],
     });
+  }
+
+  hidePassword() {
+    this.showEye = !this.showEye;
+  }
+  showPassword() {
+    this.showEye = false;
   }
   image;
   readUrl(event: any) {
@@ -120,6 +129,12 @@ export class CompanyregistrationComponent implements OnInit {
       this.CountiresList = res['countries'];
     })
   }
+  getIndustryData() {
+    this.appSer.getIndustryList().subscribe((res) => {
+      this.IndustryList = res['industries'];
+
+    })
+  }
   countryId; statesList;
   changeCountryList(id) {
     this.countryId = id;
@@ -128,18 +143,16 @@ export class CompanyregistrationComponent implements OnInit {
     }
     this.appSer.statesList(params).subscribe((res) => {
       this.statesList = res['states'];
+      this.stateId = res['states'].state_id;
+      let params1 = {
+        state_id: this.stateId,
+      }
+      this.appSer.citiesList(params1).subscribe((res) => {
+        this.citiesList = res['cities'];
+      })
     })
   }
-  changeCountryList1(name) {
-    this.countryId = name['country_id'];
 
-    let params = {
-      country_id: this.countryId,
-    }
-    this.appSer.statesList(params).subscribe((res) => {
-      this.statesList = res['states'];
-    })
-  }
   stateId; citiesList;
   changeStateList(id) {
     this.stateId = id;

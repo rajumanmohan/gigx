@@ -5,7 +5,7 @@ import { HttpClientModule, HttpHeaders, HttpClient } from '@angular/common/http'
   providedIn: 'root'
 })
 export class AppServiceService {
-  apiUrl = "http://gigxglobal.com/api/"
+  apiUrl = "https://gigxglobal.com/api/"
 
   constructor(private httpClient: HttpClient) { }
   registration(params) {
@@ -34,7 +34,7 @@ export class AppServiceService {
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    return this.httpClient.post('http://gigxglobal.com/api/talent_registration.php', params, { headers })
+    return this.httpClient.post(this.apiUrl + 'talent_registration.php', params, { headers })
   }
   loginTalentApi(params) {
     let headers = new HttpHeaders();
@@ -119,6 +119,13 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.get(this.apiUrl + 'countries.php', { headers })
+  }
+  getIndustryList() {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'getIndustries.php', { headers })
   }
   statesList(params) {
     let headers = new HttpHeaders();

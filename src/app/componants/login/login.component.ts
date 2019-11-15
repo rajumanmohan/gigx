@@ -32,8 +32,10 @@ export class LoginComponent implements OnInit {
   constructor(public router: Router, private appSer: AppServiceService, private toast: ToastrService, private formBuilder: FormBuilder) {
 
   }
+  showEye = true;
 
   ngOnInit() {
+    window.scroll(0, 0);
     this.type = 'talent';
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -43,7 +45,12 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]]
     });
   }
-
+  hidePassword() {
+    this.showEye = !this.showEye;
+  }
+  showPassword() {
+    this.showEye = false;
+  }
   get f() { return this.loginForm.controls; }
 
   login() {

@@ -17,6 +17,7 @@ export class RegistrationDataComponent implements OnInit {
 
   ngOnInit() {
     this.getcompanydata();
+    window.scroll(0, 0);
   }
   getcompanydata() {
     this.appSer.getCompanyData().subscribe(res => {

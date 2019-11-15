@@ -28,6 +28,11 @@ export class CompanydashboardComponent implements OnInit {
     this.talentId = localStorage.getItem('talent_id');
     this.companyId = localStorage.getItem('company_id');
     this.loginType = localStorage.getItem('industry_type');
+    if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
+      this.toast.warning('Please Login', "warning");
+      this.router.navigate(['/coverpage']);
+    } else {
+    }
   }
 
   ngOnInit() {
@@ -64,5 +69,6 @@ export class CompanydashboardComponent implements OnInit {
   logout() {
     this.router.navigate(['/coverpage']);
     localStorage.clear();
+    this.toast.success('You have Signed Out Successfully', "success");
   }
 }

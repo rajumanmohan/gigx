@@ -26,20 +26,27 @@ export class GetstartedComponent implements OnInit {
 
   // routerLink="/talentregistration"
   constructor(private fb: FormBuilder, private router: Router) { }
-
+  showEye = true;
   ngOnInit() {
-    this.getStartForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    })
+    window.scroll(0, 0);
+    // this.getStartForm = this.fb.group({
+    //   email: ['', [Validators.required, Validators.email]],
+    //   password: ['', Validators.required]
+    // })
   }
-  get f() { return this.getStartForm.controls; }
+  hidePassword() {
+    this.showEye = !this.showEye;
+  }
+  showPassword() {
+    this.showEye = false;
+  }
+  // get f() { return this.getStartForm.controls; }
   start() {
     this.submit = true;
-    if (this.getStartForm.invalid) {
-      return;
-    } else {
-      this.router.navigate(['/talentregistration']);
-    }
+    // if (this.getStartForm.invalid) {
+    //   return;
+    // } else {
+    this.router.navigate(['/talentregistration']);
+    // }
   }
 }

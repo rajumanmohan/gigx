@@ -28,13 +28,18 @@ export class ProfileComponent implements OnInit {
   editIndividualForm: FormGroup;
   edit = false;
   sstType = "SST Unregistered"
-  submitted = false;ProfileImageUrl;
-  constructor(private route: ActivatedRoute, private appSer: AppServiceService, private toast: ToastrService, private formBuilder: FormBuilder) {
+  submitted = false; ProfileImageUrl;
+  constructor(private route: ActivatedRoute, private appSer: AppServiceService, private toast: ToastrService, private formBuilder: FormBuilder, private router: Router) {
     this.route.queryParams.subscribe(params => {
       this.page = params['page'];
     });
     this.companyId = localStorage.getItem('company_id');
     this.loginType = localStorage.getItem('industry_type');
+    if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
+      this.toast.warning('Please Login', "warning");
+      this.router.navigate(['/coverpage']);
+    } else {
+    }
   }
   CountiresList;
   ngOnInit() {
@@ -58,7 +63,7 @@ export class ProfileComponent implements OnInit {
       designation: ['', Validators.required],
       contact_email: ['', [Validators.required, Validators.email]],
       mobile_code: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+      mobile: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(10)]],
     });
     this.editIndividualForm = this.formBuilder.group({
       industry_type: ['', Validators.required],
@@ -71,7 +76,7 @@ export class ProfileComponent implements OnInit {
       city: ['', Validators.required],
       pincode: ['', Validators.required],
       mobile_code: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]],
+      mobile: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(10)]],
     });
 
 
@@ -95,6 +100,13 @@ export class ProfileComponent implements OnInit {
     }
     this.appSer.statesList(params).subscribe((res) => {
       this.statesList = res['states'];
+      this.stateId = res['states'].state_id;
+      let params1 = {
+        state_id: this.stateId,
+      }
+      this.appSer.citiesList(params1).subscribe((res) => {
+        this.citiesList = res['cities'];
+      })
     })
   }
 
@@ -127,6 +139,7 @@ export class ProfileComponent implements OnInit {
     this.sstType = sst.target.value;
   }
   editProfile() {
+    window.scroll(0, 0);
     this.edit = true;
     this.getCompanyProfile();
     this.strImage = '';
@@ -158,10 +171,12 @@ export class ProfileComponent implements OnInit {
           this.toast.success(res['message'], "Success");
           this.getCompanyProfile();
           this.edit = false;
+          window.scroll(0, 0);
         }
         else {
           this.toast.error(res['message'], "error");
           this.edit = false;
+          window.scroll(0, 0);
         }
       })
     }
@@ -188,10 +203,12 @@ export class ProfileComponent implements OnInit {
           this.toast.success(res['message'], "Success");
           this.getCompanyProfile();
           this.edit = false;
+          window.scroll(0, 0);
         }
         else {
           this.toast.error(res['message'], "error");
           this.edit = false;
+          window.scroll(0, 0);
         }
       })
     }
@@ -264,7 +281,7 @@ export class ProfileComponent implements OnInit {
     this.appSer.citiesList(params).subscribe((res) => {
       this.citiesList = res['cities'];
       for (var i = 0; i < this.citiesList.length; i++) {
-          this.cityId = this.citiesList[i].city_id;
+        this.cityId = this.citiesList[i].city_id;
       }
     })
   }

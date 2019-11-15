@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import {
@@ -23,8 +24,13 @@ export class SubscriptionsComponent implements OnInit {
   type: any;
 
   role;
-  constructor(public router: Router) {
+  constructor(private router: Router, private toast: ToastrService) {
     this.role = localStorage.getItem('industry_type');
+    if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
+      this.toast.warning('Please Login', "warning");
+      this.router.navigate(['/coverpage']);
+    } else {
+    }
   }
   comType;
   showTalentSubscription = false;

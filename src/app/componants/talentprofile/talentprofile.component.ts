@@ -56,13 +56,19 @@ export class TalentprofileComponent implements OnInit {
   submitted1 = false;
   newArr = [];
   editBankDetailsForm: FormGroup;
-  constructor(private route: ActivatedRoute, private appSer: AppServiceService, private toast: ToastrService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute,private router: Router, private appSer: AppServiceService, private toast: ToastrService, private fb: FormBuilder) {
 
     this.talentId = localStorage.getItem('talent_id');
     this.loginType = localStorage.getItem('industry_type');
+    if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
+      this.toast.warning('Please Login', "warning");
+      this.router.navigate(['/coverpage']);
+    } else {
+    }
   }
 
   ngOnInit() {
+    window.scroll(0, 0);
     this.personalForm = this.fb.group({
       full_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

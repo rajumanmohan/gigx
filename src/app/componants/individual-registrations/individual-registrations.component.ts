@@ -13,6 +13,7 @@ export class IndividualRegistrationsComponent implements OnInit {
   constructor(private appSer: AppServiceService) { }
 
   ngOnInit() {
+    window.scroll(0, 0);
     this.getindividualData();
   }
   getindividualData() {

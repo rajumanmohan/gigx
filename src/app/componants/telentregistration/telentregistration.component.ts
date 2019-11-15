@@ -62,12 +62,13 @@ export class TelentregistrationComponent implements OnInit {
   test1 = "5666666"
   degreeArray = ["Full time", "Part time", "Correspandence"];
   radioItems = ["Full time", "Part time", "Correspandence"];
-
+  showEye = true;
   nestedForm;
   constructor(private fb: FormBuilder, private toast: ToastrService, private appSer: AppServiceService, private router: Router) { }
   // Step 1 -> full_name,email,password,mobile_code,mobile,location,talent_attachment,talent_attachment_video,gender,dob
   // routerLink="/talentdashboard"
   ngOnInit() {
+    window.scroll(0, 0);
     let d: Date = new Date('2001/04/05');
     this.registrationForm = this.fb.group({
       full_name: ['', Validators.required],
@@ -114,7 +115,12 @@ export class TelentregistrationComponent implements OnInit {
     this.selDate = (this.mydate['year']) + "-" + (this.mydate['month']) + "-" + (this.mydate['day']);
     // radioArr = ["Full time",""]
   }
-
+  hidePassword() {
+    this.showEye = !this.showEye;
+  }
+  showPassword() {
+    this.showEye = false;
+  }
 
   step1Completed = false;
 

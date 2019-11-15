@@ -25,6 +25,7 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
+    window.scroll(0, 0);
     /** spinner starts on init */
     this.spinner.show();
 

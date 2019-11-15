@@ -118,23 +118,32 @@
                                 <tr class="b-0">
                                     <td class="b-0 contact-title">MOBILE NO</td>
                                     <td class="b-0"><span>:</span>
-                                        <span
-                                            *ngIf="edit==false">{{profileDetails.mobile}}{{profileDetails.mobile_code}}</span>
+                                        <span *ngIf="edit==false">{{profileDetails.mobile_code}}
+                                            {{profileDetails.mobile}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
                                             <div class="input-group mb-3">
                                                 <div class="input-group-prepend">
                                                     <select class="custom-select" id="inputGroupSelect01"
                                                         name="mobileCode" formControlName="mobile_code"
                                                         [ngClass]="{'is-invalid':f2.mobile_code.errors&& submitted}">
-                                                        <option value="91">+91 </option>
-                                                        <option value="852">+852</option>
-                                                        <option value="60"> +60</option>
+                                                        <option value="+62">+62</option>
+                                                        <option value="+81">+81</option>
+                                                        <option value="+60"> +60</option>
+                                                        <option value="+968"> +968</option>
+                                                        <option value="+63"> +63</option>
+                                                        <option value="+65"> +65</option>
+                                                        <option value="+82"> +82</option>
+                                                        <option value="+66"> +66</option>
+                                                        <option value="+90"> +90</option>
+                                                        <option value="+971"> +971</option>
+                                                        <option value="+44"> +44</option>
+                                                        <option value="+84"> +84</option>
                                                     </select>
                                                 </div>
                                                 <input myNumberOnly type="text" class="form-control"
                                                     placeholder="Mobile Number" name="mobile" formControlName="mobile"
                                                     [ngClass]="{'is-invalid':f2.mobile.errors&& submitted}"
-                                                    maxlength="10" max="10" min="10">
+                                                    maxlength="15" max="10" min="10">
                                                 <div *ngIf="submitted && f2.mobile.errors" class="invalid-feedback">
                                                     <div *ngIf="f2.mobile.errors.required"> Mobile number is required
                                                     </div>
@@ -225,7 +234,7 @@
                                     <td class="b-0"><span>:</span>
                                         <span *ngIf="edit==false">{{profileDetails.city}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
-                                                <select class="form-control" id="exampleFormControlSelect1"
+                                            <select class="form-control" id="exampleFormControlSelect1"
                                                 formControlName="city"
                                                 [ngClass]="{ 'is-invalid': submitted && f2.city.errors }"
                                                 (change)="changeCityList($event.target.value)">
@@ -235,7 +244,7 @@
                                                 </option>
                                             </select>
                                             <div class="invalid-feedback" *ngIf="f2.city.errors">
-                                                <div *ngIf="f2.city.errors.required">City  is required
+                                                <div *ngIf="f2.city.errors.required">City is required
                                                 </div>
                                             </div>
                                         </span>
@@ -482,7 +491,7 @@
                                                 </option>
                                             </select>
                                             <div class="invalid-feedback" *ngIf="f1.city.errors">
-                                                <div *ngIf="f1.city.errors.required">City  is required
+                                                <div *ngIf="f1.city.errors.required">City is required
                                                 </div>
                                             </div>
                                         </span>
@@ -583,15 +592,24 @@
                                                     <select class="custom-select" id="inputGroupSelect01"
                                                         name="mobileCode" formControlName="mobile_code"
                                                         [ngClass]="{'is-invalid':f1.mobile_code.errors&& submitted}">
-                                                        <option value="91">+91 </option>
-                                                        <option value="852">+852</option>
-                                                        <option value="60"> +60</option>
+                                                        <option value="+62">+62</option>
+                                                        <option value="+81">+81</option>
+                                                        <option value="+60"> +60</option>
+                                                        <option value="+968"> +968</option>
+                                                        <option value="+63"> +63</option>
+                                                        <option value="+65"> +65</option>
+                                                        <option value="+82"> +82</option>
+                                                        <option value="+66"> +66</option>
+                                                        <option value="+90"> +90</option>
+                                                        <option value="+971"> +971</option>
+                                                        <option value="+44"> +44</option>
+                                                        <option value="+84"> +84</option>
                                                     </select>
                                                 </div>
                                                 <input myNumberOnly type="text" class="form-control"
                                                     placeholder="Mobile Number" name="mobile" formControlName="mobile"
                                                     [ngClass]="{'is-invalid':f1.mobile.errors&& submitted}"
-                                                    maxlength="10" max="10" min="10">
+                                                    maxlength="15" max="10" min="10">
                                                 <div *ngIf="submitted && f1.mobile.errors" class="invalid-feedback">
                                                     <div *ngIf="f1.mobile.errors.required"> Mobile number is required
                                                     </div>

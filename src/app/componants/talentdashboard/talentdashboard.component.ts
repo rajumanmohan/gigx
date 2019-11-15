@@ -26,6 +26,11 @@ export class TalentdashboardComponent implements OnInit {
   constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService) {
     this.talentId = localStorage.getItem('talent_id');
     this.loginType = localStorage.getItem('industry_type');
+    if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
+      this.toast.warning('Please Login', "warning");
+      this.router.navigate(['/coverpage']);
+    } else {
+    }
   }
 
   ngOnInit() {

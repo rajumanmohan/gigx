@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import {
@@ -25,9 +27,16 @@ export class IntrestedjobsComponent implements OnInit {
   HideIntrestedJobs4 = true;
   HideIntrestedJobs5 = true;
   HideIntrestedJobs6 = true;
-  constructor() { }
+  constructor(private router: Router,private toast: ToastrService) {
 
+    if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
+      this.toast.warning('Please Login', "warning");
+      this.router.navigate(['/coverpage']);
+    } else {
+    }
+   }
   ngOnInit() {
+    window.scroll(0, 0);
   }
   hide1() {
     this.HideIntrestedJobs1 = false;

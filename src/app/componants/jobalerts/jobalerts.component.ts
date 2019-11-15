@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import {
@@ -21,9 +23,15 @@ import {
 export class JobalertsComponent implements OnInit {
   Showalert2 = true;
   Showalert1 = true;
-  constructor() { }
-
+  constructor(private router: Router, private toast: ToastrService) {
+    if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
+      this.toast.warning('Please Login', "warning");
+      this.router.navigate(['/coverpage']);
+    } else {
+    }
+  }
   ngOnInit() {
+    window.scroll(0, 0);
   }
   hide1() {
     this.Showalert1 = false;

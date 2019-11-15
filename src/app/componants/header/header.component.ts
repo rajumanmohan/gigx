@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit {
   constructor(public router: Router) { }
 
   ngOnInit() {
+    window.scroll(0, 0);
   }
 
 }

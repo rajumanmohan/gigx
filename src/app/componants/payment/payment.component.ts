@@ -1,4 +1,6 @@
-import { Router } from '@angular/router';
+
+import { Router, ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { transition, trigger, useAnimation } from '@angular/animations';
@@ -22,9 +24,16 @@ import {
 export class PaymentComponent implements OnInit {
   Showpaymentgateway = false;
   showPaymentType = true;
-  constructor(private router: Router) { }
+  constructor(private router: Router,private toast: ToastrService) {
 
+    if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
+      this.toast.warning('Please Login', "warning");
+      this.router.navigate(['/coverpage']);
+    } else {
+    }
+   }
   ngOnInit() {
+    window.scroll(0, 0);
   }
   showpaymentmethod() {
     this.Showpaymentgateway = true;

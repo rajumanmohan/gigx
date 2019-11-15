@@ -28,8 +28,16 @@ export class ChangepasswordComponent implements OnInit {
     this.talentId = localStorage.getItem('talent_id');
     this.companyId = localStorage.getItem('company_id');
     this.loginType = localStorage.getItem('industry_type');
-
+    if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
+      this.toast.warning('Please Login', "warning");
+      this.router.navigate(['/coverpage']);
+    } else {
+    }
   }
+  showEye1 = true;
+  showEye2 = true;
+  showEye3 = true;
+
   submitted = false;
   updatePassword: FormGroup;
   ngOnInit() {
@@ -39,6 +47,24 @@ export class ChangepasswordComponent implements OnInit {
       new_password: ['', Validators.required],
       confirmpassword: ['', Validators.required],
     });
+  }
+  hidePassword1() {
+    this.showEye1 = !this.showEye1;
+  }
+  showPassword1() {
+    this.showEye1 = false;
+  }
+  hidePassword2() {
+    this.showEye2 = !this.showEye2;
+  }
+  showPassword2() {
+    this.showEye2 = false;
+  }
+  hidePassword3() {
+    this.showEye3 = !this.showEye3;
+  }
+  showPassword3() {
+    this.showEye3 = false;
   }
   get f() { return this.updatePassword.controls; }
   changePassword() {
