@@ -45,6 +45,8 @@ import { IndividualRegistrationsComponent } from './componants/individual-regist
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CompanysubscriptionsComponent } from './componants/companysubscriptions/companysubscriptions.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { Pipe, PipeTransform } from '@angular/core';
+@Pipe({ name: 'safe' })
 @NgModule({
   declarations: [
     AppComponent,

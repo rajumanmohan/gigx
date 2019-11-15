@@ -134,6 +134,9 @@ td{
     height: 125px;
     width: 125px;
     }
+    .pdf-img {
+      width: 50px;  
+    }
 }
 .skills {
     display: inline-flex;
@@ -176,6 +179,62 @@ td{
     margin-left: -13px;
     font-size: 19px;
     }
+}
+.upload-image {
+    cursor: pointer !important;
+    position: relative;
+    overflow: hidden;
+}
+.upload-image {
+    height: 100%;
+    border-radius: 9px;
+    border: 1px dashed #a4a4a4;
+    padding: 21px;
+}
+.upload-image input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+.talent input {
+    margin-bottom: 12px;
+    border: 1px solid #dbdbdb;
+    padding: 24px 10px;
+    margin: 0px auto;
+    box-shadow: 1px 1px 1px 0px #dbdbdb !important;
+}
+
+.upload-image {
+    height: 100%;
+    border-radius: 9px;
+    border: 1px dashed #a4a4a4 !important;
+    padding: 4px;
+    width: 27%;
+}
+.video-file {
+    width: 76px !important;
+    
+}
+.pdf-file {
+    width: 43%;
+    height: 123%;
+}
+.add-another {
+    background: #f1f1f1;
+    padding: 7px;
+    color: #818181;
+    float: right;
+    margin-right: -10px;
+}
+.delete-icon {
+    font-size: 20px !important;
+    color: darkred !important;
+    float: right !important;
+}
+.add-bank {
+    margin-top: 20%;
 }
 @media (max-width: 575.98px) { 
     .search-category{

@@ -2,14 +2,14 @@ import { FormGroup, FormControl, Validators, FormBuilder, FormArray } from '@ang
 import { ToastrService } from 'ngx-toastr';
 import { AppServiceService } from './../../Services/app-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import {
   bounceInAndOut, enterAndLeaveFromLeft, enterAndLeaveFromRight, fadeInAndOut,
   fadeInThenOut, growInShrinkOut, swingInAndOut
 } from '../../triggers';
-
+@Pipe({ name: 'safe' })
 @Component({
   selector: 'app-talentprofile',
   templateUrl: './talentprofile.component.html',
@@ -37,7 +37,7 @@ export class TalentprofileComponent implements OnInit {
   preferenceForm: FormGroup;
   mydate;
   selDate;
-  genderItems = ["Male", "Female", "Other"];
+  genderItems = ["Male", "Female", "Not to Disclose"];
   editEdu = false;
   degreeArray = ["Full time", "Part time", "Correspandence"];
   currencyType = ["INR", "$", "RM"];
@@ -56,7 +56,13 @@ export class TalentprofileComponent implements OnInit {
   submitted1 = false;
   newArr = [];
   editBankDetailsForm: FormGroup;
-  constructor(private route: ActivatedRoute,private router: Router, private appSer: AppServiceService, private toast: ToastrService, private fb: FormBuilder) {
+  imgBaseUrl = "http://gigxglobal.com/talent_images/";
+  path;
+  url2;
+  url3;
+  addBankDetails;
+  editBank = false;
+  constructor(private route: ActivatedRoute, private router: Router, private appSer: AppServiceService, private toast: ToastrService, private fb: FormBuilder) {
 
     this.talentId = localStorage.getItem('talent_id');
     this.loginType = localStorage.getItem('industry_type');
@@ -66,6 +72,7 @@ export class TalentprofileComponent implements OnInit {
     } else {
     }
   }
+  // form_type,talent_id,full_name,email,,mobile_code,mobile,location,talent_old_attachment,talent_attachment,talent_old_video,talent_attachment_video,gender,dob
 
   ngOnInit() {
     window.scroll(0, 0);
@@ -75,7 +82,14 @@ export class TalentprofileComponent implements OnInit {
       mobile: ['', Validators.required],
       location: ['', Validators.required],
       gender: ['', Validators.required],
-      dob: ['']
+      dob: [''],
+      form_type: ["step1"],
+      talent_id: [JSON.parse(localStorage.talent_id)],
+      talent_old_attachment: [''],
+      talent_attachment: [''],
+      talent_old_video: [''],
+      talent_attachment_video: [''],
+      mobile_code: [''],
     })
     this.educationForm = this.fb.group({
       qualifications: new FormArray([]),
@@ -103,7 +117,9 @@ export class TalentprofileComponent implements OnInit {
       branch: ['', Validators.required],
       location: ['', Validators.required]
     })
+
   }
+
   personaldetails() {
     this.showPersonalDetails = true;
     this.showEducationDetails = false;
@@ -202,10 +218,18 @@ export class TalentprofileComponent implements OnInit {
       desired_employment_type: [this.talentJobPreference.employment_type, Validators.required],
       skills: [this.talentJobPreference.skills],
       form_type: ['step4'],
-      talent_id: [JSON.parse(localStorage.talent_id)]
+      talent_id: [JSON.parse(localStorage.talent_id)],
+      talent_old_image: [],
+      talent_image: []
     })
-    var newSkills = this.preferenceForm.value.skills;
-    this.newArr = this.preferenceForm.value.skills;
+    // var newSkills = this.preferenceForm.value.skills;
+    console.log(this.preferenceForm.value.skills)
+    var arr = [];
+    arr.push(this.preferenceForm.value.skills)
+    // var skillsArr = arr.split(",");
+    // console.log(skillsArr)
+
+    this.newArr = arr;
     // for (var i = 0; i < newSkills.length; i++) {
     //   console.log(newSkills[i])
     //   this.newArr.push(newSkills[i]);
@@ -219,6 +243,13 @@ export class TalentprofileComponent implements OnInit {
   savePreferences() {
     this.submitted1 = true;
     this.preferenceForm.value.skills = this.newArr.toString();
+    if (this.url1) {
+      this.preferenceForm.value.talent_old_image = this.talentJobPreference.image;
+      this.preferenceForm.value.talent_image = this.url1;
+    } else {
+      this.preferenceForm.value.talent_old_image = this.talentJobPreference.image;
+      this.preferenceForm.value.talent_image = "";
+    }
     if (this.preferenceForm.invalid) {
       return;
     } else {
@@ -228,7 +259,7 @@ export class TalentprofileComponent implements OnInit {
           this.showjobPreferences = true;
           this.editPreferences = false;
           this.showtalentProfile();
-          this.add('');
+          // this.url1 = "";
 
         } else {
           this.toast.error(res['message'], "error");
@@ -236,6 +267,8 @@ export class TalentprofileComponent implements OnInit {
         }
       })
     }
+    // this.url1 = "";
+
   }
   cancelPreferences() {
     this.editPreferences = false;
@@ -243,7 +276,6 @@ export class TalentprofileComponent implements OnInit {
   }
   editProfile() {
     this.edit = true;
-
     this.personalForm = this.fb.group({
       full_name: [this.talentPersonalDetails['full_name'], Validators.required],
       email: [this.talentPersonalDetails['email'], Validators.required],
@@ -252,15 +284,78 @@ export class TalentprofileComponent implements OnInit {
       // temp this.talentPersonalDetails['gender']
       gender: [this.talentPersonalDetails['gender'], Validators.required],
       dob: [this.talentPersonalDetails['dob']],
-      other: this.fb.array([this.talentEducationDetails])
-
+      form_type: ["step1"],
+      talent_id: [JSON.parse(localStorage.talent_id)],
+      talent_old_attachment: [''],
+      talent_attachment: [''],
+      talent_old_video: [''],
+      talent_attachment_video: [''],
+      mobile_code: [''],
     })
-    this.mydate = new Date(this.personalForm.value.dob);
-    console.log(this.mydate);
 
-    this.selDate = (this.mydate.getFullYear()) + "-" + (this.mydate.getMonth() + 1) + "-" + (this.mydate.getDate());
-    console.log(this.selDate);
     // this.personalForm.controls['gender'].setValue(this.talentPersonalDetails['gender'], { onlySelf: true });
+  }
+  get f() { return this.personalForm.controls }
+  saveProfile() {
+    if (this.url2) {
+      this.personalForm.value.talent_attachment = this.talentPersonalDetails.attachment;
+      this.personalForm.value.talent_old_attachment = this.url2;
+    } else {
+      this.personalForm.value.talent_attachment = this.talentPersonalDetails.attachment;
+      this.personalForm.value.talent_old_attachment = "";
+    }
+    if (this.url3) {
+      this.personalForm.value.talent_old_video = this.talentPersonalDetails.attachment;
+      this.personalForm.value.talent_attachment_video = this.url3;
+    } else {
+      this.personalForm.value.talent_old_video = this.talentPersonalDetails.attachment;
+      this.personalForm.value.talent_attachment_video = "";
+    }
+    // this.personalForm.value.dob = this.selDate;
+    console.log(this.personalForm.value);
+    this.submitted = true;
+    if (this.personalForm.invalid) {
+      return;
+    } else {
+      this.appSer.talentEditEducation(this.personalForm.value).subscribe(res => {
+        if (res['status'] == 200) {
+          this.toast.success(res['message'], "Success");
+          this.showPersonalDetails = true;
+          this.edit = false;
+          this.showtalentProfile();
+        } else {
+          this.toast.error(res['message'], "error");
+
+        }
+      })
+    }
+  }
+
+  readUrl1(event: any) {
+    console.log('readUrl');
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      this.path = (event.target.files[0].name)
+
+      reader.onload = (event: any) => {
+        this.url2 = event.target.result;
+        console.log(this.url1)
+      }
+
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+  path1;
+  readUrl2(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      this.path1 = (event.target.files[0].name)
+
+      reader.onload = (event: any) => {
+        this.url3 = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
   showEditEdu() {
     this.editEdu = true;
@@ -277,7 +372,7 @@ export class TalentprofileComponent implements OnInit {
         educational_id: [this.talentEducationDetails[i].educational_id]
       }));
     }
-    console.log(this.educationForm.value)
+
   }
   cancelJob() {
     this.editJob = false;
@@ -307,7 +402,6 @@ export class TalentprofileComponent implements OnInit {
         role: [this.talentJobDetails[i].role, Validators.required],
         jobdetails_id: [this.talentJobDetails[i].jobdetails_id]
       }));
-
 
     }
 
@@ -377,18 +471,30 @@ export class TalentprofileComponent implements OnInit {
     this.showEducationDetails = true;
   }
 
-  talentPersonalDetails = []; talentEducationDetails; talentJobDetails; talentJobPreference; talentBankDetails;
+  talentPersonalDetails: any = []; talentEducationDetails; talentJobDetails; talentJobPreference; talentBankDetails;
   showtalentProfile() {
     let params = {
       talent_id: this.talentId
     }
     this.appSer.TalentProfile(params).subscribe((res) => {
       this.talentPersonalDetails = res['step1'];
-      console.log(this.talentPersonalDetails)
+      console.log(this.talentPersonalDetails.dob)
+      let d: Date = new Date(this.talentPersonalDetails.dob);
+
+      this.selDate = {
+        year: d.getFullYear(),
+        month: d.getMonth() + 1,
+        day: d.getDate()
+      };
       this.talentEducationDetails = res['step2'].educationaldetails;
       this.talentJobDetails = res['step3'].jobdetails;
       this.talentJobPreference = res['step4'].jobpreferences[0];
       this.talentBankDetails = res['step5'].bankdetails[0] || [];
+      if (this.talentBankDetails.length == 0) {
+        this.addBankDetails = true;
+      } else {
+        this.addBankDetails = false;
+      }
       this.editBankDetailsForm = this.fb.group({
         account_holder_name: [this.talentBankDetails.account_holder_name, Validators.required],
         account_number: [this.talentBankDetails.account_number, Validators.required],
@@ -399,23 +505,21 @@ export class TalentprofileComponent implements OnInit {
 
       })
     })
-  }
-  get f() { return this.personalForm.controls }
-  saveProfile() {
-    this.submitted = true;
-    if (this.personalForm.invalid) {
-      return;
-    }
+
   }
 
+
   onDateChanged(date) {
-    this.mydate = date.date;
-    this.selDate = (this.mydate['year']) + "-" + (this.mydate['month']) + "-" + (this.mydate['day']);
+    this.selDate = date.date;
+    // this.selDate = (this.mydate['year']) + "-" + (this.mydate['month']) + "-" + (this.mydate['day']);
     // var newDate = date.date['year'] + "-" + date.date['month'] + "-" + date.date['date'];
   }
   get f5() { return this.editBankDetailsForm.controls; };
   addBankAccount() {
     this.submitted = true;
+    this.editBank = true;
+    this.showBankDetails = true;;
+    this.addBankDetails = false;
     if (this.editBankDetailsForm.invalid) {
       return;
     }
@@ -425,7 +529,8 @@ export class TalentprofileComponent implements OnInit {
       if (res['status'] == 200) {
         this.toast.success(res['message'], "Success");
         this.showtalentProfile();
-        this.edit = false;
+        this.editBank = false;
+        this.addBankDetails = false;
       }
       else {
         this.toast.error(res['message'], "error");
@@ -458,5 +563,106 @@ export class TalentprofileComponent implements OnInit {
   }
   closeSkill(skill) {
     this.newArr.splice(skill, 1);
+  }
+  cancel() {
+    this.edit = false;
+  }
+  multiEducation() {
+    // for (var i = this.t.length; i < this.talentEducationDetails.length; i++) {
+    this.t.push(this.fb.group({
+      high_qualification: [, Validators.required],
+      specialization: [, Validators.required],
+      institution: [, Validators.required],
+      year_of_completion: [, Validators.required],
+      degree: [, Validators.required],
+      educational_id: []
+    }));
+    // }
+  }
+  addEmployment() {
+    this.t1.push(this.fb.group({
+      current_designation: ['', Validators.required],
+      current_company: ['', Validators.required],
+
+      currency_type: ['', Validators.required],
+      currency_type1: ['', Validators.required],
+      currency_type2: ['', Validators.required],
+
+      working_period1: ['', Validators.required],
+      working_period2: ['', Validators.required],
+      working_period3: ['', Validators.required],
+      working_period4: ['', Validators.required],
+      working_period5: ['', Validators.required],
+      working_period6: ['', Validators.required],
+      location: ['', Validators.required],
+      industry_type: ['', Validators.required],
+      role: ['', Validators.required],
+      jobdetails_id: ['']
+    }));
+  }
+  index;
+  remove(x, eid) {
+
+    if (eid == "" || null) {
+      this.t.controls.splice(x, 1);
+
+      this.submitted = false;
+      this.t.markAsPristine();
+      this.t.markAsUntouched();
+      this.t.updateValueAndValidity();
+
+    } else {
+      let params = {
+        educational_id: JSON.parse(eid),
+        talent_id: JSON.parse(localStorage.talent_id)
+      }
+      this.appSer.deleteEducation(params).subscribe(res => {
+        if (res['status'] == 200) {
+          this.t.controls.splice(x, 1);
+
+          this.submitted = false;
+          this.t.markAsPristine();
+          this.t.markAsUntouched();
+          this.t.updateValueAndValidity();
+        } else {
+          this.toast.error(res['message'], "error");
+        }
+
+      })
+    }
+  }
+  removeExp(x, jobId) {
+    if (jobId == "" || null) {
+      this.t1.controls.splice(x, 1);
+      this.submitted = false;
+      this.t1.markAsPristine();
+      this.t1.markAsUntouched();
+      this.t1.updateValueAndValidity();
+
+    } else {
+      let params = {
+        jobdetails_id: JSON.parse(jobId),
+        talent_id: JSON.parse(localStorage.talent_id)
+      }
+      this.appSer.deleteExperiance(params).subscribe(res => {
+        if (res['status'] == 200) {
+          this.t1.controls.splice(x, 1);
+
+          this.submitted = false;
+          this.t1.markAsPristine();
+          this.t1.markAsUntouched();
+          this.t1.updateValueAndValidity();
+        } else {
+          this.toast.error(res['message'], "error");
+
+        }
+      })
+    }
+  }
+  editBankDetails() {
+    this.editBank = true;
+  }
+  cancelBank() {
+    this.editBank = false;
   }
 }
