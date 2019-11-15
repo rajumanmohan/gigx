@@ -23,6 +23,8 @@ import {
 })
 export class TalentdashboardComponent implements OnInit {
   talentId; loginType;
+  imgBaseUrl = "http://gigxglobal.com/talent_images/";
+
   constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService) {
     this.talentId = localStorage.getItem('talent_id');
     this.loginType = localStorage.getItem('industry_type');
