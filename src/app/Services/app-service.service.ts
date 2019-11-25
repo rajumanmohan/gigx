@@ -155,5 +155,5 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'talent_delete_job_details.php', params, { headers })
   }
-
+ 
 }

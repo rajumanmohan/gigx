@@ -55,8 +55,8 @@ export class CompanyregistrationComponent implements OnInit {
   constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService, private fb: FormBuilder) { }
   showEye = true;
   ngOnInit() {
-    window.scroll(0, 0);
     this.getIndustryData();
+    window.scroll(0, 0);
     this.getCountries();
     window.scroll(0, 0);
     this.registrationForm = this.fb.group({
@@ -132,7 +132,7 @@ export class CompanyregistrationComponent implements OnInit {
   getIndustryData() {
     this.appSer.getIndustryList().subscribe((res) => {
       this.IndustryList = res['industries'];
-
+      console.log(this.IndustryList);
     })
   }
   countryId; statesList;
