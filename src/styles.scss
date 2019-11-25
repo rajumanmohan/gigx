@@ -154,6 +154,9 @@ font-size:14px!important
  .form-control.is-invalid, .was-validated .form-control:invalid {
     border-color: #dc3545 !important;
 }
+.custom-select.is-invalid{
+    border-color: #dc3545 !important;
+}
 .mydp .icon-mydpremove:before,.mydp .icon-mydpremove:after,.icon-mydpremove {
     display: none !important;
 }

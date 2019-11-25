@@ -31,114 +31,21 @@
                                 <form [formGroup]="registrationForm" (ngSubmit)="registration()">
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="Full Name"
-                                            formControlName="full_name"
-                                            [ngClass]="{'is-invalid':f.full_name.errors&& submitted}">
-                                        <div class="invalid-feedback" *ngIf="f.full_name.errors">
-                                            <div *ngIf="f.full_name.errors.required">Name is required</div>
+                                            aria-describedby="emailHelp" placeholder="First Name"
+                                            formControlName="first_name"
+                                            [ngClass]="{'is-invalid':f.first_name.errors&& submitted}">
+                                        <div class="invalid-feedback" *ngIf="f.first_name.errors">
+                                            <div *ngIf="f.first_name.errors.required">First Name is required</div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="exampleInputPassword1"
-                                            placeholder="Email" formControlName="email"
-                                            [ngClass]="{'is-invalid':f.email.errors&& submitted}">
-                                        <div class="invalid-feedback" *ngIf="f.email.errors">
-                                            <div *ngIf="f.email.errors.required">Email is required</div>
-                                            <div *ngIf="f.email.errors.email">Email is invalid</div>
+                                        <input type="text" class="form-control" id="exampleInputEmail1"
+                                            aria-describedby="emailHelp" placeholder="Last Name"
+                                            formControlName="first_name"
+                                            [ngClass]="{'is-invalid':f.first_name.errors&& submitted}">
+                                        <div class="invalid-feedback" *ngIf="f.first_name.errors">
+                                            <div *ngIf="f.first_name.errors.required">Last Name is required</div>
                                         </div>
-                                    </div>
-
-                                    <div class="input-group password-group mb-3">
-                                        <input type="password" class="form-control password-field"
-                                            placeholder="Create Password" formControlName="password"
-                                            [ngClass]="{'is-invalid':f.password.errors&& submitted}" *ngIf="showEye" />
-                                        <input type="text" class="form-control password-field"
-                                            placeholder="Create Password" formControlName="password"
-                                            [ngClass]="{'is-invalid':f.password.errors&& submitted}" *ngIf="!showEye" />
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary" *ngIf="showEye" type="button"
-                                                (click)="hidePassword()" id="button-addon2">
-                                                <img src="../../../assets/images/eye-open.png"></button>
-                                            <button class="btn btn-outline-secondary" *ngIf="!showEye" type="button"
-                                                (click)="hidePassword()" id="button-addon2">
-                                                <img src="../../../assets/images/eye-closed.png"></button>
-                                        </div>
-
-                                        <div class="invalid-feedback" *ngIf="f.password.errors">
-                                            <div *ngIf="f.password.errors.required">Password is required</div>
-                                        </div>
-
-                                    </div>
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <select class="custom-select" id="inputGroupSelect01"
-                                                formControlName="mobile_code">
-                                                <option [ngValue]="+62" [selected]="true">+62</option>
-                                                <option [ngValue]="+81">+81</option>
-                                                <option [ngValue]="+60"> +60</option>
-                                                <option [ngValue]="+968"> +968</option>
-                                                <option [ngValue]="+63"> +63</option>
-                                                <option [ngValue]="+65"> +65</option>
-                                                <option [ngValue]="+82"> +82</option>
-                                                <option [ngValue]="+66"> +66</option>
-                                                <option [ngValue]="+90"> +90</option>
-                                                <option [ngValue]="+971"> +971</option>
-                                                <option [ngValue]="+44"> +44</option>
-                                                <option [ngValue]="+84"> +84</option>
-                                            </select>
-                                        </div>
-                                        <input myNumberOnly type="text" class="form-control" placeholder="Mobile number"
-                                            formControlName="mobile"
-                                            [ngClass]="{'is-invalid':f.mobile.errors&& submitted}" maxlength="15"
-                                            max="10" min="10">
-                                        <div class="invalid-feedback" *ngIf="f.mobile.errors">
-                                            <div *ngIf="f.mobile.errors.required">Mobile number is required</div>
-                                            <div *ngIf="f.mobile.errors.maxlength">Mobile number must be 10 digits
-                                            </div>
-                                            <div *ngIf="f.mobile.errors.minlength">Mobile number must be 10 digits
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Location"
-                                            formControlName="location"
-                                            [ngClass]="{'is-invalid':f.location.errors&& submitted}">
-                                        <div class="invalid-feedback" *ngIf="f.location.errors">
-                                            <div *ngIf="f.location.errors.required">Location is required</div>
-                                        </div>
-                                    </div>
-
-                                    <!-- vamshi upload img -->
-                                    <div class="row form-group">
-                                        <div class="col-md-5">
-                                            <div class="upload-image text-center">
-                                                <input type='file' id="imageUpload" name="ds" accept=".pdf" #fileInput
-                                                    (change)="readUrl1($event)" />
-                                                <img *ngIf="!url2==true" src="/assets/images/upload.png">
-                                                <!-- <img *ngIf="url2" [src]="url2" height="60"> -->
-                                                <p *ngIf="url2">{{path}}</p>
-
-                                                <p class="drag">Drag & Drop file here</p>
-                                                <p class="file-select">or select file to upload</p>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <p class="or-tag">-or-</p>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <div class="upload-image text-center">
-                                                <input type='file' id="imageUpload" name="ds" accept="video/mp4"
-                                                    #fileInput (change)="readUrl2($event)" />
-                                                <img *ngIf="!url3==true" src="/assets/images/upload.png" class="mt-3">
-                                                <p *ngIf="url3">{{path1}}</p>
-
-                                                <p class="drag mt-3">upload video</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <h6 class="add-details">Additional details</h6>
                                     </div>
                                     <div class="form-group">
                                         <p>Gender</p>
@@ -165,14 +72,141 @@
                                     <div class="form-group">
                                         <label>Date of birth</label>
                                         <my-date-picker name="mydate" (dateChanged)="onDateChanged($event)"
-                                            [selDate]="dob" formControlName="dob" required placeholder="2019-08-08"
+                                            [selDate]="dob" [options]="myDatePickerOptions" required
+                                            formControlName="dob" placeholder="08-08-2019"
                                             [ngClass]="{'is-invalid':f.dob.errors&& submitted}">
                                         </my-date-picker>
-                                        <div class="invalid-feedback" *ngIf="f.dob.errors">
+                                        <!-- <div class="invalid-feedback" *ngIf="f.dob.errors">
                                             <div *ngIf="f.dob.errors.required">Dob is required
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                    <!-- <div class="form-group">
+                                        <input type="text" class="form-control" id="exampleInputPassword1"
+                                            placeholder="Email" formControlName="email"
+                                            [ngClass]="{'is-invalid':f.email.errors&& submitted}">
+                                        <div class="invalid-feedback" *ngIf="f.email.errors">
+                                            <div *ngIf="f.email.errors.required">Email is required</div>
+                                            <div *ngIf="f.email.errors.email">Email is invalid</div>
+                                        </div>
+                                    </div> -->
+
+
+                                    <div class="row form-group country-city">
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="exampleFormControlSelect1"
+                                                formControlName="country_id"
+                                                (change)="changeCountryList($event.target.value)"
+                                                [ngClass]="{ 'is-invalid':f.country_id.errors&& submitted }">
+                                                <option value="" [selected]=true [disabled]="true">Select Country
+                                                </option>
+                                                <option *ngFor="let data of CountiresList" [value]="data.country_id">
+                                                    {{data.country_name}}
+                                                </option>
+                                            </select>
+                                            <div *ngIf="f.country_id.errors&& submitted" class="invalid-feedback">
+                                                <div *ngIf="f.country_id.errors.required">Country is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="exampleFormControlSelect1"
+                                                formControlName="state_id"
+                                                (change)="changeStateList($event.target.value)"
+                                                [ngClass]="{ 'is-invalid':f.state_id.errors&& submitted }">
+                                                <option [value]="" [selected]="true">Select State </option>
+                                                <option *ngFor="let data of statesList" [value]="data.state_id">
+                                                    {{data.state}}</option>
+                                            </select>
+                                            <div *ngIf="f.state_id.errors&& submitted" class="invalid-feedback">
+                                                <div *ngIf="f.state_id.errors.required">City is required</div>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <select class="form-control" id="exampleFormControlSelect1"
+                                                    formControlName="city_id"
+                                                    [ngClass]="{ 'is-invalid':f.city_id.errors&& submitted }">
+                                                    <option [value]="" [selected]="true">Select City </option>
+                                                    <option *ngFor="let data of citiesList" [value]="data.city_id">
+                                                        {{data.city}}
+                                                    </option>
+                                                </select>
+                                                <div *ngIf="f.city_id.errors&& submitted" class="invalid-feedback">
+                                                    <div *ngIf="f.city_id.errors.required">City is required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Location"
+                                                    formControlName="location"
+                                                    [ngClass]="{'is-invalid':f.location.errors&& submitted}">
+                                                <div class="invalid-feedback" *ngIf="f.location.errors">
+                                                    <div *ngIf="f.location.errors.required">Location is required</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <select class="custom-select" id="inputGroupSelect01"
+                                                formControlName="mobile_code"
+                                                [ngClass]="{ 'is-invalid':f.mobile_code.errors&& submitted }">
+                                                <option [value]="" [selected]="true" [disabled]="true">Select Code
+                                                </option>
+                                                <option *ngFor="let data of CountiresList" [ngValue]="data.mobile_code"
+                                                    [selected]="countryId == data.country_id">
+                                                    {{data.mobile_code}}({{data.country_name}})
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <input myNumberOnly type="text" class="form-control" placeholder="Mobile number"
+                                            formControlName="mobile"
+                                            [ngClass]="{'is-invalid':f.mobile.errors&& submitted}">
+                                        <div class="invalid-feedback" *ngIf="f.mobile_code.errors">
+                                            <div *ngIf="f.mobile_code.errors.required">Code is required</div>
+                                        </div>
+                                        <div class="invalid-feedback" *ngIf="f.mobile.errors">
+                                            <div *ngIf="f.mobile.errors.required">Mobile number is required</div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- vamshi upload img -->
+                                    <div class="row form-group">
+                                        <div class="col-md-5">
+                                            <div class="upload-image text-center">
+                                                <input type='file' id="imageUpload" name="ds" accept=".pdf" #fileInput
+                                                    (change)="readUrl1($event)" />
+
+                                                <img *ngIf="!url2==true" src="/assets/images/upload.png">
+                                                <!-- <img *ngIf="url2" [src]="url2" height="60"> -->
+                                                <p *ngIf="url2">{{path}}</p>
+
+                                                <p class="drag">Drag & Drop file here</p>
+                                                <p class="file-select">or select file to upload</p>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <p class="or-tag">-or-</p>
+                                        </div>
+                                        <div class="col-md-5">
+                                            <div class="upload-image text-center">
+                                                <input type='file' id="imageUpload" name="ds" accept="video/mp4"
+                                                    #fileInput (change)="readUrl2($event)" />
+                                                <img *ngIf="!url3==true" src="/assets/images/upload.png" class="mt-3">
+                                                <p *ngIf="url3">{{path1}}</p>
+
+                                                <p class="drag mt-3">upload video</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                     <!-- vamshi upload img -->
 
                                     <div class="form-group">
@@ -182,8 +216,8 @@
                                                 [ngClass]="{'is-invalid':f.termsConditions.errors&& submitted}">
 
                                             <label class="custom-control-label" for="customCheck1">I agreed to the
-                                                <span><a href="">Terms
-                                                        and Conditions </a></span> governing the use of gigx.com, I
+                                                <span><a href="">Terms&conditions </a></span> governing the use of
+                                                gigx.com, I
                                                 have
                                                 reviewed the
                                                 default mailer & Communications settings</label>
@@ -257,6 +291,16 @@
                                             <option value="2016">2016</option>
                                             <option value="2015">2015</option>
                                             <option value="2014">2014</option>
+                                            <option value="2014">2013</option>
+                                            <option value="2014">2012</option>
+                                            <option value="2014">2011</option>
+                                            <option value="2014">2010</option>
+                                            <option value="2014">2009</option>
+                                            <option value="2014">2008</option>
+                                            <option value="2014">2007</option>
+                                            <option value="2014">2006</option>
+                                            <option value="2014">2005</option>
+
                                         </select>
                                         <div *ngIf="submitted1 && f1.year_of_completion.errors"
                                             class="invalid-feedback">
@@ -362,6 +406,15 @@
                                                         <option value="2016">2016</option>
                                                         <option value="2015">2015</option>
                                                         <option value="2014">2014</option>
+                                                        <option value="2014">2013</option>
+                                                        <option value="2014">2012</option>
+                                                        <option value="2014">2011</option>
+                                                        <option value="2014">2010</option>
+                                                        <option value="2014">2009</option>
+                                                        <option value="2014">2008</option>
+                                                        <option value="2014">2007</option>
+                                                        <option value="2014">2006</option>
+                                                        <option value="2014">2005</option>
                                                     </select>
                                                     <div *ngIf="submitted1 && education.controls.year_of_completion.errors"
                                                         class="invalid-feedback">
@@ -571,16 +624,21 @@
                                                     [ngClass]="{'is-invalid':f3.year.errors&& submitted3}">
                                                     <option value="company" [disabled]="true" [selected]="true">Year
                                                     </option>
-                                                    <option value="2010">2010</option>
-                                                    <option value="2011">2011</option>
-                                                    <option value="2012">2012</option>
-                                                    <option value="2013">2013</option>
-                                                    <option value="2014">2014</option>
-                                                    <option value="2015">2015</option>
-                                                    <option value="2016">2016</option>
-                                                    <option value="2017">2017</option>
-                                                    <option value="2018">2018</option>
                                                     <option value="2019">2019</option>
+                                                    <option value="2018">2018</option>
+                                                    <option value="2017">2017</option>
+                                                    <option value="2016">2016</option>
+                                                    <option value="2015">2015</option>
+                                                    <option value="2014">2014</option>
+                                                    <option value="2014">2013</option>
+                                                    <option value="2014">2012</option>
+                                                    <option value="2014">2011</option>
+                                                    <option value="2014">2010</option>
+                                                    <option value="2014">2009</option>
+                                                    <option value="2014">2008</option>
+                                                    <option value="2014">2007</option>
+                                                    <option value="2014">2006</option>
+                                                    <option value="2014">2005</option>
 
 
                                                 </select>
@@ -783,6 +841,14 @@
                                                             <option value="01">02</option>
                                                             <option value="03">03</option>
                                                             <option value="04">04</option>
+                                                            <option value="05">05</option>
+                                                            <option value="06">06</option>
+                                                            <option value="07">07</option>
+                                                            <option value="08">08</option>
+                                                            <option value="09">09</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
 
                                                         </select>
                                                         <div class="invalid-feedback"
@@ -802,11 +868,21 @@
                                                             <option value="company" [disabled]="true" [selected]="true">
                                                                 Year
                                                             </option>
-                                                            <option value="1999">1999</option>
-                                                            <option value="2000">2000</option>
-                                                            <option value="2001">2001</option>
-                                                            <option value="2002">2002</option>
-
+                                                            <option value="2019">2019</option>
+                                                            <option value="2018">2018</option>
+                                                            <option value="2017">2017</option>
+                                                            <option value="2016">2016</option>
+                                                            <option value="2015">2015</option>
+                                                            <option value="2014">2014</option>
+                                                            <option value="2014">2013</option>
+                                                            <option value="2014">2012</option>
+                                                            <option value="2014">2011</option>
+                                                            <option value="2014">2010</option>
+                                                            <option value="2014">2009</option>
+                                                            <option value="2014">2008</option>
+                                                            <option value="2014">2007</option>
+                                                            <option value="2014">2006</option>
+                                                            <option value="2014">2005</option>
                                                         </select>
                                                         <div class="invalid-feedback"
                                                             *ngIf="employee.controls.year.errors">
@@ -850,9 +926,17 @@
                                                                 Month
                                                             </option>
                                                             <option value="01">01</option>
-                                                            <option value="02">02</option>
+                                                            <option value="01">02</option>
                                                             <option value="03">03</option>
                                                             <option value="04">04</option>
+                                                            <option value="05">05</option>
+                                                            <option value="06">06</option>
+                                                            <option value="07">07</option>
+                                                            <option value="08">08</option>
+                                                            <option value="09">09</option>
+                                                            <option value="10">10</option>
+                                                            <option value="11">11</option>
+                                                            <option value="12">12</option>
 
                                                         </select>
                                                         <div class="invalid-feedback"
@@ -872,10 +956,21 @@
                                                             <option value="company" [disabled]="true" [selected]="true">
                                                                 Year
                                                             </option>
-                                                            <option value="1999">1999</option>
-                                                            <option value="2000">2000</option>
-                                                            <option value="2001">2001</option>
-                                                            <option value="2002">2002</option>
+                                                            <option value="2019">2019</option>
+                                                            <option value="2018">2018</option>
+                                                            <option value="2017">2017</option>
+                                                            <option value="2016">2016</option>
+                                                            <option value="2015">2015</option>
+                                                            <option value="2014">2014</option>
+                                                            <option value="2014">2013</option>
+                                                            <option value="2014">2012</option>
+                                                            <option value="2014">2011</option>
+                                                            <option value="2014">2010</option>
+                                                            <option value="2014">2009</option>
+                                                            <option value="2014">2008</option>
+                                                            <option value="2014">2007</option>
+                                                            <option value="2014">2006</option>
+                                                            <option value="2014">2005</option>
 
                                                         </select>
                                                         <div class="invalid-feedback"

@@ -9,6 +9,8 @@ import {
   bounceInAndOut, enterAndLeaveFromLeft, enterAndLeaveFromRight, fadeInAndOut,
   fadeInThenOut, growInShrinkOut, swingInAndOut
 } from '../../triggers';
+import { IMyDpOptions } from 'mydatepicker';
+
 @Pipe({ name: 'safe' })
 @Component({
   selector: 'app-talentprofile',
@@ -43,9 +45,9 @@ export class TalentprofileComponent implements OnInit {
   currencyType = ["INR", "$", "RM"];
   currencyType1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   currencyType2 = [10, 20, 30, 40, 50, 60, 70, 80, 90];
-  dateArr = ["01", "02", "03", "04", "05", "06", "07", "08", "09", 10, 11, 12];
+  dateArr = ["01", "02", "03", "04", "05", "06", "07", "08", "09", 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
 
-  yearArray = ["present", 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012];
+  yearArray = ["present", 2019, 2018, 2017, 2016, 2015, 2014, 2013, 2012, 2011, 2010, 2009, 2008, 2007, 2006, 2005, 2004, 2003, 2002, 2001, 2000];
   industryArr = ["Oil and Gas", "IT", "Marketing"];
   roleArr = ["Associate Manager", "Senior Architect", "Marketing Manager", "individual"];
   employmentArr = ["Gig", "Contract", "Full time"]
@@ -56,12 +58,21 @@ export class TalentprofileComponent implements OnInit {
   submitted1 = false;
   newArr = [];
   editBankDetailsForm: FormGroup;
-  imgBaseUrl = "http://gigxglobal.com/talent_images/";
+  imgBaseUrl = "https://gigxglobal.com/talent_images/";
   path;
   url2;
   url3;
   addBankDetails;
   editBank = false;
+  email;
+  password;
+  CountiresList;
+  showBankForm = false;
+  submitted5 = false;
+  private myDatePickerOptions: IMyDpOptions = {
+    // other options...
+    dateFormat: 'dd/mm/yyyy',
+  };
   constructor(private route: ActivatedRoute, private router: Router, private appSer: AppServiceService, private toast: ToastrService, private fb: FormBuilder) {
 
     this.talentId = localStorage.getItem('talent_id');
@@ -81,6 +92,9 @@ export class TalentprofileComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       mobile: ['', Validators.required],
       location: ['', Validators.required],
+      country_id: ['', Validators.required],
+      state_id: ['', Validators.required],
+      city_id: ['', Validators.required],
       gender: ['', Validators.required],
       dob: [''],
       form_type: ["step1"],
@@ -117,7 +131,7 @@ export class TalentprofileComponent implements OnInit {
       branch: ['', Validators.required],
       location: ['', Validators.required]
     })
-
+    this.getCountries();
   }
 
   personaldetails() {
@@ -130,7 +144,7 @@ export class TalentprofileComponent implements OnInit {
     this.editEdu = false;
     this.editJob = false;
     this.showjobPreferences = false;
-
+    this.addBankDetails = false;
   }
 
   education() {
@@ -144,6 +158,7 @@ export class TalentprofileComponent implements OnInit {
     this.editJob = false;
     this.showjobPreferences = false;
     this.showjobPreferences = false;
+    this.addBankDetails = false;
 
   }
 
@@ -157,6 +172,7 @@ export class TalentprofileComponent implements OnInit {
     this.editEdu = false;
     this.editJob = false;
     this.showjobPreferences = false;
+    this.addBankDetails = false;
 
   }
 
@@ -170,7 +186,6 @@ export class TalentprofileComponent implements OnInit {
     this.editEdu = false;
     this.editJob = false;
     this.showjobPreferences = false;
-
   }
 
   gigstalent() {
@@ -183,6 +198,7 @@ export class TalentprofileComponent implements OnInit {
     this.editEdu = false;
     this.editJob = false;
     this.showjobPreferences = false;
+    this.addBankDetails = false;
 
   }
   jobPreferences() {
@@ -196,6 +212,8 @@ export class TalentprofileComponent implements OnInit {
     this.editJob = false;
     this.showjobPreferences = true;
     this.showtalentProfile();
+    this.addBankDetails = false;
+
   }
   showEditPreferences() {
     this.newArr = [];
@@ -281,8 +299,12 @@ export class TalentprofileComponent implements OnInit {
       email: [this.talentPersonalDetails['email'], Validators.required],
       mobile: [this.talentPersonalDetails['mobile'], Validators.required],
       location: [this.talentPersonalDetails['location'], Validators.required],
+      country_id: [this.talentPersonalDetails['country'], Validators.required],
+      state_id: [this.talentPersonalDetails['state'], Validators.required],
+      city_id: [this.talentPersonalDetails['city'], Validators.required],
       // temp this.talentPersonalDetails['gender']
       gender: [this.talentPersonalDetails['gender'], Validators.required],
+      // 
       dob: [this.talentPersonalDetails['dob']],
       form_type: ["step1"],
       talent_id: [JSON.parse(localStorage.talent_id)],
@@ -311,6 +333,9 @@ export class TalentprofileComponent implements OnInit {
       this.personalForm.value.talent_old_video = this.talentPersonalDetails.attachment;
       this.personalForm.value.talent_attachment_video = "";
     }
+    this.personalForm.value.country_id = this.countryId;
+    this.personalForm.value.state_id = this.stateId;
+    this.personalForm.value.city_id = this.cityId;
     // this.personalForm.value.dob = this.selDate;
     console.log(this.personalForm.value);
     this.submitted = true;
@@ -476,9 +501,17 @@ export class TalentprofileComponent implements OnInit {
     let params = {
       talent_id: this.talentId
     }
+
     this.appSer.TalentProfile(params).subscribe((res) => {
       this.talentPersonalDetails = res['step1'];
-      console.log(this.talentPersonalDetails.dob)
+      this.countryId = this.talentPersonalDetails['country_id'];
+      this.stateId = this.talentPersonalDetails['state_id'];
+      this.cityId = this.talentPersonalDetails['city_id'];
+      console.log(this.countryId)
+      console.log(this.stateId)
+      this.getStates();
+      this.getCities();
+      // this.talentPersonalDetails.dob
       let d: Date = new Date(this.talentPersonalDetails.dob);
 
       this.selDate = {
@@ -492,8 +525,10 @@ export class TalentprofileComponent implements OnInit {
       this.talentBankDetails = res['step5'].bankdetails[0] || [];
       if (this.talentBankDetails.length == 0) {
         this.addBankDetails = true;
+        this.showBankForm = false;
       } else {
         this.addBankDetails = false;
+        this.showBankForm = true;
       }
       this.editBankDetailsForm = this.fb.group({
         account_holder_name: [this.talentBankDetails.account_holder_name, Validators.required],
@@ -511,14 +546,19 @@ export class TalentprofileComponent implements OnInit {
 
   onDateChanged(date) {
     this.selDate = date.date;
+    console.log(this.selDate)
+    var newDate = this.selDate['year'] + "/" + this.selDate['month'] + "/" + this.selDate['day'];
+    console.log(newDate)
     // this.selDate = (this.mydate['year']) + "-" + (this.mydate['month']) + "-" + (this.mydate['day']);
     // var newDate = date.date['year'] + "-" + date.date['month'] + "-" + date.date['date'];
+    this.personalForm.value.dob = newDate;
   }
   get f5() { return this.editBankDetailsForm.controls; };
   addBankAccount() {
-    this.submitted = true;
+    this.submitted5 = true;
     this.editBank = true;
-    this.showBankDetails = true;;
+    this.showBankDetails = true;
+    this.showBankForm = true;
     this.addBankDetails = false;
     if (this.editBankDetailsForm.invalid) {
       return;
@@ -538,9 +578,13 @@ export class TalentprofileComponent implements OnInit {
       }
     })
   }
-
-
-
+  addBankAccountNew() {
+    // this.submitted = true;
+    this.editBank = true;
+    this.showBankDetails = true;
+    this.showBankForm = true;
+    this.addBankDetails = false;
+  }
 
   readUrl(event: any) {
     console.log('readUrl');
@@ -663,6 +707,85 @@ export class TalentprofileComponent implements OnInit {
     this.editBank = true;
   }
   cancelBank() {
-    this.editBank = false;
+    if (this.talentBankDetails.length == 0) {
+      this.addBankDetails = true;
+      this.editBank = false;
+      this.showBankForm = false;
+    } else {
+      this.showBankForm = true;
+      this.addBankDetails = false;
+      this.editBank = false;;
+
+
+    }
+  }
+  countryNameId; stateNameId;
+  getCountries() {
+    this.appSer.countriesList().subscribe((res) => {
+      this.CountiresList = res['countries'];
+    });
+
+  }
+  countryId; statesList;
+  changeCountryList(name) {
+    for (var i = 0; i < this.CountiresList.length; i++) {
+      if (name == this.CountiresList[i].country_name) {
+        this.countryId = this.CountiresList[i].country_id;
+      }
+    }
+    let params = {
+      country_id: this.countryId,
+    }
+    this.appSer.statesList(params).subscribe((res) => {
+      this.statesList = res['states'];
+      this.stateId = res['states'].state_id;
+      let params1 = {
+        state_id: this.stateId,
+      }
+      this.appSer.citiesList(params1).subscribe((res) => {
+        this.citiesList = res['cities'];
+      })
+    })
+  }
+
+  stateId; citiesList; cityId;
+  changeStateList(state) {
+    for (var i = 0; i < this.statesList.length; i++) {
+      if (state == this.statesList[i].state) {
+        this.stateId = this.statesList[i].state_id;
+      }
+    }
+    let params = {
+      state_id: this.stateId,
+    }
+    this.appSer.citiesList(params).subscribe((res) => {
+      this.citiesList = res['cities'];
+    })
+  }
+  changeCityList(state) {
+    for (var i = 0; i < this.citiesList.length; i++) {
+      if (state == this.citiesList[i].city) {
+        this.cityId = this.citiesList[i].city_id;
+      }
+    }
+  }
+  getStates() {
+    let params = {
+      country_id: this.countryId,
+    }
+    this.appSer.statesList(params).subscribe((res) => {
+      this.statesList = res['states'];
+    })
+  }
+  getCities() {
+    let params = {
+      state_id: this.stateId,
+    }
+    this.appSer.citiesList(params).subscribe((res) => {
+      this.citiesList = res['cities'];
+      for (var i = 0; i < this.citiesList.length; i++) {
+        this.cityId = this.citiesList[i].city_id;
+      }
+    })
   }
 }

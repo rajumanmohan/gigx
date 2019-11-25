@@ -98,8 +98,12 @@
                                         <span *ngIf="edit==false">{{talentPersonalDetails.full_name}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
                                             <input type="text" class="form-control" id="exampleInputPassword1"
-                                                formControlName="full_name">
-
+                                                formControlName="full_name"
+                                                [ngClass]="{ 'is-invalid': submitted && f.full_name.errors }">
+                                            <div class="invalid-feedback" *ngIf="f.full_name.errors">
+                                                <div *ngIf="f.full_name.errors.required">Full name is required
+                                                </div>
+                                            </div>
                                         </span>
 
                                     </td>
@@ -112,8 +116,12 @@
                                         <span *ngIf="edit==false">{{talentPersonalDetails.email}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
                                             <input type="text" class="form-control" id="exampleInputPassword1"
-                                                formControlName="email">
-
+                                                formControlName="email"
+                                                [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                                            <div class="invalid-feedback" *ngIf="f.email.errors">
+                                                <div *ngIf="f.email.errors.required">Email is required
+                                                </div>
+                                            </div>
                                         </span>
                                     </td>
                                 </tr>
@@ -126,8 +134,75 @@
                                             {{talentPersonalDetails.mobile}}</span>
                                         <span class="form-group edit-input" *ngIf="edit==true">
                                             <input type="text" class="form-control" id="exampleInputPassword1"
-                                                placeholder="9630571452" formControlName="mobile">
+                                                placeholder="9630571452" formControlName="mobile"
+                                                [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }">
+                                            <div class="invalid-feedback" *ngIf="f.mobile.errors">
+                                                <div *ngIf="f.mobile.errors.required">Mobile number is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">COUNTRY
+                                        <span>:</span>
+                                    </td>
+                                    <td class="b-0">
+                                        <span *ngIf="edit==false">{{talentPersonalDetails.country}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <select class="form-control" formControlName="country_id"
+                                                (change)="changeCountryList($event.target.value)"
+                                                [ngClass]="{ 'is-invalid': submitted && f.country_id.errors }">
+                                                <!-- <option value="" [selected]=true [disabled]="true">Country </option> -->
+                                                <option *ngFor="let data of CountiresList" [value]="data.country_name">
+                                                    {{data.country_name}}
+                                                </option>
+                                            </select>
+                                            <div class="invalid-feedback" *ngIf="f.country_id.errors">
+                                                <div *ngIf="f.country_id.errors.required">Country Name is required
+                                                </div>
+                                            </div>
+                                        </span>
+                                    </td>
+                                </tr>
 
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">STATE
+                                        <span>:</span>
+                                    </td>
+                                    <td class="b-0">
+                                        <span *ngIf="edit==false">{{talentPersonalDetails.state}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <select class="form-control" id="exampleFormControlSelect1"
+                                                formControlName="state_id"
+                                                (change)="changeStateList($event.target.value)">
+                                                <option selected [value]=''>Select State</option>
+                                                <option *ngFor="let data of statesList" [value]="data.state">
+                                                    {{data.state}}</option>
+                                            </select>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">CITY
+                                        <span>:</span>
+                                    </td>
+                                    <td class="b-0">
+                                        <span *ngIf="edit==false">{{talentPersonalDetails.city}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <select class="form-control" id="exampleFormControlSelect1"
+                                                formControlName="city_id"
+                                                [ngClass]="{ 'is-invalid': submitted && f.city_id.errors }"
+                                                (change)="changeCityList($event.target.value)">
+                                                <option selected [value]=''>Select City</option>
+                                                <option *ngFor="let data of citiesList" [value]="data.city">
+                                                    {{data.city}}
+                                                </option>
+                                            </select>
+                                            <div class="invalid-feedback" *ngIf="f.city_id.errors">
+                                                <div *ngIf="f.city_id.errors.required">City is required
+                                                </div>
+                                            </div>
                                         </span>
                                     </td>
                                 </tr>
@@ -153,7 +228,8 @@
                                         <span class="form-group edit-input" *ngIf="edit==true">
                                             <!-- [selDate]="myDate" -->
                                             <my-date-picker name="mydate" [selDate]="selDate"
-                                                (dateChanged)="onDateChanged($event)" placeholder="2019-08-08">
+                                                (dateChanged)="onDateChanged($event)" [options]="myDatePickerOptions"
+                                                placeholder="2019-08-08">
                                             </my-date-picker>
                                         </span>
                                     </td>
@@ -444,7 +520,7 @@
                                                     <select class="form-control" id="exampleFormControlSelect1"
                                                         placeholder="Industry Type" formControlName="year_of_completion"
                                                         [ngClass]="{'is-invalid':ticket.controls.year_of_completion.errors&& submitted1}">
-                                                        <option *ngFor="let year of yearArray" value="year">{{year}}
+                                                        <option *ngFor="let year of yearArray" [value]="year">{{year}}
                                                         </option>
                                                     </select>
                                                     <div *ngIf="submitted1 && ticket.controls.year_of_completion.errors"
@@ -764,7 +840,7 @@
                                                                     placeholder="Industry Type"
                                                                     formControlName="working_period2"
                                                                     [ngClass]="{'is-invalid':ticket.controls.working_period2.errors&& submitted}">
-                                                                    <option *ngFor="let month1 of dateArr"
+                                                                    <option *ngFor="let month1 of currencyType1"
                                                                         [value]="month1">
                                                                         {{month1}} </option>
 
@@ -841,7 +917,7 @@
                                                                     placeholder="Industry Type"
                                                                     formControlName="working_period5"
                                                                     [ngClass]="{'is-invalid':ticket.controls.working_period5.errors&& submitted}">
-                                                                    <option *ngFor="let month1 of dateArr"
+                                                                    <option *ngFor="let month1 of currencyType1"
                                                                         [value]="month1">
                                                                         {{month1}} </option>
 
@@ -1139,140 +1215,145 @@
         <!-- job preferences -->
 
         <!-- Bank details -->
-        <div class="row contact-details mt-5" *ngIf="showBankDetails&&!addBankDetails">
-            <div class="col-md-12">
-                <form [formGroup]="editBankDetailsForm">
-                    <div class="table-responsive">
-                        <table class="table b-0">
+        <div>
+            <div class="row contact-details mt-5" *ngIf="showBankDetails">
+                <div class="col-md-12" *ngIf="showBankForm">
+                    <form [formGroup]="editBankDetailsForm">
+                        <div class="table-responsive">
+                            <table class="table b-0">
 
-                            <tbody class="b-0">
-                                <tr class="b-0">
-                                    <td class="b-0 contact-title">ACCOUNT HOLDER NAME</td>
-                                    <td class="b-0"><span>:</span>
-                                        <span *ngIf="editBank==false">{{talentBankDetails.account_holder_name}}</span>
-                                        <span class="form-group edit-input" *ngIf="editBank==true">
-                                            <input type="text" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Name" formControlName="account_holder_name"
-                                                [ngClass]="{'is-invalid':f5.account_holder_name.errors && submitted}">
-                                            <div class="invalid-feedback" *ngIf="f5.account_holder_name.errors">
-                                                <div *ngIf="f5.account_holder_name.errors.required">Account Holder Name
-                                                    is required
+                                <tbody class="b-0">
+                                    <tr class="b-0">
+                                        <td class="b-0 contact-title">ACCOUNT HOLDER NAME</td>
+                                        <td class="b-0"><span>:</span>
+                                            <span
+                                                *ngIf="editBank==false">{{talentBankDetails.account_holder_name}}</span>
+                                            <span class="form-group edit-input" *ngIf="editBank==true">
+                                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Name" formControlName="account_holder_name"
+                                                    [ngClass]="{'is-invalid':f5.account_holder_name.errors && submitted5}">
+                                                <div class="invalid-feedback" *ngIf="f5.account_holder_name.errors">
+                                                    <div *ngIf="f5.account_holder_name.errors.required">Account Holder
+                                                        Name
+                                                        is required
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="b-0">
-                                    <td class="b-0 contact-title">ACCOUNT NUMBER</td>
-                                    <td class="b-0"><span>:</span>
-                                        <span *ngIf="editBank==false">{{talentBankDetails.account_number}}</span>
-                                        <span class="form-group edit-input" *ngIf="editBank==true">
-                                            <input myNumberOnly type="text" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Account Number"
-                                                formControlName="account_number"
-                                                [ngClass]="{'is-invalid':f5.account_number.errors && submitted}">
-                                            <div class="invalid-feedback" *ngIf="f5.account_number.errors">
-                                                <div *ngIf="f5.account_number.errors.required">Account Number
-                                                    is required
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr class="b-0">
+                                        <td class="b-0 contact-title">ACCOUNT NUMBER</td>
+                                        <td class="b-0"><span>:</span>
+                                            <span *ngIf="editBank==false">{{talentBankDetails.account_number}}</span>
+                                            <span class="form-group edit-input" *ngIf="editBank==true">
+                                                <input myNumberOnly type="text" class="form-control"
+                                                    id="exampleInputPassword1" placeholder="Account Number"
+                                                    formControlName="account_number"
+                                                    [ngClass]="{'is-invalid':f5.account_number.errors && submitted5}">
+                                                <div class="invalid-feedback" *ngIf="f5.account_number.errors">
+                                                    <div *ngIf="f5.account_number.errors.required">Account Number
+                                                        is required
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="b-0">
-                                    <td class="b-0 contact-title">BANK NAME</td>
-                                    <td class="b-0"><span>:</span>
-                                        <span *ngIf="editBank==false">{{talentBankDetails.bank_name}}</span>
-                                        <span class="form-group edit-input" *ngIf="editBank==true">
-                                            <input type="text" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Bank Name" formControlName="bank_name"
-                                                [ngClass]="{'is-invalid':f5.bank_name.errors && submitted}">
-                                            <div class="invalid-feedback" *ngIf="f5.bank_name.errors">
-                                                <div *ngIf="f5.bank_name.errors.required">Bank Name
-                                                    is required
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr class="b-0">
+                                        <td class="b-0 contact-title">BANK NAME</td>
+                                        <td class="b-0"><span>:</span>
+                                            <span *ngIf="editBank==false">{{talentBankDetails.bank_name}}</span>
+                                            <span class="form-group edit-input" *ngIf="editBank==true">
+                                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Bank Name" formControlName="bank_name"
+                                                    [ngClass]="{'is-invalid':f5.bank_name.errors && submitted5}">
+                                                <div class="invalid-feedback" *ngIf="f5.bank_name.errors">
+                                                    <div *ngIf="f5.bank_name.errors.required">Bank Name
+                                                        is required
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="b-0">
-                                    <td class="b-0 contact-title">IFSC CODE</td>
-                                    <td class="b-0"><span>:</span>
-                                        <span *ngIf="editBank==false">{{talentBankDetails.ifsc}}</span>
-                                        <span class="form-group edit-input" *ngIf="editBank==true">
-                                            <input type="text" class="form-control" id="exampleInputPassword1"
-                                                placeholder="IFCS CODE" formControlName="ifsc"
-                                                [ngClass]="{'is-invalid':f5.ifsc.errors && submitted}">
-                                            <div class="invalid-feedback" *ngIf="f5.ifsc.errors">
-                                                <div *ngIf="f5.ifsc.errors.required">IFSC CODE
-                                                    is required
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr class="b-0">
+                                        <td class="b-0 contact-title">IFSC CODE</td>
+                                        <td class="b-0"><span>:</span>
+                                            <span *ngIf="editBank==false">{{talentBankDetails.ifsc}}</span>
+                                            <span class="form-group edit-input" *ngIf="editBank==true">
+                                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="IFCS CODE" formControlName="ifsc"
+                                                    [ngClass]="{'is-invalid':f5.ifsc.errors && submitted5}">
+                                                <div class="invalid-feedback" *ngIf="f5.ifsc.errors">
+                                                    <div *ngIf="f5.ifsc.errors.required">IFSC CODE
+                                                        is required
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="b-0">
-                                    <td class="b-0 contact-title">BRANCH</td>
-                                    <td class="b-0"><span>:</span>
-                                        <span *ngIf="editBank==false">{{talentBankDetails.branch}}</span>
-                                        <span class="form-group edit-input" *ngIf="editBank==true">
-                                            <input type="text" value="Kuala Lumpur , Malaysia" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Kuala Lumpur , Malaysia"
-                                                formControlName="branch"
-                                                [ngClass]="{'is-invalid':f5.branch.errors && submitted}">
-                                            <div class="invalid-feedback" *ngIf="f5.branch.errors">
-                                                <div *ngIf="f5.branch.errors.required">Branch
-                                                    is required
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr class="b-0">
+                                        <td class="b-0 contact-title">BRANCH</td>
+                                        <td class="b-0"><span>:</span>
+                                            <span *ngIf="editBank==false">{{talentBankDetails.branch}}</span>
+                                            <span class="form-group edit-input" *ngIf="editBank==true">
+                                                <input type="text" value="Kuala Lumpur , Malaysia" class="form-control"
+                                                    id="exampleInputPassword1" placeholder="Kuala Lumpur , Malaysia"
+                                                    formControlName="branch"
+                                                    [ngClass]="{'is-invalid':f5.branch.errors && submitted5}">
+                                                <div class="invalid-feedback" *ngIf="f5.branch.errors">
+                                                    <div *ngIf="f5.branch.errors.required">Branch
+                                                        is required
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="b-0">
-                                    <td class="b-0 contact-title">LOCATION</td>
-                                    <td class="b-0"><span>:</span>
-                                        <span *ngIf="editBank==false">{{talentBankDetails.location}}</span>
-                                        <span class="form-group edit-input" *ngIf="editBank==true">
-                                            <input type="text" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Kuala Lumpur , Malaysia" formControlName="location"
-                                                [ngClass]="{'is-invalid':f5.location.errors && submitted}">
-                                            <div class="invalid-feedback" *ngIf="f5.location.errors">
-                                                <div *ngIf="f5.location.errors.required">Location
-                                                    is required
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr class="b-0">
+                                        <td class="b-0 contact-title">LOCATION</td>
+                                        <td class="b-0"><span>:</span>
+                                            <span *ngIf="editBank==false">{{talentBankDetails.location}}</span>
+                                            <span class="form-group edit-input" *ngIf="editBank==true">
+                                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Kuala Lumpur , Malaysia" formControlName="location"
+                                                    [ngClass]="{'is-invalid':f5.location.errors && submitted5}">
+                                                <div class="invalid-feedback" *ngIf="f5.location.errors">
+                                                    <div *ngIf="f5.location.errors.required">Location
+                                                        is required
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
+                                            </span>
+                                        </td>
+                                    </tr>
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
 
+                        </div>
+                        <div class="row justify-content-center mb-5 mt-3">
+                            <div class="col-md-4 text-center edit-profile" *ngIf="editBank==false">
+                                <button type="submit" class="btn " (click)="editBankDetails()">EDIT</button>
+                            </div>
+
+
+                            <div class="col-md-6 text-center edit-profile" *ngIf="editBank==true">
+                                <button type="submit" class="btn " (click)="addBankAccount()">Save</button>
+                            </div>
+                            <div class="col-md-6 text-center edit-profile" *ngIf="editBank==true">
+                                <button type="submit" class="btn " (click)="cancelBank()">Cancel</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 text-center edit-profile add-bank">
+                        <button type="submit" class="btn " *ngIf="addBankDetails==true"
+                            (click)="addBankAccountNew()">ADD
+                            BANK DETAILS</button>
                     </div>
-                    <div class="row justify-content-center mb-5 mt-3">
-                        <div class="col-md-4 text-center edit-profile" *ngIf="editBank==false">
-                            <button type="submit" class="btn " (click)="editBankDetails()">EDIT</button>
-                        </div>
-
-
-                        <div class="col-md-6 text-center edit-profile" *ngIf="editBank==true">
-                            <button type="submit" class="btn " (click)="addBankAccount()">Save</button>
-                        </div>
-                        <div class="col-md-6 text-center edit-profile" *ngIf="editBank==true">
-                            <button type="submit" class="btn " (click)="cancelBank()">Cancel</button>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-            <div class="row">
-                <div class="col-md-4 text-center edit-profile add-bank">
-                    <button type="submit" class="btn " *ngIf="addBankDetails&&showBankDetails"
-                        (click)="addBankAccount()">ADD
-                        BANK DETAILS</button>
                 </div>
             </div>
+
         </div>
+
 
 
         <!-- Bank details-->

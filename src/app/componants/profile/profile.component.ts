@@ -63,7 +63,7 @@ export class ProfileComponent implements OnInit {
       designation: ['', Validators.required],
       contact_email: ['', [Validators.required, Validators.email]],
       mobile_code: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(10)]],
+      mobile: ['', [Validators.required]],
     });
     this.editIndividualForm = this.formBuilder.group({
       industry_type: ['', Validators.required],
@@ -76,7 +76,7 @@ export class ProfileComponent implements OnInit {
       city: ['', Validators.required],
       pincode: ['', Validators.required],
       mobile_code: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(10)]],
+      mobile: ['', [Validators.required]],
     });
 
 
@@ -245,7 +245,7 @@ export class ProfileComponent implements OnInit {
           designation: [this.profileFormDetails.designation, Validators.required],
           contact_email: [this.profileFormDetails.contact_email, [Validators.required, Validators.email]],
           mobile_code: [this.profileFormDetails.mobile_code, Validators.required],
-          mobile: [this.profileFormDetails.mobile, [Validators.required, Validators.maxLength(10), Validators.minLength(10)]]
+          mobile: [this.profileFormDetails.mobile, Validators.required]
         });
       }
       else if (this.loginType == 'individual') {
@@ -260,7 +260,7 @@ export class ProfileComponent implements OnInit {
           contact_person_name: [this.profileFormDetails.contact_person, Validators.required],
           designation: [this.profileFormDetails.designation, Validators.required],
           mobile_code: [this.profileFormDetails.mobile_code, Validators.required],
-          mobile: [this.profileFormDetails.mobile, [Validators.required, Validators.maxLength(10), Validators.minLength(10)]]
+          mobile: [this.profileFormDetails.mobile, [Validators.required]]
         });
       }
     })
