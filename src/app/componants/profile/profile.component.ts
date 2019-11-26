@@ -45,9 +45,9 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0);
     this.getCountries();
+    this.getIndustryData();
     // company pr
     this.getCompanyProfile();
-
     this.editCompanyForm = this.formBuilder.group({
       company_name: ['', Validators.required],
       company_url: ['', Validators.required],
@@ -63,7 +63,7 @@ export class ProfileComponent implements OnInit {
       designation: ['', Validators.required],
       contact_email: ['', [Validators.required, Validators.email]],
       mobile_code: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(10)]],
+      mobile: ['', [Validators.required]],
     });
     this.editIndividualForm = this.formBuilder.group({
       industry_type: ['', Validators.required],
@@ -76,7 +76,7 @@ export class ProfileComponent implements OnInit {
       city: ['', Validators.required],
       pincode: ['', Validators.required],
       mobile_code: ['', Validators.required],
-      mobile: ['', [Validators.required, Validators.maxLength(15), Validators.minLength(10)]],
+      mobile: ['', [Validators.required]],
     });
 
 
@@ -86,7 +86,21 @@ export class ProfileComponent implements OnInit {
     this.appSer.countriesList().subscribe((res) => {
       this.CountiresList = res['countries'];
     });
-
+  }
+  IndustryList;
+  getIndustryData() {
+    this.appSer.getIndustryList().subscribe((res) => {
+      this.IndustryList = res['industries'];
+    })
+  }
+  industryId;
+  changeIndustryTypeList(industry) {
+    for (var i = 0; i < this.IndustryList.length; i++) {
+      if (industry == this.IndustryList[i].industry_name) {
+        console.log(this.IndustryList[i].industry_name)
+        this.industryId = this.IndustryList[i].industry_id;
+      }
+    }
   }
   countryId; statesList;
   changeCountryList(name) {
@@ -109,6 +123,7 @@ export class ProfileComponent implements OnInit {
       })
     })
   }
+
 
   stateId; citiesList; cityId;
   changeStateList(state) {
@@ -152,6 +167,7 @@ export class ProfileComponent implements OnInit {
       this.submitted = true;
       this.editCompanyForm.value.company_id = this.companyId;
       this.editCompanyForm.value.sst = this.sstType;
+      this.editCompanyForm.value.industry_type = this.industryId;
       this.editCompanyForm.value.company_type = this.loginType;
       this.editCompanyForm.value.company_old_image = this.ProfileImage;
       this.editCompanyForm.value.country = this.countryId;
@@ -185,9 +201,11 @@ export class ProfileComponent implements OnInit {
       this.editIndividualForm.value.company_id = this.companyId;
       this.editIndividualForm.value.company_type = this.loginType;
       this.editIndividualForm.value.company_old_image = this.ProfileImage;
+
       this.editIndividualForm.value.country = this.countryId;
       this.editIndividualForm.value.state = this.stateId;
       this.editIndividualForm.value.city = this.cityId;
+      this.editIndividualForm.value.industry_type = this.industryId;
       if (!this.strImage) {
         this.editIndividualForm.value.company_image = '';
       }
@@ -227,6 +245,7 @@ export class ProfileComponent implements OnInit {
       this.countryId = this.profileDetails['country_id'];
       this.stateId = this.profileDetails['state_id'];
       this.cityId = this.profileDetails['city_id'];
+      this.industryId = this.profileDetails['industry_id']
       this.getStates();
       this.getCities();
       if (this.loginType == 'company') {
@@ -234,7 +253,7 @@ export class ProfileComponent implements OnInit {
           company_name: [this.profileFormDetails.company_name, Validators.required],
           company_url: [this.profileFormDetails.company_url, Validators.required],
           email: [this.profileFormDetails.company_email, [Validators.required, Validators.email]],
-          industry_type: [this.profileFormDetails.industry_type, Validators.required],
+          industry_type: [this.profileFormDetails.industry_name, Validators.required],
           address: [this.profileFormDetails.address, Validators.required],
           state: [this.profileFormDetails.state, Validators.required],
           city: [this.profileFormDetails.city, Validators.required],
@@ -245,13 +264,13 @@ export class ProfileComponent implements OnInit {
           designation: [this.profileFormDetails.designation, Validators.required],
           contact_email: [this.profileFormDetails.contact_email, [Validators.required, Validators.email]],
           mobile_code: [this.profileFormDetails.mobile_code, Validators.required],
-          mobile: [this.profileFormDetails.mobile, [Validators.required, Validators.maxLength(10), Validators.minLength(10)]]
+          mobile: [this.profileFormDetails.mobile, Validators.required]
         });
       }
       else if (this.loginType == 'individual') {
         this.editIndividualForm = this.formBuilder.group({
           email: [this.profileFormDetails.email, [Validators.required, Validators.email]],
-          industry_type: [this.profileFormDetails.industry_type, Validators.required],
+          industry_type: [this.profileFormDetails.industry_name, Validators.required],
           address: [this.profileFormDetails.address, Validators.required],
           state: [this.profileFormDetails.state, Validators.required],
           city: [this.profileFormDetails.city, Validators.required],
@@ -260,7 +279,7 @@ export class ProfileComponent implements OnInit {
           contact_person_name: [this.profileFormDetails.contact_person, Validators.required],
           designation: [this.profileFormDetails.designation, Validators.required],
           mobile_code: [this.profileFormDetails.mobile_code, Validators.required],
-          mobile: [this.profileFormDetails.mobile, [Validators.required, Validators.maxLength(10), Validators.minLength(10)]]
+          mobile: [this.profileFormDetails.mobile, [Validators.required]]
         });
       }
     })

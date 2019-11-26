@@ -51,7 +51,7 @@ h3{
         padding:0px;
 li{
     display:inline-block;
-    width:calc(100% / 6);
+    // width:calc(100% / 6);
    
 }
     }
@@ -61,6 +61,7 @@ li{
     font-weight: 600;
     background:#fed501!important;
     width:100%;
+    margin-left: 34px;
  }
 }
 // HEADER CSS

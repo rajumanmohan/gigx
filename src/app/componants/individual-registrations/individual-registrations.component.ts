@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./individual-registrations.component.scss']
 })
 export class IndividualRegistrationsComponent implements OnInit {
-  imgBaseUrl = "http://gigxglobal.com/company/";
+  imgBaseUrl = "https://gigxglobal.com/company/";
   individualData: any;
   companyData = []
   constructor(private appSer: AppServiceService) { }

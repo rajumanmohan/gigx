@@ -38,10 +38,10 @@
                                     formControlName="password" [ngClass]="{'is-invalid':f.password.errors&& submit}"
                                     *ngIf="!showEye" />
                                 <div class="input-group-append">
-                                    <button class="btn btn-outline-secondary" *ngIf="showEye" type="button"
+                                    <button class="btn btn-outline-secondary" *ngIf="!showEye" type="button"
                                         (click)="hidePassword()" id="button-addon2">
                                         <img src="../../../assets/images/eye-open.png"></button>
-                                    <button class="btn btn-outline-secondary" *ngIf="!showEye" type="button"
+                                    <button class="btn btn-outline-secondary" *ngIf="showEye" type="button"
                                         (click)="hidePassword()" id="button-addon2">
                                         <img src="../../../assets/images/eye-closed.png"></button>
                                 </div>

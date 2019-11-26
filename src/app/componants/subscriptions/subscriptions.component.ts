@@ -23,9 +23,12 @@ import {
 export class SubscriptionsComponent implements OnInit {
   type: any;
 
-  role;
+  role; talentId; companyId; loginType;
   constructor(private router: Router, private toast: ToastrService) {
     this.role = localStorage.getItem('industry_type');
+    this.talentId = localStorage.getItem('talent_id');
+    this.companyId = localStorage.getItem('company_id');
+    this.loginType = localStorage.getItem('industry_type');
     if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
       this.toast.warning('Please Login', "warning");
       this.router.navigate(['/coverpage']);
@@ -46,5 +49,30 @@ export class SubscriptionsComponent implements OnInit {
     // if (this.comType == 'company') {
     this.router.navigate(['/profile'], { queryParams: { page: this.comType } })
     // }
+  }
+
+  gotoProfile() {
+    if (this.loginType == 'company') {
+      this.router.navigate(['/companydashboard']);
+    }
+    else if (this.loginType == 'individual') {
+      this.router.navigate(['/companydashboard']);
+    }
+    else if (this.loginType == 'talent') {
+      this.router.navigate(['/talentdashboard']);
+    }
+    return;
+  }
+  gotohome() {
+    if (this.loginType == 'company') {
+      this.router.navigate(['/companydashboard']);
+    }
+    else if (this.loginType == 'individual') {
+      this.router.navigate(['/companydashboard']);
+    }
+    else if (this.loginType == 'talent') {
+      this.router.navigate(['/talentdashboard']);
+    }
+    return;
   }
 }

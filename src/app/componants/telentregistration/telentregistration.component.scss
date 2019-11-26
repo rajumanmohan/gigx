@@ -45,7 +45,7 @@
     }
     .input-group-prepend {
         margin-right: -1px;
-        width: 14%;
+        width: 27%;
         select{
             border-radius:0px;
             border-right:0px;
@@ -244,6 +244,9 @@ button.btnpicker.btnpickerenabled {
     margin-left: -13px;
     font-size: 19px;
     }
+}
+.test{
+    border: 1px solid red;
 }
 // Large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) {  }

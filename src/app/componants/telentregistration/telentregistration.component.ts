@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AppServiceService } from './../../Services/app-service.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatHorizontalStepper, MatStep } from '@angular/material';
@@ -8,9 +8,9 @@ import {
   bounceInAndOut, enterAndLeaveFromLeft, enterAndLeaveFromRight, fadeInAndOut,
   fadeInThenOut, growInShrinkOut, swingInAndOut
 } from '../../triggers';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, AbstractControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-
+import { IMyDpOptions } from 'mydatepicker';
 @Component({
   selector: 'app-telentregistration',
   templateUrl: './telentregistration.component.html',
@@ -64,19 +64,37 @@ export class TelentregistrationComponent implements OnInit {
   radioItems = ["Full time", "Part time", "Correspandence"];
   showEye = true;
   nestedForm;
-  constructor(private fb: FormBuilder, private toast: ToastrService, private appSer: AppServiceService, private router: Router) { }
+  CountiresList;
+  stateId;
+  citiesList;
+  email;
+  password;
+  private myDatePickerOptions: IMyDpOptions = {
+    // other options...
+    dateFormat: 'dd/mm/yyyy',
+  };
+  constructor(private fb: FormBuilder, private toast: ToastrService, private appSer: AppServiceService, private router: Router, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.email = params.email;
+      this.password = params.password;
+    })
+  }
   // Step 1 -> full_name,email,password,mobile_code,mobile,location,talent_attachment,talent_attachment_video,gender,dob
   // routerLink="/talentdashboard"
   ngOnInit() {
     window.scroll(0, 0);
     let d: Date = new Date('2001/04/05');
     this.registrationForm = this.fb.group({
-      full_name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-      mobile_code: [+61],
+      first_name: ['', [Validators.required]],
+      last_name: ['', Validators.required],
+      email: [this.email, [Validators.required, Validators.email]],
+      password: [this.password, Validators.required],
+      mobile_code: ['', Validators.required],
       mobile: ['', Validators.required],
       location: ['', Validators.required],
+      country_id: ['', Validators.required],
+      state_id: ['', Validators.required],
+      city_id: ['', Validators.required],
       dob: [{ date: { year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate() } }, Validators.required],
       termsConditions: [false, Validators.requiredTrue]
     })
@@ -114,12 +132,16 @@ export class TelentregistrationComponent implements OnInit {
     this.mydate = this.registrationForm.value.dob.date;
     this.selDate = (this.mydate['year']) + "-" + (this.mydate['month']) + "-" + (this.mydate['day']);
     // radioArr = ["Full time",""]
+    this.getCountries();
   }
   hidePassword() {
     this.showEye = !this.showEye;
   }
   showPassword() {
     this.showEye = false;
+  }
+  changeMobileCode() {
+
   }
 
   step1Completed = false;
@@ -263,22 +285,25 @@ export class TelentregistrationComponent implements OnInit {
   }
   get f() { return this.registrationForm.controls; }
   registration() {
-    console.log(this.registrationForm.value);
     this.submitted = true;
     this.registrationForm.value.talent_attachment = this.url2;
     this.registrationForm.value.gender = this.gender;
     this.registrationForm.value.talent_attachment_video = this.url3;
     this.registrationForm.value.dob = (this.selDate);
-    this.registrationForm.value.mobile = JSON.parse(this.registrationForm.value.mobile);
-
+    this.registrationForm.value.mobile ? JSON.parse(this.registrationForm.value.mobile) : '';
     delete this.registrationForm.value.termsConditions;
     if (this.registrationForm.invalid) {
       return;
     }
+    console.log(this.registrationForm.value);
 
     if ((this.registrationForm.value.talent_attachment == undefined && (this.registrationForm.value.talent_attachment_video == undefined))) {
       this.toast.warning("Upload image or video is missing", "Warning");
-    } else {
+    }
+    else if (this.registrationForm.value.dob == null || '' || undefined) {
+      this.toast.warning("Please Provide Date of Birth", "Warning");
+    }
+    else {
       this.complete();
       this.object1 = this.registrationForm.value;
     }
@@ -425,5 +450,44 @@ export class TelentregistrationComponent implements OnInit {
 
         }
       })
+  }
+  getCountries() {
+    this.appSer.countriesList().subscribe((res) => {
+      this.CountiresList = res['countries'];
+    })
+  }
+
+  countryId; statesList; MobileCode;
+  changeCountryList(id) {
+    this.countryId = id;
+    let params = {
+      country_id: this.countryId,
+    }
+    this.appSer.statesList(params).subscribe((res) => {
+      this.statesList = res['states'];
+      this.stateId = res['states'].state_id;
+      let params1 = {
+        state_id: this.stateId,
+      }
+      this.appSer.citiesList(params1).subscribe((res) => {
+        this.citiesList = res['cities'];
+      })
+    })
+  }
+
+  changeStateList(id) {
+    this.stateId = id;
+    let params = {
+      state_id: this.stateId,
+    }
+    this.appSer.citiesList(params).subscribe((res) => {
+      this.citiesList = res['cities'];
+    })
+  }
+  ageRangeValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    if (control.value !== undefined && (isNaN(control.value) || control.value < 18 || control.value > 45)) {
+      return { 'ageRange': true };
+    }
+    return null;
   }
 }

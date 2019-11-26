@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
@@ -22,17 +22,17 @@ import {
 })
 export class GetstartedComponent implements OnInit {
   getStartForm: FormGroup;
-  submit = false;
+  submitted = false;
 
   // routerLink="/talentregistration"
   constructor(private fb: FormBuilder, private router: Router) { }
   showEye = true;
   ngOnInit() {
     window.scroll(0, 0);
-    // this.getStartForm = this.fb.group({
-    //   email: ['', [Validators.required, Validators.email]],
-    //   password: ['', Validators.required]
-    // })
+    this.getStartForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    })
   }
   hidePassword() {
     this.showEye = !this.showEye;
@@ -40,13 +40,13 @@ export class GetstartedComponent implements OnInit {
   showPassword() {
     this.showEye = false;
   }
-  // get f() { return this.getStartForm.controls; }
+  get f() { return this.getStartForm.controls; }
   start() {
-    this.submit = true;
-    // if (this.getStartForm.invalid) {
-    //   return;
-    // } else {
-    this.router.navigate(['/talentregistration']);
-    // }
+    this.submitted = true;
+    if (this.getStartForm.invalid) {
+      return;
+    } else {
+      this.router.navigate(['/talentregistration'], { queryParams: { email: this.getStartForm.value.email, password: this.getStartForm.value.password } });
+    }
   }
 }

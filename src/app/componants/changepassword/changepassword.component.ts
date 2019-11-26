@@ -144,5 +144,16 @@ export class ChangepasswordComponent implements OnInit {
     }
     return;
   }
-
+  gotohome() {
+    if (this.loginType == 'company') {
+      this.router.navigate(['/companydashboard']);
+    }
+    else if (this.loginType == 'individual') {
+      this.router.navigate(['/companydashboard']);
+    }
+    else if (this.loginType == 'talent') {
+      this.router.navigate(['/talentdashboard']);
+    }
+    return;
+  }
 }

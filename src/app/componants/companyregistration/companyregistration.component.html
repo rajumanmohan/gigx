@@ -33,7 +33,7 @@
                         <div class="custom-control custom-radio custom-control-inline" (change)="changeType($event)">
                             <input type="radio" id="customRadioInline3" value="individual" name="customRadioInline1"
                                 class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline3">Individual</label>
+                            <label class="custom-control-label" for="customRadioInline3">Business Owner</label>
                         </div>
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
@@ -190,30 +190,17 @@
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <select class="custom-select" id="inputGroupSelect01" (change)="changeMobCode($event)"
-                                name="mobileCode">
-                                <option [ngValue]="+62" [selected]="true">+62</option>
-                                <option [ngValue]="+81">+81</option>
-                                <option [ngValue]="+60"> +60</option>
-                                <option [ngValue]="+968"> +968</option>
-                                <option [ngValue]="+63"> +63</option>
-                                <option [ngValue]="+65"> +65</option>
-                                <option [ngValue]="+82"> +82</option>
-                                <option [ngValue]="+66"> +66</option>
-                                <option [ngValue]="+90"> +90</option>
-                                <option [ngValue]="+971"> +971</option>
-                                <option [ngValue]="+44"> +44</option>
-                                <option [ngValue]="+84"> +84</option>
+                            <select class="custom-select" id="inputGroupSelect01" name="mobile_code"
+                                formControlName="mobile_code">
+                                <option *ngFor="let data of CountiresList" [value]="data.mobile_code">
+                                    {{data.mobile_code}} ({{data.country_name}})
+                                </option>
                             </select>
                         </div>
                         <input myNumberOnly type="text" class="form-control" placeholder="Mobile Number" name="mobile"
-                            formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }"
-                            maxlength="15" max="10" min="10">
+                            formControlName="mobile" [ngClass]="{ 'is-invalid': submitted && f.mobile.errors }">
                         <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
                             <div *ngIf="f.mobile.errors.required"> Mobile number is required</div>
-                            <div *ngIf="f.mobile.errors.maxlength">Mobile number must be 10 digits</div>
-                            <div *ngIf="f.mobile.errors.minlength">Mobile number must be 10 digits</div>
-
                         </div>
                     </div>
                     <div class="form-group" *ngIf="comType=='company'">
@@ -303,7 +290,7 @@
                         <div class="custom-control custom-radio custom-control-inline" (change)="changeType($event)">
                             <input type="radio" id="customRadioInline21" [checked]='true' value="individual"
                                 name="customRadioInline20" class="custom-control-input">
-                            <label class="custom-control-label" for="customRadioInline21">Individual</label>
+                            <label class="custom-control-label" for="customRadioInline21">Business Owner</label>
                         </div>
                     </div>
                     <div class="form-group">
@@ -316,14 +303,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <input type="password" formControlName="password"
-                            [ngClass]="{ 'is-invalid': submitted1 && f1.password.errors }" class="form-control"
-                            id="exampleInputPassword1" placeholder="Create Password">
-                        <div *ngIf="submitted1 && f1.password.errors" class="invalid-feedback">
-                            <div *ngIf="f1.password.errors.required">Password is required</div>
-                        </div>
-                    </div>
 
                     <div class="input-group password-group mb-3">
                         <input type="password" class="form-control password-field" placeholder="Create Password"
@@ -333,10 +312,10 @@
                             formControlName="password" [ngClass]="{ 'is-invalid': submitted1 && f1.password.errors }"
                             *ngIf="!showEye" />
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary" *ngIf="showEye" type="button"
+                            <button class="btn btn-outline-secondary" *ngIf="!showEye" type="button"
                                 (click)="hidePassword()" id="button-addon2">
                                 <img src="../../../assets/images/eye-open.png"></button>
-                            <button class="btn btn-outline-secondary" *ngIf="!showEye" type="button"
+                            <button class="btn btn-outline-secondary" *ngIf="showEye" type="button"
                                 (click)="hidePassword()" id="button-addon2">
                                 <img src="../../../assets/images/eye-closed.png"></button>
                         </div>
@@ -420,34 +399,22 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                     </div>
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <select class="custom-select" id="inputGroupSelect01" (change)="changeMobCode($event)"
-                                name="mobileCode">
-                                <option [ngValue]="+62" [selected]="true">+62</option>
-                                <option [ngValue]="+81">+81</option>
-                                <option [ngValue]="+60"> +60</option>
-                                <option [ngValue]="+968"> +968</option>
-                                <option [ngValue]="+63"> +63</option>
-                                <option [ngValue]="+65"> +65</option>
-                                <option [ngValue]="+82"> +82</option>
-                                <option [ngValue]="+66"> +66</option>
-                                <option [ngValue]="+90"> +90</option>
-                                <option [ngValue]="+971"> +971</option>
-                                <option [ngValue]="+44"> +44</option>
-                                <option [ngValue]="+84"> +84</option>
+                            <select class="custom-select" id="inputGroupSelect01" name="mobile_code"
+                                formControlName="mobile_code">
+                                <option *ngFor="let data of CountiresList" [value]="data.mobile_code">
+                                    {{data.mobile_code}} ({{data.country_name}})
+                                </option>
                             </select>
                         </div>
                         <input myNumberOnly type="text" class="form-control" placeholder="Mobile Number" name="mobile"
-                            formControlName="mobile" [ngClass]="{ 'is-invalid': submitted1 && f1.mobile.errors }"
-                            maxlength="15" max="10" min="10">
+                            formControlName="mobile" [ngClass]="{ 'is-invalid': submitted1 && f1.mobile.errors }">
                         <div *ngIf="submitted1 && f1.mobile.errors" class="invalid-feedback">
                             <div *ngIf="f1.mobile.errors.required"> Mobile number is required</div>
-                            <div *ngIf="f1.mobile.errors.maxlength">Mobile number must be 10 digits</div>
-                            <div *ngIf="f1.mobile.errors.minlength">Mobile number must be 10 digits</div>
                         </div>
                     </div>
 
@@ -478,6 +445,7 @@
                                 <li>Get spotted easily in pool of talents</li>
                                 <li>Trusted more by talents</li>
                             </ul>
+                            <p><b>Note :</b> Please Upload logo in PNG format</p>
                         </div>
                     </div>
                     <!-- vamshi upload img -->

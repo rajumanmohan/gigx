@@ -74,6 +74,7 @@ export class CompanyregistrationComponent implements OnInit {
       city: ['', Validators.required],
       pincode: ['', Validators.required],
       mobile: ['', Validators.required],
+      mobile_code: [''],
       address: ['', Validators.required],
       company_registration: [null, Validators.required],
     });
@@ -90,6 +91,7 @@ export class CompanyregistrationComponent implements OnInit {
       city: ['', Validators.required],
       pincode: ['', Validators.required],
       mobile: ['', Validators.required],
+      mobile_code: [''],
       address: ['', Validators.required],
     });
   }
@@ -132,18 +134,20 @@ export class CompanyregistrationComponent implements OnInit {
   getIndustryData() {
     this.appSer.getIndustryList().subscribe((res) => {
       this.IndustryList = res['industries'];
-      console.log(this.IndustryList);
+
     })
   }
-  countryId; statesList;
+  countryId; statesList; MobileCode;
   changeCountryList(id) {
     this.countryId = id;
     let params = {
       country_id: this.countryId,
     }
     this.appSer.statesList(params).subscribe((res) => {
+      this.MobileCode = res['mobile_code'];
       this.statesList = res['states'];
       this.stateId = res['states'].state_id;
+
       let params1 = {
         state_id: this.stateId,
       }
@@ -151,6 +155,14 @@ export class CompanyregistrationComponent implements OnInit {
         this.citiesList = res['cities'];
       })
     })
+    this.individualReg = this.fb.group({
+      mobile_code: [this.MobileCode],
+    })
+    this.registrationForm = this.fb.group({
+      mobile_code: [this.MobileCode],
+    })
+
+
   }
 
   stateId; citiesList;
@@ -171,7 +183,7 @@ export class CompanyregistrationComponent implements OnInit {
   get f() { return this.registrationForm.controls; }
 
   registration() {
-    this.registrationForm.value.mobile_code = this.mobcode;
+    this.registrationForm.value.mobile_code = this.MobileCode;
     this.registrationForm.value.sst = this.sstType,
       this.registrationForm.value.company_type = this.comType;
     this.registrationForm.value.company_image = this.url1;
@@ -202,7 +214,7 @@ export class CompanyregistrationComponent implements OnInit {
   registration1() {
     this.individualReg.value.company_type = this.comType;
     this.individualReg.value.company_image = this.url1;
-
+    this.individualReg.value.mobile_code = this.MobileCode;
     console.log(this.individualReg.value)
 
     this.submitted1 = true;
