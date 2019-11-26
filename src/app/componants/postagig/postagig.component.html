@@ -43,103 +43,129 @@
             <div class="col-md-12">
                 <form [formGroup]="postGigForm">
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">TYPE OF GIG : </label>
+                        <label for="inputPassword" class="col-sm-2 col-form-label">GIG DESCRIPTION :</label>
                         <div class="col-sm-10">
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="gigsupto6months" name="typeofgig" class="custom-control-input"
-                                    formControlName="typeofgig" value="gigsupto6months">
-                                <label class="custom-control-label" for="gigsupto6months">Gigs upto 6 Months
-                                </label>
+                            <textarea type="text" class="form-control" placeholder="Type here ..." rows="3"
+                                formControlName="gigdescription"
+                                [ngClass]="{ 'is-invalid': submitted && f.gigdescription.errors }"></textarea>
+                            <div *ngIf="submitted && f.gigdescription.errors" class="invalid-feedback">
+                                <div *ngIf="f.gigdescription.errors.required">Gig Description is required</div>
                             </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="gigsupto1year" name="typeofgig" class="custom-control-input"
-                                    formControlName="typeofgig" value="gigsupto1year">
-                                <label class="custom-control-label" for="gigsupto1year">Gigs upto 1 Year
-                                </label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="contractof1year" name="typeofgig" class="custom-control-input"
-                                    formControlName="typeofgig" value="contractof1year">
-                                <label class="custom-control-label" for="contractof1year">Contract of more than one
-                                    year</label>
-                            </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="fulltime" name="typeofgig" class="custom-control-input"
-                                    formControlName="typeofgig" value="fulltime">
-                                <label class="custom-control-label" for="fulltime">Full Time</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">INDUSTRY TYPE :</label>
+                        <div class="col-sm-10">
+                            <select id="exampleFormControlSelect1" class="form-control" placeholder="Industry Type"
+                                formControlName="industry_type"
+                                [ngClass]="{ 'is-invalid': submitted && f.industry_type.errors }">
+                                <option value="" [selected]=true [disabled]="true">Industry type</option>
+                                <option *ngFor="let data of IndustryList" [value]="data.industry_id">
+                                    {{data.industry_name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div *ngIf="submitted && f.industry_type.errors" class="invalid-feedback">
+                            <div *ngIf="f.industry_type.errors.required">Industry type is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">YEARS OF EXPERIENCE
+                        </label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="exampleFormControlSelect1"
+                                placeholder="Select Qualification" formControlName="yearofexp"
+                                [ngClass]="{ 'is-invalid': submitted && f.yearofexp.errors }">
+                                <option value="" [selected]="true" [disabled]="true">Select Years</option>
+                                <option value="0"> 0 Year</option>
+                                <option value="1"> 1 Year </option>
+                                <option value="2"> 2 Years </option>
+                                <option value="3"> 3 Years </option>
+                                <option value="4"> 4 Years </option>
+                                <option value="5"> 5 Years </option>
+                                <option value="6"> 6 Years </option>
+                                <option value="7"> 7 Years </option>
+                                <option value="8"> 8 Years </option>
+                                <option value="9"> 9 Years </option>
+                                <option value="10"> 10+ Years </option>
+
+                            </select>
+                            <div *ngIf="submitted && f.yearofexp.errors" class="invalid-feedback">
+                                <div *ngIf="f.yearofexp.errors.required">year of graduation is required
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">DESIGNATION :</label>
+                        <label for="inputPassword" class="col-sm-2 col-form-label">ROLE
+                        </label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="inputPassword"
-                                placeholder="Software Engineer / Marketing / Sales Executive etc ..."
-                                formControlName="designation"
-                                [ngClass]="{ 'is-invalid': submitted && f.designation.errors }">
-                            <div *ngIf="submitted && f.designation.errors" class="invalid-feedback">
-                                <div *ngIf="f.designation.errors.required">Designation is required</div>
+                            <select class="form-control" id="exampleFormControlSelect1"
+                                placeholder="Select Qualification" formControlName="role"
+                                [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+                                <option value="" [selected]="true" [disabled]="true">Select Role</option>
+                                <option value="individual">Associate Manager</option>
+                                <option value="individual">Senior Architect</option>
+                                <option value="individual">Marketing Manager</option>
+                            </select>
+                            <div *ngIf="submitted && f.role.errors" class="invalid-feedback">
+                                <div *ngIf="f.role.errors.required">year of graduation is required
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <h2>REQUIRED ELIGIBILITY CRITERIA</h2>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">Country
+                        </label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="exampleFormControlSelect1" formControlName="country"
+                                (change)="changeCountryList($event.target.value)"
+                                [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
+                                <option value="" [selected]=true [disabled]="true">Select Country </option>
+                                <option *ngFor="let data of CountiresList" [value]="data.country_id">
+                                    {{data.country_name}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                                <div *ngIf="f.country.errors.required">Country is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2>LOCATION</h2>
                     <div class="row mt-3">
                         <!-- required skills -->
                         <div class="col-md-6 mt-3">
                             <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-6 col-form-label">QUALIFICATION ELIGIBILITY
+                                <label for="inputPassword" class="col-sm-6 col-form-label">COUNTRY
                                 </label>
                                 <div class="col-sm-6">
                                     <select class="form-control" id="exampleFormControlSelect1"
-                                        placeholder="Select Qualification" formControlName="qualificationeligibility"
-                                        [ngClass]="{ 'is-invalid': submitted && f.qualificationeligibility.errors }">
-                                        <option selected disabled>Select Qualification </option>
-                                        <option value=""></option>
-                                        <option value="company">Bachelor's degree </option>
-                                        <option value="individual"> Graduation</option>
+                                        formControlName="country" (change)="changeCountryList($event.target.value)"
+                                        [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
+                                        <option value="" [selected]=true [disabled]="true">Select Country </option>
+                                        <option *ngFor="let data of CountiresList" [value]="data.country_id">
+                                            {{data.country_name}}
+                                        </option>
                                     </select>
-                                    <div *ngIf="submitted && f.qualificationeligibility.errors"
-                                        class="invalid-feedback">
-                                        <div *ngIf="f.qualificationeligibility.errors.required">Qualification is
-                                            required
-                                        </div>
+                                    <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                                        <div *ngIf="f.country.errors.required">Country is required</div>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-6 col-form-label">YEAR OF GRADUATION
+                                <label for="inputPassword" class="col-sm-6 col-form-label">CITY
                                 </label>
                                 <div class="col-sm-6">
-                                    <select class="form-control" id="exampleFormControlSelect1"
-                                        placeholder="Select Qualification" formControlName="yearofgraduation"
-                                        [ngClass]="{ 'is-invalid': submitted && f.yearofgraduation.errors }">
-                                        <option value=""></option>
-                                        <option value="individual"> 2019</option>
-                                        <option value="company">2018 </option>
-                                        <option value="company">2017 </option>
-                                        <option value="company">2016 </option>
+                                    <select class="form-control" id="exampleFormControlSelect1" formControlName="city"
+                                        [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
+                                        <option [value]="" [selected]="true">Select City </option>
+                                        <option *ngFor="let data of citiesList" [value]="data.city_id"> {{data.city}}
+                                        </option>
                                     </select>
-                                    <div *ngIf="submitted && f.yearofgraduation.errors" class="invalid-feedback">
-                                        <div *ngIf="f.yearofgraduation.errors.required">year of graduation is required
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-6 col-form-label">HIGHEST QUALIFICATION
-                                </label>
-                                <div class="col-sm-6">
-                                    <select class="form-control" id="exampleFormControlSelect1"
-                                        placeholder="Select Qualification" formControlName="highestqualification"
-                                        [ngClass]="{ 'is-invalid': submitted && f.highestqualification.errors }">
-                                        <option value=""></option>
-                                        <option selected disabled>Select Higest Qualification </option>
-                                        <option value="company">Bachelor's degree </option>
-                                        <option value="individual"> Graduation</option>
-                                    </select>
-                                    <div *ngIf="submitted && f.highestqualification.errors" class="invalid-feedback">
-                                        <div *ngIf="f.highestqualification.errors.required">Highest Qualification is
-                                            required</div>
+                                    <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+                                        <div *ngIf="f.city.errors.required">City is required</div>
                                     </div>
                                 </div>
                             </div>
@@ -147,128 +173,216 @@
                         <!-- required skills -->
                         <div class="col-md-6 mt-3">
                             <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-6 col-form-label">STATE
+                                </label>
+                                <div class="col-sm-6">
+                                    <select class="form-control" id="exampleFormControlSelect1" formControlName="state"
+                                        (change)="changeStateList($event.target.value)">
+                                        <option [value]="" [selected]="true">Select State </option>
+                                        <option *ngFor="let data of statesList" [value]="data.state_id"> {{data.state}}
+                                        </option>
+                                    </select>
+                                    <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
+                                        <div *ngIf="f.state.errors.required">State is required
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-6 col-form-label">JOB LOCATION
                                 </label>
                                 <div class="col-sm-6">
-                                    <select class="form-control" id="exampleFormControlSelect1"
-                                        placeholder="Select Qualification" formControlName="joblocation"
+                                    <input type="text" class="form-control" id="inputPassword" placeholder=""
+                                        formControlName="joblocation"
                                         [ngClass]="{ 'is-invalid': submitted && f.joblocation.errors }">
-                                        <option value=""></option>
-                                        <option selected disabled>Select Qualification </option>
-                                        <option value="company">Bachelor's degree </option>
-                                        <option value="individual"> Graduation</option>
-
-                                    </select>
                                     <div *ngIf="submitted && f.joblocation.errors" class="invalid-feedback">
                                         <div *ngIf="f.joblocation.errors.required">joblocation is required</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-6 col-form-label">CGPA
-                                    :</label>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="inputPassword" placeholder="/10"
-                                        formControlName="cgpa" [ngClass]="{ 'is-invalid': submitted && f.cgpa.errors }">
-                                    <div *ngIf="submitted && f.cgpa.errors" class="invalid-feedback">
-                                        <div *ngIf="f.cgpa.errors.required">cgpa is required</div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <!-- required skills -->
                     </div>
-                    <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">SKILLS :</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control"
-                                placeholder="Ex - java, C++ , Sales , BPO , Communication Skills etc."
-                                formControlName="skills" [ngClass]="{ 'is-invalid': submitted && f.skills.errors }">
-                            <div *ngIf="submitted && f.skills.errors" class="invalid-feedback">
-                                <div *ngIf="f.skills.errors.required">skills are required</div>
+                    <h2>PROJECT DETAILS</h2>
+                    <div class="form-group row mt-3">
+                        <label for="inputPassword" class="col-sm-3 col-form-label">TYPE OF PROJECTS :</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="exampleFormControlSelect1"
+                                placeholder="Select Qualification" formControlName="projecttype"
+                                [ngClass]="{ 'is-invalid': submitted && f.projecttype.errors }">
+                                <option value="" [selected]="true" [disabled]="true">Select Type</option>
+                                <option value="individual">Full Time</option>
+                                <option value="individual">Part Time</option>
+                            </select>
+                            <div *ngIf="submitted && f.projecttype.errors" class="invalid-feedback">
+                                <div *ngIf="f.projecttype.errors.required">Type of project is required</div>
                             </div>
                         </div>
                     </div>
-                    <!-- experience criteria -->
-                    <div class="form-group row">
 
-                        <div class="col-sm-6 experience offset-md-6">
-                            <button type="submit">ADD EXPERIENCE CRITERIA +</button>
-                        </div>
-                    </div>
-                    <!-- experience criteria -->
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">JOB DESCRIPTION :</label>
-                        <div class="col-sm-10">
-                            <textarea type="text" class="form-control" placeholder="Type here ..." rows="7"
-                                formControlName="jobdescription"
-                                [ngClass]="{ 'is-invalid': submitted && f.jobdescription.errors }"></textarea>
-                            <div *ngIf="submitted && f.jobdescription.errors" class="invalid-feedback">
-                                <div *ngIf="f.jobdescription.errors.required">Job Description is required</div>
+                        <label for="inputPassword" class="col-sm-3 col-form-label">DURATION OF ENGAGEMENT :</label>
+                        <div class="col-sm-9">
+                            <select class="form-control" id="exampleFormControlSelect1"
+                                placeholder="Select Qualification" formControlName="duration"
+                                [ngClass]="{ 'is-invalid': submitted && f.duration.errors }">
+                                <option value="" [selected]="true" [disabled]="true">Select duration</option>
+                                <option value="individual">3 Months</option>
+                                <option value="individual">6 Months</option>
+                                <option value="individual">1 Year</option>
+                                <option value="individual">More Than 1 Year</option>
+                            </select>
+                            <div *ngIf="submitted && f.duration.errors" class="invalid-feedback">
+                                <div *ngIf="f.duration.errors.required">Job Description is required</div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-4 col-form-label">MONTHLY SALARY :</label>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" placeholder="Min."
-                                        formControlName="monthlysalmin"
-                                        [ngClass]="{ 'is-invalid': submitted && f.monthlysalmin.errors }">
-                                    <div *ngIf="submitted && f.monthlysalmin.errors" class="invalid-feedback">
-                                        <div *ngIf="f.monthlysalmin.errors.required">Monthly salary minimum is required
-                                        </div>
-                                    </div>
+                                <label for="inputPassword" class="col-sm-6 col-form-label">PROJECT COMMENCEMENT DATE
+                                    :</label>
+                                <div class="col-sm-6">
+                                    <my-date-picker name="mydate" (dateChanged)="onDateChanged($event)"
+                                        [options]="myDatePickerOptions" placeholder="2019-08-08">
+                                    </my-date-picker>
                                 </div>
-                                <div class="col-sm-4">
-                                    <input type="text" class="form-control" placeholder="Max."
-                                        formControlName="monthlysalmax"
-                                        [ngClass]="{ 'is-invalid': submitted && f.monthlysalmax.errors }">
-                                    <div *ngIf="submitted && f.monthlysalmax.errors" class="invalid-feedback">
-                                        <div *ngIf="f.monthlysalmax.errors.required">Monthly salary maximum is required
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
-                        <div class="col-md-4 mt-2">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                <label class="custom-control-label" for="customCheck1">HIDE SALARY TO APPLICANTS</label>
+                        <div class="col-md-6">
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-6 col-form-label">AVAILABILITY
+                                    :</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" formControlName="availability"
+                                        placeholder="no.">
+                                    <div *ngIf="submitted && f.availability.errors" class="invalid-feedback">
+                                        <div *ngIf="f.availability.errors.required">Job Description is required</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <!-- hiring process -->
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-3 col-form-label">PROJECT PROCESS
+                            :</label>
+                        <div class="col-sm-9">
+                            <div class="custom-control custom-radio custom-control-inline"
+                                (change)="changeType1($event)">
+                                <input type="radio" id="customRadioInline9" name="customRadioInline9"
+                                    class="custom-control-input" value="Individual" [checked]='true'>
+                                <label class="custom-control-label" for="customRadioInline9">Individual</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline"
+                                (change)="changeType1($event)">
+                                <input type="radio" id="customRadioInline10" value="Team Project"
+                                    name="customRadioInline9" class="custom-control-input">
+                                <label class="custom-control-label" for="customRadioInline10">Team Project</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-3 col-form-label">PROJECT TYPE
+                            :</label>
+                        <div class="col-sm-9">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="type1" name="customRadioInline9" class="custom-control-input"
+                                    value="local" [checked]='true'>
+                                <label class="custom-control-label" for="type1">Local / Domestic
+                                    Project</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="type2" value="global" name="customRadioInline9"
+                                    class="custom-control-input">
+                                <label class="custom-control-label" for="type2">Global /
+                                    International</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-3 col-form-label">MODE OF ENGAGEMENT
+                            :</label>
+                        <div class="col-sm-9">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="incountry" name="customRadioInline9"
+                                    class="custom-control-input" value="in country" [checked]='true'>
+                                <label class="custom-control-label" for="incountry">Contract in country</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" id="remotelocation" value="remote location"
+                                    name="customRadioInline9" class="custom-control-input">
+                                <label class="custom-control-label" for="remotelocation">Contract Remote
+                                    Location</label>
+                            </div>
+                        </div>
+
+                    </div>
+
                     <div class="form-group hiring row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">HIRING PROCESS : </label>
+                        <label for="inputPassword" class="col-sm-3 col-form-label">MODE OF PROJECT KICK OFF : </label>
+                        <div class="col-sm-9">
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input" value="In person" id="customCheck5"
+                                    formControlName="hiringprocess">
+                                <label class="custom-control-label" for="customCheck5">In person Interview</label>
+                            </div>
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input" value="video" id="customCheck2"
+                                    formControlName="hiringprocess">
+                                <label class="custom-control-label" for="customCheck2">Video</label>
+                            </div>
+                            <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input" value="conference" id="customCheck3"
+                                    formControlName="hiringprocess">
+                                <label class="custom-control-label" for="customCheck3">Conference Call Interview</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">PROJECT OWNER :</label>
                         <div class="col-sm-10">
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" value="facetoface" id="customCheck5"
-                                    formControlName="hiringprocess">
-                                <label class="custom-control-label" for="customCheck5">Face to Face</label>
+                            <input type="text" class="form-control" formControlName="projectowner" placeholder="no.">
+                            <div *ngIf="submitted && f.projectowner.errors" class="invalid-feedback">
+                                <div *ngIf="f.projectowner.errors.required">Project Owner is required</div>
                             </div>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" value="writtentest"
-                                    id="customCheck2" formControlName="hiringprocess">
-                                <label class="custom-control-label" for="customCheck2">Written-Test</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">KEY DELIVERABLES :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" formControlName="deliverables" placeholder="no.">
+                            <div *ngIf="submitted && f.deliverables.errors" class="invalid-feedback">
+                                <div *ngIf="f.deliverables.errors.required">Deliverables is required</div>
                             </div>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" value="telephonic" id="customCheck3"
-                                    formControlName="hiringprocess">
-                                <label class="custom-control-label" for="customCheck3">Telephonic</label>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="inputPassword" class="col-sm-2 col-form-label">PAYMENT :</label>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="exampleFormControlSelect1" formControlName="currency"
+                                [ngClass]="{ 'is-invalid': submitted && f.currency.errors }">
+                                <option value="$" [selected]="true">$</option>
+                                <option value="RM">RM</option>
+                                <option value="Rupee">Rupee</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" formControlName="price" placeholder="Price">
+                            <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
+                                <div *ngIf="f.price.errors.required">Price is required</div>
                             </div>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" value="groupdiscussion"
-                                    id="customCheck4" formControlname="hiringprocess">
-                                <label class="custom-control-label" for="customCheck4">Group Discussion</label>
-                            </div>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" value="walkin" id="customCheck6"
-                                    formControlname="hiringprocess">
-                                <label class="custom-control-label" for="customCheck6">Walk In</label>
-                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <select class="form-control" id="exampleFormControlSelect1" formControlName="currency"
+                                [ngClass]="{ 'is-invalid': submitted && f.currency.errors }">
+                                <option value="Per Hour" [selected]="true">Per Hour</option>
+                                <option value="Per Project">Per Project</option>
+                            </select>
                         </div>
                     </div>
                     <!-- hiring process -->

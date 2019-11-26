@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { AppServiceService } from './../../Services/app-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { transition, trigger, useAnimation } from '@angular/animations';
+import { IMyDpOptions } from 'mydatepicker';
 import {
   bounceInAndOut, enterAndLeaveFromLeft, enterAndLeaveFromRight, fadeInAndOut,
   fadeInThenOut, growInShrinkOut, swingInAndOut
@@ -24,40 +26,100 @@ import {
 export class PostagigComponent implements OnInit {
   postGigForm: FormGroup;
   submitted = false;
-  constructor(private router: Router, private formBuilder: FormBuilder,private toast: ToastrService) { 
+  private myDatePickerOptions: IMyDpOptions = {
+    // other options...
+    dateFormat: 'dd/mm/yyyy',
+  };
+  constructor(private router: Router, private formBuilder: FormBuilder, private toast: ToastrService, private appSer: AppServiceService) {
     if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
       this.toast.warning('Please Login', "warning");
       this.router.navigate(['/coverpage']);
     } else {
     }
   }
+  projecType = "Individual";
+  projLoc = "local";
   facetoface: false;
   writtentest: false;
   telephonicField: false;
   groupdiscussion: false;
   array = [];
   ngOnInit() {
+    this.getCountries();
     window.scroll(0, 0);
+    this.getIndustryData();
+    this.getCountries();
+
     // form validations
     this.postGigForm = this.formBuilder.group({
-      typeofgig: ['gigsupto6months', Validators.required],
-      designation: ['', Validators.required],
-      qualificationeligibility: ['', Validators.required],
+      gigdescription: ['', Validators.required],
+      industry_type: ['', Validators.required],
+      yearofexp: ['', Validators.required],
+      role: ['', Validators.required],
+      country: ['', Validators.required],
+      state: ['', Validators.required],
+      city: ['', Validators.required],
+      availability: ['', Validators.required],
+      projecttype: ['', Validators.required],
+      projectowner: ['', Validators.required],
       joblocation: ['', Validators.required],
-      yearofgraduation: ['', Validators.required],
-      cgpa: ['', Validators.required],
-      highestqualification: ['', Validators.required],
-      skills: ['', Validators.required],
-      jobdescription: ['', Validators.required],
-      monthlysalmin: ['', Validators.required],
-      monthlysalmax: ['', Validators.required],
-      hidesalary: ['', Validators.required],
+      duration: ['', Validators.required],
+      currency: ['', Validators.required],
+      price: ['', Validators.required],
       hiringprocess: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue]
     });
     // form validations
   }
+  changeproject(loaction) {
+    this.projLoc = loaction.target.value;
+  }
+  changeType1(sst) {
+    this.projecType = sst.target.value;
+  }
+  mydate;
+  onDateChanged(date) {
+    // var newDate = date.date['year'] + "-" + date.date['month'] + "-" + date.date['date'];
+    this.mydate = date.date;
+  }
+  CountiresList;
+  getCountries() {
+    this.appSer.countriesList().subscribe((res) => {
+      this.CountiresList = res['countries'];
+    })
+  }
+  countryId; statesList; MobileCode;
+  changeCountryList(id) {
+    this.countryId = id;
+    let params = {
+      country_id: this.countryId,
+    }
+    this.appSer.statesList(params).subscribe((res) => {
+      this.statesList = res['states'];
+      this.stateId = res['states'].state_id;
 
+      let params1 = {
+        state_id: this.stateId,
+      }
+      this.appSer.citiesList(params1).subscribe((res) => {
+        this.citiesList = res['cities'];
+      })
+    })
+
+
+
+  }
+
+  stateId; citiesList;
+  changeStateList(id) {
+    this.stateId = id;
+    let params = {
+      state_id: this.stateId,
+    }
+    this.appSer.citiesList(params).subscribe((res) => {
+      this.citiesList = res['cities'];
+    })
+  }
   formData = {
     facetoface: '',
     writtentest: '',
@@ -65,8 +127,12 @@ export class PostagigComponent implements OnInit {
     groupdiscussion: '',
     walkin: ''
   }
-
-
+  IndustryList;
+  getIndustryData() {
+    this.appSer.getIndustryList().subscribe((res) => {
+      this.IndustryList = res['industries'];
+    })
+  }
   get f() { return this.postGigForm.controls }
   onSubmit() {
     this.postGigForm.value.hiringprocess = [this.formData];

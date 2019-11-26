@@ -41,10 +41,10 @@
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="exampleInputEmail1"
                                             aria-describedby="emailHelp" placeholder="Last Name"
-                                            formControlName="first_name"
-                                            [ngClass]="{'is-invalid':f.first_name.errors&& submitted}">
-                                        <div class="invalid-feedback" *ngIf="f.first_name.errors">
-                                            <div *ngIf="f.first_name.errors.required">Last Name is required</div>
+                                            formControlName="last_name"
+                                            [ngClass]="{'is-invalid':f.last_name.errors&& submitted}">
+                                        <div class="invalid-feedback" *ngIf="f.last_name.errors">
+                                            <div *ngIf="f.last_name.errors.required">Last Name is required</div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -155,8 +155,9 @@
                                             <select class="custom-select" id="inputGroupSelect01"
                                                 formControlName="mobile_code"
                                                 [ngClass]="{ 'is-invalid':f.mobile_code.errors&& submitted }">
-                                                <option [value]="" [selected]="true" [disabled]="true">Select Code
-                                                </option>
+                                                <!-- <option [disabled]="true">
+                                                    Select Code
+                                                </option> -->
                                                 <option *ngFor="let data of CountiresList" [ngValue]="data.mobile_code"
                                                     [selected]="countryId == data.country_id">
                                                     {{data.mobile_code}}({{data.country_name}})

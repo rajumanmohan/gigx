@@ -69,6 +69,7 @@ export class TelentregistrationComponent implements OnInit {
   citiesList;
   email;
   password;
+  mobile_code;
   private myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'dd/mm/yyyy',
@@ -89,7 +90,7 @@ export class TelentregistrationComponent implements OnInit {
       last_name: ['', Validators.required],
       email: [this.email, [Validators.required, Validators.email]],
       password: [this.password, Validators.required],
-      mobile_code: ['', Validators.required],
+      mobile_code: [''],
       mobile: ['', Validators.required],
       location: ['', Validators.required],
       country_id: ['', Validators.required],
@@ -291,6 +292,7 @@ export class TelentregistrationComponent implements OnInit {
     this.registrationForm.value.talent_attachment_video = this.url3;
     this.registrationForm.value.dob = (this.selDate);
     this.registrationForm.value.mobile ? JSON.parse(this.registrationForm.value.mobile) : '';
+    this.registrationForm.value.mobile_code = this.mobile_code;
     delete this.registrationForm.value.termsConditions;
     if (this.registrationForm.invalid) {
       return;
@@ -300,9 +302,7 @@ export class TelentregistrationComponent implements OnInit {
     if ((this.registrationForm.value.talent_attachment == undefined && (this.registrationForm.value.talent_attachment_video == undefined))) {
       this.toast.warning("Upload image or video is missing", "Warning");
     }
-    else if (this.registrationForm.value.dob == null || '' || undefined) {
-      this.toast.warning("Please Provide Date of Birth", "Warning");
-    }
+
     else {
       this.complete();
       this.object1 = this.registrationForm.value;
@@ -460,6 +460,12 @@ export class TelentregistrationComponent implements OnInit {
   countryId; statesList; MobileCode;
   changeCountryList(id) {
     this.countryId = id;
+    for (var i = 0; i < this.CountiresList.length; i++) {
+      if (this.countryId == this.CountiresList[i].country_id) {
+        this.mobile_code = this.CountiresList[i].mobile_code
+      }
+    }
+
     let params = {
       country_id: this.countryId,
     }

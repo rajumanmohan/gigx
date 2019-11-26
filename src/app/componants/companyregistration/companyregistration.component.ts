@@ -106,12 +106,10 @@ export class CompanyregistrationComponent implements OnInit {
   readUrl(event: any) {
     if (event.target.files && event.target.files[0]) {
       var reader = new FileReader();
-
       reader.onload = (event: any) => {
         this.url1 = event.target.result;
         console.log(this.url1)
       }
-
       reader.readAsDataURL(event.target.files[0]);
     }
   }
@@ -137,14 +135,19 @@ export class CompanyregistrationComponent implements OnInit {
 
     })
   }
-  countryId; statesList; MobileCode;
+  countryId; statesList; MobileCode; mobile_code;
   changeCountryList(id) {
+
     this.countryId = id;
+    for (var i = 0; i < this.CountiresList.length; i++) {
+      if (this.countryId == this.CountiresList[i].country_id) {
+        this.mobile_code = this.CountiresList[i].mobile_code
+      }
+    }
     let params = {
       country_id: this.countryId,
     }
     this.appSer.statesList(params).subscribe((res) => {
-      this.MobileCode = res['mobile_code'];
       this.statesList = res['states'];
       this.stateId = res['states'].state_id;
 
@@ -155,12 +158,7 @@ export class CompanyregistrationComponent implements OnInit {
         this.citiesList = res['cities'];
       })
     })
-    this.individualReg = this.fb.group({
-      mobile_code: [this.MobileCode],
-    })
-    this.registrationForm = this.fb.group({
-      mobile_code: [this.MobileCode],
-    })
+
 
 
   }
@@ -183,7 +181,6 @@ export class CompanyregistrationComponent implements OnInit {
   get f() { return this.registrationForm.controls; }
 
   registration() {
-    this.registrationForm.value.mobile_code = this.MobileCode;
     this.registrationForm.value.sst = this.sstType,
       this.registrationForm.value.company_type = this.comType;
     this.registrationForm.value.company_image = this.url1;
@@ -214,7 +211,6 @@ export class CompanyregistrationComponent implements OnInit {
   registration1() {
     this.individualReg.value.company_type = this.comType;
     this.individualReg.value.company_image = this.url1;
-    this.individualReg.value.mobile_code = this.MobileCode;
     console.log(this.individualReg.value)
 
     this.submitted1 = true;
