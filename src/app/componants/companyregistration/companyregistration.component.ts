@@ -33,6 +33,8 @@ export class CompanyregistrationComponent implements OnInit {
   compEmail;
   password;
   // compName;
+  country_name;
+  keyword = 'country_name';
   compUrl;
   contactPerson;
   email;
@@ -51,7 +53,7 @@ export class CompanyregistrationComponent implements OnInit {
   sstType = "SST Unregistered"
   mobcode = +91;
   submitted1 = false; CountiresList;
-
+  CountryName;
   constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService, private fb: FormBuilder) { }
   showEye = true;
   ngOnInit() {
@@ -127,6 +129,10 @@ export class CompanyregistrationComponent implements OnInit {
   getCountries() {
     this.appSer.countriesList().subscribe((res) => {
       this.CountiresList = res['countries'];
+      console.log(this.CountiresList)
+      for (var i = 0; i < this.CountiresList.length; i++) {
+        this.CountiresList[i].country_name = this.CountiresList[i].country_name;
+      }
     })
   }
   getIndustryData() {
@@ -184,6 +190,8 @@ export class CompanyregistrationComponent implements OnInit {
     this.registrationForm.value.sst = this.sstType,
       this.registrationForm.value.company_type = this.comType;
     this.registrationForm.value.company_image = this.url1;
+    this.registrationForm.value.mobile_code = this.mobile_code;
+
     this.submitted = true;
 
     if (this.registrationForm.invalid) {
@@ -211,6 +219,8 @@ export class CompanyregistrationComponent implements OnInit {
   registration1() {
     this.individualReg.value.company_type = this.comType;
     this.individualReg.value.company_image = this.url1;
+    this.individualReg.value.mobile_code = this.mobile_code;
+
     console.log(this.individualReg.value)
 
     this.submitted1 = true;

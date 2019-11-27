@@ -31,7 +31,7 @@
                             <label class="custom-control-label" for="customRadioInline1">Company</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline" (change)="changeType($event)">
-                            <input type="radio" id="customRadioInline3" value="individual" name="customRadioInline1"
+                            <input type="radio" id="customRadioInline3" value="Business Owner" name="customRadioInline1"
                                 class="custom-control-input">
                             <label class="custom-control-label" for="customRadioInline3">Business Owner</label>
                         </div>
@@ -135,6 +135,17 @@
                     </div>
                     <div class="row form-group country-city">
                         <div class="col-md-6">
+                            <!-- <ng-autocomplete [data]="CountiresList" [searchKeyword]="keyword"
+                                [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+                            </ng-autocomplete>
+
+                            <ng-template #itemTemplate let-item>
+                                <a [innerHTML]="CountiresList.country_name"></a>
+                            </ng-template>
+
+                            <ng-template #notFoundTemplate let-notFound>
+                                <div [innerHTML]="notFound"></div>
+                            </ng-template> -->
                             <select class="form-control" id="exampleFormControlSelect1" formControlName="country"
                                 (change)="changeCountryList($event.target.value)"
                                 [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
@@ -156,7 +167,6 @@
                                 <option [value]="" [selected]="true">Select State </option>
                                 <option *ngFor="let data of statesList" [value]="data.state_id"> {{data.state}}</option>
                             </select>
-
                             <!-- <div *ngIf="submitted && f.state.errors" class="invalid-feedback">
                                 <div *ngIf="f.state.errors.required">State is required</div>
                             </div> -->
@@ -226,7 +236,6 @@
                                 <img *ngIf="url1" [src]="url1" height="60">
                                 <p>Upload Logo</p>
                             </div>
-
                         </div>
 
                         <div class="col-md-8">
@@ -282,7 +291,7 @@
                             <label class="custom-control-label" for="customRadioInline20">Company</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline" (change)="changeType($event)">
-                            <input type="radio" id="customRadioInline21" [checked]='true' value="individual"
+                            <input type="radio" id="customRadioInline21" [checked]='true' value="Business Owner"
                                 name="customRadioInline20" class="custom-control-input">
                             <label class="custom-control-label" for="customRadioInline21">Business Owner</label>
                         </div>

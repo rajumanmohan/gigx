@@ -46,6 +46,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { CompanysubscriptionsComponent } from './componants/companysubscriptions/companysubscriptions.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { Pipe, PipeTransform } from '@angular/core';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 @Pipe({ name: 'safe' })
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { Pipe, PipeTransform } from '@angular/core';
     CompanysubscriptionsComponent
   ],
   imports: [
+    AutocompleteLibModule,
     NgSelectModule,
     NgxSpinnerModule,
     BrowserModule,
