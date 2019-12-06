@@ -24,6 +24,9 @@ export class NumberOnlyDirective {
         if (next && !String(next).match(this.regex)) {
             event.preventDefault();
         }
+        else {
+            return true;
+        }
     }
 }
 
