@@ -162,5 +162,50 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'talent_delete_job_details.php', params, { headers })
   }
+  getHighestQualicationList() {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'getHighestQualifications.php', { headers })
+  }
+  getInstitutionsList(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'getUniversitiesByCountry.php', params, { headers })
+  }
+  getIndustryTypeList(){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'getIndustries.php', { headers })
+  }
+  getRoleList(){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'getRoles.php', { headers })
+  }
 
+  getSkillList(){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'getSkills.php', { headers })
+  }
+
+  postCreateGigAlert(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'create_gig_alert.php', params, { headers })
+  }
+ 
+ 
 }

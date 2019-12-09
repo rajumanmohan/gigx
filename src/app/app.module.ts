@@ -47,6 +47,8 @@ import { CompanysubscriptionsComponent } from './componants/companysubscriptions
 import { NgSelectModule } from '@ng-select/ng-select';
 import { Pipe, PipeTransform } from '@angular/core';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { TypeaheadModule } from 'ngx-type-ahead';
+
 @Pipe({ name: 'safe' })
 @NgModule({
   declarations: [
@@ -93,6 +95,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
     MatIconModule,
     BrowserAnimationsModule,
     MyDatePickerModule,
+    TypeaheadModule,
     FormsModule,
     HttpClientModule,
     RecaptchaModule,

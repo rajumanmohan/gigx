@@ -34,6 +34,15 @@
             font-size: 20px;
         }
 }
+
+.cls-attachdocument-is-invalid{
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+    margin-left: 1rem;
+}
+
 .company-registration {
     .form-group{
         margin-bottom:28px;
@@ -268,3 +277,13 @@ button.btnpicker.btnpickerenabled {
     }
  }
 @media (max-width: 575.98px) {  }
+
+.custom-invalid-feedback{
+    font-size: 80%;
+    color: #dc3545;
+
+}
+
+.pull-right{
+    float:right;
+}
