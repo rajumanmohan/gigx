@@ -131,7 +131,7 @@ export class CompanyregistrationComponent implements OnInit {
       this.CountiresList = res['countries'];
       console.log(this.CountiresList)
       for (var i = 0; i < this.CountiresList.length; i++) {
-        this.CountiresList[i].country_name = this.CountiresList[i].country_name;
+        this.country_name = this.CountiresList[i].country_name;
       }
     })
   }
@@ -142,8 +142,9 @@ export class CompanyregistrationComponent implements OnInit {
     })
   }
   countryId; statesList; MobileCode; mobile_code;
-  changeCountryList(id) {
+  countryNAme;
 
+  changeCountryList(id) {
     this.countryId = id;
     for (var i = 0; i < this.CountiresList.length; i++) {
       if (this.countryId == this.CountiresList[i].country_id) {
@@ -164,9 +165,6 @@ export class CompanyregistrationComponent implements OnInit {
         this.citiesList = res['cities'];
       })
     })
-
-
-
   }
 
   stateId; citiesList;

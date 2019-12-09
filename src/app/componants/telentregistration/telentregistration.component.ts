@@ -204,7 +204,6 @@ export class TelentregistrationComponent implements OnInit {
     // }
   }
   add(text) {
-
     if (this.newArr.indexOf(text) === -1) {
       this.newArr.push(text);
       console.log(this.newArr);

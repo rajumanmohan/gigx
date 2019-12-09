@@ -89,6 +89,8 @@ export class TalentprofileComponent implements OnInit {
     window.scroll(0, 0);
     this.personalForm = this.fb.group({
       full_name: ['', Validators.required],
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       mobile: ['', Validators.required],
       location: ['', Validators.required],
@@ -117,7 +119,7 @@ export class TalentprofileComponent implements OnInit {
     });
     this.preferenceForm = this.fb.group({
       location: ['', Validators.required],
-      industry_type: ['', Validators.required],
+      industry_name: ['', Validators.required],
 
     })
     console.log(this.educationForm.value.other)
@@ -230,10 +232,11 @@ export class TalentprofileComponent implements OnInit {
     // this.showjobPreferences = false;
     this.editPreferences = true;
     this.preferenceForm = this.fb.group({
-      preference_location: [this.talentJobPreference.location, Validators.required],
-      preference_industry_type: [this.talentJobPreference.industry_type, Validators.required],
-      preference_role: [this.talentJobPreference.role, Validators.required],
-      desired_employment_type: [this.talentJobPreference.employment_type, Validators.required],
+      location: [this.talentJobPreference.location, Validators.required],
+      industry_name: [this.talentJobPreference.industry_type, Validators.required],
+      role: [this.talentJobPreference.role, Validators.required],
+      employment_type: [this.talentJobPreference.employment_type, Validators.required],
+      work_preferences: [this.talentJobPreference.work_preferences, Validators.required],
       skills: [this.talentJobPreference.skills],
       form_type: ['step4'],
       talent_id: [JSON.parse(localStorage.talent_id)],
@@ -296,6 +299,8 @@ export class TalentprofileComponent implements OnInit {
     this.edit = true;
     this.personalForm = this.fb.group({
       full_name: [this.talentPersonalDetails['full_name'], Validators.required],
+      first_name: [this.talentPersonalDetails['first_name'], Validators.required],
+      last_name: [this.talentPersonalDetails['last_name'], Validators.required],
       email: [this.talentPersonalDetails['email'], Validators.required],
       mobile: [this.talentPersonalDetails['mobile'], Validators.required],
       location: [this.talentPersonalDetails['location'], Validators.required],
@@ -390,10 +395,10 @@ export class TalentprofileComponent implements OnInit {
     for (var i = this.t.length; i < this.talentEducationDetails.length; i++) {
       this.t.push(this.fb.group({
         high_qualification: [this.talentEducationDetails[i].highest_qualification, Validators.required],
-        specialization: [this.talentEducationDetails[i].specialization, Validators.required],
-        institution: [this.talentEducationDetails[i].institution, Validators.required],
+        professional_qualification: [this.talentEducationDetails[i].professional_qualification, Validators.required],
+        university_name: [this.talentEducationDetails[i].university_name, Validators.required],
         year_of_completion: [this.talentEducationDetails[i].year_of_completion, Validators.required],
-        degree: [this.talentEducationDetails[i].type_of_qualification, Validators.required],
+        mode_of_study: [this.talentEducationDetails[i].mode_of_study, Validators.required],
         educational_id: [this.talentEducationDetails[i].educational_id]
       }));
     }
@@ -615,23 +620,23 @@ export class TalentprofileComponent implements OnInit {
     // for (var i = this.t.length; i < this.talentEducationDetails.length; i++) {
     this.t.push(this.fb.group({
       high_qualification: [, Validators.required],
-      specialization: [, Validators.required],
-      institution: [, Validators.required],
+      professional_qualification: [, Validators.required],
+      university_name: [, Validators.required],
       year_of_completion: [, Validators.required],
-      degree: [, Validators.required],
+      mode_of_study: [, Validators.required],
       educational_id: []
     }));
     // }
   }
+
+
   addEmployment() {
     this.t1.push(this.fb.group({
       current_designation: ['', Validators.required],
       current_company: ['', Validators.required],
-
       currency_type: ['', Validators.required],
       currency_type1: ['', Validators.required],
       currency_type2: ['', Validators.required],
-
       working_period1: ['', Validators.required],
       working_period2: ['', Validators.required],
       working_period3: ['', Validators.required],
@@ -663,7 +668,6 @@ export class TalentprofileComponent implements OnInit {
       this.appSer.deleteEducation(params).subscribe(res => {
         if (res['status'] == 200) {
           this.t.controls.splice(x, 1);
-
           this.submitted = false;
           this.t.markAsPristine();
           this.t.markAsUntouched();
@@ -671,7 +675,6 @@ export class TalentprofileComponent implements OnInit {
         } else {
           this.toast.error(res['message'], "error");
         }
-
       })
     }
   }

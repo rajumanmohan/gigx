@@ -136,11 +136,12 @@
                     <div class="row form-group country-city">
                         <div class="col-md-6">
                             <!-- <ng-autocomplete [data]="CountiresList" [searchKeyword]="keyword"
-                                [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate">
+                                [itemTemplate]="itemTemplate" (selected)='selectEvent($event)'
+                                placeHolder="Select Country" [notFoundTemplate]="notFoundTemplate">
                             </ng-autocomplete>
 
                             <ng-template #itemTemplate let-item>
-                                <a [innerHTML]="CountiresList.country_name"></a>
+                                <a [innerHTML]="item.country_name"></a>
                             </ng-template>
 
                             <ng-template #notFoundTemplate let-notFound>

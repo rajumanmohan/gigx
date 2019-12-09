@@ -28,20 +28,26 @@
             border: 1px solid #dbdbdb;
             padding: 0px 7px;
             margin: 0px auto;
+            height: 41px;
             box-shadow: 1px 1px 1px 0px #dbdbdb !important;
          }
          button{
             width: 100%;
-            border: 0px;
-            border-radius: 3px !important;
-            padding: 6px;
-            background: #fed501!important;
-            color: #000000;
-            font-size: 20px;
+    border: 0px;
+    border-radius: 3px !important;
+    padding: 9px!important;
+    background: #fed501;
+    color: #000000;
+    font-size: 14px;
         }
         .recapcha{
             padding: 6px;
         }
+}
+.add-more{
+    background: #f1f1f1!important;
+    padding: 7px!important;
+    color: #818181!important;
 }
 .company-registration {
     .custom-control-inline {
@@ -61,7 +67,6 @@
         background: #d4d4d4;
     }
     .custom-checkbox .custom-control-label::before {
-      
         background: #d4d4d4;
     }
     .input-group-prepend {
@@ -72,7 +77,6 @@
             border-right:0px;
         }
     }
-  
     a{
         color:#fed501!important
     }
@@ -81,10 +85,10 @@
         font-size: 23px;
         padding: 9px;
         background: #f1f1f1;
-    
     }
     .col-form-label{
-        font-weight:600;
+     font-weight: 600;
+    font-size: 14px;
     }
 }
 .upload-image{
@@ -93,7 +97,6 @@
     border: 1px dashed #a4a4a4;
     padding: 21px;
 }
-
 .experience {
     button{
 background:#f1f1f1!important;

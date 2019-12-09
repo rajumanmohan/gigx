@@ -127,6 +127,13 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.get(this.apiUrl + 'getIndustries.php', { headers })
   }
+  getRoles() {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'getRoles.php ', { headers })
+  }
   statesList(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
@@ -155,5 +162,5 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'talent_delete_job_details.php', params, { headers })
   }
- 
+
 }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from './../../Services/app-service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { IMyDpOptions } from 'mydatepicker';
@@ -26,16 +26,23 @@ import {
 export class PostagigComponent implements OnInit {
   postGigForm: FormGroup;
   submitted = false;
-  private myDatePickerOptions: IMyDpOptions = {
-    // other options...
-    dateFormat: 'dd/mm/yyyy',
-  };
+  myDateOptions1: any;
+  myDateOptions2: any;
+
+  MileStoneStamp;
+  public value: Date = new Date();
+  public mytime: Date = new Date();
+  currentYear: any = this.mytime.getUTCFullYear();
+  currentDate: any = this.mytime.getUTCDate() - 1;
+  currentMonth: any = this.mytime.getUTCMonth() + 1; //months from 1-12
   constructor(private router: Router, private formBuilder: FormBuilder, private toast: ToastrService, private appSer: AppServiceService) {
+    this.MileStoneStamp == 'Yes';
     if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
       this.toast.warning('Please Login', "warning");
       this.router.navigate(['/coverpage']);
     } else {
     }
+
   }
   projecType = "Individual";
   projLoc = "local";
@@ -44,32 +51,58 @@ export class PostagigComponent implements OnInit {
   telephonicField: false;
   groupdiscussion: false;
   array = [];
+  showMileStoneInputs = false;
   ngOnInit() {
     this.getCountries();
     window.scroll(0, 0);
     this.getIndustryData();
+    this.getRolesData();
     this.getCountries();
-
+    this.myDateOptions1 = {
+      dateFormat: 'dd/mm/yyyy',
+      disableUntil: { year: this.currentYear, month: this.currentMonth, day: this.currentDate },
+    }
+    this.myDateOptions2 = {
+      dateFormat: 'dd/mm/yyyy',
+      disableUntil: { year: this.currentYear, month: this.currentMonth, day: this.currentDate },
+    }
     // form validations
     this.postGigForm = this.formBuilder.group({
       gigdescription: ['', Validators.required],
       industry_type: ['', Validators.required],
       yearofexp: ['', Validators.required],
       role: ['', Validators.required],
+      skills: ['', Validators.required],
       country: ['', Validators.required],
       state: ['', Validators.required],
       city: ['', Validators.required],
-      availability: ['', Validators.required],
-      projecttype: ['', Validators.required],
-      projectowner: ['', Validators.required],
       joblocation: ['', Validators.required],
+      projecttype: ['', Validators.required],
       duration: ['', Validators.required],
+      availability: ['', Validators.required],
+      projectowner: ['', Validators.required],
+      deliverables: ['', Validators.required],
       currency: ['', Validators.required],
       price: ['', Validators.required],
-      hiringprocess: ['', Validators.required],
-      acceptTerms: [false, Validators.requiredTrue]
+      paymenttype: ['', Validators.requiredTrue],
+      acceptTerms: [false, Validators.requiredTrue],
+      milestoneprice: ['', Validators.required],
+      mileStone_Description: ['', Validators.required],
+      milestone_title: ['', Validators.required]
     });
     // form validations
+  }
+  changeMileStone(value) {
+    this.MileStoneStamp = value;
+    if (this.MileStoneStamp == 'Yes') {
+      this.showMileStoneInputs = true;
+      this.t.push(this.formBuilder.group({
+        milestoneprice: ['', Validators.required]
+      }));
+    }
+    else {
+      this.showMileStoneInputs = false;
+    }
   }
   changeproject(loaction) {
     this.projLoc = loaction.target.value;
@@ -81,6 +114,17 @@ export class PostagigComponent implements OnInit {
   onDateChanged(date) {
     // var newDate = date.date['year'] + "-" + date.date['month'] + "-" + date.date['date'];
     this.mydate = date.date;
+  }
+  mydate1;
+  onDateChanged1(date) {
+    // var newDate = date.date['year'] + "-" + date.date['month'] + "-" + date.date['date'];
+    this.mydate1 = date.date;
+  }
+  rolesList;
+  getRolesData() {
+    this.appSer.getRoles().subscribe((res) => {
+      this.rolesList = res['roles']
+    })
   }
   CountiresList;
   getCountries() {
@@ -105,9 +149,6 @@ export class PostagigComponent implements OnInit {
         this.citiesList = res['cities'];
       })
     })
-
-
-
   }
 
   stateId; citiesList;
@@ -134,6 +175,8 @@ export class PostagigComponent implements OnInit {
     })
   }
   get f() { return this.postGigForm.controls }
+  get t() { return this.f.milestone as FormArray; }
+
   onSubmit() {
     this.postGigForm.value.hiringprocess = [this.formData];
     this.submitted = true;
@@ -141,7 +184,6 @@ export class PostagigComponent implements OnInit {
     if (this.postGigForm.invalid) {
       return;
     }
-
     // display form values on success
     alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.postGigForm.value, null, 4));
   }
