@@ -364,32 +364,6 @@ export class TalentprofileComponent implements OnInit {
     }
   }
 
-  readUrl1(event: any) {
-    console.log('readUrl');
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      this.path = (event.target.files[0].name)
-
-      reader.onload = (event: any) => {
-        this.url2 = event.target.result;
-        console.log(this.url1)
-      }
-
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  }
-  path1;
-  readUrl2(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      this.path1 = (event.target.files[0].name)
-
-      reader.onload = (event: any) => {
-        this.url3 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  }
   showEditEdu() {
     this.editEdu = true;
 
@@ -851,5 +825,43 @@ export class TalentprofileComponent implements OnInit {
       this.strImage = this.image.split(',')[1];
     }
     myReader.readAsDataURL(file);
+  }
+  strPdf: any;
+  changeListenerPdf($event): void {
+    this.readThisPdf($event.target);
+  }
+  readThisPdf(inputValue: any): void {
+    var file: File = inputValue.files[0];
+    var myReader: FileReader = new FileReader();
+    myReader.onloadend = (e) => {
+      this.image = myReader.result;
+      this.strPdf = this.image.split(',')[1];
+    }
+    myReader.readAsDataURL(file);
+  }
+  readUrl1(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      this.path = (event.target.files[0].name)
+
+      reader.onload = (event: any) => {
+        this.url2 = event.target.result;
+        console.log(this.url1)
+      }
+
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+  path1;
+  readUrl2(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      this.path1 = (event.target.files[0].name)
+
+      reader.onload = (event: any) => {
+        this.url3 = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
   }
 }
