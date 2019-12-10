@@ -43,13 +43,24 @@
             <div class="col-md-12">
                 <form [formGroup]="postGigForm">
                     <div class="form-group row">
+                        <label for="gigTitle" class="col-sm-2 col-form-label">GIG TITLE :</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" formControlName="gig_title" placeholder="Gig Title"
+                                [ngClass]="{ 'is-invalid': submitted && f.gig_title.errors }">
+                            <div *ngIf="submitted && f.gig_title.errors" class="invalid-feedback">
+                                <div *ngIf="f.gig_title.errors.required">Gig Title is required</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">GIG DESCRIPTION :</label>
                         <div class="col-sm-10">
                             <textarea type="text" class="form-control" placeholder="Type here ..." rows="3"
-                                formControlName="gigdescription"
-                                [ngClass]="{ 'is-invalid': submitted && f.gigdescription.errors }"></textarea>
-                            <div *ngIf="submitted && f.gigdescription.errors" class="invalid-feedback">
-                                <div *ngIf="f.gigdescription.errors.required">Gig Description is required</div>
+                                formControlName="gig_desc"
+                                [ngClass]="{ 'is-invalid': submitted && f.gig_desc.errors }"></textarea>
+                            <div *ngIf="submitted && f.gig_desc.errors" class="invalid-feedback">
+                                <div *ngIf="f.gig_desc.errors.required">Gig Description is required</div>
                             </div>
                         </div>
                     </div>
@@ -75,8 +86,8 @@
                         </label>
                         <div class="col-sm-10">
                             <select class="form-control" id="exampleFormControlSelect1"
-                                placeholder="Select Qualification" formControlName="yearofexp"
-                                [ngClass]="{ 'is-invalid': submitted && f.yearofexp.errors }">
+                                placeholder="Select Qualification" formControlName="years_of_exp"
+                                [ngClass]="{ 'is-invalid': submitted && f.years_of_exp.errors }">
                                 <option value="" [selected]="true" [disabled]="true">Select Years</option>
                                 <option value="0"> 0 Year</option>
                                 <option value="1"> 1 Year </option>
@@ -91,8 +102,8 @@
                                 <option value="10"> 10+ Years </option>
 
                             </select>
-                            <div *ngIf="submitted && f.yearofexp.errors" class="invalid-feedback">
-                                <div *ngIf="f.yearofexp.errors.required">Experience is required
+                            <div *ngIf="submitted && f.years_of_exp.errors" class="invalid-feedback">
+                                <div *ngIf="f.years_of_exp.errors.required">Experience is required
                                 </div>
                             </div>
                         </div>
@@ -119,11 +130,13 @@
                         <label for="inputPassword" class="col-sm-2 col-form-label">REQUIRED SKILLS :
                         </label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" formControlName="skills"
-                                placeholder="Required Skills"
-                                [ngClass]="{ 'is-invalid': submitted && f.skills.errors }">
+                                <type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsList"
+                                formControlName="skills" [custom]="true" [multi]="true" [complex]="false"
+                                [ngClass]="{'is-invalid':f.skills.errors&& submitted}"
+                             >
+                           </type-ahead>
                             <div *ngIf="submitted && f.skills.errors" class="invalid-feedback">
-                                <div *ngIf="f.skills.errors.required">Required Skills is required</div>
+                                <div *ngIf="f.skills.errors.required">Skills are required</div>
                             </div>
                         </div>
                     </div>
@@ -139,7 +152,7 @@
                                     <select class="form-control" id="exampleFormControlSelect1"
                                         formControlName="country" (change)="changeCountryList($event.target.value)"
                                         [ngClass]="{ 'is-invalid': submitted && f.country.errors }">
-                                        <option value="" [selected]=true [disabled]="true">Select Country </option>
+                                        <option [value]=null [selected]=true [disabled]="true">Select Country </option>
                                         <option *ngFor="let data of CountiresList" [value]="data.country_id">
                                             {{data.country_name}}
                                         </option>
@@ -156,7 +169,7 @@
                                 <div class="col-sm-6">
                                     <select class="form-control" id="exampleFormControlSelect1" formControlName="city"
                                         [ngClass]="{ 'is-invalid': submitted && f.city.errors }">
-                                        <option [value]="" [selected]="true">Select City </option>
+                                        <option [value]=null [selected]="true">Select City </option>
                                         <option *ngFor="let data of citiesList" [value]="data.city_id"> {{data.city}}
                                         </option>
                                     </select>
@@ -173,8 +186,9 @@
                                 </label>
                                 <div class="col-sm-6">
                                     <select class="form-control" id="exampleFormControlSelect1" formControlName="state"
+                                    [ngClass]="{ 'is-invalid': submitted && f.state.errors }"
                                         (change)="changeStateList($event.target.value)">
-                                        <option [value]="" [selected]="true">Select State </option>
+                                        <option [value]=null [selected]="true">Select State </option>
                                         <option *ngFor="let data of statesList" [value]="data.state_id"> {{data.state}}
                                         </option>
                                     </select>
@@ -188,11 +202,11 @@
                                 <label for="inputPassword" class="col-sm-6 col-form-label">JOB LOCATION
                                 </label>
                                 <div class="col-sm-6">
-                                    <input type="text" class="form-control" id="inputPassword" placeholder=""
-                                        formControlName="joblocation"
-                                        [ngClass]="{ 'is-invalid': submitted && f.joblocation.errors }">
-                                    <div *ngIf="submitted && f.joblocation.errors" class="invalid-feedback">
-                                        <div *ngIf="f.joblocation.errors.required">joblocation is required</div>
+                                    <input type="text" class="form-control" id="inputPassword" placeholder="Job Location"
+                                        formControlName="location"
+                                        [ngClass]="{ 'is-invalid': submitted && f.location.errors }">
+                                    <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                                        <div *ngIf="f.location.errors.required">Job Location is required</div>
                                     </div>
                                 </div>
                             </div>
@@ -205,26 +219,26 @@
                         <label for="inputPassword" class="col-sm-3 col-form-label">TYPE OF PROJECTS :</label>
                         <div class="col-sm-9">
                             <select class="form-control" id="exampleFormControlSelect1"
-                                placeholder="Select Qualification" formControlName="projecttype"
-                                [ngClass]="{ 'is-invalid': submitted && f.projecttype.errors }">
+                                placeholder="Select Qualification" formControlName="type_of_project"
+                                [ngClass]="{ 'is-invalid': submitted && f.type_of_project.errors }">
                                 <option value="" [selected]="true" [disabled]="true">Select Type</option>
-                                <option value="individual">Full Time</option>
-                                <option value="individual">Part Time</option>
+                                <option value="Full Time">Full Time</option>
+                                <option value="Part Time">Part Time</option>
                             </select>
-                            <div *ngIf="submitted && f.projecttype.errors" class="invalid-feedback">
-                                <div *ngIf="f.projecttype.errors.required">Type of project is required</div>
+                            <div *ngIf="submitted && f.type_of_project.errors" class="invalid-feedback">
+                                <div *ngIf="f.type_of_project.errors.required">Type of project is required</div>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-3 col-form-label">RESOURCE AVAILABILITY :</label>
+                        <label for="inputPassword" class="col-sm-3 col-form-label">NO OF VACANCIES :</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" formControlName="availability"
-                                placeholder="Resource Count"
-                                [ngClass]="{ 'is-invalid': submitted && f.availability.errors }">
-                            <div *ngIf="submitted && f.availability.errors" class="invalid-feedback">
-                                <div *ngIf="f.availability.errors.required">Availability is required</div>
+                            <input type="text" myNumberOnly class="form-control" formControlName="no_of_vacancies"
+                                placeholder="No of Vacancies"
+                                [ngClass]="{ 'is-invalid': submitted && f.no_of_vacancies.errors }">
+                            <div *ngIf="submitted && f.no_of_vacancies.errors" class="invalid-feedback">
+                                <div *ngIf="f.no_of_vacancies.errors.required">No of Vacancies is required</div>
                             </div>
 
                         </div>
@@ -235,9 +249,13 @@
                                 <label for="inputPassword" class="col-sm-6 col-form-label">PROJECT START DATE
                                     :</label>
                                 <div class="col-sm-6">
-                                    <my-date-picker name="mydate" (dateChanged)="onDateChanged($event)"
-                                        [options]="myDateOptions1" placeholder="28/08/2020">
+                                    <my-date-picker name="project_start_date" formControlName="project_start_date" (dateChanged)="onProjectStartDateChanged($event)"
+                                        [options]="projectStartDateOptions" placeholder="28/08/2020">
                                     </my-date-picker>
+                                    <div *ngIf="submitted && f.project_start_date.errors" class="custom-invalid-feedback">
+                                            <div *ngIf="f.project_start_date.errors.required">Project Start Date is
+                                                required</div>
+                                        </div>
                                 </div>
 
                             </div>
@@ -247,9 +265,13 @@
                                 <label for="inputPassword" class="col-sm-6 col-form-label">PROJECT END DATE
                                     :</label>
                                 <div class="col-sm-6">
-                                    <my-date-picker name="mydate" (dateChanged)="onDateChanged($event)"
-                                        [options]="myDateOptions1" placeholder="28/08/2020">
+                                    <my-date-picker name="project_end_date" formControlName="project_end_date" (dateChanged)="onProjectEndDateChanged($event)"
+                                        [options]="projectEndDateOptions" placeholder="28/08/2020">
                                     </my-date-picker>
+                                    <div *ngIf="submitted && f.project_end_date.errors" class="custom-invalid-feedback">
+                                            <div *ngIf="f.project_end_date.errors.required">Project End Date is
+                                                required</div>
+                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -260,15 +282,15 @@
                             :</label>
                         <div class="col-sm-9">
                             <div class="custom-control custom-radio custom-control-inline"
-                                (change)="changeType1($event)">
-                                <input type="radio" id="customRadioInline9" name="customRadioInline8"
+                                >
+                                <input type="radio" formControlName="project_process"  id="customRadioInline9" 
                                     class="custom-control-input" value="Individual" [checked]='true'>
                                 <label class="custom-control-label" for="customRadioInline9">Individual</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline"
-                                (change)="changeType1($event)">
-                                <input type="radio" id="customRadioInline10" value="Team Project"
-                                    name="customRadioInline8" class="custom-control-input">
+                                >
+                                <input type="radio" formControlName="project_process" id="customRadioInline10" value="Team Project"
+                                    class="custom-control-input">
                                 <label class="custom-control-label" for="customRadioInline10">Team Project</label>
                             </div>
                         </div>
@@ -278,13 +300,14 @@
                             :</label>
                         <div class="col-sm-9">
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="type1" name="customRadioInline7" class="custom-control-input"
-                                    value="local" [checked]='true'>
+                                <input type="radio" id="type1" class="custom-control-input"
+                                    value="Local / Domestic Project" formControlName="project_type" [checked]='true'>
                                 <label class="custom-control-label" for="type1">Local / Domestic
                                     Project</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="type2" value="global" name="customRadioInline7"
+                                <input type="radio" formControlName="project_type" id="type2" 
+                                value="Global / International" 
                                     class="custom-control-input">
                                 <label class="custom-control-label" for="type2">Global /
                                     International</label>
@@ -297,13 +320,13 @@
                             :</label>
                         <div class="col-sm-9">
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="incountry" name="customRadioInline9"
-                                    class="custom-control-input" value="in country" [checked]='true'>
+                                <input type="radio" formControlName="mode_of_engagement" id="incountry" 
+                                    class="custom-control-input" value="Contract in country" [checked]='true'>
                                 <label class="custom-control-label" for="incountry">Contract in country</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" id="remotelocation" value="remote location"
-                                    name="customRadioInline9" class="custom-control-input">
+                                <input type="radio" id="remotelocation" formControlName="mode_of_engagement"
+                                 value="Contract Remote Location"  class="custom-control-input">
                                 <label class="custom-control-label" for="remotelocation">Contract Remote
                                     Location</label>
                             </div>
@@ -314,45 +337,82 @@
                         </label>
                         <div class="col-sm-9">
                             <div class="custom-control custom-radio custom-control-inline"
-                                (change)="changeType1($event)">
-                                <input type="radio" id="exclusivity_yes" name="customRadioInline10"
+                              >
+                                <input type="radio" id="exclusivity_yes" formControlName="exclusivity"
                                     class="custom-control-input" value="Yes" [checked]='true'>
                                 <label class="custom-control-label" for="exclusivity_yes">Yes</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline"
-                                (change)="changeType1($event)">
-                                <input type="radio" id="exclusivity_no" value="No" name="customRadioInline10"
+                              >
+                                <input type="radio" id="exclusivity_no" formControlName="exclusivity" value="No" 
                                     class="custom-control-input">
                                 <label class="custom-control-label" for="exclusivity_no">No</label>
                             </div>
                         </div>
                     </div>
+
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-3 col-form-label">PROJECT MILESTONE :</label>
                         <div class="col-sm-9">
                             <div class="custom-control custom-radio custom-control-inline"
-                                (change)="changeMileStone($event.target.value)">
-                                <input type="radio" id="milestone_yes" name="customRadioInline19"
-                                    class="custom-control-input" value="Yes">
+                                (change)="changeMileStone($event.target.value)" >
+                                <input type="radio" id="milestone_yes" 
+                                    class="custom-control-input" value="Yes" formControlName="project_milestone">
                                 <label class="custom-control-label" for="milestone_yes">Yes</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline"
                                 (change)="changeMileStone($event.target.value)">
-                                <input type="radio" id="milestone_no" value="No" name="customRadioInline19"
-                                    class="custom-control-input" [checked]='true'>
+                                <input type="radio" id="milestone_no" value="No" 
+                                    class="custom-control-input" [checked]='true' formControlName="project_milestone">
                                 <label class="custom-control-label" for="milestone_no">No</label>
                             </div>
+
+                            <div *ngIf="submitted && !isMileStoneInfoValid && this.f.project_milestone.value == 'Yes'" class="custom-invalid-feedback">
+                                    <div>Atleast one Milestone info is
+                                        required</div>
+                                </div>
                         </div>
                     </div>
-                    <div class="" *ngIf="showMileStoneInputs == true">
+                    <div class="mile-stone-list container" [formGroup]="mileStoneForm"  *ngIf="showMileStoneInputs == true">
+                            
+                            <div style="background: #fafafa; margin-bottom: 1rem;" *ngFor="let mileStone of projectMileStones;  let i = index">
+                                <div class="">
+                                        <h2>PROJECT MILESTONE : {{i + 1}} <i class="fa fa-times-circle delete-icon"
+                                            (click)="removeMileStone(i)"></i> </h2> 
+                                </div>
+                                <div class="row col-sm-12">
+                                    <label class="col-sm-2 col-form-label">TITLE:</label>
+                                    <label class="col-sm-4 col-form-label">{{mileStone.milestone_title}}</label>    
+                                    
+                                    <label class="col-sm-2 col-form-label">PRICE:</label>
+                                    <label class="col-sm-4 col-form-label">{{mileStone.milestone_price}}</label>
+                                </div>
+
+                                <div class="row  col-sm-12">
+                                        <label class="col-sm-2 col-form-label">START DATE:</label>
+                                        <label class="col-sm-4 col-form-label">{{mileStone.milestone_start_date}}</label>
+    
+                                        <label class="col-sm-2 col-form-label">END DATE:</label>
+                                        <label class="col-sm-4 col-form-label"> {{mileStone.milestone_end_date}}</label>
+
+                                       
+                                    </div>
+
+                                <div class="row  col-sm-12">
+                                        <label class="col-sm-2 col-form-label">DESCRIPTION:</label>
+                                        <label class="col-sm-8 col-form-label"> {{mileStone.milestone_description}}</label>
+                                </div>
+                            </div>
+
+
                         <div class="form-group row">
-                            <label for="inputPassword" class="col-sm-6 col-form-label">MILESTONE TITLE:</label>
-                            <div class="col-sm-6">
+                            <label for="inputPassword" class="col-sm-3 col-form-label">MILESTONE TITLE:</label>
+                            <div class="col-sm-9">
                                 <input type="text" class="form-control" formControlName="milestone_title"
-                                    placeholder="Mile Stone Price"
-                                    [ngClass]="{ 'is-invalid': submitted && f.milestone_title.errors }">
-                                <div *ngIf="submitted && f.milestone_title.errors" class="invalid-feedback">
-                                    <div *ngIf="f.milestone_title.errors.required">Mile Stone Price is required
+                                    placeholder="Mile Stone Title"
+                                    [ngClass]="{ 'is-invalid': submitted_MS && f_ms.milestone_title.errors }">
+                                <div *ngIf="submitted_MS && f_ms.milestone_title.errors" class="invalid-feedback">
+                                    <div *ngIf="f_ms.milestone_title.errors.required">Mile Stone Price is required
                                     </div>
                                 </div>
                             </div>
@@ -363,10 +423,10 @@
                             <div class="col-sm-9">
                                 <!-- <textarea  -->
                                 <textarea type="text" class="form-control" placeholder="Type here ..." rows="3"
-                                    formControlName="mileStone_Description"
-                                    [ngClass]="{ 'is-invalid': submitted && f.mileStone_Description.errors }"></textarea>
-                                <div *ngIf="submitted && f.mileStone_Description.errors" class="invalid-feedback">
-                                    <div *ngIf="f.mileStone_Description.errors.required">MileStone Description is
+                                    formControlName="milestone_desc"
+                                    [ngClass]="{ 'is-invalid': submitted_MS && f_ms.milestone_desc.errors }"></textarea>
+                                <div *ngIf="submitted_MS && f_ms.milestone_desc.errors" class="invalid-feedback">
+                                    <div *ngIf="f_ms.milestone_desc.errors.required">MileStone Description is
                                         required</div>
                                 </div>
                             </div>
@@ -377,9 +437,14 @@
                                     <label for="inputPassword" class="col-sm-6 col-form-label">MILESTONE START
                                         DATE:</label>
                                     <div class="col-sm-6">
-                                        <my-date-picker name="mydate1" (dateChanged)="onDateChanged1($event)"
-                                            [options]="myDateOptions2" placeholder="28/08/2020">
+                                        <my-date-picker name="mydate1"  formControlName="milestone_start_date" (dateChanged)="onMLStartDateChanged($event)"
+                                            [options]="MLStartDateOptions" placeholder="28/08/2020"
+                                            [ngClass]="{ 'is-invalid': submitted_MS && f_ms.milestone_start_date.errors }">
                                         </my-date-picker>
+                                        <div *ngIf="submitted_MS && f_ms.milestone_start_date.errors" class="custom-invalid-feedback">
+                                                <div *ngIf="f_ms.milestone_start_date.errors.required">MileStone Start Date is
+                                                    required</div>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -388,9 +453,14 @@
                                     <label for="inputPassword" class="col-sm-6 col-form-label">MILESTONE END
                                         DATE:</label>
                                     <div class="col-sm-6">
-                                        <my-date-picker name="mydate1" (dateChanged)="onDateChanged1($event)"
-                                            [options]="myDateOptions2" placeholder="28/08/2020">
+                                        <my-date-picker name="mydate1" formControlName="milestone_end_date" (dateChanged)="onMLEndDateChanged($event)"
+                                            [options]="MLEndDateOptions" placeholder="28/08/2020"
+                                            [ngClass]="{ 'is-invalid': submitted_MS && f_ms.milestone_end_date.errors }">
                                         </my-date-picker>
+                                        <div *ngIf="submitted_MS && f_ms.milestone_end_date.errors" class="custom-invalid-feedback">
+                                                <div *ngIf="f_ms.milestone_end_date.errors.required">MileStone End Date is
+                                                    required</div>
+                                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -401,14 +471,14 @@
                                     <label for="inputPassword" class="col-sm-6 col-form-label">CURRENCY:</label>
                                     <div class="col-sm-6">
                                         <select class="form-control" id="exampleFormControlSelect1"
-                                            formControlName="currency"
-                                            [ngClass]="{ 'is-invalid': submitted && f.currency.errors }">
-                                            <option value='' selected disabled>Select Currency</option>
-                                            <option value="$">$</option>
+                                            formControlName="milestone_currency"
+                                            [ngClass]="{ 'is-invalid': submitted_MS && f_ms.milestone_currency.errors }">
+                                            <option value="" selected disabled>Select Currency</option>
+                                            <option value="USD">USD</option>
                                             <option value="RM">RM</option>
                                         </select>
-                                        <div *ngIf="submitted && f.currency.errors" class="invalid-feedback">
-                                            <div *ngIf="f.currency.errors.required">Currency is required</div>
+                                        <div *ngIf="submitted_MS && f_ms.milestone_currency.errors" class="invalid-feedback">
+                                            <div *ngIf="f_ms.milestone_currency.errors.required">Currency is required</div>
                                         </div>
                                     </div>
                                 </div>
@@ -417,11 +487,11 @@
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-6 col-form-label">MILESTONE PRICE:</label>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control" formControlName="milestoneprice"
+                                        <input type="text" myNumberOnly class="form-control" formControlName="milestone_price"
                                             placeholder="Mile Stone Price"
-                                            [ngClass]="{ 'is-invalid': submitted && f.milestoneprice.errors }">
-                                        <div *ngIf="submitted && f.milestoneprice.errors" class="invalid-feedback">
-                                            <div *ngIf="f.milestoneprice.errors.required">Mile Stone Price is required
+                                            [ngClass]="{ 'is-invalid': submitted_MS && f_ms.milestone_price.errors }">
+                                        <div *ngIf="submitted_MS && f_ms.milestone_price.errors" class="invalid-feedback">
+                                            <div *ngIf="f_ms.milestone_price.errors.required">Mile Stone Price is required
                                             </div>
                                         </div>
                                     </div>
@@ -430,84 +500,89 @@
                         </div>
 
                         <div class="row justify-content-right mb-5">
-                            <div class="col-md-5"></div>
+                            <div class="col-md-9"></div>
                             <div class="col-md-3">
-                                <button type="submit()">ADD TO MILESTONE</button>
+                                <button type="button" (click)="onAddMilestoneClick()">ADD TO MILESTONE</button>
                             </div>
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                                 <button class="add-more" type="submit()">+ ADD ANOTHER MILESTONE</button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
                     <div class="form-group hiring row">
                         <label for="inputPassword" class="col-sm-3 col-form-label">MODE OF PROJECT KICK OFF : </label>
                         <div class="col-sm-9">
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" value="In person" id="customCheck5">
-                                <label class="custom-control-label" for="customCheck5">In person Interview</label>
+                            <div class="custom-control custom-checkbox custom-control-inline" *ngFor="let option of modeOfKickOffProjects">
+                                <input type="checkbox" class="custom-control-input" value="{{option.value}}"
+                                [(ngModel)]="option.checked" [ngModelOptions]="{standalone: true}" [id]="option.value">
+                                <label class="custom-control-label" [for]="option.value">{{option.value}}</label>
                             </div>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" value="video" id="customCheck2">
+                            <!-- <div class="custom-control custom-checkbox custom-control-inline">
+                                <input type="checkbox" class="custom-control-input" value="Video" id="customCheck2">
                                 <label class="custom-control-label" for="customCheck2">Video</label>
                             </div>
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" value="conference"
+                                <input type="checkbox" class="custom-control-input" value="Conference Call Interview"
                                     id="customCheck3">
                                 <label class="custom-control-label" for="customCheck3">Conference Call Interview</label>
-                            </div>
+                            </div> -->
+                            <div *ngIf="submitted && !validateModeOfKickOffProjects()" class="custom-invalid-feedback">
+                                    <div>Mode of Project Kick off is required</div>
+                                </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">PROJECT OWNER :</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" formControlName="projectowner"
-                                placeholder="Enter Name"
-                                [ngClass]="{ 'is-invalid': submitted && f.projectowner.errors }">
-                            <div *ngIf="submitted && f.projectowner.errors" class="invalid-feedback">
-                                <div *ngIf="f.projectowner.errors.required">Project Owner is required</div>
+                            <input type="text" class="form-control" formControlName="project_owner"
+                                placeholder="Project Owner"
+                                [ngClass]="{ 'is-invalid': submitted && f.project_owner.errors }">
+                            <div *ngIf="submitted && f.project_owner.errors" class="invalid-feedback">
+                                <div *ngIf="f.project_owner.errors.required">Project Owner is required</div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">KEY DELIVERABLES :</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" formControlName="deliverables" placeholder=""
-                                [ngClass]="{ 'is-invalid': submitted && f.deliverables.errors }">
-                            <div *ngIf="submitted && f.deliverables.errors" class="invalid-feedback">
-                                <div *ngIf="f.deliverables.errors.required">Deliverables is required</div>
+                            <input type="text" class="form-control" formControlName="key_deliverables" placeholder="Key Deliverables"
+                                [ngClass]="{ 'is-invalid': submitted && f.key_deliverables.errors }">
+                            <div *ngIf="submitted && f.key_deliverables.errors" class="invalid-feedback">
+                                <div *ngIf="f.key_deliverables.errors.required">Key Deliverables is required</div>
                             </div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="inputPassword" class="col-sm-2 col-form-label">PAYMENT :</label>
                         <div class="col-sm-2">
-                            <select class="form-control" id="exampleFormControlSelect1" formControlName="currency"
-                                [ngClass]="{ 'is-invalid': submitted && f.currency.errors }">
-                                <option value='' selected disabled>Select Currencr</option>
-                                <option value="$">$</option>
+                            <select class="form-control" id="exampleFormControlSelect1" formControlName="payment_currency"
+                                [ngClass]="{ 'is-invalid': submitted && f.payment_currency.errors }">
+                                <option value='' selected disabled>Select Currency</option>
+                                <option value="USD">USD</option>
                                 <option value="RM">RM</option>
                             </select>
-                            <div *ngIf="submitted && f.currency.errors" class="invalid-feedback">
-                                <div *ngIf="f.currency.errors.required">Currency is required</div>
+                            <div *ngIf="submitted && f.payment_currency.errors" class="invalid-feedback">
+                                <div *ngIf="f.payment_currency.errors.required">Currency is required</div>
                             </div>
                         </div>
-                        <div class="col-sm-6">
-                            <input type="text" class="form-control" formControlName="price" placeholder="Price"
-                                [ngClass]="{ 'is-invalid': submitted && f.price.errors }">
-                            <div *ngIf="submitted && f.price.errors" class="invalid-feedback">
-                                <div *ngIf="f.price.errors.required">Price is required</div>
+                        <div class="col-sm-4">
+                            <input type="text" myNumberOnly class="form-control" formControlName="payment_price" placeholder="Price"
+                                [ngClass]="{ 'is-invalid': submitted && f.payment_price.errors }">
+                            <div *ngIf="submitted && f.payment_price.errors" class="invalid-feedback">
+                                <div *ngIf="f.payment_price.errors.required">Price is required</div>
                             </div>
                         </div>
-                        <div class="col-sm-2">
-                            <select class="form-control" id="exampleFormControlSelect1" formControlName="paymenttype"
-                                [ngClass]="{ 'is-invalid': submitted && f.paymenttype.errors }">
-                                <option value="" selected disabled>Select Payment Type</option>
-                                <option value="PerHour">Per Hour</option>
-                                <option value="PerProject">Per Project</option>
+                        <div class="col-sm-4">
+                            <select class="form-control" id="payment_type" formControlName="payment_type"
+                                [ngClass]="{ 'is-invalid': submitted && f.payment_type.errors }"
+                                placeholder="Select Payment Type">
+                                <option value="" [selected]="true" [disabled]="true">Select Payment Type</option>
+                                <option value="Per Hour">Per Hour</option>
+                                <option value="Per Project">Per Project</option>
                             </select>
-                            <div *ngIf="submitted && f.paymenttype.errors" class="invalid-feedback">
-                                <div *ngIf="f.paymenttype.errors.required">Payment Type is required</div>
+                            <div *ngIf="submitted && f.payment_type.errors" class="invalid-feedback">
+                                <div *ngIf="f.payment_type.errors.required">Payment Type is required</div>
                             </div>
                         </div>
                     </div>
@@ -534,7 +609,7 @@
 
                     <div class="row justify-content-center">
                         <div class="col-md-6">
-                            <button type="submit" class="btn " (click)="onSubmit()">POST A GIG</button>
+                            <button type="button" class="btn " (click)="onPostAGigSubmit()">POST A GIG</button>
                         </div>
                     </div>
                 </form>
