@@ -29,6 +29,7 @@ import { HomeComponent } from './componants/home/home.component';
 import { NgModule } from '@angular/core';
 import { AboutusComponent } from './componants/aboutus/aboutus.component';
 import { ContactComponent } from './componants/contact/contact.component';
+import { TestlistComponent } from './componants/testlist/testlist.component';
 import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   // {
@@ -161,6 +162,10 @@ const routes: Routes = [
     component: IndividualRegistrationsComponent
 
   },
+  {
+    path : 'testlist',
+    component : TestlistComponent
+  }
 ];
 
 @NgModule({

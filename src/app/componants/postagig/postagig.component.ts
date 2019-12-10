@@ -352,7 +352,6 @@ export class PostagigComponent implements OnInit {
       "payment": `${this.f["payment_currency"].value} ${this.f["payment_price"].value} ${this.f["payment_type"].value}`
     }
 
-debugger;
     this.appSer.postAGig(requestObject).subscribe((res)=>{
       if (res['status'] == 200) {
         debugger;

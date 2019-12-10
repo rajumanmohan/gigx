@@ -35,6 +35,7 @@ export class TalentprofileComponent implements OnInit {
   personalForm: FormGroup;
   educationForm: FormGroup;
   jobForm: FormGroup;
+  isProfesionalCertification = false;
   submitted = false;
   preferenceForm: FormGroup;
   mydate;
@@ -59,6 +60,7 @@ export class TalentprofileComponent implements OnInit {
   newArr = [];
   editBankDetailsForm: FormGroup;
   imgBaseUrl = "https://gigxglobal.com/talent_images/";
+  imageUrl;
   path;
   url2;
   url3;
@@ -133,6 +135,8 @@ export class TalentprofileComponent implements OnInit {
       location: ['', Validators.required]
     })
     this.getCountries();
+    this.getYearOfCompletions();
+    this.getHighestQualificationList();
   }
 
   personaldetails() {
@@ -330,9 +334,9 @@ export class TalentprofileComponent implements OnInit {
       this.personalForm.value.talent_old_video = this.talentPersonalDetails.attachment;
       this.personalForm.value.talent_attachment_video = "";
     }
-    if (this.url1) {
+    if (this.strImage) {
       this.personalForm.value.talent_old_image = this.talentPersonalDetails.image;
-      this.personalForm.value.talent_image = this.url1;
+      this.personalForm.value.talent_image = this.strImage;
     } else {
       this.personalForm.value.talent_old_image = this.talentPersonalDetails.image;
       this.personalForm.value.talent_image = "";
@@ -508,6 +512,7 @@ export class TalentprofileComponent implements OnInit {
 
     this.appSer.TalentProfile(params).subscribe((res) => {
       this.talentPersonalDetails = res['step1'];
+      this.imageUrl = res['step1'].image_url;
       this.countryId = this.talentPersonalDetails['country_id'];
       this.stateId = this.talentPersonalDetails['state_id'];
       this.cityId = this.talentPersonalDetails['city_id'];
@@ -787,5 +792,64 @@ export class TalentprofileComponent implements OnInit {
         this.cityId = this.citiesList[i].city_id;
       }
     })
+  }
+  yearOfCompletionList = [];
+  getYearOfCompletions() {
+    for (var i = 1950; i <= (new Date()).getFullYear(); i++) {
+      this.yearOfCompletionList.push(i);
+    }
+    this.educationForm.patchValue({ 'year_of_completion': null });
+
+  }
+
+  highestQualificationList = [];
+  getHighestQualificationList() {
+    if (this.highestQualificationList.length == 0) {
+      this.appSer.getHighestQualicationList().subscribe((res) => {
+        this.highestQualificationList = res['highestQualifications'];
+        this.educationForm.patchValue({ 'highQul': null });
+      });
+    }
+  }
+
+
+  onHighestQualificationChange(event: any) {
+    if (event.currentTarget.value == '4') {
+
+      this.isProfesionalCertification = true;
+      this.educationForm.addControl('professional_certification', new FormControl('', Validators.required));
+    }
+    else {
+      this.isProfesionalCertification = false;
+      this.educationForm.removeControl('professional_certification');
+    }
+  }
+
+  currentIndex = 0;
+  onHighestQualificationChangeOther(event: any, index, ngForm) {
+    if (event.currentTarget.value == '4') {
+      ngForm.addControl('professional_certification1', new FormControl('', Validators.required));
+    }
+    else {
+      ngForm.removeControl('professional_certification1');
+    }
+    this.currentIndex = index + 1;
+  }
+
+
+  // image upload
+  strImage: any;
+  image;
+  changeListener($event): void {
+    this.readThis($event.target);
+  }
+  readThis(inputValue: any): void {
+    var file: File = inputValue.files[0];
+    var myReader: FileReader = new FileReader();
+    myReader.onloadend = (e) => {
+      this.image = myReader.result;
+      this.strImage = this.image.split(',')[1];
+    }
+    myReader.readAsDataURL(file);
   }
 }

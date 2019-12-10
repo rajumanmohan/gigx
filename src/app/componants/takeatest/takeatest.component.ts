@@ -32,5 +32,10 @@ export class TakeatestComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0);
   }
-
+  showTest = true;
+  showResult = false;
+  startStest() {
+    this.showTest = false;
+    this.showResult = true;
+  }
 }

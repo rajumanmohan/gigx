@@ -50,6 +50,7 @@ import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { TypeaheadModule } from 'ngx-type-ahead';
 import { AboutusComponent } from './componants/aboutus/aboutus.component';
 import { ContactComponent } from './componants/contact/contact.component';
+import { TestlistComponent } from './componants/testlist/testlist.component';
 
 @Pipe({ name: 'safe' })
 @NgModule({
@@ -87,7 +88,8 @@ import { ContactComponent } from './componants/contact/contact.component';
     IndividualRegistrationsComponent,
     CompanysubscriptionsComponent,
     AboutusComponent,
-    ContactComponent
+    ContactComponent,
+    TestlistComponent
   ],
   imports: [
     AutocompleteLibModule,

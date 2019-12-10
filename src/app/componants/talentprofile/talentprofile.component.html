@@ -85,18 +85,20 @@
         <form [formGroup]="personalForm">
             <div class="row contact-details mt-5" *ngIf="showPersonalDetails">
                 <div class="col-md-12">
-                    <div class="profile">
-                        <div class="upload-image1 text-center">
-                            <!-- <img *ngIf="!url1==true" src="../../../assets/images/user.png" /> -->
-                            <img *ngIf="editPreferences==true" class="attch-img"
-                                src="../../../assets/images/camera.png" />
-                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
-                                (change)="readUrl($event)" />
-                            <img *ngIf="url1" [src]="url1" class="uploaded-img">
-                            <img *ngIf="!url1" [src]="imgBaseUrl+''+talentJobPreference.image" class="uploaded-img" />
-
+                    <div class="profile-picture">
+                        <div class="row justify-content-center  mt-2 mb-2">
+                            <div class="col-md-6 text-center">
+                                <div *ngIf="image" class="upload-profile">
+                                    <img src="{{image}}" alt="">
+                                </div>
+                                <div class="form-group">
+                                    <img src="{{imageUrl}}{{talentPersonalDetails.image}}" alt="" class="profile-image">
+                                </div>
+                                <input *ngIf="edit==true" class=" custom-file-input" type="file" accept="image/*"
+                                    (change)="changeListener($event)" [(ngModel)]="profile" name="profile"
+                                    [ngModelOptions]="{standalone: true}">
+                            </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-md-12">
@@ -402,52 +404,35 @@
                                 <td class="b-0 contact-title">QUALIFICATION</td>
                                 <td class="b-0"><span>:</span>
                                     <span *ngIf="edit==false">{{data.highest_qualification}}</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" class="form-control" id="exampleInputPassword1"
-                                            placeholder="Bachelor of Engineering"
-                                            formControlName="highest_qualification">
-                                    </span>
+
                                 </td>
                             </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">PROFESSIONAL QUALIFICATION</td>
                                 <td class="b-0"><span>:</span>
                                     <span *ngIf="edit==false">{{data.professional_qualification}}</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" class="form-control" id="exampleInputPassword1"
-                                            placeholder="Computer Science" formControlName="professional_qualification">
-                                    </span>
+
                                 </td>
                             </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">INSTITUTION</td>
                                 <td class="b-0"><span>:</span>
                                     <span *ngIf="edit==false">{{data.university_name}}</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="University of Brooklyn" class="form-control"
-                                            id="exampleInputPassword1" formControlName="university_name"
-                                            placeholder="University of Brooklyn">
-                                    </span>
+
                                 </td>
                             </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">YEAR OF PASSING</td>
                                 <td class="b-0"><span>:</span>
                                     <span *ngIf="edit==false">{{data.year_of_completion}}</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="1990" class="form-control" id="exampleInputPassword1"
-                                            placeholder="year" form>
-                                    </span>
+
                                 </td>
                             </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">MODE OF STUDY</td>
                                 <td class="b-0"><span>:</span>
                                     <span *ngIf="edit==false">{{data.mode_of_study}}</span>
-                                    <span class="form-group edit-input" *ngIf="edit==true">
-                                        <input type="text" value="1990" class="form-control" id="exampleInputPassword1"
-                                            placeholder="year">
-                                    </span>
+
                                 </td>
                             </tr>
                         </tbody>
@@ -488,19 +473,42 @@
                                             </td>
                                         </tr>
                                         <tr class="b-0">
-                                            <td class="b-0 contact-title">QUALIFICATION
+                                            <td class="b-0 contact-title">SELECT HIGHEST QUALIFICATION
                                                 <span>:</span>
                                             </td>
                                             <td class="b-0">
                                                 <span class="form-group edit-input">
-                                                    <input type="text" formControlName="high_qualification"
+                                                    <!-- <input type="text" formControlName="high_qualification"
                                                         class="form-control"
-                                                        [ngClass]="{ 'is-invalid': submitted && ticket.controls.high_qualification.errors }" />
+                                                        [ngClass]="{ 'is-invalid': submitted && ticket.controls.high_qualification.errors }" /> -->
+
+                                                    <select class="form-control" id="exampleFormControlSelect1"
+                                                        formControlName="high_qualification"
+                                                        (change)="onHighestQualificationChange($event)"
+                                                        [ngClass]="{ 'is-invalid': submitted && ticket.controls.high_qualification.errors }">
+                                                        <option [value]=null [selected]="true">Select Highest
+                                                            Qualification </option>
+                                                        <option *ngFor="let data of highestQualificationList"
+                                                            [value]="data.hqid">
+                                                            {{data.highest_qualification}}
+                                                        </option>
+                                                    </select>
                                                     <div *ngIf="submitted && ticket.controls.high_qualification.errors"
                                                         class="invalid-feedback">
                                                         <div *ngIf="ticket.controls.high_qualification.errors.required">
                                                             Qualification is
                                                             required
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group" *ngIf="isProfesionalCertification">
+                                                        <input type="text" class="form-control"
+                                                            id="professional_certification" placeholder="Please Specify"
+                                                            formControlName="professional_certification">
+                                                        <div class="invalid-feedback"
+                                                            *ngIf="f1.professional_certification.errors">
+                                                            <div *ngIf="f1.professional_certification.errors.required">
+                                                                Specialization is required
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </span>
@@ -550,11 +558,15 @@
                                             </td>
                                             <td class="b-0">
                                                 <span class="form-group edit-input">
+
                                                     <select class="form-control" id="exampleFormControlSelect1"
-                                                        placeholder="Industry Type" formControlName="year_of_completion"
+                                                        placeholder="Year of Completion"
+                                                        formControlName="year_of_completion"
                                                         [ngClass]="{'is-invalid':ticket.controls.year_of_completion.errors&& submitted1}">
-                                                        <option *ngFor="let year of yearArray" [value]="year">{{year}}
-                                                        </option>
+
+                                                        <option *ngFor="let data of yearOfCompletionList"
+                                                            [value]="data">{{data}}</option>
+
                                                     </select>
                                                     <div *ngIf="submitted1 && ticket.controls.year_of_completion.errors"
                                                         class="invalid-feedback">

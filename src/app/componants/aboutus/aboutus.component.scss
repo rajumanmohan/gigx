@@ -307,12 +307,15 @@ img.img-responsive {
      p{
          color:#ffffff;
         
-     }
+	 }
+	
     }
 }
 .xfactory{
     background-color: #eaf9ff;
-
+	img{
+		margin-left:12px;
+	}
 }
 .click-section {
     border-top: 1px solid #000000;
@@ -567,7 +570,7 @@ img.img-responsive {
     position: absolute;
     top: 0px;
 	z-index: 99;
-	background: #ffffffc2;
+	background: #fef7ceeb;
 }
 a.nav-link {
     font-weight: bold;

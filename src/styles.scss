@@ -22,6 +22,12 @@ body{
     font-family: Muli-Regular;
     overflow-x: hidden!important;
 }
+.site-map{
+    a{
+        cursor:pointer;
+        color:#878787!important;
+    }
+}
 a{
     cursor:pointer;
 }

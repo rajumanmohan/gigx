@@ -10,56 +10,80 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item ">
-                        <a class="nav-link" href="#" routerLink="">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#" routerLink="/talentdashboard">Home<span
+                                class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item login-list">|</li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" routerLink="/jobsearch">Opportunities & Projects</a>
+                        <a class="nav-link" href="#" routerLink="/appliedjobs">Applied Gigs</a>
                     </li>
-
-
+                    <li class="nav-item login-list">|</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/jobsearch">Gig Search</a>
+                    </li>
 
                 </ul>
-                <span class="navbar-text"> <a href="#" routerLink="/jobalerts"><img
-                            src="../../../assets/images/bell.png" class="bell"></a></span>
-                <span class="navbar-text">
-                    <div class="profile-name">
-                        <h4>SA</h4>
-                    </div>
-                </span>
-                <span class="navbar-text">
-
-                    <div class="dropdown dropdown-button">
-                        <a class="nav-item " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            Shareen <img src="../../../assets/images/down-arrow.png">
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#" routerLink="/talentaccount">My Profile</a>
-                            <a class="dropdown-item" href="#" routerLink="/changepassword">Change Password</a>
-                            <a class="dropdown-item" href="#" routerLink="/subscriptions">Subscriptions</a>
-                            <a class="dropdown-item" href="#" routerLink="">Logout</a>
-
-                        </div>
-                    </div>
-                </span>
             </div>
         </nav>
     </div>
 </div>
 
-<!-- HEADER -->
 
-<section class="login mt-5" [@fadeInAndOut]>
-    <div class="container">
-        <h1 class="text-center">Click Below To Start Test</h1>
+<section [@fadeInAndOut] class="login mt-5">
+    <!-- test cat -->
+    <div class="container create-account" *ngIf="showTest == true">
         <div class="row justify-content-center mt-5">
-            <div class="col-md-5 lock-image text-center">
-                <button class="btn" type="submit">Start Test</button>
+            <h3>CLICK BELOW TO START TEST</h3>
+            <div class="col-md-10">
+                <div class="row mt-3 text-center">
+                    <div class="col-md-4 ">
+                        <div class="talent" (click)="startStest()">
+                            <h2>Aptitude</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="company talent" (click)="startStest()">
+                            <h2>Aptitude + PiT</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="company talent" (click)="startStest()">
+                            <h2>English</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4 ">
+                        <div class="talent" (click)="startStest()">
+                            <h2>English + PiT</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="company talent" (click)="startStest()">
+                            <h2>PiT + HRWin</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="company talent" (click)="startStest()">
+                            <h2>Video Interview</h2>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
+    <!-- test cat -->
+
+    <!-- click to start test -->
+    <div class="container create-account" *ngIf="showResult == true">
+        <div class="row justify-content-center mt-5">
+            <h3 class="pt-3">Your test has been started, please complete the test and come back....
+            </h3>
+            <div class="col-md-10 mt-5 text-center ">
+                <a href="#" routerLink="/testlist">Click to see completed Tests</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- click to start test -->
 </section>

@@ -408,7 +408,6 @@ export class TelentregistrationComponent implements OnInit {
       this.getYearOfCompletions();
       this.object1 = this.registrationForm.value;
     }
-
     console.log(this.registrationForm.value);
   }
 
@@ -421,7 +420,6 @@ export class TelentregistrationComponent implements OnInit {
       this.registrationForm1.value.qualifications[i].degree = this.degree1;
       console.log(this.registrationForm1.value.qualifications[i].degree);
       console.log(this.registrationForm1.value.qualifications[i]);
-
     }
   }
   employeeType(event) {
@@ -591,7 +589,6 @@ export class TelentregistrationComponent implements OnInit {
           "role_description": ""
       }
 
-      debugger;
       var tempEmployeeArray=[];
 
       var selectedWorkingSinceDate = this.employeeForm.controls['working_since'].value.date;
@@ -741,7 +738,7 @@ export class TelentregistrationComponent implements OnInit {
 
   onHighestQualificationChange(event: any){
     if(event.currentTarget.value == '4'){
-      debugger;
+     
       this.isProfesionalCertification=true;
       this.registrationForm1.addControl('professional_certification',new FormControl('',Validators.required));
     }
@@ -788,7 +785,7 @@ export class TelentregistrationComponent implements OnInit {
       country_id: this.countryId,
     }
     this.appSer.statesList(params).subscribe((res) => {
-      debugger;
+      
       this.statesList = res['states'];  
        this.registrationForm.patchValue({'state_id' : null});// .reset();
        this.registrationForm.patchValue({'city_id' : null});
@@ -825,7 +822,7 @@ export class TelentregistrationComponent implements OnInit {
       country_id: JSON.parse(counrtyId),
     }
     this.appSer.getInstitutionsList(params).subscribe((res)=>{
-      debugger;
+    
       this.institutionsList = res['universities'];
       this.registrationForm1.patchValue({'institution': null});
     });

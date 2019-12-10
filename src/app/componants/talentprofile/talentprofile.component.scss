@@ -237,6 +237,91 @@ td{
 .add-bank {
     margin-top: 20%;
 }
+
+
+.upload-profile{
+    label{
+        display: table;
+        color: #000000;
+        text-align:center;
+        width: 100%;
+        cursor:pointer;
+         }
+   
+    img{
+        margin-top: 2%;
+        position: absolute;
+        background: #ffffff; 
+        z-index: 999;
+        width: 120px;
+        height: 120px;
+        left: 40%;
+        top: -8px;
+    }
+}
+.upload-profile {
+    margin-top: -4% !important;
+}
+.profile-picture {
+    h1{
+        font-weight: 600;
+        margin-top: 4%;
+    }
+img{
+    border-radius: 2%;
+    width: 108px;
+    height: 100px;
+    padding: 3px;
+    margin-bottom: 18px;
+}
+}
+.profile-image {
+      background: #ffffff; 
+      position: relative;
+      height: 120px;
+      width: 120px;
+      margin-top: 4%;
+      z-index: 12;
+}
+.custom-file-input {
+    position: relative!important;
+    z-index: 2!important;
+    width: 100%!important;
+    height: calc(2.25rem + 2px)!important;
+    margin: 0!important;
+    opacity: 1!important;
+    font-size: 0px!important;
+  }
+  .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom-file-input::before {
+    content: 'Upload Image';
+    color: white;
+    display: inline-block;
+    background: #208ac4!important;
+    border-radius: 3px;
+    text-align: center;
+    padding: 8px;
+    width: 100%;
+    outline: none;
+    font-weight: 100;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .custom-file-input:hover::before {
+    border-color: black!important;
+  }
+  .custom-file-input:active {
+    outline: 0!important;
+  }
+  .custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9)!important; 
+  }
+
+
 @media (max-width: 575.98px) { 
     .search-category{
         li{

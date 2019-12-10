@@ -300,10 +300,6 @@
                                 <form [formGroup]="registrationForm1" (ngSubmit)="registration1(f2)">
 
                                     <div class="form-group">
-                                        <!-- <input type="text" class="form-control" id="exampleInputEmail1"
-                                            aria-describedby="emailHelp" placeholder="Highest qualification"
-                                            formControlName="highQul"
-                                            [ngClass]="{'is-invalid':f1.highQul.errors&& submitted1}"> -->
 
                                             <select class="form-control" id="exampleFormControlSelect1"
                                             formControlName="highQul" (change)="onHighestQualificationChange($event)"
