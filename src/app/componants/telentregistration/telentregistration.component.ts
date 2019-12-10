@@ -536,8 +536,7 @@ export class TelentregistrationComponent implements OnInit {
 
       var finalPayload = {...this.stepone_details, ...this.steptwo_details, ...this.stepthree_details, ...this.stepfour_details};
       
-      debugger;
-
+    
 
       this.object2 = this.jobPreferrences.value;
       console.log(this.object2)

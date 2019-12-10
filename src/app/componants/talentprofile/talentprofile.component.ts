@@ -125,7 +125,6 @@ export class TalentprofileComponent implements OnInit {
     console.log(this.educationForm.value.other)
     this.showtalentProfile();
     this.editBankDetailsForm = this.fb.group({
-
       account_holder_name: ['', Validators.required],
       account_number: ['', Validators.required],
       bank_name: ['', Validators.required],
@@ -264,13 +263,7 @@ export class TalentprofileComponent implements OnInit {
   savePreferences() {
     this.submitted1 = true;
     this.preferenceForm.value.skills = this.newArr.toString();
-    if (this.url1) {
-      this.preferenceForm.value.talent_old_image = this.talentJobPreference.image;
-      this.preferenceForm.value.talent_image = this.url1;
-    } else {
-      this.preferenceForm.value.talent_old_image = this.talentJobPreference.image;
-      this.preferenceForm.value.talent_image = "";
-    }
+
     if (this.preferenceForm.invalid) {
       return;
     } else {
@@ -298,7 +291,6 @@ export class TalentprofileComponent implements OnInit {
   editProfile() {
     this.edit = true;
     this.personalForm = this.fb.group({
-      full_name: [this.talentPersonalDetails['full_name'], Validators.required],
       first_name: [this.talentPersonalDetails['first_name'], Validators.required],
       last_name: [this.talentPersonalDetails['last_name'], Validators.required],
       email: [this.talentPersonalDetails['email'], Validators.required],
@@ -337,6 +329,13 @@ export class TalentprofileComponent implements OnInit {
     } else {
       this.personalForm.value.talent_old_video = this.talentPersonalDetails.attachment;
       this.personalForm.value.talent_attachment_video = "";
+    }
+    if (this.url1) {
+      this.personalForm.value.talent_old_image = this.talentPersonalDetails.image;
+      this.personalForm.value.talent_image = this.url1;
+    } else {
+      this.personalForm.value.talent_old_image = this.talentPersonalDetails.image;
+      this.personalForm.value.talent_image = "";
     }
     this.personalForm.value.country_id = this.countryId;
     this.personalForm.value.state_id = this.stateId;
@@ -694,14 +693,12 @@ export class TalentprofileComponent implements OnInit {
       this.appSer.deleteExperiance(params).subscribe(res => {
         if (res['status'] == 200) {
           this.t1.controls.splice(x, 1);
-
           this.submitted = false;
           this.t1.markAsPristine();
           this.t1.markAsUntouched();
           this.t1.updateValueAndValidity();
         } else {
           this.toast.error(res['message'], "error");
-
         }
       })
     }

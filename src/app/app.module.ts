@@ -48,6 +48,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { Pipe, PipeTransform } from '@angular/core';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { TypeaheadModule } from 'ngx-type-ahead';
+import { AboutusComponent } from './componants/aboutus/aboutus.component';
+import { ContactComponent } from './componants/contact/contact.component';
 
 @Pipe({ name: 'safe' })
 @NgModule({
@@ -83,7 +85,9 @@ import { TypeaheadModule } from 'ngx-type-ahead';
     NumberOnlyDirective,
     RegistrationDataComponent,
     IndividualRegistrationsComponent,
-    CompanysubscriptionsComponent
+    CompanysubscriptionsComponent,
+    AboutusComponent,
+    ContactComponent
   ],
   imports: [
     AutocompleteLibModule,

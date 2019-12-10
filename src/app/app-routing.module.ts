@@ -27,6 +27,8 @@ import { CoverpageComponent } from './componants/coverpage/coverpage.component';
 import { LoginComponent } from './componants/login/login.component';
 import { HomeComponent } from './componants/home/home.component';
 import { NgModule } from '@angular/core';
+import { AboutusComponent } from './componants/aboutus/aboutus.component';
+import { ContactComponent } from './componants/contact/contact.component';
 import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   // {
@@ -40,6 +42,14 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent
+  },
+  {
+    path: 'about-us',
+    component: AboutusComponent
+  },
+  {
+    path: 'contact-us',
+    component: ContactComponent
   },
   {
     path: 'login',

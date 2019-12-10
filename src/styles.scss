@@ -11,7 +11,11 @@
 }
 @font-face {
     font-family: Muli-Light;
-    src: url(/assets/fonts/Muli-Light);
+    src: url(/assets/fonts/Muli-Light.ttf);
+}
+@font-face {
+    font-family: Muli-Bold;
+    src: url(/assets/fonts/Muli-Bold.ttf);
 }
 @import "~@ng-select/ng-select/themes/default.theme.css";
 body{

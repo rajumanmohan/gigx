@@ -24,7 +24,6 @@ import {
 export class TalentdashboardComponent implements OnInit {
   talentId; loginType;
   imgBaseUrl = "https://gigxglobal.com/talent_images/";
-
   constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService) {
     this.talentId = localStorage.getItem('talent_id');
     this.loginType = localStorage.getItem('industry_type');
@@ -39,14 +38,19 @@ export class TalentdashboardComponent implements OnInit {
     window.scroll(0, 0);
     this.getTalentProfile();
   }
-  talentPersonalDetails; talentJobPreference; talentFullName;
+  talentPersonalDetails; talentJobPreference; talentFullName; talentLastName; LastName; FirstName; profileImage; profileUrl;
   getTalentProfile() {
     let params = {
       talent_id: this.talentId
     }
     this.appSer.TalentProfile(params).subscribe((res) => {
       this.talentPersonalDetails = res['step1'];
-      this.talentFullName = res['step1'].full_name.substring(0, 2);
+      this.talentFullName = res['step1'].first_name.substring(0, 1);
+      this.talentLastName = res['step1'].last_name.substring(0, 1);
+      this.FirstName = res['step1'].first_name;
+      this.LastName = res['step1'].last_name;
+      this.profileImage = res['step1'].image;
+      this.profileUrl = res['step1'].image_url;
       this.talentJobPreference = res['step4'].jobpreferences;
     })
   }

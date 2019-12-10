@@ -25,7 +25,7 @@
                             src="../../../assets/images/bell.png" class="bell"></a></span>
                 <span class="navbar-text">
                     <div class="profile-name">
-                        <h4>{{talentFullName}}</h4>
+                        <h4>{{talentLastName}}{{talentFullName}} </h4>
                     </div>
                 </span>
                 <span class="navbar-text">
@@ -33,7 +33,7 @@
                     <div class="dropdown dropdown-button">
                         <a class="nav-item " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            {{talentPersonalDetails.full_name}} <img src="../../../assets/images/down-arrow.png">
+                            {{FirstName}}{{LastName}} <img src="../../../assets/images/down-arrow.png">
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -78,7 +78,7 @@
 
         <div class="row justify-content-center ">
             <div class="col-md-6">
-                <h1 class="text-center mb-3">Welcome, {{talentPersonalDetails.full_name}}!
+                <h1 class="text-center mb-3">Welcome, {{FirstName}} {{LastName}}!
                 </h1>
             </div>
         </div>
@@ -436,9 +436,9 @@
                 <div class="company-profile">
                     <div class="row">
                         <div class="col-md-12 text-center">
-                            <img src="{{imgBaseUrl}}{{talentJobPreference[0].image}}">
+                            <img src="{{profileUrl}}+''+{{profileImage}}">
                             <div class="online"></div>
-                            <h3> {{talentPersonalDetails.full_name}}</h3>
+                            <h3> {{FirstName}} {{LastName}}</h3>
                             <p>{{talentJobPreference[0].role}}</p>
                             <p>{{talentPersonalDetails.location}}</p>
                             <button class="btn review "> <a href="#" class="anchor-dark" routerLink="/talentaccount">

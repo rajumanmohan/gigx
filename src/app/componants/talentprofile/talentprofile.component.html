@@ -59,7 +59,6 @@
                     <li><button type="submit" class="btn" (click)="education()"
                             [ngStyle]="{'background': showEducationDetails||editEdu == true?'#fed501':''  }">EDUCATION
                             DETAILS</button></li>
-
                     <li> <button type="submit" class="btn" (click)="workexperience()"
                             [ngStyle]="{'background': showWorkExperienceDetails || editJob == true?'#fed501':''}"> WORK
                             EXPERIENCE</button>
@@ -86,27 +85,26 @@
         <form [formGroup]="personalForm">
             <div class="row contact-details mt-5" *ngIf="showPersonalDetails">
                 <div class="col-md-12">
+                    <div class="profile">
+                        <div class="upload-image1 text-center">
+                            <!-- <img *ngIf="!url1==true" src="../../../assets/images/user.png" /> -->
+                            <img *ngIf="editPreferences==true" class="attch-img"
+                                src="../../../assets/images/camera.png" />
+                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                                (change)="readUrl($event)" />
+                            <img *ngIf="url1" [src]="url1" class="uploaded-img">
+                            <img *ngIf="!url1" [src]="imgBaseUrl+''+talentJobPreference.image" class="uploaded-img" />
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-12">
                     <div class="table-responsive">
                         <table class="table b-0">
 
                             <tbody class="b-0">
-                                <tr class="b-0">
-                                    <td class="b-0 contact-title">FULL NAME
-                                        <span>:</span>
-                                    </td>
-                                    <td class="b-0">
-                                        <span *ngIf="edit==false">{{talentPersonalDetails.full_name}}</span>
-                                        <span class="form-group edit-input" *ngIf="edit==true">
-                                            <input type="text" class="form-control" id="exampleInputPassword1"
-                                                formControlName="full_name"
-                                                [ngClass]="{ 'is-invalid': submitted && f.full_name.errors }">
-                                            <div class="invalid-feedback" *ngIf="f.full_name.errors">
-                                                <div *ngIf="f.full_name.errors.required">Full name is required
-                                                </div>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
+
                                 <tr class="b-0">
                                     <td class="b-0 contact-title">FIRST NAME
                                         <span>:</span>
@@ -1110,18 +1108,7 @@
         <!-- job preferences -->
         <div class="row contact-details mt-5" *ngIf="showjobPreferences">
             <div class="col-md-12">
-                <div class="profile">
-                    <div class="upload-image1 text-center">
-                        <!-- <img *ngIf="!url1==true" src="../../../assets/images/user.png" /> -->
-                        <img *ngIf="editPreferences==true" class="attch-img" src="../../../assets/images/camera.png" />
-                        <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
-                            (change)="readUrl($event)" />
-                        <img *ngIf="url1" [src]="url1" class="uploaded-img">
-                        <img *ngIf="!url1" [src]="imgBaseUrl+''+talentJobPreference.image" class="uploaded-img" />
 
-                    </div>
-
-                </div>
                 <div class="table-responsive">
                     <form [formGroup]="preferenceForm">
                         <table class="table b-0">
