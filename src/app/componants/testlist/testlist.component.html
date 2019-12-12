@@ -38,20 +38,8 @@
 
             <div class="col-md-10">
                 <ul>
-                    <li> <a href="#" data-toggle="modal"
-                            data-target="#exampleModal">ca115b0a-3af9-436a-bbb4-9bee525b7b5f</a></li>
-
-                    <li> <a href="#" data-toggle="modal"
-                            data-target="#exampleModal">ca115b0a-3af9-436a-bbb4-g45657734</a></li>
-
-                    <li> <a href="#" data-toggle="modal"
-                            data-target="#exampleModal">ca115b0a-3af9-436a-bbb4-fgwrt34v34</a></li>
-
-                    <li> <a href="#" data-toggle="modal"
-                            data-target="#exampleModal">ca115b0a-3af9-436a-bbb4-346364624642</a></li>
-                    <li> <a href="#" data-toggle="modal"
-                            data-target="#exampleModal">ca115b0a-3af9-436a-bbb4-weyqeryyery</a></li>
-
+                    <li *ngFor="let item of getCompletedAssessments" (click)="onResultClick(item)"> <a href="#" data-toggle="modal"
+                            data-target="#exampleModal">{{item.TrackingNumber}}</a></li>
                 </ul>
             </div>
         </div>
@@ -60,49 +48,55 @@
 
 
 <!-- Modal -->
-<div class="modal fade forgot-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade forgot-modal" id="exampleModal"  tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
-    <div class="modal-dialog " role="document">
-        <div class="modal-content">
-            <div class="modal-header b-0">
-                <h5 class="modal-title" id="exampleModalLabel">Test 1</h5>
+    <div class="modal-dialog " role="document" >
+        <div class="modal-content" *ngIf="assessmentReport.Sets">
+            <div class="modal-header b-0 col-md-12" >
+                <h5 class="modal-title col-md-8" id="exampleModalLabel">Candidate Assessment</h5>
+                <button type="button" class="btn btn-primary col-md-3" *ngIf="assessmentReport.Status == 0" (click)="resumeAssessment()">Start Test</button>
+                <button type="button" class="btn btn-primary col-md-3" *ngIf="assessmentReport.Status == 1" (click)="resumeAssessment()">Resume Test</button>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
+   
 
             <div class="modal-body table-responsive">
                 <table class="table">
+                    <tbody></tbody>
                     <tbody>
                         <tr>
-                            <th scope="row">Battery Name</th>
-                            <td>Aptitude</td>
+                            <th scope="row">Assessment/Test Name</th>
+                            <td>{{assessmentReport.BatteryName}}</td>
                         </tr>
                         <tr>
                             <th scope="row">Invitation Date</th>
-                            <td>12-11-2019</td>
+                            <td>{{assessmentReport.InvitationDate}}</td>
                         </tr>
                         <tr>
-                            <th scope="row">Stage Name</th>
-                            <td>Stage 01</td>
+                            <th scope="row">Assessment Type</th>
+                            <td>{{assessmentReport.Sets[0].Name}}</td>
                         </tr>
-                        <tr>
-                            <th scope="row">Name</th>
-                            <td>Genel Yetenek</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Score</th>
-                            <td>23.68</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">ReportLink</th>
-                            <td><a href="https://hrpeak.com/zdyssetd" target="_blank">https://hrpeak.com/zdyssetd"</a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row">Completion Date</th>
-                            <td>05-12-2019</td>
-                        </tr>
+                    </tbody>
+                    <tbody *ngFor="let item of assessmentReport.Sets[0].Assessments">
+                            <tr>
+                                    <th scope="row">Name</th>
+                                    <td>{{item.Name}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Score</th>
+                                    <td>{{item.Score}}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">ReportLink</th>
+                                    <td><a [href]="item.ReportLink" target="_blank">{{item.ReportLink}}</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Completion Date</th>
+                                    <td>{{item.CompletionDate}}</td>
+                                </tr>
                     </tbody>
                 </table>
             </div>

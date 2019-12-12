@@ -7,6 +7,8 @@ import {
   bounceInAndOut, enterAndLeaveFromLeft, enterAndLeaveFromRight, fadeInAndOut,
   fadeInThenOut, growInShrinkOut, swingInAndOut
 } from '../../triggers';
+import { AppServiceService } from './../../Services/app-service.service';
+
 @Component({
   selector: 'app-takeatest',
   templateUrl: './takeatest.component.html',
@@ -21,8 +23,8 @@ import {
   ]
 })
 export class TakeatestComponent implements OnInit {
-
-  constructor(private router: Router, private toast: ToastrService) {
+  allBatteries: any;
+  constructor(private router: Router, private toast: ToastrService, private appService: AppServiceService) {
     if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
       this.toast.warning('Please Login', "warning");
       this.router.navigate(['/coverpage']);
@@ -31,11 +33,36 @@ export class TakeatestComponent implements OnInit {
   }
   ngOnInit() {
     window.scroll(0, 0);
+    this.getAllBatteries();
   }
   showTest = true;
   showResult = false;
-  startStest() {
-    this.showTest = false;
-    this.showResult = true;
+  onBatteryClick(battery) {
+    this.startCandidateAssessment(battery.batteryId);
+  }
+
+  getAllBatteries(){
+    this.appService.getAllBatteries().subscribe((res) => {
+      this.allBatteries = res['batteriesList'];
+    })
+  }
+
+  startCandidateAssessment(batteryId){
+    var talent_id  ='';
+    if(localStorage.getItem('talent_id')){
+      talent_id = localStorage.getItem('talent_id');
+    }
+
+    var requestObj = {
+      talent_id: talent_id,
+      batteryId: batteryId
+    };
+
+    this.appService.startCandidateAssessment(requestObj).subscribe((res) => {
+      var assessmentDetails = res['candidateAssessmentDetails'];
+      window.open(assessmentDetails.accessLink);
+      this.showTest = false;
+      this.showResult = true;
+    })
   }
 }
