@@ -30,7 +30,10 @@ import { NgModule } from '@angular/core';
 import { AboutusComponent } from './componants/aboutus/aboutus.component';
 import { ContactComponent } from './componants/contact/contact.component';
 import { TestlistComponent } from './componants/testlist/testlist.component';
+import { ViewgigComponent } from './componants/viewgig/viewgig.component';
+
 import { Routes, RouterModule } from '@angular/router';
+
 const routes: Routes = [
   // {
   //   path: '',
@@ -83,6 +86,10 @@ const routes: Routes = [
   {
     path: 'postagig',
     component: PostagigComponent
+  },
+  {
+    path: 'viewgig',
+    component: ViewgigComponent
   },
   {
     path: 'talentsearch',
@@ -163,8 +170,8 @@ const routes: Routes = [
 
   },
   {
-    path : 'testlist',
-    component : TestlistComponent
+    path: 'testlist',
+    component: TestlistComponent
   }
 ];
 
