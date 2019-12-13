@@ -38,36 +38,11 @@
             <h3>CLICK BELOW TO START TEST</h3>
             <div class="col-md-10">
                 <div class="row mt-3 text-center">
-                    <div class="col-md-4 ">
-                        <div class="talent" (click)="startStest()">
-                            <h2>Aptitude</h2>
+                    <div class="col-md-4" *ngFor="let battery of allBatteries">
+                            <div class="company talent" (click)="onBatteryClick(battery)">
+                                <h2>{{battery.batteryName}}</h2>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="company talent" (click)="startStest()">
-                            <h2>Aptitude + PiT</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="company talent" (click)="startStest()">
-                            <h2>English</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-4 ">
-                        <div class="talent" (click)="startStest()">
-                            <h2>English + PiT</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="company talent" (click)="startStest()">
-                            <h2>PiT + HRWin</h2>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="company talent" (click)="startStest()">
-                            <h2>Video Interview</h2>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
