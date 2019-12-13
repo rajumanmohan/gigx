@@ -322,7 +322,6 @@ export class TelentregistrationComponent implements OnInit {
     this.registrationForm.value.dob = (this.selDate);
     this.registrationForm.value.mobile ? JSON.parse(this.registrationForm.value.mobile) : '';
     this.registrationForm.value.mobile_code = this.mobile_code;
-    delete this.registrationForm.value.termsConditions;
 
     if(this.registrationForm.controls['state_id'].value =='null'){
       this.registrationForm.patchValue({'state_id' : null});// .reset();
@@ -336,10 +335,8 @@ export class TelentregistrationComponent implements OnInit {
     if (this.registrationForm.invalid) {
       return;
     }
-    console.log(this.registrationForm.value);
-
     if ((this.registrationForm.value.talent_attachment == undefined && (this.registrationForm.value.talent_attachment_video == undefined))) {
-      //this.toast.warning("Upload image or video is missing", "Warning");
+   
       return false;
     }
 
@@ -365,16 +362,12 @@ export class TelentregistrationComponent implements OnInit {
         "facebook": this.registrationForm.value.facebook,
         "talent_image": this.url1,
           }
-          console.log('steponedetails:-')
-          console.log(this.stepone_details);
-          console.log('completed')
       this.complete();
       this.getHighestQualificationList();
       this.getInstitutionsListBasedOnCountry(this.registrationForm.value.country_id);
       this.getYearOfCompletions();
       this.object1 = this.registrationForm.value;
     }
-    console.log(this.registrationForm.value);
   }
 
   chnageDegree(event) {

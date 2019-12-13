@@ -30,98 +30,98 @@
                             <div class="col-md-6">
                                 <form [formGroup]="registrationForm" (ngSubmit)="registration()">
 
-                                        <div class="profile">
-                                                <div class="upload-image1 text-center">
-                                                    <img *ngIf="!url1==true" src="../../../assets/images/user.png" />
-                                                    <img class="attch-img" src="../../../assets/images/camera.png" />
-                                                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
-                                                        (change)="readUrl($event)" />
-                                                    <img *ngIf="url1" [src]="url1" class="uploaded-img">
-                                                </div>
-                    
-                                            </div>
-                                            <hr/>
+                                    <div class="profile">
+                                        <div class="upload-image1 text-center">
+                                            <img *ngIf="!url1==true" src="../../../assets/images/user.png" />
+                                            <img class="attch-img" src="../../../assets/images/camera.png" />
+                                            <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" #fileInput
+                                                (change)="readUrl($event)" />
+                                            <img *ngIf="url1" [src]="url1" class="uploaded-img">
+                                        </div>
+
+                                    </div>
+                                    <hr />
 
                                     <div class="row form-group">
-                                            <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp" placeholder="First Name"
-                                                    formControlName="first_name"
-                                                    [ngClass]="{'is-invalid':f.first_name.errors&& submitted}">
-                                                <div class="invalid-feedback" *ngIf="f.first_name.errors">
-                                                    <div *ngIf="f.first_name.errors.required">First Name is required</div>
-                                                </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" placeholder="First Name"
+                                                formControlName="first_name"
+                                                [ngClass]="{'is-invalid':f.first_name.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f.first_name.errors">
+                                                <div *ngIf="f.first_name.errors.required">First Name is required</div>
                                             </div>
-                                            <div class="col-md-6">
-                                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                                    aria-describedby="emailHelp" placeholder="Last Name"
-                                                    formControlName="last_name"
-                                                    [ngClass]="{'is-invalid':f.last_name.errors&& submitted}">
-                                                <div class="invalid-feedback" *ngIf="f.last_name.errors">
-                                                    <div *ngIf="f.last_name.errors.required">Last Name is required</div>
-                                                </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="exampleInputEmail1"
+                                                aria-describedby="emailHelp" placeholder="Last Name"
+                                                formControlName="last_name"
+                                                [ngClass]="{'is-invalid':f.last_name.errors&& submitted}">
+                                            <div class="invalid-feedback" *ngIf="f.last_name.errors">
+                                                <div *ngIf="f.last_name.errors.required">Last Name is required</div>
                                             </div>
-                                       
+                                        </div>
+
                                     </div>
 
                                     <div class="row form-group country-city">
-                                            <div class="col-md-6">
-                                                <select class="form-control" id="exampleFormControlSelect1"
-                                                    formControlName="country_id"
-                                                    (change)="changeCountryList($event.target.value)"
-                                                    [ngClass]="{ 'is-invalid':f.country_id.errors&& submitted }">
-                                                    <!-- <option value="" [selected]=true [disabled]="true">Select Country
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="exampleFormControlSelect1"
+                                                formControlName="country_id"
+                                                (change)="changeCountryList($event.target.value)"
+                                                [ngClass]="{ 'is-invalid':f.country_id.errors&& submitted }">
+                                                <!-- <option value="" [selected]=true [disabled]="true">Select Country
                                                     </option> -->
-                                                    <option *ngFor="let data of CountiresList" [value]="data.country_id">
-                                                        {{data.country_name}}
+                                                <option *ngFor="let data of CountiresList" [value]="data.country_id">
+                                                    {{data.country_name}}
+                                                </option>
+                                            </select>
+                                            <div *ngIf="f.country_id.errors&& submitted" class="invalid-feedback">
+                                                <div *ngIf="f.country_id.errors.required">Country is required</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <select class="form-control" id="exampleFormControlSelect1"
+                                                formControlName="state_id"
+                                                (change)="changeStateList($event.target.value)"
+                                                [ngClass]="{ 'is-invalid':f.state_id.errors&& submitted }">
+                                                <option [value]=null [selected]="true">Select State </option>
+                                                <option *ngFor="let data of statesList" [value]="data.state_id">
+                                                    {{data.state}}</option>
+                                            </select>
+                                            <div *ngIf="f.state_id.errors&& submitted" class="invalid-feedback">
+                                                <div *ngIf="f.state_id.errors.required">State is required</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <select class="form-control" id="exampleFormControlSelect1"
+                                                    formControlName="city_id"
+                                                    [ngClass]="{ 'is-invalid':f.city_id.errors&& submitted }">
+                                                    <option [value]=null [selected]="true">Select City </option>
+                                                    <option *ngFor="let data of citiesList" [value]="data.city_id">
+                                                        {{data.city}}
                                                     </option>
                                                 </select>
-                                                <div *ngIf="f.country_id.errors&& submitted" class="invalid-feedback">
-                                                    <div *ngIf="f.country_id.errors.required">Country is required</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <select class="form-control" id="exampleFormControlSelect1"
-                                                    formControlName="state_id"
-                                                    (change)="changeStateList($event.target.value)"
-                                                    [ngClass]="{ 'is-invalid':f.state_id.errors&& submitted }">
-                                                    <option [value]=null [selected]="true">Select State </option>
-                                                    <option *ngFor="let data of statesList" [value]="data.state_id">
-                                                        {{data.state}}</option>
-                                                </select>
-                                                <div *ngIf="f.state_id.errors&& submitted" class="invalid-feedback">
-                                                    <div *ngIf="f.state_id.errors.required">State is required</div>
+                                                <div *ngIf="f.city_id.errors&& submitted" class="invalid-feedback">
+                                                    <div *ngIf="f.city_id.errors.required">City is required</div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row ">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <select class="form-control" id="exampleFormControlSelect1"
-                                                        formControlName="city_id"
-                                                        [ngClass]="{ 'is-invalid':f.city_id.errors&& submitted }">
-                                                        <option [value]=null [selected]="true">Select City </option>
-                                                        <option *ngFor="let data of citiesList" [value]="data.city_id">
-                                                            {{data.city}}
-                                                        </option>
-                                                    </select>
-                                                    <div *ngIf="f.city_id.errors&& submitted" class="invalid-feedback">
-                                                        <div *ngIf="f.city_id.errors.required">City is required</div>
-                                                    </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Location"
+                                                    formControlName="location"
+                                                    [ngClass]="{'is-invalid':f.location.errors&& submitted}">
+                                                <div class="invalid-feedback" *ngIf="f.location.errors">
+                                                    <div *ngIf="f.location.errors.required">Location is required</div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Location"
-                                                        formControlName="location"
-                                                        [ngClass]="{'is-invalid':f.location.errors&& submitted}">
-                                                    <div class="invalid-feedback" *ngIf="f.location.errors">
-                                                        <div *ngIf="f.location.errors.required">Location is required</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-    
                                         </div>
+
+                                    </div>
 
                                     <!-- <div class="form-group">
                                        
@@ -151,8 +151,8 @@
                                     <div class="form-group">
                                         <label>Date of birth</label>
                                         <my-date-picker name="mydate" (dateChanged)="onDateChanged($event)"
-                                            [selDate]="dob" [options]="myDatePickerOptions"
-                                            formControlName="dob" disable="disabled" placeholder="Date of birth (Eg., 28/08/1992)"
+                                            [selDate]="dob" [options]="myDatePickerOptions" formControlName="dob"
+                                            disable="disabled" placeholder="Date of birth (Eg., 28/08/1992)"
                                             [ngClass]="{'is-invalid':f.dob.errors&& submitted}">
                                         </my-date-picker>
                                         <div class="invalid-feedback" *ngIf="f.dob.errors">
@@ -179,44 +179,40 @@
                                             [ngClass]="{'is-invalid':f.mobile.errors&& submitted}">
                                         <div class="invalid-feedback" *ngIf="f.mobile_code.errors">
                                             <div *ngIf="f.mobile_code.errors.required">Code is required</div>
-                                          
+
                                         </div>
                                         <div class="invalid-feedback" *ngIf="f.mobile.errors">
                                             <div *ngIf="f.mobile.errors.required">Mobile number is required</div>
                                             <div *ngIf="f.mobile.errors.maxlength">
-                                                    Mobile Number should accept max of 15 digits.
-                                               </div> 
+                                                Mobile Number should accept max of 15 digits.
+                                            </div>
                                         </div>
 
                                     </div>
                                     <div class="row form-group">
                                         <div class="col-md-6">
-                                                <input type="text" class="form-control" id="twitter"
+                                            <input type="text" class="form-control" id="twitter"
                                                 aria-describedby="emailHelp" placeholder="www.twitter.com/gix"
-                                                formControlName="twitter"
-                                                >
+                                                formControlName="twitter">
                                         </div>
                                         <div class="col-md-6">
-                                                <input type="text" class="form-control" id="facebook"
+                                            <input type="text" class="form-control" id="facebook"
                                                 aria-describedby="emailHelp" placeholder="www.facebook.com/gix"
-                                                formControlName="facebook"
-                                                >
+                                                formControlName="facebook">
                                         </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col-md-6">
-                                            <input type="text" class="form-control" id="linkedIn"
-                                            aria-describedby="emailHelp" placeholder="www.linkedIn.com/gix"
-                                            formControlName="linkedIn"
-                                            >
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="row form-group">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" id="linkedIn"
+                                                aria-describedby="emailHelp" placeholder="www.linkedIn.com/gix"
+                                                formControlName="linkedIn">
+                                        </div>
+                                        <div class="col-md-6">
                                             <input type="text" class="form-control" id="personal_website"
-                                            aria-describedby="emailHelp" placeholder="Personal Website"
-                                            formControlName="personal_website"
-                                            >
-                                    </div>   
-                            </div>
+                                                aria-describedby="emailHelp" placeholder="Personal Website"
+                                                formControlName="personal_website">
+                                        </div>
+                                    </div>
 
                                     <!--  upload img -->
                                     <div class="row form-group">
@@ -249,10 +245,10 @@
                                             </div>
                                         </div>
 
-                                        <div class="cls-attachdocument-is-invalid"  *ngIf="submitted && !url2 && !url3">
-                                                <div>Upload image or video is required
-                                                </div>
+                                        <div class="cls-attachdocument-is-invalid" *ngIf="submitted && !url2 && !url3">
+                                            <div>Upload image or video is required
                                             </div>
+                                        </div>
                                     </div>
 
 
@@ -301,11 +297,12 @@
 
                                     <div class="form-group">
 
-                                            <select class="form-control" id="exampleFormControlSelect1"
+                                        <select class="form-control" id="exampleFormControlSelect1"
                                             formControlName="highQul" (change)="onHighestQualificationChange($event)"
                                             [ngClass]="{ 'is-invalid':f1.highQul.errors&& submitted1 }">
-                                            <option [value]=null [selected]="true">Select Highest Qualification </option>
-                                            <option *ngFor="let data of highestQualificationList" [value]="data.hqid" >
+                                            <option [value]=null [selected]="true">Select Highest Qualification
+                                            </option>
+                                            <option *ngFor="let data of highestQualificationList" [value]="data.hqid">
                                                 {{data.highest_qualification}}
                                             </option>
                                         </select>
@@ -317,21 +314,22 @@
                                     </div>
                                     <div class="form-group" *ngIf="isProfesionalCertification">
                                         <input type="text" class="form-control" id="professional_certification"
-                                            placeholder="Please Specify" formControlName="professional_certification"
-                                           >
-                                        <div class="custom-invalid-feedback" *ngIf="f1.professional_certification.errors">
-                                            <div *ngIf="f1.professional_certification.errors.required">Specialization is required
+                                            placeholder="Please Specify" formControlName="professional_certification">
+                                        <div class="custom-invalid-feedback"
+                                            *ngIf="f1.professional_certification.errors">
+                                            <div *ngIf="f1.professional_certification.errors.required">Specialization is
+                                                required
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="form-group">
 
-                                            <select class="form-control" id="institution"
-                                            formControlName="institution"
+                                        <select class="form-control" id="institution" formControlName="institution"
                                             [ngClass]="{ 'is-invalid':f1.institution.errors&& submitted1 }">
-                                            <option [value]=null [selected]="true">Select Institute of Learning </option>
-                                            <option *ngFor="let data of institutionsList" [value]="data.university_id" >
+                                            <option [value]=null [selected]="true">Select Institute of Learning
+                                            </option>
+                                            <option *ngFor="let data of institutionsList" [value]="data.university_id">
                                                 {{data.university_name}}
                                             </option>
                                         </select>
@@ -349,7 +347,8 @@
                                             <option value=null [disabled]="true" [selected]="true">Year of
                                                 Completion
                                             </option>
-                                            <option  *ngFor="let data of yearOfCompletionList" [value]="data">{{data}}</option>
+                                            <option *ngFor="let data of yearOfCompletionList" [value]="data">{{data}}
+                                            </option>
 
                                         </select>
                                         <div *ngIf="submitted1 && f1.year_of_completion.errors"
@@ -360,8 +359,8 @@
                                     </div>
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="professional_qualification"
-                                            placeholder="Professional Qualification " formControlName="professional_qualification"
-                                           >
+                                            placeholder="Professional Qualification "
+                                            formControlName="professional_qualification">
                                     </div>
                                     <div class="form-group">
                                         <p>Mode of Study</p>
@@ -404,95 +403,113 @@
                                                 </div>
                                                 <div class="form-group">
 
-            
-                                                        <select class="form-control" id="high_qualification"
-                                                        formControlName="high_qualification" (change)="onHighestQualificationChangeOther($event,i,education)"
+
+                                                    <select class="form-control" id="high_qualification"
+                                                        formControlName="high_qualification"
+                                                        (change)="onHighestQualificationChangeOther($event,i,education)"
                                                         [ngClass]="{ 'is-invalid':education.controls.high_qualification.errors && submitted1 }">
-                                                        <option [value]=null [selected]="true">Select Highest Qualification </option>
-                                                        <option *ngFor="let data of highestQualificationList" [value]="data.hqid" >
+                                                        <option [value]=null [selected]="true">Select Highest
+                                                            Qualification </option>
+                                                        <option *ngFor="let data of highestQualificationList"
+                                                            [value]="data.hqid">
                                                             {{data.highest_qualification}}
                                                         </option>
                                                     </select>
-            
-                                                    <div class="invalid-feedback" *ngIf="education.controls.high_qualification.errors">
-                                                        <div *ngIf="education.controls.high_qualification.errors.required">Qualification is required
+
+                                                    <div class="invalid-feedback"
+                                                        *ngIf="education.controls.high_qualification.errors">
+                                                        <div
+                                                            *ngIf="education.controls.high_qualification.errors.required">
+                                                            Qualification is required
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="form-group" *ngIf="education.controls.high_qualification.value == 4">
-                                                    
-                                                        <input type="text" class="form-control" id="professional_certification1"
-                                                            placeholder="Please Specify" formControlName="professional_certification1"
-                                                           >
-                                                        <div class="custom-invalid-feedback" *ngIf="education.controls.professional_certification1.errors">
-                                                            <div *ngIf="education.controls.professional_certification1.errors.required">Specialization is required
-                                                            </div>
+                                                <div class="form-group"
+                                                    *ngIf="education.controls.high_qualification.value == 4">
+
+                                                    <input type="text" class="form-control"
+                                                        id="professional_certification1" placeholder="Please Specify"
+                                                        formControlName="professional_certification1">
+                                                    <div class="custom-invalid-feedback"
+                                                        *ngIf="education.controls.professional_certification1.errors">
+                                                        <div
+                                                            *ngIf="education.controls.professional_certification1.errors.required">
+                                                            Specialization is required
                                                         </div>
-                                                    </div>    
-                                                
+                                                    </div>
+                                                </div>
+
                                                 <div class="form-group">
-            
-                                                        <select class="form-control" id="institution1"
+
+                                                    <select class="form-control" id="institution1"
                                                         formControlName="institution1"
                                                         [ngClass]="{ 'is-invalid':education.controls.institution1.errors&& submitted1 }">
-                                                        <option [value]=null [selected]="true">Select Institute of Learning </option>
-                                                        <option *ngFor="let data of institutionsList" [value]="data.university_id" >
+                                                        <option [value]=null [selected]="true">Select Institute of
+                                                            Learning </option>
+                                                        <option *ngFor="let data of institutionsList"
+                                                            [value]="data.university_id">
                                                             {{data.university_name}}
                                                         </option>
                                                     </select>
-            
-                                                    <div class="invalid-feedback" *ngIf="education.controls.institution1.errors">
-                                                        <div *ngIf="education.controls.institution1.errors.required">Institution is required
+
+                                                    <div class="invalid-feedback"
+                                                        *ngIf="education.controls.institution1.errors">
+                                                        <div *ngIf="education.controls.institution1.errors.required">
+                                                            Institution is required
                                                         </div>
                                                     </div>
                                                 </div>
-            
+
                                                 <div class="form-group">
                                                     <select class="form-control" id="year_of_completion1"
-                                                        placeholder="Industry Type" formControlName="year_of_completion1"
+                                                        placeholder="Industry Type"
+                                                        formControlName="year_of_completion1"
                                                         [ngClass]="{'is-invalid':education.controls.year_of_completion1.errors&& submitted1}">
-                                                        <option value="company" [disabled]="true" [selected]="true">Year of
+                                                        <option value="company" [disabled]="true" [selected]="true">Year
+                                                            of
                                                             Completion
                                                         </option>
-                                                        <option  *ngFor="let data of yearOfCompletionList" [value]="data">{{data}}</option>
+                                                        <option *ngFor="let data of yearOfCompletionList"
+                                                            [value]="data">{{data}}</option>
 
-            
+
                                                     </select>
                                                     <div *ngIf="education.controls.year_of_completion1.errors"
                                                         class="invalid-feedback">
-                                                        <div *ngIf="education.controls.year_of_completion1.errors.required">Year of complition is
+                                                        <div
+                                                            *ngIf="education.controls.year_of_completion1.errors.required">
+                                                            Year of complition is
                                                             required</div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" id="professional_qualification1"
-                                                        placeholder="Professional Qualification" formControlName="professional_qualification1"
-                                                       >
+                                                    <input type="text" class="form-control"
+                                                        id="professional_qualification1"
+                                                        placeholder="Professional Qualification"
+                                                        formControlName="professional_qualification1">
                                                 </div>
                                                 <div class="form-group">
-                                                        <p>Mode of Study</p>
-                                                        <div class="custom-control custom-radio custom-control-inline"
-                                                           >
-                                                            <input type="radio" id="Full{{i}}" formControlName="degree1" 
-                                                                class="custom-control-input" [checked]=true value="Full time">
-                                                            <label class="custom-control-label" for="Full{{i}}">Full
-                                                                time</label>
-                                                        </div>
-                                                        <div class="custom-control custom-radio custom-control-inline"
-                                                            >
-                                                            <input type="radio" id="Part{{i}}"  formControlName="degree1"
-                                                                class="custom-control-input" value="Part time">
-                                                            <label class="custom-control-label" for="Part{{i}}">Part
-                                                                time</label>
-                                                        </div>
-                                                        <div class="custom-control custom-radio custom-control-inline"
-                                                            >
-                                                            <input type="radio" id="online{{i}}"  formControlName="degree1"
-                                                                class="custom-control-input" value="Online">
-                                                            <label class="custom-control-label" for="online{{i}}">
-                                                                Online</label>
-                                                        </div>
+                                                    <p>Mode of Study</p>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="Full{{i}}" formControlName="degree1"
+                                                            class="custom-control-input" [checked]=true
+                                                            value="Full time">
+                                                        <label class="custom-control-label" for="Full{{i}}">Full
+                                                            time</label>
                                                     </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="Part{{i}}" formControlName="degree1"
+                                                            class="custom-control-input" value="Part time">
+                                                        <label class="custom-control-label" for="Part{{i}}">Part
+                                                            time</label>
+                                                    </div>
+                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                        <input type="radio" id="online{{i}}" formControlName="degree1"
+                                                            class="custom-control-input" value="Online">
+                                                        <label class="custom-control-label" for="online{{i}}">
+                                                            Online</label>
+                                                    </div>
+                                                </div>
                                                 <!-- <div class="form-group">
                                                     <input type="text" class="form-control" aria-describedby="emailHelp"
                                                         placeholder="Highest qualification"
@@ -591,10 +608,12 @@
                                             EDUCATION</p>
                                     </div>
                                     <div class="mt-5">
-                                            <button type="button" (click)="backStepper()" class="btn btn-danger col-md-5">BACK</button>
-                                            <button type="submit" class="btn btn-primary col-md-5 pull-right">CONTINUE</button>
+                                        <button type="button" (click)="backStepper()"
+                                            class="btn btn-danger col-md-5">BACK</button>
+                                        <button type="submit"
+                                            class="btn btn-primary col-md-5 pull-right">CONTINUE</button>
                                     </div>
-                                    
+
 
                                 </form>
                             </div>
@@ -651,13 +670,14 @@
                                             </div>
                                         </div>
                                         <div class="col-md-9">
-                                            <input myNumberOnly type="text" class="form-control" id="exampleInputPassword1"
-                                            placeholder="Salary/Fees" formControlName="salary_input"
-                                            [ngClass]="{'is-invalid':f3.salary_input.errors&& submitted3}">
-                                        <div class="invalid-feedback" *ngIf="f3.salary_input.errors">
-                                            <div *ngIf="f3.salary_input.errors.required">Salary/Fees is required
+                                            <input myNumberOnly type="text" class="form-control"
+                                                id="exampleInputPassword1" placeholder="Salary/Fees"
+                                                formControlName="salary_input"
+                                                [ngClass]="{'is-invalid':f3.salary_input.errors&& submitted3}">
+                                            <div class="invalid-feedback" *ngIf="f3.salary_input.errors">
+                                                <div *ngIf="f3.salary_input.errors.required">Salary/Fees is required
+                                                </div>
                                             </div>
-                                        </div>
                                         </div>
                                         <!-- <div class="col-md-4">
                                             <div class="form-group">
@@ -699,26 +719,27 @@
                                             </div>
                                         </div> -->
                                     </div>
-                                    
+
                                     <div class="form-group row">
                                         <div class="col-md-12">
-                                                <p>Working since</p>
-                                            <my-date-picker name="working_since"
-                                            [selDate]="working_since_value" [options]="workingSinceOptions"
-                                            formControlName="working_since" disable="disabled" placeholder="Working Since (Eg., 28/08/1992)"
-                                            [ngClass]="{'is-invalid':f3.working_since.errors&& submitted3}">
-                                        </my-date-picker> 
-                                        <div class="custom-invalid-feedback" *ngIf="f3.working_since.errors && submitted3">
-                                            <div *ngIf="f3.working_since.errors.required">Working Since is required
+                                            <p>Working since</p>
+                                            <my-date-picker name="working_since" [selDate]="working_since_value"
+                                                [options]="workingSinceOptions" formControlName="working_since"
+                                                disable="disabled" placeholder="Working Since (Eg., 28/08/1992)"
+                                                [ngClass]="{'is-invalid':f3.working_since.errors&& submitted3}">
+                                            </my-date-picker>
+                                            <div class="custom-invalid-feedback"
+                                                *ngIf="f3.working_since.errors && submitted3">
+                                                <div *ngIf="f3.working_since.errors.required">Working Since is required
+                                                </div>
                                             </div>
                                         </div>
-                                        </div>
-                                       
+
                                     </div>
 
-                                   
 
-                                    
+
+
 
                                     <div class="form-group">
                                         <input type="text" class="form-control" id="exampleInputPassword1"
@@ -735,13 +756,13 @@
                                             [ngClass]="{'is-invalid':f3.industry_type.errors&& submitted3}">
                                             <option value=null [selected]="true" [disabled]="true">Industry Type
                                             </option>
-                                            <option *ngFor="let data of industryTypes" [value]="data.industry_id" >
-                                                    {{data.industry_name}}
-                                                </option>
+                                            <option *ngFor="let data of industryTypes" [value]="data.industry_id">
+                                                {{data.industry_name}}
+                                            </option>
                                         </select>
                                         <div class="invalid-feedback" *ngIf="f3.industry_type.errors">
                                             <div *ngIf="f3.industry_type.errors.required">Industry Type is required
-                                              
+
                                             </div>
                                         </div>
                                     </div>
@@ -750,24 +771,25 @@
                                             formControlName="role"
                                             [ngClass]="{'is-invalid':f3.role.errors&& submitted3}">
                                             <option value=null [selected]="true" [disabled]="true">Role</option>
-                                            <option *ngFor="let data of roles" [value]="data.role_id" >
-                                                    {{data.role}}
-                                                </option>
+                                            <option *ngFor="let data of roles" [value]="data.role_id">
+                                                {{data.role}}
+                                            </option>
                                         </select>
                                         <div class="invalid-feedback" *ngIf="f3.industry_type.errors">
                                             <div *ngIf="f3.role.errors.required">Role is required
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group"> 
-                                        <textarea placeholder="Describe your role and contribution" class="form-control" 
-                                        [ngClass]="{'is-invalid':f3.role_desc.errors&& submitted3}" formControlName="role_desc"></textarea>
-                                          
+                                    <div class="form-group">
+                                        <textarea placeholder="Describe your role and contribution" class="form-control"
+                                            [ngClass]="{'is-invalid':f3.role_desc.errors&& submitted3}"
+                                            formControlName="role_desc"></textarea>
+
                                         <div class="invalid-feedback" *ngIf="f3.role_desc.errors">
                                             <div *ngIf="f3.role_desc.errors.required">Role Description is required
                                             </div>
                                         </div>
-                                        </div>
+                                    </div>
 
                                     <div *ngFor="let employee of f5.controls;let i=index;" class="muti-education mb-5">
                                         <div [formGroup]="employee">
@@ -832,44 +854,53 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-9">
-                                                        <input myNumberOnly type="text" class="form-control" id="exampleInputPassword1"
-                                                        placeholder="Salary/Fees" formControlName="salary_input"
+                                                    <input myNumberOnly type="text" class="form-control"
+                                                        id="exampleInputPassword1" placeholder="Salary/Fees"
+                                                        formControlName="salary_input"
                                                         [ngClass]="{'is-invalid':employee.controls.salary_input.errors&& submitted3}">
-                                                    <div class="invalid-feedback" *ngIf="employee.controls.salary_input.errors">
-                                                        <div *ngIf="employee.controls.salary_input.errors.required">Salary/Fees is required
+                                                    <div class="invalid-feedback"
+                                                        *ngIf="employee.controls.salary_input.errors">
+                                                        <div *ngIf="employee.controls.salary_input.errors.required">
+                                                            Salary/Fees is required
                                                         </div>
                                                     </div>
-                                                    </div>
+                                                </div>
                                             </div>
-                                         
+
                                             <div class="form-group row">
-                                                    
-                                        <div class="col-md-6">
-                                                <p>Working from</p>
-                                            <my-date-picker name="workingFrom" (dateChanged)="onWorkingFromDateChanged($event, i)"
-                                            [options]="workingFromOptions[i]"
-                                            formControlName="working_from" disable="disabled" placeholder="Working From (Eg., 28/08/1992)"
-                                            [ngClass]="{'is-invalid':employee.controls.working_from.errors&& submitted}">
-                                        </my-date-picker> 
-                                        <div class="custom-invalid-feedback" *ngIf="employee.controls.working_from.errors && submitted3">
-                                                <div *ngIf="employee.controls.working_from.errors.required">Working From is required
+
+                                                <div class="col-md-6">
+                                                    <p>Working from</p>
+                                                    <my-date-picker name="workingFrom"
+                                                        (dateChanged)="onWorkingFromDateChanged($event, i)"
+                                                        [options]="workingFromOptions[i]" formControlName="working_from"
+                                                        disable="disabled" placeholder="Working From (Eg., 28/08/1992)"
+                                                        [ngClass]="{'is-invalid':employee.controls.working_from.errors&& submitted}">
+                                                    </my-date-picker>
+                                                    <div class="custom-invalid-feedback"
+                                                        *ngIf="employee.controls.working_from.errors && submitted3">
+                                                        <div *ngIf="employee.controls.working_from.errors.required">
+                                                            Working From is required
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                            <p>Working to</p>
-                                            <my-date-picker name="workingTo" (dateChanged)="onWorkingToDateChanged($event, i)"
-                                            [options]="workingToOptions[i]"
-                                            formControlName="working_to" disable="disabled" placeholder="Working To (Eg., 28/08/1992)"
-                                            [ngClass]="{'is-invalid':employee.controls.working_to.errors&& submitted}">
-                                        </my-date-picker>  
-                                        <div class="custom-invalid-feedback" *ngIf="employee.controls.working_to.errors && submitted3">
-                                                <div *ngIf="employee.controls.working_to.errors.required">Working To is required
+                                                <div class="col-md-6">
+                                                    <p>Working to</p>
+                                                    <my-date-picker name="workingTo"
+                                                        (dateChanged)="onWorkingToDateChanged($event, i)"
+                                                        [options]="workingToOptions[i]" formControlName="working_to"
+                                                        disable="disabled" placeholder="Working To (Eg., 28/08/1992)"
+                                                        [ngClass]="{'is-invalid':employee.controls.working_to.errors&& submitted}">
+                                                    </my-date-picker>
+                                                    <div class="custom-invalid-feedback"
+                                                        *ngIf="employee.controls.working_to.errors && submitted3">
+                                                        <div *ngIf="employee.controls.working_to.errors.required">
+                                                            Working To is required
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                           
+
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="exampleInputPassword1"
                                                     placeholder="Location" formControlName="location"
@@ -887,9 +918,10 @@
                                                     <option value="individual" [selected]="true" [disabled]="true">
                                                         Industry Type
                                                     </option>
-                                                    <option *ngFor="let data of industryTypes" [value]="data.industry_id" >
-                                                            {{data.industry_name}}
-                                                        </option>
+                                                    <option *ngFor="let data of industryTypes"
+                                                        [value]="data.industry_id">
+                                                        {{data.industry_name}}
+                                                    </option>
                                                 </select>
                                                 <div class="invalid-feedback"
                                                     *ngIf="employee.controls.industry_type.errors">
@@ -908,25 +940,28 @@
                                                     [ngClass]="{'is-invalid':employee.controls.role.errors&& submitted3}">
                                                     <option value="individual" [selected]="true" [disabled]="true">Role
                                                     </option>
-                                                    <option *ngFor="let data of roles" [value]="data.role_id" >
-                                                            {{data.role}}
-                                                        </option>
+                                                    <option *ngFor="let data of roles" [value]="data.role_id">
+                                                        {{data.role}}
+                                                    </option>
                                                 </select>
                                                 <div class="invalid-feedback"
                                                     *ngIf="employee.controls.industry_type.errors">
                                                     <div *ngIf="employee.controls.role.errors.required">Role is required
-                                                    </div> 
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group"> 
-                                                    <textarea placeholder="Describe your role and contribution" class="form-control" 
-                                                    [ngClass]="{'is-invalid':f3.role_desc.errors&& submitted3}" formControlName="role_desc"></textarea>
-                                                      
-                                                    <div class="invalid-feedback" *ngIf="f3.role_desc.errors">
-                                                        <div *ngIf="f3.role_desc.errors.required">Role Description is required
-                                                        </div>
+                                            <div class="form-group">
+                                                <textarea placeholder="Describe your role and contribution"
+                                                    class="form-control"
+                                                    [ngClass]="{'is-invalid':f3.role_desc.errors&& submitted3}"
+                                                    formControlName="role_desc"></textarea>
+
+                                                <div class="invalid-feedback" *ngIf="f3.role_desc.errors">
+                                                    <div *ngIf="f3.role_desc.errors.required">Role Description is
+                                                        required
                                                     </div>
-                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div>
@@ -935,8 +970,10 @@
                                         </p>
                                     </div>
                                     <div class="mt-5">
-                                            <button type="button" (click)="backStepper()" class="btn btn-danger col-md-5">BACK</button>
-                                            <button type="submit" class="btn btn-primary col-md-5 pull-right">CONTINUE</button>
+                                        <button type="button" (click)="backStepper()"
+                                            class="btn btn-danger col-md-5">BACK</button>
+                                        <button type="submit"
+                                            class="btn btn-primary col-md-5 pull-right">CONTINUE</button>
                                     </div>
                                 </form>
 
@@ -949,7 +986,7 @@
             <mat-step #step4 label="" [stepControl]="jobPreferrences" state="user">
                 <section [@fadeInAndOut] class="login company-registration mt-3 mb-5">
                     <div class="container create-account">
-                        
+
                         <div class="row justify-content-center mt-5">
                             <div class="col-md-6">
                                 <div>
@@ -972,10 +1009,10 @@
                                             [ngClass]="{'is-invalid':f4.preference_industry_type.errors&& submitted4}">
                                             <option value=null [selected]="true" [disabled]="true">Industry Type
                                             </option>
-                                            <option *ngFor="let data of industryTypes" [value]="data.industry_id" >
-                                                    {{data.industry_name}}
-                                                </option>
-                                            
+                                            <option *ngFor="let data of industryTypes" [value]="data.industry_id">
+                                                {{data.industry_name}}
+                                            </option>
+
                                         </select>
                                         <div class="invalid-feedback" *ngIf="f4.preference_industry_type.errors">
                                             <div *ngIf="f4.preference_industry_type.errors.required">Industry type is
@@ -986,13 +1023,14 @@
 
                                     <div class="form-group">
                                         <select class="form-control" id="exampleFormControlSelect1" placeholder="Role"
-                                            formControlName="preference_role"  (change)="onJobPreferenceRoleChange($event)"
+                                            formControlName="preference_role"
+                                            (change)="onJobPreferenceRoleChange($event)"
                                             [ngClass]="{'is-invalid':f4.preference_role.errors&& submitted4}">
                                             <option value=null [selected]="true" [disabled]="true">
                                                 Role Type</option>
-                                                <option *ngFor="let data of roles" [value]="data.role_id" >
-                                                        {{data.role}}
-                                                    </option>
+                                            <option *ngFor="let data of roles" [value]="data.role_id">
+                                                {{data.role}}
+                                            </option>
                                         </select>
                                         <div class="invalid-feedback" *ngIf="f4.preference_role.errors">
                                             <div *ngIf="f4.preference_role.errors.required">Role Type is required
@@ -1001,34 +1039,36 @@
                                     </div>
 
                                     <div class="form-group" *ngIf="isOtherRoleSelected">
-                                            <input type="text" class="form-control" id="role_others"
-                                                placeholder="Please Specify Other Role" formControlName="role_others"
-                                               >
-                                            <div class="custom-invalid-feedback" *ngIf="f4.role_others.errors">
-                                                <div *ngIf="f4.role_others.errors.required">Role Others is required
-                                                </div>
+                                        <input type="text" class="form-control" id="role_others"
+                                            placeholder="Please Specify Other Role" formControlName="role_others">
+                                        <div class="custom-invalid-feedback" *ngIf="f4.role_others.errors">
+                                            <div *ngIf="f4.role_others.errors.required">Role Others is required
                                             </div>
                                         </div>
+                                    </div>
 
                                     <div class="form-group">
                                         <p class="dark-col">Desired employment type</p>
                                         <div class="custom-control custom-radio custom-control-inline"
                                             (change)="employeeType($event)">
-                                            <input type="radio" id="customRadioInline12" formControlName="desired_employment_type"
-                                                class="custom-control-input" [checked]="true" value="Gig">
+                                            <input type="radio" id="customRadioInline12"
+                                                formControlName="desired_employment_type" class="custom-control-input"
+                                                [checked]="true" value="Gig">
                                             <label class="custom-control-label" for="customRadioInline12">Gig</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline"
                                             (change)="employeeType($event)">
-                                            <input type="radio" id="customRadioInline13"  formControlName="desired_employment_type"
-                                                class="custom-control-input" value="Contract">
+                                            <input type="radio" id="customRadioInline13"
+                                                formControlName="desired_employment_type" class="custom-control-input"
+                                                value="Contract">
                                             <label class="custom-control-label"
                                                 for="customRadioInline13">Contract</label>
                                         </div>
                                         <div class="custom-control custom-radio custom-control-inline"
                                             (change)="employeeType($event)">
-                                            <input type="radio" id="customRadioInline14"  formControlName="desired_employment_type"
-                                                class="custom-control-input" value="Full
+                                            <input type="radio" id="customRadioInline14"
+                                                formControlName="desired_employment_type" class="custom-control-input"
+                                                value="Full
                                                 time">
                                             <label class="custom-control-label" for="customRadioInline14">Full
                                                 time</label>
@@ -1038,36 +1078,35 @@
                                         <h6 class="add-details">Add Skills</h6>
                                     </div>
                                     <div class="form-group">
-                                            <type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsList"
-                                             formControlName="skills" [custom]="true" [multi]="true" [complex]="false"
-                                             [ngClass]="{'is-invalid':f4.skills.errors&& submitted4}"
-                                          >
+                                        <type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsList"
+                                            formControlName="skills" [custom]="true" [multi]="true" [complex]="false"
+                                            [ngClass]="{'is-invalid':f4.skills.errors&& submitted4}">
                                         </type-ahead>
                                         <div *ngIf="f4.skills.errors&& submitted4" class="invalid-feedback">
-                                                <div *ngIf="f4.skills.errors.required">Skill is required</div>
-                                            </div>
+                                            <div *ngIf="f4.skills.errors.required">Skill is required</div>
                                         </div>
+                                    </div>
 
                                     <div class="form-group">
                                         <p class="dark-col">Work preferences</p>
-                                        <div class="custom-control custom-radio custom-control-inline"
-                                            >
+                                        <div class="custom-control custom-radio custom-control-inline">
                                             <input type="radio" id="work_pre1" formControlName="work_preferences"
                                                 class="custom-control-input" [checked]="true" value="Willing to Travel">
-                                            <label class="custom-control-label" for="work_pre1">Willing to Travel</label>
+                                            <label class="custom-control-label" for="work_pre1">Willing to
+                                                Travel</label>
                                         </div>
-                                        <div class="custom-control custom-radio custom-control-inline"
-                                           >
-                                            <input type="radio" id="work_pre2"  formControlName="work_preferences"
+                                        <div class="custom-control custom-radio custom-control-inline">
+                                            <input type="radio" id="work_pre2" formControlName="work_preferences"
                                                 class="custom-control-input" value="Remote Working">
-                                            <label class="custom-control-label"
-                                                for="work_pre2">Remote Working</label>
+                                            <label class="custom-control-label" for="work_pre2">Remote Working</label>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="mt-5">
-                                            <button type="button" (click)="backStepper()" class="btn btn-danger col-md-5">BACK</button>
-                                            <button type="submit" class="btn btn-primary col-md-5 pull-right">CONTINUE</button>
+                                        <button type="button" (click)="backStepper()"
+                                            class="btn btn-danger col-md-5">BACK</button>
+                                        <button type="submit"
+                                            class="btn btn-primary col-md-5 pull-right">CONTINUE</button>
                                     </div>
                                 </form>
 
