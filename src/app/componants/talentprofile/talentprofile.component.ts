@@ -37,6 +37,7 @@ export class TalentprofileComponent implements OnInit {
   jobForm: FormGroup;
   isProfesionalCertification = false;
   submitted = false;
+  institutionsList = [];
   preferenceForm: FormGroup;
   mydate;
   selDate;
@@ -94,13 +95,17 @@ export class TalentprofileComponent implements OnInit {
       first_name: ['', Validators.required],
       last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      mobile: ['', Validators.required],
+      mobile: ['', Validators.compose([Validators.required, Validators.maxLength(15)])],
       location: ['', Validators.required],
       country_id: ['', Validators.required],
       state_id: ['', Validators.required],
       city_id: ['', Validators.required],
       gender: ['', Validators.required],
       dob: [''],
+      twitter: [''],
+      facebook: [''],
+      linkedIn: [''],
+      personal_website: [''],
       form_type: ["step1"],
       talent_id: [JSON.parse(localStorage.talent_id)],
       talent_old_attachment: [''],
@@ -137,6 +142,8 @@ export class TalentprofileComponent implements OnInit {
     this.getCountries();
     this.getYearOfCompletions();
     this.getHighestQualificationList();
+    this.getInstitutionsListBasedOnCountry(this.personalForm.value.country_id);
+
   }
 
   personaldetails() {
@@ -301,6 +308,10 @@ export class TalentprofileComponent implements OnInit {
       mobile: [this.talentPersonalDetails['mobile'], Validators.required],
       location: [this.talentPersonalDetails['location'], Validators.required],
       country_id: [this.talentPersonalDetails['country'], Validators.required],
+      facebook: [this.talentPersonalDetails['facebook']],
+      linkedin: [this.talentPersonalDetails['linkedin']],
+      personal_website: [this.talentPersonalDetails['personal_website']],
+      twitter: [this.talentPersonalDetails['twitter']],
       state_id: [this.talentPersonalDetails['state'], Validators.required],
       city_id: [this.talentPersonalDetails['city'], Validators.required],
       // temp this.talentPersonalDetails['gender']
@@ -314,6 +325,7 @@ export class TalentprofileComponent implements OnInit {
       talent_old_video: [''],
       talent_attachment_video: [''],
       mobile_code: [''],
+
     })
 
     // this.personalForm.controls['gender'].setValue(this.talentPersonalDetails['gender'], { onlySelf: true });
@@ -364,6 +376,32 @@ export class TalentprofileComponent implements OnInit {
     }
   }
 
+  readUrl1(event: any) {
+    console.log('readUrl');
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      this.path = (event.target.files[0].name)
+
+      reader.onload = (event: any) => {
+        this.url2 = event.target.result;
+        console.log(this.url1)
+      }
+
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+  path1;
+  readUrl2(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      this.path1 = (event.target.files[0].name)
+
+      reader.onload = (event: any) => {
+        this.url3 = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
   showEditEdu() {
     this.editEdu = true;
 
@@ -371,7 +409,7 @@ export class TalentprofileComponent implements OnInit {
     this.showEducationDetails = false;
     for (var i = this.t.length; i < this.talentEducationDetails.length; i++) {
       this.t.push(this.fb.group({
-        high_qualification: [this.talentEducationDetails[i].highest_qualification, Validators.required],
+        other_highest_qualification: [this.talentEducationDetails[i].highest_qualification, Validators.required],
         professional_qualification: [this.talentEducationDetails[i].professional_qualification, Validators.required],
         university_name: [this.talentEducationDetails[i].university_name, Validators.required],
         year_of_completion: [this.talentEducationDetails[i].year_of_completion, Validators.required],
@@ -409,9 +447,7 @@ export class TalentprofileComponent implements OnInit {
         role: [this.talentJobDetails[i].role, Validators.required],
         jobdetails_id: [this.talentJobDetails[i].jobdetails_id]
       }));
-
     }
-
   }
   get f2() { return this.jobForm.controls; }
   get t1() { return this.f2.job_details as FormArray; }
@@ -597,9 +633,8 @@ export class TalentprofileComponent implements OnInit {
   multiEducation() {
     // for (var i = this.t.length; i < this.talentEducationDetails.length; i++) {
     this.t.push(this.fb.group({
-      high_qualification: [, Validators.required],
+      other_highest_qualification: [, Validators.required],
       professional_qualification: [, Validators.required],
-      university_name: [, Validators.required],
       year_of_completion: [, Validators.required],
       mode_of_study: [, Validators.required],
       educational_id: []
@@ -703,7 +738,6 @@ export class TalentprofileComponent implements OnInit {
     this.appSer.countriesList().subscribe((res) => {
       this.CountiresList = res['countries'];
     });
-
   }
   countryId; statesList;
   changeCountryList(name) {
@@ -809,7 +843,18 @@ export class TalentprofileComponent implements OnInit {
     }
     this.currentIndex = index + 1;
   }
+  getInstitutionsListBasedOnCountry(counrtyId) {
+    if (this.institutionsList.length == 0) {
+      let params = {
+        country_id: JSON.parse(counrtyId),
+      }
+      this.appSer.getInstitutionsList(params).subscribe((res) => {
 
+        this.institutionsList = res['universities'];
+        this.educationForm.patchValue({ 'institution': null });
+      });
+    }
+  }
 
   // image upload
   strImage: any;
@@ -825,43 +870,5 @@ export class TalentprofileComponent implements OnInit {
       this.strImage = this.image.split(',')[1];
     }
     myReader.readAsDataURL(file);
-  }
-  strPdf: any;
-  changeListenerPdf($event): void {
-    this.readThisPdf($event.target);
-  }
-  readThisPdf(inputValue: any): void {
-    var file: File = inputValue.files[0];
-    var myReader: FileReader = new FileReader();
-    myReader.onloadend = (e) => {
-      this.image = myReader.result;
-      this.strPdf = this.image.split(',')[1];
-    }
-    myReader.readAsDataURL(file);
-  }
-  readUrl1(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      this.path = (event.target.files[0].name)
-
-      reader.onload = (event: any) => {
-        this.url2 = event.target.result;
-        console.log(this.url1)
-      }
-
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  }
-  path1;
-  readUrl2(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      this.path1 = (event.target.files[0].name)
-
-      reader.onload = (event: any) => {
-        this.url3 = event.target.result;
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
   }
 }

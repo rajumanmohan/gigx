@@ -51,4 +51,7 @@ export class TalentsearchComponent implements OnInit {
     this.ShowMyHiresScreen = false;
     this.ShowSavedScreen = true;
   }
+  viewgig(){
+    this.router.navigate(['/viewgig']);
+  }
 }

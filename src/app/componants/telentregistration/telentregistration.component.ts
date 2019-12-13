@@ -82,44 +82,28 @@ export class TelentregistrationComponent implements OnInit {
   stepfour_details = {};
   
   private myDatePickerOptions: IMyDpOptions = {
-    // other options...
     dateFormat: 'dd/mm/yyyy',
-    //disableSince:  {year: 2019, month: 7, day: 22}
   };
 
   private workingSinceOptions: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
-    //disableSince:  {year: 2019, month: 7, day: 22}
   };
 
   private workingFromOptions: IMyDpOptions[] = [];
   private workingToOptions: IMyDpOptions[] = [];
 
-  // private workingFromOptions: IMyDpOptions = {
-  //   dateFormat: 'dd/mm/yyyy',
-  //   //disableSince:  {year: 2019, month: 7, day: 22}
-  // };
-
-  // private workingToOptions: IMyDpOptions = {
-  //   dateFormat: 'dd/mm/yyyy',
-  //   //disableSince:  {year: 2019, month: 7, day: 22}
-  // };
   constructor(private fb: FormBuilder, private toast: ToastrService, private appSer: AppServiceService, private router: Router, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       this.email = params.email;
       this.password = params.password;
     })
   }
-  // Step 1 -> full_name,email,password,mobile_code,mobile,location,talent_attachment,talent_attachment_video,gender,dob
-  // routerLink="/talentdashboard"
   ngOnInit() {
     window.scroll(0, 0);
     let d: Date = new Date('2001/04/05');
     this.registrationForm = this.fb.group({
       first_name: ['', [Validators.required]],
       last_name: ['', Validators.required],
-      //email: [this.email, [Validators.required, Validators.email]],
-      //password: [this.password, Validators.required],
       mobile_code: ['60'],
       mobile: ['',  Validators.compose([Validators.required, Validators.maxLength(15)])],
       location: ['', Validators.required],
@@ -130,7 +114,6 @@ export class TelentregistrationComponent implements OnInit {
       facebook: [''],
       linkedIn: [''],
       personal_website: [''],
-      //dob: [{ date: { year: d.getFullYear(), month: d.getMonth() + 1, day: d.getDate() } }, Validators.required],
       dob: [''],
       termsConditions: [false, Validators.requiredTrue]
     })
@@ -158,24 +141,14 @@ export class TelentregistrationComponent implements OnInit {
       "salary_input" :  ['', Validators.required],
       "currency_type": ['', Validators.required],
       "working_since": ['', Validators.required],
-     // "working_from": ['', Validators.required],
-     // "working_to": ['', Validators.required],
-      //"currency_type1": ['', Validators.required],
-      //"currency_type2": ['', Validators.required],
       "annual_salary": [''],
       "industry_type": ['', Validators.required],
       "role": ['', Validators.required],
       "role_desc": ['', Validators.required],
       "location": ['', Validators.required],
       "job_details": new FormArray([]),
-     // "date": ['', Validators.required],
-     // "month": ['', Validators.required],
-     // "year": ['', Validators.required]
 
     });
-    //this.mydate = this.registrationForm.value.dob.date;
-    //this.selDate = (this.mydate['year']) + "-" + (this.mydate['month']) + "-" + (this.mydate['day']);
-    // radioArr = ["Full time",""]
     this.getCountries();
     this.getSkills();
   }
@@ -194,8 +167,6 @@ export class TelentregistrationComponent implements OnInit {
   isLinear = true;
 
   complete() {
-    // this.stepper.selected.completed = true;
-    // this.stepper.selected.editable = false;
     this.stepper.next();
   }
 
@@ -204,11 +175,6 @@ export class TelentregistrationComponent implements OnInit {
   }
 
   backStepper(){
-    //this.stepper.previous();
-   // this.complete();
-   //this.stepper.next()
-  //  this.stepper.selected.completed = true;
-  //  this.stepper.selected.editable = false;
    this.stepper.previous();
   }
   image;
@@ -531,7 +497,7 @@ export class TelentregistrationComponent implements OnInit {
       return;
     } else {
 
-      var tempObj = {
+      var tempObj = { 
         "preference_location": this.jobPreferrences.controls['preference_location'].value,
         "preference_industry_id": this.jobPreferrences.controls['preference_industry_type'].value,
         "preference_role_id": this.jobPreferrences.controls['preference_role'].value,

@@ -54,7 +54,10 @@ export class TalentdashboardComponent implements OnInit {
       this.talentJobPreference = res['step4'].jobpreferences;
     })
   }
+  viewgig() {
+    this.router.navigate(['/viewgig']);
 
+  }
   logout() {
     this.router.navigate(['/coverpage']);
     localStorage.clear();

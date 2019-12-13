@@ -268,7 +268,58 @@
                                     </td>
 
                                 </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">TWITTER
+                                        <span>:</span>
+                                    </td>
+                                    <td class="b-0">
+                                        <span *ngIf="edit==false">{{talentPersonalDetails.twitter}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="twittter" formControlName="twitter">
 
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">FACEBOOK
+                                        <span>:</span>
+                                    </td>
+                                    <td class="b-0">
+                                        <span *ngIf="edit==false">{{talentPersonalDetails.facebook}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="facebook" formControlName="facebook">
+
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">LINKEDIN
+                                        <span>:</span>
+                                    </td>
+                                    <td class="b-0">
+                                        <span *ngIf="edit==false">{{talentPersonalDetails.linkedIn}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="linkedIn" formControlName="linkedIn">
+
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">PERSONAL WEBSITE
+                                        <span>:</span>
+                                    </td>
+                                    <td class="b-0">
+                                        <span *ngIf="edit==false">{{talentPersonalDetails.personal_website}}</span>
+                                        <span class="form-group edit-input" *ngIf="edit==true">
+                                            <input type="text" class="form-control" id="exampleInputPassword1"
+                                                placeholder="personal_website" formControlName="personal_website">
+
+                                        </span>
+                                    </td>
+                                </tr>
                                 <tr class=" b-0">
                                     <td class="b-0 contact-title">GENDER
                                         <span>:</span>
@@ -505,8 +556,9 @@
                                                             id="professional_certification" placeholder="Please Specify"
                                                             formControlName="professional_certification">
                                                         <div class="invalid-feedback"
-                                                            *ngIf="f1.professional_certification.errors">
-                                                            <div *ngIf="f1.professional_certification.errors.required">
+                                                            *ngIf="ticket.controls.professional_certification.errors">
+                                                            <div
+                                                                *ngIf="ticket.controls.professional_certification.errors.required">
                                                                 Specialization is required
                                                             </div>
                                                         </div>
@@ -520,9 +572,16 @@
                                             </td>
                                             <td class="b-0">
                                                 <span class="form-group edit-input">
-                                                    <input type="text" formControlName="professional_qualification"
-                                                        class="form-control"
-                                                        [ngClass]="{ 'is-invalid': submitted && ticket.controls.professional_qualification.errors }" />
+                                                    <select class="form-control" id="institution"
+                                                        formControlName="institution"
+                                                        [ngClass]="{ 'is-invalid': submitted && ticket.institution.errors&& submitted1 }">
+                                                        <option [value]=null [selected]="true">Select Institute of
+                                                            Learning </option>
+                                                        <option *ngFor="let data of institutionsList"
+                                                            [value]="data.university_id">
+                                                            {{data.university_name}}
+                                                        </option>
+                                                    </select>
                                                     <div *ngIf="submitted && ticket.controls.professional_qualification.errors"
                                                         class="invalid-feedback">
                                                         <div
