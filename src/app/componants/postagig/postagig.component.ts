@@ -190,7 +190,8 @@ export class PostagigComponent implements OnInit {
   }
   getSkills() {
     this.appSer.getSkillList().subscribe((res) => {
-      this.skillsList = res['skills'].map(x => x.skill_name);
+     // this.skillsList = res['skills'].map(x => x.skill_name);
+     this.skillsList = res['skills'];
     });
   }
   CountiresList;
@@ -327,7 +328,7 @@ export class PostagigComponent implements OnInit {
       "gig_title": this.f['gig_title'].value,
       "gig_description": this.f['gig_desc'].value,
       "industry_id": this.f['industry_type'].value,
-      "skills": this.f["skills"].value ? this.f["skills"].value.join(', ') : '',
+      "skills": this.f["skills"].value ? this.f["skills"].value.join(',') : '',
       "years_of_experience": this.f["years_of_exp"].value,
       "role_id": this.f["role"].value,
       "country_id": this.f["country"].value,

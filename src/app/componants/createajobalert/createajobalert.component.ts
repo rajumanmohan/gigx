@@ -63,7 +63,8 @@ export class CreateajobalertComponent implements OnInit {
 
   getSkills(){
     this.appSer.getSkillList().subscribe((res)=>{
-      this.skillsList = res['skills'].map(x=>x.skill_name);
+      //this.skillsList = res['skills'].map(x=>x.skill_name);
+      this.skillsList = res['skills'];
     });
   }
 
@@ -136,7 +137,7 @@ export class CreateajobalertComponent implements OnInit {
 
     var requestData = {
       "talent_id": talent_id,
-      "skills": this.createGigForm.controls["skills"].value.join(', '),
+      "skills": this.createGigForm.controls["skills"].value.join(','),
       "country_id": this.createGigForm.controls["country_id"].value,
       "state_id": this.createGigForm.controls["state_id"].value,
       "city_id": this.createGigForm.controls["city_id"].value,
