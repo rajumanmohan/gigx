@@ -131,7 +131,7 @@
                         </label>
                         <div class="col-sm-10">
                                 <type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsList"
-                                formControlName="skills" [custom]="true" [multi]="true" [complex]="false"
+                                formControlName="skills" [custom]="true" [multi]="true" idField="skill_id" nameField="skill_name" [complex]="true"
                                 [ngClass]="{'is-invalid':f.skills.errors&& submitted}"
                              >
                            </type-ahead>

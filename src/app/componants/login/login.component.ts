@@ -70,6 +70,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/talentdashboard']);
             localStorage.setItem('talent_id', (res['talent_id']));
             localStorage.setItem('industry_type', (res['industry_type']));
+            localStorage.setItem('registration_type', (res['registration_type']));
 
           }
           else {
@@ -86,6 +87,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/companydashboard']);
             localStorage.setItem('company_id', (res['company_id']));
             localStorage.setItem('industry_type', (res['industry_type']));
+            localStorage.setItem('registration_type', (res['registration_type']));
           }
           else {
             this.toast.error(res['message'], "error");

@@ -73,6 +73,7 @@ export class TelentregistrationComponent implements OnInit {
   mobile_code;
   isProfesionalCertification=false;
   institutionsList = [];
+  institutionsListCustom = [];
 
   stepone_details = {};
   steptwo_details = {};
@@ -122,7 +123,8 @@ export class TelentregistrationComponent implements OnInit {
       institution: ['', Validators.required],
       year_of_completion: ['', Validators.required],
       professional_qualification:[''],
-      degree: ['']
+      degree: [''],
+      country: ['', Validators.required]
     });
     this.jobPreferrences = this.fb.group({
       "preference_location": ['', Validators.required],
@@ -235,10 +237,13 @@ export class TelentregistrationComponent implements OnInit {
       high_qualification: ['', Validators.required],
       institution1: ['', Validators.required],
       year_of_completion1: ['', Validators.required],
-      degree1: [''],
+      degree1: ['Full time'],
       professional_qualification1:[''],
+      country: ['', Validators.required]
     }));
     this.type_id += 1;
+
+    this.institutionsListCustom.push([]);
   }
   index;
   readOnlyProperty;
@@ -254,6 +259,8 @@ export class TelentregistrationComponent implements OnInit {
       }
     }
     this.f2.controls.splice(x, 1);
+
+    this.institutionsListCustom.splice(x, 1);
 
     this.submitted1 = false;
     this.f2.markAsPristine();
@@ -367,6 +374,8 @@ export class TelentregistrationComponent implements OnInit {
       this.getInstitutionsListBasedOnCountry(this.registrationForm.value.country_id);
       this.getYearOfCompletions();
       this.object1 = this.registrationForm.value;
+
+      this.registrationForm1.patchValue({'country': this.registrationForm.value.country_id});
     }
   }
 
@@ -435,7 +444,8 @@ export class TelentregistrationComponent implements OnInit {
           "university_id": tempForm[i].controls['institution1'].value,
           "year_of_completion": tempForm[i].controls['year_of_completion1'].value,
           "professional_qualification":tempForm[i].controls['professional_qualification1'].value,
-          "mode_of_study": tempForm[i].controls['degree1'].value
+          "mode_of_study": tempForm[i].controls['degree1'].value,
+          "country_id": tempForm[i].controls['country'].value,
         }
         this.steptwo_detailsArray.push(qualifications);
       }
@@ -445,7 +455,8 @@ export class TelentregistrationComponent implements OnInit {
         "university_id": this.registrationForm1.value.institution,
         "year_of_completion":this.registrationForm1.value.year_of_completion,
         "professional_qualification":this.registrationForm1.value.professional_qualification,
-        "mode_of_study":this.registrationForm1.value.degree
+        "mode_of_study":this.registrationForm1.value.degree,
+        "country_id": this.registrationForm1.value.country,
       }
       this.steptwo_detailsArray.push(qualifications1);
 
@@ -485,7 +496,7 @@ export class TelentregistrationComponent implements OnInit {
         "preference_role_id": this.jobPreferrences.controls['preference_role'].value,
         "preference_other_role": this.jobPreferrences.controls['role_others'] ? this.jobPreferrences.controls['role_others'].value : '',
         "desired_employment_type": this.jobPreferrences.controls['desired_employment_type'].value,
-        "skills": this.jobPreferrences.controls['skills'].value.join(', '),
+        "skills": this.jobPreferrences.controls['skills'].value.join(','),
         "work_preference": this.jobPreferrences.controls['work_preferences'].value
       };
 
@@ -776,7 +787,7 @@ export class TelentregistrationComponent implements OnInit {
   }
 
   getInstitutionsListBasedOnCountry(counrtyId){
-    if(this.institutionsList.length == 0){ 
+    //if(this.institutionsList.length == 0){ 
     let params = {
       country_id: JSON.parse(counrtyId),
     }
@@ -785,7 +796,7 @@ export class TelentregistrationComponent implements OnInit {
       this.institutionsList = res['universities'];
       this.registrationForm1.patchValue({'institution': null});
     });
-  }
+  //}
   }
 
   yearOfCompletionList = [];
@@ -800,9 +811,34 @@ export class TelentregistrationComponent implements OnInit {
   skillsList = [];
   getSkills(){
     this.appSer.getSkillList().subscribe((res)=>{
-      this.skillsList = res['skills'].map(x=>x.skill_name);
+      //this.skillsList = res['skills'].map(x=>x.skill_name);
+      this.skillsList = res['skills'];
     });
   }
+
+  onQualificationCountryChange(countryId){
+    this.getInstitutionsListBasedOnCountry(countryId);
+  }
+
+  onQualificationCountryChangeCustom(countryId, index){
+    this.getInstitutionsListBasedOnCountryCustom(countryId, index);
+  }
+
+  getInstitutionsListBasedOnCountryCustom(counrtyId, index){
+    //if(this.institutionsList.length == 0){ 
+    let params = {
+      country_id: JSON.parse(counrtyId),
+    }
+    this.appSer.getInstitutionsList(params).subscribe((res)=>{
+    
+      this.institutionsListCustom[index] = res['universities'];
+      //this.registrationForm1.patchValue({'institution': null});
+      var tempForm = this.f2.controls as FormGroup[];
+      tempForm[index].patchValue({'institution1': null});
+    });
+  //}
+  }
+
 
    
 }
