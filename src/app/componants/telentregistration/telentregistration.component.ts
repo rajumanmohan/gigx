@@ -44,7 +44,7 @@ export class TelentregistrationComponent implements OnInit {
   educationArr = [];
   obj2 = {};
   degree = "Full time";
-  degree1 = "Full time"
+  degree1 = "Full time";
   submitted4 = false;
   submitted3 = false;
   empType;

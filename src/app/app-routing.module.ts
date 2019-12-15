@@ -31,7 +31,8 @@ import { AboutusComponent } from './componants/aboutus/aboutus.component';
 import { ContactComponent } from './componants/contact/contact.component';
 import { TestlistComponent } from './componants/testlist/testlist.component';
 import { ViewgigComponent } from './componants/viewgig/viewgig.component';
-
+import { ViewpostedgigsComponent } from './componants/viewpostedgigs/viewpostedgigs.component';
+import { PostedgigdetailsComponent } from './componants/postedgigdetails/postedgigdetails.component';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
@@ -172,6 +173,15 @@ const routes: Routes = [
   {
     path: 'testlist',
     component: TestlistComponent
+  },
+  {
+    path: 'viewpostedgigs',
+    component: ViewpostedgigsComponent
+
+  },
+  {
+    path: 'postedgigdetails',
+    component: PostedgigdetailsComponent
   }
 ];
 

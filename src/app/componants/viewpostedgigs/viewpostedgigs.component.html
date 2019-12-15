@@ -1,0 +1,333 @@
+<!-- heADER -->
+<div class="container-fluid main-header">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light ">
+
+            <a class="navbar-brand" routerLink="/companydashboard"><img src="../../../assets/images/logo.png"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" routerLink="/companydashboard">Home<span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item login-list">|</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/postagig">Post a Gig</a>
+                    </li>
+                    <li class="nav-item login-list">|</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" routerLink="/talentsearch">Talent Search</a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+
+<!-- HEADER -->
+<section class="login company-registration mt-3 mb-5">
+    <div class="container create-account">
+        <div class="row justify-content-center ">
+            <div class="col-md-6">
+                <h1 class="text-center mb-5">POSTED GIGS
+                </h1>
+            </div>
+        </div>
+        <!-- serach talent -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="input-group button-search mb-3">
+                    <input type="text" class="form-control" placeholder="Gig Title" aria-label="Recipient's username"
+                        aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img
+                                src="../../../assets/images/search.png"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- search talent -->
+        <div class="row mt-3">
+
+            <!-- search details -->
+            <div class="col-md-12 search-results" [@fadeInAndOut]>
+
+                <div class="row">
+                    <!-- job preview -->
+                    <div class="col-md-12 mt-3">
+                        <div class=" talent-result ">
+
+                            <div class="row">
+                                <!-- job details -->
+                                <div class="col-md-8">
+                                    <h3>Gig Title</h3>
+                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
+                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
+                                        Lumpur
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>Skills : </p>
+                                        </li>
+                                        <li>
+                                            <p>Screening</p>
+                                        </li>
+                                        <li>
+                                            <p>Sourcing </p>
+                                        </li>
+                                        <li>
+                                            <p>Interviewing</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- job details -->
+                                <!-- apply job -->
+                                <div class="col-md-4 text-right">
+                                    <button class="btn invite-job text-right"><img
+                                            src="../../../assets/images/heart.png"> Posted :
+                                        2days ago</button>
+                                    <button class="btn review" (click)="gotogigdetails()">View Details</button>
+                                </div>
+                                <!-- apply job -->
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- job preview -->
+                    <!-- job preview -->
+                    <div class="col-md-12 mt-3">
+                        <div class=" talent-result ">
+
+                            <div class="row">
+                                <!-- job details -->
+                                <div class="col-md-8">
+                                    <h3>Gig Title</h3>
+                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
+                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
+                                        Lumpur
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>Skills : </p>
+                                        </li>
+                                        <li>
+                                            <p>Screening</p>
+                                        </li>
+                                        <li>
+                                            <p>Sourcing </p>
+                                        </li>
+                                        <li>
+                                            <p>Interviewing</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- job details -->
+                                <!-- apply job -->
+                                <div class="col-md-4 text-right">
+                                    <button class="btn invite-job text-right"><img
+                                            src="../../../assets/images/heart.png"> Posted :
+                                        2days ago</button>
+                                    <button class="btn review" (click)="gotogigdetails()">View Details</button>
+                                </div>
+                                <!-- apply job -->
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- job preview -->
+                    <!-- job preview -->
+                    <div class="col-md-12 mt-3">
+                        <div class=" talent-result ">
+
+                            <div class="row">
+                                <!-- job details -->
+                                <div class="col-md-8">
+                                    <h3>Gig Title</h3>
+                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
+                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
+                                        Lumpur
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>Skills : </p>
+                                        </li>
+                                        <li>
+                                            <p>Screening</p>
+                                        </li>
+                                        <li>
+                                            <p>Sourcing </p>
+                                        </li>
+                                        <li>
+                                            <p>Interviewing</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- job details -->
+                                <!-- apply job -->
+                                <div class="col-md-4 text-right">
+                                    <button class="btn invite-job text-right"><img
+                                            src="../../../assets/images/heart.png"> Posted :
+                                        2days ago</button>
+                                    <button class="btn review" (click)="gotogigdetails()">View Details</button>
+                                </div>
+                                <!-- apply job -->
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- job preview -->
+                    <!-- job preview -->
+                    <div class="col-md-12 mt-3">
+                        <div class=" talent-result ">
+
+                            <div class="row">
+                                <!-- job details -->
+                                <div class="col-md-8">
+                                    <h3>Gig Title</h3>
+                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
+                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
+                                        Lumpur
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>Skills : </p>
+                                        </li>
+                                        <li>
+                                            <p>Screening</p>
+                                        </li>
+                                        <li>
+                                            <p>Sourcing </p>
+                                        </li>
+                                        <li>
+                                            <p>Interviewing</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- job details -->
+                                <!-- apply job -->
+                                <div class="col-md-4 text-right">
+                                    <button class="btn invite-job text-right"><img
+                                            src="../../../assets/images/heart.png"> Posted :
+                                        2days ago</button>
+                                    <button class="btn review" (click)="gotogigdetails()">View Details</button>
+                                </div>
+                                <!-- apply job -->
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- job preview -->
+                    <!-- job preview -->
+                    <div class="col-md-12 mt-3">
+                        <div class=" talent-result ">
+
+                            <div class="row">
+                                <!-- job details -->
+                                <div class="col-md-8">
+                                    <h3>Gig Title</h3>
+                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
+                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
+                                        Lumpur
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>Skills : </p>
+                                        </li>
+                                        <li>
+                                            <p>Screening</p>
+                                        </li>
+                                        <li>
+                                            <p>Sourcing </p>
+                                        </li>
+                                        <li>
+                                            <p>Interviewing</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- job details -->
+                                <!-- apply job -->
+                                <div class="col-md-4 text-right">
+                                    <button class="btn invite-job text-right"><img
+                                            src="../../../assets/images/heart.png"> Posted :
+                                        2days ago</button>
+                                    <button class="btn review" (click)="gotogigdetails()">View Details</button>
+                                </div>
+                                <!-- apply job -->
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- job preview -->
+                    <!-- job preview -->
+                    <div class="col-md-12 mt-3">
+                        <div class=" talent-result ">
+
+                            <div class="row">
+                                <!-- job details -->
+                                <div class="col-md-8">
+                                    <h3>Gig Title</h3>
+                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
+                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
+                                        Lumpur
+                                    </p>
+                                    <ul>
+                                        <li>
+                                            <p>Skills : </p>
+                                        </li>
+                                        <li>
+                                            <p>Screening</p>
+                                        </li>
+                                        <li>
+                                            <p>Sourcing </p>
+                                        </li>
+                                        <li>
+                                            <p>Interviewing</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- job details -->
+                                <!-- apply job -->
+                                <div class="col-md-4 text-right">
+                                    <button class="btn invite-job text-right"><img
+                                            src="../../../assets/images/heart.png"> Posted :
+                                        2days ago</button>
+                                    <button class="btn review" (click)="gotogigdetails()">View Details</button>
+                                </div>
+                                <!-- apply job -->
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <!-- job preview -->
+                </div>
+            </div>
+
+            <!-- search details -->
+        </div>
+
+
+
+        <nav aria-label="Page navigation example ">
+            <ul class="pagination justify-content-end mt-5">
+
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+
+            </ul>
+        </nav>
+    </div>
+
+</section>

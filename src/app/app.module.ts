@@ -52,6 +52,8 @@ import { AboutusComponent } from './componants/aboutus/aboutus.component';
 import { ContactComponent } from './componants/contact/contact.component';
 import { TestlistComponent } from './componants/testlist/testlist.component';
 import { ViewgigComponent } from './componants/viewgig/viewgig.component';
+import { ViewpostedgigsComponent } from './componants/viewpostedgigs/viewpostedgigs.component';
+import { PostedgigdetailsComponent } from './componants/postedgigdetails/postedgigdetails.component';
 
 @Pipe({ name: 'safe' })
 @NgModule({
@@ -91,7 +93,9 @@ import { ViewgigComponent } from './componants/viewgig/viewgig.component';
     AboutusComponent,
     ContactComponent,
     TestlistComponent,
-    ViewgigComponent
+    ViewgigComponent,
+    ViewpostedgigsComponent,
+    PostedgigdetailsComponent
   ],
   imports: [
     AutocompleteLibModule,

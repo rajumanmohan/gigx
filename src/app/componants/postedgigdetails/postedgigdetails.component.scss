@@ -1,0 +1,176 @@
+
+// HEADER CSS
+
+.login-list{
+    margin-top: 3px;
+    font-size: 24px;
+}
+.main-header {
+    box-shadow: 2px 3px 6px 0px #e1e1e1;
+a{
+    font-size:19px;
+    color:#000000;
+}
+}
+
+.login {
+    h1{
+        font-weight: 600;
+        margin-top: 4%;
+        text-align: center;
+        font-size: 32px;
+    }
+  
+    
+         button{
+            width: 100%;
+            border: 0px;
+            border-radius: 3px !important;
+            padding: 6px;
+            background: #fed501!important;
+            color: #000000;
+            font-size: 20px;
+            font-weight:600;
+        }
+        img{
+            width: 100px;
+            border-radius: 50%;
+            height: 100px;
+            text-align: center;
+        }
+
+}
+
+.talent-profile-details{
+    .table td{
+    border:0px;
+    } .table th{
+        border: 0px;
+    width: 36%;
+    }
+    h3{
+        font-weight:600;
+    }
+    .maps{
+        width: auto;
+        vertical-align: sub;
+        height: 20px;
+    }
+    h3 {
+        font-weight:600;
+        font-size:27px;
+    }
+    p{
+        font-weight: 600;
+        margin: 0px;
+        font-size: 20px;
+        margin-top: 12px;
+    }
+    .text-color-light{
+        color: #878787;;
+    }
+    .review {
+        background: #e5e5e5 !important;
+        border-radius: 4px !important;
+        margin-top: 29px;
+        font-weight: 600;
+        width: 100%
+    }
+    ul{
+        list-style: none;
+        margin:0px;
+        text-align: left;
+        margin-top: 14px;
+        margin-bottom: 14px;
+        li{
+            width:20%;
+            margin-left:0px;
+            margin-right:5%;
+            margin-top:12px;
+            display: inline-block;
+            p{
+                font-weight:600
+                }
+        }
+    }
+    h2{
+        font-weight: 600;
+    font-size: 23px;
+    padding: 9px;
+    background: #f1f1f1;
+    margin-top:2%;
+    }
+    .professional-details{
+        p{
+            font-weight: 500;
+            font-size: 16px;
+        }
+    }
+    h5{
+        margin-top: 31px;
+    }
+}
+
+.matching-details{
+    li{
+        width:auto!important;
+        margin-left:0px;
+        margin-right:5%;
+        margin-top:12px!important;
+        display: inline-block;
+        p{
+            font-weight:600
+            }
+    }
+    h4{
+        color: #2ba81e;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 43px;
+        
+    }
+    .test-score{
+        h5{
+            background: #ffffff;
+            width: 50px;
+            padding: 14px;
+            border-radius: 50%;
+            height: 50px;
+            margin: 0px auto;
+            box-shadow: 0px 0px 3px;
+        }
+        span{
+        margin-top: 12px;
+        }
+    }
+}
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) { 
+
+ }
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {
+    .talent-profile-details{
+        .review{
+            font-size:15px;
+        }
+    }
+  }
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) { 
+.test-score{
+    ul{
+        text-align:center
+    }
+}
+.login{
+    button{
+        margin-bottom:12px;
+    }
+} 
+ }
+@media (max-width: 575.98px) {  
+
+}
