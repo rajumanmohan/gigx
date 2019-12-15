@@ -1,6 +1,14 @@
 
 // HEADER CSS
 
+app-viewgig{
+    img{
+        width: 112px;
+    height: 112px;
+    border-radius: 1%;
+    }
+}
+
 .login-list{
     margin-top: 3px;
     font-size: 24px;
@@ -32,12 +40,12 @@ a{
             font-size: 20px;
             font-weight:600;
         }
-        img{
-            width: 100px;
-            border-radius: 50%;
-            height: 100px;
-            text-align: center;
-        }
+        // img{
+        //     width: 100px;
+        //     border-radius: 50%;
+        //     height: 100px;
+        //     text-align: center;
+        // }
 
 }
 

@@ -9,6 +9,8 @@ import {
   bounceInAndOut, enterAndLeaveFromLeft, enterAndLeaveFromRight, fadeInAndOut,
   fadeInThenOut, growInShrinkOut, swingInAndOut
 } from '../../triggers';
+import { DataStorageService } from '../../Services/data-storage.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -29,7 +31,8 @@ export class LoginComponent implements OnInit {
 
   submit = false;
   submitted = false;
-  constructor(public router: Router, private appSer: AppServiceService, private toast: ToastrService, private formBuilder: FormBuilder) {
+  constructor(public router: Router, private appSer: AppServiceService, private toast: ToastrService,
+     private formBuilder: FormBuilder, private dataStorage: DataStorageService) {
 
   }
   showEye = true;
@@ -71,7 +74,10 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('talent_id', (res['talent_id']));
             localStorage.setItem('industry_type', (res['industry_type']));
             localStorage.setItem('registration_type', (res['registration_type']));
+            localStorage.setItem('first_name', (res['first_name']));
+            localStorage.setItem('last_name', (res['last_name']));
 
+            this.dataStorage.loggedInUserData = localStorage;
           }
           else {
             this.toast.error(res['message'], "error");
@@ -88,6 +94,10 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('company_id', (res['company_id']));
             localStorage.setItem('industry_type', (res['industry_type']));
             localStorage.setItem('registration_type', (res['registration_type']));
+            localStorage.setItem('first_name', (res['first_name']));
+            localStorage.setItem('last_name', (res['last_name']));
+
+            this.dataStorage.loggedInUserData = localStorage;
           }
           else {
             this.toast.error(res['message'], "error");

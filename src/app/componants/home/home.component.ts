@@ -7,6 +7,7 @@ import {
   bounceInAndOut, enterAndLeaveFromLeft, enterAndLeaveFromRight, fadeInAndOut,
   fadeInThenOut, growInShrinkOut, swingInAndOut
 } from '../../triggers';
+import { DataStorageService } from '../../Services/data-storage.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -22,7 +23,7 @@ import {
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private spinner: NgxSpinnerService) { }
+  constructor(private router: Router, private spinner: NgxSpinnerService, private dataStorage: DataStorageService) { }
 
   ngOnInit() {
     window.scroll(0, 0);
@@ -33,6 +34,16 @@ export class HomeComponent implements OnInit {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
     }, 2000);
+  }
+
+  onDashboardClick(){
+    if(this.dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY){
+      this.router.navigate(['/companydashboard']);
+    }
+    else if(this.dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT){
+      this.router.navigate(['/talentdashboard']);
+    }
+    
   }
 
 
