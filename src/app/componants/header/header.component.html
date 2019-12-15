@@ -8,8 +8,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent"  style="    display: block !important;">
+                <ul class="navbar-nav ml-auto" *ngIf="!dataStorage.loggedInUserData.registration_type" style="float:right;">
                     <li class="nav-item ">
                         <a class="nav-link" href="#" routerLink="/login">Log In <span
                                 class="sr-only">(current)</span></a>
@@ -18,9 +18,55 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#" routerLink="/createaccount">Sign Up</a>
                     </li>
-
-
                 </ul>
+                
+                <div *ngIf="dataStorage.loggedInUserData.registration_type" class="text-right">
+                    <span class="navbar-text"> <a href="#" routerLink="/jobalerts"><img
+                                src="../../../assets/images/bell.png" class="bell"></a></span>
+                    <span class="navbar-text">
+                        <div class="profile-name">
+                            <h4 *ngIf="!dataStorage.loggedInUserData.first_name">NA</h4>
+                            <h4 *ngIf="dataStorage.loggedInUserData.first_name">{{dataStorage.loggedInUserData.first_name | slice:0:1}}{{dataStorage.loggedInUserData.last_name | slice:0:1}}</h4>
+                        </div>
+                    </span>
+                    <span class="navbar-text">
+
+                        <div class="dropdown dropdown-button">
+                            <a class="nav-item " *ngIf="dataStorage.loggedInUserData.first_name" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                {{dataStorage.loggedInUserData.first_name}} {{dataStorage.loggedInUserData.last_name}} 
+                                <img src="../../../assets/images/down-arrow.png">
+                            </a>
+                            <a class="nav-item " *ngIf="!dataStorage.loggedInUserData.first_name" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                User Name 
+                                <img src="../../../assets/images/down-arrow.png">
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" routerLink="/companydashboard" *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY">Dashboard</a>
+                                    <a class="dropdown-item" routerLink="/talentdashboard" *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Dashboard</a>
+
+                                <a class="dropdown-item" (click)="onMyProfileClick()">My Profile</a>
+                                <a class="dropdown-item"  routerLink="/createajobalert" *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Create a Job Alert</a>
+                                <a class="dropdown-item"  routerLink="/jobsearch" *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Job Search</a>
+                                <a class="dropdown-item"  routerLink="/appliedjobs" *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Applied Jobs</a>
+                                <a class="dropdown-item"  routerLink="/intrestedjobs" *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Interested Jobs</a>
+                                <a class="dropdown-item"  routerLink="/jobalerts" *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Job Alerts</a>
+                                <a class="dropdown-item"  routerLink="/takeatest" *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Profiling Test</a>
+                                <a class="dropdown-item"  routerLink="/testlist" *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Completed Tests</a> 
+
+                                <a class="dropdown-item"  routerLink="/postagig" *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY">Post a Gig</a> 
+                                <a class="dropdown-item"  routerLink="/talentsearch" *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY">Talent Search</a>  
+                                <a class="dropdown-item"  routerLink="/ratingsreview" *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY">Ratings & Reviews</a>  
+                                <a class="dropdown-item" href="#" routerLink="/changepassword">Change Password</a>
+                                <a class="dropdown-item" href="#" routerLink="/subscriptions">Subscriptions</a>
+                                <a class="dropdown-item" (click)="logout()">Logout</a>
+
+                            </div>
+                        </div>
+                    </span>
+                </div>
             </div>
         </nav>
     </div>

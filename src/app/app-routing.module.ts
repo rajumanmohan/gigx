@@ -72,7 +72,7 @@ const routes: Routes = [
     component: CreateaccountComponent
   },
   {
-    path: 'profile',
+    path: 'companyprofile',
     component: ProfileComponent
   },
   {
@@ -88,7 +88,7 @@ const routes: Routes = [
     component: PostagigComponent
   },
   {
-    path: 'viewgig',
+    path: 'viewgig/:postId',
     component: ViewgigComponent
   },
   {
@@ -116,7 +116,7 @@ const routes: Routes = [
     component: JobsearchComponent
   },
   {
-    path: 'talentaccount',
+    path: 'talentprofile',
     component: TalentprofileComponent
 
   },

@@ -23,6 +23,10 @@ import {
 })
 export class TalentdashboardComponent implements OnInit {
   talentId; loginType;
+  companyPostsList = [];
+  paginationIndex = 0;
+  itemsPerPage = 5;
+
   imgBaseUrl = "https://gigxglobal.com/talent_images/";
   constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService) {
     this.talentId = localStorage.getItem('talent_id');
@@ -37,6 +41,7 @@ export class TalentdashboardComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0);
     this.getTalentProfile();
+    this.getCompanyPosts();
   }
   talentPersonalDetails; talentJobPreference; talentFullName; talentLastName; LastName; FirstName; profileImage; profileUrl;
   getTalentProfile() {
@@ -61,5 +66,13 @@ export class TalentdashboardComponent implements OnInit {
   logout() {
     this.router.navigate(['/coverpage']);
     localStorage.clear();
+  }
+  getCompanyPosts(){
+    var requestObj = {
+      talent_id: this.talentId
+    };
+    this.appSer.getCompanyPostsForTalent(requestObj).subscribe((res) => {
+        this.companyPostsList = res['jobposts'];
+    });
   }
 }

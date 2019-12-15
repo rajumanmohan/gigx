@@ -254,6 +254,22 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.get(this.apiUrl + 'candidateRestartTest.php?tracking_number=' + trackingNumber , { headers })
   }
+
+  getCompanyPostsForTalent(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'getCompanyPostsByTalentSkills.php', params, { headers })
+  }
+
+  getCompanyPostDetailsByPostId(postId){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'getDetailsByPostId.php?post_id=' + postId, { headers })
+  }
  
  
 }

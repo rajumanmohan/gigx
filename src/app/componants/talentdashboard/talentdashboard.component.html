@@ -1,5 +1,5 @@
 <!-- heADER -->
-<div class="container-fluid main-header">
+<!-- <div class="container-fluid main-header">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light ">
 
@@ -37,7 +37,7 @@
                         </a>
 
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#" routerLink="/talentaccount">My Profile</a>
+                            <a class="dropdown-item" href="#" routerLink="/talentprofile">My Profile</a>
                             <a class="dropdown-item" href="#" routerLink="/changepassword">Change Password</a>
                             <a class="dropdown-item" href="#" routerLink="/subscriptions">Subscriptions</a>
                             <a class="dropdown-item" (click)="logout()">Logout</a>
@@ -48,10 +48,10 @@
             </div>
         </nav>
     </div>
-</div>
+</div> -->
 
+<app-header></app-header>
 <!-- HEADER -->
-
 
 <section class="login company-registration mt-3 mb-5">
     <div class="container create-account">
@@ -91,50 +91,37 @@
                 <!-- search results -->
                 <div class="row ">
                     <!-- talent preview -->
-                    <div class="col-md-12 mt-3">
+                    <div class="col-md-12 mt-3" *ngFor="let item of companyPostsList  | paginate: { itemsPerPage: itemsPerPage, currentPage: paginationIndex, totalItems: companyPostsList.length };">
                         <div class=" talent-result ">
 
                             <div class="row">
                                 <!-- job details -->
                                 <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
+                                    <h3>{{item.gig_title}}</h3>
+                                    <p class="text-color-light">At {{item.company_name}}</p>
+                                    <p><img src="../../../assets/images/maps.png" class="maps"> 
+                                        {{item.city}}, {{item.state}}, {{item.country}}
                                     </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
+                                            <p>Skills : {{item.skills}}</p>
+                                        
+                                            <p>Experience Required : {{item.years_of_experience}} Years</p>
+                                       
                                 </div>
                                 <!-- job details -->
                                 <!-- apply job -->
                                 <div class="col-md-4 text-right">
                                     <button class="btn invite-job text-right">Posted :
-                                        2days ago</button>
-                                    <button class="btn review"><a href="#" routerLink="/jobsearch">VIEW
+                                        {{item.no_of_days}}</button>
+                                    <button class="btn review"><a [routerLink]="['/viewgig', item.post_id]">VIEW
                                             MORE</a></button>
                                 </div>
                                 <!-- apply job -->
                             </div>
                             <!-- job description -->
-                            <div class="row">
+                            <div class="row mt-3">
                                 <div class="col-md-12">
-                                    <p class="details">Employing multiple sourcing strategies for multiple job families
-                                        depending on complexity of the position to hire by effectively using sourcing
-                                        channels like Naukri, LinkedIn, Internal ATS, and Employee Referrals. Hired Top
-                                        Notch Talent for Various Job Families (Software Development Engineers/Data
-                                        Engineers, Database Administrators and IT APP Dev Engineers).
+                                    <p class="details">
+                                        {{item.gig_description}}
                                     </p>
                                 </div>
                             </div>
@@ -142,7 +129,7 @@
                             <!-- package -->
                             <div class="row mt-3 ">
                                 <div class="col-md-6">
-                                    <p>RM 100 - RM 1,000</p>
+                                    <p>{{item.payment}}</p>
                                 </div>
                                 <div class="col-md-6 featured">
                                     <h4><img src="../../../assets/images/feature.png"> FEATURED</h4>
@@ -154,7 +141,7 @@
                                 <div class="col-md-12 text-right">
 
                                     <p>
-                                        <a class="hover-effect" (click)="viewgig()">
+                                        <a class="hover-effect" [routerLink]="['/viewgig', item.post_id]">
                                             View More Details
                                             <img src="../../../assets/images/right-arrow.png">
                                         </a>
@@ -167,238 +154,13 @@
 
                         </div>
                     </div>
-                    <!-- talent preview -->
-                    <!-- talent preview -->
-                    <div class="col-md-12 mt-3">
-                        <div class=" talent-result ">
 
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Value Global Services</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right">Posted :
-                                        2days ago</button>
-                                    <button class="btn review"><a href="#" routerLink="/jobsearch">VIEW
-                                            MORE</a></button>
-                                </div>
-                                <!-- apply job -->
-
-
-                            </div>
-                            <!-- job description -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p class="details">Employing multiple sourcing strategies for multiple job families
-                                        depending on complexity of the position to hire by effectively using sourcing
-                                        channels like Naukri, LinkedIn, Internal ATS, and Employee Referrals. Hired Top
-                                        Notch Talent for Various Job Families (Software Development Engineers/Data
-                                        Engineers, Database Administrators and IT APP Dev Engineers).
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- job description -->
-                            <!-- package -->
-                            <div class="row mt-3 ">
-                                <div class="col-md-6">
-                                    <p>RM 100 - RM 1,000</p>
-                                </div>
-                                <div class="col-md-6 featured">
-                                    <h4><img src="../../../assets/images/feature.png"> FEATURED</h4>
-                                </div>
-                            </div>
-                            <!-- package -->
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" (click)="viewgig()">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- more details -->
-                        </div>
+                    <div class="row text-center col-md-12 mt-3" style="display: block;" *ngIf="companyPostsList.length > 0"> 
+                            <pagination-controls (pageChange)="this.paginationIndex = $event">
+                                </pagination-controls>
                     </div>
-                    <!-- talent preview -->
-                    <!-- talent preview -->
-                    <div class="col-md-12 mt-3">
-                        <div class=" talent-result ">
+                    
 
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right">Posted :
-                                        2days ago</button>
-                                    <button class="btn review"><a href="#" routerLink="/jobsearch">VIEW
-                                            MORE</a></button>
-                                </div>
-                                <!-- apply job -->
-
-
-                            </div>
-                            <!-- job description -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p class="details">Employing multiple sourcing strategies for multiple job families
-                                        depending on complexity of the position to hire by effectively using sourcing
-                                        channels like Naukri, LinkedIn, Internal ATS, and Employee Referrals. Hired Top
-                                        Notch Talent for Various Job Families (Software Development Engineers/Data
-                                        Engineers, Database Administrators and IT APP Dev Engineers).
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- job description -->
-                            <!-- package -->
-                            <div class="row mt-3 ">
-                                <div class="col-md-6">
-                                    <p>RM 100 - RM 1,000</p>
-                                </div>
-                                <div class="col-md-6 featured">
-                                    <h4><img src="../../../assets/images/feature.png"> FEATURED</h4>
-                                </div>
-                            </div>
-                            <!-- package -->
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" (click)="viewgig()">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- more details -->
-                        </div>
-                    </div>
-                    <!-- talent preview -->
-                    <!-- talent preview -->
-                    <div class="col-md-12 mt-3">
-                        <div class=" talent-result ">
-
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right">Posted :
-                                        2days ago</button>
-                                    <button class="btn review"><a href="#" routerLink="/jobsearch">VIEW
-                                            MORE</a></button>
-                                </div>
-                                <!-- apply job -->
-
-
-                            </div>
-                            <!-- job description -->
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p class="details">Employing multiple sourcing strategies for multiple job families
-                                        depending on complexity of the position to hire by effectively using sourcing
-                                        channels like Naukri, LinkedIn, Internal ATS, and Employee Referrals. Hired Top
-                                        Notch Talent for Various Job Families (Software Development Engineers/Data
-                                        Engineers, Database Administrators and IT APP Dev Engineers).
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- job description -->
-                            <!-- package -->
-                            <div class="row mt-3 ">
-                                <div class="col-md-6">
-                                    <p>RM 100 - RM 1,000</p>
-                                </div>
-                                <div class="col-md-6 featured">
-                                    <h4><img src="../../../assets/images/feature.png"> FEATURED</h4>
-                                </div>
-                            </div>
-                            <!-- package -->
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" (click)="viewgig()">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                </div>
-                            </div>
-                            <!-- more details -->
-                        </div>
-                    </div>
-                    <!-- talent preview -->
                 </div>
                 <!-- search results -->
 
@@ -413,7 +175,7 @@
                             <h3> {{FirstName}} {{LastName}}</h3>
                             <p>{{talentJobPreference[0].role}}</p>
                             <p>{{talentPersonalDetails.location}}</p>
-                            <button class="btn review "> <a href="#" class="anchor-dark" routerLink="/talentaccount">
+                            <button class="btn review "> <a href="#" class="anchor-dark" routerLink="/talentprofile">
                                     EDIT PROFILE
                                 </a></button>
                         </div>

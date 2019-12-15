@@ -41,10 +41,10 @@ export class CompanydashboardComponent implements OnInit {
   }
   gotoProfile() {
     if (this.loginType == 'company') {
-      this.router.navigate(['/profile'], { queryParams: { page: 'company' } });
+      this.router.navigate(['/companyprofile'], { queryParams: { page: 'company' } });
     }
     else if (this.loginType == 'individual') {
-      this.router.navigate(['/profile'], { queryParams: { page: 'individual' } });
+      this.router.navigate(['/companyprofile'], { queryParams: { page: 'individual' } });
     }
   }
   profileDetails = []; profilename; companyName;
