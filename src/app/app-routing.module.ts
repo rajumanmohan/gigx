@@ -34,6 +34,8 @@ import { ViewgigComponent } from './componants/viewgig/viewgig.component';
 import { ViewpostedgigsComponent } from './componants/viewpostedgigs/viewpostedgigs.component';
 import { PostedgigdetailsComponent } from './componants/postedgigdetails/postedgigdetails.component';
 import { Routes, RouterModule } from '@angular/router';
+import { TalentProfilesListComponent } from './componants/talentprofileslist/talentprofileslist.component';
+import { TalentProfileDetailsComponent } from './componants/talentprofiledetails/talentprofiledetails.component';
 
 const routes: Routes = [
   // {
@@ -117,7 +119,7 @@ const routes: Routes = [
     component: JobsearchComponent
   },
   {
-    path: 'talentprofile',
+    path: 'talentedit',
     component: TalentprofileComponent
 
   },
@@ -180,8 +182,16 @@ const routes: Routes = [
 
   },
   {
-    path: 'postedgigdetails',
+    path: 'postedgigdetails/:postId',
     component: PostedgigdetailsComponent
+  },
+  {
+    path: 'companytalentprofileslist/:postId',
+    component: TalentProfilesListComponent
+  },
+  {
+    path: 'profiledetails/:postId/:talentId',
+    component: TalentProfileDetailsComponent
   }
 ];
 

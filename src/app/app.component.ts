@@ -39,6 +39,7 @@ export class AppComponent {
          || event.url.indexOf('/jobsearch') > -1
          || event.url.indexOf('/appliedjobs') > -1
          || event.url.indexOf('/talentprofile') > -1
+         || event.url.indexOf('/talentedit') > -1
          || event.url.indexOf('/intrestedjobs') > -1
          || event.url.indexOf('/createajobalert') > -1 
          || event.url.indexOf('/jobalerts') > -1 
@@ -54,6 +55,10 @@ export class AppComponent {
           || event.url.indexOf('/postagig') > -1 
           || event.url.indexOf('/talentsearch') > -1 
           || event.url.indexOf('/ratingsreview') > -1 
+          || event.url.indexOf('/viewpostedgigs') > -1
+          || event.url.indexOf('/postedgigdetails') > -1
+          || event.url.indexOf('/companytalentprofileslist') > -1
+          || event.url.indexOf('/profiledetails') > -1
           ) {
             this.route.navigate(['/talentdashboard']);
           }

@@ -115,7 +115,8 @@ export class TelentregistrationComponent implements OnInit {
       linkedIn: [''],
       personal_website: [''],
       dob: [''],
-      termsConditions: [false, Validators.requiredTrue]
+      termsConditions: [false, Validators.requiredTrue],
+      about_me: ['', Validators.required]
     })
     this.registrationForm1 = this.fb.group({
       highQul: ['', Validators.required],
@@ -368,7 +369,9 @@ export class TelentregistrationComponent implements OnInit {
         "linkedin": this.registrationForm.value.linkedIn,
         "facebook": this.registrationForm.value.facebook,
         "talent_image": this.url1,
-          }
+        'about_me' : this.registrationForm.value.about_me
+          };
+          debugger;
       this.complete();
       this.getHighestQualificationList();
       this.getInstitutionsListBasedOnCountry(this.registrationForm.value.country_id);

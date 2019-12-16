@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AppServiceService } from './../../Services/app-service.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import {
@@ -15,6 +15,7 @@ import { DataStorageService } from '../../Services/data-storage.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   animations: [
     growInShrinkOut, fadeInThenOut, swingInAndOut, fadeInAndOut,
     enterAndLeaveFromLeft, enterAndLeaveFromRight, bounceInAndOut,
@@ -94,8 +95,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('company_id', (res['company_id']));
             localStorage.setItem('industry_type', (res['industry_type']));
             localStorage.setItem('registration_type', (res['registration_type']));
-            localStorage.setItem('first_name', (res['first_name']));
-            localStorage.setItem('last_name', (res['last_name']));
+            localStorage.setItem('company_name', (res['company_name']));
 
             this.dataStorage.loggedInUserData = localStorage;
           }

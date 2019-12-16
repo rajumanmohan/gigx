@@ -1,66 +1,37 @@
 <!-- heADER -->
-<div class="container-fluid main-header">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light ">
-
-            <a class="navbar-brand" routerLink="/companydashboard"><img src="../../../assets/images/logo.png"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#" routerLink="/companydashboard">Home<span
-                                class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item login-list">|</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" routerLink="/postagig">Post a Gig</a>
-                    </li>
-                    <li class="nav-item login-list">|</li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" routerLink="/talentsearch">Talent Search</a>
-                    </li>
-
-                </ul>
-            </div>
-        </nav>
-    </div>
-</div>
+<app-header></app-header>
 
 <!-- HEADER -->
 <section class="login company-registration mt-3 mb-5">
-    <div class="container create-account talent-profile-details">
+    <div class="container create-account talent-profile-details" *ngIf="companyPostDetails.gig_title">
         <!-- personal details -->
         <div class="row justify-content-center ">
             <div class="col-md-10 text-center">
-                <h1 class="text-center mb-5">GIG TITLE
+                <h1 class="text-center mb-5">{{companyPostDetails.gig_title}}
                 </h1>
-                <img src="../../../assets/images/logo.png">
-                <h3>Company Name</h3>
-                <p><img src="../../../assets/images/maps.png" class="maps">Kuala
-                    Lumpur, Malaysia
+                <img [src]="companyPostDetails.company_logo" class="img-company" *ngIf="companyPostDetails.company_logo">
+                <h3>{{companyPostDetails.company_name}}</h3>
+                <p><img src="../../../assets/images/maps.png" class="maps">
+                    {{companyPostDetails.city}}, {{companyPostDetails.state}}, {{companyPostDetails.country}}
                 </p>
 
 
 
                 <ul>
                     <li>
-                        <p class="text-color-light">RM</p>
+                        <p class="text-color-light">{{getSplitResultValue(companyPostDetails.payment, 0)}}</p>
                         <p class="text-color-light">Currency</p>
                     </li>
                     <li>
-                        <p class="text-color-light">RM 2k+</p>
+                        <p class="text-color-light">{{getSplitResultValue(companyPostDetails.payment, 1)}}</p>
                         <p class="text-color-light">Price</p>
                     </li>
                     <li>
-                        <p class="text-color-light">Per Hour</p>
+                        <p class="text-color-light">{{getSplitResultValue(companyPostDetails.payment, 2)}} {{getSplitResultValue(companyPostDetails.payment, 3)}}</p>
                         <p class="text-color-light">Payment Type</p>
                     </li>
                     <li>
-                        <p class="text-color-light">3</p>
+                        <p class="text-color-light">{{ companyPostDetails.milestones ?  companyPostDetails.milestones.length : 0}}</p>
                         <p class="text-color-light">Milestone Count</p>
                     </li>
                 </ul>
@@ -69,35 +40,35 @@
         <!-- personal details -->
         <div class="row  professional-details">
             <div class="col-md-12">
-                <h2>Gid Details</h2>
+                 
+                   <h2>Status   <button class="btn btn-status">{{companyPostDetails.status_value}}</button></h2>   
+                <h2>Gig Details</h2>
                 <div class="table-responsive">
                     <table class="table">
                         <tbody>
                             <tr>
                                 <th scope="row">GIG TITLE</th>
-                                <td>Angular 8</td>
+                                <td>{{companyPostDetails.gig_title}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">GIG DESCRIPTION</th>
-                                <td>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-                                    piece of
-                                    classical Latin</td>
+                                <td>{{companyPostDetails.gig_description}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">INDUSTRY TYPE</th>
-                                <td>IT </td>
+                                <td> {{companyPostDetails.industry}} </td>
                             </tr>
                             <tr>
                                 <th scope="row">YEARS OF EXPERIENCE</th>
-                                <td>4 Years</td>
+                                <td>{{companyPostDetails.years_of_experience}} Years</td>
                             </tr>
                             <tr>
                                 <th scope="row">ROLE</th>
-                                <td>Assosiate Manager</td>
+                                <td>{{companyPostDetails.role}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">REQUIRED SKILLS </th>
-                                <td>Angula , javascript , html , php</td>
+                                <td>{{companyPostDetails.skills}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -109,22 +80,22 @@
                         <tbody>
                             <tr>
                                 <th scope="row">COUNTRY</th>
-                                <td>Malaysia</td>
+                                <td>{{companyPostDetails.country}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">STATE</th>
                                 <td>
-                                    Kuala Lumpur </td>
+                                        {{companyPostDetails.state}} </td>
                             </tr>
                             <tr>
                                 <th scope="row">CITY</th>
                                 <td>
-                                    Kuala Lumpur </td>
+                                        {{companyPostDetails.city}} </td>
                             </tr>
                             <tr>
                                 <th scope="row">JOB LOCATION</th>
                                 <td>
-                                    Kuala Lumpur</td>
+                                        {{companyPostDetails.job_location}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -135,96 +106,94 @@
                         <tbody>
                             <tr>
                                 <th scope="row">TYPE OF PROJECTS</th>
-                                <td>Full Time</td>
+                                <td>{{companyPostDetails.type_of_project}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">NO OF VACANCIES</th>
                                 <td>
-                                    12 </td>
+                                        {{companyPostDetails.no_of_vacancies}} </td>
                             </tr>
                             <tr>
                                 <th scope="row">PROJECT START DATE</th>
                                 <td>
-                                    25-12-2019</td>
+                                        {{companyPostDetails.project_start_date}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">PROJECT END DATE</th>
                                 <td>
-                                    29-04-2020</td>
+                                        {{companyPostDetails.project_end_date}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">PROJECT PROCESS</th>
-                                <td>Individual</td>
+                                <td>  {{companyPostDetails.project_process}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">PROJECT TYPE</th>
                                 <td>
-                                    Local / Domestic Project </td>
+                                        {{companyPostDetails.project_type}} </td>
                             </tr>
                             <tr>
                                 <th scope="row">MODE OF ENGAGEMENT</th>
                                 <td>
-                                    Contract in country</td>
+                                        {{companyPostDetails.mode_of_engagement}} </td>
                             </tr>
                             <tr>
                                 <th scope="row">EXCLUSIVITY</th>
                                 <td>
-                                    Yes</td>
+                                        {{companyPostDetails.exclusivity}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">MODE OF PROJECT KICK OFF</th>
                                 <td>
-                                    In person Interview,Video</td>
+                                        {{companyPostDetails.mode_of_project_kickoff}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">PROJECT OWNER</th>
                                 <td>
-                                    Tech Systems</td>
+                                        {{companyPostDetails.project_owner}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">KEY DELIVERABLES</th>
                                 <td>
-                                    User Flow</td>
+                                        {{companyPostDetails.key_deliverables}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">PAYMENT</th>
                                 <td>
-                                    RM 1200/- per Hour</td>
+                                        {{companyPostDetails.payment}}</td>
                             </tr>
                             <tr>
                                 <th scope="row">PROJECT MILESTONE</th>
                                 <td>
-                                    yes</td>
+                                        {{companyPostDetails.project_milestone}}</td>
                             </tr>
-                            <tr style="background: #ececec; margin-bottom: 1rem;">
-                                <th scope="row">PROJECT MILESTONE 1</th>
+                            <tr style="background: #ececec; margin-bottom: 1rem;" *ngFor="let item of companyPostDetails.milestones; let i = index">
+                                <th scope="row">PROJECT MILESTONE {{i+1}}</th>
                                 <td>
                                     <div class=" milestone table-responsive">
                                         <table class="table">
                                             <tbody>
                                                 <tr>
                                                     <th scope="row">TITLE : </th>
-                                                    <td>Mile stone 1</td>
+                                                    <td>{{item.milestone_title}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">PRICE : </th>
-                                                    <td>Rm 1200</td>
+                                                    <td>{{item.milestone_price}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">START DATE:
                                                     </th>
-                                                    <td>19-12-2019</td>
+                                                    <td>{{item.milestone_start_date}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">END DATE : </th>
-                                                    <td>19-01-2020</td>
+                                                    <td>{{item.milestone_end_date}}</td>
                                                 </tr>
                                                 <tr>
                                                     <th scope="row">DESCRIPTION:
                                                     </th>
-                                                    <td>Contrary to popular belief, Lorem Ipsum is not simply random
-                                                        text. It has roots in a
-                                                        piece of</td>
+                                                    <td>{{item.milestone_description}}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -238,9 +207,12 @@
                 </div>
             </div>
             <div class="col-md-12 mt-5 mb-5">
-                <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <button class="btn ">DELETE GIG</button>
+                <div class="row">
+                    <!-- <div class="col-md-6">
+                        <button class="btn ">APPLY NOW</button>
+                    </div> -->
+                    <div class="col-md-12">
+                        <button class="btn btn-primary" routerLink="/viewpostedgigs">Back</button>
                     </div>
                 </div>
             </div>

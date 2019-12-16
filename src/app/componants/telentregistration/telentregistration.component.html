@@ -123,9 +123,18 @@
     
                                         </div>
 
-                                    <!-- <div class="form-group">
-                                       
-                                    </div> -->
+                                        <div class="row form-group">
+                                                <div class="col-md-12">
+                                                    <textarea class="form-control" formControlName="about_me" maxlength="250" rows="4"
+                                                    [ngClass]="{'is-invalid':f.about_me.errors&& submitted}" placeholder="Write Something about yourself">
+                                                    </textarea>
+                                                        
+                                                    <div class="invalid-feedback" *ngIf="f.about_me.errors">
+                                                        <div *ngIf="f.about_me.errors.required">About me is required</div>
+                                                    </div>
+                                                </div>
+                                        </div>
+
                                     <div class="form-group">
                                         <p>Gender</p>
                                         <div class="custom-control custom-radio custom-control-inline">

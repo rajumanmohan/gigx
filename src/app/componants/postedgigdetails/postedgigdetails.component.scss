@@ -1,6 +1,9 @@
 
 // HEADER CSS
 
+
+
+
 .login-list{
     margin-top: 3px;
     font-size: 24px;
@@ -13,7 +16,14 @@ a{
 }
 }
 
-.login {
+
+
+app-postedgigdetails{
+    .img-company{
+        width: 112px;
+    height: 112px;
+    border-radius: 1%;
+    }
     h1{
         font-weight: 600;
         margin-top: 4%;
@@ -32,13 +42,16 @@ a{
             font-size: 20px;
             font-weight:600;
         }
-        img{
-            width: 100px;
-            border-radius: 50%;
-            height: 100px;
-            text-align: center;
-        }
 
+        .btn-status{
+            margin-bottom: 0px !important;
+        margin: 0px;
+        width: 16% !important;
+        background: #208ac4 !important;
+        color: #fff;
+        margin-left: 50rem;
+        }
+    
 }
 
 .talent-profile-details{

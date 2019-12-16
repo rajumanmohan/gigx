@@ -6,7 +6,7 @@
     <div class="container create-account">
         <div class="row justify-content-center ">
             <div class="col-md-6">
-                <h1 class="text-center mb-5">POSTED GIGS
+                <h1 class="text-center mb-5">TALENT PROFILES
                 </h1>
             </div>
         </div>
@@ -14,7 +14,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="input-group button-search mb-3">
-                    <input type="text" class="form-control" placeholder="Gig Title" [(ngModel)]="filtroString" aria-label="Recipient's username"
+                    <input type="text" class="form-control" placeholder="Profile Name" [(ngModel)]="filtroString" aria-label="Recipient's username"
                         aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img
@@ -31,53 +31,34 @@
 
                 <div class="row">
                     <!-- job preview -->
-                    <div class="col-md-12 mt-3" *ngFor="let item of (postedGigList | filter:[{field:'gig_title', value: filtroString}]) | paginate: { itemsPerPage: itemsPerPage, currentPage: paginationIndex, totalItems: (postedGigList | filter:[{field:'gig_title', value: filtroString}]).length }">
+                    <div class="col-md-12 mt-3" *ngFor="let item of (talentProfilesList | filter:[{field:'first_name', value: filtroString}, {field:'last_name', value: filtroString}]) | paginate: { itemsPerPage: itemsPerPage, currentPage: paginationIndex, totalItems: (talentProfilesList | filter:[{field:'first_name', value: filtroString}, {field:'last_name', value: filtroString}]).length }">
                         <div class=" talent-result ">
 
                             <div class="row">
                                 <!-- job details -->
                                 <div class="col-md-8">
-                                        <h3>{{item.gig_title}}</h3>
-                                        <p class="text-color-light">At {{item.company_name}}</p>
+                                        <h3>{{item.first_name}} {{item.last_name}}</h3>
+                                        
                                         <p><img src="../../../assets/images/maps.png" class="maps"> 
                                             {{item.city}}, {{item.state}},  {{item.country}}
                                         </p>
-                                        <p>
-    
-                                        </p>
-                                        <p>Skills: {{item.skills}}</p>
+                                        <p>Mobile Number: <span class="span-info">{{item.mobile}}</span></p>
+                                        <p>Email: <span class="span-info">{{item.email}}</span></p>
+                                        <p>Skills: <span class="span-info">{{item.skills}}</span></p>
+                                        <p *ngIf="item.about_me">About me: <span class="span-info">{{item.about_me}}</span></p>
                                 </div>
                                 <!-- job details -->
                                 <!-- apply job -->
                                 <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        {{item.no_of_days}}</button>
-
-                                        <button class="btn btn-status">{{item.status_value}}</button>
-
-                                    <!-- <button class="btn review" [routerLink]="['/postedgigdetails', item.post_id]">View Details</button> -->
+                                        <img [src]="item.image" class="img-profile" *ngIf="item.image" onerror="this.style.display='none'">
                                 </div>
                                 <!-- apply job -->
                             </div>
-                            <div class="row mt-3">
-                                    <div class="col-md-12">
-                                        <p class="details">
-                                            {{item.gig_description}}
-                                        </p>
-                                    </div>
-                                </div>
 
                                 <div class="row">
-                                        <div class="row col-md-12">
-                                                <p class="col-md-9 text-right">
-                                                        <a class="hover-effect" [routerLink]="['/companytalentprofileslist', item.post_id]">
-                                                            View Talent Profiles
-                                                            <img src="../../../assets/images/right-arrow.png">
-                                                        </a>
-                                                    </p>
-                                            <p  class="col-md-3 text-right">
-                                                <a class="hover-effect" [routerLink]="['/postedgigdetails', item.post_id]">
+                                        <div class="row col-md-12 text-right">
+                                            <p  class="col-md-12 text-right">
+                                                <a class="hover-effect" [routerLink]="['/profiledetails', this.postId, item.talent_id]">
                                                     View More Details
                                                     <img src="../../../assets/images/right-arrow.png">
                                                 </a>
@@ -96,7 +77,7 @@
         </div>
 
 
-        <div class="row text-center col-md-12 mt-3" style="display: block;" *ngIf="(postedGigList| filter:[{field:'gig_title', value: filtroString}]).length > 0"> 
+        <div class="row text-center col-md-12 mt-3" style="display: block;" *ngIf="(talentProfilesList| filter:[{field:'first_name', value: filtroString}, {field:'last_name', value: filtroString}]).length > 0"> 
                 <pagination-controls (pageChange)="this.paginationIndex = $event">
                     </pagination-controls>
         </div>
