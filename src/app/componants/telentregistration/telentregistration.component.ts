@@ -482,6 +482,7 @@ export class TelentregistrationComponent implements OnInit {
       this.getRoleList();
     }
   }
+  
   get f4() { return this.jobPreferrences.controls; }
 
   submitJob() {

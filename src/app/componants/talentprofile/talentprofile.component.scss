@@ -1,3 +1,40 @@
+.talent {
+    h1{
+        font-weight: 600;
+        margin-top: 4%;
+        text-align: center;
+        font-size: 32px;
+    }
+    button{
+        border-radius:50px!important;
+        font-weight:600;
+        }
+        input {
+           margin-bottom:12px;
+            border: 1px solid #dbdbdb;
+            padding: 24px 10px;
+            margin: 0px auto;
+            box-shadow: 1px 1px 1px 0px #dbdbdb;
+        }
+         select{
+            margin-bottom: 12px;
+            border: 1px solid #dbdbdb;
+            padding: 0px 7px;
+            margin: 0px auto;
+            height: 50px;
+            box-shadow: 1px 1px 1px 0px #dbdbdb !important;
+         }
+         button{
+            width: 100%;
+            border: 0px;
+            border-radius: 3px !important;
+            padding: 10px;
+            background: #fed501!important;
+            color: #000000;
+            font-size: 15px;
+        }
+}
+
 .profile {
     h1{
         font-weight: 600;
@@ -204,9 +241,17 @@ td{
     border: 1px solid #dbdbdb;
     padding: 24px 10px;
     margin: 0px auto;
-    box-shadow: 1px 1px 1px 0px #dbdbdb !important;
+    box-shadow: 1px 1px 1px 0px #dbdbdb ;
 }
-
+.cloud-image{
+    width:30px!important;
+}
+.drag{
+    font-size: 14px;
+}
+.file-select{
+    font-size: 14px;
+}
 .upload-image {
     height: 100%;
     border-radius: 9px;
@@ -287,13 +332,15 @@ img{
       z-index: 12;
 }
 .custom-file-input {
-    position: relative!important;
-    z-index: 2!important;
-    width: 100%!important;
-    height: calc(2.25rem + 2px)!important;
-    margin: 0!important;
-    opacity: 1!important;
-    font-size: 0px!important;
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100% !important;
+    height: calc(5.25rem + 2px) !important;
+    margin: 0px !important;
+    box-shadow: none!important;
+    opacity: 1 !important;
+    border: 0px!important;
+    font-size: 0px !important;
   }
   .custom-file-input::-webkit-file-upload-button {
     visibility: hidden;
