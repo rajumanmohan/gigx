@@ -117,7 +117,7 @@ const routes: Routes = [
     component: JobsearchComponent
   },
   {
-    path: 'talentprofile',
+    path: 'talentedit',
     component: TalentprofileComponent
 
   },
