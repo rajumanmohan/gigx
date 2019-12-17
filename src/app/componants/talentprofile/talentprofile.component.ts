@@ -45,6 +45,7 @@ export class TalentprofileComponent implements OnInit {
   talentId; loginType;
   submitted = false;
   submitted1 = false;
+  submitted3 = false;
   isProfesionalCertification = false;
   editDetails = true;
   submitted4 = false;
@@ -57,7 +58,7 @@ export class TalentprofileComponent implements OnInit {
   mobile_code;
   params = {};
   url1;
-  object1 = {}; object2 = {};
+  object1 = {}; object2 = {}; stepthree_details = {};
   mydate; imageUrl; cityId;
   CountiresList;
   stateId; citiesList; talentPersonalDetails: any = []; newArr = []; talentEducationDetails; talentJobDetails; talentJobPreference; talentBankDetails;
@@ -73,7 +74,9 @@ export class TalentprofileComponent implements OnInit {
   steptwo_detailsArray = [];
   steptwo_details = {};
   type_id = 1;
+  array2 = [];
   highestQualificationList = [];
+  obj3 = {};
   private workingSinceOptions: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
   };
@@ -564,11 +567,11 @@ export class TalentprofileComponent implements OnInit {
         var tempForm = this.f2.controls as FormGroup[];
         var qualifications = {
           "hq_id": tempForm[i].controls['high_qualification'].value,
-          "other_highest_qualification": tempForm[i].controls['professional_certification1'] ? tempForm[i].controls['professional_certification1'].value : '',
-          "university_id": tempForm[i].controls['institution1'].value,
-          "year_of_completion": tempForm[i].controls['year_of_completion1'].value,
-          "professional_qualification": tempForm[i].controls['professional_qualification1'].value,
-          "mode_of_study": tempForm[i].controls['degree1'].value,
+          "other_highest_qualification": tempForm[i].controls['professional_certification'] ? tempForm[i].controls['professional_certification'].value : '',
+          "university_id": tempForm[i].controls['institution'].value,
+          "year_of_completion": tempForm[i].controls['year_of_completion'].value,
+          "professional_qualification": tempForm[i].controls['professional_qualification'].value,
+          "mode_of_study": tempForm[i].controls['degree'].value,
           "country_id": tempForm[i].controls['country'].value,
         }
         this.steptwo_detailsArray.push(qualifications);
@@ -606,23 +609,46 @@ export class TalentprofileComponent implements OnInit {
 
 
     this.showEducationDetails = false;
-    // for (var i = this.t.length; i < this.talentEducationDetails.length; i++) {
-    //   this.t.push(this.fb.group({
-    //     other_highest_qualification: [this.talentEducationDetails[i].highest_qualification, Validators.required],
-    //     professional_qualification: [this.talentEducationDetails[i].professional_qualification, Validators.required],
-    //     university_name: [this.talentEducationDetails[i].university_name, Validators.required],
-    //     year_of_completion: [this.talentEducationDetails[i].year_of_completion, Validators.required],
-    //     mode_of_study: [this.talentEducationDetails[i].mode_of_study, Validators.required],
-    //     educational_id: [this.talentEducationDetails[i].educational_id]
-    //   }));
-    // }
+    console.log("talent details", this.talentEducationDetails);
+    for (var i = this.f2.length; i < this.talentEducationDetails.length; i++) {
+      this.f2.push(this.fb.group({
+        other_highest_qualification: [this.talentEducationDetails[i].highest_qualification, Validators.required],
+        professional_qualification: [this.talentEducationDetails[i].professional_qualification, Validators.required],
+        university_name: [this.talentEducationDetails[i].university_name, Validators.required],
+        year_of_completion: [this.talentEducationDetails[i].year_of_completion, Validators.required],
+        mode_of_study: [this.talentEducationDetails[i].mode_of_study, Validators.required],
+        educational_id: [this.talentEducationDetails[i].educational_id]
+
+      }));
+    }
 
   }
 
   showEditJob() {
     this.editjob = false;
     this.showWorkExperienceDetails = true;
+    for (var i = this.f5.length; i < this.talentJobDetails.length; i++) {
+      this.f5.push(this.fb.group({
+        current_designation: [this.talentJobDetails[i].current_designation, Validators.required],
+        current_company: [this.talentJobDetails[i].current_company, Validators.required],
+        annual_salary: [this.talentJobDetails[i].annual_salary, Validators.required],
+        currency_type: [this.talentJobDetails[i].annual_salary.split(/[0-9]/)[0], Validators.required],
+        currency_type1: [this.talentJobDetails[i].annual_salary.split('Laks')[0].split(/(\d+)/)[1], Validators.required],
+        currency_type2: [this.talentJobDetails[i].annual_salary.split(" ")[2].split('Thousand')[0], Validators.required],
+        working_period: [this.talentJobDetails[i].working_period, Validators.required],
+        working_period1: [this.talentJobDetails[i].working_period.split("to")[0].split("-")[0], Validators.required],
+        working_period2: [this.talentJobDetails[i].working_period.split("to")[0].split("-")[1], Validators.required],
+        working_period3: [this.talentJobDetails[i].working_period.split("to")[0].split("-")[2].replace(/ +/g, ""), Validators.required],
+        working_period4: [this.talentJobDetails[i].working_period.split("to")[1].split("-")[0].replace(/ +/g, ""), Validators.required],
+        working_period5: [this.talentJobDetails[i].working_period.split("to")[1].split("-")[1], Validators.required],
+        working_period6: [this.talentJobDetails[i].working_period.split("to")[1].split("-")[2], Validators.required],
+        location: [this.talentJobDetails[i].location, Validators.required],
+        industry_type: [this.talentJobDetails[i].industry_type, Validators.required],
+        role: [this.talentJobDetails[i].role, Validators.required],
+        jobdetails_id: [this.talentJobDetails[i].jobdetails_id]
+      }));
 
+    }
   }
   showEditPreferences() {
     this.editjobpreference = false;
@@ -686,9 +712,9 @@ export class TalentprofileComponent implements OnInit {
     this.f2.push(this.fb.group({
       high_qualification: ['', Validators.required],
       institution1: ['', Validators.required],
-      year_of_completion1: ['', Validators.required],
-      degree1: ['Full time'],
-      professional_qualification1: [''],
+      year_of_completion: ['', Validators.required],
+      degree: ['Full time'],
+      professional_qualification: [''],
       country: ['', Validators.required]
     }));
     this.type_id += 1;
@@ -823,8 +849,171 @@ export class TalentprofileComponent implements OnInit {
     }
   }
   // edit job preference
+  // edit work experience
+  addEmployee() {
+    // this.multiEmployee.push({
+    //   highQul: ''
+    // })
+    this.f5.push(this.fb.group({
+      work_experience: ['', Validators.required],
+      current_company: ['', Validators.required],
+      currency_type: ['', Validators.required],
+      // currency_type1: ['', Validators.required],
+      // currency_type2: ['', Validators.required],
+      annual_salary: [''],
+      industry_type: ['', Validators.required],
+      "working_from": ['', Validators.required],
+      "working_to": ['', Validators.required],
+      "role": ['', Validators.required],
+      "role_desc": ['', Validators.required],
+      "salary_input": ['', Validators.required],
+      location: ['', Validators.required],
+      // date: ['', Validators.required],
+      // month: ['', Validators.required],
+      // year: ['', Validators.required],
+      // date1: ['', Validators.required],
+      // month1: ['', Validators.required],
+      // year1: ['', Validators.required]
+    }))
+
+
+    this.workingFromOptions.push({
+      dateFormat: 'dd/mm/yyyy'
+    });
+
+    this.workingToOptions.push({
+      dateFormat: 'dd/mm/yyyy'
+    });
+
+  }
+  remove1(x) {
+    this.index = x;
+    this.type_id -= 1;
+
+    this.f5.controls.splice(x, 1);
+
+    this.submitted3 = false;
+    this.f5.markAsPristine();
+    this.f5.markAsUntouched();
+    this.f5.updateValueAndValidity();
+
+  }
+  get f3() { return this.employeeForm.controls; }
+  get f5() { return this.f3.job_details as FormArray }
+  addEmployeeForm() {
+    this.employeeForm.value.annual_salary = this.employeeForm.value.currency_type + "" + this.employeeForm.value.currency_type1 + "Laks " + " " + this.employeeForm.value.currency_type2 + "Thousand";
+    this.employeeForm.value.working_period = this.employeeForm.value.year + "-" + this.employeeForm.value.month + "-" + this.employeeForm.value.date + " to" + 'present';
+    delete this.employeeForm.value.currency_type;
+    delete this.employeeForm.value.currency_type1;
+    delete this.employeeForm.value.currency_type2;
+    this.employeeForm.value.desired_employment_type = this.empType;
+    for (var i = 0; i < this.employeeForm.value.job_details.length; i++) {
+      this.employeeForm.value.job_details[i].annual_salary = this.employeeForm.value.job_details[i].currency_type + "" + this.employeeForm.value.job_details[i].currency_type1 + "Laks " + " " + this.employeeForm.value.job_details[i].currency_type2 + "Thousand";
+      delete this.employeeForm.value.job_details[i].currency_type;
+      delete this.employeeForm.value.job_details[i].currency_type1;
+      delete this.employeeForm.value.job_details[i].currency_type2;
+      this.employeeForm.value.job_details[i].working_period = this.employeeForm.value.job_details[i].date + "-" + this.employeeForm.value.job_details[i].month + "- " + this.employeeForm.value.job_details[i].year + "to" + this.employeeForm.value.job_details[i].date1 + "-" + this.employeeForm.value.job_details[i].month1 + "- " + this.employeeForm.value.job_details[i].year1;
+      delete this.employeeForm.value.job_details[i].date;
+      delete this.employeeForm.value.job_details[i].month;
+      delete this.employeeForm.value.job_details[i].year;
+      delete this.employeeForm.value.job_details[i].date1;
+      delete this.employeeForm.value.job_details[i].month1;
+      delete this.employeeForm.value.job_details[i].year1;
+    }
+
+    this.obj3["current_designation"] = this.employeeForm.value.current_designation;
+    this.obj3["current_company"] = this.employeeForm.value.current_company;
+    this.obj3["annual_salary"] = this.employeeForm.value.annual_salary;
+    this.obj3["working_period"] = this.employeeForm.value.working_period;
+    this.obj3["location"] = this.employeeForm.value.location;
+    this.obj3["industry_type"] = this.employeeForm.value.industry_type;
+    this.obj3["role"] = this.employeeForm.value.role;
+
+    // this.employeeForm.value.skills = this.newArr;
+    this.submitted3 = true;
+    if (this.employeeForm.invalid) {
+      return;
+    } else {
+      var tempObj = {
+        "work_experience": "",
+        "company": "",
+        "salary": "",
+        "working_period": "",
+        "location": "",
+        "industry_id": "",
+        "role_id": "",
+        "role_description": ""
+      }
+
+      var tempEmployeeArray = [];
+
+      var selectedWorkingSinceDate = this.employeeForm.controls['working_since'].value.date;
+      tempObj.work_experience = this.employeeForm.controls['work_experience'].value;
+      tempObj.company = this.employeeForm.controls['current_company'].value
+      tempObj.salary = `${this.employeeForm.controls['currency_type'].value} ${this.employeeForm.controls['salary_input'].value}`;
+      tempObj.working_period = `${selectedWorkingSinceDate.year}-${selectedWorkingSinceDate.month}-${selectedWorkingSinceDate.day} to present`;
+      tempObj.location = this.employeeForm.controls['location'].value;
+      tempObj.industry_id = this.employeeForm.controls['industry_type'].value;
+      tempObj.role_id = this.employeeForm.controls['role'].value;
+      tempObj.role_description = this.employeeForm.controls['role_desc'].value;
+
+      tempEmployeeArray.push(tempObj);
+
+
+      var tempFormGroupArray = this.employeeForm.controls['job_details'] as FormArray;
+      for (var i = 0; i < tempFormGroupArray.length; i++) {
+        var tempFormGroup = tempFormGroupArray.controls[i] as FormGroup;
+        var internalObj = {
+          "work_experience": "",
+          "company": "",
+          "salary": "",
+          "working_period": "",
+          "location": "",
+          "industry_id": "",
+          "role_id": "",
+          "role_description": ""
+        };
+
+        var selectedWorkingFromDate = tempFormGroup.controls['working_from'].value.date;
+        var selectedWorkingToDate = tempFormGroup.controls['working_to'].value.date;
+        internalObj.work_experience = tempFormGroup.controls['work_experience'].value;
+        internalObj.company = tempFormGroup.controls['current_company'].value;
+        internalObj.salary = `${tempFormGroup.controls['currency_type'].value} ${tempFormGroup.controls['salary_input'].value}`;
+        internalObj.working_period = `${selectedWorkingFromDate.year}-${selectedWorkingFromDate.month}-${selectedWorkingFromDate.day} to ${selectedWorkingToDate.year}-${selectedWorkingToDate.month}-${selectedWorkingToDate.day}`;
+        internalObj.location = tempFormGroup.controls['location'].value;
+        internalObj.industry_id = tempFormGroup.controls['industry_type'].value;
+        internalObj.role_id = tempFormGroup.controls['role'].value;
+        internalObj.role_description = tempFormGroup.controls['role_desc'].value;
+        tempEmployeeArray.push(internalObj);
+      }
+
+
+
+      this.stepthree_details = {
+        "job_details": tempEmployeeArray
+      }
+      console.log('stepthree_details');
+      console.log(this.stepthree_details);
+      this.employeeForm.value.job_details.unshift(this.obj3);
+      console.log("step 3", this.employeeForm.value)
+      this.array2 = this.employeeForm.value.job_details;
+
+      if (this.jobPreferrences.controls['preference_industry_type'].value == 'null'
+        || !this.jobPreferrences.controls['preference_industry_type'].value) {
+        this.jobPreferrences.patchValue({ 'preference_industry_type': null });
+      }
+
+      if (this.jobPreferrences.controls['preference_role'].value == 'null'
+        || !this.jobPreferrences.controls['preference_role'].value) {
+        this.jobPreferrences.patchValue({ 'preference_role': null });
+      }
+    }
+  }
+
+
+  // edit work experience
   editBank;
-  get f5() { return this.editBankDetailsForm.controls; };
+  get f6() { return this.editBankDetailsForm.controls; };
   addBankAccount() {
     this.submitted5 = true;
     this.editBank = true;
