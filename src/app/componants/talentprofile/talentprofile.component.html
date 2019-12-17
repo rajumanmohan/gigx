@@ -489,7 +489,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">PROFESSIONAL QUALIFICATION</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">{{data.professional_qualification}}</span>
+                                    <span *ngIf="edit==false">{{data.highest_qualification}}</span>
 
                                 </td>
                             </tr>
@@ -535,7 +535,7 @@
                         <div class="col-md-6">
                             <form [formGroup]="registrationForm1">
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
 
                                     <select class="form-control" id="exampleFormControlSelect1"
                                         formControlName="highQul" (change)="onHighestQualificationChange($event)"
@@ -559,9 +559,9 @@
                                             required
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="row form-group">
+                                <!-- <div class="row form-group">
                                     <div class="col-md-6">
                                         <select class="form-control" id="country" formControlName="country"
                                             (change)="onQualificationCountryChange($event.target.value)"
@@ -593,9 +593,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <select class="form-control" id="exampleFormControlSelect1"
                                         placeholder="Year of Completion" formControlName="year_of_completion"
                                         [ngClass]="{'is-invalid':f1.year_of_completion.errors&& submitted1}">
@@ -610,13 +610,13 @@
                                         <div *ngIf="f1.year_of_completion.errors.required">Year of completion is
                                             required</div>
                                     </div>
-                                </div>
-                                <div class="form-group">
+                                </div> -->
+                                <!-- <div class="form-group">
                                     <input type="text" class="form-control" id="professional_qualification"
                                         placeholder="Professional Qualification "
                                         formControlName="professional_qualification">
-                                </div>
-                                <div class="form-group">
+                                </div> -->
+                                <!-- <div class="form-group">
                                     <p>Mode of Study</p>
                                     <div class="custom-control custom-radio custom-control-inline"
                                         (change)="chnageDegree($event)">
@@ -639,7 +639,7 @@
                                         <label class="custom-control-label" for="customRadioInlinex.3">
                                             Online</label>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div>
 
@@ -678,13 +678,13 @@
                                             <div class="form-group"
                                                 *ngIf="education.controls.high_qualification.value == 4">
 
-                                                <input type="text" class="form-control" id="professional_certification1"
+                                                <input type="text" class="form-control" id="professional_certification"
                                                     placeholder="Please Specify"
-                                                    formControlName="professional_certification1">
+                                                    formControlName="professional_certification">
                                                 <div class="custom-invalid-feedback"
-                                                    *ngIf="education.controls.professional_certification1.errors">
+                                                    *ngIf="education.controls.professional_certification.errors">
                                                     <div
-                                                        *ngIf="education.controls.professional_certification1.errors.required">
+                                                        *ngIf="education.controls.professional_certification.errors.required">
                                                         Specialization is required
                                                     </div>
                                                 </div>
@@ -712,8 +712,8 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <select class="form-control" id="institution1"
-                                                        formControlName="institution1"
-                                                        [ngClass]="{ 'is-invalid':education.controls.institution1.errors&& submitted1 }">
+                                                        formControlName="institution"
+                                                        [ngClass]="{ 'is-invalid':education.controls.institution.errors&& submitted1 }">
                                                         <option [value]=null [selected]="true">Select Institute of
                                                             Learning </option>
                                                         <option *ngFor="let data of institutionsListCustom[i]"
@@ -723,8 +723,8 @@
                                                     </select>
 
                                                     <div class="invalid-feedback"
-                                                        *ngIf="education.controls.institution1.errors">
-                                                        <div *ngIf="education.controls.institution1.errors.required">
+                                                        *ngIf="education.controls.institution.errors">
+                                                        <div *ngIf="education.controls.institution.errors.required">
                                                             Institution is required
                                                         </div>
                                                     </div>
@@ -733,8 +733,8 @@
 
                                             <div class="form-group">
                                                 <select class="form-control" id="year_of_completion1"
-                                                    placeholder="Industry Type" formControlName="year_of_completion1"
-                                                    [ngClass]="{'is-invalid':education.controls.year_of_completion1.errors&& submitted1}">
+                                                    placeholder="Industry Type" formControlName="year_of_completion"
+                                                    [ngClass]="{'is-invalid':education.controls.year_of_completion.errors&& submitted1}">
                                                     <option value="company" [disabled]="true" [selected]="true">Year of
                                                         Completion
                                                     </option>
@@ -743,17 +743,17 @@
 
 
                                                 </select>
-                                                <div *ngIf="education.controls.year_of_completion1.errors"
+                                                <div *ngIf="education.controls.year_of_completion.errors"
                                                     class="invalid-feedback">
-                                                    <div *ngIf="education.controls.year_of_completion1.errors.required">
+                                                    <div *ngIf="education.controls.year_of_completion.errors.required">
                                                         Year of complition is
                                                         required</div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="professional_qualification1"
+                                                <input type="text" class="form-control" id="professional_qualification"
                                                     placeholder="Professional Qualification"
-                                                    formControlName="professional_qualification1">
+                                                    formControlName="professional_qualification">
                                             </div>
                                             <div class="form-group">
                                                 <p>Mode of Study</p>
