@@ -33,7 +33,7 @@ export class HeaderComponent implements OnInit {
       }
     }
     else if(this.dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT){
-      this.router.navigate(['/talentprofile']);
+      this.router.navigate(['/talentedit']);
     }
   }
 }

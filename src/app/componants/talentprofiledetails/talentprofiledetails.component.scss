@@ -1,0 +1,162 @@
+.profile {
+    h1{
+        font-weight: 600;
+        margin-top: 4%;
+    }
+img{
+    border-radius: 2%;
+    width: 108px;
+    height: 100px;
+    padding: 3px;
+    margin-bottom: 18px;
+}
+}
+
+.contact-details {
+    h2{
+        width:100%;
+        background:#f1f1f1;
+        font-size: 22px;
+        padding: 10px;
+    }
+    span{
+        font-weight: bold;
+        margin-right: 12px;
+    }
+    td{
+        color:#8f8f8f;
+    }
+}
+.contact-title {
+    font-weight:600;
+    width:30%;
+    color:#000000!important;
+   
+}
+.login{
+    // button{
+    //     width: 80%;
+    //     border: 0px;
+    //     border-radius: 3px !important;
+    //     padding: 10px;
+    //     background: #fed501 !important;
+    //     color: #000000;
+    //     font-size: 20px;
+    //     font-weight: 600;
+    // }
+    .edit-input {
+        display: inline-block ;
+        padding: 0px;
+        margin: 0px;
+        width:90%;
+    }
+}
+// HEADER CSS
+
+.login-list{
+    margin-top: 3px;
+    font-size: 24px;
+}
+.main-header {
+    box-shadow: 2px 3px 6px 0px #e1e1e1;
+a{
+    font-size:19px;
+    color:#000000;
+}
+}
+
+
+h1{
+    font-size: 20px;
+}
+h3{
+    font-size: 20px;
+}
+
+.upload-image{
+    label{
+        display: table;
+        color: #000000;
+        text-align:center;
+        width: 100%;
+        cursor:pointer;
+         }
+   
+    img{
+        margin-top: 2%;
+        position: absolute;
+        background: #ffffff; 
+        z-index: 999;
+        width: 120px;
+        height: 120px;
+        left: 40%;
+    }
+}
+.upload-imnage {
+    margin-top: -109%!important;
+}
+
+.profile-image {
+      background: #ffffff; 
+      position: relative;
+      height: 120px;
+      width: 120px;
+      margin-top: 4%;
+      z-index: 12;
+}
+.custom-file-input {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    margin: 0;
+    opacity: 1;
+
+  }
+  .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom-file-input::before {
+    content: 'Upload Image';
+    color: white;
+    display: inline-block;
+    background: #208ac4;
+    border-radius: 3px;
+    text-align: center;
+    padding: 8px;
+    width: 100%;
+    outline: none;
+    font-weight: 100;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  .custom-file-input:hover::before {
+    border-color: black;
+  }
+  .custom-file-input:active {
+    outline: 0;
+  }
+  .custom-file-input:active::before {
+    background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9); 
+  }
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199.98px) {  }
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991.98px) {  }
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767.98px) { 
+    .login{
+        button{
+    margin-bottom:12px;
+        }
+    }
+    .contact-details {
+td{
+    font-size:10px;
+}
+    }
+
+ }
+@media (max-width: 575.98px) {  }

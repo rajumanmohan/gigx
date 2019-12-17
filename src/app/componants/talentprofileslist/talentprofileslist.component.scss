@@ -1,4 +1,6 @@
-
+.span-info{
+    color: #8f8f8f;
+}
 
 .login {
     h1{
@@ -6,7 +8,7 @@
         margin-top: 4%;
         font-size: 32px;
     }
-  
+    
         input {
            margin-bottom:12px;
             border: 1px solid #dbdbdb;
@@ -41,7 +43,7 @@
 
 }
 
-app-viewpostedgigs{
+app-talentprofileslist{
     .btn-status{
         margin-bottom: 0px !important;
     margin: 0px;
@@ -52,6 +54,11 @@ app-viewpostedgigs{
 
     p.details{
         font-weight: 500 !important;
+    }
+
+    .img-profile{
+        width: 40%;
+        border-radius: 0;
     }
 
     button{
@@ -190,11 +197,11 @@ app-viewpostedgigs{
         background: none;
         text-align:left;
     }
-    img{
-        width: 100%;
-        border-radius: 50%;
-        text-align: center;
-    }
+    // img{
+    //     width: 100%;
+    //     border-radius: 50%;
+    //     text-align: center;
+    // }
     h3 {
         font-weight:600;
         font-size:27px;

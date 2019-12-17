@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
@@ -7,10 +7,13 @@ import {
   bounceInAndOut, enterAndLeaveFromLeft, enterAndLeaveFromRight, fadeInAndOut,
   fadeInThenOut, growInShrinkOut, swingInAndOut
 } from '../../triggers';
+import { DataStorageService } from 'src/app/Services/data-storage.service';
+import { AppServiceService } from 'src/app/Services/app-service.service';
 @Component({
   selector: 'app-intrestedjobs',
   templateUrl: './intrestedjobs.component.html',
   styleUrls: ['./intrestedjobs.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   animations: [
     growInShrinkOut, fadeInThenOut, swingInAndOut, fadeInAndOut,
     enterAndLeaveFromLeft, enterAndLeaveFromRight, bounceInAndOut,
@@ -21,13 +24,12 @@ import {
   ]
 })
 export class IntrestedjobsComponent implements OnInit {
-  HideIntrestedJobs1 = true;
-  HideIntrestedJobs2 = true;
-  HideIntrestedJobs3 = true;
-  HideIntrestedJobs4 = true;
-  HideIntrestedJobs5 = true;
-  HideIntrestedJobs6 = true;
-  constructor(private router: Router,private toast: ToastrService) {
+
+  paginationIndex = 0;
+  itemsPerPage = 5;
+  companyPostsList = [];
+
+  constructor(private router: Router,private toast: ToastrService, private dataStorage: DataStorageService, private appSer: AppServiceService) {
 
     if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
       this.toast.warning('Please Login', "warning");
@@ -37,28 +39,15 @@ export class IntrestedjobsComponent implements OnInit {
    }
   ngOnInit() {
     window.scroll(0, 0);
+    this.getCompanyPosts();
   }
-  hide1() {
-    this.HideIntrestedJobs1 = false;
-  }
-  hide2() {
-    this.HideIntrestedJobs2 = false;
-
-  }
-  hide3() {
-    this.HideIntrestedJobs3 = false;
-
-  }
-  hide4() {
-    this.HideIntrestedJobs4 = false;
-
-  }
-  hide5() {
-    this.HideIntrestedJobs5 = false;
-
-  }
-  hide6() {
-    this.HideIntrestedJobs6 = false;
-
+ 
+  getCompanyPosts(){
+    var requestObj = {
+      talent_id: this.dataStorage.loggedInUserData.talent_id
+    };
+    this.appSer.getCompanyPostsForTalent(requestObj).subscribe((res) => {
+        this.companyPostsList = res['jobposts'];
+    });
   }
 }

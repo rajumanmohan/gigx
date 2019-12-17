@@ -5,7 +5,7 @@
     <div class="container create-account">
         <div class="row justify-content-center ">
             <div class="col-md-6">
-                <h1 class="text-center mb-5">INTRESTED GIGS
+                <h1 class="text-center mb-5">INTERESTED GIGS
                 </h1>
             </div>
         </div>
@@ -13,7 +13,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="input-group button-search mb-3">
-                    <input type="text" class="form-control" placeholder="Talent Specialist"
+                    <input type="text" class="form-control" placeholder="Gig Title" [(ngModel)]="filtroString"
                         aria-label="Recipient's username" aria-describedby="button-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img
@@ -29,401 +29,86 @@
             <div class="col-md-12 search-results">
 
                 <div class="row">
-                    <!-- job preview -->
-                    <div class="col-md-12 mt-3" *ngIf="HideIntrestedJobs1" [@fadeInAndOut]>
-                        <div class=" talent-result ">
 
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right" (click)="hide1()"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        2days ago <span><img
-                                                src="../../../assets/images/cancel-button.png"></span></button>
-                                    <button class="btn review">APPLY</button>
-                                </div>
-                                <!-- apply job -->
-                            </div>
-
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" data-toggle="collapse" href="#collapseExample1"
-                                            role="button" aria-expanded="false" aria-controls="collapseExample1">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample1">
-                                        <div class="card card-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                            richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                                            anderson cred nesciunt sapiente ea proident.
+                        <div class="col-md-12 mt-3"  [@fadeInAndOut] *ngFor="let item of (companyPostsList| filter:[{field:'gig_title', value: filtroString}])  | paginate: { itemsPerPage: itemsPerPage, currentPage: paginationIndex, totalItems: (companyPostsList | filter:[{field:'gig_title', value: filtroString}]).length };">
+                                <div class=" talent-result ">
+        
+                                    <div class="row">
+                                        <!-- job details -->
+                                        <div class="col-md-8">
+                                            <h3>{{item.gig_title}}</h3>
+                                            <p class="text-color-light">At {{item.company_name}}</p>
+                                            <p><img src="../../../assets/images/maps.png" class="maps"> 
+                                                {{item.city}}, {{item.state}}, {{item.country}}
+                                            </p>
+                                                    <p>Skills : {{item.skills}}</p>
+                                                
+                                                    <p>Experience Required : {{item.years_of_experience}} Years</p>
+                                               
+                                        </div>
+                                        <!-- job details -->
+                                        <!-- apply job -->
+                                        <div class="col-md-4 text-right">
+                                            <button class="btn invite-job text-right">Posted :
+                                                {{item.no_of_days}}</button>
+                                           
+                                        </div>
+                                        <!-- apply job -->
+                                    </div>
+                                    <!-- job description -->
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <p class="details">
+                                                {{item.gig_description}}
+                                            </p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <!-- more details -->
-                        </div>
-                    </div>
-                    <!-- job preview -->
-                    <!-- job preview -->
-                    <div class="col-md-12 mt-3" *ngIf="HideIntrestedJobs2" [@fadeInAndOut]>
-                        <div class=" talent-result ">
-
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right" (click)="hide2()"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        2days ago <span><img
-                                                src="../../../assets/images/cancel-button.png"></span></button>
-                                    <button class="btn review">APPLY</button>
-                                </div>
-                                <!-- apply job -->
-                            </div>
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" data-toggle="collapse" href="#collapseExample2"
-                                            role="button" aria-expanded="false" aria-controls="collapseExample2">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample2">
-                                        <div class="card card-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                            richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                                            anderson cred nesciunt sapiente ea proident.
+                                    <!-- job description -->
+                                    <!-- package -->
+                                    <div class="row mt-3 ">
+                                        <div class="col-md-6">
+                                            <p>{{item.payment}}</p>
+                                        </div>
+                                        <div class="col-md-6 featured">
+                                            <h4><img src="../../../assets/images/feature.png"> FEATURED</h4>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <!-- more details -->
-
-                        </div>
-                    </div>
-                    <!-- job preview -->
-                    <!-- job preview -->
-                    <div class="col-md-12 mt-3" *ngIf="HideIntrestedJobs3 " [@fadeInAndOut]>
-                        <div class=" talent-result ">
-
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right" (click)="hide3()"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        2days ago <span><img
-                                                src="../../../assets/images/cancel-button.png"></span></button>
-                                    <button class="btn review">APPLY</button>
-                                </div>
-                                <!-- apply job -->
-                            </div>
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" data-toggle="collapse" href="#collapseExample3"
-                                            role="button" aria-expanded="false" aria-controls="collapseExample3">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample3">
-                                        <div class="card card-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                            richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                                            anderson cred nesciunt sapiente ea proident.
+                                    <!-- package -->
+                                    <!-- more details -->
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+        
+                                            <p>
+                                                <a class="hover-effect" [routerLink]="['/viewgig', item.post_id]">
+                                                    View More Details
+                                                    <img src="../../../assets/images/right-arrow.png">
+                                                </a>
+                                            </p>
                                         </div>
                                     </div>
+                                    <!-- more details -->
+        
+        
+        
                                 </div>
                             </div>
-                            <!-- more details -->
 
-                        </div>
-                    </div>
-                    <!-- job preview -->
-                    <!-- job preview -->
-                    <div class="col-md-12 mt-3" *ngIf="HideIntrestedJobs4" [@fadeInAndOut]>
-                        <div class=" talent-result ">
-
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right" (click)="hide4()"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        2days ago <span><img
-                                                src="../../../assets/images/cancel-button.png"></span></button>
-                                    <button class="btn review">APPLY</button>
-                                </div>
-                                <!-- apply job -->
-                            </div>
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" data-toggle="collapse" href="#collapseExample4"
-                                            role="button" aria-expanded="false" aria-controls="collapseExample4">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample4">
-                                        <div class="card card-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                            richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                                            anderson cred nesciunt sapiente ea proident.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- more details -->
-
-                        </div>
-                    </div>
-                    <!-- job preview -->
-                    <!-- job preview -->
-                    <div class="col-md-12 mt-3" *ngIf="HideIntrestedJobs5" [@fadeInAndOut]>
-                        <div class=" talent-result ">
-
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right" (click)="hide5()"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        2days ago <span><img
-                                                src="../../../assets/images/cancel-button.png"></span></button>
-                                    <button class="btn review">APPLY</button>
-                                </div>
-                                <!-- apply job -->
-                            </div>
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" data-toggle="collapse" href="#collapseExample5"
-                                            role="button" aria-expanded="false" aria-controls="collapseExample5">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample5">
-                                        <div class="card card-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                            richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                                            anderson cred nesciunt sapiente ea proident.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- more details -->
-
-                        </div>
-                    </div>
-                    <!-- job preview -->
-                    <!-- job preview -->
-                    <div class="col-md-12 mt-3" *ngIf="HideIntrestedJobs6" [@fadeInAndOut]>
-                        <div class=" talent-result ">
-
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right" (click)="hide6()"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        2days ago <span><img
-                                                src="../../../assets/images/cancel-button.png"></span></button>
-                                    <button class="btn review">APPLY</button>
-                                </div>
-                                <!-- apply job -->
-                            </div>
-
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" data-toggle="collapse" href="#collapseExample6"
-                                            role="button" aria-expanded="false" aria-controls="collapseExample6">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample6">
-                                        <div class="card card-body">
-                                            Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-                                            richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes
-                                            anderson cred nesciunt sapiente ea proident.
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- more details -->
-                        </div>
-                    </div>
-                    <!-- job preview -->
+                    
                 </div>
+
+
+
             </div>
 
             <!-- search details -->
         </div>
 
 
-
-        <nav aria-label="Page navigation example ">
-            <ul class="pagination justify-content-end mt-5">
-
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-
-            </ul>
-        </nav>
+        <div class="row text-center col-md-12 mt-3" style="display: block;" *ngIf="(companyPostsList | filter:[{field:'gig_title', value: filtroString}]).length > 0"> 
+                <pagination-controls (pageChange)="this.paginationIndex = $event">
+                    </pagination-controls>
+        </div>
+        
     </div>
 
 </section>

@@ -54,6 +54,9 @@ import { TestlistComponent } from './componants/testlist/testlist.component';
 import { ViewgigComponent } from './componants/viewgig/viewgig.component';
 import { ViewpostedgigsComponent } from './componants/viewpostedgigs/viewpostedgigs.component';
 import { PostedgigdetailsComponent } from './componants/postedgigdetails/postedgigdetails.component';
+import { PipesModule } from 'w-ng5';
+import { TalentProfilesListComponent } from './componants/talentprofileslist/talentprofileslist.component';
+import { TalentProfileDetailsComponent } from './componants/talentprofiledetails/talentprofiledetails.component';
 
 @Pipe({ name: 'safe' })
 @NgModule({
@@ -95,7 +98,9 @@ import { PostedgigdetailsComponent } from './componants/postedgigdetails/postedg
     TestlistComponent,
     ViewgigComponent,
     ViewpostedgigsComponent,
-    PostedgigdetailsComponent
+    PostedgigdetailsComponent,
+    TalentProfilesListComponent,
+    TalentProfileDetailsComponent
   ],
   imports: [
     AutocompleteLibModule,
@@ -114,6 +119,7 @@ import { PostedgigdetailsComponent } from './componants/postedgigdetails/postedg
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     NgxPaginationModule,
+    PipesModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 100,

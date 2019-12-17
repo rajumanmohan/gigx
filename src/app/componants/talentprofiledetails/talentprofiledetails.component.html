@@ -1,0 +1,319 @@
+<!-- heADER -->
+<app-header></app-header>
+<!-- HEADER -->
+<section class="login mt-2" [@fadeInAndOut]>
+    <div class="container profile">
+        <!-- <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">PROFILE DETAILS</h1>
+            </div>
+        </div> -->
+        <div class="row justify-content-center  mt-2 mb-2">
+            <div class="col-md-6 text-center">
+                <div class="form-group">
+                    <img src="{{personalDetails.image_url}}{{personalDetails.image}}" alt="" class="profile-image">
+                </div>
+            </div>
+
+        </div>
+        <div class="row contact-details">
+            <div class="col-md-12">
+                <h2>PERSONAL DETAILS</h2>
+                <div class="table-responsive">
+                    <table class="table b-0">
+
+                        <tbody class="b-0">
+                            <tr class="b-0" *ngIf="personalDetails.first_name">
+                                <td class="b-0 contact-title">Full Name</td>
+                                <td class="b-0"><span>:</span>
+                                    <span>{{personalDetails.first_name}} {{personalDetails.last_name}}</span>
+                                </td>
+                            </tr>
+                            <tr class="b-0" *ngIf="personalDetails.email">
+                                <td class="b-0 contact-title">Email</td>
+                                <td class="b-0"><span>:</span>
+                                    <span>{{personalDetails.email}}</span>
+                                </td>
+                            </tr>
+                            <tr class="b-0" *ngIf="personalDetails.mobile">
+                                <td class="b-0 contact-title">Mobile Number</td>
+                                <td class="b-0"><span>:</span>
+                                    <span>{{personalDetails.mobile}}</span>
+                                </td>
+                            </tr>
+                            <tr class="b-0" *ngIf="personalDetails.gender">
+                                <td class="b-0 contact-title">Gender</td>
+                                <td class="b-0"><span>:</span>
+                                    <span>{{personalDetails.gender}}</span>
+                                </td>
+                            </tr>
+                            <tr class="b-0" *ngIf="personalDetails.dob">
+                                <td class="b-0 contact-title">Date of Birth</td>
+                                <td class="b-0"><span>:</span>
+                                    <span>{{personalDetails.dob}}</span>
+                                </td>
+                            </tr>
+                            <tr class="b-0" *ngIf="personalDetails.country">
+                                <td class="b-0 contact-title">Country</td>
+                                <td class="b-0"><span>:</span>
+                                    <span>{{personalDetails.country}}</span>
+                                </td>
+                            </tr>
+                            <tr class="b-0" *ngIf="personalDetails.state">
+                                <td class="b-0 contact-title">State</td>
+                                <td class="b-0"><span>:</span>
+                                    <span>{{personalDetails.state}}</span>
+                                </td>
+                            </tr>
+                            <tr class="b-0" *ngIf="personalDetails.city">
+                                <td class="b-0 contact-title">City</td>
+                                <td class="b-0"><span>:</span>
+                                    <span>{{personalDetails.city}}</span>
+                                </td>
+                            </tr>
+                            <tr class="b-0" *ngIf="personalDetails.location">
+                                <td class="b-0 contact-title">Location</td>
+                                <td class="b-0"><span>:</span>
+                                    <span>{{personalDetails.location}}</span>
+                                </td>
+                            </tr>
+                            <tr class="b-0" *ngIf="personalDetails.facebook">
+                                <td class="b-0 contact-title">Facebook Url</td>
+                                <td class="b-0"><span>:</span>
+                                    <span>{{personalDetails.facebook}}</span>
+                                </td>
+                            </tr>
+                            <tr class="b-0" *ngIf="personalDetails.linkedin">
+                                <td class="b-0 contact-title">Linkedin Url</td>
+                                <td class="b-0"><span>:</span>
+                                    <span>{{personalDetails.linkedin}}</span>
+                                </td>
+                            </tr>
+                            <tr class="b-0" *ngIf="personalDetails.twitter">
+                                <td class="b-0 contact-title">Twitter Url</td>
+                                <td class="b-0"><span>:</span>
+                                    <span>{{personalDetails.twitter}}</span>
+                                </td>
+                            </tr>
+                            <tr class="b-0" *ngIf="personalDetails.personal_website">
+                                <td class="b-0 contact-title">Personal Website</td>
+                                <td class="b-0"><span>:</span>
+                                    <span>{{personalDetails.personal_website}}</span>
+                                </td>
+                            </tr>
+
+                            <!-- attachment  video -->
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-12" *ngIf="educationalDetails.length > 0">
+                <h2>EDUCATIONAL DETAILS</h2>
+                <div class="table-responsive">
+                    <table class="table b-0">
+                        <tbody class="b-0">
+                            <tr style="background: #ececec; margin-bottom: 1rem;"
+                                *ngFor="let item of educationalDetails; let i = index">
+                                <td>
+                                    <div class=" milestone table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr class="b-0" *ngIf="item.highest_qualification">
+                                                    <td class="b-0 contact-title">Highest Qualification</td>
+                                                    <td class="b-0"><span>:</span>
+                                                        <span>{{item.highest_qualification}}</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                <tr class="b-0" *ngIf="item.mode_of_study">
+                                                    <td class="b-0 contact-title">Mode of Study</td>
+                                                    <td class="b-0"><span>:</span>
+                                                        <span>{{item.mode_of_study}}</span>
+                                                    </td>
+                                                </tr>
+                                                <tr class="b-0" *ngIf="item.professional_qualification">
+                                                        <td class="b-0 contact-title">Professional Qualification</td>
+                                                        <td class="b-0"><span>:</span>
+                                                            <span>{{item.professional_qualification}}</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="b-0" *ngIf="item.university_name">
+                                                            <td class="b-0 contact-title">University</td>
+                                                            <td class="b-0"><span>:</span>
+                                                                <span>{{item.university_name}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="b-0" *ngIf="item.year_of_completion">
+                                                                <td class="b-0 contact-title">Year of Completion</td>
+                                                                <td class="b-0"><span>:</span>
+                                                                    <span>{{item.year_of_completion}}</span>
+                                                                </td>
+                                                            </tr>
+                                                <tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-12" *ngIf="jobDetails.length > 0">
+                    <h2>JOB DETAILS</h2>
+                    <div class="table-responsive">
+                        <table class="table b-0">
+                            <tbody class="b-0">
+                                <tr style="background: #ececec; margin-bottom: 1rem;"
+                                    *ngFor="let item of jobDetails; let i = index">
+                                    <td>
+                                        <div class=" milestone table-responsive">
+                                            <table class="table">
+                                                <tbody>
+                                                    <tr class="b-0" *ngIf="item.current_company">
+                                                        <td class="b-0 contact-title">Current Company</td>
+                                                        <td class="b-0"><span>:</span>
+                                                            <span>{{item.current_company}}</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                    <tr class="b-0" *ngIf="item.industry_name">
+                                                        <td class="b-0 contact-title">Industry</td>
+                                                        <td class="b-0"><span>:</span>
+                                                            <span>{{item.industry_name}}</span>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="b-0" *ngIf="item.location">
+                                                            <td class="b-0 contact-title">Location</td>
+                                                            <td class="b-0"><span>:</span>
+                                                                <span>{{item.location}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="b-0" *ngIf="item.role">
+                                                                <td class="b-0 contact-title">Role</td>
+                                                                <td class="b-0"><span>:</span>
+                                                                    <span>{{item.role}}</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="b-0" *ngIf="item.role_description">
+                                                                    <td class="b-0 contact-title">Role Description</td>
+                                                                    <td class="b-0"><span>:</span>
+                                                                        <span>{{item.role_description}}</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="b-0" *ngIf="item.salary">
+                                                                        <td class="b-0 contact-title">Salary</td>
+                                                                        <td class="b-0"><span>:</span>
+                                                                            <span>{{item.salary}}</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="b-0" *ngIf="item.work_experience">
+                                                                            <td class="b-0 contact-title">Work Experience</td>
+                                                                            <td class="b-0"><span>:</span>
+                                                                                <span>{{item.work_experience}}</span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="b-0" *ngIf="item.working_period">
+                                                                                <td class="b-0 contact-title">Working Period</td>
+                                                                                <td class="b-0"><span>:</span>
+                                                                                    <span>{{item.working_period}}</span>
+                                                                                </td>
+                                                                            </tr>
+                                                    <tr>
+                                                </tbody>
+                                            </table>
+    
+                                        </div>
+    
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-md-12" *ngIf="jobPreferences.length > 0">
+                        <h2>JOB DETAILS</h2>
+                        <div class="table-responsive">
+                            <table class="table b-0">
+                                <tbody class="b-0">
+                                    <tr style="background: #ececec; margin-bottom: 1rem;"
+                                        *ngFor="let item of jobPreferences; let i = index">
+                                        <td>
+                                            <div class=" milestone table-responsive">
+                                                <table class="table">
+                                                    <tbody>
+                                                        <tr class="b-0" *ngIf="item.employment_type">
+                                                            <td class="b-0 contact-title">Employment Type</td>
+                                                            <td class="b-0"><span>:</span>
+                                                                <span>{{item.employment_type}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                        <tr class="b-0" *ngIf="item.industry_name">
+                                                            <td class="b-0 contact-title">Industry</td>
+                                                            <td class="b-0"><span>:</span>
+                                                                <span>{{item.industry_name}}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr class="b-0" *ngIf="item.location">
+                                                                <td class="b-0 contact-title">Location</td>
+                                                                <td class="b-0"><span>:</span>
+                                                                    <span>{{item.location}}</span>
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="b-0" *ngIf="item.role">
+                                                                    <td class="b-0 contact-title">Role</td>
+                                                                    <td class="b-0"><span>:</span>
+                                                                        <span>{{item.role}}</span>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr class="b-0" *ngIf="item.other_role">
+                                                                        <td class="b-0 contact-title">Other Role</td>
+                                                                        <td class="b-0"><span>:</span>
+                                                                            <span>{{item.other_role}}</span>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr class="b-0" *ngIf="item.skills">
+                                                                            <td class="b-0 contact-title">Skills</td>
+                                                                            <td class="b-0"><span>:</span>
+                                                                                <span>{{item.skills}}</span>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr class="b-0" *ngIf="item.work_preferences">
+                                                                                <td class="b-0 contact-title">Work Preferences</td>
+                                                                                <td class="b-0"><span>:</span>
+                                                                                    <span>{{item.work_preferences}}</span>
+                                                                                </td>
+                                                                            </tr>
+                                                        <tr>
+                                                    </tbody>
+                                                </table>
+        
+                                            </div>
+        
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                  
+        </div>
+       
+    </div>
+    <div class="row col-md-12 mb-5">
+            <div class="col-md-7">
+                <!-- <button class="btn " (click)="onApplyGigClick()">APPLY NOW</button> -->
+            </div>
+            <div class="col-md-4">
+                <button class="btn btn-primary" [routerLink]="['/companytalentprofileslist', postId]">Back</button>
+            </div>
+    </div>
+</section>
