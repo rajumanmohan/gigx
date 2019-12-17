@@ -303,5 +303,28 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'viewAppliedGigs.php', params, { headers })
   }
  
+  getInterestedGigs(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'viewInterestedGigs.php', params, { headers })
+  }
+
+  setInterestedGig(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'setInterestedGig.php', params, { headers })
+  }
+
+  deleteInterestedGig(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'deleteInterestedGig.php', params, { headers })
+  }
  
 }

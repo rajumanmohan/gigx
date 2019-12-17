@@ -210,7 +210,7 @@
                         <button class="btn " (click)="onApplyGigClick()">APPLY NOW</button>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-primary" routerLink="/talentdashboard">Back</button>
+                        <button class="btn btn-primary" [routerLink]="flag == 1 ? ['/talentdashboard'] : ['/intrestedjobs']">Back</button>
                     </div>
                 </div>
             </div>

@@ -91,7 +91,7 @@ const routes: Routes = [
     component: PostagigComponent
   },
   {
-    path: 'viewgig/:postId',
+    path: 'viewgig/:postId/:flag',
     component: ViewgigComponent
   },
   {

@@ -110,9 +110,13 @@
                                 <!-- job details -->
                                 <!-- apply job -->
                                 <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right">Posted :
+                                       
+                                    <button class="btn invite-job text-right">  
+                                        <img style="margin-right: 1rem;" *ngIf="item.flag == 1" (click)="onNotInterestedClick(item)" src="../../../assets/images/star.png" class="maps">
+                                        <img style="margin-right: 1rem;"  *ngIf="item.flag == 0" (click)="onInterestedClick(item)" src="../../../assets/images/star-1.png" class="maps">
+                                        Posted :
                                         {{item.no_of_days}}</button>
-                                    <button class="btn review"><a [routerLink]="['/viewgig', item.post_id]">VIEW
+                                    <button class="btn review"><a [routerLink]="['/viewgig', item.post_id, 1]">VIEW
                                             MORE</a></button>
                                 </div>
                                 <!-- apply job -->
@@ -141,7 +145,7 @@
                                 <div class="col-md-12 text-right">
 
                                     <p>
-                                        <a class="hover-effect" [routerLink]="['/viewgig', item.post_id]">
+                                        <a class="hover-effect" [routerLink]="['/viewgig', item.post_id, 1]">
                                             View More Details
                                             <img src="../../../assets/images/right-arrow.png">
                                         </a>
@@ -175,7 +179,7 @@
                             <h3> {{FirstName}} {{LastName}}</h3>
                             <p>{{talentJobPreference[0].role}}</p>
                             <p>{{talentPersonalDetails.location}}</p>
-                            <button class="btn review "> <a href="#" class="anchor-dark" routerLink="/talentprofile">
+                            <button class="btn review "> <a href="#" class="anchor-dark" routerLink="/talentedit">
                                     EDIT PROFILE
                                 </a></button>
                         </div>
