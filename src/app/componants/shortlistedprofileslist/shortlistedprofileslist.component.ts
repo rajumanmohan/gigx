@@ -12,9 +12,9 @@ import { FormBuilder, FormGroup, Validators, FormArray, AbstractControl, FormCon
 import { ToastrService } from 'ngx-toastr';
 import { IMyDpOptions } from 'mydatepicker';
 @Component({
-  selector: 'app-talentprofileslist',
-  templateUrl: './talentprofileslist.component.html',
-  styleUrls: ['./talentprofileslist.component.scss'],
+  selector: 'app-shortlistedprofileslist',
+  templateUrl: './shortlistedprofileslist.component.html',
+  styleUrls: ['./shortlistedprofileslist.component.scss'],
   encapsulation: ViewEncapsulation.None,
   animations: [
     growInShrinkOut, fadeInThenOut, swingInAndOut, fadeInAndOut,
@@ -25,12 +25,12 @@ import { IMyDpOptions } from 'mydatepicker';
     ]),
   ]
 })
-export class TalentProfilesListComponent implements OnInit {
+export class ShortlistedProfilesListComponent implements OnInit {
   postId;
   talentProfilesList = [];
-  gigDetails = {};
   paginationIndex = 0;
   itemsPerPage = 5;
+  gigDetails ={};
   
   constructor(public route: ActivatedRoute, private appSer: AppServiceService, private toast: ToastrService) { 
     this.postId = route.snapshot.params.postId;
@@ -38,24 +38,37 @@ export class TalentProfilesListComponent implements OnInit {
 
   ngOnInit() {
     window.scroll(0, 0);
-    this.getTalentProfilesByPostId();
+    this.getShortlistedProfilesByPostId();
   }
 
-  getTalentProfilesByPostId(){
-    this.appSer.getTalentProfilesByPostId(this.postId).subscribe((res) => {
+  getShortlistedProfilesByPostId(){
+    this.appSer.getShortlistedTalentProfilesByPostId(this.postId).subscribe((res) => {
         this.talentProfilesList = res['talentProfiles'];
         this.gigDetails = res['gigDetails'][0];
     });
   }
 
-  onInviteClick(item){
-    var requestObj = {post_id: this.postId, talent_id: item.talent_id}
-    this.appSer.inviteTalentByPostId(requestObj).subscribe((res) => {
+  onAcceptClick(talentId){
+    var requestObj = {post_id: this.postId, talent_id: talentId}
+    this.appSer.acceptTalentByPostId(requestObj).subscribe((res) => {
       if (res['status'] == 200) {
         this.toast.success(res['message'], "success");
-        //this.talentProfilesList =[];
-        //this.getRejectedTalentProfilesByPostId();
-        item.is_invited = true;
+        this.talentProfilesList =[];
+        this.getShortlistedProfilesByPostId();
+      } else {
+        this.toast.error(res['message'], "error");
+
+      }
+  });
+  }
+
+  onRejectClick(talentId){
+    var requestObj = {post_id: this.postId, talent_id: talentId}
+    this.appSer.rejectTalentByPostId(requestObj).subscribe((res) => {
+      if (res['status'] == 200) {
+        this.toast.success(res['message'], "success");
+        this.talentProfilesList =[];
+        this.getShortlistedProfilesByPostId();
       } else {
         this.toast.error(res['message'], "error");
 

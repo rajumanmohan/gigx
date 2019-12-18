@@ -58,6 +58,10 @@ export class AppComponent {
           || event.url.indexOf('/viewpostedgigs') > -1
           || event.url.indexOf('/postedgigdetails') > -1
           || event.url.indexOf('/companytalentprofileslist') > -1
+          || event.url.indexOf('/appliedprofileslist') > -1
+          || event.url.indexOf('/shortlistedprofileslist') > -1
+          || event.url.indexOf('/acceptedprofileslist') > -1
+          || event.url.indexOf('/rejectedprofileslist') > -1
           || event.url.indexOf('/profiledetails') > -1
           ) {
             this.route.navigate(['/talentdashboard']);

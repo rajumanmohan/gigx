@@ -44,12 +44,39 @@
 }
 
 app-talentprofileslist{
+
+     
+    .btn-invite{
+        width: 70%;
+    color: #fff;
+    background-color: #007bff !important;
+    }
+
+     
+    .btn-applied{
+        width: 70%;
+    color: #000;
+    background-color: #fed501 !important;
+    }
+    .hover-effect {
+        color:#000000;
+        img{
+            width:16px!important;
+        }
+    }
     .btn-status{
         margin-bottom: 0px !important;
     margin: 0px;
     width: 50% !important;
     background: #208ac4 !important;
     color: #fff;
+    }
+    
+
+    .btn-back{ 
+    //     color: #fff;
+    // background-color: #007bff;
+    // border-color: #007bff;
     }
 
     p.details{

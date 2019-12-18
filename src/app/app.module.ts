@@ -57,6 +57,10 @@ import { PostedgigdetailsComponent } from './componants/postedgigdetails/postedg
 import { PipesModule } from 'w-ng5';
 import { TalentProfilesListComponent } from './componants/talentprofileslist/talentprofileslist.component';
 import { TalentProfileDetailsComponent } from './componants/talentprofiledetails/talentprofiledetails.component';
+import { AppliedProfilesListComponent } from './componants/appliedprofileslist/appliedprofileslist.component';
+import { ShortlistedProfilesListComponent } from './componants/shortlistedprofileslist/shortlistedprofileslist.component';
+import { AcceptedProfilesListComponent } from './componants/acceptedprofileslist/acceptedprofileslist.component';
+import { RejectedProfilesListComponent } from './componants/rejectedprofileslist/rejectedprofileslist.component';
 
 @Pipe({ name: 'safe' })
 @NgModule({
@@ -100,7 +104,11 @@ import { TalentProfileDetailsComponent } from './componants/talentprofiledetails
     ViewpostedgigsComponent,
     PostedgigdetailsComponent,
     TalentProfilesListComponent,
-    TalentProfileDetailsComponent
+    TalentProfileDetailsComponent,
+    AppliedProfilesListComponent,
+    ShortlistedProfilesListComponent,
+    AcceptedProfilesListComponent,
+    RejectedProfilesListComponent
   ],
   imports: [
     AutocompleteLibModule,

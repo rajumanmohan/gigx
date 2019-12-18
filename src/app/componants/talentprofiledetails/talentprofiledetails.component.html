@@ -313,7 +313,11 @@
                 <!-- <button class="btn " (click)="onApplyGigClick()">APPLY NOW</button> -->
             </div>
             <div class="col-md-4">
-                <button class="btn btn-primary" [routerLink]="['/companytalentprofileslist', postId]">Back</button>
+                <button class="btn btn-primary" *ngIf="flag == 1" [routerLink]="['/companytalentprofileslist', postId]">Back</button>
+                <button class="btn btn-primary" *ngIf="flag == 2" [routerLink]="['/appliedprofileslist', postId]">Back</button>
+                <button class="btn btn-primary" *ngIf="flag == 3" [routerLink]="['/shortlistedprofileslist', postId]">Back</button>
+                <button class="btn btn-primary" *ngIf="flag == 4" [routerLink]="['/acceptedprofileslist', postId]">Back</button>
+                <button class="btn btn-primary" *ngIf="flag == 5" [routerLink]="['/rejectedprofileslist', postId]">Back</button>
             </div>
     </div>
 </section>

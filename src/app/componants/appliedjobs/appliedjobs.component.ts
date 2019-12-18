@@ -46,7 +46,6 @@ export class AppliedjobsComponent implements OnInit {
     var requestObj = {'talent_id': this.dataStorage.loggedInUserData.talent_id};
     this.appSer.getAppliedGigs(requestObj).subscribe((res) => {
         this.appliedGigList = res['appliedGigs'];
-        debugger;
     });
   }
 

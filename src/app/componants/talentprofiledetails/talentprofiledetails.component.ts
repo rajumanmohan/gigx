@@ -28,6 +28,7 @@ import { IMyDpOptions } from 'mydatepicker';
 export class TalentProfileDetailsComponent implements OnInit {
   talentId;
   postId;
+  flag;
 
   personalDetails = {};
   educationalDetails = [];
@@ -41,6 +42,7 @@ export class TalentProfileDetailsComponent implements OnInit {
   constructor(public route: ActivatedRoute, private appSer: AppServiceService) { 
     this.talentId = route.snapshot.params.talentId;
     this.postId = route.snapshot.params.postId;
+    this.flag = route.snapshot.params.flag;
   }
 
   ngOnInit() {
