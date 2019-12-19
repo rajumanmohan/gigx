@@ -27,7 +27,7 @@ export class IntrestedjobsComponent implements OnInit {
 
   paginationIndex = 0;
   itemsPerPage = 5;
-  companyPostsList = [];
+  interestedGigsList = [];
 
   constructor(private router: Router,private toast: ToastrService, private dataStorage: DataStorageService, private appSer: AppServiceService) {
 
@@ -39,15 +39,15 @@ export class IntrestedjobsComponent implements OnInit {
    }
   ngOnInit() {
     window.scroll(0, 0);
-    this.getCompanyPosts();
+    this.getInterestedGigs();
   }
  
-  getCompanyPosts(){
+  getInterestedGigs(){
     var requestObj = {
       talent_id: this.dataStorage.loggedInUserData.talent_id
     };
-    this.appSer.getCompanyPostsForTalent(requestObj).subscribe((res) => {
-        this.companyPostsList = res['jobposts'];
+    this.appSer.getInterestedGigs(requestObj).subscribe((res) => {
+        this.interestedGigsList = res['interestedGigs'];
     });
   }
 }

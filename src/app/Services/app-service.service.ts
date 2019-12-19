@@ -303,5 +303,91 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'viewAppliedGigs.php', params, { headers })
   }
  
+  getInterestedGigs(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'viewInterestedGigs.php', params, { headers })
+  }
+
+  setInterestedGig(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'setInterestedGig.php', params, { headers })
+  }
+
+  deleteInterestedGig(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'deleteInterestedGig.php', params, { headers })
+  }
  
+  getAppliedTalentProfilesByPostId(postId){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'getAppliedTalentProfilesByPostId.php?post_id=' + postId, { headers })
+  }
+
+  shortlistTalentByPostId(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'shortlistTalentByPostId.php', params, { headers })
+  }
+
+  getShortlistedTalentProfilesByPostId(postId){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'getShortlistedTalentProfilesByPostId.php?post_id=' + postId, { headers })
+  }
+
+  acceptTalentByPostId(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'acceptTalentByPostId.php', params, { headers })
+  }
+
+  rejectTalentByPostId(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'rejectTalentByPostId.php', params, { headers })
+  }
+
+  getAcceptedTalentProfilesByPostId(postId){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'getAcceptedTalentProfilesByPostId.php?post_id=' + postId, { headers })
+  }
+
+  getRejectedTalentProfilesByPostId(postId){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'getRejectedTalentProfilesByPostId.php?post_id=' + postId, { headers })
+  }
+
+  inviteTalentByPostId(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'inviteTalentByPostId.php', params, { headers })
+  }
 }

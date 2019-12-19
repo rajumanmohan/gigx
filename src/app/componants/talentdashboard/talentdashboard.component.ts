@@ -8,6 +8,7 @@ import {
   bounceInAndOut, enterAndLeaveFromLeft, enterAndLeaveFromRight, fadeInAndOut,
   fadeInThenOut, growInShrinkOut, swingInAndOut
 } from '../../triggers';
+import { DataStorageService } from 'src/app/Services/data-storage.service';
 @Component({
   selector: 'app-talentdashboard',
   templateUrl: './talentdashboard.component.html',
@@ -28,7 +29,7 @@ export class TalentdashboardComponent implements OnInit {
   itemsPerPage = 5;
 
   imgBaseUrl = "https://gigxglobal.com/talent_images/";
-  constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService) {
+  constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService, private dataStorage: DataStorageService) {
     this.talentId = localStorage.getItem('talent_id');
     this.loginType = localStorage.getItem('industry_type');
     if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
@@ -75,4 +76,36 @@ export class TalentdashboardComponent implements OnInit {
         this.companyPostsList = res['jobposts'];
     });
   }
+
+  onInterestedClick(item){
+    var requestObj = {'talent_id': this.dataStorage.loggedInUserData.talent_id, 'post_id' : item.post_id}
+    this.appSer.setInterestedGig(requestObj).subscribe((res)=>{
+      if (res['status'] == 200) {
+        this.toast.success(res['message'], "success");
+        item.flag = 1;
+      } else {
+        this.toast.error(res['message'], "error");
+
+      }
+      
+      //this.createGigForm.reset();
+      //this.createGigForm.markAsPristine();
+    });
+  }
+  onNotInterestedClick(item){
+    var requestObj = {'talent_id': this.dataStorage.loggedInUserData.talent_id, 'post_id' : item.post_id}
+    this.appSer.deleteInterestedGig(requestObj).subscribe((res)=>{
+      if (res['status'] == 200) {
+        this.toast.success(res['message'], "success");
+        item.flag = 0;
+      } else {
+        this.toast.error(res['message'], "error");
+
+      }
+      
+      //this.createGigForm.reset();
+      //this.createGigForm.markAsPristine();
+    });
+  }
+
 }

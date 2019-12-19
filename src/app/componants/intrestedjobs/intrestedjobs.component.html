@@ -30,7 +30,7 @@
 
                 <div class="row">
 
-                        <div class="col-md-12 mt-3"  [@fadeInAndOut] *ngFor="let item of (companyPostsList| filter:[{field:'gig_title', value: filtroString}])  | paginate: { itemsPerPage: itemsPerPage, currentPage: paginationIndex, totalItems: (companyPostsList | filter:[{field:'gig_title', value: filtroString}]).length };">
+                        <div class="col-md-12 mt-3"  [@fadeInAndOut] *ngFor="let item of (interestedGigsList| filter:[{field:'gig_title', value: filtroString}])  | paginate: { itemsPerPage: itemsPerPage, currentPage: paginationIndex, totalItems: (interestedGigsList | filter:[{field:'gig_title', value: filtroString}]).length };">
                                 <div class=" talent-result ">
         
                                     <div class="row">
@@ -79,7 +79,7 @@
                                         <div class="col-md-12 text-right">
         
                                             <p>
-                                                <a class="hover-effect" [routerLink]="['/viewgig', item.post_id]">
+                                                <a class="hover-effect" [routerLink]="['/viewgig', item.post_id, 2]">
                                                     View More Details
                                                     <img src="../../../assets/images/right-arrow.png">
                                                 </a>
@@ -104,7 +104,7 @@
         </div>
 
 
-        <div class="row text-center col-md-12 mt-3" style="display: block;" *ngIf="(companyPostsList | filter:[{field:'gig_title', value: filtroString}]).length > 0"> 
+        <div class="row text-center col-md-12 mt-3" style="display: block;" *ngIf="(interestedGigsList | filter:[{field:'gig_title', value: filtroString}]).length > 0"> 
                 <pagination-controls (pageChange)="this.paginationIndex = $event">
                     </pagination-controls>
         </div>

@@ -1,4 +1,6 @@
-
+.span-info{
+    color: #8f8f8f;
+}
 
 .login {
     h1{
@@ -6,7 +8,7 @@
         margin-top: 4%;
         font-size: 32px;
     }
-  
+    
         input {
            margin-bottom:12px;
             border: 1px solid #dbdbdb;
@@ -41,7 +43,20 @@
 
 }
 
-app-viewpostedgigs{
+app-appliedprofileslist{
+
+    .btn-shortlist{
+        width: 70%;
+    color: #fff;
+    background-color: #007bff !important;
+    }
+
+    .hover-effect {
+        color:#000000;
+        img{
+            width:16px!important;
+        }
+    }
     .btn-status{
         margin-bottom: 0px !important;
     margin: 0px;
@@ -50,8 +65,19 @@ app-viewpostedgigs{
     color: #fff;
     }
 
+    .btn-back{ 
+    //     color: #fff;
+    // background-color: #007bff;
+    // border-color: #007bff;
+    }
+
     p.details{
         font-weight: 500 !important;
+    }
+
+    .img-profile{
+        width: 40%;
+        border-radius: 0;
     }
 
     button{
@@ -62,69 +88,6 @@ app-viewpostedgigs{
         background: #fed501!important;
         color: #000000;
         font-size: 20px;
-    }
-
-    .talent-result{
-        background: #f2f2f2;
-        padding: 18px;
-        outline: none;
-        box-shadow: none;
-        .card.card-body {
-            border: 0px;
-            background: none;
-            text-align:left;
-        }
-        img{
-            width: 100%;
-            border-radius: 50%;
-            text-align: center;
-        }
-        h3 {
-            font-weight:600;
-            font-size:27px;
-        }
-        p{
-            font-weight:600;
-            margin:0px;
-            padding-top:12px;
-        }
-        .text-color-light{
-            color: #878787;;
-        }
-        .maps{
-            width: auto;
-        vertical-align: sub;
-        }
-        ul{
-            list-style: none;
-            margin:0px;
-            text-align: left;
-            li{
-                margin-left:0px;
-                margin-right:5%;
-                margin-top:12px;
-                display: inline-block;
-                p{
-                    font-weight:600
-                    }
-            }
-        }
-        button{
-            margin-bottom:15px;
-            font-size:15px;
-        }
-        .invite-job{
-            background: none!important;
-          img{
-              width:auto;
-          }
-        }
-        .review {
-            background: #fed501 !important;
-            border-radius: 4px !important; 
-            width: 62%;
-            margin-top: 25%;
-        }
     }
 }
 
@@ -243,7 +206,68 @@ app-viewpostedgigs{
     }
 }
 
-
+.talent-result{
+    background: #f2f2f2;
+    padding: 18px;
+    outline: none;
+    box-shadow: none;
+    .card.card-body {
+        border: 0px;
+        background: none;
+        text-align:left;
+    }
+    // img{
+    //     width: 100%;
+    //     border-radius: 50%;
+    //     text-align: center;
+    // }
+    h3 {
+        font-weight:600;
+        font-size:27px;
+    }
+    p{
+        font-weight:600;
+        margin:0px;
+        padding-top:12px;
+    }
+    .text-color-light{
+        color: #878787;;
+    }
+    .maps{
+        width: auto;
+    vertical-align: sub;
+    }
+    ul{
+        list-style: none;
+        margin:0px;
+        text-align: left;
+        li{
+            margin-left:0px;
+            margin-right:5%;
+            margin-top:12px;
+            display: inline-block;
+            p{
+                font-weight:600
+                }
+        }
+    }
+    button{
+        margin-bottom:15px;
+        font-size:15px;
+    }
+    .invite-job{
+        background: none!important;
+      img{
+          width:auto;
+      }
+    }
+    .review {
+        background: #fed501 !important;
+        border-radius: 4px !important; 
+        width: 62%;
+        margin-top: 25%;
+    }
+}
 .filter-section{
     ul{
         list-style: none;

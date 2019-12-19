@@ -36,6 +36,10 @@ import { PostedgigdetailsComponent } from './componants/postedgigdetails/postedg
 import { Routes, RouterModule } from '@angular/router';
 import { TalentProfilesListComponent } from './componants/talentprofileslist/talentprofileslist.component';
 import { TalentProfileDetailsComponent } from './componants/talentprofiledetails/talentprofiledetails.component';
+import { AppliedProfilesListComponent } from './componants/appliedprofileslist/appliedprofileslist.component';
+import { ShortlistedProfilesListComponent } from './componants/shortlistedprofileslist/shortlistedprofileslist.component';
+import { AcceptedProfilesListComponent } from './componants/acceptedprofileslist/acceptedprofileslist.component';
+import { RejectedProfilesListComponent } from './componants/rejectedprofileslist/rejectedprofileslist.component';
 
 const routes: Routes = [
   // {
@@ -91,7 +95,7 @@ const routes: Routes = [
     component: PostagigComponent
   },
   {
-    path: 'viewgig/:postId',
+    path: 'viewgig/:postId/:flag',
     component: ViewgigComponent
   },
   {
@@ -190,9 +194,25 @@ const routes: Routes = [
     component: TalentProfilesListComponent
   },
   {
-    path: 'profiledetails/:postId/:talentId',
+    path: 'profiledetails/:postId/:talentId/:flag',
     component: TalentProfileDetailsComponent
-  }
+  },
+  {
+    path: 'appliedprofileslist/:postId',
+    component: AppliedProfilesListComponent
+  },
+  {
+    path: 'shortlistedprofileslist/:postId',
+    component: ShortlistedProfilesListComponent
+  },
+  {
+    path: 'acceptedprofileslist/:postId',
+    component: AcceptedProfilesListComponent
+  },
+  {
+    path: 'rejectedprofileslist/:postId',
+    component: RejectedProfilesListComponent
+  },
 ];
 
 @NgModule({

@@ -5,8 +5,8 @@
 <section class="login company-registration mt-3 mb-5">
     <div class="container create-account">
         <div class="row justify-content-center ">
-            <div class="col-md-10">
-                <h1 class="text-center mb-5">{{gigDetails.gig_title }} {{gigDetails.gig_title &&  '-' }} TALENT PROFILES
+            <div class="col-md-9">
+                <h1 class="text-center mb-5">{{gigDetails.gig_title }} {{gigDetails.gig_title &&  '-' }} REJECTED PROFILES
                 </h1>
             </div>
         </div>
@@ -57,9 +57,7 @@
                                 <!-- job details -->
                                 <!-- apply job -->
                                 <div class="col-md-4 text-right">
-                                        <button class="btn-applied"  *ngIf="item.is_applied">Already Applied</button>
-                                        <button class="btn-invite" *ngIf="!item.is_applied && !item.is_invited" (click)="onInviteClick(item)">Invite</button>
-                                        <button class="btn-applied" *ngIf="!item.is_applied && item.is_invited">Already Invited</button>
+                                        <button class="btn-accept" (click)="onAcceptClick(item.talent_id)">Accept</button>
                                         <img [src]="item.image" class="img-profile" *ngIf="item.image" onerror="this.style.display='none'">
                                 </div>
                                 <!-- apply job -->
@@ -68,7 +66,7 @@
                                 <div class="row">
                                         <div class="row col-md-12 text-right">
                                             <p  class="col-md-12 text-right">
-                                                <a class="hover-effect" [routerLink]="['/profiledetails', this.postId, item.talent_id, 1]">
+                                                <a class="hover-effect" [routerLink]="['/profiledetails', this.postId, item.talent_id, 5]">
                                                     View More Details
                                                     <img src="../../../assets/images/right-arrow.png">
                                                 </a>
