@@ -91,7 +91,8 @@
                 <!-- search results -->
                 <div class="row ">
                     <!-- talent preview -->
-                    <div class="col-md-12 mt-3" *ngFor="let item of companyPostsList  | paginate: { itemsPerPage: itemsPerPage, currentPage: paginationIndex, totalItems: companyPostsList.length };">
+                    <div class="col-md-12 mt-3"
+                        *ngFor="let item of companyPostsList  | paginate: { itemsPerPage: itemsPerPage, currentPage: paginationIndex, totalItems: companyPostsList.length };">
                         <div class=" talent-result ">
 
                             <div class="row">
@@ -99,13 +100,13 @@
                                 <div class="col-md-8">
                                     <h3>{{item.gig_title}}</h3>
                                     <p class="text-color-light">At {{item.company_name}}</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> 
+                                    <p><img src="../../../assets/images/maps.png" class="maps">
                                         {{item.city}}, {{item.state}}, {{item.country}}
                                     </p>
-                                            <p>Skills : {{item.skills}}</p>
-                                        
-                                            <p>Experience Required : {{item.years_of_experience}} Years</p>
-                                       
+                                    <p>Skills : {{item.skills}}</p>
+
+                                    <p>Experience Required : {{item.years_of_experience}} Years</p>
+
                                 </div>
                                 <!-- job details -->
                                 <!-- apply job -->
@@ -155,11 +156,12 @@
                         </div>
                     </div>
 
-                    <div class="row text-center col-md-12 mt-3" style="display: block;" *ngIf="companyPostsList.length > 0"> 
-                            <pagination-controls (pageChange)="this.paginationIndex = $event">
-                                </pagination-controls>
+                    <div class="row text-center col-md-12 mt-3" style="display: block;"
+                        *ngIf="companyPostsList.length > 0">
+                        <pagination-controls (pageChange)="this.paginationIndex = $event">
+                        </pagination-controls>
                     </div>
-                    
+
 
                 </div>
                 <!-- search results -->
@@ -175,7 +177,7 @@
                             <h3> {{FirstName}} {{LastName}}</h3>
                             <p>{{talentJobPreference[0].role}}</p>
                             <p>{{talentPersonalDetails.location}}</p>
-                            <button class="btn review "> <a href="#" class="anchor-dark" routerLink="/talentprofile">
+                            <button class="btn review "> <a href="#" class="anchor-dark" routerLink="/talentedit">
                                     EDIT PROFILE
                                 </a></button>
                         </div>
