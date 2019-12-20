@@ -57,13 +57,16 @@ export class TalentprofileComponent implements OnInit {
   gender = "Male";
   url3;
   selDate;
+  videoUrlLink;
+  pdfUrlLink;
   array1 = [];
   mobile_code;
   params = {};
   stepfour_details = {};
-
+  workingFromDate;
+  workingToDate
   url1;
-  object1 = {}; object2 = {}; stepthree_details = {};
+  object1 = {}; object2 = {}; stepthree_details = {}; videoUrl;
   mydate; imageUrl; cityId;
   CountiresList;
   stateId; citiesList; talentPersonalDetails: any = []; newArr = []; talentEducationDetails; talentJobDetails; talentJobPreference; talentBankDetails;
@@ -325,8 +328,8 @@ export class TalentprofileComponent implements OnInit {
     this.registrationForm.value.state_id = this.stateId;
     // this.registrationForm.value.city_id = this.cityId;
     if (this.url2) {
-      this.registrationForm.value.talent_attachment = this.talentPersonalDetails.attachment;
-      this.registrationForm.value.talent_old_attachment = this.url2;
+      this.registrationForm.value.talent_attachment = this.url2;
+      this.registrationForm.value.talent_old_attachment = this.talentPersonalDetails.attachment;
     } else {
       this.registrationForm.value.talent_attachment = this.talentPersonalDetails.attachment;
       this.registrationForm.value.talent_old_attachment = "";
@@ -509,11 +512,14 @@ export class TalentprofileComponent implements OnInit {
     this.appSer.TalentProfile(params).subscribe((res) => {
       this.talentPersonalDetails = res['step1'];
       this.imageUrl = res['step1'].image_url;
+      this.videoUrlLink = res['step1'].video_url;
+      this.pdfUrlLink = res['step1'].attachment_url;
+
       this.countryId = this.talentPersonalDetails['country_id'];
       this.stateId = this.talentPersonalDetails['state_id'];
       this.cityId = this.talentPersonalDetails['city_id'];
+      this.videoUrl = this.talentPersonalDetails['video'];
       let d: Date = new Date(this.talentPersonalDetails.dob);
-
       this.selDate = {
         year: d.getFullYear(),
         month: d.getMonth() + 1,
@@ -687,10 +693,10 @@ export class TalentprofileComponent implements OnInit {
         workExperience.patchValue({ 'salary_input': currencyType[1] });
         workExperience.patchValue({ 'jobdetails_id': this.talentJobDetails[i].jobdetails_id });
         var workingType = this.talentJobDetails[i].working_period.split(' ');
-
         workExperience.patchValue({ 'working_from': workingType[0] });
-        workExperience.patchValue({ 'working_to': workingType[4] });
-
+        workExperience.patchValue({ 'working_to': workingType[20] });
+        this.workingFromDate = workingType[0];
+        this.workingToDate = workingType[2];
       }
 
     }, 1000);
@@ -715,7 +721,7 @@ export class TalentprofileComponent implements OnInit {
       this.institutionsListCustom[index] = res['universities'];
       //this.registrationForm1.patchValue({'institution': null});
       var tempForm = this.f2.controls as FormGroup[];
-      tempForm[index].patchValue({ 'institution1': null });
+      tempForm[index].patchValue({ 'institution': null });
     });
     //}
   }
@@ -1040,10 +1046,17 @@ export class TalentprofileComponent implements OnInit {
 
         var selectedWorkingFromDate = tempFormGroup.controls['working_from'].value.date;
         var selectedWorkingToDate = tempFormGroup.controls['working_to'].value.date;
+        var selectedWorkingSinceDate = this.employeeForm.controls['working_since'].value.date;
+
         internalObj.work_experience = tempFormGroup.controls['work_experience'].value;
         internalObj.company = tempFormGroup.controls['current_company'].value;
         internalObj.salary = `${tempFormGroup.controls['currency_type'].value} ${tempFormGroup.controls['salary_input'].value}`;
-        internalObj.working_period = `${selectedWorkingFromDate.year}-${selectedWorkingFromDate.month}-${selectedWorkingFromDate.day} to ${selectedWorkingToDate.year}-${selectedWorkingToDate.month}-${selectedWorkingToDate.day}`;
+        if (this.workingToDate === 'present') {
+          internalObj.working_period = `${selectedWorkingSinceDate.year}-${selectedWorkingSinceDate.month}-${selectedWorkingSinceDate.day} to present`;
+        }
+        else {
+          internalObj.working_period = `${selectedWorkingFromDate.year}-${selectedWorkingFromDate.month}-${selectedWorkingFromDate.day} to ${selectedWorkingToDate.year}-${selectedWorkingToDate.month}-${selectedWorkingToDate.day}`;
+        }
         internalObj.location = tempFormGroup.controls['location'].value;
         internalObj.industry_id = tempFormGroup.controls['industry_type'].value;
         internalObj.role_id = tempFormGroup.controls['role'].value;

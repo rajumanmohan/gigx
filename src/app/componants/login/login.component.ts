@@ -77,7 +77,6 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('registration_type', (res['registration_type']));
             localStorage.setItem('first_name', (res['first_name']));
             localStorage.setItem('last_name', (res['last_name']));
-
             this.dataStorage.loggedInUserData = localStorage;
           }
           else {

@@ -371,7 +371,7 @@
                                         </td>
                                         <td class="b-0">
                                             <span *ngIf="edit==false">
-                                                <a href="https://gigxglobal.com/talent_attachments/5dce81340f844.pdf"
+                                                <a href="{{pdfUrlLink}}{{talentPersonalDetails.attachment}}"
                                                     download="newfilename" target="_blank"><img class="pdf-img"
                                                         src="https://img.icons8.com/officel/80/000000/pdf-2.png"></a>
                                             </span>
@@ -399,9 +399,14 @@
                                         <td class="b-0">
                                             <span *ngIf="edit==false">
                                                 <video width="320" height="240" controls>
-                                                    <source [src]="talentPersonalDetails.video" type="video/mp4">
-                                                    Your browser does not support the video tag.
+                                                    <source src="{{videoUrlLink}}{{videoUrl}}" type="video/mp4">
+                                                    Your browser does not support HTML5 video.
                                                 </video>
+
+                                                <!-- <video width="320" height="240" controls>
+                                                    <source src="{{videoUrl}}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video> -->
                                             </span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <div class="upload-image text-center">
@@ -973,7 +978,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="exampleInputPassword1"
@@ -1099,8 +1103,23 @@
                                                 </div>
                                             </div>
                                         </div>
-
-                                        <div class="form-group row">
+                                        <div class="form-group row" *ngIf="workingToDate === 'present'">
+                                            <div class="col-md-12">
+                                                <p>Working since</p>
+                                                <my-date-picker name="working_since" [selDate]="working_since_value"
+                                                    [options]="workingSinceOptions" formControlName="working_since"
+                                                    disable="disabled" placeholder="Working Since (Eg., 28/08/1992)"
+                                                    [ngClass]="{'is-invalid':f3.working_since.errors&& submitted3}">
+                                                </my-date-picker>
+                                                <div class="custom-invalid-feedback"
+                                                    *ngIf="f3.working_since.errors && submitted3">
+                                                    <div *ngIf="f3.working_since.errors.required">Working Since is
+                                                        required
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" *ngIf="workingToDate!=present">
 
                                             <div class="col-md-6">
                                                 <p>Working from</p>
