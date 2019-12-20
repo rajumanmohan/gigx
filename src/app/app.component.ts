@@ -45,6 +45,7 @@ export class AppComponent {
          || event.url.indexOf('/jobalerts') > -1 
          || event.url.indexOf('/takeatest') > -1 
          || event.url.indexOf('/testlist') > -1 
+         || event.url.indexOf('/invitedgigs') > -1
          ) {
           this.route.navigate(['/companydashboard']);
          }

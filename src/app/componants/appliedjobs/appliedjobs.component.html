@@ -46,7 +46,14 @@
                                    <p>Experience: {{item.years_of_experience}} Years</p>
                                 </div>
                                 <!-- job details -->
-                              
+                               <div class="col-md-4 text-right">
+                                    <button class="btn btn-status" [ngClass]="{
+                                        'btn-yellow':item.status == 0,
+                                        'btn-blue':item.status == 1,
+                                        'btn-green':item.status == 2,
+                                        'btn-red':item.status == 3
+                                      }">{{item.status_value}}</button>
+                                </div>
                             </div>
                             <div class="row mt-3">
                                     <div class="col-md-12">
