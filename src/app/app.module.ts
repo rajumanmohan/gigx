@@ -61,6 +61,7 @@ import { AppliedProfilesListComponent } from './componants/appliedprofileslist/a
 import { ShortlistedProfilesListComponent } from './componants/shortlistedprofileslist/shortlistedprofileslist.component';
 import { AcceptedProfilesListComponent } from './componants/acceptedprofileslist/acceptedprofileslist.component';
 import { RejectedProfilesListComponent } from './componants/rejectedprofileslist/rejectedprofileslist.component';
+import { InvitedGigsComponent } from './componants/invitedgigs/invitedgigs.component';
 
 @Pipe({ name: 'safe' })
 @NgModule({
@@ -108,7 +109,8 @@ import { RejectedProfilesListComponent } from './componants/rejectedprofileslist
     AppliedProfilesListComponent,
     ShortlistedProfilesListComponent,
     AcceptedProfilesListComponent,
-    RejectedProfilesListComponent
+    RejectedProfilesListComponent,
+    InvitedGigsComponent
   ],
   imports: [
     AutocompleteLibModule,

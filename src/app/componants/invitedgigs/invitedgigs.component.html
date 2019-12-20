@@ -1,0 +1,115 @@
+<!-- heADER -->
+<app-header></app-header>
+<!-- HEADER -->
+<section class="login company-registration mt-3 mb-5">
+    <div class="container create-account">
+        <div class="row justify-content-center ">
+            <div class="col-md-6">
+                <h1 class="text-center mb-5">INVITED GIGS
+                </h1>
+            </div>
+        </div>
+        <!-- serach talent -->
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="input-group button-search mb-3">
+                    <input type="text" class="form-control" placeholder="Gig Title" [(ngModel)]="filtroString"
+                        aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img
+                                src="../../../assets/images/search.png"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- search talent -->
+        <div class="row mt-3">
+
+            <!-- search details -->
+            <div class="col-md-12 search-results">
+
+                <div class="row">
+
+                        <div class="col-md-12 mt-3"  [@fadeInAndOut] *ngFor="let item of (invitedGigsList| filter:[{field:'gig_title', value: filtroString}])  | paginate: { itemsPerPage: itemsPerPage, currentPage: paginationIndex, totalItems: (invitedGigsList | filter:[{field:'gig_title', value: filtroString}]).length };">
+                                <div class=" talent-result ">
+        
+                                    <div class="row">
+                                        <!-- job details -->
+                                        <div class="col-md-8">
+                                            <h3>{{item.gig_title}}</h3>
+                                            <p class="text-color-light">At {{item.company_name}}</p>
+                                            <p><img src="../../../assets/images/maps.png" class="maps"> 
+                                                {{item.city}}, {{item.state}}, {{item.country}}
+                                            </p>
+                                                    <p>Skills : {{item.skills}}</p>
+                                                
+                                                    <p>Experience Required : {{item.years_of_experience}} Years</p>
+                                               
+                                        </div>
+                                        <!-- job details -->
+                                        <!-- apply job -->
+                                        <div class="col-md-4 text-right">
+                                            <button class="btn invite-job text-right">Posted :
+                                                {{item.no_of_days}}</button>
+                                                <button class="btn-apply" *ngIf="!item.applied_status" (click)="onApplyGigClick(item)">Apply</button>
+                                                <button class="btn-applied" *ngIf="item.applied_status">Applied</button>
+                                        </div>
+                                        <!-- apply job -->
+                                    </div>
+                                    <!-- job description -->
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <p class="details">
+                                                {{item.gig_description}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- job description -->
+                                    <!-- package -->
+                                    <div class="row mt-3 ">
+                                        <div class="col-md-6">
+                                            <p>{{item.payment}}</p>
+                                        </div>
+                                        <!-- <div class="col-md-6 featured">
+                                            <h4><img src="../../../assets/images/feature.png"> FEATURED</h4>
+                                        </div> -->
+                                    </div>
+                                    <!-- package -->
+                                    <!-- more details -->
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+        
+                                            <p>
+                                                <a class="hover-effect" [routerLink]="['/viewgig', item.post_id, 3]">
+                                                    View More Details
+                                                    <img src="../../../assets/images/right-arrow.png">
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <!-- more details -->
+        
+        
+        
+                                </div>
+                            </div>
+
+                    
+                </div>
+
+
+
+            </div>
+
+            <!-- search details -->
+        </div>
+
+
+        <div class="row text-center col-md-12 mt-3" style="display: block;" *ngIf="(invitedGigsList | filter:[{field:'gig_title', value: filtroString}]).length > 0"> 
+                <pagination-controls (pageChange)="this.paginationIndex = $event">
+                    </pagination-controls>
+        </div>
+        
+    </div>
+
+</section>

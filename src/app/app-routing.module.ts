@@ -40,6 +40,7 @@ import { AppliedProfilesListComponent } from './componants/appliedprofileslist/a
 import { ShortlistedProfilesListComponent } from './componants/shortlistedprofileslist/shortlistedprofileslist.component';
 import { AcceptedProfilesListComponent } from './componants/acceptedprofileslist/acceptedprofileslist.component';
 import { RejectedProfilesListComponent } from './componants/rejectedprofileslist/rejectedprofileslist.component';
+import { InvitedGigsComponent } from './componants/invitedgigs/invitedgigs.component';
 
 const routes: Routes = [
   // {
@@ -213,6 +214,10 @@ const routes: Routes = [
     path: 'rejectedprofileslist/:postId',
     component: RejectedProfilesListComponent
   },
+  {
+    path: 'invitedgigs',
+    component: InvitedGigsComponent
+  }
 ];
 
 @NgModule({

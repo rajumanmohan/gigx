@@ -210,7 +210,9 @@
                         <button class="btn " (click)="onApplyGigClick()">APPLY NOW</button>
                     </div>
                     <div class="col-md-6">
-                        <button class="btn btn-primary" [routerLink]="flag == 1 ? ['/talentdashboard'] : ['/intrestedjobs']">Back</button>
+                        <button class="btn btn-primary" *ngIf="flag == 1" routerLink="/talentdashboard">Back</button>
+                        <button class="btn btn-primary" *ngIf="flag == 2" routerLink="/intrestedjobs">Back</button>
+                        <button class="btn btn-primary" *ngIf="flag == 3" routerLink="/invitedgigs">Back</button>
                     </div>
                 </div>
             </div>

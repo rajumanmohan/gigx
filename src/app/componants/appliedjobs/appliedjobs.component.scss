@@ -40,6 +40,30 @@
 }
 
 app-appliedjobs{
+    .btn-status{
+        margin-bottom: 0px !important;
+    margin: 0px;
+    width: 50% !important;
+  
+    }
+
+    .btn-green{
+        background: green !important;
+        color: #fff;
+    }
+    .btn-red{
+        background: #991212 !important;
+        color: #fff;
+    }
+    .btn-yellow{
+        background: #fed501 !important;
+        color: #000;
+    }
+    .btn-blue{
+        background: #208ac4 !important;
+        color: #fff;
+    }
+    
     button{
         width: 100%;
         border: 0px;
