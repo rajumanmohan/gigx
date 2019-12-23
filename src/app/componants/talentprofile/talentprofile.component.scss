@@ -34,7 +34,9 @@
             font-size: 15px;
         }
 }
-
+.personaldetails{
+    overflow-x: hidden!important;
+}
 .profile {
     h1{
         font-weight: 600;
@@ -257,7 +259,7 @@ td{
     border-radius: 9px;
     border: 1px dashed #a4a4a4 !important;
     padding: 4px;
-    width: 27%;
+    width: 100%;
 }
 .video-file {
     width: 76px !important;

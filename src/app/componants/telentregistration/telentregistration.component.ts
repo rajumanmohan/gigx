@@ -71,16 +71,16 @@ export class TelentregistrationComponent implements OnInit {
   email;
   password;
   mobile_code;
-  isProfesionalCertification=false;
+  isProfesionalCertification = false;
   institutionsList = [];
   institutionsListCustom = [];
 
   stepone_details = {};
   steptwo_details = {};
-  steptwo_detailsArray=[];
+  steptwo_detailsArray = [];
   stepthree_details = {};
   stepfour_details = {};
-  
+
   private myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
   };
@@ -105,7 +105,7 @@ export class TelentregistrationComponent implements OnInit {
       first_name: ['', [Validators.required]],
       last_name: ['', Validators.required],
       mobile_code: ['60'],
-      mobile: ['',  Validators.compose([Validators.required, Validators.maxLength(15)])],
+      mobile: ['', Validators.compose([Validators.required, Validators.maxLength(15)])],
       location: ['', Validators.required],
       country_id: ['132', Validators.required],
       state_id: ['', Validators.required],
@@ -123,7 +123,7 @@ export class TelentregistrationComponent implements OnInit {
       qualifications: new FormArray([]),
       institution: ['', Validators.required],
       year_of_completion: ['', Validators.required],
-      professional_qualification:[''],
+      professional_qualification: [''],
       degree: [''],
       country: ['', Validators.required]
     });
@@ -133,13 +133,13 @@ export class TelentregistrationComponent implements OnInit {
       "preference_role": ['', Validators.required],
       "desired_employment_type": ['Gig'],
       "talent_image": [''],
-      "work_preferences":  ['Willing to Travel', Validators.required],
+      "work_preferences": ['Willing to Travel', Validators.required],
       "skills": ['', Validators.required]
     });
     this.employeeForm = this.fb.group({
-     "work_experience": ['', Validators.required],
+      "work_experience": ['', Validators.required],
       "current_company": ['', Validators.required],
-      "salary_input" :  ['', Validators.required],
+      "salary_input": ['', Validators.required],
       "currency_type": ['', Validators.required],
       "working_since": ['', Validators.required],
       "annual_salary": [''],
@@ -175,8 +175,8 @@ export class TelentregistrationComponent implements OnInit {
     this.stepper.next()
   }
 
-  backStepper(){
-   this.stepper.previous();
+  backStepper() {
+    this.stepper.previous();
   }
   image;
   readUrl(event: any) {
@@ -239,7 +239,7 @@ export class TelentregistrationComponent implements OnInit {
       institution1: ['', Validators.required],
       year_of_completion1: ['', Validators.required],
       degree1: ['Full time'],
-      professional_qualification1:[''],
+      professional_qualification1: [''],
       country: ['', Validators.required]
     }));
     this.type_id += 1;
@@ -284,7 +284,7 @@ export class TelentregistrationComponent implements OnInit {
   closeSkill(skill) {
     this.newArr.splice(skill, 1);
   }
- 
+
   addEmployee() {
     // this.multiEmployee.push({
     //   highQul: ''
@@ -298,10 +298,10 @@ export class TelentregistrationComponent implements OnInit {
       annual_salary: [''],
       industry_type: ['', Validators.required],
       "working_from": ['', Validators.required],
-    "working_to": ['', Validators.required],
-    "role": ['', Validators.required],
-    "role_desc": ['', Validators.required],
-    "salary_input" :  ['', Validators.required],
+      "working_to": ['', Validators.required],
+      "role": ['', Validators.required],
+      "role_desc": ['', Validators.required],
+      "salary_input": ['', Validators.required],
       location: ['', Validators.required],
       // date: ['', Validators.required],
       // month: ['', Validators.required],
@@ -314,12 +314,12 @@ export class TelentregistrationComponent implements OnInit {
 
     this.workingFromOptions.push({
       dateFormat: 'dd/mm/yyyy'
-    }); 
+    });
 
     this.workingToOptions.push({
       dateFormat: 'dd/mm/yyyy'
-    }); 
-  
+    });
+
   }
   get f() { return this.registrationForm.controls; }
   registration() {
@@ -331,28 +331,28 @@ export class TelentregistrationComponent implements OnInit {
     this.registrationForm.value.mobile ? JSON.parse(this.registrationForm.value.mobile) : '';
     this.registrationForm.value.mobile_code = this.mobile_code;
 
-    if(this.registrationForm.controls['state_id'].value =='null'){
-      this.registrationForm.patchValue({'state_id' : null});// .reset();
+    if (this.registrationForm.controls['state_id'].value == 'null') {
+      this.registrationForm.patchValue({ 'state_id': null });// .reset();
     }
-    
-    if(this.registrationForm.controls['city_id'].value =='null'){
-      this.registrationForm.patchValue({'city_id' : null});// .reset();
+
+    if (this.registrationForm.controls['city_id'].value == 'null') {
+      this.registrationForm.patchValue({ 'city_id': null });// .reset();
     }
-    
+
 
     if (this.registrationForm.invalid) {
       return;
     }
     if ((this.registrationForm.value.talent_attachment == undefined && (this.registrationForm.value.talent_attachment_video == undefined))) {
-   
+
       return false;
     }
 
     else {
-      this.stepone_details={  
+      this.stepone_details = {
         "first_name": this.registrationForm.value.first_name,
         "last_name": this.registrationForm.value.last_name,
-        "email":this.route.snapshot.queryParams.email,
+        "email": this.route.snapshot.queryParams.email,
         "password": this.route.snapshot.queryParams.password,
         "mobile_code": this.registrationForm.value.mobile_code,
         "mobile": this.registrationForm.value.mobile,
@@ -369,16 +369,15 @@ export class TelentregistrationComponent implements OnInit {
         "linkedin": this.registrationForm.value.linkedIn,
         "facebook": this.registrationForm.value.facebook,
         "talent_image": this.url1,
-        'about_me' : this.registrationForm.value.about_me
-          };
-          debugger;
+        'about_me': this.registrationForm.value.about_me
+      };
       this.complete();
       this.getHighestQualificationList();
       this.getInstitutionsListBasedOnCountry(this.registrationForm.value.country_id);
       this.getYearOfCompletions();
       this.object1 = this.registrationForm.value;
 
-      this.registrationForm1.patchValue({'country': this.registrationForm.value.country_id});
+      this.registrationForm1.patchValue({ 'country': this.registrationForm.value.country_id });
     }
   }
 
@@ -408,27 +407,27 @@ export class TelentregistrationComponent implements OnInit {
       }
     }
 
-    if(this.registrationForm1.controls['highQul'].value == 'null')
-      this.registrationForm1.patchValue({'highQul': null});
-    
-    if(this.registrationForm1.controls['institution'].value == 'null')
-      this.registrationForm1.patchValue({'institution': null});
+    if (this.registrationForm1.controls['highQul'].value == 'null')
+      this.registrationForm1.patchValue({ 'highQul': null });
+
+    if (this.registrationForm1.controls['institution'].value == 'null')
+      this.registrationForm1.patchValue({ 'institution': null });
 
 
-    for(var i =0 ; i< this.f2.controls.length; i++){
-       var tempForm = this.f2.controls as FormGroup[];
-      if(tempForm[i].controls['high_qualification'].value == 'null')
-      tempForm[i].patchValue({'high_qualification': null});
-    
-    if(tempForm[i].controls['institution1'].value == 'null')
-    tempForm[i].patchValue({'institution1': null});
+    for (var i = 0; i < this.f2.controls.length; i++) {
+      var tempForm = this.f2.controls as FormGroup[];
+      if (tempForm[i].controls['high_qualification'].value == 'null')
+        tempForm[i].patchValue({ 'high_qualification': null });
+
+      if (tempForm[i].controls['institution1'].value == 'null')
+        tempForm[i].patchValue({ 'institution1': null });
     }
 
     this.obj2["hq_id"] = this.registrationForm1.value.highQul;
     this.obj2["university_id"] = this.registrationForm1.value.institution
     this.obj2["year_of_completion"] = this.registrationForm1.value.year_of_completion;
     this.obj2["professional_qualification"] = this.registrationForm1.value.professional_qualification;
-    this.obj2["other_highest_qualification"]="";
+    this.obj2["other_highest_qualification"] = "";
 
     // this.registrationForm1.value.qualifications.unshift(this.obj2);//temp
 
@@ -438,27 +437,27 @@ export class TelentregistrationComponent implements OnInit {
       return;
     } else {
 
-      this.steptwo_detailsArray =[];
-      for(var i =0 ; i< this.f2.controls.length; i++){
-         var tempForm = this.f2.controls as FormGroup[];
-         var qualifications={
-          "hq_id":  tempForm[i].controls['high_qualification'].value,
-          "other_highest_qualification": tempForm[i].controls['professional_certification1']  ? tempForm[i].controls['professional_certification1'].value : '',
+      this.steptwo_detailsArray = [];
+      for (var i = 0; i < this.f2.controls.length; i++) {
+        var tempForm = this.f2.controls as FormGroup[];
+        var qualifications = {
+          "hq_id": tempForm[i].controls['high_qualification'].value,
+          "other_highest_qualification": tempForm[i].controls['professional_certification1'] ? tempForm[i].controls['professional_certification1'].value : '',
           "university_id": tempForm[i].controls['institution1'].value,
           "year_of_completion": tempForm[i].controls['year_of_completion1'].value,
-          "professional_qualification":tempForm[i].controls['professional_qualification1'].value,
+          "professional_qualification": tempForm[i].controls['professional_qualification1'].value,
           "mode_of_study": tempForm[i].controls['degree1'].value,
           "country_id": tempForm[i].controls['country'].value,
         }
         this.steptwo_detailsArray.push(qualifications);
       }
-      var qualifications1={
-        "hq_id":  this.registrationForm1.value.highQul,
+      var qualifications1 = {
+        "hq_id": this.registrationForm1.value.highQul,
         "other_highest_qualification": this.registrationForm1.controls['professional_certification'] ? this.registrationForm1.controls['professional_certification'].value : '',
         "university_id": this.registrationForm1.value.institution,
-        "year_of_completion":this.registrationForm1.value.year_of_completion,
-        "professional_qualification":this.registrationForm1.value.professional_qualification,
-        "mode_of_study":this.registrationForm1.value.degree,
+        "year_of_completion": this.registrationForm1.value.year_of_completion,
+        "professional_qualification": this.registrationForm1.value.professional_qualification,
+        "mode_of_study": this.registrationForm1.value.degree,
         "country_id": this.registrationForm1.value.country,
       }
       this.steptwo_detailsArray.push(qualifications1);
@@ -469,7 +468,7 @@ export class TelentregistrationComponent implements OnInit {
 
       this.array1 = this.registrationForm1.value.qualifications;
       console.log("step 2", this.registrationForm1.value);
-      this.steptwo_details={
+      this.steptwo_details = {
         "qualifications": this.steptwo_detailsArray
       }
 
@@ -477,12 +476,12 @@ export class TelentregistrationComponent implements OnInit {
       console.log(this.steptwo_details)
 
       this.complete();
-      
+
       this.getIndustryTypeList();
       this.getRoleList();
     }
   }
-  
+
   get f4() { return this.jobPreferrences.controls; }
 
   submitJob() {
@@ -494,7 +493,7 @@ export class TelentregistrationComponent implements OnInit {
       return;
     } else {
 
-      var tempObj = { 
+      var tempObj = {
         "preference_location": this.jobPreferrences.controls['preference_location'].value,
         "preference_industry_id": this.jobPreferrences.controls['preference_industry_type'].value,
         "preference_role_id": this.jobPreferrences.controls['preference_role'].value,
@@ -506,9 +505,9 @@ export class TelentregistrationComponent implements OnInit {
 
       this.stepfour_details = tempObj;
 
-      var finalPayload = {...this.stepone_details, ...this.steptwo_details, ...this.stepthree_details, ...this.stepfour_details};
-      
-    
+      var finalPayload = { ...this.stepone_details, ...this.steptwo_details, ...this.stepthree_details, ...this.stepfour_details };
+
+
 
       this.object2 = this.jobPreferrences.value;
       console.log(this.object2)
@@ -552,34 +551,34 @@ export class TelentregistrationComponent implements OnInit {
     if (this.employeeForm.invalid) {
       return;
     } else {
-      var tempObj={
-          "work_experience": "",
-          "company": "",
-          "salary": "",
-          "working_period": "",
-          "location": "",
-          "industry_id": "",
-          "role_id": "",
-          "role_description": ""
+      var tempObj = {
+        "work_experience": "",
+        "company": "",
+        "salary": "",
+        "working_period": "",
+        "location": "",
+        "industry_id": "",
+        "role_id": "",
+        "role_description": ""
       }
 
-      var tempEmployeeArray=[];
+      var tempEmployeeArray = [];
 
       var selectedWorkingSinceDate = this.employeeForm.controls['working_since'].value.date;
-      tempObj.work_experience= this.employeeForm.controls['work_experience'].value;
-      tempObj.company= this.employeeForm.controls['current_company'].value
-      tempObj.salary= `${this.employeeForm.controls['currency_type'].value} ${this.employeeForm.controls['salary_input'].value}`;
-      tempObj.working_period=  `${selectedWorkingSinceDate.year}-${selectedWorkingSinceDate.month}-${selectedWorkingSinceDate.day} to present`;
-      tempObj.location= this.employeeForm.controls['location'].value; 
-      tempObj.industry_id=  this.employeeForm.controls['industry_type'].value; 
-      tempObj.role_id= this.employeeForm.controls['role'].value; 
-      tempObj.role_description=  this.employeeForm.controls['role_desc'].value;
+      tempObj.work_experience = this.employeeForm.controls['work_experience'].value;
+      tempObj.company = this.employeeForm.controls['current_company'].value
+      tempObj.salary = `${this.employeeForm.controls['currency_type'].value} ${this.employeeForm.controls['salary_input'].value}`;
+      tempObj.working_period = `${selectedWorkingSinceDate.year}-${selectedWorkingSinceDate.month}-${selectedWorkingSinceDate.day} to present`;
+      tempObj.location = this.employeeForm.controls['location'].value;
+      tempObj.industry_id = this.employeeForm.controls['industry_type'].value;
+      tempObj.role_id = this.employeeForm.controls['role'].value;
+      tempObj.role_description = this.employeeForm.controls['role_desc'].value;
 
       tempEmployeeArray.push(tempObj);
 
 
-     var tempFormGroupArray = this.employeeForm.controls['job_details'] as FormArray;
-      for(var i=0;i< tempFormGroupArray.length;i++){
+      var tempFormGroupArray = this.employeeForm.controls['job_details'] as FormArray;
+      for (var i = 0; i < tempFormGroupArray.length; i++) {
         var tempFormGroup = tempFormGroupArray.controls[i] as FormGroup;
         var internalObj = {
           "work_experience": "",
@@ -590,25 +589,25 @@ export class TelentregistrationComponent implements OnInit {
           "industry_id": "",
           "role_id": "",
           "role_description": ""
-      };
-        
-        var selectedWorkingFromDate =tempFormGroup.controls['working_from'].value.date; 
+        };
+
+        var selectedWorkingFromDate = tempFormGroup.controls['working_from'].value.date;
         var selectedWorkingToDate = tempFormGroup.controls['working_to'].value.date;
-        internalObj.work_experience= tempFormGroup.controls['work_experience'].value;
-        internalObj.company= tempFormGroup.controls['current_company'].value;
-        internalObj.salary= `${tempFormGroup.controls['currency_type'].value} ${tempFormGroup.controls['salary_input'].value}`;
-        internalObj.working_period=  `${selectedWorkingFromDate.year}-${selectedWorkingFromDate.month}-${selectedWorkingFromDate.day} to ${selectedWorkingToDate.year}-${selectedWorkingToDate.month}-${selectedWorkingToDate.day}`;
-        internalObj.location= tempFormGroup.controls['location'].value;
-        internalObj.industry_id=  tempFormGroup.controls['industry_type'].value;
-        internalObj.role_id=  tempFormGroup.controls['role'].value;
-        internalObj.role_description=  tempFormGroup.controls['role_desc'].value;
-       tempEmployeeArray.push(internalObj);      
+        internalObj.work_experience = tempFormGroup.controls['work_experience'].value;
+        internalObj.company = tempFormGroup.controls['current_company'].value;
+        internalObj.salary = `${tempFormGroup.controls['currency_type'].value} ${tempFormGroup.controls['salary_input'].value}`;
+        internalObj.working_period = `${selectedWorkingFromDate.year}-${selectedWorkingFromDate.month}-${selectedWorkingFromDate.day} to ${selectedWorkingToDate.year}-${selectedWorkingToDate.month}-${selectedWorkingToDate.day}`;
+        internalObj.location = tempFormGroup.controls['location'].value;
+        internalObj.industry_id = tempFormGroup.controls['industry_type'].value;
+        internalObj.role_id = tempFormGroup.controls['role'].value;
+        internalObj.role_description = tempFormGroup.controls['role_desc'].value;
+        tempEmployeeArray.push(internalObj);
       }
 
 
 
-      this.stepthree_details={
-        "job_details":tempEmployeeArray
+      this.stepthree_details = {
+        "job_details": tempEmployeeArray
       }
       console.log('stepthree_details');
       console.log(this.stepthree_details);
@@ -618,14 +617,14 @@ export class TelentregistrationComponent implements OnInit {
       console.log("step 3", this.employeeForm.value)
       this.array2 = this.employeeForm.value.job_details;
 
-      if(this.jobPreferrences.controls['preference_industry_type'].value == 'null' 
-      || !this.jobPreferrences.controls['preference_industry_type'].value) {
-        this.jobPreferrences.patchValue({'preference_industry_type' : null});
-      } 
+      if (this.jobPreferrences.controls['preference_industry_type'].value == 'null'
+        || !this.jobPreferrences.controls['preference_industry_type'].value) {
+        this.jobPreferrences.patchValue({ 'preference_industry_type': null });
+      }
 
-      if(this.jobPreferrences.controls['preference_role'].value == 'null' 
-      || !this.jobPreferrences.controls['preference_role'].value) {
-        this.jobPreferrences.patchValue({'preference_role' : null});
+      if (this.jobPreferrences.controls['preference_role'].value == 'null'
+        || !this.jobPreferrences.controls['preference_role'].value) {
+        this.jobPreferrences.patchValue({ 'preference_role': null });
       }
     }
   }
@@ -641,20 +640,20 @@ export class TelentregistrationComponent implements OnInit {
 
   }
 
- 
-  onWorkingFromDateChanged(event, index){
+
+  onWorkingFromDateChanged(event, index) {
     //this.mydate = event.date;
-    this.workingToOptions[index] =({
+    this.workingToOptions[index] = ({
       dateFormat: 'dd/mm/yyyy',
-      disableUntil:  {year: event.date['year'], month: event.date['month'], day: event.date['day']}
-    });   
+      disableUntil: { year: event.date['year'], month: event.date['month'], day: event.date['day'] }
+    });
   }
-  onWorkingToDateChanged(event, index){
+  onWorkingToDateChanged(event, index) {
     //this.mydate = event.date;
     this.workingFromOptions[index] = ({
       dateFormat: 'dd/mm/yyyy',
-      disableSince:  {year: event.date['year'], month: event.date['month'], day: event.date['day']}
-    });   
+      disableSince: { year: event.date['year'], month: event.date['month'], day: event.date['day'] }
+    });
   }
   registerTalent(finalPayload) {
     //var overObjet = this.object1;
@@ -678,75 +677,75 @@ export class TelentregistrationComponent implements OnInit {
   getCountries() {
     this.appSer.countriesList().subscribe((res) => {
       this.CountiresList = res['countries'];
-      this. changeCountryList(132);
+      this.changeCountryList(132);
     })
   }
 
   getHighestQualificationList() {
-    if(this.highestQualificationList.length == 0){
-    this.appSer.getHighestQualicationList().subscribe((res)=>{
-      this.highestQualificationList = res['highestQualifications'];
-      this.registrationForm1.patchValue({'highQul': null});
-    });
-  }
-  }
-
-  industryTypes = []; roles =[];
-  getIndustryTypeList(){
-    if(this.industryTypes.length == 0){
-    this.appSer.getIndustryTypeList().subscribe((res)=>{
-      this.industryTypes = res['industries'];
-      this.employeeForm.patchValue({'industry_type': null});
-    });
-  }
-  }
-  getRoleList(){
-    if(this.roles.length == 0){
-    this.appSer.getRoleList().subscribe((res)=>{
-      this.roles = res['roles'];
-      this.employeeForm.patchValue({'role': null});
-    });
-  }
-  }
-  
-
-  onHighestQualificationChange(event: any){
-    if(event.currentTarget.value == '4'){
-     
-      this.isProfesionalCertification=true;
-      this.registrationForm1.addControl('professional_certification',new FormControl('',Validators.required));
+    if (this.highestQualificationList.length == 0) {
+      this.appSer.getHighestQualicationList().subscribe((res) => {
+        this.highestQualificationList = res['highestQualifications'];
+        this.registrationForm1.patchValue({ 'highQul': null });
+      });
     }
-    else{
-      this.isProfesionalCertification=false;
+  }
+
+  industryTypes = []; roles = [];
+  getIndustryTypeList() {
+    if (this.industryTypes.length == 0) {
+      this.appSer.getIndustryTypeList().subscribe((res) => {
+        this.industryTypes = res['industries'];
+        this.employeeForm.patchValue({ 'industry_type': null });
+      });
+    }
+  }
+  getRoleList() {
+    if (this.roles.length == 0) {
+      this.appSer.getRoleList().subscribe((res) => {
+        this.roles = res['roles'];
+        this.employeeForm.patchValue({ 'role': null });
+      });
+    }
+  }
+
+
+  onHighestQualificationChange(event: any) {
+    if (event.currentTarget.value == '4') {
+
+      this.isProfesionalCertification = true;
+      this.registrationForm1.addControl('professional_certification', new FormControl('', Validators.required));
+    }
+    else {
+      this.isProfesionalCertification = false;
       this.registrationForm1.removeControl('professional_certification');
     }
   }
 
   currentIndex = 0;
-  onHighestQualificationChangeOther(event: any,index, ngForm){
-    if(event.currentTarget.value == '4'){
-      ngForm.addControl('professional_certification1',new FormControl('',Validators.required));
+  onHighestQualificationChangeOther(event: any, index, ngForm) {
+    if (event.currentTarget.value == '4') {
+      ngForm.addControl('professional_certification1', new FormControl('', Validators.required));
     }
-    else{
+    else {
       ngForm.removeControl('professional_certification1');
     }
-    this.currentIndex=index+1;
+    this.currentIndex = index + 1;
   }
 
   isOtherRoleSelected = false;
-  onJobPreferenceRoleChange(event: any){
-    if(event.currentTarget.value == '8'){
-      this.isOtherRoleSelected=true;
-      this.jobPreferrences.addControl('role_others',new FormControl('',Validators.required));
+  onJobPreferenceRoleChange(event: any) {
+    if (event.currentTarget.value == '8') {
+      this.isOtherRoleSelected = true;
+      this.jobPreferrences.addControl('role_others', new FormControl('', Validators.required));
     }
-    else{
-      this.isOtherRoleSelected=false;
+    else {
+      this.isOtherRoleSelected = false;
       this.jobPreferrences.removeControl('role_others');
     }
   }
 
 
-  countryId; statesList =[]; MobileCode;
+  countryId; statesList = []; MobileCode;
   changeCountryList(id) {
     this.countryId = id;
     for (var i = 0; i < this.CountiresList.length; i++) {
@@ -759,10 +758,10 @@ export class TelentregistrationComponent implements OnInit {
       country_id: this.countryId,
     }
     this.appSer.statesList(params).subscribe((res) => {
-      
-      this.statesList = res['states'];  
-       this.registrationForm.patchValue({'state_id' : null});// .reset();
-       this.registrationForm.patchValue({'city_id' : null});
+
+      this.statesList = res['states'];
+      this.registrationForm.patchValue({ 'state_id': null });// .reset();
+      this.registrationForm.patchValue({ 'city_id': null });
       let params1 = {
         state_id: this.stateId,
       }
@@ -777,10 +776,10 @@ export class TelentregistrationComponent implements OnInit {
     let params = {
       state_id: this.stateId,
     }
-    
+
     this.appSer.citiesList(params).subscribe((res) => {
       this.citiesList = res['cities'];
-      this.registrationForm.patchValue({'city_id' : null});
+      this.registrationForm.patchValue({ 'city_id': null });
     })
   }
   ageRangeValidator(control: AbstractControl): { [key: string]: boolean } | null {
@@ -790,59 +789,59 @@ export class TelentregistrationComponent implements OnInit {
     return null;
   }
 
-  getInstitutionsListBasedOnCountry(counrtyId){
+  getInstitutionsListBasedOnCountry(counrtyId) {
     //if(this.institutionsList.length == 0){ 
     let params = {
       country_id: JSON.parse(counrtyId),
     }
-    this.appSer.getInstitutionsList(params).subscribe((res)=>{
-    
+    this.appSer.getInstitutionsList(params).subscribe((res) => {
+
       this.institutionsList = res['universities'];
-      this.registrationForm1.patchValue({'institution': null});
+      this.registrationForm1.patchValue({ 'institution': null });
     });
-  //}
+    //}
   }
 
   yearOfCompletionList = [];
-  getYearOfCompletions(){
-    for(var i=1950; i<= (new Date()).getFullYear(); i++){
+  getYearOfCompletions() {
+    for (var i = 1950; i <= (new Date()).getFullYear(); i++) {
       this.yearOfCompletionList.push(i);
     }
-    this.registrationForm1.patchValue({'year_of_completion': null});
-    
+    this.registrationForm1.patchValue({ 'year_of_completion': null });
+
   }
 
   skillsList = [];
-  getSkills(){
-    this.appSer.getSkillList().subscribe((res)=>{
+  getSkills() {
+    this.appSer.getSkillList().subscribe((res) => {
       //this.skillsList = res['skills'].map(x=>x.skill_name);
       this.skillsList = res['skills'];
     });
   }
 
-  onQualificationCountryChange(countryId){
+  onQualificationCountryChange(countryId) {
     this.getInstitutionsListBasedOnCountry(countryId);
   }
 
-  onQualificationCountryChangeCustom(countryId, index){
+  onQualificationCountryChangeCustom(countryId, index) {
     this.getInstitutionsListBasedOnCountryCustom(countryId, index);
   }
 
-  getInstitutionsListBasedOnCountryCustom(counrtyId, index){
+  getInstitutionsListBasedOnCountryCustom(counrtyId, index) {
     //if(this.institutionsList.length == 0){ 
     let params = {
       country_id: JSON.parse(counrtyId),
     }
-    this.appSer.getInstitutionsList(params).subscribe((res)=>{
-    
+    this.appSer.getInstitutionsList(params).subscribe((res) => {
+
       this.institutionsListCustom[index] = res['universities'];
       //this.registrationForm1.patchValue({'institution': null});
       var tempForm = this.f2.controls as FormGroup[];
-      tempForm[index].patchValue({'institution1': null});
+      tempForm[index].patchValue({ 'institution1': null });
     });
-  //}
+    //}
   }
 
 
-   
+
 }

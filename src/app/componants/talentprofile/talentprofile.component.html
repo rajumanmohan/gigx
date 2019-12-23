@@ -72,7 +72,7 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="table-responsive">
+                        <div class="table-responsive personaldetails">
                             <table class="table b-0">
 
                                 <tbody class="b-0">
@@ -280,6 +280,29 @@
 
                                     </tr>
                                     <tr class="b-0">
+                                        <td class="b-0 contact-title">ABOUT ME
+                                            <span>:</span>
+                                        </td>
+                                        <td class="b-0">
+                                            <span *ngIf="edit==false">{{talentPersonalDetails.about_me}}</span>
+                                            <span class="form-group edit-input" *ngIf="edit==true">
+                                                <textarea class="form-control" formControlName="about_me"
+                                                    maxlength="250" rows="4"
+                                                    [ngClass]="{'is-invalid':f.about_me.errors&& submitted}"
+                                                    placeholder="Write Something about yourself">
+                                                </textarea>
+
+                                                <div class="invalid-feedback" *ngIf="f.about_me.errors">
+                                                    <div *ngIf="f.about_me.errors.required">About me is required</div>
+                                                </div>
+
+                                            </span>
+                                        </td>
+                                    </tr>
+
+
+
+                                    <tr class="b-0">
                                         <td class="b-0 contact-title">TWITTER
                                             <span>:</span>
                                         </td>
@@ -312,11 +335,11 @@
                                             <span>:</span>
                                         </td>
                                         <td class="b-0">
-                                            <span *ngIf="edit==false">{{talentPersonalDetails.linkedIn}}</span>
+                                            <span *ngIf="edit==false">{{talentPersonalDetails.linkedin}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <input type="text" class="form-control" id="linkedIn"
                                                     aria-describedby="emailHelp" placeholder="www.linkedIn.com/gix"
-                                                    formControlName="linkedIn">
+                                                    formControlName="linkedin">
                                             </span>
                                         </td>
                                     </tr>
@@ -366,62 +389,71 @@
                                         </td>
                                     </tr>
                                     <tr class="b-0">
-                                        <td class="b-0 contact-title">ATTACHMENT
+                                        <td class="b-0 contact-title">ATTACHMENTS
                                             <span>:</span>
                                         </td>
                                         <td class="b-0">
-                                            <span *ngIf="edit==false">
-                                                <a href="{{pdfUrlLink}}{{talentPersonalDetails.attachment}}"
-                                                    download="newfilename" target="_blank"><img class="pdf-img"
-                                                        src="https://img.icons8.com/officel/80/000000/pdf-2.png"></a>
-                                            </span>
-                                            <span class="form-group edit-input" *ngIf="edit==true">
-                                                <div class="upload-image text-center">
-                                                    <input type='file' id="imageUpload" name="ds" accept=".pdf"
-                                                        #fileInput (change)="readUrl1($event)" />
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <span *ngIf="edit==false">
+                                                        <a href="{{pdfUrlLink}}{{talentPersonalDetails.attachment}}"
+                                                            download="newfilename" target="_blank"><img class="pdf-img"
+                                                                src="https://img.icons8.com/officel/80/000000/pdf-2.png"></a>
+                                                    </span>
+                                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                                        <div class="upload-image text-center">
+                                                            <input type='file' id="imageUpload" name="ds" accept=".pdf"
+                                                                #fileInput (change)="readUrl1($event)" />
 
-                                                    <img *ngIf="!url2==true" class="cloud-image"
-                                                        src="/assets/images/upload.png">
-                                                    <!-- <img *ngIf="url2" [src]="url2" height="60"> -->
-                                                    <p *ngIf="url2">{{path}}</p>
+                                                            <img *ngIf="!url2==true" class="cloud-image"
+                                                                src="/assets/images/upload.png">
+                                                            <!-- <img *ngIf="url2" [src]="url2" height="60"> -->
+                                                            <p *ngIf="url2">{{path}}</p>
 
-                                                    <p class="drag">Drag & Drop file here</p>
-                                                    <p class="file-select">or select file to upload</p>
-                                                    <p class="drag"> Please Select document in pdf format</p>
+                                                            <p class="drag">Drag & Drop file here</p>
+                                                            <p class="file-select">or select file to upload</p>
+                                                            <p class="drag"> Please Select document in pdf format</p>
+                                                        </div>
+                                                    </span>
                                                 </div>
-                                            </span>
+                                                <div class="col-md-6">
+                                                    <span *ngIf="edit==false">
+                                                        <video width="320" height="240" controls>
+                                                            <source src="{{videoUrlLink}}{{videoUrl}}" type="video/mp4">
+                                                            Your browser does not support HTML5 video.
+                                                        </video>
+
+                                                        <!-- <video width="320" height="240" controls>
+                                                                    <source src="{{videoUrl}}" type="video/mp4">
+                                                                    Your browser does not support the video tag.
+                                                                </video> -->
+                                                    </span>
+                                                    <span class="form-group edit-input" *ngIf="edit==true">
+                                                        <div class="upload-image text-center">
+                                                            <input type='file' id="imageUpload" name="ds"
+                                                                accept="video/mp4" #fileInput
+                                                                (change)="readUrl2($event)" />
+                                                            <img *ngIf="!url3==true" class="cloud-image mt-3"
+                                                                src="/assets/images/upload.png">
+                                                            <p *ngIf="url3">{{path1}}</p>
+
+                                                            <p class="drag mt-3">upload video</p>
+                                                            <p class="drag"> Please Select video in mp4 format</p>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                            </div>
+
                                         </td>
                                     </tr>
-                                    <tr class="b-0">
+                                    <!-- <tr class="b-0">
                                         <td class="b-0 contact-title">VIDEO
                                             <span>:</span>
                                         </td>
                                         <td class="b-0">
-                                            <span *ngIf="edit==false">
-                                                <video width="320" height="240" controls>
-                                                    <source src="{{videoUrlLink}}{{videoUrl}}" type="video/mp4">
-                                                    Your browser does not support HTML5 video.
-                                                </video>
 
-                                                <!-- <video width="320" height="240" controls>
-                                                    <source src="{{videoUrl}}" type="video/mp4">
-                                                    Your browser does not support the video tag.
-                                                </video> -->
-                                            </span>
-                                            <span class="form-group edit-input" *ngIf="edit==true">
-                                                <div class="upload-image text-center">
-                                                    <input type='file' id="imageUpload" name="ds" accept="video/mp4"
-                                                        #fileInput (change)="readUrl2($event)" />
-                                                    <img *ngIf="!url3==true" class="cloud-image mt-3"
-                                                        src="/assets/images/upload.png">
-                                                    <p *ngIf="url3">{{path1}}</p>
-
-                                                    <p class="drag mt-3">upload video</p>
-                                                    <p class="drag"> Please Select video in mp4 format</p>
-                                                </div>
-                                            </span>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                             <!-- <div class="container create-account"> -->
@@ -491,13 +523,13 @@
 
                                 </td>
                             </tr>
-                            <tr class="b-0">
+                            <!-- <tr class="b-0">
                                 <td class="b-0 contact-title">OTHER HIGHEST QUALIFICATION</td>
                                 <td class="b-0"><span>:</span>
                                     <span *ngIf="edit==false">{{data.other_highest_qualification}}</span>
 
                                 </td>
-                            </tr>
+                            </tr> -->
                             <tr class="b-0">
                                 <td class="b-0 contact-title">PROFESSIONAL QUALIFICATION</td>
                                 <td class="b-0"><span>:</span>
@@ -1204,11 +1236,12 @@
                                         <div class="form-group">
                                             <textarea placeholder="Describe your role and contribution"
                                                 class="form-control"
-                                                [ngClass]="{'is-invalid':employee.controls.role_desc.errors&& submitted3}"
-                                                formControlName="role_desc"></textarea>
+                                                [ngClass]="{'is-invalid':employee.controls.role_description.errors&& submitted3}"
+                                                formControlName="role_description"></textarea>
 
-                                            <div class="invalid-feedback" *ngIf="employee.controls.role_desc.errors">
-                                                <div *ngIf="employee.controls.role_desc.errors.required">Role
+                                            <div class="invalid-feedback"
+                                                *ngIf="employee.controls.role_description.errors">
+                                                <div *ngIf="employee.controls.role_description.errors.required">Role
                                                     Description is required
                                                 </div>
                                             </div>
@@ -1474,9 +1507,9 @@
                                         <span class="form-group edit-input" *ngIf="editBank==true">
                                             <input type="text" class="form-control" id="exampleInputPassword1"
                                                 placeholder="Name" formControlName="account_holder_name"
-                                                [ngClass]="{'is-invalid':f5.account_holder_name.errors && submitted5}">
-                                            <div class="invalid-feedback" *ngIf="f5.account_holder_name.errors">
-                                                <div *ngIf="f5.account_holder_name.errors.required">Account Holder
+                                                [ngClass]="{'is-invalid':f6.account_holder_name.errors && submitted5}">
+                                            <div class="invalid-feedback" *ngIf="f6.account_holder_name.errors">
+                                                <div *ngIf="f6.account_holder_name.errors.required">Account Holder
                                                     Name
                                                     is required
                                                 </div>
@@ -1492,9 +1525,9 @@
                                             <input myNumberOnly type="text" class="form-control"
                                                 id="exampleInputPassword1" placeholder="Account Number"
                                                 formControlName="account_number"
-                                                [ngClass]="{'is-invalid':f5.account_number.errors && submitted5}">
-                                            <div class="invalid-feedback" *ngIf="f5.account_number.errors">
-                                                <div *ngIf="f5.account_number.errors.required">Account Number
+                                                [ngClass]="{'is-invalid':f6.account_number.errors && submitted5}">
+                                            <div class="invalid-feedback" *ngIf="f6.account_number.errors">
+                                                <div *ngIf="f6.account_number.errors.required">Account Number
                                                     is required
                                                 </div>
                                             </div>
@@ -1508,9 +1541,9 @@
                                         <span class="form-group edit-input" *ngIf="editBank==true">
                                             <input type="text" class="form-control" id="exampleInputPassword1"
                                                 placeholder="Bank Name" formControlName="bank_name"
-                                                [ngClass]="{'is-invalid':f5.bank_name.errors && submitted5}">
-                                            <div class="invalid-feedback" *ngIf="f5.bank_name.errors">
-                                                <div *ngIf="f5.bank_name.errors.required">Bank Name
+                                                [ngClass]="{'is-invalid':f6.bank_name.errors && submitted5}">
+                                            <div class="invalid-feedback" *ngIf="f6.bank_name.errors">
+                                                <div *ngIf="f6.bank_name.errors.required">Bank Name
                                                     is required
                                                 </div>
                                             </div>
@@ -1524,9 +1557,9 @@
                                         <span class="form-group edit-input" *ngIf="editBank==true">
                                             <input type="text" class="form-control" id="exampleInputPassword1"
                                                 placeholder="IFCS CODE" formControlName="ifsc"
-                                                [ngClass]="{'is-invalid':f5.ifsc.errors && submitted5}">
-                                            <div class="invalid-feedback" *ngIf="f5.ifsc.errors">
-                                                <div *ngIf="f5.ifsc.errors.required">IFSC CODE
+                                                [ngClass]="{'is-invalid':f6.ifsc.errors && submitted5}">
+                                            <div class="invalid-feedback" *ngIf="f6.ifsc.errors">
+                                                <div *ngIf="f6.ifsc.errors.required">IFSC CODE
                                                     is required
                                                 </div>
                                             </div>
@@ -1541,9 +1574,9 @@
                                             <input type="text" value="Kuala Lumpur , Malaysia" class="form-control"
                                                 id="exampleInputPassword1" placeholder="Kuala Lumpur , Malaysia"
                                                 formControlName="branch"
-                                                [ngClass]="{'is-invalid':f5.branch.errors && submitted5}">
-                                            <div class="invalid-feedback" *ngIf="f5.branch.errors">
-                                                <div *ngIf="f5.branch.errors.required">Branch
+                                                [ngClass]="{'is-invalid':f6.branch.errors && submitted5}">
+                                            <div class="invalid-feedback" *ngIf="f6.branch.errors">
+                                                <div *ngIf="f6.branch.errors.required">Branch
                                                     is required
                                                 </div>
                                             </div>
@@ -1557,9 +1590,9 @@
                                         <span class="form-group edit-input" *ngIf="editBank==true">
                                             <input type="text" class="form-control" id="exampleInputPassword1"
                                                 placeholder="Kuala Lumpur , Malaysia" formControlName="location"
-                                                [ngClass]="{'is-invalid':f5.location.errors && submitted5}">
-                                            <div class="invalid-feedback" *ngIf="f5.location.errors">
-                                                <div *ngIf="f5.location.errors.required">Location
+                                                [ngClass]="{'is-invalid':f6.location.errors && submitted5}">
+                                            <div class="invalid-feedback" *ngIf="f6.location.errors">
+                                                <div *ngIf="f6.location.errors.required">Location
                                                     is required
                                                 </div>
                                             </div>
