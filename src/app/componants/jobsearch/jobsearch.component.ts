@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
@@ -7,10 +7,13 @@ import {
   bounceInAndOut, enterAndLeaveFromLeft, enterAndLeaveFromRight, fadeInAndOut,
   fadeInThenOut, growInShrinkOut, swingInAndOut
 } from '../../triggers';
+import { AppServiceService } from 'src/app/Services/app-service.service';
+import { DataStorageService } from 'src/app/Services/data-storage.service';
 @Component({
   selector: 'app-jobsearch',
   templateUrl: './jobsearch.component.html',
   styleUrls: ['./jobsearch.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   animations: [
     growInShrinkOut, fadeInThenOut, swingInAndOut, fadeInAndOut,
     enterAndLeaveFromLeft, enterAndLeaveFromRight, bounceInAndOut,
@@ -24,7 +27,17 @@ export class JobsearchComponent implements OnInit {
   ShowListone = true;
   ShowListTwo = true;
   ShowListAll = true;
-  constructor(private router: Router,private toast: ToastrService) {
+  countriesList =[];
+  industriesList = [];
+  skillsList = [];
+  filteredJobsList = [];
+  paginationIndex = 0;
+  itemsPerPage = 5;
+  selectedSkills = [];
+  selectedIndustries = [];
+  selectedCountries = [];
+
+  constructor(private router: Router,private toast: ToastrService, private appSer: AppServiceService, private dataStorage: DataStorageService) {
 
     if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
       this.toast.warning('Please Login', "warning");
@@ -34,6 +47,7 @@ export class JobsearchComponent implements OnInit {
    }
   ngOnInit() {
     window.scroll(0, 0);
+    this.getAllMasterData();
   }
   clear1() {
     this.ShowListone = false;
@@ -45,5 +59,78 @@ export class JobsearchComponent implements OnInit {
     this.ShowListone = false;
     this.ShowListTwo = false;
     this.ShowListAll = false;
+  }
+  getAllMasterData(){
+    this.appSer.getTalentSearchFilters().subscribe((res) => {
+      this.countriesList = res['countriesList'];
+      this.industriesList = res['industriesList'];
+      this.skillsList = res['skillsList'];
+  });
+  }
+
+  onSearchClick(){
+    this.selectedCountries =  this.countriesList.filter(x=>x.checked);
+    var selectedCountries = this.selectedCountries.map(x=>x.country_id).join(',');
+    this.selectedIndustries =  this.industriesList.filter(x=>x.checked);
+    var selectedIndustries =  this.selectedIndustries.map(x=>x.industry_id).join(',');
+    this.selectedSkills =  this.skillsList.filter(x=>x.checked);
+    var selectedSkills = this.selectedSkills.map(x=>x.skill_id).join(',');
+    
+    var requestObj = {
+      selectedCountryIds: selectedCountries,
+      selectedSkillIds: selectedIndustries,
+      selectedIndustryTypeIds: selectedSkills
+    };
+    this.filteredJobsList =[];
+    this.appSer.searchTalentResults(requestObj).subscribe((res) => {
+      this.filteredJobsList = res['jobposts'];
+  });
+  }
+
+  onPaginationDropdownChange(event){
+     this.itemsPerPage = event.target.value;
+  }
+
+  onCountryChange(event){
+    this.onSearchClick(); 
+  }
+
+  onIndustryChange(event){
+    this.onSearchClick();
+  }
+
+  onSkillChange(event){
+    this.onSearchClick();
+  }
+
+  onCountryRemoveClick(item){
+    this.countriesList.filter(x=> {x.country_id == item.country_id ? x.checked = false : ''});
+    this.onSearchClick();
+  }
+
+  onIndustryRemoveClick(item){
+    this.industriesList.filter(x=> {x.industry_id == item.industry_id ? x.checked = false : ''});
+    this.onSearchClick();
+  }
+
+  onSkillRemoveClick(item){
+    this.skillsList.filter(x=> {x.skill_id == item.skill_id ? x.checked = false : ''});
+    this.onSearchClick();
+  }
+
+  onApplyGigClick(item){
+    var requestObj = {
+      'post_id': item.post_id,
+      'talent_id': this.dataStorage.loggedInUserData.talent_id
+    }
+    this.appSer.applyGig(requestObj).subscribe((res) => {
+      if (res['status'] == 200) {
+        item.applied_status = true;
+        this.toast.success(res['message'], "success");
+      } else {
+        this.toast.error(res['message'], "error");
+
+      }
+  }); 
   }
 }

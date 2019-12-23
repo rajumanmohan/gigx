@@ -1,3 +1,106 @@
+app-jobsearch{
+
+
+    .card-header .btn-link:after {
+        /* symbol for "opening" panels */
+        font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+        content: "\2212";    /* adjust as needed, taken from bootstrap.css */
+        float: right;        /* adjust as needed */
+        color: grey;         /* adjust as needed */
+    }
+    .card-header .btn-link.collapsed:after {
+        /* symbol for "collapsed" panels */
+        content: "\2b";    /* adjust as needed, taken from bootstrap.css */
+    }
+
+    .filter-by{
+        .custom-control {
+            margin-bottom: 11px;
+        }
+        .card-body {
+            padding: 0px 17px;
+            height: 300px;
+             overflow: auto;
+        }
+        h5{
+            padding-bottom: 9px;
+            color: #808080;
+            font-weight: 200;
+        }
+        button{
+            width: 100%;
+            border: 0px;
+            border-radius: 3px !important;
+            padding: 0px;
+            background: none !important;
+            color: #000000;
+            font-size: 17px;
+            text-align: left;
+            text-decoration:none!important;
+        }
+        span{
+            float:right;
+        }
+       
+        .custom-control-input:checked~.custom-control-label::before {
+            color: #fff;
+            border-color: #77706c;
+            background-color: #77706c;
+        }
+        .custom-radio .custom-control-label::before {
+            border-radius: 50%;
+            background: #d4d4d4;
+        }
+        .custom-checkbox .custom-control-label::before {
+          
+            background: #d4d4d4;
+        }
+        .accordion>.card {
+            overflow: hidden;
+            border: 0px;
+            border-top: 1px solid;
+        }
+        .accordion>.card .card-header {
+            margin-bottom: -1px;
+            background: #ffffff;
+            border-bottom: 0px;
+            border-radius: 0pc;
+        }
+    }
+
+    .btn-search{
+        padding: 2px !important;
+        margin: 0px !important;
+        position: absolute;
+        top: 1.3rem;
+        left: 8rem;
+        background: #007bff;
+        color: #fff;
+        border: none !important;
+    }
+
+    .btn-apply{
+        width: 66% !important;   }
+
+        .btn-applied{
+
+        }
+
+        .filter-fileds {
+            border: 1px solid;
+            font-size: 12px !important;
+            padding: 3px !important;
+            border-radius: 4px;
+            span{
+                font-weight: 600;
+                font-size: 12px;
+                cursor:pointer;
+                margin-left: 12px;
+            }
+        }
+        
+}
+
 .login {
     h1{
         font-weight: 600;
@@ -65,58 +168,7 @@
      }
 }
 
-.filter-by{
-    .custom-control {
-        margin-bottom: 11px;
-    }
-    .card-body {
-        padding: 0px 17px;
-    }
-    h5{
-        padding-bottom: 9px;
-        color: #808080;
-        font-weight: 200;
-    }
-    button{
-        width: 100%;
-        border: 0px;
-        border-radius: 3px !important;
-        padding: 0px;
-        background: none !important;
-        color: #000000;
-        font-size: 17px;
-        text-align: left;
-        text-decoration:none!important;
-    }
-    span{
-        float:right;
-    }
-   
-    .custom-control-input:checked~.custom-control-label::before {
-        color: #fff;
-        border-color: #77706c;
-        background-color: #77706c;
-    }
-    .custom-radio .custom-control-label::before {
-        border-radius: 50%;
-        background: #d4d4d4;
-    }
-    .custom-checkbox .custom-control-label::before {
-      
-        background: #d4d4d4;
-    }
-    .accordion>.card {
-        overflow: hidden;
-        border: 0px;
-        border-top: 1px solid;
-    }
-    .accordion>.card .card-header {
-        margin-bottom: -1px;
-        background: #ffffff;
-        border-bottom: 0px;
-        border-radius: 0pc;
-    }
-}
+
 .search-category{
     button{
         border-radius:50px!important;
@@ -228,18 +280,6 @@
     width: 100%;
     height: 100%;
     text-align: left;
-    }
-}
-.filter-fileds {
-    border: 1px solid;
-    font-size: 12px !important;
-    padding: 6px;
-    border-radius: 4px;
-    span{
-        font-weight: 600;
-        font-size: 12px;
-        cursor:pointer;
-        margin-left: 12px;
     }
 }
 

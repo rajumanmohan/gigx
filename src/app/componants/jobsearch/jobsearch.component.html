@@ -10,7 +10,7 @@
             </div>
         </div>
         <!-- serach talent -->
-        <div class="row justify-content-center">
+        <!-- <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="input-group button-search mb-3">
                     <input type="text" class="form-control" placeholder="Java Developers"
@@ -21,12 +21,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- search talent -->
         <div class="row mt-3">
             <!-- Seaarch filter -->
             <div class="col-md-3 filter-by" [@fadeInAndOut]>
-                <h3>Search Result - 08</h3>
+                <!-- <h3>Search Result - 08</h3> -->
                 <h5>Filter by</h5>
 
                 <!-- accordian filter -->
@@ -35,57 +35,22 @@
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                <button  class="btn btn-link" type="button" data-toggle="collapse"
                                     data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    All Categories<span>+</span>
+                                    Countries
                                 </button>
+                                <!-- <input type="button" value="Search" class="btn btn-search" (click)="onSearchClick()"/> -->
                             </h2>
                         </div>
 
                         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                            data-parent="#accordionExample">
+                            data-parent="#accordionExample"> 
+                            <input type="text" class="form-control" [(ngModel)]="countryName" placeholder="Search County Name"/>
                             <div class="card-body">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="1">
-                                    <label class="custom-control-label" for="1">Accounting & Consulting</label>
+                                <div class="custom-control custom-checkbox" *ngFor="let item of countriesList | filter:[{field:'country_name', value: countryName}]">
+                                    <input type="checkbox" class="custom-control-input" id="cnt_{{item.country_id}}" [(ngModel)]="item.checked" (change)="onCountryChange($event)">
+                                    <label class="custom-control-label" for="cnt_{{item.country_id}}">{{item.country_name}}</label>
                                 </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="2">
-                                    <label class="custom-control-label" for="2">Admin Support </label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="3">
-                                    <label class="custom-control-label" for="3">Customer Service</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="4">
-                                    <label class="custom-control-label" for="4">Data Science & Analytics </label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="5">
-                                    <label class="custom-control-label" for="5">Design & Creative</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="6">
-                                    <label class="custom-control-label" for="6">Engineering & Architecture</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="7">
-                                    <label class="custom-control-label" for="7">IT & Networking</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="8">
-                                    <label class="custom-control-label" for="8">Legal</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="9">
-                                    <label class="custom-control-label" for="9">Sales & Marketing</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="10">
-                                    <label class="custom-control-label" for="10">Translation</label>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -97,54 +62,19 @@
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                                     data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    University Certifications<span>+</span>
+                                    Industries
                                 </button>
+                                <!-- <input type="button" value="Search" class="btn btn-search" (click)="onSearchClick()"/> -->
                             </h2>
                         </div>
                         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
                             data-parent="#accordionExample">
+                            <input type="text" class="form-control" [(ngModel)]="industryName" placeholder="Search Industry Name"/>
                             <div class="card-body">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="1">
-                                    <label class="custom-control-label" for="1">Accounting & Consulting</label>
+                                <div class="custom-control custom-checkbox" *ngFor="let item of industriesList | filter:[{field:'industry_name', value: industryName}]">
+                                    <input type="checkbox" class="custom-control-input" id="ind_{{item.industry_id}}" [(ngModel)]="item.checked" (change)="onIndustryChange($event)"/>
+                                    <label class="custom-control-label" for="ind_{{item.industry_id}}">{{item.industry_name}}</label>
                                 </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="2">
-                                    <label class="custom-control-label" for="2">Admin Support </label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="3">
-                                    <label class="custom-control-label" for="3">Customer Service</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="4">
-                                    <label class="custom-control-label" for="4">Data Science & Analytics </label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="5">
-                                    <label class="custom-control-label" for="5">Design & Creative</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="6">
-                                    <label class="custom-control-label" for="6">Engineering & Architecture</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="7">
-                                    <label class="custom-control-label" for="7">IT & Networking</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="8">
-                                    <label class="custom-control-label" for="8">Legal</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="9">
-                                    <label class="custom-control-label" for="9">Sales & Marketing</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="10">
-                                    <label class="custom-control-label" for="10">Translation</label>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -156,174 +86,23 @@
                             <h2 class="mb-0">
                                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
                                     data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Employer Type<span>+</span>
+                                    Skills
                                 </button>
+                                <!-- <input type="button" value="Search" class="btn btn-search" (click)="onSearchClick()"/> -->
                             </h2>
                         </div>
                         <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
                             data-parent="#accordionExample">
+                            <input type="text" class="form-control" [(ngModel)]="skillName" placeholder="Search Skill Name"/>
                             <div class="card-body">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="1">
-                                    <label class="custom-control-label" for="1">Accounting & Consulting</label>
+                                <div class="custom-control custom-checkbox" *ngFor="let item of skillsList | filter:[{field:'skill_name', value: skillName}]">
+                                    <input type="checkbox" class="custom-control-input" id="skl_{{item.skill_id}}" [(ngModel)]="item.checked" (change)="onSkillChange($event)" />
+                                    <label class="custom-control-label" for="skl_{{item.skill_id}}">{{item.skill_name}}</label>
                                 </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="2">
-                                    <label class="custom-control-label" for="2">Admin Support </label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="3">
-                                    <label class="custom-control-label" for="3">Customer Service</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="4">
-                                    <label class="custom-control-label" for="4">Data Science & Analytics </label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="5">
-                                    <label class="custom-control-label" for="5">Design & Creative</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="6">
-                                    <label class="custom-control-label" for="6">Engineering & Architecture</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="7">
-                                    <label class="custom-control-label" for="7">IT & Networking</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="8">
-                                    <label class="custom-control-label" for="8">Legal</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="9">
-                                    <label class="custom-control-label" for="9">Sales & Marketing</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="10">
-                                    <label class="custom-control-label" for="10">Translation</label>
-                                </div>
-
                             </div>
                         </div>
                     </div>
                     <!-- Emplyoer type -->
-                    <!-- Top companies -->
-                    <div class="card">
-                        <div class="card-header" id="headingFour">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    Top Companies<span>+</span>
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="1">
-                                    <label class="custom-control-label" for="1">Accounting & Consulting</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="2">
-                                    <label class="custom-control-label" for="2">Admin Support </label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="3">
-                                    <label class="custom-control-label" for="3">Customer Service</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="4">
-                                    <label class="custom-control-label" for="4">Data Science & Analytics </label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="5">
-                                    <label class="custom-control-label" for="5">Design & Creative</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="6">
-                                    <label class="custom-control-label" for="6">Engineering & Architecture</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="7">
-                                    <label class="custom-control-label" for="7">IT & Networking</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="8">
-                                    <label class="custom-control-label" for="8">Legal</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="9">
-                                    <label class="custom-control-label" for="9">Sales & Marketing</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="10">
-                                    <label class="custom-control-label" for="10">Translation</label>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Top companies -->
-                    <!-- function -->
-                    <div class="card">
-                        <div class="card-header" id="headingFive">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    Function<span>+</span>
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="1">
-                                    <label class="custom-control-label" for="1">Accounting & Consulting</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="2">
-                                    <label class="custom-control-label" for="2">Admin Support </label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="3">
-                                    <label class="custom-control-label" for="3">Customer Service</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="4">
-                                    <label class="custom-control-label" for="4">Data Science & Analytics </label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="5">
-                                    <label class="custom-control-label" for="5">Design & Creative</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="6">
-                                    <label class="custom-control-label" for="6">Engineering & Architecture</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="7">
-                                    <label class="custom-control-label" for="7">IT & Networking</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="8">
-                                    <label class="custom-control-label" for="8">Legal</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="9">
-                                    <label class="custom-control-label" for="9">Sales & Marketing</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="10">
-                                    <label class="custom-control-label" for="10">Translation</label>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <!-- function -->
 
                 </div>
                 <!-- accordian filter -->
@@ -331,8 +110,9 @@
             <!-- Seaarch filter -->
 
             <!-- search details -->
-            <div class="col-md-9 search-results" [@fadeInAndOut]>
+            <div class="col-md-9 " [@fadeInAndOut]>
                 <!-- search results buttons -->
+                <div class="search-results">
                 <div class="row search-category justify-content-center">
                     <div class="col-md-12 text-left">
                         <h1>Talent Specialist Gigs in Malaysia</h1>
@@ -343,18 +123,19 @@
                 <div class="row mt-3 filter-section">
                     <div class="col-md-12">
                         <ul>
-                            <li *ngIf="ShowListAll" [@fadeInAndOut]><span>Applied Filter</span>
-                                <span class="filter-fileds  " *ngIf="ShowListone" [@fadeInAndOut]>
-                                    Kuala Lumpur / Malaysia <span (click)="clear1()">X</span>
+                            <li [@fadeInAndOut]  >
+                                <span class="filter-fileds  " *ngFor="let item of selectedCountries" >
+                                    {{item.country_name}} <span (click)="onCountryRemoveClick(item)">X</span>
                                 </span>
+                                <span class="filter-fileds  " *ngFor="let item of selectedIndustries" >
+                                        {{item.industry_name}} <span (click)="onIndustryRemoveClick(item)">X</span>
+                                    </span>
+                                    <span class="filter-fileds  " *ngFor="let item of selectedSkills" >
+                                            {{item.skill_name}} <span (click)="onSkillRemoveClick(item)">X</span>
+                                        </span>
                             </li>
-                            <li *ngIf="ShowListTwo" [@fadeInAndOut]>
-                                <span class="filter-fileds">
-                                    1-3 years <span (click)="clear2()">X</span>
-                                </span>
-
-                            </li>
-                            <li *ngIf="ShowListAll" [@fadeInAndOut]><span (click)="clearall()"> Clear all</span></li>
+                           
+                            <!-- <li *ngIf="ShowListAll" [@fadeInAndOut]><span (click)="clearall()"> Clear all</span></li> -->
                         </ul>
                     </div>
                 </div>
@@ -365,21 +146,21 @@
                         <div class="sort-by">
                             <ul>
                                 <li><span>Show</span>
-                                    <select class="from-control">
+                                    <select class="from-control" (change)="onPaginationDropdownChange($event)">
                                         <option>5</option>
                                         <option>10</option>
                                         <option>15</option>
                                         <option>20</option>
                                     </select>
                                     <span> Per page</span></li>
-                                <li><span>Sort by</span>
+                                <!-- <li><span>Sort by</span>
                                     <select class="from-control">
                                         <option>Relevence</option>
                                         <option>100% Profie Match</option>
                                         <option>80% Profile Match</option>
                                         <option>50% Profile Match</option>
                                     </select>
-                                </li>
+                                </li> -->
                             </ul>
                         </div>
 
@@ -388,405 +169,83 @@
                 <!-- details sorting -->
                 <div class="row">
                     <!-- job preview -->
-                    <div class="col-md-12 mt-3">
-                        <div class=" talent-result ">
+                    <div class="col-md-12 mt-3" *ngFor="let item of filteredJobsList | paginate: { itemsPerPage: itemsPerPage, currentPage: paginationIndex, totalItems: filteredJobsList.length }">
+                            <div class=" talent-result ">
+        
+                                    <div class="row">
+                                        <!-- job details -->
+                                        <div class="col-md-8">
+                                            <h3>{{item.gig_title}}</h3>
+                                            <p class="text-color-light">At {{item.company_name}}</p>
+                                            <p><img src="../../../assets/images/maps.png" class="maps"> 
+                                                {{item.city}}, {{item.state}}, {{item.country}}
+                                            </p>
+                                                    <p>Skills : {{item.skills}}</p>
+                                                
+                                                    <p>Experience Required : {{item.years_of_experience}} Years</p>
+                                               
+                                        </div>
+                                        <!-- job details -->
+                                        <!-- apply job -->
+                                        <div class="col-md-4 text-right">
+                                            <button class="btn invite-job text-right">Posted :
+                                                {{item.no_of_days}}</button>
 
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        2days ago</button>
-                                    <button class="btn review">APPLY</button>
-                                </div>
-                                <!-- apply job -->
-                            </div>
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
+                                                <button class="btn btn-apply" (click)="onApplyGigClick(item)">Apply</button>
 
-                                    <p>
-                                        <a class="hover-effect" data-toggle="collapse" href="#collapseExample1"
-                                            role="button" aria-expanded="false" aria-controls="collapseExample1">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample1">
-                                        <div class="card card-body">
-                                            Employing multiple sourcing strategies for multiple job families depending
-                                            on complexity of the position to hire by effectively using sourcing channels
-                                            like Naukri, LinkedIn, Internal ATS, and Employee Referrals. Hired Top Notch
-                                            Talent for Various Job Families (Software Development Engineers/Data
-                                            Engineers
+                                                <!-- <button class="btn btn-applied">Applied</button> -->
+                                           
+                                        </div>
+                                        <!-- apply job -->
+                                    </div>
+                                    <!-- job description -->
+                                    <div class="row mt-3">
+                                        <div class="col-md-12">
+                                            <p class="details">
+                                                {{item.gig_description}}
+                                            </p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <!-- more details -->
-                        </div>
-                    </div>
-                    <!-- job preview -->
-                    <!-- job preview -->
-                    <div class="col-md-12 mt-3">
-                        <div class=" talent-result ">
-
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Value Global Services</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        2days ago</button>
-                                    <button class="btn review">APPLY</button>
-                                </div>
-                                <!-- apply job -->
-                            </div>
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" data-toggle="collapse" href="#collapseExample2"
-                                            role="button" aria-expanded="false" aria-controls="collapseExample2">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample2">
-                                        <div class="card card-body">
-                                            Employing multiple sourcing strategies for multiple job families depending
-                                            on complexity of the position to hire by effectively using sourcing channels
-                                            like Naukri, LinkedIn, Internal ATS, and Employee Referrals. Hired Top Notch
-                                            Talent for Various Job Families (Software Development Engineers/Data
-                                            Engineers
+                                    <!-- job description -->
+                                    <!-- package -->
+                                    <div class="row mt-3 ">
+                                        <div class="col-md-6">
+                                            <p>{{item.payment}}</p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <!-- more details -->
-
-                        </div>
-                    </div>
-                    <!-- job preview -->
-                    <!-- job preview -->
-                    <div class="col-md-12 mt-3">
-                        <div class=" talent-result ">
-
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        2days ago</button>
-                                    <button class="btn review">APPLY</button>
-                                </div>
-                                <!-- apply job -->
-                            </div>
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" data-toggle="collapse" href="#collapseExample3"
-                                            role="button" aria-expanded="false" aria-controls="collapseExample3">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample3">
-                                        <div class="card card-body">
-                                            Employing multiple sourcing strategies for multiple job families depending
-                                            on complexity of the position to hire by effectively using sourcing channels
-                                            like Naukri, LinkedIn, Internal ATS, and Employee Referrals. Hired Top Notch
-                                            Talent for Various Job Families (Software Development Engineers/Data
-                                            Engineers
+                                    <!-- package -->
+                                    <!-- more details -->
+                                    <div class="row">
+                                        <div class="col-md-12 text-right">
+        
+                                            <p>
+                                                <a class="hover-effect" [routerLink]="['/viewgig', item.post_id, 4]">
+                                                    View More Details
+                                                    <img src="../../../assets/images/right-arrow.png">
+                                                </a>
+                                            </p>
                                         </div>
                                     </div>
+                                    <!-- more details -->
+        
+        
+        
                                 </div>
-                            </div>
-                            <!-- more details -->
-
-                        </div>
                     </div>
                     <!-- job preview -->
-                    <!-- job preview -->
-                    <div class="col-md-12 mt-3">
-                        <div class=" talent-result ">
-
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        2days ago</button>
-                                    <button class="btn review">APPLY</button>
-                                </div>
-                                <!-- apply job -->
-                            </div>
-
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" data-toggle="collapse" href="#collapseExample4"
-                                            role="button" aria-expanded="false" aria-controls="collapseExample4">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample4">
-                                        <div class="card card-body">
-                                            Employing multiple sourcing strategies for multiple job families depending
-                                            on complexity of the position to hire by effectively using sourcing channels
-                                            like Naukri, LinkedIn, Internal ATS, and Employee Referrals. Hired Top Notch
-                                            Talent for Various Job Families (Software Development Engineers/Data
-                                            Engineers
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- more details -->
-                        </div>
-                    </div>
-                    <!-- job preview -->
-                    <!-- job preview -->
-                    <div class="col-md-12 mt-3">
-                        <div class=" talent-result ">
-
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        2days ago</button>
-                                    <button class="btn review">APPLY</button>
-                                </div>
-                                <!-- apply job -->
-                            </div>
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" data-toggle="collapse" href="#collapseExample5"
-                                            role="button" aria-expanded="false" aria-controls="collapseExample5">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample5">
-                                        <div class="card card-body">
-                                            Employing multiple sourcing strategies for multiple job families depending
-                                            on complexity of the position to hire by effectively using sourcing channels
-                                            like Naukri, LinkedIn, Internal ATS, and Employee Referrals. Hired Top Notch
-                                            Talent for Various Job Families (Software Development Engineers/Data
-                                            Engineers
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- more details -->
-
-                        </div>
-                    </div>
-                    <!-- job preview -->
-                    <!-- job preview -->
-                    <div class="col-md-12 mt-3">
-                        <div class=" talent-result ">
-
-                            <div class="row">
-                                <!-- job details -->
-                                <div class="col-md-8">
-                                    <h3>Talent Specialist</h3>
-                                    <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                    <p><img src="../../../assets/images/maps.png" class="maps"> Malaysia Kuala
-                                        Lumpur
-                                    </p>
-                                    <ul>
-                                        <li>
-                                            <p>Skills : </p>
-                                        </li>
-                                        <li>
-                                            <p>Screening</p>
-                                        </li>
-                                        <li>
-                                            <p>Sourcing </p>
-                                        </li>
-                                        <li>
-                                            <p>Interviewing</p>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- job details -->
-                                <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                    <button class="btn invite-job text-right"><img
-                                            src="../../../assets/images/heart.png"> Posted :
-                                        2days ago</button>
-                                    <button class="btn review">APPLY</button>
-                                </div>
-                                <!-- apply job -->
-                            </div>
-
-                            <!-- more details -->
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-
-                                    <p>
-                                        <a class="hover-effect" data-toggle="collapse" href="#collapseExample6"
-                                            role="button" aria-expanded="false" aria-controls="collapseExample6">
-                                            View More Details
-                                            <img src="../../../assets/images/right-arrow.png">
-                                        </a>
-                                    </p>
-                                    <div class="collapse" id="collapseExample6">
-                                        <div class="card card-body">
-                                            Employing multiple sourcing strategies for multiple job families depending
-                                            on complexity of the position to hire by effectively using sourcing channels
-                                            like Naukri, LinkedIn, Internal ATS, and Employee Referrals. Hired Top Notch
-                                            Talent for Various Job Families (Software Development Engineers/Data
-                                            Engineers
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- more details -->
-                        </div>
-                    </div>
-                    <!-- job preview -->
+                  
                 </div>
+
+            </div>
+        <div class="row text-center col-md-12 mt-3" style="display: block;" *ngIf="filteredJobsList.length > 0"> 
+                <pagination-controls (pageChange)="this.paginationIndex = $event">
+                    </pagination-controls>
+        </div>
             </div>
 
             <!-- search details -->
         </div>
 
-
-
-        <nav aria-label="Page navigation example ">
-            <ul class="pagination justify-content-end mt-5">
-
-                <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-
-            </ul>
-        </nav>
     </div>
 
 </section>
