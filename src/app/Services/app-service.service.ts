@@ -423,5 +423,20 @@ export class AppServiceService {
     return this.httpClient.get(this.apiUrl + 'company_subscription_plans.php', { headers })
   }
 
+  getCompanySearchFilters(){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'companySearchFilters.php', { headers })
+  }
 
+  searchCompanyResults(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'searchCompanyResults.php', params,  { headers }) 
+  }
 }
+

@@ -49,7 +49,7 @@
                             <div class="card-body">
                                 <div class="custom-control custom-checkbox" *ngFor="let item of countriesList | filter:[{field:'country_name', value: countryName}]">
                                     <input type="checkbox" class="custom-control-input" id="cnt_{{item.country_id}}" [(ngModel)]="item.checked" (change)="onCountryChange($event)">
-                                    <label class="custom-control-label" for="cnt_{{item.country_id}}">{{item.country_name}}</label>
+                                    <label class="custom-control-label" for="cnt_{{item.country_id}}">{{item.country_name}} ({{item.count}})</label>
                                 </div>
                             </div>
                         </div>
@@ -73,7 +73,7 @@
                             <div class="card-body">
                                 <div class="custom-control custom-checkbox" *ngFor="let item of industriesList | filter:[{field:'industry_name', value: industryName}]">
                                     <input type="checkbox" class="custom-control-input" id="ind_{{item.industry_id}}" [(ngModel)]="item.checked" (change)="onIndustryChange($event)"/>
-                                    <label class="custom-control-label" for="ind_{{item.industry_id}}">{{item.industry_name}}</label>
+                                    <label class="custom-control-label" for="ind_{{item.industry_id}}">{{item.industry_name}} ({{item.count}})</label>
                                 </div>
                             </div>
                         </div>
@@ -219,7 +219,7 @@
                                         <div class="col-md-12 text-right">
         
                                             <p>
-                                                <a class="hover-effect" [routerLink]="['/viewgig', item.post_id, 4]">
+                                                <a class="hover-effect" (click)="onViewMoreDetailsClick()" [routerLink]="['/viewgig', item.post_id, 4]">
                                                     View More Details
                                                     <img src="../../../assets/images/right-arrow.png">
                                                 </a>
@@ -235,6 +235,22 @@
                     <!-- job preview -->
                   
                 </div>
+
+                <div class="row" *ngIf="filteredJobsList.length == 0 && selectedCountries.length == 0 && selectedIndustries.length == 0 && selectedSkills.length == 0">
+                        <div class="col-md-12 mt-3">
+                            <div class="talent-result">
+                                <h2 class="text-center">Select filters to get the results</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" *ngIf="filteredJobsList.length == 0 && (selectedCountries.length > 0 || selectedIndustries.length > 0 || selectedSkills.length > 0)">
+                            <div class="col-md-12 mt-3">
+                                    <div class="talent-result text-center">
+                                            <!-- <h2 class="text-center">No results found</h2> -->
+                                            <img src="../../../assets/images/no_result.gif" class="no-results-image"/>
+                                        </div>
+                            </div>
+                        </div>
 
             </div>
         <div class="row text-center col-md-12 mt-3" style="display: block;" *ngIf="filteredJobsList.length > 0"> 

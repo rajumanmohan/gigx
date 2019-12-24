@@ -1,22 +1,38 @@
-import { NumberOnlyDirective } from './directives/number';
+
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatStepperModule, MatIconModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MyDatePickerModule } from 'mydatepicker';
+import { FormsModule } from '@angular/forms';
+import { NgCircleProgressModule } from 'ng-circle-progress';
+import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
+import { ToastrModule } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from "ngx-spinner";
+
+import { NgxPaginationModule } from 'ngx-pagination';
+
+import { NgSelectModule } from '@ng-select/ng-select';
+import { Pipe, PipeTransform } from '@angular/core';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+import { TypeaheadModule } from 'ngx-type-ahead';
+
+import { PipesModule } from 'w-ng5';
+import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './componants/home/home.component';
 import { LoginComponent } from './componants/login/login.component';
 import { CoverpageComponent } from './componants/coverpage/coverpage.component';
 import { HeaderComponent } from './componants/header/header.component';
 import { PaymentHistoryComponent } from './componants/payment-history/payment-history.component';
-import { MatStepperModule, MatIconModule } from '@angular/material';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChangepasswordComponent } from './componants/changepassword/changepassword.component';
 import { CreateaccountComponent } from './componants/createaccount/createaccount.component';
 import { ProfileComponent } from './componants/profile/profile.component';
 import { CompanyregistrationComponent } from './componants/companyregistration/companyregistration.component';
 import { TelentregistrationComponent } from './componants/telentregistration/telentregistration.component';
-import { MyDatePickerModule } from 'mydatepicker';
-import { FormsModule } from '@angular/forms';
 import { PostagigComponent } from './componants/postagig/postagig.component';
 import { TalentsearchComponent } from './componants/talentsearch/talentsearch.component';
 import { TalentdetailsComponent } from './componants/talentdetails/talentdetails.component';
@@ -30,31 +46,19 @@ import { IntrestedjobsComponent } from './componants/intrestedjobs/intrestedjobs
 import { CreateajobalertComponent } from './componants/createajobalert/createajobalert.component';
 import { JobalertsComponent } from './componants/jobalerts/jobalerts.component';
 import { TalentdashboardComponent } from './componants/talentdashboard/talentdashboard.component';
-import { HttpClientModule } from '@angular/common/http';
 import { GetstartedComponent } from './componants/getstarted/getstarted.component';
 import { CompanydashboardComponent } from './componants/companydashboard/companydashboard.component';
 import { TakeatestComponent } from './componants/takeatest/takeatest.component';
-import { NgCircleProgressModule } from 'ng-circle-progress';
-import { RecaptchaModule, RECAPTCHA_SETTINGS, RecaptchaSettings } from 'ng-recaptcha';
-import { ToastrModule } from 'ngx-toastr';
-import { ToastrService } from 'ngx-toastr';
-import { ReactiveFormsModule } from '@angular/forms';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NumberOnlyDirective } from './directives/number';
 import { RegistrationDataComponent } from './componants/registration-data/registration-data.component';
-import { IndividualRegistrationsComponent } from './componants/individual-registrations/individual-registrations.component';
-import { NgxPaginationModule } from 'ngx-pagination';
 import { CompanysubscriptionsComponent } from './componants/companysubscriptions/companysubscriptions.component';
-import { NgSelectModule } from '@ng-select/ng-select';
-import { Pipe, PipeTransform } from '@angular/core';
-import {AutocompleteLibModule} from 'angular-ng-autocomplete';
-import { TypeaheadModule } from 'ngx-type-ahead';
+import { IndividualRegistrationsComponent } from './componants/individual-registrations/individual-registrations.component';
 import { AboutusComponent } from './componants/aboutus/aboutus.component';
 import { ContactComponent } from './componants/contact/contact.component';
 import { TestlistComponent } from './componants/testlist/testlist.component';
 import { ViewgigComponent } from './componants/viewgig/viewgig.component';
 import { ViewpostedgigsComponent } from './componants/viewpostedgigs/viewpostedgigs.component';
 import { PostedgigdetailsComponent } from './componants/postedgigdetails/postedgigdetails.component';
-import { PipesModule } from 'w-ng5';
 import { TalentProfilesListComponent } from './componants/talentprofileslist/talentprofileslist.component';
 import { TalentProfileDetailsComponent } from './componants/talentprofiledetails/talentprofiledetails.component';
 import { AppliedProfilesListComponent } from './componants/appliedprofileslist/appliedprofileslist.component';
@@ -62,6 +66,7 @@ import { ShortlistedProfilesListComponent } from './componants/shortlistedprofil
 import { AcceptedProfilesListComponent } from './componants/acceptedprofileslist/acceptedprofileslist.component';
 import { RejectedProfilesListComponent } from './componants/rejectedprofileslist/rejectedprofileslist.component';
 import { InvitedGigsComponent } from './componants/invitedgigs/invitedgigs.component';
+
 
 @Pipe({ name: 'safe' })
 @NgModule({
@@ -149,6 +154,7 @@ import { InvitedGigsComponent } from './componants/invitedgigs/invitedgigs.compo
     },
     ToastrService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }
