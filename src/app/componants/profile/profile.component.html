@@ -97,20 +97,11 @@
                                                     <select class="custom-select" id="inputGroupSelect01"
                                                         name="mobileCode" formControlName="mobile_code"
                                                         [ngClass]="{'is-invalid':f2.mobile_code.errors&& submitted}">
-                                                        <option [value]="62" [selected]="true">+62(Indonesia)
+                                                        <option *ngFor="let data of CountiresList"
+                                                            [ngValue]="data.mobile_code"
+                                                            [selected]="countryId == data.country_id">
+                                                            {{data.mobile_code}}({{data.country_name}})
                                                         </option>
-                                                        <option [value]="81">+81(Japan)</option>
-                                                        <option [value]="60"> +60(Malaysia)</option>
-                                                        <option [value]="968"> +968(Oman)</option>
-                                                        <option [value]="63"> +63(Philippines)</option>
-                                                        <option [value]="65"> +65(Singapore)</option>
-                                                        <option [value]="82"> +82(South Korea)
-                                                        </option>
-                                                        <option [value]="66"> +66(Thailand)</option>
-                                                        <option [value]="90"> +90(Turkey)</option>
-                                                        <option [value]="971"> +971(UAE)</option>
-                                                        <option [value]="44"> +44(UK)</option>
-                                                        <option [value]="84"> +84(Vietnam)</option>
                                                     </select>
                                                 </div>
                                                 <input myNumberOnly type="text" class="form-control"
@@ -567,9 +558,14 @@
                                                     <select class="custom-select" id="inputGroupSelect01"
                                                         name="mobileCode" formControlName="mobile_code"
                                                         [ngClass]="{'is-invalid':f1.mobile_code.errors&& submitted}">
-                                                        <option [value]="62" [selected]="true">+62(Indonesia)
+                                                        <!-- <option [value]="62" [selected]="true">+62(Indonesia)
+                                                        </option> -->
+                                                        <option *ngFor="let data of CountiresList"
+                                                            [ngValue]="data.mobile_code"
+                                                            [selected]="countryId == data.country_id">
+                                                            {{data.mobile_code}}({{data.country_name}})
                                                         </option>
-                                                        <option [value]="81">+81(Japan)</option>
+                                                        <!-- <option [value]="81">+81(Japan)</option>
                                                         <option [value]="60"> +60(Malaysia)</option>
                                                         <option [value]="968"> +968(Oman)</option>
                                                         <option [value]="63"> +63(Philippines)</option>
@@ -580,7 +576,7 @@
                                                         <option [value]="90"> +90(Turkey)</option>
                                                         <option [value]="971"> +971(UAE)</option>
                                                         <option [value]="44"> +44(UK)</option>
-                                                        <option [value]="84"> +84(Vietnam)</option>
+                                                        <option [value]="84"> +84(Vietnam)</option> -->
                                                     </select>
                                                 </div>
                                                 <input myNumberOnly type="text" class="form-control"

@@ -204,13 +204,12 @@ li.nav-item {
     margin-top: 13px;
     box-shadow: 0px 0px 6px #dbdbdb;
     img{
-        width: 100px;
         border-radius: 50%;
         text-align: center;
     }
     h3 {
         font-weight:600;
-        font-size:27px;
+        font-size:23px;
     }
     p{
         font-weight:600;
@@ -250,7 +249,12 @@ li.nav-item {
         border-radius: 4px!important;
     }
 }
-
+.number {
+    h3{
+        color: #208ac4;
+        font-size: 38px;
+    }
+}
 
 .image-talent {
     text-align: center;
@@ -298,6 +302,7 @@ margin-top: 12px;
     outline: none;
     margin-top: 29px;
     box-shadow: 0px 0px 6px #dbdbdb;
+    height:400px;
     img{
         width: 108px;
         height: 103px;
@@ -341,14 +346,35 @@ margin-top: 12px;
         background: #ffffff;
         padding: 29px;
     }
+ }
 
+
+ @media (min-width: 1468.98px) {  
+    .company-profile{
+        height: 420px;
+        padding-top: 20%;
+    }
+
+
+ }
+ @media (max-width: 1468.98px) {  
+    .company-profile{
+        height: 546px;
+        padding-top: 30%;
+    }
+    .talent-result  {
+        height: 260px;
+        h3{
+            font-size: 22px;
+        }
+   
+    }
  }
  @media (max-width: 1361.98px) { 
     .online[_ngcontent-xcj-c1] {
         top: 95px;
     }
  .company-profile {
-    padding: 33px;
     button{
         font-size:18px;
     }
@@ -375,7 +401,6 @@ margin-top: 12px;
     .talent-result{
         height:400px;
         img{
-            width:100%;
         }
     }
     .account-settings{

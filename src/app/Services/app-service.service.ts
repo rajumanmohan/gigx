@@ -169,21 +169,21 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.get(this.apiUrl + 'getHighestQualifications.php', { headers })
   }
-  getInstitutionsList(params){
+  getInstitutionsList(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'getUniversitiesByCountry.php', params, { headers })
   }
-  getIndustryTypeList(){
+  getIndustryTypeList() {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.get(this.apiUrl + 'getIndustries.php', { headers })
   }
-  getRoleList(){
+  getRoleList() {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -191,7 +191,7 @@ export class AppServiceService {
     return this.httpClient.get(this.apiUrl + 'getRoles.php', { headers })
   }
 
-  getSkillList(){
+  getSkillList() {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -199,7 +199,7 @@ export class AppServiceService {
     return this.httpClient.get(this.apiUrl + 'getSkills.php', { headers })
   }
 
-  postCreateGigAlert(params){
+  postCreateGigAlert(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -207,7 +207,7 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'create_gig_alert.php', params, { headers })
   }
 
-  postAGig(params){
+  postAGig(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -215,7 +215,7 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'company_post_gig.php', params, { headers })
   }
 
-  getAllBatteries(){
+  getAllBatteries() {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -223,7 +223,7 @@ export class AppServiceService {
     return this.httpClient.get(this.apiUrl + 'getAllBatteries.php', { headers })
   }
 
-  startCandidateAssessment(params){
+  startCandidateAssessment(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -231,7 +231,7 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'candidateInvite.php', params, { headers })
   }
 
-  getCompletedAssessmentDetails(params){
+  getCompletedAssessmentDetails(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -239,23 +239,23 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'getAssessmentDetails.php', params, { headers })
   }
 
-  getAssessmentReport(trackingNumber){
+  getAssessmentReport(trackingNumber) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    return this.httpClient.get(this.apiUrl + 'getAssessmentReport.php?tracking_number=' + trackingNumber , { headers })
+    return this.httpClient.get(this.apiUrl + 'getAssessmentReport.php?tracking_number=' + trackingNumber, { headers })
   }
 
-  resumeAssessment(trackingNumber){
+  resumeAssessment(trackingNumber) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    return this.httpClient.get(this.apiUrl + 'candidateRestartTest.php?tracking_number=' + trackingNumber , { headers })
+    return this.httpClient.get(this.apiUrl + 'candidateRestartTest.php?tracking_number=' + trackingNumber, { headers })
   }
 
-  getCompanyPostsForTalent(params){
+  getCompanyPostsForTalent(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -263,7 +263,7 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'getCompanyPostsByTalentSkills.php', params, { headers })
   }
 
-  getCompanyPostDetailsByPostId(postId){
+  getCompanyPostDetailsByPostId(postId) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -271,7 +271,7 @@ export class AppServiceService {
     return this.httpClient.get(this.apiUrl + 'getDetailsByPostId.php?post_id=' + postId, { headers })
   }
 
-  getCompanyPostsForCompany(params){
+  getCompanyPostsForCompany(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -279,7 +279,7 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'viewCompanyPosts.php', params, { headers })
   }
 
-  applyGig(params){
+  applyGig(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -287,7 +287,7 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'applyGig.php', params, { headers })
   }
 
-  getTalentProfilesByPostId(postId){
+  getTalentProfilesByPostId(postId) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -295,15 +295,15 @@ export class AppServiceService {
     return this.httpClient.get(this.apiUrl + 'getTalentProfilesByPostId.php?post_id=' + postId, { headers })
   }
 
-  getAppliedGigs(params){
+  getAppliedGigs(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'viewAppliedGigs.php', params, { headers })
   }
- 
-  getInterestedGigs(params){
+
+  getInterestedGigs(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -311,7 +311,7 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'viewInterestedGigs.php', params, { headers })
   }
 
-  setInterestedGig(params){
+  setInterestedGig(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -319,15 +319,15 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'setInterestedGig.php', params, { headers })
   }
 
-  deleteInterestedGig(params){
+  deleteInterestedGig(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'deleteInterestedGig.php', params, { headers })
   }
- 
-  getAppliedTalentProfilesByPostId(postId){
+
+  getAppliedTalentProfilesByPostId(postId) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -335,7 +335,7 @@ export class AppServiceService {
     return this.httpClient.get(this.apiUrl + 'getAppliedTalentProfilesByPostId.php?post_id=' + postId, { headers })
   }
 
-  shortlistTalentByPostId(params){
+  shortlistTalentByPostId(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -343,7 +343,7 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'shortlistTalentByPostId.php', params, { headers })
   }
 
-  getShortlistedTalentProfilesByPostId(postId){
+  getShortlistedTalentProfilesByPostId(postId) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -351,7 +351,7 @@ export class AppServiceService {
     return this.httpClient.get(this.apiUrl + 'getShortlistedTalentProfilesByPostId.php?post_id=' + postId, { headers })
   }
 
-  acceptTalentByPostId(params){
+  acceptTalentByPostId(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -359,7 +359,7 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'acceptTalentByPostId.php', params, { headers })
   }
 
-  rejectTalentByPostId(params){
+  rejectTalentByPostId(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -367,7 +367,7 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'rejectTalentByPostId.php', params, { headers })
   }
 
-  getAcceptedTalentProfilesByPostId(postId){
+  getAcceptedTalentProfilesByPostId(postId) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -375,7 +375,7 @@ export class AppServiceService {
     return this.httpClient.get(this.apiUrl + 'getAcceptedTalentProfilesByPostId.php?post_id=' + postId, { headers })
   }
 
-  getRejectedTalentProfilesByPostId(postId){
+  getRejectedTalentProfilesByPostId(postId) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -383,7 +383,7 @@ export class AppServiceService {
     return this.httpClient.get(this.apiUrl + 'getRejectedTalentProfilesByPostId.php?post_id=' + postId, { headers })
   }
 
-  inviteTalentByPostId(params){
+  inviteTalentByPostId(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -391,7 +391,7 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'inviteTalentByPostId.php', params, { headers })
   }
 
-  getTalentInvitedGigs(params){
+  getTalentInvitedGigs(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -399,7 +399,7 @@ export class AppServiceService {
     return this.httpClient.post(this.apiUrl + 'getTalentInvitedGigs.php', params, { headers })
   }
 
-  getTalentSearchFilters(){
+  getTalentSearchFilters() {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
@@ -407,11 +407,21 @@ export class AppServiceService {
     return this.httpClient.get(this.apiUrl + 'talentSearchFilters.php', { headers })
   }
 
-  searchTalentResults(params){
+  searchTalentResults(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    return this.httpClient.post(this.apiUrl + 'searchTalentResults.php', params,  { headers })
+    return this.httpClient.post(this.apiUrl + 'searchTalentResults.php', params, { headers })
   }
+
+  getCompanySubscriptions() {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.get(this.apiUrl + 'company_subscription_plans.php', { headers })
+  }
+
+
 }

@@ -1,56 +1,3 @@
-<!-- heADER -->
-<!-- <div class="container-fluid main-header">
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light ">
-
-            <a class="navbar-brand" routerLink=""><img src="../../../assets/images/logo.png"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#" routerLink="/companydashboard">Home<span
-                                class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" routerLink="/talentsearch">Talents & Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" routerLink="/viewpostedgigs">View Posted Gigs</a>
-                    </li>
-
-
-                </ul>
-                <span class="navbar-text"> <img src="../../../assets/images/bell.png" class="bell"></span>
-                <span class="navbar-text">
-                    <div class="profile-name">
-                        <h4>{{profilename}}</h4>
-                    </div>
-                </span>
-                <span class="navbar-text">
-                    <div class="dropdown dropdown-button">
-                        <a class="nav-item " href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                            aria-haspopup="true" aria-expanded="false">
-                            {{companyName}} <img src="../../../assets/images/down-arrow.png">
-                        </a>
-
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" (click)="gotoProfile()">My Profile</a>
-                            <a class="dropdown-item" href="#" routerLink="/changepassword">Change Password</a>
-                            <a class="dropdown-item" href="#" routerLink="/subscriptions">Subscriptions</a>
-                            <a class="dropdown-item" (click)="logout()">Logout</a>
-
-                        </div>
-                    </div>
-                </span>
-            </div>
-        </nav>
-    </div>
-</div> -->
-
 <app-header></app-header>
 <!-- HEADER -->
 
@@ -88,230 +35,226 @@
                 <!-- search results -->
                 <div class="row ">
                     <!-- talent preview -->
-                    <div class="col-md-12 mt-3">
-                        <div class=" talent-result " routerLink="/talentprofile">
-                            <div class="row">
-                                <!-- talent image -->
-                                <div class="col-md-2 image-talent">
-                                    <img src="../../../assets/images/shareen.jpg">
-                                    <h4>Matched 88%</h4>
-                                    <div class="test-score">
-                                        <h5>80</h5>
-                                        <p>Test Score</p>
-                                    </div>
-                                </div>
-                                <!-- talent image -->
-
-                                <div class="col-md-10">
-                                    <div class="row">
-                                        <!-- talent details -->
-                                        <div class="col-md-8">
-                                            <h3>Shareen Abdul Ghani</h3>
-                                            <p>Talent Specialist</p>
-                                            <p class="text-color-light">At Sorga Innovation Sdh Bhd</p>
-                                            <p><img src="../../../assets/images/maps.png" class="maps">Kuala
-                                                Lumpur, Malaysia
-                                            </p>
-                                            <ul>
-                                                <li>
-                                                    <p class="text-color-light">$34.00</p>
-                                                    <p class="text-color-light">Hourly rate</p>
-                                                </li>
-                                                <li>
-                                                    <p class="text-color-light">$2k+</p>
-                                                    <p class="text-color-light">Total earned</p>
-                                                </li>
-                                                <li>
-                                                    <p class="text-color-light">13</p>
-                                                    <p class="text-color-light">Jobs</p>
-                                                </li>
-                                                <li>
-                                                    <p class="text-color-light">54</p>
-                                                    <p class="text-color-light">Hours Worked</p>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <!-- talent details -->
-                                        <!-- invite job -->
-                                        <div class="col-md-4">
-                                            <button class="btn invite-job">INVITE TO JOB</button>
-                                            <button class="btn review" routerLink="/ratingsreview">RATINGS &
-                                                REVIEWS</button>
-                                        </div>
-                                        <!-- invite job -->
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p>I have 20 years of experience in developing web & mobile applications for
-                                                ecommerce , health , transport , education and games industries. For
-                                                Past 3 Years ...</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-                                    <p>
-
-                                        <a href="#" class="hover-effect" routerLink="/talentprofile">View More Details
-                                            <img src="../../../assets/images/right-arrow.png"></a>
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- talent preview -->
-                    <!-- talent preview -->
-                    <div class="col-md-12 mt-3">
+                    <div class="col-md-4 mt-3">
                         <div class=" talent-result ">
                             <div class="row">
-                                <!-- talent image -->
-                                <div class="col-md-2 image-talent">
-                                    <img src="../../../assets/images/Raghu.jpg">
-                                    <h4>Matched 94%</h4>
-                                    <div class="test-score">
-                                        <h5>90</h5>
-                                        <p>Test Score</p>
-                                    </div>
-                                </div>
-                                <!-- talent image -->
+
 
                                 <div class="col-md-10">
                                     <div class="row">
                                         <!-- talent details -->
-                                        <div class="col-md-8">
-                                            <h3>Raghu Varma</h3>
-                                            <p>React | Angular | Vue | Node Js | ASP.NET | Java Developer</p>
-                                            <p class="text-color-light">At Value Global Services</p>
-                                            <p><img src="../../../assets/images/maps.png" class="maps"> Kuala
-                                                Lumpur, Malaysia
-                                            </p>
-                                            <ul>
-                                                <li>
-                                                    <p class="text-color-light">$34.00</p>
-                                                    <p class="text-color-light">Hourly rate</p>
-                                                </li>
-                                                <li>
-                                                    <p class="text-color-light">$2k+</p>
-                                                    <p class="text-color-light">Total earned</p>
-                                                </li>
-                                                <li>
-                                                    <p class="text-color-light">13</p>
-                                                    <p class="text-color-light">Jobs</p>
-                                                </li>
-                                                <li>
-                                                    <p class="text-color-light">54</p>
-                                                    <p class="text-color-light">Hours Worked</p>
-                                                </li>
-                                            </ul>
+                                        <div class="col-md-12">
+                                            <h3>Posted Gigs</h3>
+
+
                                         </div>
                                         <!-- talent details -->
                                         <!-- invite job -->
-                                        <div class="col-md-4">
-                                            <button class="btn invite-job">INVITE TO JOB</button>
-                                            <button class="btn review">RATINGS &
-                                                REVIEWS</button>
+                                        <div class="col-md-12 number">
+                                            <div class="row mt-5">
+                                                <div class="col-md-6">
+                                                    <img src="../../../assets/images/custom1.png">
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                    <h3>12</h3>
+
+                                                </div>
+                                            </div>
                                         </div>
                                         <!-- invite job -->
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p>I have 8 years of experience in developing web & mobile applications for
-                                                ecommerce , health , transport , education and games industries. For
-                                                Past 3 Years ...</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-                                    <p>
-
-                                        <a class="hover-effect">View More Details
-                                            <img src="../../../assets/images/right-arrow.png"></a>
-                                    </p>
 
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <!-- talent preview -->
                     <!-- talent preview -->
-                    <div class="col-md-12 mt-3">
-                        <div class=" talent-result">
+                    <div class="col-md-4 mt-3">
+                        <div class=" talent-result ">
                             <div class="row">
-                                <!-- talent image -->
-                                <div class="col-md-2 image-talent">
-                                    <img src="../../../assets/images/srinivas.jpg">
-                                    <h4>Matched 98%</h4>
-                                    <div class="test-score">
-                                        <h5>40</h5>
-                                        <p>Test Score</p>
-                                    </div>
-                                </div>
-                                <!-- talent image -->
+
 
                                 <div class="col-md-10">
                                     <div class="row">
                                         <!-- talent details -->
-                                        <div class="col-md-8">
-                                            <h3>Srinivas Mogilipala</h3>
-                                            <p>React | Angular | Vue | Node Js | ASP.NET | Java Developer</p>
-                                            <p class="text-color-light">At Versatile Mobitech Pvt. Ltd</p>
-                                            <p><img src="../../../assets/images/maps.png" class="maps"> Kuala
-                                                Lumpur, Malaysia
-                                            </p>
-                                            <ul>
-                                                <li>
-                                                    <p class="text-color-light">$34.00</p>
-                                                    <p class="text-color-light">Hourly rate</p>
-                                                </li>
-                                                <li>
-                                                    <p class="text-color-light">$2k+</p>
-                                                    <p class="text-color-light">Total earned</p>
-                                                </li>
-                                                <li>
-                                                    <p class="text-color-light">13</p>
-                                                    <p class="text-color-light">Jobs</p>
-                                                </li>
-                                                <li>
-                                                    <p class="text-color-light">54</p>
-                                                    <p class="text-color-light">Hours Worked</p>
-                                                </li>
-                                            </ul>
+                                        <div class="col-md-12">
+                                            <h3>Applied Gigs</h3>
+
+
                                         </div>
                                         <!-- talent details -->
                                         <!-- invite job -->
-                                        <div class="col-md-4">
-                                            <button class="btn invite-job">INVITE TO JOB</button>
-                                            <button class="btn review">RATINGS & REVIEWS</button>
+                                        <div class="col-md-12 number">
+                                            <div class="row mt-5">
+                                                <div class="col-md-6">
+                                                    <img src="../../../assets/images/custom2.png">
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                    <h3>12</h3>
+
+
+                                                </div>
+                                            </div>
                                         </div>
                                         <!-- invite job -->
                                     </div>
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <p>I have 8 years of experience in developing web & mobile applications for
-                                                ecommerce , health , transport , education and games industries. For
-                                                Past 3 Years ...</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12 text-right">
-                                    <p>
-
-                                        <a class="hover-effect">View More Details
-                                            <img src="../../../assets/images/right-arrow.png"></a>
-                                    </p>
 
                                 </div>
                             </div>
+
                         </div>
                     </div>
                     <!-- talent preview -->
+                    <!-- talent preview -->
+                    <div class="col-md-4 mt-3">
+                        <div class=" talent-result ">
+                            <div class="row">
 
+
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <!-- talent details -->
+                                        <div class="col-md-12">
+                                            <h3>Shortlisted Gigs</h3>
+
+
+                                        </div>
+                                        <!-- talent details -->
+                                        <!-- invite job -->
+                                        <div class="col-md-12 number">
+                                            <div class="row mt-5">
+                                                <div class="col-md-6">
+                                                    <img src="../../../assets/images/custom3.png">
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                    <h3>12</h3>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- invite job -->
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- talent preview -->
+                    <!-- talent preview -->
+                    <div class="col-md-4 mt-3">
+                        <div class=" talent-result ">
+                            <div class="row">
+
+
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <!-- talent details -->
+                                        <div class="col-md-12">
+                                            <h3>Gig Alerts</h3>
+
+
+                                        </div>
+                                        <!-- talent details -->
+                                        <!-- invite job -->
+                                        <div class="col-md-12 number">
+                                            <div class="row mt-5">
+                                                <div class="col-md-6">
+                                                    <img src="../../../assets/images/custom4.png">
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                    <h3>12</h3>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- invite job -->
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- talent preview -->
+                    <!-- talent preview -->
+                    <div class="col-md-4 mt-3">
+                        <div class=" talent-result ">
+                            <div class="row">
+
+
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <!-- talent details -->
+                                        <div class="col-md-12">
+                                            <h3>Posted Gigs</h3>
+
+
+                                        </div>
+                                        <!-- talent details -->
+                                        <!-- invite job -->
+                                        <div class="col-md-12 number">
+                                            <div class="row mt-5">
+                                                <div class="col-md-6">
+                                                    <img src="../../../assets/images/custom5.png">
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                    <h3>12</h3>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- invite job -->
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- talent preview -->
+                    <!-- talent preview -->
+                    <div class="col-md-4 mt-3">
+                        <div class=" talent-result ">
+                            <div class="row">
+
+
+                                <div class="col-md-10">
+                                    <div class="row">
+                                        <!-- talent details -->
+                                        <div class="col-md-12">
+                                            <h3>Posted Gigs</h3>
+
+
+                                        </div>
+                                        <!-- talent details -->
+                                        <!-- invite job -->
+                                        <div class="col-md-12 number">
+                                            <div class="row mt-5">
+                                                <div class="col-md-6">
+                                                    <img src="../../../assets/images/custom6.png">
+                                                </div>
+                                                <div class="col-md-6 text-right">
+                                                    <h3>12</h3>
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- invite job -->
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- talent preview -->
                 </div>
                 <!-- search results -->
 
@@ -327,56 +270,6 @@
 
                             <p>{{profileDetails.address}}</p>
                             <button class="btn review" (click)="gotoProfile()">EDIT PROFILE</button>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="company-profile">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>Account Settings</h3>
-                            <div class="row account-settings">
-                                <div class="col-md-2">
-                                    <img src="../../../assets/images/account.png" class="img-fluid">
-                                </div>
-                                <div class="col-md-10">
-                                    <h4>Account Settings</h4>
-                                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing .</p> -->
-                                </div>
-                            </div>
-                            <div class="row account-settings">
-                                <div class="col-md-2">
-                                    <img src="../../../assets/images/message.png" class="img-fluid">
-                                </div>
-                                <div class="col-md-10">
-                                    <h4>Communication Preferences</h4>
-                                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing .</p> -->
-                                </div>
-                            </div>
-                            <div class="row account-settings">
-                                <div class="col-md-2">
-                                    <img src="../../../assets/images/payment.png" class="img-fluid">
-                                </div>
-                                <div class="col-md-10">
-                                    <h4>Payment Information</h4>
-                                    <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing .</p> -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="company-profile">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h3>Market Research</h3>
-                            <!-- <p>Lorem ipsum dolor sit amet</p>
-                            <p>Lorem ipsum dolor sit amet</p>
-                            <p>Lorem ipsum dolor sit amet</p>
-                            <p>Lorem ipsum dolor sit amet</p>
-                            <p>Lorem ipsum dolor sit amet</p>
-                            <p>Lorem ipsum dolor sit amet</p> -->
-
                         </div>
                     </div>
 

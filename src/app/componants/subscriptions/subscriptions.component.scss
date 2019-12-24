@@ -11,7 +11,9 @@ a{
     color:#000000;
 }
 }
-
+.subscriptions {
+    padding: 0px 64px;
+}
 .group-buttons{
     text-align: center;
     background: #f1f1f1;
@@ -87,6 +89,10 @@ a{
     .plans{
         height:238px;
     }
+    .col-md-3{
+        flex: 0 0 20%;
+        max-width: 20%;
+    }
 }
 .cutom-package{
     text-align:right;
@@ -101,7 +107,9 @@ a{
     h1{
         text-align: center;
         font-weight: 600;
-        padding: 16px;
+        padding: 21px 4px 1px;
+        font-size: 22px;
+        height: 80px;
     }
     h2{
         text-align: center;

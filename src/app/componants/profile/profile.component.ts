@@ -102,12 +102,18 @@ export class ProfileComponent implements OnInit {
       }
     }
   }
-  countryId; statesList;
+  countryId; statesList; mobile_code;
   changeCountryList(name) {
     for (var i = 0; i < this.CountiresList.length; i++) {
       if (name == this.CountiresList[i].country_name) {
         this.countryId = this.CountiresList[i].country_id;
       }
+    }
+    for (var i = 0; i < this.CountiresList.length; i++) {
+      if (this.countryId == this.CountiresList[i].country_id) {
+        this.mobile_code = this.CountiresList[i].mobile_code
+      }
+
     }
     let params = {
       country_id: this.countryId,
@@ -263,9 +269,14 @@ export class ProfileComponent implements OnInit {
           contact_person_name: [this.profileFormDetails.contact_person, Validators.required],
           designation: [this.profileFormDetails.designation, Validators.required],
           contact_email: [this.profileFormDetails.contact_email, [Validators.required, Validators.email]],
-          mobile_code: [this.profileFormDetails.mobile_code, Validators.required],
+          mobile_code: [null, Validators.required],
           mobile: [this.profileFormDetails.mobile, Validators.required]
         });
+
+        // setTimeout(() => {
+        this.editCompanyForm.patchValue({ 'mobile_code': this.profileFormDetails.mobile_code });
+        // }, 10);
+
       }
       else if (this.loginType == 'individual') {
         this.editIndividualForm = this.formBuilder.group({
@@ -278,9 +289,13 @@ export class ProfileComponent implements OnInit {
           pincode: [this.profileFormDetails.postal_code, Validators.required],
           contact_person_name: [this.profileFormDetails.contact_person, Validators.required],
           designation: [this.profileFormDetails.designation, Validators.required],
-          mobile_code: [this.profileFormDetails.mobile_code, Validators.required],
+          mobile_code: [null, Validators.required],
           mobile: [this.profileFormDetails.mobile, [Validators.required]]
         });
+        // setTimeout(() => {
+        this.editIndividualForm.patchValue({ 'mobile_code': this.profileFormDetails.mobile_code });
+        // }, 10);
+
       }
     })
   }
