@@ -1,60 +1,210 @@
+app-talentsearch {
+
+
+    .card-header .btn-link:after {
+        /* symbol for "opening" panels */
+        font-family: 'Glyphicons Halflings';
+        /* essential for enabling glyphicon */
+        content: "\2212";
+        /* adjust as needed, taken from bootstrap.css */
+        float: right;
+        /* adjust as needed */
+        color: grey;
+        /* adjust as needed */
+    }
+
+    .card-header .btn-link.collapsed:after {
+        /* symbol for "collapsed" panels */
+        content: "\2b";
+        /* adjust as needed, taken from bootstrap.css */
+    }
+
+    .filter-by {
+        .custom-control {
+            margin-bottom: 11px;
+        }
+
+        .card-body {
+            padding: 0px 17px;
+            height: 300px;
+            overflow: auto;
+        }
+
+        h5 {
+            padding-bottom: 9px;
+            color: #808080;
+            font-weight: 200;
+        }
+
+        button {
+            width: 100%;
+            border: 0px;
+            border-radius: 3px !important;
+            padding: 0px;
+            background: none !important;
+            color: #000000;
+            font-size: 17px;
+            text-align: left;
+            text-decoration: none !important;
+        }
+
+        span {
+            float: right;
+        }
+
+        .custom-control-input:checked~.custom-control-label::before {
+            color: #fff;
+            border-color: #77706c;
+            background-color: #77706c;
+        }
+
+        .custom-radio .custom-control-label::before {
+            border-radius: 50%;
+            background: #d4d4d4;
+        }
+
+        .custom-checkbox .custom-control-label::before {
+
+            background: #d4d4d4;
+        }
+
+        .accordion>.card {
+            overflow: hidden;
+            border: 0px;
+            border-top: 1px solid;
+        }
+
+        .accordion>.card .card-header {
+            margin-bottom: -1px;
+            background: #ffffff;
+            border-bottom: 0px;
+            border-radius: 0pc;
+        }
+    }
+
+    .btn-search {
+        padding: 2px !important;
+        margin: 0px !important;
+        position: absolute;
+        top: 1.3rem;
+        left: 8rem;
+        background: #007bff;
+        color: #fff;
+        border: none !important;
+    }
+
+
+    .filter-fileds {
+        border: 1px solid;
+        font-size: 12px !important;
+        padding: 3px !important;
+        border-radius: 4px;
+
+        span {
+            font-weight: 600;
+            font-size: 12px;
+            cursor: pointer;
+            margin-left: 12px;
+        }
+    }
+
+
+    .sort-by {
+        background: #f2f2f2;
+        padding: 18px;
+        outline: none;
+        box-shadow: none;
+    }
+
+    .filter-section ul {
+        list-style: none;
+        padding: 0px;
+        width: 100%;
+        height: 100%;
+        text-align: left;
+    }
+
+    .btn-submit{
+        color: green !important;
+        background: transparent;
+        
+    }
+    .btn-submit::after{
+        font-family: "Glyphicons Halflings";
+        content:"\e013";
+    }
+    .btn-cancel{
+        color: #dc3545 !important;
+        background: transparent
+    }
+
+    .btn-cancel::after{
+        font-family: "Glyphicons Halflings";
+        content:"\e014";
+    }
+    
+    .btn-invite{
+        background: #fed501;
+        width: 100%;
+    }
+
+}
+
 .login {
-    h1{
+    h1 {
         font-weight: 600;
         margin-top: 4%;
         text-align: center;
         font-size: 32px;
     }
-    button{
-        border-radius:50px!important;
-        font-weight:600;
-        }
-        input {
-           margin-bottom:12px;
-            border: 1px solid #dbdbdb;
-            padding: 20px 10px;
-            margin: 0px auto;
-            box-shadow: 1px 1px 1px 0px #dbdbdb!important;
-        }
-        textarea{
-            margin-bottom:12px;
-            border: 1px solid #dbdbdb;
-            padding: 6px 13px;
-            margin: 0px auto;
-            box-shadow: 1px 1px 1px 0px #dbdbdb!important;
-        }
-         select{
-            margin-bottom: 12px;
-            border: 1px solid #dbdbdb;
-            padding: 0px 7px;
-            margin: 0px auto;
-            box-shadow: 1px 1px 1px 0px #dbdbdb !important;
-         }
-         button{
-            width: 100%;
-            border: 0px;
-            border-radius: 3px !important;
-            padding: 6px;
-            background: #fed501;
-            color: #000000;
-            font-size: 20px;
-        }
-        .page-item.active .page-link {
-            color: #000000;
-            background-color: #fed501;
-            border-color: #fed501;
-        }
 
-        .page-link {
-            color: #000000;
-        }
+    button {
+        border-radius: 50px !important;
+        font-weight: 600;
+    }
+
+    input {
+        margin-bottom: 12px;
+        border: 1px solid #dbdbdb;
+        padding: 20px 10px;
+        margin: 0px auto;
+        box-shadow: 1px 1px 1px 0px #dbdbdb !important;
+    }
+
+    textarea {
+        margin-bottom: 12px;
+        border: 1px solid #dbdbdb;
+        padding: 6px 13px;
+        margin: 0px auto;
+        box-shadow: 1px 1px 1px 0px #dbdbdb !important;
+    }
+
+    select {
+        margin-bottom: 12px;
+        border: 1px solid #dbdbdb;
+        padding: 0px 7px;
+        margin: 0px auto;
+        box-shadow: 1px 1px 1px 0px #dbdbdb !important;
+    }
+
+    button {
+        //width: 100%;
+        border: 0px;
+        border-radius: 3px !important;
+        padding: 6px;
+        //background: #fed501;
+        color: #000000;
+        font-size: 20px;
+    }
+
 
 }
 
 .button-search {
     .input-group-append {
-    width:17%
+        width: 17%
     }
+
     input {
         margin-bottom: 12px;
         border: 1px solid #dbdbdb;
@@ -62,55 +212,63 @@
         margin: 0px auto;
         border-right: 0px;
         border-radius: 0px;
-        box-shadow: 0px 0px 1px 0px #dbdbdb!important;
-     }
+        box-shadow: 0px 0px 1px 0px #dbdbdb !important;
+    }
 }
 
-.filter-by{
+.filter-by {
     .custom-control {
         margin-bottom: 11px;
     }
+
     .card-body {
         padding: 0px 17px;
     }
-    h5{
+
+    h5 {
         padding-bottom: 9px;
         color: #808080;
         font-weight: 200;
     }
-    button{
+
+    button {
         width: 100%;
         border: 0px;
         border-radius: 3px !important;
         padding: 0px;
-        background: none ;
+        background: none;
         color: #000000;
         font-size: 17px;
         text-align: left;
-        text-decoration:none!important;
+        text-decoration: none !important;
     }
-    span{
-        float:right;
+
+    span {
+        float: right;
     }
-   
+
     .custom-control-input:checked~.custom-control-label::before {
         color: #fff;
         border-color: #77706c;
         background-color: #77706c;
     }
+
     .custom-radio .custom-control-label::before {
         border-radius: 50%;
         background: #d4d4d4;
     }
+
     .custom-checkbox .custom-control-label::before {
-      
+
         background: #d4d4d4;
     }
+
     .accordion>.card {
         overflow: hidden;
         border: 0px;
         border-top: 1px solid;
     }
+
     .accordion>.card .card-header {
         margin-bottom: -1px;
         background: #ffffff;
@@ -118,99 +276,125 @@
         border-radius: 0pc;
     }
 }
-.search-category{
-    button{
-        border-radius:50px!important;
-        background:none;
+
+.search-category {
+    button {
+        border-radius: 50px !important;
+        background: none;
     }
-    button:hover{
-        background:#fed501!important;
+
+    button:hover {
+        background: #fed501 !important;
     }
-}
-.search-results{
-   
-    ul{
-        list-style: none;
-    padding: 0px;
-    width: 100%;
-    height: 100%;
-    text-align: right;
-    }
-    li{
-        display:inline-block;
-        margin-left: 16px;
-    }
-    span{
-        margin-right:10px;
-        font-size: 18px;
-    }
-    select{
-        margin-bottom: 12px;
-    border-radius: 4px;
-    border: 1px solid #8e8e8e;
-    padding: 6px 7px;
-    margin: 0px auto;
-    box-shadow: 1px 1px 1px 0px #dbdbdb !important;
+
+    h1 {
+        font-weight: 600;
+        margin-top: 4%;
+        font-size: 25px;
+        text-align: left !important;
     }
 }
 
-.talent-result{
+.search-results {
+
+    ul {
+        list-style: none;
+        padding: 0px;
+        width: 100%;
+        height: 100%;
+        text-align: right;
+    }
+
+    li {
+        display: inline-block;
+        margin-left: 16px;
+    }
+
+    span {
+        margin-right: 10px;
+        font-size: 18px;
+    }
+
+    select {
+        margin-bottom: 12px;
+        border-radius: 4px;
+        border: 1px solid #8e8e8e;
+        padding: 6px 7px;
+        margin: 0px auto;
+        box-shadow: 1px 1px 1px 0px #dbdbdb !important;
+    }
+}
+
+.talent-result {
     background: #f2f2f2;
     padding: 18px;
     outline: none;
     box-shadow: none;
-    img{
+
+    img {
         width: 125px;
         border-radius: 50%;
         text-align: center;
     }
+
     h3 {
-        font-weight:600;
-        font-size:27px;
+        font-weight: 600;
+        font-size: 27px;
     }
-    p{
-        font-weight:600;
-        margin:0px;
+
+    p {
+        font-weight: 600;
+        margin: 0px;
     }
-    .text-color-light{
-        color: #878787;;
+
+    .text-color-light {
+        color: #878787;
+        ;
     }
-    .maps{
+
+    .maps {
         width: auto;
-    vertical-align: sub;
+        vertical-align: sub;
     }
-    ul{
+
+    ul {
         list-style: none;
-        margin:0px;
+        margin: 0px;
         text-align: left;
-        li{
-            margin-left:0px;
-            margin-right:5%;
-            margin-top:12px;
+
+        li {
+            margin-left: 0px;
+            margin-right: 5%;
+            margin-top: 12px;
             display: inline-block;
-            p{
-                font-weight:500
-                }
+
+            p {
+                font-weight: 500
+            }
         }
     }
-    button{
-        margin-bottom:15px;
-        font-size:15px;
+
+    button {
+        margin-bottom: 15px;
+        font-size: 15px;
     }
-    .invite-job{
+
+    .invite-job {
         background: #fed501 !important;
-        border-radius: 4px!important;
+        border-radius: 4px !important;
     }
+
     .review {
-        background:#e5e5e5!important;
-        border-radius: 4px!important;
+        background: #e5e5e5 !important;
+        border-radius: 4px !important;
     }
 }
 
 .hover-effect {
-    color:#000000;
-    img{
-        width:16px!important;
+    color: #000000;
+
+    img {
+        width: 16px !important;
     }
 }
 
@@ -219,31 +403,36 @@
 
 // HEADER CSS
 
-.login-list{
+.login-list {
     margin-top: 3px;
     font-size: 24px;
 }
+
 .main-header {
     box-shadow: 2px 3px 6px 0px #e1e1e1;
-a{
-    font-size:19px;
-    color:#000000;
-}
+
+    a {
+        font-size: 19px;
+        color: #000000;
+    }
 }
 
 .image-talent {
     text-align: center;
-    h4{
+
+    h4 {
         color: #2ba81e;
         font-size: 20px;
         font-weight: 600;
         text-align: center;
         margin-top: 12px;
-        
+
     }
-    .test-score{
-        text-align:center;
-        h5{
+
+    .test-score {
+        text-align: center;
+
+        h5 {
             background: #ffffff;
             width: 50px;
             padding: 14px;
@@ -256,28 +445,32 @@ a{
 }
 
 // Large devices (desktops, less than 1200px)
-@media (max-width: 1199.98px) {  }
+@media (max-width: 1199.98px) {}
+
 // Medium devices (tablets, less than 992px)
 @media (max-width: 991.98px) {
 
-    .talent-result{
-        img{
+    .talent-result {
+        img {
             width: 100%;
         }
-        }
+    }
 
-  }
+}
+
 // Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) { 
-    .talent-result{
-        img{
+@media (max-width: 767.98px) {
+    .talent-result {
+        img {
             width: 125px;
         }
+    }
+
+    .search-results {
+        li {
+            margin-bottom: 12px;
         }
-        .search-results{
-            li{
-                margin-bottom:12px;
-            }
-        }
- }
-@media (max-width: 575.98px) {  }
+    }
+}
+
+@media (max-width: 575.98px) {}
