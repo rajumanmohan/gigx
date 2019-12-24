@@ -76,6 +76,8 @@ export class TalentsearchComponent implements OnInit {
       this.countriesList = res['countriesList'];
       this.industriesList = res['industriesList'];
       this.skillsList = res['skillsList'];
+
+      this.retainSearch();
   });
   }
 
@@ -96,6 +98,32 @@ export class TalentsearchComponent implements OnInit {
     this.appSer.searchCompanyResults(requestObj).subscribe((res) => {
       this.filteredTalentList = res['talentProfiles'];
   });
+  }
+
+  retainSearch(){
+    if(this.dataStorage.globalSearchCriteria.isDataAvailable){
+      this.selectedSkills = this.dataStorage.globalSearchCriteria.selectedSkills;
+      this.selectedIndustries = this.dataStorage.globalSearchCriteria.selectedIndustries;
+      this.selectedCountries = this.dataStorage.globalSearchCriteria.selectedCountries;
+
+      this.selectedSkills.forEach(x=>{
+        this.skillsList.filter(y=> {y.skill_id == x.skill_id ? y.checked = true : ''});
+      });
+      this.selectedIndustries.forEach(x=>{
+        this.industriesList.filter(y=> {y.industry_id == x.industry_id ? y.checked = true : ''});
+      });
+      this.selectedCountries.forEach(x=>{
+        this.countriesList.filter(y=> {y.country_id == x.country_id ? y.checked = true : ''});
+      });
+      
+
+      this.onSearchClick();
+    }
+
+    this.dataStorage.globalSearchCriteria.isDataAvailable = false;
+    this.dataStorage.globalSearchCriteria.selectedCountries = [];
+    this.dataStorage.globalSearchCriteria.selectedIndustries = [];
+    this.dataStorage.globalSearchCriteria.selectedSkills = [];
   }
 
   onPaginationDropdownChange(event){
@@ -153,6 +181,13 @@ export class TalentsearchComponent implements OnInit {
 
       }
   });
+  }
+
+  onViewMoreDetailsClick(){
+    this.dataStorage.globalSearchCriteria.selectedCountries = this.selectedCountries;
+    this.dataStorage.globalSearchCriteria.selectedIndustries = this.selectedIndustries;
+    this.dataStorage.globalSearchCriteria.selectedSkills = this.selectedSkills;
+    this.dataStorage.globalSearchCriteria.isDataAvailable = true;
   }
 
 }
