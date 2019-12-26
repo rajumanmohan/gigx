@@ -83,7 +83,7 @@ export class CreateajobalertComponent implements OnInit {
       country_id: this.countryId,
     }
     this.appSer.statesList(params).subscribe((res) => {
-      debugger;
+    
       this.statesList = res['states'];  
        this.createGigForm.patchValue({'state_id' : null});// .reset();
        this.createGigForm.patchValue({'city_id' : null});

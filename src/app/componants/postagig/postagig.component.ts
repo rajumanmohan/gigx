@@ -355,7 +355,6 @@ export class PostagigComponent implements OnInit {
 
     this.appSer.postAGig(requestObject).subscribe((res)=>{
       if (res['status'] == 200) {
-        debugger;
         this.toast.success(res['message'], "success");
         this.router.navigate(['/companydashboard']);
        
