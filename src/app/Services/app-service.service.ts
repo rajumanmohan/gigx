@@ -358,7 +358,6 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'acceptTalentByPostId.php', params, { headers })
   }
-
   rejectTalentByPostId(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
@@ -366,7 +365,6 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'rejectTalentByPostId.php', params, { headers })
   }
-
   getAcceptedTalentProfilesByPostId(postId) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
@@ -374,7 +372,6 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.get(this.apiUrl + 'getAcceptedTalentProfilesByPostId.php?post_id=' + postId, { headers })
   }
-
   getRejectedTalentProfilesByPostId(postId) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
@@ -382,7 +379,6 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.get(this.apiUrl + 'getRejectedTalentProfilesByPostId.php?post_id=' + postId, { headers })
   }
-
   inviteTalentByPostId(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
@@ -390,7 +386,6 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'inviteTalentByPostId.php', params, { headers })
   }
-
   getTalentInvitedGigs(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
@@ -398,7 +393,6 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'getTalentInvitedGigs.php', params, { headers })
   }
-
   getTalentSearchFilters() {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
@@ -406,7 +400,6 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.get(this.apiUrl + 'talentSearchFilters.php', { headers })
   }
-
   searchTalentResults(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
@@ -414,7 +407,6 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'searchTalentResults.php', params, { headers })
   }
-
   getCompanySubscriptions() {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
@@ -422,21 +414,26 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.get(this.apiUrl + 'company_subscription_plans.php', { headers })
   }
-
-  getCompanySearchFilters(){
+  getCompanySearchFilters() {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.get(this.apiUrl + 'companySearchFilters.php', { headers })
   }
-
-  searchCompanyResults(params){
+  searchCompanyResults(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    return this.httpClient.post(this.apiUrl + 'searchCompanyResults.php', params,  { headers }) 
+    return this.httpClient.post(this.apiUrl + 'searchCompanyResults.php', params, { headers })
+  }
+  getCompanyDashboard(params) {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'company_dashboard.php', params, { headers })
   }
 }
 

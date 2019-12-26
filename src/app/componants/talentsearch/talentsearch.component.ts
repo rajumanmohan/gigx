@@ -27,7 +27,7 @@ export class TalentsearchComponent implements OnInit {
   ShowSearchScreen = true;
   ShowMyHiresScreen = false;
   ShowSavedScreen = false;
-  countriesList =[];
+  countriesList = [];
   industriesList = [];
   skillsList = [];
   paginationIndex = 0;
@@ -67,55 +67,56 @@ export class TalentsearchComponent implements OnInit {
     this.ShowMyHiresScreen = false;
     this.ShowSavedScreen = true;
   }
-  viewgig(){
+  viewgig() {
     this.router.navigate(['/viewgig']);
   }
 
-  getAllMasterData(){
+  getAllMasterData() {
     this.appSer.getCompanySearchFilters().subscribe((res) => {
       this.countriesList = res['countriesList'];
       this.industriesList = res['industriesList'];
       this.skillsList = res['skillsList'];
 
       this.retainSearch();
-  });
+    });
   }
 
-  onSearchClick(){
-    this.selectedCountries =  this.countriesList.filter(x=>x.checked);
-    var selectedCountries = this.selectedCountries.map(x=>x.country_id).join(',');
-    this.selectedIndustries =  this.industriesList.filter(x=>x.checked);
-    var selectedIndustries =  this.selectedIndustries.map(x=>x.industry_id).join(',');
-    this.selectedSkills =  this.skillsList.filter(x=>x.checked);
-    var selectedSkills = this.selectedSkills.map(x=>x.skill_id).join(',');
-    
+  onSearchClick() {
+    this.selectedCountries = this.countriesList.filter(x => x.checked);
+    var selectedCountries = this.selectedCountries.map(x => x.country_id).join(',');
+    this.selectedIndustries = this.industriesList.filter(x => x.checked);
+    var selectedIndustries = this.selectedIndustries.map(x => x.industry_id).join(',');
+    this.selectedSkills = this.skillsList.filter(x => x.checked);
+    var selectedSkills = this.selectedSkills.map(x => x.skill_id).join(',');
+
     var requestObj = {
       selectedCountryIds: selectedCountries,
       selectedSkillIds: selectedIndustries,
       selectedIndustryTypeIds: selectedSkills
     };
-    this.filteredTalentList =[];
+    this.filteredTalentList = [];
+    console.log(requestObj)
     this.appSer.searchCompanyResults(requestObj).subscribe((res) => {
       this.filteredTalentList = res['talentProfiles'];
-  });
+    });
   }
 
-  retainSearch(){
-    if(this.dataStorage.globalSearchCriteria.isDataAvailable){
+  retainSearch() {
+    if (this.dataStorage.globalSearchCriteria.isDataAvailable) {
       this.selectedSkills = this.dataStorage.globalSearchCriteria.selectedSkills;
       this.selectedIndustries = this.dataStorage.globalSearchCriteria.selectedIndustries;
       this.selectedCountries = this.dataStorage.globalSearchCriteria.selectedCountries;
 
-      this.selectedSkills.forEach(x=>{
-        this.skillsList.filter(y=> {y.skill_id == x.skill_id ? y.checked = true : ''});
+      this.selectedSkills.forEach(x => {
+        this.skillsList.filter(y => { y.skill_id == x.skill_id ? y.checked = true : '' });
       });
-      this.selectedIndustries.forEach(x=>{
-        this.industriesList.filter(y=> {y.industry_id == x.industry_id ? y.checked = true : ''});
+      this.selectedIndustries.forEach(x => {
+        this.industriesList.filter(y => { y.industry_id == x.industry_id ? y.checked = true : '' });
       });
-      this.selectedCountries.forEach(x=>{
-        this.countriesList.filter(y=> {y.country_id == x.country_id ? y.checked = true : ''});
+      this.selectedCountries.forEach(x => {
+        this.countriesList.filter(y => { y.country_id == x.country_id ? y.checked = true : '' });
       });
-      
+
 
       this.onSearchClick();
     }
@@ -126,38 +127,38 @@ export class TalentsearchComponent implements OnInit {
     this.dataStorage.globalSearchCriteria.selectedSkills = [];
   }
 
-  onPaginationDropdownChange(event){
-     this.itemsPerPage = event.target.value;
+  onPaginationDropdownChange(event) {
+    this.itemsPerPage = event.target.value;
   }
 
-  onCountryChange(event){
-    this.onSearchClick(); 
-  }
-
-  onIndustryChange(event){
+  onCountryChange(event) {
     this.onSearchClick();
   }
 
-  onSkillChange(event){
+  onIndustryChange(event) {
     this.onSearchClick();
   }
 
-  onCountryRemoveClick(item){
-    this.countriesList.filter(x=> {x.country_id == item.country_id ? x.checked = false : ''});
+  onSkillChange(event) {
     this.onSearchClick();
   }
 
-  onIndustryRemoveClick(item){
-    this.industriesList.filter(x=> {x.industry_id == item.industry_id ? x.checked = false : ''});
+  onCountryRemoveClick(item) {
+    this.countriesList.filter(x => { x.country_id == item.country_id ? x.checked = false : '' });
     this.onSearchClick();
   }
 
-  onSkillRemoveClick(item){
-    this.skillsList.filter(x=> {x.skill_id == item.skill_id ? x.checked = false : ''});
+  onIndustryRemoveClick(item) {
+    this.industriesList.filter(x => { x.industry_id == item.industry_id ? x.checked = false : '' });
     this.onSearchClick();
   }
 
-  getAllPostedGigs(){
+  onSkillRemoveClick(item) {
+    this.skillsList.filter(x => { x.skill_id == item.skill_id ? x.checked = false : '' });
+    this.onSearchClick();
+  }
+
+  getAllPostedGigs() {
     var requestObj = {
       'company_id': this.dataStorage.loggedInUserData.company_id
     };
@@ -166,24 +167,23 @@ export class TalentsearchComponent implements OnInit {
     });
   }
 
-  onInviteClick(item){
-    if(!item.post_id){
+  onInviteClick(item) {
+    if (!item.post_id) {
       this.toast.error('Select Gig to continue', "error");
       return false;
     }
-    var requestObj = {post_id: item.post_id, talent_id: item.talent_id}
+    var requestObj = { post_id: item.post_id, talent_id: item.talent_id }
     this.appSer.inviteTalentByPostId(requestObj).subscribe((res) => {
       if (res['status'] == 200) {
         this.toast.success(res['message'], "success");
         item.isInviteClicked = !item.isInviteClicked;
       } else {
         this.toast.error(res['message'], "error");
-
       }
-  });
+    });
   }
 
-  onViewMoreDetailsClick(){
+  onViewMoreDetailsClick() {
     this.dataStorage.globalSearchCriteria.selectedCountries = this.selectedCountries;
     this.dataStorage.globalSearchCriteria.selectedIndustries = this.selectedIndustries;
     this.dataStorage.globalSearchCriteria.selectedSkills = this.selectedSkills;

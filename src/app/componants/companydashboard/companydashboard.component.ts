@@ -23,7 +23,7 @@ import {
   ]
 })
 export class CompanydashboardComponent implements OnInit {
-  talentId; companyId; loginType;
+  talentId; companyId; loginType; dashBoardCount;
   constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService, private formBuilder: FormBuilder) {
     this.talentId = localStorage.getItem('talent_id');
     this.companyId = localStorage.getItem('company_id');
@@ -38,6 +38,7 @@ export class CompanydashboardComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0);
     this.getCompanyProfile();
+    this.getCompanydasboardData();
   }
   gotoProfile() {
     if (this.loginType == 'company') {
@@ -63,7 +64,6 @@ export class CompanydashboardComponent implements OnInit {
         this.profilename = res['data'].contact_person.substring(0, 2);
         this.companyName = res['data'].contact_person;
       }
-
     })
   }
   logout() {
@@ -71,4 +71,13 @@ export class CompanydashboardComponent implements OnInit {
     localStorage.clear();
     this.toast.success('You have Signed Out Successfully', "success");
   }
+  getCompanydasboardData() {
+    let params = {
+      company_id: this.companyId
+    }
+    this.appSer.getCompanyDashboard(params).subscribe((res) => {
+      this.dashBoardCount = res['companyDashboardCounts']
+    })
+  }
+
 }
