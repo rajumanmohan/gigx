@@ -1,0 +1,25 @@
+<!-- heADER -->
+<app-header></app-header>
+<!--End Header-->
+
+<section [@fadeInAndOut] class="login mt-5">
+   
+    <!-- click to start test -->
+    <div class="container create-account">
+        <div class="text-center mt-5" *ngIf="paymentReponseStatus == 200">
+            <img src="../../../assets/images/failure.png" style="width: 20%"/>
+            <br />
+            <h3 class="pt-3">Your transaction has been cancelled
+            </h3>
+        </div>
+
+        <div class="text-center mt-5" *ngIf="paymentReponseStatus == 400">
+                <img src="../../../assets/images/causion.png" style="width: 20%"/>
+                <br />
+                <h3 class="pt-3">Something went wrong. Please try to again
+                </h3>
+            </div>
+    </div>
+
+    <!-- click to start test -->
+</section>

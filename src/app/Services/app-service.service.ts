@@ -407,12 +407,13 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'searchTalentResults.php', params, { headers })
   }
-  getCompanySubscriptions() {
+
+  getCompanySubscriptions(companyId) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
-    return this.httpClient.get(this.apiUrl + 'company_subscription_plans.php', { headers })
+    return this.httpClient.get(this.apiUrl + 'company_subscription_plans.php?company_id=' +companyId, { headers })
   }
   getCompanySearchFilters() {
     let headers = new HttpHeaders();
@@ -434,6 +435,30 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Origin', '*');
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'company_dashboard.php', params, { headers })
+  }
+
+  getCompanyDashboardInfo(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'company_dashboard.php', params,  { headers }) 
+  }
+
+  companySubscribe(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'companySubscribe.php', params,  { headers }) 
+  }
+
+  updatePaymentStatus(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'updatePaymentStatus.php', params,  { headers }) 
   }
 }
 

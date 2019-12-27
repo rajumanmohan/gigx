@@ -144,14 +144,14 @@ export class TalentprofileComponent implements OnInit {
     // education details
     this.registrationForm1 = this.fb.group({
 
-      highQul: ['', Validators.required],
+      //highQul: ['', Validators.required],
       qualifications: new FormArray([]),
-      institution: ['', Validators.required],
-      year_of_completion: ['', Validators.required],
-      professional_qualification: [''],
-      degree: [''],
-      country_id: ['', Validators.required],
-      educational_id: [null]
+      //institution: ['', Validators.required],
+      //year_of_completion: ['', Validators.required],
+      //professional_qualification: [''],
+      //degree: [''],
+      //country_id: ['', Validators.required],
+      //educational_id: [null]
     });
 
     // education details
@@ -280,7 +280,9 @@ export class TalentprofileComponent implements OnInit {
     } else {
       this.showBankForm = true;
       this.addBankDetails = false;
-      this.editBank = false;
+      this.editBank = false;;
+
+
     }
   }
 
@@ -295,6 +297,7 @@ export class TalentprofileComponent implements OnInit {
     this.editEdu = false;
     this.editjob = false;
     this.editjobpreference = false;
+
   }
   jobPreferences() {
     window.scroll(0, 0);
@@ -413,8 +416,8 @@ export class TalentprofileComponent implements OnInit {
       this.registrationForm.patchValue({ 'country_id': this.talentPersonalDetails.country_id });
       this.registrationForm.patchValue({ 'mobile_code': this.talentPersonalDetails.mobile_code });
 
-      this.registrationForm.patchValue({ 'state_id': this.talentPersonalDetails.state_id });
-      this.registrationForm.patchValue({ 'city_id': this.talentPersonalDetails.city_id });
+      // this.registrationForm.patchValue({ 'state_id': this.talentPersonalDetails.state_id });
+      // this.registrationForm.patchValue({ 'city_id': this.talentPersonalDetails.city_id });
 
     }, 10);
 
@@ -470,6 +473,7 @@ export class TalentprofileComponent implements OnInit {
   getCountries() {
     this.appSer.countriesList().subscribe((res) => {
       this.CountiresList = res['countries'];
+      this.changeCountryList(this.talentPersonalDetails.country_id);
     })
   }
   countryId; statesList = []; MobileCode;
@@ -487,7 +491,7 @@ export class TalentprofileComponent implements OnInit {
     this.appSer.statesList(params).subscribe((res) => {
 
       this.statesList = res['states'];
-      this.stateId = res['states'].state_id;
+      this.stateId = this.talentPersonalDetails.state_id;
       // this.registrationForm.patchValue({ 'state_id': null });// .reset();
       // this.registrationForm.patchValue({ 'city_id': null });
       let params1 = {
@@ -573,12 +577,12 @@ export class TalentprofileComponent implements OnInit {
         tempForm[i].patchValue({ 'institution': null });
     }
 
-    this.obj2["hq_id"] = this.registrationForm1.value.highQul;
-    this.obj2["university_id"] = this.registrationForm1.value.institution
-    this.obj2["year_of_completion"] = this.registrationForm1.value.year_of_completion;
-    this.obj2["professional_qualification"] = this.registrationForm1.value.professional_qualification;
-    this.obj2["other_highest_qualification"] = "";
-    this.obj2["educational_id"] = this.registrationForm1.value.educational_id;
+    // this.obj2["hq_id"] = this.registrationForm1.value.educational_id;
+    // this.obj2["university_id"] = this.registrationForm1.value.educational_id;
+    // this.obj2["year_of_completion"] = this.registrationForm1.value.year_of_completion;
+    // this.obj2["professional_qualification"] = this.registrationForm1.value.professional_qualification;
+    // this.obj2["other_highest_qualification"] = "";
+    // this.obj2["educational_id"] = this.registrationForm1.value.educational_id;
 
     // this.registrationForm1.value.qualifications.unshift(this.obj2);//temp
 
@@ -586,7 +590,7 @@ export class TalentprofileComponent implements OnInit {
     // console.log("f2 values", this.f2.qualifications.invalid);
     console.log(this.registrationForm1.value)
     // console.log("valid in valid", this.registrationForm1.invalid)
-    if (this.registrationForm1.invalid == false) {
+    if (this.registrationForm1.invalid) {
       return;
     } else {
 
@@ -646,7 +650,7 @@ export class TalentprofileComponent implements OnInit {
     this.f2.controls = [];
 
     for (var i = 0; i < this.talentEducationDetails.length; i++) {
-      this.f2.push(this.fb.group({
+      var fieldSet = {
         high_qualification: [this.talentEducationDetails[i].highest_qualification, Validators.required],
         country: [null, Validators.required],
         professional_qualification: [this.talentEducationDetails[i].professional_qualification, Validators.required],
@@ -654,20 +658,28 @@ export class TalentprofileComponent implements OnInit {
         year_of_completion: [this.talentEducationDetails[i].year_of_completion, Validators.required],
         degree1: [null, Validators.required],
         educational_id: [this.talentEducationDetails[i].educational_id || null]
-      }));
+      };
 
+      if(this.talentEducationDetails[i].hqid == 4){
+        fieldSet["professional_certification"] = [this.talentEducationDetails[i].other_highest_qualification , Validators.required];
+      }
 
+      this.f2.push(this.fb.group(fieldSet));
+
+      //professional_certification
     }
 
     setTimeout(() => {
       for (var i = 0; i < this.f2.controls.length; i++) {
         this.f2[i]
         var formGroup = this.f2.controls[i] as FormGroup;
-        formGroup.patchValue({ 'country': '132' });// controls['country'].value
+        formGroup.patchValue({ 'country': this.talentEducationDetails[i].country_id });// controls['country'].value
         formGroup.patchValue({ 'high_qualification': this.talentEducationDetails[i].hqid });
         formGroup.patchValue({ 'year_of_completion': this.talentEducationDetails[i].year_of_completion });
-        formGroup.patchValue({ 'degree1': this.talentEducationDetails[i].mode_of_study })
+        formGroup.patchValue({ 'degree1': this.talentEducationDetails[i].mode_of_study });
+        formGroup.patchValue({'institution': this.talentEducationDetails[i].university_id});
 
+        this.onQualificationCountryChangeCustom(this.talentEducationDetails[i].country_id, i, true);
       }
 
     }, 1000);
@@ -680,24 +692,38 @@ export class TalentprofileComponent implements OnInit {
   showEditJob() {
     this.editjob = false;
     this.showWorkExperienceDetails = true;
-    for (var i = this.f5.length; i < this.talentJobDetails.length; i++) {
-      this.f5.push(this.fb.group({
+
+    this.f5.controls = [];
+
+    for (var i = 0; i < this.talentJobDetails.length; i++) {
+      var workingType = this.talentJobDetails[i].working_period.split(' ');
+
+      var fieldSet = {
         work_experience: [this.talentJobDetails[i].work_experience, Validators.required],
         current_company: [this.talentJobDetails[i].current_company, Validators.required],
         currency_type: [null, Validators.required],
         salary_input: [null, Validators.required],
         working_from: [null, Validators.required],
-        working_to: [null, Validators.required],
+       
         location: [this.talentJobDetails[i].location, Validators.required],
         industry_type: [null, Validators.required],
         role: [null, Validators.required],
         role_description: [null, Validators.required],
         jobdetails_id: [this.talentJobDetails[i].jobdetails_id]
-      }));
+      };
+
+      if(workingType[2] != 'present'){
+        fieldSet['working_to'] =[null, Validators.required];
+      }
+      
+
+      this.f5.push(this.fb.group(fieldSet));
       this.JobDetailsId = this.talentJobDetails[i].jobdetails_id;
     }
     setTimeout(() => {
       for (var i = 0; i < this.f5.controls.length; i++) {
+        var workingType = this.talentJobDetails[i].working_period.split(' ');
+
         this.f5[i]
         var workExperience = this.f5.controls[i] as FormGroup;
         workExperience.patchValue({ 'industry_type': this.talentJobDetails[i].industry_id });
@@ -707,11 +733,27 @@ export class TalentprofileComponent implements OnInit {
         workExperience.patchValue({ 'currency_type': currencyType[0] });
         workExperience.patchValue({ 'salary_input': currencyType[1] });
         workExperience.patchValue({ 'jobdetails_id': this.talentJobDetails[i].jobdetails_id });
-        var workingType = this.talentJobDetails[i].working_period.split(' ');
-        workExperience.patchValue({ 'working_from': workingType[0] });
-        workExperience.patchValue({ 'working_to': workingType[20] });
-        this.workingFromDate = workingType[0];
-        this.workingToDate = workingType[2];
+       
+        workExperience.patchValue({ 'working_from': 
+        {
+          date: {
+              year: workingType[0].split('-')[0],
+              month: parseInt(workingType[0].split('-')[1]) ,
+              day: parseInt(workingType[0].split('-')[2])}
+          }
+      });
+        if(workingType[2] != 'present'){
+          //workExperience.patchValue({ 'working_to': workingType[2] });
+          workExperience.patchValue({ 'working_to': 
+          {
+            date: {
+                year: workingType[2].split('-')[0],
+                month: parseInt(workingType[2].split('-')[1]) ,
+                day: parseInt(workingType[2].split('-')[2])}
+            }
+        });
+        }
+        
         console.log("0000000000000000000", this.workingToDate)
       }
 
@@ -723,11 +765,11 @@ export class TalentprofileComponent implements OnInit {
     this.getInstitutionsListBasedOnCountry(countryId);
   }
 
-  onQualificationCountryChangeCustom(countryId, index) {
-    this.getInstitutionsListBasedOnCountryCustom(countryId, index);
+  onQualificationCountryChangeCustom(countryId, index, isDefault) {
+    this.getInstitutionsListBasedOnCountryCustom(countryId, index, isDefault);
   }
 
-  getInstitutionsListBasedOnCountryCustom(counrtyId, index) {
+  getInstitutionsListBasedOnCountryCustom(counrtyId, index, isDefault) {
     //if(this.institutionsList.length == 0){ 
     let params = {
       country_id: JSON.parse(counrtyId),
@@ -737,7 +779,8 @@ export class TalentprofileComponent implements OnInit {
       this.institutionsListCustom[index] = res['universities'];
       //this.registrationForm1.patchValue({'institution': null});
       var tempForm = this.f2.controls as FormGroup[];
-      tempForm[index].patchValue({ 'institution': null });
+      if(!isDefault)
+        tempForm[index].patchValue({ 'institution': null });
     });
     //}
   }
@@ -901,12 +944,12 @@ export class TalentprofileComponent implements OnInit {
       preference_role: [this.talentJobPreference.role_id, Validators.required],
       desired_employment_type: [this.talentJobPreference.employment_type, Validators.required],
       work_preferences: [this.talentJobPreference.work_preferences, Validators.required],
-      skills: [this.talentJobPreference.skills, Validators.required],
+      skills: [ this.talentJobPreference.skill_ids ? this.talentJobPreference.skill_ids.split(',') : [] , Validators.required],
     })
     setTimeout(() => {
       this.jobPreferrences.patchValue({ 'preference_industry_type': this.talentJobPreference.industry_id });
       this.jobPreferrences.patchValue({ 'preference_role': this.talentJobPreference.role_id });
-      this.jobPreferrences.patchValue({ 'skills': this.talentJobPreference.skills });
+     // this.jobPreferrences.patchValue({ 'skills': this.talentJobPreference.skills ? this.talentJobPreference.skills.split(',') : [] });
       this.jobPreferrences.patchValue({ 'desired_employment_type': this.talentJobPreference.employment_type });
       this.jobPreferrences.patchValue({ 'work_preferences': this.talentJobPreference.work_preferences });
     }, 100);
@@ -926,13 +969,13 @@ export class TalentprofileComponent implements OnInit {
         "preference_role_id": this.jobPreferrences.controls['preference_role'].value,
         "preference_other_role": this.jobPreferrences.controls['role_others'] ? this.jobPreferrences.controls['role_others'].value : '',
         "desired_employment_type": this.jobPreferrences.controls['desired_employment_type'].value,
-        "skills": this.jobPreferrences.controls['skills'].value,
+        "skills": this.jobPreferrences.controls['skills'].value.join(','),
         "work_preference": this.jobPreferrences.controls['work_preferences'].value,
         "talent_id": this.talentId,
         "form_type": 'step4'
       };
-      this.stepfour_details = tempObj;
-      this.appSer.talentEditEducation(this.stepfour_details).subscribe(res => {
+      this.stepfour_details = tempObj; 
+      this.appSer.talentEditJob(this.stepfour_details).subscribe(res => {
         if (res['status'] == 200) {
           this.toast.success(res['message'], "success");
           this.showtalentProfile();
@@ -1080,19 +1123,19 @@ export class TalentprofileComponent implements OnInit {
           "role_description": "",
           "jobdetails_id": ""
         };
-        var selectedWorkingSinceDate = this.employeeForm.controls['working_since'].value.date;
+        //var selectedWorkingSinceDate = this.employeeForm.controls['working_since'].value.date;
 
 
         var selectedWorkingFromDate = tempFormGroup.controls['working_from'].value.date;
-        var selectedWorkingToDate = tempFormGroup.controls['working_to'].value.date;
+        var selectedWorkingToDate = tempFormGroup.controls['working_to'] ? tempFormGroup.controls['working_to'].value.date : '';
 
 
 
         internalObj.work_experience = tempFormGroup.controls['work_experience'].value;
         internalObj.company = tempFormGroup.controls['current_company'].value;
         internalObj.salary = `${tempFormGroup.controls['currency_type'].value} ${tempFormGroup.controls['salary_input'].value}`;
-        if (this.workingToDate === 'present') {
-          internalObj.working_period = `${selectedWorkingSinceDate.year}-${selectedWorkingSinceDate.month}-${selectedWorkingSinceDate.day} to present`;
+        if (!tempFormGroup.controls['working_to']) {
+          internalObj.working_period = `${selectedWorkingFromDate.year}-${selectedWorkingFromDate.month}-${selectedWorkingFromDate.day} to present`;
 
         }
         else {
@@ -1219,10 +1262,10 @@ export class TalentprofileComponent implements OnInit {
   currentIndex = 0;
   onHighestQualificationChangeOther(event: any, index, ngForm) {
     if (event.currentTarget.value == '4') {
-      ngForm.addControl('professional_certification1', new FormControl('', Validators.required));
+      ngForm.addControl('professional_certification', new FormControl('', Validators.required));
     }
     else {
-      ngForm.removeControl('professional_certification1');
+      ngForm.removeControl('professional_certification');
     }
     this.currentIndex = index + 1;
   }

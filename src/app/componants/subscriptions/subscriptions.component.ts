@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { AppServiceService } from './../../Services/app-service.service';
@@ -13,6 +13,7 @@ import {
   selector: 'app-subscriptions',
   templateUrl: './subscriptions.component.html',
   styleUrls: ['./subscriptions.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   animations: [
     growInShrinkOut, fadeInThenOut, swingInAndOut, fadeInAndOut,
     enterAndLeaveFromLeft, enterAndLeaveFromRight, bounceInAndOut,
@@ -25,6 +26,8 @@ import {
 export class SubscriptionsComponent implements OnInit {
   type: any;
   CompanySubscriptions;
+  currentPlanDetails;
+
   role; talentId; companyId; loginType; planId;
   constructor(private router: Router, private toast: ToastrService, private appSer: AppServiceService) {
     this.role = localStorage.getItem('industry_type');
@@ -83,8 +86,17 @@ export class SubscriptionsComponent implements OnInit {
   getCompanySubscriptionsPlans() {
     this.ServiceArr = [];
     this.FinalService = [];
-    this.appSer.getCompanySubscriptions().subscribe((res) => {
+    this.appSer.getCompanySubscriptions(this.companyId).subscribe((res) => {
       this.CompanySubscriptions = res['companySubscriptionPlans'];
+      this.currentPlanDetails = res['currentPlanDetails'] ?  res['currentPlanDetails'] : {};
+
+      if(res['currentPlanDetails']){
+        var expiryDate = new Date(res['currentPlanDetails'].expiry_date).getTime();
+        var currentDate = new Date().getTime();
+        var one_day = 1000 * 60 * 60 * 24 
+        this.currentPlanDetails.expiresIn = Math.round((expiryDate - currentDate)/one_day);
+      }
+
       this.planId = res['companySubscriptionPlans'].plan_id;
       for (var i = 0; i < this.CompanySubscriptions.length; i++) {
 
@@ -111,6 +123,16 @@ export class SubscriptionsComponent implements OnInit {
   }
 
 
+  onSubscribeClick(item){
+    if(this.companyId){
+      var requestParams = {plan_id: item.plan_id, company_id: this.companyId};
+      this.appSer.companySubscribe(requestParams).subscribe((res) => {
+        if(res['status'] == 200){
+          window.location.href = res['redirectURL'];
+        } 
+      });
+    }
+  }
 
 
 }

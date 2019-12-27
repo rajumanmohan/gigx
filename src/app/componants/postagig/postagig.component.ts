@@ -358,7 +358,9 @@ export class PostagigComponent implements OnInit {
         this.toast.success(res['message'], "success");
         this.router.navigate(['/companydashboard']);
        
-      } else {
+      }
+      
+      else {
         this.toast.error(res['message'], "error");
 
       }
