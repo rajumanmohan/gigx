@@ -10,18 +10,7 @@
             </div>
         </div>
         <!-- serach talent -->
-        <!-- <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="input-group button-search mb-3">
-                    <input type="text" class="form-control" placeholder="Java Developers"
-                        aria-label="Recipient's username" aria-describedby="button-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img
-                                src="../../../assets/images/search.png"></button>
-                    </div>
-                </div>
-            </div>
-        </div> -->
+
         <!-- search talent -->
         <div class="row mt-5">
             <!-- Seaarch filter -->
@@ -143,8 +132,6 @@
                                         {{item.skill_name}} <span (click)="onSkillRemoveClick(item)">X</span>
                                     </span>
                                 </li>
-
-
                             </ul>
                         </div>
                     </div>
@@ -196,23 +183,28 @@
                                     </div>
                                     <!-- job details -->
                                     <!-- apply job -->
-                                    <div class="col-md-4 text-right" *ngIf="!item.isInviteClicked" (click)="item.isInviteClicked = !item.isInviteClicked">
-                                        <button class="btn-invite" >Invite to Gig</button>
-                                        <img [src]="item.image" class="img-profile" *ngIf="item.image" onerror="this.style.display='none'">
+                                    <div class="col-md-4 text-right" *ngIf="!item.isInviteClicked"
+                                        (click)="item.isInviteClicked = !item.isInviteClicked">
+                                        <button class="btn-invite">Invite to Gig</button>
+                                        <img [src]="item.image" class="img-profile" *ngIf="item.image"
+                                            onerror="this.style.display='none'">
                                     </div>
 
-                                    <div class="col-md-4 text-right"  *ngIf="item.isInviteClicked">
-                                            <select class="from-control" style="width: 100%;" (change)="item.post_id = $event.target.value">
-                                                    <option [disabled]="true" value="">Select Gig</option>
-                                                    <option *ngFor="let data of postedGigList" [value]="data.post_id">
-                                                            {{data.gig_title}}
-                                                        </option>
-                                            </select>
-                                            <div style="width: 100%">
+                                    <div class="col-md-4 text-right" *ngIf="item.isInviteClicked">
+                                        <select class="from-control" style="width: 100%;"
+                                            (change)="item.post_id = $event.target.value">
+                                            <option [disabled]="true" value="">Select Gig</option>
+                                            <option *ngFor="let data of postedGigList" [value]="data.post_id">
+                                                {{data.gig_title}}
+                                            </option>
+                                        </select>
+                                        <div style="width: 100%">
                                             <button class="btn-submit" (click)="onInviteClick(item)"></button>
-                                            <button class="btn-cancel" (click)="item.isInviteClicked = !item.isInviteClicked; item.post_id = ''"></button>
+                                            <button class="btn-cancel"
+                                                (click)="item.isInviteClicked = !item.isInviteClicked; item.post_id = ''"></button>
                                         </div>
-                                            <img [src]="item.image" class="img-profile" *ngIf="item.image" onerror="this.style.display='none'">
+                                        <img [src]="item.image" class="img-profile" *ngIf="item.image"
+                                            onerror="this.style.display='none'">
                                     </div>
                                     <!-- apply job -->
                                 </div>
@@ -235,21 +227,23 @@
                     </div>
                     <!-- search results -->
 
-                    <div class="row" *ngIf="filteredTalentList.length == 0 && selectedCountries.length == 0 && selectedIndustries.length == 0 && selectedSkills.length == 0">
+                    <div class="row"
+                        *ngIf="filteredTalentList.length == 0 && selectedCountries.length == 0 && selectedIndustries.length == 0 && selectedSkills.length == 0">
                         <div class="col-md-12 mt-3">
                             <div class="talent-result">
                                 <h2 class="text-center">Select filters to get the results</h2>
                             </div>
                         </div>
                     </div>
-                    <div class="row" *ngIf="filteredTalentList.length == 0 && (selectedCountries.length > 0 || selectedIndustries.length > 0 || selectedSkills.length > 0)">
-                            <div class="col-md-12 mt-3">
-                                <div class="talent-result text-center">
-                                    <!-- <h2 class="text-center">No results found</h2> -->
-                                    <img src="../../../assets/images/no_result.gif" class="no-results-image"/>
-                                </div>
+                    <div class="row"
+                        *ngIf="filteredTalentList.length == 0 && (selectedCountries.length > 0 || selectedIndustries.length > 0 || selectedSkills.length > 0)">
+                        <div class="col-md-12 mt-3">
+                            <div class="talent-result text-center">
+                                <!-- <h2 class="text-center">No results found</h2> -->
+                                <img src="../../../assets/images/no_result.gif" class="no-results-image" />
                             </div>
                         </div>
+                    </div>
 
                 </div>
                 <div class="row text-center col-md-12 mt-3" style="display: block;"

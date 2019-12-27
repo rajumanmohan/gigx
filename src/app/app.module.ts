@@ -66,8 +66,12 @@ import { ShortlistedProfilesListComponent } from './componants/shortlistedprofil
 import { AcceptedProfilesListComponent } from './componants/acceptedprofileslist/acceptedprofileslist.component';
 import { RejectedProfilesListComponent } from './componants/rejectedprofileslist/rejectedprofileslist.component';
 import { InvitedGigsComponent } from './componants/invitedgigs/invitedgigs.component';
+<<<<<<< HEAD
 import { PaymentSuccessComponent } from './componants/payment-sucess/payment-sucess.component';
 import { PaymentFailureComponent } from './componants/payment-failure/payment-failure.component';
+=======
+import { TermsconditionsComponent } from './componants/termsconditions/termsconditions.component';
+>>>>>>> 42388fe0948a79028fa0f514d407c97ff6c01486
 
 
 @Pipe({ name: 'safe' })
@@ -118,8 +122,12 @@ import { PaymentFailureComponent } from './componants/payment-failure/payment-fa
     AcceptedProfilesListComponent,
     RejectedProfilesListComponent,
     InvitedGigsComponent,
+<<<<<<< HEAD
     PaymentSuccessComponent,
     PaymentFailureComponent
+=======
+    TermsconditionsComponent
+>>>>>>> 42388fe0948a79028fa0f514d407c97ff6c01486
   ],
   imports: [
     AutocompleteLibModule,

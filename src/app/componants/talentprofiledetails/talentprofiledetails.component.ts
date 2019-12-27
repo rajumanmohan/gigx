@@ -57,7 +57,7 @@ export class TalentProfileDetailsComponent implements OnInit {
         this.educationalDetails = res['step2'].educationaldetails;
         this.jobDetails = res['step3'].jobdetails;
         this.jobPreferences = res['step4'].jobpreferences;
-        debugger;
+
     });
   }
 

@@ -23,8 +23,12 @@ import {
   ]
 })
 export class CompanydashboardComponent implements OnInit {
+<<<<<<< HEAD
   talentId; companyId; loginType;
   dashboardInfo = {};
+=======
+  talentId; companyId; loginType; dashBoardCount;
+>>>>>>> 42388fe0948a79028fa0f514d407c97ff6c01486
   constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService, private formBuilder: FormBuilder) {
     this.talentId = localStorage.getItem('talent_id');
     this.companyId = localStorage.getItem('company_id');
@@ -39,7 +43,11 @@ export class CompanydashboardComponent implements OnInit {
   ngOnInit() {
     window.scroll(0, 0);
     this.getCompanyProfile();
+<<<<<<< HEAD
     this.getCompanyDashboardInfo();
+=======
+    this.getCompanydasboardData();
+>>>>>>> 42388fe0948a79028fa0f514d407c97ff6c01486
   }
   gotoProfile() {
     if (this.loginType == 'company') {
@@ -65,7 +73,6 @@ export class CompanydashboardComponent implements OnInit {
         this.profilename = res['data'].contact_person.substring(0, 2);
         this.companyName = res['data'].contact_person;
       }
-
     })
   }
   logout() {
@@ -73,6 +80,7 @@ export class CompanydashboardComponent implements OnInit {
     localStorage.clear();
     this.toast.success('You have Signed Out Successfully', "success");
   }
+<<<<<<< HEAD
 
   getCompanyDashboardInfo(){
     var requestObj = { company_id: this.companyId};
@@ -80,4 +88,15 @@ export class CompanydashboardComponent implements OnInit {
       this.dashboardInfo = res['companyDashboardCounts'];
     })
   }
+=======
+  getCompanydasboardData() {
+    let params = {
+      company_id: this.companyId
+    }
+    this.appSer.getCompanyDashboard(params).subscribe((res) => {
+      this.dashBoardCount = res['companyDashboardCounts']
+    })
+  }
+
+>>>>>>> 42388fe0948a79028fa0f514d407c97ff6c01486
 }
