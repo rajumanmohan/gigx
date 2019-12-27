@@ -58,7 +58,7 @@
                                                     <img src="../../../assets/images/gig_post.png" class="img-dashboard"/>
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                    <h3>{{dashBoardCount.postedGigsCount}}</h3>
+                                                    <h3>{{dashboardInfo.postedGigsCount}}</h3>
 
                                                 </div>
                                             </div>
@@ -92,7 +92,7 @@
                                                     <img src="../../../assets/images/applied.png" class="img-dashboard"/>
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                    <h3>{{dashBoardCount.appliedTalentCount}}</h3>
+                                                    <h3>{{dashboardInfo.appliedTalentCount}}</h3>
 
 
                                                 </div>
@@ -129,7 +129,7 @@
                                                     <img src="../../../assets/images/shortlisted.png"  class="img-dashboard" />
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                    <h3>{{dashBoardCount.shortListedTalentCount}}</h3>
+                                                    <h3>{{dashboardInfo.shortListedTalentCount}}</h3>
 
 
                                                 </div>
@@ -166,7 +166,7 @@
                                                     <img src="../../../assets/images/accept.png" class="img-dashboard" />
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                    <h3>{{dashBoardCount.acceptedTalentCount}}</h3>
+                                                    <h3>{{dashboardInfo.acceptedTalentCount}}</h3>
 
 
                                                 </div>
@@ -203,7 +203,7 @@
                                                     <img src="../../../assets/images/reject.png"  class="img-dashboard"/>
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                    <h3>{{dashBoardCount.rejectedTalentCount}}</h3>
+                                                    <h3>{{dashboardInfo.rejectedTalentCount}}</h3>
 
 
                                                 </div>
@@ -218,9 +218,45 @@
                         </div>
                     </div>
                     <!-- talent preview -->
-                    <!-- talent preview -->
 
                     <!-- talent preview -->
+                    <div class="col-md-4 mt-3" *ngIf="dashboardInfo.max_limit">
+                            <div class=" talent-result ">
+                                <div class="row">
+    
+    
+                                    <div class="col-md-10">
+                                        <div class="row">
+                                            <!-- talent details -->
+                                            <div class="col-md-12">
+                                                <h3>Posting Limit</h3>
+    
+    
+                                            </div>
+                                            <!-- talent details -->
+                                            <!-- invite job -->
+                                            <div class="col-md-12 number">
+                                                <div class="row mt-5">
+                                                    <div class="col-md-6">
+                                                        <img src="../../../assets/images/payment.png"  class="img-dashboard"/>
+                                                    </div>
+                                                    <div class="col-md-6 text-right">
+                                                        <h3>{{dashboardInfo.credits}}/{{dashboardInfo.max_limit}}</h3>
+    
+    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- invite job -->
+                                        </div>
+    
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+                        <!-- talent preview -->
+                 
                 </div>
                 <!-- search results -->
 

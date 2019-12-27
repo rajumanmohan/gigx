@@ -66,7 +66,12 @@ import { ShortlistedProfilesListComponent } from './componants/shortlistedprofil
 import { AcceptedProfilesListComponent } from './componants/acceptedprofileslist/acceptedprofileslist.component';
 import { RejectedProfilesListComponent } from './componants/rejectedprofileslist/rejectedprofileslist.component';
 import { InvitedGigsComponent } from './componants/invitedgigs/invitedgigs.component';
+
+import { PaymentSuccessComponent } from './componants/payment-sucess/payment-sucess.component';
+import { PaymentFailureComponent } from './componants/payment-failure/payment-failure.component';
+
 import { TermsconditionsComponent } from './componants/termsconditions/termsconditions.component';
+
 import { PagenotfoundComponent } from './componants/pagenotfound/pagenotfound.component';
 
 
@@ -119,7 +124,10 @@ import { PagenotfoundComponent } from './componants/pagenotfound/pagenotfound.co
     RejectedProfilesListComponent,
     InvitedGigsComponent,
     TermsconditionsComponent,
-    PagenotfoundComponent
+    PagenotfoundComponent,
+    PaymentSuccessComponent,
+    PaymentFailureComponent,
+    TermsconditionsComponent
   ],
   imports: [
     AutocompleteLibModule,
