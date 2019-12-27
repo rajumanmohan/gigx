@@ -1,5 +1,16 @@
 // HEADER CSS
-
+app-subscriptions{
+    .plan-expiry{
+        color: #dc3545;
+        font-weight: 600;
+        .expire-days{
+            font-size: 26px;
+        }
+        .credits {
+            font-size: 20px;
+        }
+    }
+}
 .login-list{
     margin-top: 3px;
     font-size: 24px;

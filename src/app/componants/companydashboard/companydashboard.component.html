@@ -24,6 +24,8 @@
             <div class="col-md-6">
                 <h1 class="text-center mb-3">Welcome, {{companyName}}!
                 </h1>
+                <h6 class="text-center mb-3" *ngIf="dashboardInfo.plan">You are subscribed to <b>{{dashboardInfo.plan}}</b>!
+                    </h6>
             </div>
         </div>
     </div>
@@ -53,10 +55,10 @@
                                         <div class="col-md-12 number">
                                             <div class="row mt-5">
                                                 <div class="col-md-6">
-                                                    <img src="../../../assets/images/custom1.png">
+                                                    <img src="../../../assets/images/gig_post.png" class="img-dashboard"/>
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                    <h3>12</h3>
+                                                    <h3>{{dashboardInfo.postedGigsCount}}</h3>
 
                                                 </div>
                                             </div>
@@ -89,10 +91,10 @@
                                         <div class="col-md-12 number">
                                             <div class="row mt-5">
                                                 <div class="col-md-6">
-                                                    <img src="../../../assets/images/custom2.png">
+                                                    <img src="../../../assets/images/applied.png" class="img-dashboard"/>
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                    <h3>12</h3>
+                                                    <h3>{{dashboardInfo.appliedTalentCount}}</h3>
 
 
                                                 </div>
@@ -126,10 +128,10 @@
                                         <div class="col-md-12 number">
                                             <div class="row mt-5">
                                                 <div class="col-md-6">
-                                                    <img src="../../../assets/images/custom3.png">
+                                                    <img src="../../../assets/images/shortlisted.png"  class="img-dashboard" />
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                    <h3>12</h3>
+                                                    <h3>{{dashboardInfo.shortListedTalentCount}}</h3>
 
 
                                                 </div>
@@ -154,7 +156,7 @@
                                     <div class="row">
                                         <!-- talent details -->
                                         <div class="col-md-12">
-                                            <h3>Gig Alerts</h3>
+                                            <h3>Accepted Gigs</h3>
 
 
                                         </div>
@@ -163,10 +165,10 @@
                                         <div class="col-md-12 number">
                                             <div class="row mt-5">
                                                 <div class="col-md-6">
-                                                    <img src="../../../assets/images/custom4.png">
+                                                    <img src="../../../assets/images/accept.png" class="img-dashboard" />
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                    <h3>12</h3>
+                                                    <h3>{{dashboardInfo.acceptedTalentCount}}</h3>
 
 
                                                 </div>
@@ -191,7 +193,7 @@
                                     <div class="row">
                                         <!-- talent details -->
                                         <div class="col-md-12">
-                                            <h3>Posted Gigs</h3>
+                                            <h3>Rejected Gigs</h3>
 
 
                                         </div>
@@ -200,10 +202,10 @@
                                         <div class="col-md-12 number">
                                             <div class="row mt-5">
                                                 <div class="col-md-6">
-                                                    <img src="../../../assets/images/custom5.png">
+                                                    <img src="../../../assets/images/reject.png"  class="img-dashboard"/>
                                                 </div>
                                                 <div class="col-md-6 text-right">
-                                                    <h3>12</h3>
+                                                    <h3>{{dashboardInfo.rejectedTalentCount}}</h3>
 
 
                                                 </div>
@@ -218,43 +220,45 @@
                         </div>
                     </div>
                     <!-- talent preview -->
+
                     <!-- talent preview -->
-                    <div class="col-md-4 mt-3">
-                        <div class=" talent-result ">
-                            <div class="row">
-
-
-                                <div class="col-md-10">
-                                    <div class="row">
-                                        <!-- talent details -->
-                                        <div class="col-md-12">
-                                            <h3>Posted Gigs</h3>
-
-
-                                        </div>
-                                        <!-- talent details -->
-                                        <!-- invite job -->
-                                        <div class="col-md-12 number">
-                                            <div class="row mt-5">
-                                                <div class="col-md-6">
-                                                    <img src="../../../assets/images/custom6.png">
-                                                </div>
-                                                <div class="col-md-6 text-right">
-                                                    <h3>12</h3>
-
-
+                    <div class="col-md-4 mt-3" *ngIf="dashboardInfo.max_limit">
+                            <div class=" talent-result ">
+                                <div class="row">
+    
+    
+                                    <div class="col-md-10">
+                                        <div class="row">
+                                            <!-- talent details -->
+                                            <div class="col-md-12">
+                                                <h3>Posting Limit</h3>
+    
+    
+                                            </div>
+                                            <!-- talent details -->
+                                            <!-- invite job -->
+                                            <div class="col-md-12 number">
+                                                <div class="row mt-5">
+                                                    <div class="col-md-6">
+                                                        <img src="../../../assets/images/payment.png"  class="img-dashboard"/>
+                                                    </div>
+                                                    <div class="col-md-6 text-right">
+                                                        <h3>{{dashboardInfo.credits}}/{{dashboardInfo.max_limit}}</h3>
+    
+    
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <!-- invite job -->
                                         </div>
-                                        <!-- invite job -->
+    
                                     </div>
-
                                 </div>
+    
                             </div>
-
                         </div>
-                    </div>
-                    <!-- talent preview -->
+                        <!-- talent preview -->
+                 
                 </div>
                 <!-- search results -->
 

@@ -66,6 +66,8 @@ import { ShortlistedProfilesListComponent } from './componants/shortlistedprofil
 import { AcceptedProfilesListComponent } from './componants/acceptedprofileslist/acceptedprofileslist.component';
 import { RejectedProfilesListComponent } from './componants/rejectedprofileslist/rejectedprofileslist.component';
 import { InvitedGigsComponent } from './componants/invitedgigs/invitedgigs.component';
+import { PaymentSuccessComponent } from './componants/payment-sucess/payment-sucess.component';
+import { PaymentFailureComponent } from './componants/payment-failure/payment-failure.component';
 
 
 @Pipe({ name: 'safe' })
@@ -115,7 +117,9 @@ import { InvitedGigsComponent } from './componants/invitedgigs/invitedgigs.compo
     ShortlistedProfilesListComponent,
     AcceptedProfilesListComponent,
     RejectedProfilesListComponent,
-    InvitedGigsComponent
+    InvitedGigsComponent,
+    PaymentSuccessComponent,
+    PaymentFailureComponent
   ],
   imports: [
     AutocompleteLibModule,

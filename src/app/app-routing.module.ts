@@ -41,6 +41,8 @@ import { ShortlistedProfilesListComponent } from './componants/shortlistedprofil
 import { AcceptedProfilesListComponent } from './componants/acceptedprofileslist/acceptedprofileslist.component';
 import { RejectedProfilesListComponent } from './componants/rejectedprofileslist/rejectedprofileslist.component';
 import { InvitedGigsComponent } from './componants/invitedgigs/invitedgigs.component';
+import { PaymentSuccessComponent } from './componants/payment-sucess/payment-sucess.component';
+import { PaymentFailureComponent } from './componants/payment-failure/payment-failure.component';
 
 const routes: Routes = [
   // {
@@ -217,6 +219,14 @@ const routes: Routes = [
   {
     path: 'invitedgigs',
     component: InvitedGigsComponent
+  },
+  {
+    path: 'payment_success',
+    component: PaymentSuccessComponent
+  },
+  {
+    path: 'payment_failure',
+    component: PaymentFailureComponent
   }
 ];
 

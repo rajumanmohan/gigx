@@ -738,7 +738,7 @@
                                             <div class="row form-group">
                                                 <div class="col-md-6">
                                                     <select class="form-control" id="country" formControlName="country"
-                                                        (change)="onQualificationCountryChangeCustom($event.target.value, i)"
+                                                        (change)="onQualificationCountryChangeCustom($event.target.value, i, false)"
                                                         [ngClass]="{ 'is-invalid':education.controls.country.errors&& submitted1 }">
                                                         <option [value]=null [selected]="true" [disabled]="true">Select
                                                             Country </option>
@@ -1135,7 +1135,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group row" *ngIf="workingToDate === 'present'">
+                                        <!-- <div class="form-group row" *ngIf="workingToDate === 'present' && false">
                                             <div class="col-md-12">
                                                 <p>Working since</p>
                                                 <my-date-picker name="working_since" [selDate]="working_since_value"
@@ -1150,11 +1150,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group row" *ngIf="workingToDate!=present">
+                                        </div> -->
+                                        <div class="form-group row">
 
                                             <div class="col-md-6">
-                                                <p>Working from</p>
+                                                <p *ngIf="!employee.controls.working_to">Working since</p>
+                                                <p *ngIf="employee.controls.working_to">Working from</p>
                                                 <my-date-picker name="workingFrom"
                                                     (dateChanged)="onWorkingFromDateChanged($event, i)"
                                                     [options]="workingFromOptions[i]" formControlName="working_from"
@@ -1168,8 +1169,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <p>Working to</p>
+                                            <div class="col-md-6" *ngIf="employee.controls.working_to">
+                                                <p>Working to </p> 
                                                 <my-date-picker name="workingTo"
                                                     (dateChanged)="onWorkingToDateChanged($event, i)"
                                                     [options]="workingToOptions[i]" formControlName="working_to"
