@@ -42,11 +42,16 @@ import { AcceptedProfilesListComponent } from './componants/acceptedprofileslist
 import { RejectedProfilesListComponent } from './componants/rejectedprofileslist/rejectedprofileslist.component';
 import { InvitedGigsComponent } from './componants/invitedgigs/invitedgigs.component';
 import { TermsconditionsComponent } from './componants/termsconditions/termsconditions.component';
+import { PagenotfoundComponent } from './componants/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   // {
   //   path: '',
   //   component: HeaderComponent
+  // },
+  // {
+  //   path: '**',
+  //   component: PagenotfoundComponent
   // },
   {
     path: 'coverpage',
@@ -222,7 +227,8 @@ const routes: Routes = [
   {
     path: 'invitedgigs',
     component: InvitedGigsComponent
-  }
+  },
+  { path: '**', component: PagenotfoundComponent }
 ];
 
 @NgModule({

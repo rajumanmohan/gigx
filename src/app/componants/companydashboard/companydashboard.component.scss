@@ -344,7 +344,7 @@ margin-top: 12px;
 
     .talent-result{
         background: #ffffff;
-        padding: 29px;
+        padding: 20px;
     }
  }
 
@@ -359,13 +359,13 @@ margin-top: 12px;
  }
  @media (max-width: 1468.98px) {  
     .company-profile{
-        height: 546px;
+        height: auto;
         padding-top: 30%;
     }
     .talent-result  {
-        height: 260px;
+        height: auto;
         h3{
-            font-size: 22px;
+            font-size: 17px;
         }
    
     }
@@ -384,7 +384,8 @@ margin-top: 12px;
  // Large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) {
     .company-profile {
-        height:400px;
+        height: auto;
+        padding-bottom: 18%;
         button{
             margin-bottom: -19px;
             width:100%;
@@ -399,8 +400,12 @@ margin-top: 12px;
         }
     }
     .talent-result{
-        height:400px;
+        height:auto;
+        padding: 11px;
         img{
+        }
+        h3{
+            font-size: 15px;
         }
     }
     .account-settings{
@@ -419,13 +424,17 @@ margin-top: 12px;
         width: 161px!important;
     }
     .talent-result{
-        height:400px;
+        height:auto;
         img{
             width:100% ;
         }
+        h3{
+            font-size: 15px;
+            height: 34px;
+        }
     }
     .company-profile {
-        height:400px;
+        height:auto;
         h3{
             font-size:14px;
         }

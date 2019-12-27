@@ -280,9 +280,7 @@ export class TalentprofileComponent implements OnInit {
     } else {
       this.showBankForm = true;
       this.addBankDetails = false;
-      this.editBank = false;;
-
-
+      this.editBank = false;
     }
   }
 
@@ -297,7 +295,6 @@ export class TalentprofileComponent implements OnInit {
     this.editEdu = false;
     this.editjob = false;
     this.editjobpreference = false;
-
   }
   jobPreferences() {
     window.scroll(0, 0);
