@@ -61,7 +61,7 @@
             <div class="col-md-10">
                 <div class="input-group button-search mb-3 mt-3">
                     <input type="text" class="form-control" aria-label="Recipient's username"
-                        aria-describedby="button-addon2">
+                        aria-describedby="button-addon2" title="Gig Title" [(ngModel)]="filtroString">
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="button" id="button-addon2"><img
                                 src="../../../assets/images/search.png"></button>
@@ -92,7 +92,7 @@
                 <div class="row ">
                     <!-- talent preview -->
                     <div class="col-md-12 mt-3"
-                        *ngFor="let item of companyPostsList  | paginate: { itemsPerPage: itemsPerPage, currentPage: paginationIndex, totalItems: companyPostsList.length };">
+                        *ngFor="let item of (companyPostsList  | filter:[{field:'gig_title', value: filtroString}]) | paginate: { itemsPerPage: itemsPerPage, currentPage: paginationIndex, totalItems: companyPostsList.length };">
                         <div class=" talent-result ">
 
                             <div class="row">
@@ -160,8 +160,12 @@
                         </div>
                     </div>
 
+                    <div style="margin-top: 2rem !important;" class="col-md-12 talent-result" *ngIf="(companyPostsList| filter:[{field:'gig_title', value: filtroString}]).length == 0">
+                        <h2 class="text-center">No results found</h2>
+                   </div>
+
                     <div class="row text-center col-md-12 mt-3" style="display: block;"
-                        *ngIf="companyPostsList.length > 0">
+                        *ngIf="(companyPostsList | filter:[{field:'gig_title', value: filtroString}]).length > 0">
                         <pagination-controls (pageChange)="this.paginationIndex = $event">
                         </pagination-controls>
                     </div>
