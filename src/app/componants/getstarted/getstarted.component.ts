@@ -46,7 +46,7 @@ export class GetstartedComponent implements OnInit {
     if (this.getStartForm.invalid) {
       return;
     } else {
-      this.router.navigate(['/talentregistration'], { queryParams: { email: this.getStartForm.value.email, password: this.getStartForm.value.password } });
+      this.router.navigate(['/talentregistration'], { queryParams: { email: this.getStartForm.value.email, password: this.getStartForm.value.password },skipLocationChange: true });
     }
   }
 }

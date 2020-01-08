@@ -44,7 +44,7 @@ export class TalentdashboardComponent implements OnInit {
     this.getTalentProfile();
     this.getCompanyPosts();
   }
-  talentPersonalDetails; talentJobPreference; talentFullName; talentLastName; LastName; FirstName; profileImage; profileUrl;
+  talentPersonalDetails = {}; talentJobPreference = {}; talentFullName; talentLastName; LastName; FirstName; profileImage; profileUrl;
   getTalentProfile() {
     let params = {
       talent_id: this.talentId
@@ -57,7 +57,10 @@ export class TalentdashboardComponent implements OnInit {
       this.LastName = res['step1'].last_name;
       this.profileImage = res['step1'].image;
       this.profileUrl = res['step1'].image_url;
+
       this.talentJobPreference = res['step4'].jobpreferences;
+
+      console.log(this.talentJobPreference);
     })
   }
   viewgig() {
@@ -68,18 +71,18 @@ export class TalentdashboardComponent implements OnInit {
     this.router.navigate(['/coverpage']);
     localStorage.clear();
   }
-  getCompanyPosts(){
+  getCompanyPosts() {
     var requestObj = {
       talent_id: this.talentId
     };
     this.appSer.getCompanyPostsForTalent(requestObj).subscribe((res) => {
-        this.companyPostsList = res['jobposts'];
+      this.companyPostsList = res['jobposts'];
     });
   }
 
-  onInterestedClick(item){
-    var requestObj = {'talent_id': this.dataStorage.loggedInUserData.talent_id, 'post_id' : item.post_id}
-    this.appSer.setInterestedGig(requestObj).subscribe((res)=>{
+  onInterestedClick(item) {
+    var requestObj = { 'talent_id': this.dataStorage.loggedInUserData.talent_id, 'post_id': item.post_id }
+    this.appSer.setInterestedGig(requestObj).subscribe((res) => {
       if (res['status'] == 200) {
         this.toast.success(res['message'], "success");
         item.flag = 1;
@@ -87,14 +90,14 @@ export class TalentdashboardComponent implements OnInit {
         this.toast.error(res['message'], "error");
 
       }
-      
+
       //this.createGigForm.reset();
       //this.createGigForm.markAsPristine();
     });
   }
-  onNotInterestedClick(item){
-    var requestObj = {'talent_id': this.dataStorage.loggedInUserData.talent_id, 'post_id' : item.post_id}
-    this.appSer.deleteInterestedGig(requestObj).subscribe((res)=>{
+  onNotInterestedClick(item) {
+    var requestObj = { 'talent_id': this.dataStorage.loggedInUserData.talent_id, 'post_id': item.post_id }
+    this.appSer.deleteInterestedGig(requestObj).subscribe((res) => {
       if (res['status'] == 200) {
         this.toast.success(res['message'], "success");
         item.flag = 0;
@@ -102,7 +105,7 @@ export class TalentdashboardComponent implements OnInit {
         this.toast.error(res['message'], "error");
 
       }
-      
+
       //this.createGigForm.reset();
       //this.createGigForm.markAsPristine();
     });

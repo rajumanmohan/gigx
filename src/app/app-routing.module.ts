@@ -235,8 +235,8 @@ const routes: Routes = [
     component: InvitedGigsComponent
   },
 
-  { path: '**', component: PagenotfoundComponent }
-  ,
+  // { path: '**', component: PagenotfoundComponent }
+  // ,
 
   {
     path: 'payment_success',

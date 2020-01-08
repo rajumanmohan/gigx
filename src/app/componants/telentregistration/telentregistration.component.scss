@@ -35,6 +35,9 @@
         }
 }
 
+.progress-bar {
+    background-color: #208ac4!important;
+}
 .cls-attachdocument-is-invalid{
     width: 100%;
     margin-top: .25rem;
@@ -82,9 +85,9 @@
     -moz-box-shadow: 0 0 45px rgba(0, 0, 0, .2);
     box-shadow: 0 0 45px rgba(0, 0, 0, .2);
 }
-.login[_ngcontent-yhx-c1] input[_ngcontent-yhx-c1] {
+.login input{
     margin-bottom: 12px;
-    border: none !important;
+    // border: none !important;
     padding: 24px 10px;
     margin: 0px auto;
     /* box-shadow: none !important; */
