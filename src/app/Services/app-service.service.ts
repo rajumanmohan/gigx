@@ -460,5 +460,20 @@ export class AppServiceService {
     headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
     return this.httpClient.post(this.apiUrl + 'updatePaymentStatus.php', params,  { headers }) 
   }
+
+  acceptOrRejectGig(params, flag){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    var methodName = '';
+    if(flag == 1){
+      methodName = 'acceptGigByTalent.php';
+    }
+    else{
+      methodName = 'rejectGigByTalent.php';
+    }
+    return this.httpClient.post(this.apiUrl + methodName, params,  { headers }) 
+  }
 }
 

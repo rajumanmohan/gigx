@@ -35,7 +35,7 @@
 
                             <div class="row">
                                 <!-- job details -->
-                                <div class="col-md-8">
+                                <div class="col-md-6">
                                     <h3>{{item.gig_title}}</h3>
                                     <p class="text-color-light">At {{item.company_name}}</p>
                                     <p><img src="../../../assets/images/maps.png" class="maps"> 
@@ -46,13 +46,19 @@
                                    <p>Experience: {{item.years_of_experience}} Years</p>
                                 </div>
                                 <!-- job details -->
-                               <div class="col-md-4 text-right">
-                                    <button class="btn btn-status" [ngClass]="{
+                               <div class="col-md-6 text-right" *ngIf="item.status != 2">
+                                    <button class="btn btn-status"  [ngClass]="{
                                         'btn-yellow':item.status == 0,
                                         'btn-blue':item.status == 1,
-                                        'btn-green':item.status == 2,
-                                        'btn-red':item.status == 3
+                                        'btn-green':item.status == 2 || item.status == 4,
+                                        'btn-red':item.status == 3 || item.status == 5
                                       }">{{item.status_value}}</button>
+                                </div>
+                                <div class="col-md-6 text-right" *ngIf="item.status == 2">
+                                   <span> You are selected, do you want to accept?</span>
+                                   <br/>
+                                   <button class="btn btn-selected-actions btn-green" (click)="onAcceptOrRejectGigClick(item, 1)">Accept</button>
+                                   <button class="btn btn-selected-actions btn-red" (click)="onAcceptOrRejectGigClick(item, 2)">Reject</button>
                                 </div>
                             </div>
                             <div class="row mt-3">
@@ -82,6 +88,8 @@
                     </div>
                     <!-- job preview -->
                    
+                   
+
                 </div>
             </div>
 
