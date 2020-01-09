@@ -371,11 +371,11 @@ export class TalentprofileComponent implements OnInit {
 
       this.appSer.talentEditJob(this.registrationForm.value).subscribe(res => {
         if (res['status'] == 200) {
-          this.toast.success(res['message'], "success");
+          this.toast.success(res['message'], "Success");
           this.showtalentProfile();
           this.edit = false;
         } else {
-          this.toast.error(res['message'], "error");
+          this.toast.error(res['message'], "Error");
 
         }
       })
@@ -632,12 +632,12 @@ export class TalentprofileComponent implements OnInit {
       console.log(this.steptwo_details);
       this.appSer.talentEditEducation(this.steptwo_details).subscribe((res) => {
         if (res['status'] == 200) {
-          this.toast.success(res['message'], "success");
+          this.toast.success(res['message'], "Success");
           this.showtalentProfile();
           this.editEdu = false;
           this.showEducationDetails = true;
         } else {
-          this.toast.error(res['message'], "error");
+          this.toast.error(res['message'], "Error");
         }
       })
     }
@@ -977,12 +977,12 @@ export class TalentprofileComponent implements OnInit {
       this.stepfour_details = tempObj; 
       this.appSer.talentEditJob(this.stepfour_details).subscribe(res => {
         if (res['status'] == 200) {
-          this.toast.success(res['message'], "success");
+          this.toast.success(res['message'], "Success");
           this.showtalentProfile();
           this.editjobpreference = true;
           this.showjobPreferences = false;
         } else {
-          this.toast.error(res['message'], "error");
+          this.toast.error(res['message'], "Error");
         }
       })
 
@@ -1179,7 +1179,7 @@ export class TalentprofileComponent implements OnInit {
         this.editjob = true;
       }
       else {
-        this.toast.error(res['message'], "error");
+        this.toast.error(res['message'], "Error");
       }
     })
 
@@ -1209,7 +1209,7 @@ export class TalentprofileComponent implements OnInit {
         this.addBankDetails = false;
       }
       else {
-        this.toast.error(res['message'], "error");
+        this.toast.error(res['message'], "Error");
         this.edit = false;
       }
     })

@@ -10,6 +10,7 @@ export class AboutusComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    window.scroll(0, 0);
   }
 
 }

@@ -207,7 +207,7 @@ export class CompanyregistrationComponent implements OnInit {
           this.url1 = '';
           this.router.navigate(['/login']);
         } else {
-          this.toast.error(res['message'], "error");
+          this.toast.error(res['message'], "Error");
         }
       })
     }
@@ -237,7 +237,7 @@ export class CompanyregistrationComponent implements OnInit {
           this.url1 = '';
           this.router.navigate(['/login']);
         } else {
-          this.toast.error(res['message'], "error");
+          this.toast.error(res['message'], "Error");
         }
       })
     }

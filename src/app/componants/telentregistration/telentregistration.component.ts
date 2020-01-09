@@ -666,10 +666,10 @@ export class TelentregistrationComponent implements OnInit {
     var obj =
       this.appSer.registrationTalent(finalPayload).subscribe(res => {
         if (res['status'] == 200) {
-          this.toast.success(res['message'], "success");
+          this.toast.success(res['message'], "Success");
           this.router.navigate(['/login']);
         } else {
-          this.toast.error(res['message'], "error");
+          this.toast.error(res['message'], "Error");
 
         }
       })

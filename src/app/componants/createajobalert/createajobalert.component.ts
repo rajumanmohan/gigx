@@ -149,11 +149,11 @@ export class CreateajobalertComponent implements OnInit {
 
     this.appSer.postCreateGigAlert(requestData).subscribe((res)=>{
       if (res['status'] == 200) {
-        this.toast.success(res['message'], "success");
+        this.toast.success(res['message'], "Success");
        // this.router.navigate(['/login']);
         window.location.reload(); 
       } else {
-        this.toast.error(res['message'], "error");
+        this.toast.error(res['message'], "Error");
 
       }
       

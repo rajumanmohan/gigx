@@ -154,9 +154,9 @@ export class JobsearchComponent implements OnInit {
     this.appSer.applyGig(requestObj).subscribe((res) => {
       if (res['status'] == 200) {
         item.applied_status = true;
-        this.toast.success(res['message'], "success");
+        this.toast.success(res['message'], "Success");
       } else {
-        this.toast.error(res['message'], "error");
+        this.toast.error(res['message'], "Error");
 
       }
   }); 

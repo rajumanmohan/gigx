@@ -169,16 +169,16 @@ export class TalentsearchComponent implements OnInit {
 
   onInviteClick(item) {
     if (!item.post_id) {
-      this.toast.error('Select Gig to continue', "error");
+      this.toast.error('Select Gig to continue', "Error");
       return false;
     }
     var requestObj = { post_id: item.post_id, talent_id: item.talent_id }
     this.appSer.inviteTalentByPostId(requestObj).subscribe((res) => {
       if (res['status'] == 200) {
-        this.toast.success(res['message'], "success");
+        this.toast.success(res['message'], "Success");
         item.isInviteClicked = !item.isInviteClicked;
       } else {
-        this.toast.error(res['message'], "error");
+        this.toast.error(res['message'], "Error");
       }
     });
   }

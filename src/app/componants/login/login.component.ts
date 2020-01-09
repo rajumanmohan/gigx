@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   submit = false;
   submitted = false;
   constructor(public router: Router, private appSer: AppServiceService, private toast: ToastrService,
-     private formBuilder: FormBuilder, private dataStorage: DataStorageService) {
+    private formBuilder: FormBuilder, private dataStorage: DataStorageService) {
 
   }
   showEye = true;
@@ -80,7 +80,7 @@ export class LoginComponent implements OnInit {
             this.dataStorage.loggedInUserData = localStorage;
           }
           else {
-            this.toast.error(res['message'], "error");
+            this.toast.error(res['message'], "Error");
           }
         })
       }
@@ -99,7 +99,7 @@ export class LoginComponent implements OnInit {
             this.dataStorage.loggedInUserData = localStorage;
           }
           else {
-            this.toast.error(res['message'], "error");
+            this.toast.error(res['message'], "Error");
           }
         })
       }
@@ -117,7 +117,7 @@ export class LoginComponent implements OnInit {
         this.toast.success(res['message'], "Success");
       }
       else {
-        this.toast.error(res['message'], "error");
+        this.toast.error(res['message'], "Error");
       }
     })
   }

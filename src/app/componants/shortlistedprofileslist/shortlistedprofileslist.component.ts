@@ -52,11 +52,11 @@ export class ShortlistedProfilesListComponent implements OnInit {
     var requestObj = {post_id: this.postId, talent_id: talentId}
     this.appSer.acceptTalentByPostId(requestObj).subscribe((res) => {
       if (res['status'] == 200) {
-        this.toast.success(res['message'], "success");
+        this.toast.success(res['message'], "Success");
         this.talentProfilesList =[];
         this.getShortlistedProfilesByPostId();
       } else {
-        this.toast.error(res['message'], "error");
+        this.toast.error(res['message'], "Error");
 
       }
   });
@@ -66,11 +66,11 @@ export class ShortlistedProfilesListComponent implements OnInit {
     var requestObj = {post_id: this.postId, talent_id: talentId}
     this.appSer.rejectTalentByPostId(requestObj).subscribe((res) => {
       if (res['status'] == 200) {
-        this.toast.success(res['message'], "success");
+        this.toast.success(res['message'], "Success");
         this.talentProfilesList =[];
         this.getShortlistedProfilesByPostId();
       } else {
-        this.toast.error(res['message'], "error");
+        this.toast.error(res['message'], "Error");
 
       }
   });

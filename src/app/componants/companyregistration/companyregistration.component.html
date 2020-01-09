@@ -201,8 +201,9 @@
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <select class="custom-select" id="inputGroupSelect01" name="mobile_code"
+                            <select class="custom-select country-code" id="inputGroupSelect01" name="mobile_code"
                                 formControlName="mobile_code" Placeholder="Select Code">
+                                <option [value]="" [selected]="true">Select Country Code </option>
                                 <option *ngFor="let data of CountiresList" [ngValue]="data.mobile_code"
                                     [selected]="countryId == data.country_id">
                                     {{data.mobile_code}} ({{data.country_name}})

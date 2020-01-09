@@ -84,10 +84,10 @@ export class TalentdashboardComponent implements OnInit {
     var requestObj = { 'talent_id': this.dataStorage.loggedInUserData.talent_id, 'post_id': item.post_id }
     this.appSer.setInterestedGig(requestObj).subscribe((res) => {
       if (res['status'] == 200) {
-        this.toast.success(res['message'], "success");
+        this.toast.success(res['message'], "Success");
         item.flag = 1;
       } else {
-        this.toast.error(res['message'], "error");
+        this.toast.error(res['message'], "Error");
 
       }
 
@@ -99,10 +99,10 @@ export class TalentdashboardComponent implements OnInit {
     var requestObj = { 'talent_id': this.dataStorage.loggedInUserData.talent_id, 'post_id': item.post_id }
     this.appSer.deleteInterestedGig(requestObj).subscribe((res) => {
       if (res['status'] == 200) {
-        this.toast.success(res['message'], "success");
+        this.toast.success(res['message'], "Success");
         item.flag = 0;
       } else {
-        this.toast.error(res['message'], "error");
+        this.toast.error(res['message'], "Error");
 
       }
 

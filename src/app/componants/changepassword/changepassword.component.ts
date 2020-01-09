@@ -92,7 +92,7 @@ export class ChangepasswordComponent implements OnInit {
             this.submitted = false;
           }
           else {
-            this.toast.error(res['message'], "error");
+            this.toast.error(res['message'], "Error");
           }
         })
       }
@@ -107,7 +107,7 @@ export class ChangepasswordComponent implements OnInit {
             this.submitted = false;
           }
           else {
-            this.toast.error(res['message'], "error");
+            this.toast.error(res['message'], "Error");
           }
         })
       }
@@ -122,7 +122,7 @@ export class ChangepasswordComponent implements OnInit {
             this.submitted = false;
           }
           else {
-            this.toast.error(res['message'], "error");
+            this.toast.error(res['message'], "Error");
           }
         })
       }

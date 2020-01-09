@@ -53,11 +53,11 @@ export class AppliedjobsComponent implements OnInit {
     var requestObj = {post_id: item.post_id, talent_id: localStorage.getItem('talent_id')};
     this.appSer.acceptOrRejectGig(requestObj, flag).subscribe((res) => {
       if (res['status'] == 200) {
-        this.toast.success(res['message'], "success");
+        this.toast.success(res['message'], "Success");
         item.status = res['updated_status'];
         item.status_value = res['updated_status_value'];
       } else {
-        this.toast.error(res['message'], "error");
+        this.toast.error(res['message'], "Error");
 
       }
   });

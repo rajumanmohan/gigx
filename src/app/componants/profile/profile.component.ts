@@ -196,7 +196,7 @@ export class ProfileComponent implements OnInit {
           window.scroll(0, 0);
         }
         else {
-          this.toast.error(res['message'], "error");
+          this.toast.error(res['message'], "Error");
           this.edit = false;
           window.scroll(0, 0);
         }
@@ -230,7 +230,7 @@ export class ProfileComponent implements OnInit {
           window.scroll(0, 0);
         }
         else {
-          this.toast.error(res['message'], "error");
+          this.toast.error(res['message'], "Error");
           this.edit = false;
           window.scroll(0, 0);
         }

@@ -28,6 +28,10 @@ body{
         color:#878787!important;
     }
 }
+.form-control.is-invalid ,.was-validated .form-control:invalid {
+    background-image: none !important;
+    background-position: center right calc(-1.625px + 2.1875px) !important;
+}
 a{
     cursor:pointer;
 }
