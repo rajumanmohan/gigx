@@ -475,5 +475,30 @@ export class AppServiceService {
     }
     return this.httpClient.post(this.apiUrl + methodName, params,  { headers }) 
   }
+
+  getAllPendingProfilesForRating(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'acceptedTalentList.php', params,  { headers }) 
+  }
+
+  insertTalentRating(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'insertTalentRating.php', params,  { headers }) 
+  }
+
+  getRatingsOfTalentByCompany(params){
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'getRatingsOfTalentByCompany.php', params,  { headers }) 
+  }
+  
 }
 
