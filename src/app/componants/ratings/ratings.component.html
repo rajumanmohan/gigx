@@ -28,29 +28,42 @@
         <!-- ratings details  -->
         <div class="ratings" *ngIf="ShowReview">
             <!-- reviews and ratings -->
-            <div class="row review ">
+            <div class="row review " *ngFor="let profile of ratedProfilesList">
 
                 <div class="col-md-12">
                     <ul>
                         <li>
-                            <img src="../../../assets/images/1.jpg">
+                            <img [src]="profile.image">
                         </li>
                         <li>
-                            <p>Ranjith </p>
+                            <p>{{profile.talent_name}} </p>
                             <p>
-                                <span>3 days ago</span>
+                                <span>{{profile.no_of_days}} days ago</span>
                             </p>
                         </li>
                         <li class="star">
-                            <img src="../../../assets/images/star.png">
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star-1.png">
-
+                                <fieldset class="rating" [disabled]="profile.rating">
+                                        <input type="radio" id="star5" name="rating_{{profile.talent_id}}" value="5"  [checked]="5 == profile.rating"/>
+                                        <label class="full" for="star5" title="rating - 5 stars"></label>
+                                        <input type="radio" id="star4half" name="rating_{{profile.talent_id}}" value="4 and a half" [checked]="4.5 == profile.rating"  />
+                                        <label class="half" for="star4half" title="rating - 4.5 stars"></label>
+                                        <input type="radio" id="star4" name="rating_{{profile.talent_id}}" value="4"  [checked]="4 == profile.rating" />
+                                        <label class="full" for="star4" title="rating - 4 stars"></label>
+                                        <input type="radio" id="star3half" name="rating_{{profile.talent_id}}" value="3 and a half"  [checked]="3.5 == profile.rating" />
+                                        <label class="half" for="star3half" title="rating - 3.5 stars"></label>
+                                        <input type="radio" id="star3" name="rating_{{profile.talent_id}}" value="3"  [checked]="3 == profile.rating"  />
+                                        <label class="full" for="star3" title="rating - 3 stars"></label>
+                                        <input type="radio" id="star2half" name="rating_{{profile.talent_id}}" value="2 and a half"  [checked]="2.5 == profile.rating" />
+                                        <label class="half" for="star2half" title="rating - 2.5 stars"></label>
+                                        <input type="radio" id="star2" name="rating_{{profile.talent_id}}" value="2"  [checked]="2 == profile.rating"  />
+                                        <label class="full" for="star2" title="rating - 2 stars"></label>
+                                        <input type="radio" id="star1half" name="rating_{{profile.talent_id}}" value="1 and a half"  [checked]="1.5 == profile.rating" />
+                                        <label class="half" for="star1half" title="rating - 1.5 stars"></label>
+                                        <input type="radio" id="star1" name="rating_{{profile.talent_id}}" value="1"   [checked]="1 == profile.rating"  /> 
+                                        <label class="full" for="star1" title="rating - 1 star"></label>
+                                        <input type="radio" id="starhalf" name="rating_{{profile.talent_id}}" value="half"  [checked]="0.5 == profile.rating"  />
+                                        <label class="half" for="starhalf" title="rating - 0.5 stars"></label>
+                                    </fieldset>
                         </li>
                     </ul>
 
@@ -58,277 +71,101 @@
                 </div>
                 <div class="col-md-12 pt-3">
 
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the
-                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                        type
-                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                        the
-                        leap into electronic typesetting, remaining essentially unchanged. </p>
+                    <p>{{profile.review}}</p>
                 </div>
 
             </div>
-            <!-- review and rartings -->
-            <!-- reviews and ratings -->
-            <div class="row review ">
 
-                <div class="col-md-12">
-                    <ul>
-                        <li>
-                            <img src="../../../assets/images/2.jpg">
-                        </li>
-                        <li>
-                            <p>Venkatesh</p>
-                            <p>
-                                <span>3 days ago</span>
-                            </p>
-                        </li>
-                        <li class="star">
-                            <img src="../../../assets/images/star.png">
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star-1.png">
-
-                        </li>
-                    </ul>
-
-
-                </div>
-                <div class="col-md-12 pt-3">
-
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the
-                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                        type
-                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                        the
-                        leap into electronic typesetting, remaining essentially unchanged. </p>
-                </div>
-
+            <div class="row review justify-content-center" *ngIf="ratedProfilesList.length == 0">
+                <h2>No Records Found</h2>
             </div>
-            <!-- review and rartings -->
-            <!-- reviews and ratings -->
-            <div class="row review ">
-
-                <div class="col-md-12">
-                    <ul>
-                        <li>
-                            <img src="../../../assets/images/3.jpg">
-                        </li>
-                        <li>
-                            <p>Pramodh</p>
-                            <p>
-                                <span>3 days ago</span>
-                            </p>
-                        </li>
-                        <li class="star">
-                            <img src="../../../assets/images/star.png">
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star-1.png">
-
-                        </li>
-                    </ul>
-
-
-                </div>
-                <div class="col-md-12 pt-3">
-
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the
-                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                        type
-                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                        the
-                        leap into electronic typesetting, remaining essentially unchanged. </p>
-                </div>
-
-            </div>
-            <!-- review and rartings -->
-            <!-- reviews and ratings -->
-            <div class="row review ">
-
-                <div class="col-md-12">
-                    <ul>
-                        <li>
-                            <img src="../../../assets/images/4.jpg">
-                        </li>
-                        <li>
-                            <p>Mastan</p>
-                            <p>
-                                <span>3 days ago</span>
-                            </p>
-                        </li>
-                        <li class="star">
-                            <img src="../../../assets/images/star.png">
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star-1.png">
-
-                        </li>
-                    </ul>
-
-
-                </div>
-                <div class="col-md-12 pt-3">
-
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the
-                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                        type
-                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                        the
-                        leap into electronic typesetting, remaining essentially unchanged. </p>
-                </div>
-
-            </div>
-            <!-- review and rartings -->
-            <!-- reviews and ratings -->
-            <div class="row review ">
-
-                <div class="col-md-12">
-                    <ul>
-                        <li>
-                            <img src="../../../assets/images/5.jpg">
-                        </li>
-                        <li>
-                            <p>Kishore</p>
-                            <p>
-                                <span>3 days ago</span>
-                            </p>
-                        </li>
-                        <li class="star">
-                            <img src="../../../assets/images/star.png">
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star-1.png">
-
-                        </li>
-                    </ul>
-
-
-                </div>
-                <div class="col-md-12 pt-3">
-
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the
-                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                        type
-                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                        the
-                        leap into electronic typesetting, remaining essentially unchanged. </p>
-                </div>
-
-            </div>
-            <!-- review and rartings -->
-            <!-- reviews and ratings -->
-            <div class="row review ">
-
-                <div class="col-md-12">
-                    <ul>
-                        <li>
-                            <img src="../../../assets/images/6.jpg">
-                        </li>
-                        <li>
-                            <p>Shravan</p>
-                            <p>
-                                <span>3 days ago</span>
-                            </p>
-                        </li>
-                        <li class="star">
-                            <img src="../../../assets/images/star.png">
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star.png">
-
-                            <img src="../../../assets/images/star-1.png">
-
-                        </li>
-                    </ul>
-
-
-                </div>
-                <div class="col-md-12 pt-3">
-
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                        the
-                        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-                        type
-                        and scrambled it to make a type specimen book. It has survived not only five centuries, but also
-                        the
-                        leap into electronic typesetting, remaining essentially unchanged. </p>
-                </div>
-
-            </div>
-            <!-- review and rartings -->
         </div>
         <!-- ratings details -->
         <div class="review" *ngIf="ShowRating">
             <!-- reviews and ratings -->
             <div class="row review rating-star">
 
-                <div class="col-md-12">
-                    <form>
-                        <ul>
-                            <li>
-                                <img src="../../../assets/images/sorga-logo.jpg">
-                            </li>
-                            <li class="star">
-                                <p>Sorga Innovation </p>
-                                <fieldset class="rating">
-                                    <input type="radio" id="star5" name="rating" value="5" />
-                                    <label class="full" for="star5" title="rating - 5 stars"></label>
-                                    <input type="radio" id="star4half" name="rating" value="4 and a half" />
-                                    <label class="half" for="star4half" title="rating - 4.5 stars"></label>
-                                    <input type="radio" id="star4" name="rating" value="4" />
-                                    <label class="full" for="star4" title="rating - 4 stars"></label>
-                                    <input type="radio" id="star3half" name="rating" value="3 and a half" />
-                                    <label class="half" for="star3half" title="rating - 3.5 stars"></label>
-                                    <input type="radio" id="star3" name="rating" value="3" />
-                                    <label class="full" for="star3" title="rating - 3 stars"></label>
-                                    <input type="radio" id="star2half" name="rating" value="2 and a half" />
-                                    <label class="half" for="star2half" title="rating - 2.5 stars"></label>
-                                    <input type="radio" id="star2" name="rating" value="2" />
-                                    <label class="full" for="star2" title="rating - 2 stars"></label>
-                                    <input type="radio" id="star1half" name="rating" value="1 and a half" />
-                                    <label class="half" for="star1half" title="rating - 1.5 stars"></label>
-                                    <input type="radio" id="star1" name="rating" value="1" />
-                                    <label class="full" for="star1" title="rating - 1 star"></label>
-                                    <input type="radio" id="starhalf" name="rating" value="half" />
-                                    <label class="half" for="starhalf" title="rating - 0.5 stars"></label>
-                                </fieldset>
-
-
-                            </li>
-                        </ul>
-                        <div class="form-group mt-3">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Type here ..."
-                                rows="6"></textarea>
-                        </div>
-                        <div class="row justify-content-center mt-5">
-                            <div class="col-md-5 text-right">
-                                <button type="submit" class="btn account">Submit</button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="row col-md-12">
+                    <div class="col-md-5 left-section" >
+                                    <ul *ngFor="let profile of profilesList" (click)="selectedProfile = profile">
+                                        <li>
+                                            <img class="profile-image" [src]="profile.talent_image">
+                                        </li>
+                                        <li class="star" >
+                                            <p>{{profile.talent_name}}</p>
+                                            <span>{{profile.talent_mobile}}</span> <br/>
+                                            <span>{{profile.talent_email}}</span> <br/>
+                                            <!-- <fieldset class="rating left-rating" *ngIf="profile.rating">
+                                                    <input type="radio" id="star5" name="rating" value="5"  [checked]="5 == profile.rating" />
+                                                    <label class="full" for="star5" title="rating - 5 stars"></label>
+                                                    <input type="radio" id="star4half" name="rating" value="4 and a half" [checked]="4.5 == profile.rating" />
+                                                    <label class="half" for="star4half" title="rating - 4.5 stars"></label>
+                                                    <input type="radio" id="star4" name="rating" value="4"  [checked]="4 == profile.rating" />
+                                                    <label class="full" for="star4" title="rating - 4 stars"></label>
+                                                    <input type="radio" id="star3half" name="rating" value="3 and a half"  [checked]="3.5 == profile.rating" />
+                                                    <label class="half" for="star3half" title="rating - 3.5 stars"></label>
+                                                    <input type="radio" id="star3" name="rating" value="3"  [checked]="3 == profile.rating"/>
+                                                    <label class="full" for="star3" title="rating - 3 stars"></label>
+                                                    <input type="radio" id="star2half" name="rating" value="2 and a half"  [checked]="2.5 == profile.rating"/>
+                                                    <label class="half" for="star2half" title="rating - 2.5 stars"></label>
+                                                    <input type="radio" id="star2" name="rating" value="2"  [checked]="2 == profile.rating"/>
+                                                    <label class="full" for="star2" title="rating - 2 stars"></label>
+                                                    <input type="radio" id="star1half" name="rating" value="1 and a half"  [checked]="1.5 == profile.rating" />
+                                                    <label class="half" for="star1half" title="rating - 1.5 stars"></label>
+                                                    <input type="radio" id="star1" name="rating" value="1"   [checked]="1 == profile.rating"/>
+                                                    <label class="full" for="star1" title="rating - 1 star"></label>
+                                                    <input type="radio" id="starhalf" name="rating" value="half"  [checked]="0.5 == profile.rating"/>
+                                                    <label class="half" for="starhalf" title="rating - 0.5 stars"></label>
+                                                </fieldset> -->
+                                        </li>
+                                       
+                                    </ul>
+                    </div>
+                    <div class="col-md-7 right-section" *ngIf="selectedProfile.talent_id">
+                            
+                                    <ul >
+                                        <li>
+                                                <img class="profile-image" [src]="selectedProfile.talent_image">
+                                        </li>
+                                        <li class="star" style="vertical-align: middle; margin-top: 0px;">
+                                                <p>{{selectedProfile.talent_name}}</p>
+                                                <fieldset class="rating" [disabled]="selectedProfile.submitted">
+                                                        <input type="radio" id="star5" name="rating" value="5"  [checked]="5 == selectedProfile.rating" (click)="selectedProfile.rating = 5" />
+                                                        <label class="full" for="star5" title="rating - 5 stars"></label>
+                                                        <input type="radio" id="star4half" name="rating" value="4 and a half" [checked]="4.5 == selectedProfile.rating" (click)="selectedProfile.rating = 4.5" />
+                                                        <label class="half" for="star4half" title="rating - 4.5 stars"></label>
+                                                        <input type="radio" id="star4" name="rating" value="4"  [checked]="4 == selectedProfile.rating" (click)="selectedProfile.rating = 4" />
+                                                        <label class="full" for="star4" title="rating - 4 stars"></label>
+                                                        <input type="radio" id="star3half" name="rating" value="3 and a half"  [checked]="3.5 == selectedProfile.rating" (click)="selectedProfile.rating = 3.5" />
+                                                        <label class="half" for="star3half" title="rating - 3.5 stars"></label>
+                                                        <input type="radio" id="star3" name="rating" value="3"  [checked]="3 == selectedProfile.rating" (click)="selectedProfile.rating = 3" />
+                                                        <label class="full" for="star3" title="rating - 3 stars"></label>
+                                                        <input type="radio" id="star2half" name="rating" value="2 and a half"  [checked]="2.5 == selectedProfile.rating" (click)="selectedProfile.rating = 2.5" />
+                                                        <label class="half" for="star2half" title="rating - 2.5 stars"></label>
+                                                        <input type="radio" id="star2" name="rating" value="2"  [checked]="2 == selectedProfile.rating" (click)="selectedProfile.rating = 2" />
+                                                        <label class="full" for="star2" title="rating - 2 stars"></label>
+                                                        <input type="radio" id="star1half" name="rating" value="1 and a half"  [checked]="1.5 == selectedProfile.rating" (click)="selectedProfile.rating = 1.5" />
+                                                        <label class="half" for="star1half" title="rating - 1.5 stars"></label>
+                                                        <input type="radio" id="star1" name="rating" value="1"   [checked]="1 == selectedProfile.rating" (click)="selectedProfile.rating = 1" /> 
+                                                        <label class="full" for="star1" title="rating - 1 star"></label>
+                                                        <input type="radio" id="starhalf" name="rating" value="half"  [checked]="0.5 == selectedProfile.rating" (click)="selectedProfile.rating = 0.5" />
+                                                        <label class="half" for="starhalf" title="rating - 0.5 stars"></label>
+                                                    </fieldset>
+                                        </li>
+                                    </ul>
+                                    <div class="form-group mt-3">
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]="selectedProfile.review" [disabled]="selectedProfile.submitted" placeholder="Type here ..."
+                                            rows="6"></textarea>
+                                    </div>
+                                    <div class="row mt-3 mb-3">
+                                        <div class="col-md-7"></div>
+                                        <div class="col-md-5 text-right">
+                                            <button type="submit" class="btn account" [disabled]="selectedProfile.submitted" (click)="insertTalentRating(selectedProfile)">Submit</button>
+                                        </div>
+                                    </div>
+                                
+                    </div>
+                   
 
 
 

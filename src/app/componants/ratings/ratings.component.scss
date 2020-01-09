@@ -2,6 +2,34 @@
 @import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 // HEADER CSS
 
+
+app-ratings{
+    .left-section{
+        border: 2px solid #ddd;
+         border-radius: 0px;
+         padding: 0px;
+         cursor: pointer;
+         height: 360px;
+         min-height: 360px;
+         overflow: auto;
+         ul{
+             border-bottom: 2px solid #ddd;
+             li{
+                 margin-bottom: 6px;
+             }
+         }
+    }
+    .right-section{
+        border: 2px solid #ddd;
+    }
+
+    .profile-image{
+        height: 105px;
+    }
+
+    .left-rating > label:before {font-size: 16px !important; }
+}
+
 .login-list{
     margin-top: 3px;
     font-size: 24px;
@@ -114,11 +142,6 @@ li{
     border-bottom: 0px;
 }
 
-.rating-star{
-img{
-    margin-top: 22px;
-}
-}
 
 
 /****** Style Star Rating Widget *****/
