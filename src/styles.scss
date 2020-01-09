@@ -95,8 +95,16 @@ button , input ,textarea ,a{
 .mat-step-header .mat-step-icon {
     width: 72px ;
     height: 72px ;
-    background-color: #fed501 !important;
+    background-color: rgba(206, 206, 206, 0.54);
     color: #000;
+}
+.mat-stepper-horizontal-line {
+    border-top-width: 2px!important;
+    border-top-style: solid;
+    flex: auto;
+    height: 0;
+    margin: 0 -18px!important;
+    min-width: 32px;
 }
 .mat-stepper-horizontal-line {
     border-top-width: 1px;
@@ -188,6 +196,23 @@ font-size:14px!important
 }
 .mydp .icon-mydpremove:before,.mydp .icon-mydpremove:after,.icon-mydpremove {
     display: none !important;
+}
+
+@media (max-width: 767.98px) { 
+
+ 
+    .login{
+        h1{
+            text-align: center;
+            font-size:23px!important;
+        }
+        h3{
+          font-size:20px!important;
+    }
+    button{
+        font-size:15px!important;
+    }
+    }
 }
  @media (max-width: 575.98px) { 
    

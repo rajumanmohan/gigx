@@ -71,7 +71,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-12">
+                </div>
+                <div class="row ">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-9">
                         <div class="table-responsive personaldetails">
                             <table class="table b-0">
 
@@ -79,9 +82,9 @@
 
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">FIRST NAME
-                                            <span>:</span>
+
                                         </td>
-                                        <td class="b-0">
+                                        <td class="b-0"><span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.first_name}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <input type="text" class="form-control" id="exampleInputEmail1"
@@ -97,9 +100,9 @@
                                     </tr>
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">LAST NAME
-                                            <span>:</span>
+
                                         </td>
-                                        <td class="b-0">
+                                        <td class="b-0"> <span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.last_name}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <input type="text" class="form-control" id="exampleInputEmail1"
@@ -107,16 +110,17 @@
                                                     formControlName="last_name"
                                                     [ngClass]="{'is-invalid':f.last_name.errors&& submitted}">
                                                 <div class="invalid-feedback" *ngIf="f.last_name.errors">
-                                                    <div *ngIf="f.last_name.errors.required">Last Name is required</div>
+                                                    <div *ngIf="f.last_name.errors.required">Last Name is required
+                                                    </div>
                                                 </div>
                                             </span>
                                         </td>
                                     </tr>
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">EMAIL
-                                            <span>:</span>
+
                                         </td>
-                                        <td class="b-0">
+                                        <td class="b-0"> <span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.email}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <input type="email" class="form-control" id="exampleInputEmail1"
@@ -133,9 +137,9 @@
                                     </tr>
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">MOBILE NO
-                                            <span>:</span>
+
                                         </td>
-                                        <td class="b-0">
+                                        <td class="b-0"><span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.mobile_code}}
                                                 {{talentPersonalDetails.mobile}}</span>
 
@@ -160,7 +164,8 @@
                                                 </div>
 
                                                 <div class="invalid-feedback" *ngIf="f.mobile_code.errors">
-                                                    <div *ngIf="f.mobile_code.errors.required">Code is required</div>
+                                                    <div *ngIf="f.mobile_code.errors.required">Code is required
+                                                    </div>
 
                                                 </div>
                                                 <div class="invalid-feedback" *ngIf="f.mobile.errors">
@@ -176,9 +181,10 @@
                                     </tr>
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">COUNTRY
-                                            <span>:</span>
+
                                         </td>
                                         <td class="b-0">
+                                            <span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.country}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <select class="form-control" id="exampleFormControlSelect1"
@@ -186,14 +192,15 @@
                                                     (change)="changeCountryList($event.target.value)"
                                                     [ngClass]="{ 'is-invalid':f.country_id.errors&& submitted }">
                                                     <!-- <option value="" [selected]=true [disabled]="true">Select Country
-                                                                </option> -->
+                                                                    </option> -->
                                                     <option *ngFor="let data of CountiresList"
                                                         [value]="data.country_id">
                                                         {{data.country_name}}
                                                     </option>
                                                 </select>
                                                 <div *ngIf="f.country_id.errors&& submitted" class="invalid-feedback">
-                                                    <div *ngIf="f.country_id.errors.required">Country is required</div>
+                                                    <div *ngIf="f.country_id.errors.required">Country is required
+                                                    </div>
                                                 </div>
                                             </span>
                                         </td>
@@ -201,9 +208,10 @@
 
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">STATE
-                                            <span>:</span>
+
                                         </td>
                                         <td class="b-0">
+                                            <span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.state}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <select class="form-control" id="exampleFormControlSelect1"
@@ -222,9 +230,10 @@
                                     </tr>
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">CITY
-                                            <span>:</span>
+
                                         </td>
                                         <td class="b-0">
+                                            <span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.city}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <select class="form-control" id="exampleFormControlSelect1"
@@ -243,16 +252,18 @@
                                     </tr>
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">LOCATION
-                                            <span>:</span>
+
                                         </td>
                                         <td class="b-0">
+                                            <span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.location}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <input type="text" class="form-control" placeholder="Location"
                                                     formControlName="location"
                                                     [ngClass]="{'is-invalid':f.location.errors&& submitted}">
                                                 <div class="invalid-feedback" *ngIf="f.location.errors">
-                                                    <div *ngIf="f.location.errors.required">Location is required</div>
+                                                    <div *ngIf="f.location.errors.required">Location is required
+                                                    </div>
                                                 </div>
 
                                             </span>
@@ -260,13 +271,12 @@
                                     </tr>
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">DATE OF BIRTH
-                                            <span>:</span>
+
                                         </td>
                                         <td class="b-0">
+                                            <span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.dob}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
-                                                <!-- [selDate]="myDate" -->
-
                                                 <my-date-picker name="mydate" [selDate]="selDate"
                                                     (dateChanged)="onSelcetChanged($event)"
                                                     [options]="myDatePickerOptions" placeholder="2019-08-08">
@@ -281,32 +291,32 @@
                                     </tr>
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">ABOUT ME
-                                            <span>:</span>
+
                                         </td>
                                         <td class="b-0">
+                                            <span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.about_me}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <textarea class="form-control" formControlName="about_me"
                                                     maxlength="250" rows="4"
                                                     [ngClass]="{'is-invalid':f.about_me.errors&& submitted}"
                                                     placeholder="Write Something about yourself">
-                                                </textarea>
+                                                    </textarea>
 
                                                 <div class="invalid-feedback" *ngIf="f.about_me.errors">
-                                                    <div *ngIf="f.about_me.errors.required">About me is required</div>
+                                                    <div *ngIf="f.about_me.errors.required">About me is required
+                                                    </div>
                                                 </div>
 
                                             </span>
                                         </td>
                                     </tr>
-
-
-
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">TWITTER
-                                            <span>:</span>
+
                                         </td>
                                         <td class="b-0">
+                                            <span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.twitter}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <input type="text" class="form-control" id="twitter"
@@ -318,9 +328,10 @@
                                     </tr>
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">FACEBOOK
-                                            <span>:</span>
+
                                         </td>
                                         <td class="b-0">
+                                            <span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.facebook}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <input type="text" class="form-control" id="facebook"
@@ -332,9 +343,10 @@
                                     </tr>
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">LINKEDIN
-                                            <span>:</span>
+
                                         </td>
                                         <td class="b-0">
+                                            <span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.linkedin}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <input type="text" class="form-control" id="linkedIn"
@@ -345,9 +357,10 @@
                                     </tr>
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">PERSONAL WEBSITE
-                                            <span>:</span>
+
                                         </td>
                                         <td class="b-0">
+                                            <span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.personal_website}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <input type="text" class="form-control" id="personal_website"
@@ -359,9 +372,10 @@
                                     </tr>
                                     <tr class=" b-0">
                                         <td class="b-0 contact-title">GENDER
-                                            <span>:</span>
+
                                         </td>
                                         <td class="b-0">
+                                            <span>:</span>
                                             <span *ngIf="edit==false">{{talentPersonalDetails.gender}}</span>
                                             <span class="form-group edit-input" *ngIf="edit==true">
                                                 <div class="custom-control custom-radio custom-control-inline">
@@ -382,7 +396,8 @@
                                                     <input type="radio" id="customRadioInline3"
                                                         name="customRadioInline1" class="custom-control-input"
                                                         value="Not to Disclose" (change)="changeGender($event)">
-                                                    <label class="custom-control-label" for="customRadioInline3">Not to
+                                                    <label class="custom-control-label" for="customRadioInline3">Not
+                                                        to
                                                         Disclose</label>
                                                 </div>
                                             </span>
@@ -390,9 +405,10 @@
                                     </tr>
                                     <tr class="b-0">
                                         <td class="b-0 contact-title">ATTACHMENTS
-                                            <span>:</span>
+
                                         </td>
                                         <td class="b-0">
+                                            <span>:</span>
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <span *ngIf="edit==false">
@@ -412,22 +428,13 @@
 
                                                             <p class="drag">Drag & Drop file here</p>
                                                             <p class="file-select">or select file to upload</p>
-                                                            <p class="drag"> Please Select document in pdf format</p>
+                                                            <p class="drag"> Please Select document in pdf format
+                                                            </p>
                                                         </div>
                                                     </span>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <span *ngIf="edit==false">
-                                                        <video width="320" height="240" controls>
-                                                            <source src="{{videoUrlLink}}{{videoUrl}}" type="video/mp4">
-                                                            Your browser does not support HTML5 video.
-                                                        </video>
 
-                                                        <!-- <video width="320" height="240" controls>
-                                                                    <source src="{{videoUrl}}" type="video/mp4">
-                                                                    Your browser does not support the video tag.
-                                                                </video> -->
-                                                    </span>
                                                     <span class="form-group edit-input" *ngIf="edit==true">
                                                         <div class="upload-image text-center">
                                                             <input type='file' id="imageUpload" name="ds"
@@ -442,18 +449,18 @@
                                                         </div>
                                                     </span>
                                                 </div>
+                                                <div class="col-md-12">
+                                                    <span *ngIf="edit==false">
+                                                        <video width="320" height="240" controls>
+                                                            <source src="{{videoUrlLink}}{{videoUrl}}" type="video/mp4">
+                                                            Your browser does not support HTML5 video.
+                                                        </video>
+                                                    </span>
+                                                </div>
                                             </div>
 
                                         </td>
                                     </tr>
-                                    <!-- <tr class="b-0">
-                                        <td class="b-0 contact-title">VIDEO
-                                            <span>:</span>
-                                        </td>
-                                        <td class="b-0">
-
-                                        </td>
-                                    </tr> -->
                                 </tbody>
                             </table>
                             <!-- <div class="container create-account"> -->
@@ -488,6 +495,8 @@
                         </div>
                     </div>
                 </div>
+
+
                 <div class="row justify-content-center mb-5 mt-3" *ngIf="showPersonalDetails">
                     <div class="col-md-4 text-center edit-profile" *ngIf="edit==false">
                         <button type="submit" class="btn " (click)="editProfile()">EDIT PROFILE</button>
@@ -507,8 +516,9 @@
 
         <!-- view education details -->
 
-        <div class="row contact-details mt-5" *ngIf="showEducationDetails">
-            <div class="col-md-12">
+        <div class="row  contact-details mt-5" *ngIf="showEducationDetails">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
                 <div class="table-responsive">
                     <table class="table b-0">
 
@@ -523,13 +533,6 @@
 
                                 </td>
                             </tr>
-                            <!-- <tr class="b-0">
-                                <td class="b-0 contact-title">OTHER HIGHEST QUALIFICATION</td>
-                                <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">{{data.other_highest_qualification}}</span>
-
-                                </td>
-                            </tr> -->
                             <tr class="b-0">
                                 <td class="b-0 contact-title">PROFESSIONAL QUALIFICATION</td>
                                 <td class="b-0"><span>:</span>
@@ -578,115 +581,7 @@
                     <div class="row justify-content-center ">
                         <div class="col-md-6">
                             <form [formGroup]="registrationForm1">
-
-                                <!-- <div class="form-group">
-
-                                    <select class="form-control" id="exampleFormControlSelect1"
-                                        formControlName="highQul" (change)="onHighestQualificationChange($event)"
-                                        [ngClass]="{ 'is-invalid':f1.highQul.errors&& submitted1 }">
-                                        <option [value]=null [selected]="true">Select Highest Qualification </option>
-                                        <option *ngFor="let data of highestQualificationList" [value]="data.hqid">
-                                            {{data.highest_qualification}}
-                                        </option>
-                                    </select>
-
-                                    <div class="invalid-feedback" *ngIf="f1.highQul.errors">
-                                        <div *ngIf="f1.highQul.errors.required">Qualification is required
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group" *ngIf="isProfesionalCertification">
-                                    <input type="text" class="form-control" id="professional_certification"
-                                        placeholder="Please Specify" formControlName="professional_certification">
-                                    <div class="custom-invalid-feedback" *ngIf="f1.professional_certification.errors">
-                                        <div *ngIf="f1.professional_certification.errors.required">Specialization is
-                                            required
-                                        </div>
-                                    </div>
-                                </div> -->
-
-                                <!-- <div class="row form-group">
-                                    <div class="col-md-6">
-                                        <select class="form-control" id="country" formControlName="country"
-                                            (change)="onQualificationCountryChange($event.target.value)"
-                                            [ngClass]="{ 'is-invalid':f1.country.errors&& submitted1 }">
-                                            <option [value]=null [selected]="true" [disabled]="true">Select Country
-                                            </option>
-                                            <option *ngFor="let data of CountiresList" [value]="data.country_id">
-                                                {{data.country_name}}
-                                            </option>
-                                        </select>
-
-                                        <div class="invalid-feedback" *ngIf="f1.country.errors">
-                                            <div *ngIf="f1.country.errors.required">Country is required
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <select class="form-control" id="institution" formControlName="institution"
-                                            [ngClass]="{ 'is-invalid':f1.institution.errors&& submitted1 }">
-                                            <option [value]=null [selected]="true">Select Institute of Learning
-                                            </option>
-                                            <option *ngFor="let data of institutionsList" [value]="data.university_id">
-                                                {{data.university_name}}
-                                            </option>
-                                        </select>
-
-                                        <div class="invalid-feedback" *ngIf="f1.institution.errors">
-                                            <div *ngIf="f1.institution.errors.required">Institution is required
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div> -->
-
-                                <!-- <div class="form-group">
-                                    <select class="form-control" id="exampleFormControlSelect1"
-                                        placeholder="Year of Completion" formControlName="year_of_completion"
-                                        [ngClass]="{'is-invalid':f1.year_of_completion.errors&& submitted1}">
-                                        <option value=null [disabled]="true" [selected]="true">Year of
-                                            Completion
-                                        </option>
-                                        <option *ngFor="let data of yearOfCompletionList" [value]="data">{{data}}
-                                        </option>
-
-                                    </select>
-                                    <div *ngIf="submitted1 && f1.year_of_completion.errors" class="invalid-feedback">
-                                        <div *ngIf="f1.year_of_completion.errors.required">Year of completion is
-                                            required</div>
-                                    </div>
-                                </div> -->
-                                <!-- <div class="form-group">
-                                    <input type="text" class="form-control" id="professional_qualification"
-                                        placeholder="Professional Qualification "
-                                        formControlName="professional_qualification">
-                                </div> -->
-                                <!-- <div class="form-group">
-                                    <p>Mode of Study</p>
-                                    <div class="custom-control custom-radio custom-control-inline"
-                                        (change)="chnageDegree($event)">
-                                        <input type="radio" id="customRadioInlinex.1" name="customRadioInliney.1"
-                                            class="custom-control-input" checked value="Full time">
-                                        <label class="custom-control-label" for="customRadioInlinex.1">Full
-                                            time</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline"
-                                        (change)="chnageDegree($event)">
-                                        <input type="radio" id="customRadioInlinex.2" name="customRadioInliney.1"
-                                            class="custom-control-input" value="Part time">
-                                        <label class="custom-control-label" for="customRadioInlinex.2">Part
-                                            time</label>
-                                    </div>
-                                    <div class="custom-control custom-radio custom-control-inline"
-                                        (change)="chnageDegree($event)">
-                                        <input type="radio" id="customRadioInlinex.3" name="customRadioInliney.1"
-                                            class="custom-control-input" value="Online">
-                                        <label class="custom-control-label" for="customRadioInlinex.3">
-                                            Online</label>
-                                    </div>
-                                </div> -->
-
                                 <div>
-
                                     <div *ngFor="let education of f2.controls;let i=index;" class="muti-education mb-5">
                                         <div [formGroup]="education" #f2="ngForm">
                                             <div class="row">
@@ -699,8 +594,6 @@
                                                 </div>
                                             </div>
                                             <div class="form-group">
-
-
                                                 <select class="form-control" id="high_qualification"
                                                     formControlName="high_qualification"
                                                     (change)="onHighestQualificationChangeOther($event,i,education)"
@@ -712,7 +605,6 @@
                                                         {{data.highest_qualification}}
                                                     </option>
                                                 </select>
-
                                                 <div class="invalid-feedback"
                                                     *ngIf="education.controls.high_qualification.errors">
                                                     <div *ngIf="education.controls.high_qualification.errors.required">
@@ -722,7 +614,6 @@
                                             </div>
                                             <div class="form-group"
                                                 *ngIf="education.controls.high_qualification.value == 4">
-
                                                 <input type="text" class="form-control" id="professional_certification"
                                                     placeholder="Please Specify"
                                                     formControlName="professional_certification">
@@ -734,7 +625,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="row form-group">
                                                 <div class="col-md-6">
                                                     <select class="form-control" id="country" formControlName="country"
@@ -747,7 +637,6 @@
                                                             {{data.country_name}}
                                                         </option>
                                                     </select>
-
                                                     <div class="invalid-feedback"
                                                         *ngIf="education.controls.country.errors">
                                                         <div *ngIf="education.controls.country.errors.required">Country
@@ -766,7 +655,6 @@
                                                             {{data.university_name}}
                                                         </option>
                                                     </select>
-
                                                     <div class="invalid-feedback"
                                                         *ngIf="education.controls.institution.errors">
                                                         <div *ngIf="education.controls.institution.errors.required">
@@ -775,7 +663,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
                                                 <select class="form-control" id="year_of_completion1"
                                                     placeholder="Industry Type" formControlName="year_of_completion"
@@ -785,8 +672,6 @@
                                                     </option>
                                                     <option *ngFor="let data of yearOfCompletionList" [value]="data">
                                                         {{data}}</option>
-
-
                                                 </select>
                                                 <div *ngIf="education.controls.year_of_completion.errors"
                                                     class="invalid-feedback">
@@ -834,9 +719,6 @@
                                 </div>
 
                                 <div class="row justify-content-center mb-5 mt-3">
-                                    <!-- <div class="col-md-4 text-center edit-profile">
-                                            <button type="submit" class="btn " (click)="editProfile()">EDIT PROFILE</button>
-                                        </div> -->
                                     <div class="col-md-6 text-center">
                                         <button type="submit" (click)="registration1(f2)" class="btn ">Save</button>
                                     </div>
@@ -857,7 +739,8 @@
 
         <!-- work experience details -->
         <div class="row contact-details mt-5" *ngIf="editjob">
-            <div class="col-md-12">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
                 <div class="table-responsive">
                     <table class="table b-0">
 
@@ -944,122 +827,6 @@
                     <div class="row justify-content-center ">
                         <div class="col-md-6">
                             <form [formGroup]="employeeForm">
-
-                                <!-- <div class="form-group">
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="emailHelp" placeholder="Work Experience"
-                                        formControlName="work_experience"
-                                        [ngClass]="{'is-invalid':f3.work_experience.errors&& submitted3}">
-                                    <div class="invalid-feedback" *ngIf="f3.work_experience.errors">
-                                        <div *ngIf="f3.work_experience.errors.required">Work Experience is required
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="exampleInputPassword1"
-                                        placeholder="Company" formControlName="current_company"
-                                        [ngClass]="{'is-invalid':f3.current_company.errors&& submitted3}">
-                                    <div class="invalid-feedback" *ngIf="f3.current_company.errors">
-                                        <div *ngIf="f3.current_company.errors.required">Company is required
-                                        </div>
-                                    </div>
-                                </div>
-                                <p>Salary/Fees</p>
-                                <div class="row">
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <select class="form-control" id="exampleFormControlSelect1"
-                                                placeholder="Type" formControlName="currency_type"
-                                                [ngClass]="{'is-invalid':f3.currency_type.errors&& submitted3}">
-                                                <option value="Type" [disabled]="true" [selected]="true">Type
-                                                </option>
-
-                                                <option value="USD">USD</option>
-                                                <option value="RM">RM</option>
-                                            </select>
-                                            <div class="invalid-feedback" *ngIf="f3.currency_type.errors">
-                                                <div *ngIf="f3.currency_type.errors.required">Currency type is
-                                                    required
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <input myNumberOnly type="text" class="form-control" id="exampleInputPassword1"
-                                            placeholder="Salary/Fees" formControlName="salary_input"
-                                            [ngClass]="{'is-invalid':f3.salary_input.errors&& submitted3}">
-                                        <div class="invalid-feedback" *ngIf="f3.salary_input.errors">
-                                            <div *ngIf="f3.salary_input.errors.required">Salary/Fees is required
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="form-group row">
-                                    <div class="col-md-12">
-                                        <p>Working since</p>
-                                        <my-date-picker name="working_since" [selDate]="working_since_value"
-                                            [options]="workingSinceOptions" formControlName="working_since"
-                                            disable="disabled" placeholder="Working Since (Eg., 28/08/1992)"
-                                            [ngClass]="{'is-invalid':f3.working_since.errors&& submitted3}">
-                                        </my-date-picker>
-                                        <div class="custom-invalid-feedback"
-                                            *ngIf="f3.working_since.errors && submitted3">
-                                            <div *ngIf="f3.working_since.errors.required">Working Since is required
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" id="exampleInputPassword1"
-                                        placeholder="Location" formControlName="location"
-                                        [ngClass]="{'is-invalid':f3.location.errors&& submitted3}">
-                                    <div class="invalid-feedback" *ngIf="f3.location.errors">
-                                        <div *ngIf="f3.location.errors.required">Location is required
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control" id="exampleFormControlSelect1"
-                                        placeholder="Industry Type" formControlName="industry_type"
-                                        [ngClass]="{'is-invalid':f3.industry_type.errors&& submitted3}">
-                                        <option value=null [selected]="true" [disabled]="true">Industry Type
-                                        </option>
-                                        <option *ngFor="let data of industryTypes" [value]="data.industry_id">
-                                            {{data.industry_name}}
-                                        </option>
-                                    </select>
-                                    <div class="invalid-feedback" *ngIf="f3.industry_type.errors">
-                                        <div *ngIf="f3.industry_type.errors.required">Industry Type is required
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <select class="form-control" id="exampleFormControlSelect1" placeholder="Role"
-                                        formControlName="role" [ngClass]="{'is-invalid':f3.role.errors&& submitted3}">
-                                        <option value=null [selected]="true" [disabled]="true">Role</option>
-                                        <option *ngFor="let data of roles" [value]="data.role_id">
-                                            {{data.role}}
-                                        </option>
-                                    </select>
-                                    <div class="invalid-feedback" *ngIf="f3.industry_type.errors">
-                                        <div *ngIf="f3.role.errors.required">Role is required
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <textarea placeholder="Describe your role and contribution" class="form-control"
-                                        [ngClass]="{'is-invalid':f3.role_desc.errors&& submitted3}"
-                                        formControlName="role_desc"></textarea>
-
-                                    <div class="invalid-feedback" *ngIf="f3.role_desc.errors">
-                                        <div *ngIf="f3.role_desc.errors.required">Role Description is required
-                                        </div>
-                                    </div>
-                                </div> -->
-
                                 <div *ngFor="let employee of f5.controls;let i=index;" class="muti-education mb-5">
                                     <div [formGroup]="employee">
                                         <div class="row">
@@ -1135,22 +902,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- <div class="form-group row" *ngIf="workingToDate === 'present' && false">
-                                            <div class="col-md-12">
-                                                <p>Working since</p>
-                                                <my-date-picker name="working_since" [selDate]="working_since_value"
-                                                    [options]="workingSinceOptions" formControlName="working_since"
-                                                    disable="disabled" placeholder="Working Since (Eg., 28/08/1992)"
-                                                    [ngClass]="{'is-invalid':f3.working_since.errors&& submitted3}">
-                                                </my-date-picker>
-                                                <div class="custom-invalid-feedback"
-                                                    *ngIf="f3.working_since.errors && submitted3">
-                                                    <div *ngIf="f3.working_since.errors.required">Working Since is
-                                                        required
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
+
                                         <div class="form-group row">
 
                                             <div class="col-md-6">
@@ -1170,7 +922,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-md-6" *ngIf="employee.controls.working_to">
-                                                <p>Working to </p> 
+                                                <p>Working to </p>
                                                 <my-date-picker name="workingTo"
                                                     (dateChanged)="onWorkingToDateChanged($event, i)"
                                                     [options]="workingToOptions[i]" formControlName="working_to"
@@ -1277,7 +1029,8 @@
         </div>
         <!-- work experience details-->
         <div class="row contact-details mt-5" *ngIf="editjobpreference">
-            <div class="col-md-12">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
 
                 <div class="table-responsive">
 
@@ -1288,9 +1041,9 @@
                             </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">LOCATION
-                                    <span>:</span>
+
                                 </td>
-                                <td class="b-0">
+                                <td class="b-0"> <span>:</span>
                                     <span>{{talentJobPreference?.location}}</span>
 
                                 </td>
@@ -1299,9 +1052,9 @@
 
                             <tr class="b-0">
                                 <td class="b-0 contact-title">WORK PREFERENCE
-                                    <span>:</span>
+
                                 </td>
-                                <td class="b-0">
+                                <td class="b-0"> <span>:</span>
                                     <span>{{talentJobPreference?.work_preferences}}</span>
 
                                 </td>
@@ -1309,36 +1062,36 @@
 
                             <tr class="b-0">
                                 <td class="b-0 contact-title">INDUSTRY NAME
-                                    <span>:</span>
+
                                 </td>
-                                <td class="b-0">
+                                <td class="b-0"> <span>:</span>
                                     <span>{{talentJobPreference?.industry_name}}</span>
 
                                 </td>
                             </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">ROLE
-                                    <span>:</span>
+
                                 </td>
-                                <td class="b-0">
+                                <td class="b-0"> <span>:</span>
                                     <span>{{talentJobPreference?.role}}</span>
 
                                 </td>
                             </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">DESIRED EMPLOYMENT TYPE
-                                    <span>:</span>
+
                                 </td>
-                                <td class="b-0">
+                                <td class="b-0"><span>:</span>
                                     <span>{{talentJobPreference?.employment_type}}</span>
 
                                 </td>
                             </tr>
                             <tr class="b-0">
                                 <td class="b-0 contact-title">SKILLS
-                                    <span>:</span>
+
                                 </td>
-                                <td class="b-0">
+                                <td class="b-0"> <span>:</span>
                                     <span>{{talentJobPreference?.skills}}</span>
 
                                 </td>
@@ -1351,8 +1104,6 @@
                     <div class="col-md-4 text-center edit-profile">
                         <button type="submit" class="btn " (click)="showEditPreferences()">EDIT</button>
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -1495,7 +1246,8 @@
         <!-- Bank details -->
         <!-- <div> -->
         <div class="row contact-details mt-5" *ngIf="showBankDetails">
-            <div class="col-md-12" *ngIf="showBankForm">
+            <div class="col-md-3"></div>
+            <div class="col-md-9" *ngIf="showBankForm">
                 <form [formGroup]="editBankDetailsForm">
                     <div class="table-responsive">
                         <table class="table b-0">
@@ -1634,23 +1386,24 @@
 
         <!-- Bank details-->
         <!-- GigsTrack details -->
-        <div class="row contact-details mt-5" *ngIf="showGigsTrackDetails">
-            <div class="col-md-12">
+        <div class="row justify-content-center contact-details mt-5" *ngIf="showGigsTrackDetails">
+
+            <div class="col-md-6">
                 <div class="table-responsive">
                     <table class="table b-0">
 
                         <tbody class="b-0">
                             <tr class="b-0">
-                                <td class="b-0 contact-title">NO. OF PROJECTS</td>
+                                <td class="b-0 contact-title1">NO. OF PROJECTS</td>
                                 <td class="b-0"><span>:</span> 06
                                 </td>
                             </tr>
                             <tr class="b-0">
-                                <td class="b-0 contact-title">NO. OF JOBS APPLIED</td>
+                                <td class="b-0 contact-title1">NO. OF JOBS APPLIED</td>
                                 <td class="b-0"><span>:</span>12</td>
                             </tr>
                             <tr class="b-0">
-                                <td class="b-0 contact-title">NO. OF JOBS VIEWED</td>
+                                <td class="b-0 contact-title1">NO. OF JOBS VIEWED</td>
                                 <td class="b-0"><span>:</span>34</td>
                             </tr>
 
