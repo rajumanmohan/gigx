@@ -20,29 +20,28 @@
             <div class="col-md-12">
                 <ul>
                     <li><button type="submit" class="btn" (click)="personaldetails()"
-                            [ngStyle]="{'background': showPersonalDetails == true?'#fed501':''}"> PERSONAL
-                            DETAILS</button>
+                            [ngStyle]="{'background': showPersonalDetails == true?'#fed501':''}"> Personal
+                            Details</button>
                     </li>
                     <li><button type="submit" class="btn" (click)="Showeducation()"
-                            [ngStyle]="{'background': showEducationDetails||editEdu == true?'#fed501':''  }">EDUCATION
-                            DETAILS</button></li>
+                            [ngStyle]="{'background': showEducationDetails||editEdu == true?'#fed501':''  }">Education
+                            Details</button></li>
                     <li> <button type="submit" class="btn" (click)="workexperience()"
-                            [ngStyle]="{'background': showWorkExperienceDetails || editJob == true?'#fed501':''}"> WORK
-                            EXPERIENCE</button>
+                            [ngStyle]="{'background': showWorkExperienceDetails || editjob == true?'#fed501':''}"> Work
+                            Experience</button>
                     </li>
                     <li> <button type="submit" class="btn" (click)="jobPreferences()"
-                            [ngStyle]="{'background': showjobPreferences || editPreferences == true?'#fed501':''}"> JOB
-                            PREFERRENCES
+                            [ngStyle]="{'background': showjobPreferences || editjobpreference == true?'#fed501':''}">
+                            Job
+                            Preferences
                         </button>
                     </li>
                     <li> <button type="submit" class="btn" (click)="bankdetails()"
-                            [ngStyle]="{'background': showBankDetails == true?'#fed501':''}"> BANK DETAILS</button></li>
+                            [ngStyle]="{'background': showBankDetails == true?'#fed501':''}"> Bank Details</button></li>
 
                     <li> <button type="submit" class="btn" (click)="gigstalent()"
-                            [ngStyle]="{'background': showGigsTrackDetails == true?'#fed501':''}"> GIGS TRACK
-                            HISTORY</button></li>
-
-
+                            [ngStyle]="{'background': showGigsTrackDetails == true?'#fed501':''}"> Gigs Track
+                            History</button></li>
                 </ul>
 
             </div>
@@ -444,7 +443,7 @@
                                                                 src="/assets/images/upload.png">
                                                             <p *ngIf="url3">{{path1}}</p>
 
-                                                            <p class="drag mt-3">upload video</p>
+                                                            <p class="drag mt-3">Upload video</p>
                                                             <p class="drag"> Please Select video in mp4 format</p>
                                                         </div>
                                                     </span>
@@ -502,13 +501,21 @@
                         <button type="submit" class="btn " (click)="editProfile()">EDIT PROFILE</button>
                     </div>
 
-                    <div class="col-md-6 text-center edit-profile" *ngIf="edit==true">
-                        <button type="submit" class="btn " (click)="registration()">Save</button>
-                    </div>
-                    <div class="col-md-6 text-center edit-profile" *ngIf="edit==true">
-                        <button type="submit" class="btn " (click)="cancel()">Cancel</button>
+
+                </div>
+                <div class="row justify-content-center" *ngIf="showPersonalDetails">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6 text-center edit-profile" *ngIf="edit==true">
+                                <button type="submit" class="btn " (click)="registration()">Save</button>
+                            </div>
+                            <div class="col-md-6 text-center edit-profile" *ngIf="edit==true">
+                                <button type="submit" class="btn " (click)="cancel()">Cancel</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </form>
         </div>
 
@@ -598,7 +605,7 @@
                                                     formControlName="high_qualification"
                                                     (change)="onHighestQualificationChangeOther($event,i,education)"
                                                     [ngClass]="{ 'is-invalid':education.controls.high_qualification.errors && submitted1 }">
-                                                    <option [value]=null [selected]="true">Select Highest Qualification
+                                                    <option [value]=null [selected]="true" [disabled]="true">Select Highest Qualification
                                                     </option>
                                                     <option *ngFor="let data of highestQualificationList"
                                                         [value]="data.hqid">
@@ -738,81 +745,86 @@
         <!-- education details-->
 
         <!-- work experience details -->
-        <div class="row contact-details mt-5" *ngIf="editjob">
-            <div class="col-md-3"></div>
-            <div class="col-md-9">
-                <div class="table-responsive">
-                    <table class="table b-0">
+        <div class="" *ngIf="editjob">
+            <div class="row contact-details mt-5">
+                <div class="col-md-3"></div>
+                <div class="col-md-9">
+                    <div class="table-responsive">
+                        <table class="table b-0">
 
-                        <tbody class="b-0" *ngFor="let data of talentJobDetails ; let i = index">
-                            <tr class="b-0">
-                                <td class="b-0 list-title">WORK EXPERIENCE DETAILS {{i+1}}</td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">ROLE</td>
-                                <td class="b-0"><span>:</span>
-                                    <span>{{data.role}}</span>
+                            <tbody class="b-0" *ngFor="let data of talentJobDetails ; let i = index">
+                                <tr class="b-0">
+                                    <td class="b-0 list-title">WORK EXPERIENCE DETAILS {{i+1}}</td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">ROLE</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span>{{data.role}}</span>
 
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">ROLE DESCRIPTION</td>
-                                <td class="b-0"><span>:</span>
-                                    <span>{{data.role_description}}</span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">ROLE DESCRIPTION</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span>{{data.role_description}}</span>
 
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
 
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">CURRENT COMPANY</td>
-                                <td class="b-0"><span>:</span>
-                                    <span>{{data.current_company}}</span>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">CURRENT COMPANY</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span>{{data.current_company}}</span>
 
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">SALARY</td>
-                                <td class="b-0"><span>:</span>
-                                    <span>{{data.salary}}</span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">SALARY</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span>{{data.salary}}</span>
 
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">WORK PERIOD</td>
-                                <td class="b-0"><span>:</span>
-                                    <span>{{data.working_period}}</span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">WORK PERIOD</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span>{{data.working_period}}</span>
 
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">WORK EXPERIENCE</td>
-                                <td class="b-0"><span>:</span>
-                                    <span>{{data.work_experience}}</span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">WORK EXPERIENCE</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span>{{data.work_experience}}</span>
 
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">INDUSTRY</td>
-                                <td class="b-0"><span>:</span>
-                                    <span>{{data.industry_name}}</span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">INDUSTRY</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span>{{data.industry_name}}</span>
 
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">LOCATION</td>
-                                <td class="b-0"><span>:</span>
-                                    <span>{{data.location}}</span>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">LOCATION</td>
+                                    <td class="b-0"><span>:</span>
+                                        <span>{{data.location}}</span>
 
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
 
                 </div>
-                <div class="row justify-content-center mb-5 mt-3">
-                    <div class="col-md-4 text-center edit-profile">
-                        <button type="submit" class="btn " (click)="showEditJob()">EDIT</button>
-                    </div>
+            </div>
+
+
+            <div class="row justify-content-center mb-5 mt-3">
+                <div class="col-md-4 text-center edit-profile">
+                    <button type="submit" class="btn " (click)="showEditJob()">EDIT</button>
                 </div>
             </div>
         </div>
@@ -1028,82 +1040,84 @@
             </section>
         </div>
         <!-- work experience details-->
-        <div class="row contact-details mt-5" *ngIf="editjobpreference">
-            <div class="col-md-3"></div>
-            <div class="col-md-9">
+        <div class="" *ngIf="editjobpreference">
+            <div class="row contact-details mt-5">
+                <div class="col-md-3"></div>
+                <div class="col-md-9">
 
-                <div class="table-responsive">
+                    <div class="table-responsive">
 
-                    <table class="table b-0">
-                        <tbody class="b-0">
-                            <tr class="b-0">
-                                <td class="b-0 contact-title"></td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">LOCATION
+                        <table class="table b-0">
+                            <tbody class="b-0">
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title"></td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">LOCATION
 
-                                </td>
-                                <td class="b-0"> <span>:</span>
-                                    <span>{{talentJobPreference?.location}}</span>
+                                    </td>
+                                    <td class="b-0"> <span>:</span>
+                                        <span>{{talentJobPreference?.location}}</span>
 
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">WORK PREFERENCE
 
+                                    </td>
+                                    <td class="b-0"> <span>:</span>
+                                        <span>{{talentJobPreference?.work_preferences}}</span>
 
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">WORK PREFERENCE
+                                    </td>
+                                </tr>
 
-                                </td>
-                                <td class="b-0"> <span>:</span>
-                                    <span>{{talentJobPreference?.work_preferences}}</span>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">INDUSTRY NAME
 
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td class="b-0"> <span>:</span>
+                                        <span>{{talentJobPreference?.industry_name}}</span>
 
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">INDUSTRY NAME
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">ROLE
 
-                                </td>
-                                <td class="b-0"> <span>:</span>
-                                    <span>{{talentJobPreference?.industry_name}}</span>
+                                    </td>
+                                    <td class="b-0"> <span>:</span>
+                                        <span>{{talentJobPreference?.role}}</span>
 
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">ROLE
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">DESIRED EMPLOYMENT TYPE
 
-                                </td>
-                                <td class="b-0"> <span>:</span>
-                                    <span>{{talentJobPreference?.role}}</span>
+                                    </td>
+                                    <td class="b-0"><span>:</span>
+                                        <span>{{talentJobPreference?.employment_type}}</span>
 
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">DESIRED EMPLOYMENT TYPE
+                                    </td>
+                                </tr>
+                                <tr class="b-0">
+                                    <td class="b-0 contact-title">SKILLS
 
-                                </td>
-                                <td class="b-0"><span>:</span>
-                                    <span>{{talentJobPreference?.employment_type}}</span>
+                                    </td>
+                                    <td class="b-0"> <span>:</span>
+                                        <span>{{talentJobPreference?.skills}}</span>
 
-                                </td>
-                            </tr>
-                            <tr class="b-0">
-                                <td class="b-0 contact-title">SKILLS
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                                </td>
-                                <td class="b-0"> <span>:</span>
-                                    <span>{{talentJobPreference?.skills}}</span>
-
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    </div>
 
                 </div>
-                <div class="row justify-content-center mb-5 mt-3">
-                    <div class="col-md-4 text-center edit-profile">
-                        <button type="submit" class="btn " (click)="showEditPreferences()">EDIT</button>
-                    </div>
+            </div>
+
+            <div class="row justify-content-center mb-5 mt-3">
+                <div class="col-md-4 text-center edit-profile">
+                    <button type="submit" class="btn " (click)="showEditPreferences()">EDIT</button>
                 </div>
             </div>
         </div>
@@ -1245,133 +1259,138 @@
 
         <!-- Bank details -->
         <!-- <div> -->
-        <div class="row contact-details mt-5" *ngIf="showBankDetails">
-            <div class="col-md-3"></div>
-            <div class="col-md-9" *ngIf="showBankForm">
-                <form [formGroup]="editBankDetailsForm">
-                    <div class="table-responsive">
-                        <table class="table b-0">
+        <div class="" *ngIf="showBankDetails">
+            <div class="row contact-details mt-5">
+                <div class="col-md-3"></div>
+                <div class="col-md-9" *ngIf="showBankForm">
+                    <form [formGroup]="editBankDetailsForm">
+                        <div class="table-responsive">
+                            <table class="table b-0">
 
-                            <tbody class="b-0">
-                                <tr class="b-0">
-                                    <td class="b-0 contact-title">ACCOUNT HOLDER NAME</td>
-                                    <td class="b-0"><span>:</span>
-                                        <span *ngIf="editBank==false">{{talentBankDetails.account_holder_name}}</span>
-                                        <span class="form-group edit-input" *ngIf="editBank==true">
-                                            <input type="text" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Name" formControlName="account_holder_name"
-                                                [ngClass]="{'is-invalid':f6.account_holder_name.errors && submitted5}">
-                                            <div class="invalid-feedback" *ngIf="f6.account_holder_name.errors">
-                                                <div *ngIf="f6.account_holder_name.errors.required">Account Holder
-                                                    Name
-                                                    is required
+                                <tbody class="b-0">
+                                    <tr class="b-0">
+                                        <td class="b-0 contact-title">ACCOUNT HOLDER NAME</td>
+                                        <td class="b-0"><span>:</span>
+                                            <span
+                                                *ngIf="editBank==false">{{talentBankDetails.account_holder_name}}</span>
+                                            <span class="form-group edit-input" *ngIf="editBank==true">
+                                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Name" formControlName="account_holder_name"
+                                                    [ngClass]="{'is-invalid':f6.account_holder_name.errors && submitted5}">
+                                                <div class="invalid-feedback" *ngIf="f6.account_holder_name.errors">
+                                                    <div *ngIf="f6.account_holder_name.errors.required">Account Holder
+                                                        Name
+                                                        is required
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="b-0">
-                                    <td class="b-0 contact-title">ACCOUNT NUMBER</td>
-                                    <td class="b-0"><span>:</span>
-                                        <span *ngIf="editBank==false">{{talentBankDetails.account_number}}</span>
-                                        <span class="form-group edit-input" *ngIf="editBank==true">
-                                            <input myNumberOnly type="text" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Account Number"
-                                                formControlName="account_number"
-                                                [ngClass]="{'is-invalid':f6.account_number.errors && submitted5}">
-                                            <div class="invalid-feedback" *ngIf="f6.account_number.errors">
-                                                <div *ngIf="f6.account_number.errors.required">Account Number
-                                                    is required
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr class="b-0">
+                                        <td class="b-0 contact-title">ACCOUNT NUMBER</td>
+                                        <td class="b-0"><span>:</span>
+                                            <span *ngIf="editBank==false">{{talentBankDetails.account_number}}</span>
+                                            <span class="form-group edit-input" *ngIf="editBank==true">
+                                                <input myNumberOnly type="text" class="form-control"
+                                                    id="exampleInputPassword1" placeholder="Account Number"
+                                                    formControlName="account_number"
+                                                    [ngClass]="{'is-invalid':f6.account_number.errors && submitted5}">
+                                                <div class="invalid-feedback" *ngIf="f6.account_number.errors">
+                                                    <div *ngIf="f6.account_number.errors.required">Account Number
+                                                        is required
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="b-0">
-                                    <td class="b-0 contact-title">BANK NAME</td>
-                                    <td class="b-0"><span>:</span>
-                                        <span *ngIf="editBank==false">{{talentBankDetails.bank_name}}</span>
-                                        <span class="form-group edit-input" *ngIf="editBank==true">
-                                            <input type="text" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Bank Name" formControlName="bank_name"
-                                                [ngClass]="{'is-invalid':f6.bank_name.errors && submitted5}">
-                                            <div class="invalid-feedback" *ngIf="f6.bank_name.errors">
-                                                <div *ngIf="f6.bank_name.errors.required">Bank Name
-                                                    is required
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr class="b-0">
+                                        <td class="b-0 contact-title">BANK NAME</td>
+                                        <td class="b-0"><span>:</span>
+                                            <span *ngIf="editBank==false">{{talentBankDetails.bank_name}}</span>
+                                            <span class="form-group edit-input" *ngIf="editBank==true">
+                                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Bank Name" formControlName="bank_name"
+                                                    [ngClass]="{'is-invalid':f6.bank_name.errors && submitted5}">
+                                                <div class="invalid-feedback" *ngIf="f6.bank_name.errors">
+                                                    <div *ngIf="f6.bank_name.errors.required">Bank Name
+                                                        is required
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="b-0">
-                                    <td class="b-0 contact-title">IFSC CODE</td>
-                                    <td class="b-0"><span>:</span>
-                                        <span *ngIf="editBank==false">{{talentBankDetails.ifsc}}</span>
-                                        <span class="form-group edit-input" *ngIf="editBank==true">
-                                            <input type="text" class="form-control" id="exampleInputPassword1"
-                                                placeholder="IFCS CODE" formControlName="ifsc"
-                                                [ngClass]="{'is-invalid':f6.ifsc.errors && submitted5}">
-                                            <div class="invalid-feedback" *ngIf="f6.ifsc.errors">
-                                                <div *ngIf="f6.ifsc.errors.required">IFSC CODE
-                                                    is required
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr class="b-0">
+                                        <td class="b-0 contact-title">IFSC CODE</td>
+                                        <td class="b-0"><span>:</span>
+                                            <span *ngIf="editBank==false">{{talentBankDetails.ifsc}}</span>
+                                            <span class="form-group edit-input" *ngIf="editBank==true">
+                                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="IFCS CODE" formControlName="ifsc"
+                                                    [ngClass]="{'is-invalid':f6.ifsc.errors && submitted5}">
+                                                <div class="invalid-feedback" *ngIf="f6.ifsc.errors">
+                                                    <div *ngIf="f6.ifsc.errors.required">IFSC CODE
+                                                        is required
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="b-0">
-                                    <td class="b-0 contact-title">BRANCH</td>
-                                    <td class="b-0"><span>:</span>
-                                        <span *ngIf="editBank==false">{{talentBankDetails.branch}}</span>
-                                        <span class="form-group edit-input" *ngIf="editBank==true">
-                                            <input type="text" value="Kuala Lumpur , Malaysia" class="form-control"
-                                                id="exampleInputPassword1" placeholder="Kuala Lumpur , Malaysia"
-                                                formControlName="branch"
-                                                [ngClass]="{'is-invalid':f6.branch.errors && submitted5}">
-                                            <div class="invalid-feedback" *ngIf="f6.branch.errors">
-                                                <div *ngIf="f6.branch.errors.required">Branch
-                                                    is required
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr class="b-0">
+                                        <td class="b-0 contact-title">BRANCH</td>
+                                        <td class="b-0"><span>:</span>
+                                            <span *ngIf="editBank==false">{{talentBankDetails.branch}}</span>
+                                            <span class="form-group edit-input" *ngIf="editBank==true">
+                                                <input type="text" value="Kuala Lumpur , Malaysia" class="form-control"
+                                                    id="exampleInputPassword1" placeholder="Kuala Lumpur , Malaysia"
+                                                    formControlName="branch"
+                                                    [ngClass]="{'is-invalid':f6.branch.errors && submitted5}">
+                                                <div class="invalid-feedback" *ngIf="f6.branch.errors">
+                                                    <div *ngIf="f6.branch.errors.required">Branch
+                                                        is required
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
-                                <tr class="b-0">
-                                    <td class="b-0 contact-title">LOCATION</td>
-                                    <td class="b-0"><span>:</span>
-                                        <span *ngIf="editBank==false">{{talentBankDetails.location}}</span>
-                                        <span class="form-group edit-input" *ngIf="editBank==true">
-                                            <input type="text" class="form-control" id="exampleInputPassword1"
-                                                placeholder="Kuala Lumpur , Malaysia" formControlName="location"
-                                                [ngClass]="{'is-invalid':f6.location.errors && submitted5}">
-                                            <div class="invalid-feedback" *ngIf="f6.location.errors">
-                                                <div *ngIf="f6.location.errors.required">Location
-                                                    is required
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr class="b-0">
+                                        <td class="b-0 contact-title">LOCATION</td>
+                                        <td class="b-0"><span>:</span>
+                                            <span *ngIf="editBank==false">{{talentBankDetails.location}}</span>
+                                            <span class="form-group edit-input" *ngIf="editBank==true">
+                                                <input type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Kuala Lumpur , Malaysia" formControlName="location"
+                                                    [ngClass]="{'is-invalid':f6.location.errors && submitted5}">
+                                                <div class="invalid-feedback" *ngIf="f6.location.errors">
+                                                    <div *ngIf="f6.location.errors.required">Location
+                                                        is required
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </span>
-                                    </td>
-                                </tr>
+                                            </span>
+                                        </td>
+                                    </tr>
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
 
-                    </div>
-                    <div class="row justify-content-center mb-5 mt-3">
-                        <div class="col-md-4 text-center edit-profile" *ngIf="editBank==false">
-                            <button type="submit" class="btn " (click)="editBankDetails()">EDIT</button>
                         </div>
 
-
-                        <div class="col-md-6 text-center edit-profile" *ngIf="editBank==true">
-                            <button type="submit" class="btn " (click)="addBankAccount()">Save</button>
-                        </div>
-                        <div class="col-md-6 text-center edit-profile" *ngIf="editBank==true">
-                            <button type="submit" class="btn " (click)="cancelBank()">Cancel</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
+            <div class="row justify-content-center mb-5 mt-3">
+                <div class="col-md-4 text-center edit-profile" *ngIf="editBank==false">
+                    <button type="submit" class="btn " (click)="editBankDetails()">EDIT</button>
+                </div>
+
+
+                <div class="col-md-3 text-center edit-profile" *ngIf="editBank==true">
+                    <button type="submit" class="btn " (click)="addBankAccount()">Save</button>
+                </div>
+                <div class="col-md-3 text-center edit-profile" *ngIf="editBank==true">
+                    <button type="submit" class="btn " (click)="cancelBank()">Cancel</button>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-12 text-center edit-profile add-bank">
                     <button type="submit" class="btn " *ngIf="addBankDetails==true" (click)="addBankAccountNew()">ADD

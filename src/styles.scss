@@ -18,10 +18,50 @@
     src: url(/assets/fonts/Muli-Bold.ttf);
 }
 @import "~@ng-select/ng-select/themes/default.theme.css";
+
+
+// stepper css
+
+select {
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// stepper css
 body{
     font-family: Muli-Regular;
     overflow-x: hidden!important;
 }
+.login-from-details{
+    .form-control.is-invalid, .was-validated .form-control:invalid {
+        background-image: transparent!important;
+        background-position: 2% 50% !important;
+    }
+}
+
+.mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit{
+    .mat-stepper-horizontal-line {
+        border-top-width: 1px;
+        border-color: #fed501;
+        border-top-style: dashed !important;
+    }
+}
+
 .site-map{
     a{
         cursor:pointer;
@@ -29,7 +69,7 @@ body{
     }
 }
 .form-control.is-invalid ,.was-validated .form-control:invalid {
-    background-image: none !important;
+    background-image: none;
     background-position: center right calc(-1.625px + 2.1875px) !important;
 }
 a{

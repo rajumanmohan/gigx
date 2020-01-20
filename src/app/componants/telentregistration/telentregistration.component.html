@@ -312,7 +312,8 @@
                                         <select class="form-control" id="exampleFormControlSelect1"
                                             formControlName="highQul" (change)="onHighestQualificationChange($event)"
                                             [ngClass]="{ 'is-invalid':f1.highQul.errors&& submitted1 }">
-                                            <option [value]=null [selected]="true">Select Highest Qualification
+                                            <option [value]=null [selected]="true" [disabled]="true">Select Highest
+                                                Qualification
                                             </option>
                                             <option *ngFor="let data of highestQualificationList" [value]="data.hqid">
                                                 {{data.highest_qualification}}
@@ -355,7 +356,7 @@
                                         <div class="col-md-6">
                                             <select class="form-control" id="institution" formControlName="institution"
                                                 [ngClass]="{ 'is-invalid':f1.institution.errors&& submitted1 }">
-                                                <option [value]=null [selected]="true">Select Institute of Learning
+                                                <option [value]=null [selected]="true" [disabled]="true">Select Institute of Learning
                                                 </option>
                                                 <option *ngFor="let data of institutionsList"
                                                     [value]="data.university_id">
@@ -374,7 +375,7 @@
                                         <select class="form-control" id="exampleFormControlSelect1"
                                             placeholder="Year of Completion" formControlName="year_of_completion"
                                             [ngClass]="{'is-invalid':f1.year_of_completion.errors&& submitted1}">
-                                            <option value=null [disabled]="true" [selected]="true">Year of
+                                            <option value=null [disabled]="true" [selected]="true" [disabled]="true">Year of
                                                 Completion
                                             </option>
                                             <option *ngFor="let data of yearOfCompletionList" [value]="data">{{data}}
@@ -438,7 +439,7 @@
                                                         formControlName="high_qualification"
                                                         (change)="onHighestQualificationChangeOther($event,i,education)"
                                                         [ngClass]="{ 'is-invalid':education.controls.high_qualification.errors && submitted1 }">
-                                                        <option [value]=null [selected]="true">Select Highest
+                                                        <option [value]=null [selected]="true" [disabled]="true">Select Highest
                                                             Qualification </option>
                                                         <option *ngFor="let data of highestQualificationList"
                                                             [value]="data.hqid">
@@ -494,7 +495,7 @@
                                                         <select class="form-control" id="institution1"
                                                             formControlName="institution1"
                                                             [ngClass]="{ 'is-invalid':education.controls.institution1.errors&& submitted1 }">
-                                                            <option [value]=null [selected]="true">Select Institute of
+                                                            <option [value]=null [selected]="true" [disabled]="true">Select Institute of
                                                                 Learning </option>
                                                             <option *ngFor="let data of institutionsListCustom[i]"
                                                                 [value]="data.university_id">

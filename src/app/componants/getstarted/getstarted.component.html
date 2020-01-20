@@ -17,9 +17,7 @@
                         <div class="invalid-feedback" *ngIf="f.email.errors">
                             <div *ngIf="f.email.errors.required">Email is required</div>
                             <div *ngIf="f.email.errors.email">Email is invalid</div>
-
                         </div>
-
                     </div>
                     <div class="input-group password-group mb-3">
                         <input type="password" class="form-control password-field" placeholder="Create Password"
@@ -36,14 +34,10 @@
                                 (click)="hidePassword()" id="button-addon2">
                                 <img src="../../../assets/images/eye-closed.png"></button>
                         </div>
-
                         <div class="invalid-feedback" *ngIf="f.password.errors">
                             <div *ngIf="f.password.errors.required">Password is required</div>
                         </div>
-
                     </div>
-
-
                     <button type="submit" class="btn btn-primary" (click)="start()">GET STARTED</button>
                 </form>
 

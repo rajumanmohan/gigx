@@ -1,6 +1,10 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { NgxSpinnerService } from "ngx-spinner";
+
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { AppServiceService } from './../../Services/app-service.service';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import {
@@ -23,8 +27,10 @@ import { DataStorageService } from '../../Services/data-storage.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private router: Router, private spinner: NgxSpinnerService, private dataStorage: DataStorageService) { }
-
+  constructor(private router: Router, private spinner: NgxSpinnerService, private dataStorage: DataStorageService, private appSer: AppServiceService, private toast: ToastrService,
+    private formBuilder: FormBuilder) { }
+    submitEmail = false;
+    subscribeFrom: FormGroup;
   ngOnInit() {
     window.scroll(0, 0);
     /** spinner starts on init */
@@ -34,16 +40,26 @@ export class HomeComponent implements OnInit {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
     }, 2000);
+    this.subscribeFrom = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]]
+    })
   }
 
-  onDashboardClick(){
-    if(this.dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY){
-      this.router.navigate(['/companydashboard']);
+  get sub() { return this.subscribeFrom.controls }
+  submitsubscribe() {
+    this.submitEmail = true;
+    if (this.subscribeFrom.invalid) {
+      return;
     }
-    else if(this.dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT){
+  }
+  onDashboardClick() {
+    if (this.dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY) {
+      this.router.navigate(['/companydashboard']);
+    } 
+    else if (this.dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT) {
       this.router.navigate(['/talentdashboard']);
     }
-    
+
   }
 
 

@@ -1,4 +1,5 @@
 <!-- heADER -->
+<!-- heADER -->
 <div class="container-fluid main-header">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light ">
@@ -16,19 +17,22 @@
                     </li>
                     <!-- <li class="nav-item login-list">|</li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#" routerLink="/about-us">About</a>
+                        <a class="nav-link" href="#" routerLink="/about-us">About Us</a>
                     </li>
                     <!-- <li class="nav-item login-list">|</li> -->
                     <li class="nav-item">
-                        <a class="nav-link" href="#" routerLink="/contact-us">Contact us</a>
+                        <a class="nav-link" href="#" routerLink="/contact-us">Contact Us</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item" *ngIf="!dataStorage.loggedInUserData.registration_type">
                         <a class="nav-link" href="#" routerLink="/coverpage"> Login</a>
+                    </li>
+                    <li class="nav-item" *ngIf="dataStorage.loggedInUserData.registration_type">
+                        <a class="nav-link" (click)="onDashboardClick()"> Dashboard</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ENG
+                            English
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#">English</a>
@@ -40,6 +44,7 @@
         </nav>
     </div>
 </div>
+
 <!-- header -->
 <!-- banner starts from here -->
 <section class="banner">
@@ -254,9 +259,17 @@
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                 <div class="mail-block">
                     <h5>Join Our Gigx</h5>
-                    <!-- <p class="para">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
-                    <input type="text" name="text" placeholder="Enter your email">
-                    <button class="send-btn" type="submit">SEND</button>
+                    <form [formGroup]="subscribeFrom">
+                            <div class="input-group password-group mb-3">
+                                <input type="email" class="form-control" name="email" placeholder="Enter your email"
+                                    formControlName="email" [ngClass]="{'is-invalid':sub.email.errors&& submitEmail}">
+                                <div class="invalid-feedback" *ngIf="sub.email.errors">
+                                    <div *ngIf="sub.email.errors.required">Email is required</div>
+                                    <div *ngIf="sub.email.errors.email">Enter a valid Email</div>
+                                </div>
+                            </div>
+                            <button class="send-btn" type="submit" (click)="submitsubscribe()">SEND</button>
+                        </form>
                 </div>
             </div>
         </div>
