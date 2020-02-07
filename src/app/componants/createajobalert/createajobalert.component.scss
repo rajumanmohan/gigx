@@ -31,10 +31,9 @@
             box-shadow: 1px 1px 1px 0px #dbdbdb !important;
          }
          button{
-            width: 100%;
             border: 0px;
             border-radius: 3px !important;
-            padding: 10px;
+            padding: 10px 40px;
             background: #fed501!important;
             color: #000000!important;
             font-size: 20px;
@@ -65,7 +64,7 @@ label{
 .main-header {
     box-shadow: 2px 3px 6px 0px #e1e1e1;
 a{
-    font-size:19px;
+    font-size:1rem;
     color:#000000;
 }
 }

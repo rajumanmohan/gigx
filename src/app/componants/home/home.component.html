@@ -12,7 +12,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto main-menu">
                     <li class="nav-item ">
-                        <a class="nav-link" href="#" routerLink="">Home<span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="#" routerLinkActive="active" routerLink="">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <!-- <li class="nav-item login-list">|</li> -->
                     <li class="nav-item">
@@ -21,6 +21,9 @@
                     <!-- <li class="nav-item login-list">|</li> -->
                     <li class="nav-item">
                         <a class="nav-link" href="#" routerLink="/contact-us">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://gigxglobal.blogspot.com/" target="_balnk">GIG Talks</a>
                     </li>
                     <li class="nav-item" *ngIf="!dataStorage.loggedInUserData.registration_type">
                         <a class="nav-link" href="#" routerLink="/coverpage"> Login</a>
@@ -45,58 +48,48 @@
 </div>
 
 <!-- HEADER -->
-<!-- boot 3 carousel -->
-<!-- boot 3 carousel -->
-<!-- boot 4 carousel -->
-<div class="header-block">
-    <div class="bd-example">
-        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators carousel-indicators-numbers ">
-                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active">01</li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="1">02</li>
-                <li data-target="#carouselExampleCaptions" data-slide-to="2">03</li>
-            </ol>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="../../../assets/images/banner1.png.jpg" alt="..." class="img-responsive">
 
-                </div>
-                <div class="carousel-item">
-                    <img src="../../../assets/images/banner2.png.jpg" alt="..." class="img-responsive">
-
-                </div>
-                <div class="carousel-item">
-                    <img src="../../../assets/images/banner3.png.jpg" alt="..." class="img-responsive">
-
+<div class="header-main-block text-center">
+    <div class="container">
+        <h1>Future of work platform</h1>
+        <p>Experts and Professionals, On Demand</p>
+        <h1 class="scroll-2"><span>Gig</span> economy <span>solution</span></h1>
+        <div class="gig-animation"><h2>Gig</h2><h3>X</h3></div> 
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="box-design">
+                    <img class="img-responsive" src="../../../assets/images/home-bottom-1.jpg" alt="">
+                    <h4>Experts on Demand</h4>
+                    <ol>
+                        <li>Access to top talent</li>
+                        <li>Accurate fit</li>
+                    </ol>
                 </div>
             </div>
-            <a class="carousel-control-next carousel-control" href="#carouselExampleCaptions" role="button"
-                data-slide="next">
-                Explore the platform
-                <img src="../../../assets/images/right-arrow.png">
-            </a>
-
-            <a class="swaip-to-discover scroll"> <span class="swaip-to-discover-span">Swipe
-                    Down to Discover</span><br><img src="../../../assets/images/caret-down.png"> </a>
-            <div class="carousel-caption-main">
-                <p class="carousel-caption-txt">Future of work platform</p>
-                <small class="sm-text">Experts and Professionals,On Demand
-                </small>
-                <ul>
-                    <li class="normal-color slideInDown animated">Gig</li>
-                    <li class="custom-color slideInRight animated">Economy</li>
-                    <li class="normal-color slideInUp animated">Solution</li>
-                </ul>
-
+            <div class="col-sm-4">
+                <div class="box-design">
+                    <img class="img-responsive" src="../../../assets/images/home-bottom-2.jpg" alt="">
+                    <h4>Global Reach</h4>
+                    <ol>
+                        <li>Regional &amp; Global Opportunities</li>
+                        <li>Top talent Community</li>
+                    </ol>
+                </div>
             </div>
-            <!-- <div class="banner-cloud  floating">
-                <img src="../../../assets/images/cloud.png" class="">
-            </div> -->
+            <div class="col-sm-4">
+                <div class="box-design">
+                    <img class="img-responsive" src="../../../assets/images/home-bottom-3.jpg" alt="">
+                    <h4>People Solutions</h4>
+                    <ol>
+                        <li>Talent Strategies &amp; Solutions</li>
+                        <li>Learning &amp; Development</li>
+                    </ol>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- boot 4 carousel -->
 
 
 <div class="marketplace-block second">
@@ -105,8 +98,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 market-grid">
                 <div class="Marketplace-sub-tile text-center">
-                    <div class="icon-hover icon-image1">
-                    </div>
+                    <img src="../../../assets/images/mar-pla-1.svg" alt="">
                     <h4 class="Marketplace-sub-heading custom-clr ">Business Development,<br />Sales & Marketing
                     </h4>
                     <p class="para">Social Media & Content Marketing, Digital Marketing</p>
@@ -114,8 +106,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 market-grid">
                 <div class="Marketplace-sub-tile text-center">
-                    <div class="icon-hover icon-image2">
-                    </div>
+                    <img src="../../../assets/images/mar-pla-2.svg" alt="">
                     <h4 class="Marketplace-sub-heading custom-clr ">Business Strategy,<br />Management and Research
                     </h4>
                     <p class="para">Subject Matter Experts, Consulting, Planning & Analysis, PMO, M&E
@@ -125,8 +116,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 market-grid">
                 <div class="Marketplace-sub-tile text-center">
-                    <div class="icon-hover icon-image3">
-                    </div>
+                    <img src="../../../assets/images/mar-pla-3.svg" alt="">
                     <h4 class="Marketplace-sub-heading custom-clr ">Climate Change &<br />Sustainability
                     </h4>
                     <p class="para">Environment, Green Technology, Resilience and Communities</p>
@@ -134,8 +124,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 market-grid">
                 <div class="Marketplace-sub-tile text-center">
-                    <div class="icon-hover icon-image4">
-                    </div>
+                    <img src="../../../assets/images/mar-pla-4.svg" alt="">
                     <h4 class="Marketplace-sub-heading custom-clr ">Creative & <br />Digital Media
                     </h4>
                     <p class="para">Graphics & Design, Video & Animation, Music & Audio
@@ -148,8 +137,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 market-grid">
                 <div class="Marketplace-sub-tile text-center">
-                    <div class="icon-hover icon-image5">
-                    </div>
+                    <img src="../../../assets/images/mar-pla-5.svg" alt="">
                     <h4 class="Marketplace-sub-heading custom-clr ">Science, Engineering<br /> &
                         Technology
                     </h4>
@@ -162,8 +150,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 market-grid">
                 <div class="Marketplace-sub-tile text-center">
-                    <div class="icon-hover icon-image6">
-                    </div>
+                    <img src="../../../assets/images/mar-pla-6.svg" alt="">
                     <h4 class="Marketplace-sub-heading custom-clr ">Customer Service
                     </h4>
                     <p class="para">Call Centre, Service Management, Virtual Assistance
@@ -174,8 +161,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 market-grid">
                 <div class="Marketplace-sub-tile text-center">
-                    <div class="icon-hover icon-image7">
-                    </div>
+                    <img src="../../../assets/images/mar-pla-7.svg" alt="">
                     <h4 class="Marketplace-sub-heading custom-clr ">Strategic, Human,<br />Capital & Leadership
                     </h4>
                     <p class="para">Assessment, People Alignment, Culture and Development</p>
@@ -183,8 +169,7 @@
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 market-grid">
                 <div class="Marketplace-sub-tile text-center">
-                    <div class="icon-hover icon-image8">
-                    </div>
+                    <img src="../../../assets/images/mar-pla-8.svg" alt="">
                     <h4 class="Marketplace-sub-heading custom-clr ">Education <br />and Coaching
                     </h4>
                     <p class="para">Teach and Lecture, Class Assistance,Coaching
@@ -193,7 +178,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 market-grid">
                 <div class="Marketplace-sub-tile text-center">
                     <div class="icon-hover icon-image9">
@@ -231,7 +216,7 @@
                     <p class="para">Branding, Speech Writing, Translation & Report Writing</p>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </div>
 
@@ -245,9 +230,10 @@
     </div>
 </div>
 
-<div class="first-step-block  text-center">
+<!-- <div class="first-step-block  text-center">
     <div class="container">
-        <h1 class="main-heading">Take the first step into the Gig Economy.<br>Whatever your goal, here are a few places
+        <h1 class="main-heading">
+            Take the first step into the Gig Economy.<br>Whatever your goal, here are a few places
             to get started
         </h1>
         <div class="row">
@@ -278,9 +264,45 @@
             </div>
         </div>
     </div>
+</div> -->
+
+<div class="first-step-block">
+    <div class="container">
+        <h1 class="main-heading text-center">
+           Converge &amp; Diverge
+        </h1>
+        <div class="row">
+            <div class="col-md-goal">
+                <div class="first-step-strip">
+                    <img src="../../../assets/images/first-step-new-img1.jpg" class="img-responsive" alt="">
+                    <h4>Accredited Contingent Workforce</h4>
+                    <h5>Get productive faster.</h5>
+                    <p class="para">Access shared talent who can seamlessly plug in to work across the business in a
+                        project-oriented way.</p>
+                </div>
+            </div>
+            <div class="col-md-goal col-md-mid">
+                <div class="first-step-strip">
+                    <img src="../../../assets/images/first-step-new-img2.jpg" class="img-responsive" alt="">
+                    <h4>Approved Firms </h4>
+                    <h5>Drive value though excellence.</h5>
+                    <p class="para">connect to approved firms and drive better performance.</p>
+                </div>
+            </div>
+            <div class="col-md-goal">
+                <div class="first-step-strip">
+                    <img src="../../../assets/images/first-step-new-img3.jpg" class="img-responsive" alt="">
+                    <h4>Experienced Community</h4>
+                    <h5>Acquire knowledge and skills.</h5>
+                    <p class="para">continuous learning and enhanced knowledge for higher performance</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="pre-footer-block">
+    <div class="line"><hr style="border-top: 2px solid #2890c9;"></div>
     <div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">

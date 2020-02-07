@@ -12,7 +12,7 @@
                 <form [formGroup]="getStartForm">
                     <div class="form-group mt-5">
                         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder=" Email" formControlName="email"
+                            placeholder=" Email" formControlName="email" maxlength="50"
                             [ngClass]="{'is-invalid':f.email.errors&& submitted}">
                         <div class="invalid-feedback" *ngIf="f.email.errors">
                             <div *ngIf="f.email.errors.required">Email is required</div>
@@ -21,7 +21,7 @@
                     </div>
                     <div class="input-group password-group mb-3">
                         <input type="password" class="form-control password-field" placeholder="Create Password"
-                            formControlName="password" [ngClass]="{'is-invalid':f.password.errors&& submitted}"
+                            formControlName="password" [ngClass]="{'is-invalid':f.password.errors&& submitted}" maxlength="10"
                             *ngIf="showEye" />
                         <input type="text" class="form-control password-field" placeholder="Create Password"
                             formControlName="password" [ngClass]="{'is-invalid':f.password.errors&& submitted}"
@@ -36,6 +36,7 @@
                         </div>
                         <div class="invalid-feedback" *ngIf="f.password.errors">
                             <div *ngIf="f.password.errors.required">Password is required</div>
+                            <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary" (click)="start()">GET STARTED</button>

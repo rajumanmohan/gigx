@@ -10,6 +10,7 @@ import {
   fadeInThenOut, growInShrinkOut, swingInAndOut
 } from '../../triggers';
 import { DataStorageService } from '../../Services/data-storage.service';
+declare var $;
 
 @Component({
   selector: 'app-login',
@@ -55,6 +56,13 @@ export class LoginComponent implements OnInit {
   showPassword() {
     this.showEye = false;
   }
+
+  requestNow(){
+    this.forgotForm.reset();
+    this.submitted=false;
+  }
+
+
   get f() { return this.loginForm.controls; }
 
   login() {
@@ -115,6 +123,7 @@ export class LoginComponent implements OnInit {
     this.appSer.forgotPassword(this.forgotForm.value).subscribe((res) => {
       if (res['status'] == 200) {
         this.toast.success(res['message'], "Success");
+        $('#exampleModal').modal('hide');
       }
       else {
         this.toast.error(res['message'], "Error");

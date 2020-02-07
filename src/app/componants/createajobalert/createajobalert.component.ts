@@ -150,8 +150,8 @@ export class CreateajobalertComponent implements OnInit {
     this.appSer.postCreateGigAlert(requestData).subscribe((res)=>{
       if (res['status'] == 200) {
         this.toast.success(res['message'], "Success");
-       // this.router.navigate(['/login']);
-        window.location.reload(); 
+        this.router.navigate(['/talentdashboard']);
+        //window.location.reload(); 
       } else {
         this.toast.error(res['message'], "Error");
 

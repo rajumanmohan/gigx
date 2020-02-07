@@ -12,6 +12,7 @@ import { FormBuilder, FormGroup, Validators, FormArray, AbstractControl, FormCon
 import { ToastrService } from 'ngx-toastr';
 import { IMyDpOptions } from 'mydatepicker';
 import { from } from 'rxjs';
+import { DataStorageService } from '../../Services/data-storage.service';
 @Pipe({ name: 'safe' })
 @Component({
   selector: 'app-talentprofile',
@@ -94,7 +95,7 @@ export class TalentprofileComponent implements OnInit {
     // other options...
     dateFormat: 'dd/mm/yyyy',
   };
-  constructor(private route: ActivatedRoute, private router: Router, private appSer: AppServiceService, private toast: ToastrService, private fb: FormBuilder) {
+  constructor(private route: ActivatedRoute, private router: Router, private appSer: AppServiceService, private toast: ToastrService, private fb: FormBuilder, private dataStorage: DataStorageService) {
     this.talentId = localStorage.getItem('talent_id');
     this.loginType = localStorage.getItem('industry_type');
     if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
@@ -110,7 +111,7 @@ export class TalentprofileComponent implements OnInit {
     window.scroll(0, 0);
     this.editBankDetailsForm = this.fb.group({
       account_holder_name: ['', Validators.required],
-      account_number: ['', Validators.required],
+      account_number: ['', [Validators.required, Validators.minLength(8)]],
       bank_name: ['', Validators.required],
       ifsc: ['', Validators.required],
       branch: ['', Validators.required],
@@ -530,6 +531,10 @@ export class TalentprofileComponent implements OnInit {
       this.imageUrl = res['step1'].image_url;
       this.videoUrlLink = res['step1'].video_url;
       this.pdfUrlLink = res['step1'].attachment_url;
+      
+      localStorage.setItem('first_name', this.talentPersonalDetails['first_name']);
+      localStorage.setItem('last_name', this.talentPersonalDetails['last_name']);
+      this.dataStorage.loggedInUserData = localStorage;
 
       this.countryId = this.talentPersonalDetails['country_id'];
       this.stateId = this.talentPersonalDetails['state_id'];
@@ -1226,7 +1231,7 @@ export class TalentprofileComponent implements OnInit {
   editBankDetails() {
     this.editBankDetailsForm = this.fb.group({
       account_holder_name: [this.talentBankDetails.account_holder_name, Validators.required],
-      account_number: [this.talentBankDetails.account_number, Validators.required],
+      account_number: [this.talentBankDetails.account_number, [Validators.required, Validators.minLength(8)]],
       bank_name: [this.talentBankDetails.bank_name, Validators.required],
       ifsc: [this.talentBankDetails.ifsc, Validators.required],
       branch: [this.talentBankDetails.branch, Validators.required],

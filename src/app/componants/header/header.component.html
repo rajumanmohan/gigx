@@ -22,8 +22,70 @@
                 </ul>
 
                 <div *ngIf="dataStorage.loggedInUserData.registration_type" class="text-right ml-auto">
-                    <span class="navbar-text"> <a href="#" routerLink="/jobalerts"><img
-                                src="../../../assets/images/bell.png" class="bell"></a></span>
+                    
+                    <span class="navbar-text">
+                        <a class="nav-link" routerLink="/companydashboard"
+                            *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY">Dashboard</a>
+                        <a class="nav-link" routerLink="/talentdashboard"
+                            *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Dashboard</a>
+                    </span>
+                    <!-- <span class="navbar-text"> <a href="#" routerLink="/jobalerts"><img
+                                src="../../../assets/images/bell.png" class="bell"></a></span> -->
+                    
+                    <!-- <span class="navbar-text">
+                        <a class="nav-link" (click)="onMyProfileClick()">My Profile</a>
+                    </span>           
+                    <span class="navbar-text">
+                        <a class="nav-link" routerLink="/createajobalert"
+                        *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Create
+                        a Gig Alert</a>
+                    </span>           
+                    <span class="navbar-text">
+                        <a class="nav-link" routerLink="/jobsearch"
+                        *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Gig
+                        Search</a>
+                    </span>           
+                    <span class="navbar-text">
+                        <a class="nav-link" routerLink="/appliedjobs"
+                        *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Applications
+                        </a>
+                    </span>           
+                    <span class="navbar-text">
+                        <a class="nav-link" routerLink="/intrestedjobs"
+                        *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Gigs I Follow
+                        </a>
+                    </span>           
+                    <span class="navbar-text">
+                        <a class="nav-link" routerLink="/invitedgigs"
+                        *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Gig 
+                        Invitations</a>
+                    </span>           
+                    <span class="navbar-text">
+                        <a class="nav-link" routerLink="/postagig"
+                        *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY">Post
+                        a Gig</a>
+                    </span>           
+                    <span class="navbar-text">
+                        <a class="nav-link" routerLink="/talentsearch"
+                        *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY">Talent
+                        Search</a>
+                    </span>           
+                    <span class="navbar-text">
+                        <a class="nav-link" routerLink="/ratingsreview"
+                        *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY">Ratings
+                        & Reviews</a>
+                    </span>           
+                    <span class="navbar-text">
+                        <a class="nav-link" routerLink="/viewpostedgigs"
+                        *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY">View
+                        Posted Gigs</a>
+                    </span>           
+                    <span class="navbar-text">
+                        <a class="nav-link" routerLink="/viewpostedgigs"
+                        *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY">View
+                        Posted Gigs</a>
+                    </span>            -->
+
                     <span class="navbar-text">
                         <div class="profile-name"
                             *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">
@@ -86,23 +148,23 @@
                                     *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Gig
                                     Search</a>
                                 <a class="dropdown-item" routerLink="/appliedjobs"
-                                    *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Applied
-                                    Gigs</a>
+                                    *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Applications
+                                    </a>
                                 <a class="dropdown-item" routerLink="/intrestedjobs"
-                                    *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Interested
-                                    Gigs</a>
+                                    *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Gigs I Follow
+                                    </a>
                                 <a class="dropdown-item" routerLink="/invitedgigs"
-                                    *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Invited
-                                    Gigs</a>
+                                    *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Gig 
+                                    Invitations</a>
                                 <!-- <a class="dropdown-item" routerLink="/jobalerts"
                                     *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Gig
                                     Alerts</a> -->
-                                <a class="dropdown-item" routerLink="/takeatest"
+                                <!-- <a class="dropdown-item" routerLink="/takeatest"
                                     *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Profiling
                                     Test</a>
                                 <a class="dropdown-item" routerLink="/testlist"
                                     *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.TALENT">Completed
-                                    Tests</a>
+                                    Tests</a> -->
 
                                 <a class="dropdown-item" routerLink="/postagig"
                                     *ngIf="dataStorage.loggedInUserData.registration_type == this.dataStorage.globalRegistrationTypes.COMPANY">Post

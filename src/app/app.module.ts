@@ -70,6 +70,7 @@ import { PaymentSuccessComponent } from './componants/payment-sucess/payment-suc
 import { PaymentFailureComponent } from './componants/payment-failure/payment-failure.component';
 import { TermsconditionsComponent } from './componants/termsconditions/termsconditions.component';
 import { PagenotfoundComponent } from './componants/pagenotfound/pagenotfound.component';
+import { VerticalstepperformComponent } from './componants/verticalstepperform/verticalstepperform.component';
 @Pipe({ name: 'safe' })
 @NgModule({
   declarations: [
@@ -122,7 +123,8 @@ import { PagenotfoundComponent } from './componants/pagenotfound/pagenotfound.co
     PagenotfoundComponent,
     PaymentSuccessComponent,
     PaymentFailureComponent,
-    TermsconditionsComponent
+    TermsconditionsComponent,
+    VerticalstepperformComponent
   ],
   imports: [
     AutocompleteLibModule,

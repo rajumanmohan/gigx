@@ -184,9 +184,9 @@
                         </div>
                         <!-- required skills -->
                     </div>
-                    <h2>PROJECT DETAILS</h2>
+                    <h2>GIG DETAILS</h2>
                     <div class="form-group row mt-3">
-                        <label for="inputPassword" class="col-sm-3 col-form-label">TYPE OF PROJECTS :</label>
+                        <label for="inputPassword" class="col-sm-3 col-form-label">TYPE OF GIGS :</label>
                         <div class="col-sm-9">
                             <select class="form-control" id="exampleFormControlSelect1"
                                 placeholder="Select Qualification" formControlName="type_of_project"
@@ -196,7 +196,7 @@
                                 <option value="Part Time">Part Time</option>
                             </select>
                             <div *ngIf="submitted && f.type_of_project.errors" class="invalid-feedback">
-                                <div *ngIf="f.type_of_project.errors.required">Type of project is required</div>
+                                <div *ngIf="f.type_of_project.errors.required">Type of gig is required</div>
                             </div>
                         </div>
                     </div>
@@ -216,14 +216,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-6 col-form-label">PROJECT START DATE
+                                <label for="inputPassword" class="col-sm-6 col-form-label">GIG START DATE
                                     :</label>
                                 <div class="col-sm-6">
                                     <my-date-picker name="project_start_date" formControlName="project_start_date" (dateChanged)="onProjectStartDateChanged($event)"
                                         [options]="projectStartDateOptions" placeholder="28/08/2020">
                                     </my-date-picker>
                                     <div *ngIf="submitted && f.project_start_date.errors" class="custom-invalid-feedback">
-                                            <div *ngIf="f.project_start_date.errors.required">Project Start Date is
+                                            <div *ngIf="f.project_start_date.errors.required">Gig Start Date is
                                                 required</div>
                                         </div>
                                 </div>
@@ -232,14 +232,14 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-6 col-form-label">PROJECT END DATE
+                                <label for="inputPassword" class="col-sm-6 col-form-label">GIG END DATE
                                     :</label>
                                 <div class="col-sm-6">
                                     <my-date-picker name="project_end_date" formControlName="project_end_date" (dateChanged)="onProjectEndDateChanged($event)"
                                         [options]="projectEndDateOptions" placeholder="28/08/2020">
                                     </my-date-picker>
                                     <div *ngIf="submitted && f.project_end_date.errors" class="custom-invalid-feedback">
-                                            <div *ngIf="f.project_end_date.errors.required">Project End Date is
+                                            <div *ngIf="f.project_end_date.errors.required">Gig End Date is
                                                 required</div>
                                         </div>
                                 </div>
@@ -248,7 +248,7 @@
                     </div>
                     <!-- hiring process -->
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-3 col-form-label">PROJECT PROCESS
+                        <label for="inputPassword" class="col-sm-3 col-form-label">GIG PROCESS
                             :</label>
                         <div class="col-sm-9">
                             <div class="custom-control custom-radio custom-control-inline"
@@ -322,7 +322,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-3 col-form-label">PROJECT MILESTONE :</label>
+                        <label for="inputPassword" class="col-sm-3 col-form-label">GIG MILESTONE :</label>
                         <div class="col-sm-9">
                             <div class="custom-control custom-radio custom-control-inline"
                                 (change)="changeMileStone($event.target.value)" >
@@ -347,7 +347,7 @@
                             
                             <div style="background: #fafafa; margin-bottom: 1rem;" *ngFor="let mileStone of projectMileStones;  let i = index">
                                 <div class="">
-                                        <h2>PROJECT MILESTONE : {{i + 1}} <i class="fa fa-times-circle delete-icon"
+                                        <h2>GIG MILESTONE : {{i + 1}} <i class="fa fa-times-circle delete-icon"
                                             (click)="removeMileStone(i)"></i> </h2> 
                                 </div>
                                 <div class="row col-sm-12">
@@ -481,7 +481,7 @@
                     </div>
 
                     <div class="form-group hiring row">
-                        <label for="inputPassword" class="col-sm-3 col-form-label">MODE OF PROJECT KICK OFF : </label>
+                        <label for="inputPassword" class="col-sm-3 col-form-label">MODE OF GIG KICK OFF : </label>
                         <div class="col-sm-9">
                             <div class="custom-control custom-checkbox custom-control-inline" *ngFor="let option of modeOfKickOffProjects">
                                 <input type="checkbox" class="custom-control-input" value="{{option.value}}"
@@ -498,18 +498,18 @@
                                 <label class="custom-control-label" for="customCheck3">Conference Call Interview</label>
                             </div> -->
                             <div *ngIf="submitted && !validateModeOfKickOffProjects()" class="custom-invalid-feedback">
-                                    <div>Mode of Project Kick off is required</div>
+                                    <div>Mode of Gig Kick off is required</div>
                                 </div>
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="inputPassword" class="col-sm-2 col-form-label">PROJECT OWNER :</label>
+                        <label for="inputPassword" class="col-sm-2 col-form-label">GIG OWNER :</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control" formControlName="project_owner"
                                 placeholder="Project Owner"
                                 [ngClass]="{ 'is-invalid': submitted && f.project_owner.errors }">
                             <div *ngIf="submitted && f.project_owner.errors" class="invalid-feedback">
-                                <div *ngIf="f.project_owner.errors.required">Project Owner is required</div>
+                                <div *ngIf="f.project_owner.errors.required">Gig Owner is required</div>
                             </div>
                         </div>
                     </div>
@@ -549,7 +549,10 @@
                                 placeholder="Select Payment Type">
                                 <option value="" [selected]="true" [disabled]="true">Select Payment Type</option>
                                 <option value="Per Hour">Per Hour</option>
-                                <option value="Per Project">Per Project</option>
+                                <option value="Per Day">Per Day</option>
+                                <option value="Per Week">Per Week</option>
+                                <option value="Per Month">Per Month</option>
+                                <option value="Per Project/Gig">Per Project/Gig</option>
                             </select>
                             <div *ngIf="submitted && f.payment_type.errors" class="invalid-feedback">
                                 <div *ngIf="f.payment_type.errors.required">Payment Type is required</div>
@@ -568,7 +571,7 @@
                                 formControlName="acceptTerms"
                                 [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }">
                             <label class="custom-control-label" for="customCheck33">I agreed to the <span><a
-                                        href="">Terms
+                                        href="#" routerLink="/terms-and-conditions" target="_blank">Terms
                                         and Conditions </a></span> and <span><a href="">Privacy Policy
                                     </a></span></label>
                             <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">

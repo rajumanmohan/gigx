@@ -8,6 +8,13 @@ export class AppServiceService {
   apiUrl = "https://gigxglobal.com/api/"
 
   constructor(private httpClient: HttpClient) { }
+  emailVerification(params) {
+    let headers = new HttpHeaders();
+    headers = headers.set('Content-Type', 'application/JSON');
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    return this.httpClient.post(this.apiUrl + 'checkTalent.php', params, { headers })
+  }
   registration(params) {
     let headers = new HttpHeaders();
     headers = headers.set('Content-Type', 'application/JSON');

@@ -10,11 +10,11 @@ a:hover {
 ul li {
 	list-style-type: none;
 }
-.nav-item {
-	a:hover{
-color:#000000!important;
-	}
-}
+// .nav-item {
+// 	a:hover{
+// color:#000000!important;
+// 	}
+// }
 .address{
    
     a{
@@ -489,7 +489,7 @@ img.img-responsive {
     position: absolute;
     top: 0px;
 	z-index: 99;
-	background: #fef7ceeb;
+	background: #fff;
 }
 a.nav-link {
     font-weight: bold;

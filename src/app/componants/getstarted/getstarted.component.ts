@@ -1,6 +1,8 @@
 import { Router, NavigationExtras } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { AppServiceService } from './../../Services/app-service.service';
+import { ToastrService } from 'ngx-toastr';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import {
@@ -25,14 +27,15 @@ export class GetstartedComponent implements OnInit {
   submitted = false;
 
   // routerLink="/talentregistration"
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private appSer: AppServiceService, private toast: ToastrService) { }
   showEye = true;
   ngOnInit() {
     window.scroll(0, 0);
     this.getStartForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.minLength(6)]]
     })
+
   }
   hidePassword() {
     this.showEye = !this.showEye;
@@ -46,7 +49,17 @@ export class GetstartedComponent implements OnInit {
     if (this.getStartForm.invalid) {
       return;
     } else {
-      this.router.navigate(['/talentregistration'], { queryParams: { email: this.getStartForm.value.email, password: this.getStartForm.value.password },skipLocationChange: true });
+      this.appSer.emailVerification({"email": this.getStartForm.value.email}).subscribe((res)=> {
+        if(res['status']==200) {
+          this.router.navigate(['/verticalstepperform'], { queryParams: { email: this.getStartForm.value.email, password: this.getStartForm.value.password },skipLocationChange: true });
+        }
+        else {
+          this.toast.error(res['message'], "Error");
+        }
+      })
+
+      // this.appSer.emailVerification(this.getStartForm.value)
+      // this.router.navigate(['/talentregistration'], { queryParams: { email: this.getStartForm.value.email, password: this.getStartForm.value.password },skipLocationChange: true });
     }
   }
 }

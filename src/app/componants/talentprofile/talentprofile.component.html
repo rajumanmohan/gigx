@@ -39,9 +39,9 @@
                     <li> <button type="submit" class="btn" (click)="bankdetails()"
                             [ngStyle]="{'background': showBankDetails == true?'#fed501':''}"> Bank Details</button></li>
 
-                    <li> <button type="submit" class="btn" (click)="gigstalent()"
+                    <!-- <li> <button type="submit" class="btn" (click)="gigstalent()"
                             [ngStyle]="{'background': showGigsTrackDetails == true?'#fed501':''}"> Gigs Track
-                            History</button></li>
+                            History</button></li> -->
                 </ul>
 
             </div>
@@ -757,60 +757,52 @@
                                     <td class="b-0 list-title">WORK EXPERIENCE DETAILS {{i+1}}</td>
                                 </tr>
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">ROLE</td>
-                                    <td class="b-0"><span>:</span>
+                                    <td class="b-0 contact-title">ROLE <span>:</span></td>
+                                    <td class="b-0">
                                         <span>{{data.role}}</span>
-
                                     </td>
                                 </tr>
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">ROLE DESCRIPTION</td>
-                                    <td class="b-0"><span>:</span>
+                                    <td class="b-0 contact-title">ROLE DESCRIPTION <span>:</span></td>
+                                    <td class="b-0">
                                         <span>{{data.role_description}}</span>
-
                                     </td>
                                 </tr>
 
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">CURRENT COMPANY</td>
-                                    <td class="b-0"><span>:</span>
+                                    <td class="b-0 contact-title">CURRENT COMPANY <span>:</span></td>
+                                    <td class="b-0">
                                         <span>{{data.current_company}}</span>
-
                                     </td>
                                 </tr>
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">SALARY</td>
-                                    <td class="b-0"><span>:</span>
+                                    <td class="b-0 contact-title">SALARY <span>:</span></td>
+                                    <td class="b-0">
                                         <span>{{data.salary}}</span>
-
                                     </td>
                                 </tr>
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">WORK PERIOD</td>
-                                    <td class="b-0"><span>:</span>
+                                    <td class="b-0 contact-title">WORK PERIOD <span>:</span></td>
+                                    <td class="b-0">
                                         <span>{{data.working_period}}</span>
-
                                     </td>
                                 </tr>
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">WORK EXPERIENCE</td>
-                                    <td class="b-0"><span>:</span>
+                                    <td class="b-0 contact-title">WORK EXPERIENCE <span>:</span></td>
+                                    <td class="b-0">
                                         <span>{{data.work_experience}}</span>
-
                                     </td>
                                 </tr>
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">INDUSTRY</td>
-                                    <td class="b-0"><span>:</span>
+                                    <td class="b-0 contact-title">INDUSTRY <span>:</span></td>
+                                    <td class="b-0">
                                         <span>{{data.industry_name}}</span>
-
                                     </td>
                                 </tr>
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">LOCATION</td>
-                                    <td class="b-0"><span>:</span>
+                                    <td class="b-0 contact-title">LOCATION <span>:</span></td>
+                                    <td class="b-0">
                                         <span>{{data.location}}</span>
-
                                     </td>
                                 </tr>
                             </tbody>
@@ -1053,56 +1045,56 @@
                                     <td class="b-0 contact-title"></td>
                                 </tr>
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">LOCATION
+                                    <td class="b-0 contact-title">LOCATION <span>:</span>
 
                                     </td>
-                                    <td class="b-0"> <span>:</span>
+                                    <td class="b-0"> 
                                         <span>{{talentJobPreference?.location}}</span>
 
                                     </td>
                                 </tr>
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">WORK PREFERENCE
+                                    <td class="b-0 contact-title">WORK PREFERENCE <span>:</span>
 
                                     </td>
-                                    <td class="b-0"> <span>:</span>
+                                    <td class="b-0">
                                         <span>{{talentJobPreference?.work_preferences}}</span>
 
                                     </td>
                                 </tr>
 
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">INDUSTRY NAME
+                                    <td class="b-0 contact-title">INDUSTRY NAME <span>:</span>
 
                                     </td>
-                                    <td class="b-0"> <span>:</span>
+                                    <td class="b-0">
                                         <span>{{talentJobPreference?.industry_name}}</span>
 
                                     </td>
                                 </tr>
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">ROLE
+                                    <td class="b-0 contact-title">ROLE <span>:</span>
 
                                     </td>
-                                    <td class="b-0"> <span>:</span>
+                                    <td class="b-0">
                                         <span>{{talentJobPreference?.role}}</span>
 
                                     </td>
                                 </tr>
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">DESIRED EMPLOYMENT TYPE
+                                    <td class="b-0 contact-title">DESIRED EMPLOYMENT TYPE <span>:</span>
 
                                     </td>
-                                    <td class="b-0"><span>:</span>
+                                    <td class="b-0">
                                         <span>{{talentJobPreference?.employment_type}}</span>
 
                                     </td>
                                 </tr>
                                 <tr class="b-0">
-                                    <td class="b-0 contact-title">SKILLS
+                                    <td class="b-0 contact-title">SKILLS <span>:</span>
 
                                     </td>
-                                    <td class="b-0"> <span>:</span>
+                                    <td class="b-0">
                                         <span>{{talentJobPreference?.skills}}</span>
 
                                     </td>
@@ -1293,12 +1285,13 @@
                                             <span class="form-group edit-input" *ngIf="editBank==true">
                                                 <input myNumberOnly type="text" class="form-control"
                                                     id="exampleInputPassword1" placeholder="Account Number"
-                                                    formControlName="account_number"
+                                                    formControlName="account_number" maxlength="20"
                                                     [ngClass]="{'is-invalid':f6.account_number.errors && submitted5}">
                                                 <div class="invalid-feedback" *ngIf="f6.account_number.errors">
                                                     <div *ngIf="f6.account_number.errors.required">Account Number
                                                         is required
                                                     </div>
+                                                    <div *ngIf="f6.account_number.errors.minlength">Account Number must be at least 8 characters</div>
                                                 </div>
                                             </span>
                                         </td>
@@ -1320,7 +1313,8 @@
                                         </td>
                                     </tr>
                                     <tr class="b-0">
-                                        <td class="b-0 contact-title">IFSC CODE</td>
+                                        <!-- <td class="b-0 contact-title">IFSC CODE</td> -->
+                                        <td class="b-0 contact-title">SWIFT CODE</td>
                                         <td class="b-0"><span>:</span>
                                             <span *ngIf="editBank==false">{{talentBankDetails.ifsc}}</span>
                                             <span class="form-group edit-input" *ngIf="editBank==true">
@@ -1413,17 +1407,17 @@
 
                         <tbody class="b-0">
                             <tr class="b-0">
-                                <td class="b-0 contact-title1">NO. OF PROJECTS</td>
-                                <td class="b-0"><span>:</span> 06
+                                <td class="b-0 contact-title1">NO. OF PROJECTS <span>:</span></td>
+                                <td class="b-0">06
                                 </td>
                             </tr>
                             <tr class="b-0">
-                                <td class="b-0 contact-title1">NO. OF JOBS APPLIED</td>
-                                <td class="b-0"><span>:</span>12</td>
+                                <td class="b-0 contact-title1">NO. OF JOBS APPLIED <span>:</span></td>
+                                <td class="b-0">12</td>
                             </tr>
                             <tr class="b-0">
-                                <td class="b-0 contact-title1">NO. OF JOBS VIEWED</td>
-                                <td class="b-0"><span>:</span>34</td>
+                                <td class="b-0 contact-title1">NO. OF JOBS VIEWED <span>:</span></td>
+                                <td class="b-0">34</td>
                             </tr>
 
 

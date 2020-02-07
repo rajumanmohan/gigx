@@ -9,6 +9,7 @@ import {
   bounceInAndOut, enterAndLeaveFromLeft, enterAndLeaveFromRight, fadeInAndOut,
   fadeInThenOut, growInShrinkOut, swingInAndOut
 } from '../../triggers';
+import { DataStorageService } from '../../Services/data-storage.service';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -29,7 +30,7 @@ export class ProfileComponent implements OnInit {
   edit = false;
   sstType = "SST Unregistered"
   submitted = false; ProfileImageUrl;
-  constructor(private route: ActivatedRoute, private appSer: AppServiceService, private toast: ToastrService, private formBuilder: FormBuilder, private router: Router) {
+  constructor(private route: ActivatedRoute, private appSer: AppServiceService, private toast: ToastrService, private formBuilder: FormBuilder, private router: Router,  private dataStorage: DataStorageService) {
     this.route.queryParams.subscribe(params => {
       this.page = params['page'];
     });
@@ -244,7 +245,11 @@ export class ProfileComponent implements OnInit {
       company_id: this.companyId
     }
     this.appSer.CompanyProfile(params).subscribe((res) => {
-      this.profileDetails = res['data'];
+      this.profileDetails = res['data'];  
+      //Header populate data        
+      localStorage.setItem('company_name', this.profileDetails['company_name']);
+      this.dataStorage.loggedInUserData = localStorage;
+      //Comapny profile populate data
       this.profileFormDetails = this.profileDetails;
       this.ProfileImage = this.profileDetails['logo'];
       this.ProfileImageUrl = this.profileDetails['logo_url'];

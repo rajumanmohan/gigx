@@ -48,6 +48,8 @@ import { TermsconditionsComponent } from './componants/termsconditions/termscond
 
 import { PagenotfoundComponent } from './componants/pagenotfound/pagenotfound.component';
 
+import { VerticalstepperformComponent } from './componants/verticalstepperform/verticalstepperform.component';
+
 
 
 const routes: Routes = [
@@ -245,6 +247,10 @@ const routes: Routes = [
   {
     path: 'payment_failure',
     component: PaymentFailureComponent
+  },
+  {
+    path: 'verticalstepperform',
+    component: VerticalstepperformComponent
   }
 ];
 

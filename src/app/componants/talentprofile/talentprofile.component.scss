@@ -1,3 +1,11 @@
+td.b-0.contact-title span {
+    position: absolute;
+    left: 300px;
+}
+td.b-0.contact-title1 span {
+    position: absolute;
+    left: 250px;
+}
 .talent {
     h1{
         font-weight: 600;
@@ -100,7 +108,7 @@ h3{
         padding:0px;
 li{
     display:inline-block;
-    width:calc(100% / 6);
+    width:calc(100% / 5);
    
 }
     }
@@ -122,7 +130,7 @@ li{
 .main-header {
     box-shadow: 2px 3px 6px 0px #e1e1e1;
 a{
-    font-size:19px;
+    font-size:1rem;
     color:#000000;
 }
 }

@@ -188,6 +188,16 @@ button , input ,textarea ,a{
     display: inline-block !important; 
     background: none !important;
 }
+
+.navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show > .nav-link {
+    color:#2890c9 !important;
+}
+.nav-item {
+	a:hover{
+color:#2890c9 !important;
+	}
+}
+
 @media (max-width: 1199.98px) { 
     .login{
         width:100%;

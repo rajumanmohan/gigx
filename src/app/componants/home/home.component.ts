@@ -12,6 +12,7 @@ import {
   fadeInThenOut, growInShrinkOut, swingInAndOut
 } from '../../triggers';
 import { DataStorageService } from '../../Services/data-storage.service';
+declare var $;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -43,6 +44,7 @@ export class HomeComponent implements OnInit {
     this.subscribeFrom = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]]
     })
+
   }
 
   get sub() { return this.subscribeFrom.controls }
