@@ -393,8 +393,8 @@ backStepper(curStepBtn){
         if(curStepBtn == 'step-8') {
           $('.steps-row-sub-3').removeClass('activeStep-100').addClass("activeStep-62");
           $('#step-7').show();
-          $('.content-change h3').html('Showcase Your Most Relevant Work Experience');
-          $('.content-change p').html('Use this space to include specific examples from your experience that help set you apart.');
+          $('.content-change3').show();
+          $('.content-change1, .content-change2, .content-change4').hide();
           $('#custom-img1, #custom-img2, #custom-img3').addClass('active');
           $('#custom-img1 img').attr('src', '../../../assets/images/custom-img.png');
           $('#custom-img2 img').attr('src', '../../../assets/images/custom-img.png');
@@ -403,8 +403,8 @@ backStepper(curStepBtn){
         } else if(curStepBtn == 'step-7') {
           $('.steps-row-sub-3').removeClass('activeStep-62').addClass("activeStep-22");
           $('#step-6').show();
-          $('.content-change h3').html('Showcase Your Education');
-          $('.content-change p').html('Approximately 80% of experts engaged on projects through Catalant have an advanced degree. Consider strengthening this section even further by including any professional associations or activities.');
+          $('.content-change2').show();
+          $('.content-change1, .content-change3, .content-change4').hide();
           $('#custom-img1, #custom-img2').addClass('active');
           $('#custom-img1 img').attr('src', '../../../assets/images/custom-img.png');
           $('#custom-img2 img').attr('src', '../../../assets/images/custom-blk-2.png');
@@ -413,8 +413,8 @@ backStepper(curStepBtn){
         } else if(curStepBtn == 'step-6') {
           $('.steps-row-sub-3').removeClass('activeStep-22');
           $('#step-5').show();
-          $('.content-change h3').html('Make Your Profile Stand Out');
-          $('.content-change p').html('Your picture, name, and tagline are your first impression with clients. Immediately establish your credibility by including details about your professional experience and adding a recent, high-resolution photo. We’ve seen that experts with a profile photo are 30% more likely to be invited to projects.');
+          $('.content-change1').show();
+          $('.content-change3, .content-change2, .content-change4').hide();
           $('#custom-img1').addClass('active');
           $('#custom-img1 img').attr('src', '../../../assets/images/custom-blk-1.png');
           $('#custom-img2 img').attr('src', '../../../assets/images/custom-gry-2.png');
@@ -440,8 +440,8 @@ complete(curStepBtn, status) {
     if(curStepBtn == 'step-5') {
       $('.steps-row-sub-3').addClass("activeStep-22");
       $('#step-6').show();
-      $('.content-change h3').html('Showcase Your Education');
-      $('.content-change p').html('Approximately 80% of experts engaged on projects through Catalant have an advanced degree. Consider strengthening this section even further by including any professional associations or activities.');
+      $('.content-change2').show();
+      $('.content-change1, .content-change3, .content-change4').hide();
       $('#custom-img1, #custom-img2').addClass('active');
       $('#custom-img1 img').attr('src', '../../../assets/images/custom-img.png');
       $('#custom-img2 img').attr('src', '../../../assets/images/custom-blk-2.png');
@@ -450,8 +450,8 @@ complete(curStepBtn, status) {
     } else if(curStepBtn == 'step-6') {
       $('.steps-row-sub-3').addClass("activeStep-62");
       $('#step-7').show();
-      $('.content-change h3').html('Showcase Your Most Relevant Work Experience');
-      $('.content-change p').html('Use this space to include specific examples from your experience that help set you apart.');
+      $('.content-change3').show();
+      $('.content-change1, .content-change2, .content-change4').hide();
       $('#custom-img1, #custom-img2, #custom-img3').addClass('active');
       $('#custom-img1 img').attr('src', '../../../assets/images/custom-img.png');
       $('#custom-img2 img').attr('src', '../../../assets/images/custom-img.png');
@@ -460,8 +460,8 @@ complete(curStepBtn, status) {
     } else {
       $('.steps-row-sub-3').addClass("activeStep-100");
       $('#step-8').show();
-      $('.content-change h3').html('Highlight Your Top Skills');
-      $('.content-change p').html('Skills, combined with the details of professional experience and educational history, are a key data point for our project recommendations. Add about 10 skills to provide a broad sense of your skill-set, while being specific enough to enable our technology to identify your true areas of expertise. <br /> Many Catalant experts are skilled in general areas such as Business Strategy, Project Management, and Marketing. To best position your profile, add specific skills to more clearly illustrate your differentiated skillset. For example, if you tag Market Research, consider tagging your narrower, related skills (perhaps Market Sizing, New Product Testing, Conjoint Analysis, or Primary Research).');
+      $('.content-change4').show();
+      $('.content-change1, .content-change2, .content-change3').hide();
       $('#custom-img1, #custom-img2, #custom-img3, #custom-img4').addClass('active');
       $('#custom-img1 img').attr('src', '../../../assets/images/custom-img.png');
       $('#custom-img2 img').attr('src', '../../../assets/images/custom-img.png');

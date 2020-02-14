@@ -1,5 +1,6 @@
 section.talent {
-    background: #e6e6e6;
+    // background: #e6e6e6;
+    background: #f3f3f3;
     padding-top: 12px;
 }
 .steps-form-3 {
@@ -25,26 +26,32 @@ section.talent {
     bottom: 0;
     position: absolute;
     content: "";
-    width: 6px;
+    // width: 6px;
     height: 100%;
-    background-color: #2289c4; }
+    // background-color: #2289c4; 
+}
 .steps-form-3 .steps-row-sub-3:before {
     top: 14px;
-    margin-left: -118px;
+    margin-left: 30px;
     bottom: 0;
     position: absolute;
     content: "";
-    width: 6px;
+    // width: 6px;
+    height: 0px;
+    border: 1.5px dashed #b7b7b7;
  }
 .steps-form-3 .activeStep-22:before {
     height: 30%;
-    background-color: #fed501; }
+    // background-color: #fed501; 
+}
 .activeStep-62:before {
     height: 62% !important;
-    background-color: #fed501 !important; }
+    // background-color: #fed501 !important; 
+}
 .activeStep-100:before {
     height: 100% !important;
-    background-color: #fed501 !important; }
+    // background-color: #fed501 !important;
+ }
 .steps-form-3 .steps-row-3 .steps-step-3 {
     width: 300px;
     height: 150px;
@@ -68,7 +75,9 @@ margin-top: 0.5rem; }
     background-color: #ffffff;
     border-radius: 50%;
     padding: 14px 18px 15px 15px;
-    margin-top: 0px; }
+    margin-top: 0px; 
+    box-shadow: 0px 1px 4px #000 !important;
+}
 // .steps-form-3 .steps-row-3 .steps-step-3 .btn-circle-3:hover, .steps-step-3 a.active {
 //     border: 0px;
 //     color: #000 !important;
@@ -100,9 +109,6 @@ margin-top: 0.5rem; }
 .content-change h3 {
     font-size: 1rem;
     font-weight: 600;
-}
-.content-change p {
-    color: #767591!important;
 }
 .required-label:before {
     color: red;
@@ -136,7 +142,17 @@ margin-top: 0.5rem; }
 span.input-group-text .fa-facebook-f {
     padding-left: 4px;
 }
-
+.bullet-icon {
+    list-style: disc;
+    margin-left: -20px;
+}
+.circle-icon {
+    list-style: circle;
+    margin-left: -20px;
+}
+.content-change2, .content-change3, .content-change4 {
+    display: none;
+}
 
 // #custom-img1:hover {
 //     background: url(../../../assets/images/custom-blk-1.png) no-repeat center;

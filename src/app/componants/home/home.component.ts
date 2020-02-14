@@ -37,6 +37,20 @@ export class HomeComponent implements OnInit {
     /** spinner starts on init */
     this.spinner.show();
 
+    var text = ["Talent", "Enabled", "Solution"];
+    var counter = 0;
+    var elem = document.getElementById("changeText");
+    var inst = setInterval(change,4000);
+
+    function change() {
+      elem.innerHTML = text[counter];
+      counter++;
+      if (counter >= text.length) {
+        counter = 0;
+        // clearInterval(inst); // uncomment this if you want to stop refreshing after one cycle
+      }
+    }
+
     setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
@@ -44,6 +58,8 @@ export class HomeComponent implements OnInit {
     this.subscribeFrom = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]]
     })
+
+    // $('#demo1').scrollbox();
 
   }
 
