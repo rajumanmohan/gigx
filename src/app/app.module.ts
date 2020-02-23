@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MatStepperModule, MatIconModule } from '@angular/material';
+import { MatStepperModule, MatIconModule, MatTableModule, MatPaginatorModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MyDatePickerModule } from 'mydatepicker';
 import { FormsModule } from '@angular/forms';
@@ -71,6 +71,9 @@ import { PaymentFailureComponent } from './componants/payment-failure/payment-fa
 import { TermsconditionsComponent } from './componants/termsconditions/termsconditions.component';
 import { PagenotfoundComponent } from './componants/pagenotfound/pagenotfound.component';
 import { VerticalstepperformComponent } from './componants/verticalstepperform/verticalstepperform.component';
+import { LatestAnnoucementsComponent } from './componants/latest-annoucements/latest-annoucements.component';
+import { FooterComponent } from './componants/footer/footer.component';
+import { HeaderOneComponent } from './componants/header-one/header-one.component';
 @Pipe({ name: 'safe' })
 @NgModule({
   declarations: [
@@ -124,7 +127,10 @@ import { VerticalstepperformComponent } from './componants/verticalstepperform/v
     PaymentSuccessComponent,
     PaymentFailureComponent,
     TermsconditionsComponent,
-    VerticalstepperformComponent
+    VerticalstepperformComponent,
+    LatestAnnoucementsComponent,
+    FooterComponent,
+    HeaderOneComponent
   ],
   imports: [
     AutocompleteLibModule,
@@ -144,6 +150,8 @@ import { VerticalstepperformComponent } from './componants/verticalstepperform/v
     ReactiveFormsModule,
     NgxPaginationModule,
     PipesModule,
+    MatTableModule,
+    MatPaginatorModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
       radius: 100,

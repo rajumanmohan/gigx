@@ -84,6 +84,8 @@ export class VerticalstepperformComponent implements OnInit {
   steptwo_detailsArray = [];
   stepthree_details = {};
   stepfour_details = {};  
+  employmentTypes = [{name: 'Gig', checked: true}, {name: 'Contract', checked: false}, {name: 'Full time', checked: false}]
+
 
   private myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
@@ -547,6 +549,21 @@ complete(curStepBtn, status) {
     this.empType = event.target.value;
     console.log(this.empType);
   }
+
+  onEmploymentTypeCheck(event, data){
+    for(var i =0; i< this.employmentTypes.length; i++){
+      if(event.target.checked && data.name == this.employmentTypes[i].name)
+        this.employmentTypes[i].checked = true;
+      if(!event.target.checked && data.name == this.employmentTypes[i].name)
+        this.employmentTypes[i].checked = false;
+    }
+  }
+
+  isEmploymentTypeValid(){
+    return this.employmentTypes.filter(x=>x.checked == true).length > 0 ? true: false;
+  }
+
+
   get f1() { return this.registrationForm1.controls; }
   get f2() { return this.f1.qualifications as FormArray }
   registration1(form, id) {
@@ -579,6 +596,7 @@ complete(curStepBtn, status) {
     this.obj2["year_of_completion"] = this.registrationForm1.value.year_of_completion;
     this.obj2["professional_qualification"] = this.registrationForm1.value.professional_qualification;
     this.obj2["other_highest_qualification"] = "";
+    this.obj2["other_university"] = this.registrationForm1.value.other_institution ? this.registrationForm1.value.other_institution: null;
 
     // this.registrationForm1.value.qualifications.unshift(this.obj2);//temp
 
@@ -591,6 +609,7 @@ complete(curStepBtn, status) {
       this.steptwo_detailsArray = [];
       for (var i = 0; i < this.f2.controls.length; i++) {
         var tempForm = this.f2.controls as FormGroup[];
+        debugger;
         var qualifications = {
           "hq_id": tempForm[i].controls['high_qualification'].value,
           "other_highest_qualification": tempForm[i].controls['professional_certification1'] ? tempForm[i].controls['professional_certification1'].value : '',
@@ -599,9 +618,11 @@ complete(curStepBtn, status) {
           "professional_qualification": tempForm[i].controls['professional_qualification1'].value,
           "mode_of_study": tempForm[i].controls['degree1'].value,
           "country_id": tempForm[i].controls['country'].value,
+          "other_university": tempForm[i].controls['other_institution']? tempForm[i].controls['other_institution'].value: null
         }
         this.steptwo_detailsArray.push(qualifications);
       }
+      debugger;
       var qualifications1 = {
         "hq_id": this.registrationForm1.value.highQul,
         "other_highest_qualification": this.registrationForm1.controls['professional_certification'] ? this.registrationForm1.controls['professional_certification'].value : '',
@@ -610,6 +631,7 @@ complete(curStepBtn, status) {
         "professional_qualification": this.registrationForm1.value.professional_qualification,
         "mode_of_study": this.registrationForm1.value.degree,
         "country_id": this.registrationForm1.value.country,
+        "other_university": this.registrationForm1.value.other_institution ? this.registrationForm1.value.other_institution: null
       }
       this.steptwo_detailsArray.push(qualifications1);
 
@@ -639,8 +661,9 @@ complete(curStepBtn, status) {
     this.jobPreferrences.value.desired_employment_type = this.empType;
     this.jobPreferrences.value.skills = this.newArr.toString();
     this.jobPreferrences.value.talent_image = this.url1;
+    var selectedEmploymentTypes = this.employmentTypes.filter(x=>x.checked).map(x=>x.name).join(', ');
     this.submitted4 = true;
-    if (this.jobPreferrences.invalid) {
+    if (this.jobPreferrences.invalid || !this.isEmploymentTypeValid()) {
       return;
     } else {
 
@@ -649,7 +672,7 @@ complete(curStepBtn, status) {
         "preference_industry_id": this.jobPreferrences.controls['preference_industry_type'].value,
         "preference_role_id": this.jobPreferrences.controls['preference_role'].value,
         "preference_other_role": this.jobPreferrences.controls['role_others'] ? this.jobPreferrences.controls['role_others'].value : '',
-        "desired_employment_type": this.jobPreferrences.controls['desired_employment_type'].value,
+        "desired_employment_type": selectedEmploymentTypes, //this.jobPreferrences.controls['desired_employment_type'].value,
         "skills": this.jobPreferrences.controls['skills'].value.join(','),
         "work_preference": this.jobPreferrences.controls['work_preferences'].value
       };
@@ -885,6 +908,30 @@ complete(curStepBtn, status) {
       ngForm.removeControl('professional_certification1');
     }
     this.currentIndex = index + 1;
+  }
+
+  onUniversityChange(event: any) {
+    var universityName = this.institutionsList.find(x=>x.university_id == event.currentTarget.value).university_name;
+
+    if (universityName == 'Others') {
+      this.registrationForm1.addControl('other_institution', new FormControl('', Validators.required));
+    }
+    else {
+      this.registrationForm1.removeControl('other_institution');
+    }
+    //this.currentIndex = index + 1;
+  }
+  
+  onUniversityChangeCustom(event: any, index, ngForm) {
+    var universityName = this.institutionsListCustom[index].find(x=>x.university_id == event.currentTarget.value).university_name;
+
+    if (universityName == 'Others') {
+      ngForm.addControl('other_institution', new FormControl('', Validators.required));
+    }
+    else {
+      ngForm.removeControl('other_institution');
+    }
+    //this.currentIndex = index + 1;
   }
 
   isOtherRoleSelected = false;

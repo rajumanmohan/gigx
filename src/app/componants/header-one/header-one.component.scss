@@ -1,0 +1,56 @@
+.login-list{
+    margin-top: 3px;
+    font-size: 24px;
+}
+.main-header {
+    box-shadow: 2px 3px 6px 0px #e1e1e1;
+a{
+    //font-size:19px;
+    color:#000000;
+}
+}
+
+app-header-one{
+    .profile-name {
+        h4{
+            color: #000000;
+            background: #fed501;
+            border-radius: 50%;
+            padding: 9px;
+            margin-left: 7px;
+            margin-top: 12px;
+            font-size: 18px;
+            width: 38px;
+            height: 38px;
+            text-align: center;
+        }
+    }
+
+    .main-header {
+        box-shadow: 2px 3px 6px 0px #e1e1e1;
+        background: #ffffff;
+    a{
+        font-size:1rem;
+        color: #000000!important;
+    }
+    .dropdown-button {
+        margin-top: 9px;
+        margin-left: 12px;
+        a{
+            text-decoration:none!important;
+        }
+        img{
+            width:16px;
+        }
+    }.vm-image{
+        width:36px!important;
+    }
+    .dropdown-item.active, .dropdown-item:active{
+        background-color: #f8f9fa!important;
+    }
+    li.nav-item {
+        margin-right: 26px;
+        font-weight: 600;
+    }
+    }
+}

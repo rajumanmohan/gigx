@@ -49,6 +49,7 @@ import { TermsconditionsComponent } from './componants/termsconditions/termscond
 import { PagenotfoundComponent } from './componants/pagenotfound/pagenotfound.component';
 
 import { VerticalstepperformComponent } from './componants/verticalstepperform/verticalstepperform.component';
+import { LatestAnnoucementsComponent } from './componants/latest-annoucements/latest-annoucements.component';
 
 
 
@@ -251,6 +252,10 @@ const routes: Routes = [
   {
     path: 'verticalstepperform',
     component: VerticalstepperformComponent
+  },
+  {
+    path: 'latestannoucements',
+    component: LatestAnnoucementsComponent
   }
 ];
 

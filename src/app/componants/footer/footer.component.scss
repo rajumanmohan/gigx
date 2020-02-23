@@ -1,0 +1,77 @@
+
+
+app-footer{
+    /* pre footer block style start*/
+
+.pre-footer-block {
+    border-top: 2px solid #2890c9;
+	padding: 30px 0px;
+	width: 100%;
+	float: left;
+}
+.pre-footer-block img {
+	width: 130px;
+	height: auto;
+}
+.pre-footer-block .social-media li {
+	display: inline-block;
+    border: 1px solid #000;
+    border-radius: 50%;
+    /* padding: 5px 10px; */
+    /* margin: 0px 5px 0px; */
+    color: #000;
+    height: 38px;
+    margin: 0px auto;
+    text-align: center;
+    width: 38px;
+    margin-right: 13px;
+}
+.pre-footer-block h5 {
+	padding: 15px 0px 20px;
+	margin-bottom: 0px;
+}
+.pre-footer-block ul {
+	padding: 0px;
+	margin-left: 5px;
+}
+.pre-footer-block ul li {
+	padding: 6px 0px;
+	color: #878787;
+}
+.pre-footer-block .para {
+	color: #878787;
+	padding:15px 0px;
+}
+.pre-footer-block .mail-block h5 {
+	padding: 15px 0px;
+	margin-bottom: 0px;
+}
+.pre-footer-block .mail-block .para {
+	padding: 0px 0px 25px 0px;
+}
+.pre-footer-block .address ul li p {
+	margin-bottom: 0px;
+	color: #878787;
+	font-size: 12px;
+}
+.pre-footer-block input {
+	width: 100%;
+	border: none;
+	border-bottom: 1px solid #000;
+}
+.pre-footer-block button {
+	background-color: #1c7fa9;
+	border-radius: 50px;
+	color: #fff;
+	border: none;
+	padding: 6px 15px;
+	margin: 20px 0px 0px;
+	font-weight: lighter;
+	width: 100%;
+}
+.footer-text{
+    margin-bottom: 0px;
+    padding-top: 15px;
+}
+
+}

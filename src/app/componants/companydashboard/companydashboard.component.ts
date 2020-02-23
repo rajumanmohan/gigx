@@ -25,6 +25,11 @@ import {
 export class CompanydashboardComponent implements OnInit {
   talentId; companyId; loginType;
   dashboardInfo = {};
+  upcomingMilestores = [];
+  // displayedColumns = ['id', 'title', 'description', 'status'];
+  // dataSource:MatTableDataSource<Element[]>;
+  // @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+
   constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService, private formBuilder: FormBuilder) {
     this.talentId = localStorage.getItem('talent_id');
     this.companyId = localStorage.getItem('company_id');
@@ -40,6 +45,7 @@ export class CompanydashboardComponent implements OnInit {
     window.scroll(0, 0);
     this.getCompanyProfile();
     this.getCompanyDashboardInfo();
+    this.getUpcomingMilestonesByCompany();
   }
   gotoProfile() {
     if (this.loginType == 'company') {
@@ -77,6 +83,13 @@ export class CompanydashboardComponent implements OnInit {
     var requestObj = { company_id: this.companyId};
     this.appSer.getCompanyDashboardInfo(requestObj).subscribe((res) => {
       this.dashboardInfo = res['companyDashboardCounts'];
+    })
+  }
+
+  getUpcomingMilestonesByCompany(){
+    var requestObj = { company_id: this.companyId};
+    this.appSer.getUpcomingMilestonesByCompany(requestObj).subscribe((res) => {
+      this.upcomingMilestores = res['milestones'];
     })
   }
 }

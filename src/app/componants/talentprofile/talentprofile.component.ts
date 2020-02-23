@@ -105,6 +105,7 @@ export class TalentprofileComponent implements OnInit {
     }
   }
   stepone_details = {};
+  employmentTypes = [{name: 'Gig', checked: false}, {name: 'Contract', checked: false}, {name: 'Full time', checked: false}]
 
   ngOnInit() {
     this.showtalentProfile();
@@ -610,7 +611,8 @@ export class TalentprofileComponent implements OnInit {
           "professional_qualification": tempForm[i].controls['professional_qualification'].value,
           "mode_of_study": tempForm[i].controls['degree1'].value,
           "country_id": tempForm[i].controls['country'].value,
-          "educational_id": tempForm[i].controls['educational_id'] ? tempForm[i].controls['educational_id'].value : ""
+          "educational_id": tempForm[i].controls['educational_id'] ? tempForm[i].controls['educational_id'].value : "",
+          "other_university": tempForm[i].controls['other_institution'] ? tempForm[i].controls['other_institution'].value : null,
         }
         this.steptwo_detailsArray.push(qualifications);
       }
@@ -655,19 +657,27 @@ export class TalentprofileComponent implements OnInit {
     this.f2.controls = [];
 
     for (var i = 0; i < this.talentEducationDetails.length; i++) {
+      debugger;
       var fieldSet = {
         high_qualification: [this.talentEducationDetails[i].highest_qualification, Validators.required],
         country: [null, Validators.required],
-        professional_qualification: [this.talentEducationDetails[i].professional_qualification, Validators.required],
+        professional_qualification: [this.talentEducationDetails[i].professional_qualification],
         institution: [this.talentEducationDetails[i].university_name, Validators.required],
         year_of_completion: [this.talentEducationDetails[i].year_of_completion, Validators.required],
         degree1: [null, Validators.required],
-        educational_id: [this.talentEducationDetails[i].educational_id || null]
+        educational_id: [this.talentEducationDetails[i].educational_id || null],
+        //other_institution: [null, Validators.required]
       };
 
       if(this.talentEducationDetails[i].hqid == 4){
         fieldSet["professional_certification"] = [this.talentEducationDetails[i].other_highest_qualification , Validators.required];
       }
+
+      if(this.talentEducationDetails[i].university_name == 'Others'){
+        fieldSet["other_institution"] = [this.talentEducationDetails[i].other_university, Validators.required]
+      }
+
+
 
       this.f2.push(this.fb.group(fieldSet));
 
@@ -825,6 +835,7 @@ export class TalentprofileComponent implements OnInit {
     this.f2.push(this.fb.group({
       high_qualification: ['', Validators.required],
       institution: ['', Validators.required],
+      //other_institution: ['', Validators.required],
       year_of_completion: ['', Validators.required],
       degree1: ['Full time'],
       professional_qualification: [''],
@@ -934,8 +945,22 @@ export class TalentprofileComponent implements OnInit {
 
   empType;
   employeeType(event) {
+
     this.empType = event.target.value;
     console.log(this.empType);
+  }
+
+  onEmploymentTypeCheck(event, data){
+    for(var i =0; i< this.employmentTypes.length; i++){
+      if(event.target.checked && data.name == this.employmentTypes[i].name)
+        this.employmentTypes[i].checked = true;
+      if(!event.target.checked && data.name == this.employmentTypes[i].name)
+        this.employmentTypes[i].checked = false;
+    }
+  }
+
+  isEmploymentTypeValid(){
+    return this.employmentTypes.filter(x=>x.checked == true).length > 0 ? true: false;
   }
 
   get f4() { return this.jobPreferrences.controls; }
@@ -943,11 +968,13 @@ export class TalentprofileComponent implements OnInit {
     this.editjobpreference = false;
     this.showjobPreferences = true;
     this.newArr = [];
+    
     this.jobPreferrences = this.fb.group({
       preference_location: [this.talentJobPreference.location, Validators.required],
       preference_industry_type: [this.talentJobPreference.industry_id, Validators.required],
       preference_role: [this.talentJobPreference.role_id, Validators.required],
-      desired_employment_type: [this.talentJobPreference.employment_type, Validators.required],
+      //desired_employment_type: [this.talentJobPreference.employment_type, Validators.required],
+      desired_employment_type: [this.talentJobPreference.employment_type],
       work_preferences: [this.talentJobPreference.work_preferences, Validators.required],
       skills: [ this.talentJobPreference.skill_ids ? this.talentJobPreference.skill_ids.split(',') : [] , Validators.required],
     })
@@ -957,15 +984,23 @@ export class TalentprofileComponent implements OnInit {
      // this.jobPreferrences.patchValue({ 'skills': this.talentJobPreference.skills ? this.talentJobPreference.skills.split(',') : [] });
       this.jobPreferrences.patchValue({ 'desired_employment_type': this.talentJobPreference.employment_type });
       this.jobPreferrences.patchValue({ 'work_preferences': this.talentJobPreference.work_preferences });
+
+      this.employmentTypes.map(x=>x.checked = false);
+      for(var i=0;i<this.employmentTypes.length; i++){
+        if((this.talentJobPreference.employment_type.split(', ')).indexOf(this.employmentTypes[i].name) > -1 ){
+          this.employmentTypes[i].checked = true;
+        }
+      }
     }, 100);
 
 
   }
   submitJob() {
     this.jobPreferrences.value.desired_employment_type = this.empType;
+    var selectedEmploymentTypes = this.employmentTypes.filter(x=>x.checked).map(x=>x.name).join(', ');
     this.jobPreferrences.value.skills = this.newArr.toString();
     this.submitted4 = true;
-    if (this.jobPreferrences.invalid) {
+    if (this.jobPreferrences.invalid ||  !this.isEmploymentTypeValid()) {
       return;
     } else {
       var tempObj = {
@@ -973,7 +1008,7 @@ export class TalentprofileComponent implements OnInit {
         "preference_industry_id": this.jobPreferrences.controls['preference_industry_type'].value,
         "preference_role_id": this.jobPreferrences.controls['preference_role'].value,
         "preference_other_role": this.jobPreferrences.controls['role_others'] ? this.jobPreferrences.controls['role_others'].value : '',
-        "desired_employment_type": this.jobPreferrences.controls['desired_employment_type'].value,
+        "desired_employment_type": selectedEmploymentTypes,//this.jobPreferrences.controls['desired_employment_type'].value,
         "skills": this.jobPreferrences.controls['skills'].value.join(','),
         "work_preference": this.jobPreferrences.controls['work_preferences'].value,
         "talent_id": this.talentId,
@@ -1273,6 +1308,18 @@ export class TalentprofileComponent implements OnInit {
       ngForm.removeControl('professional_certification');
     }
     this.currentIndex = index + 1;
+  }
+
+  onUniversityChangeOther(event: any, index, ngForm) {
+    var universityName = this.institutionsListCustom[index].find(x=>x.university_id == event.currentTarget.value).university_name;
+
+    if (universityName == 'Others') {
+      ngForm.addControl('other_institution', new FormControl('', Validators.required));
+    }
+    else {
+      ngForm.removeControl('other_institution');
+    }
+    //this.currentIndex = index + 1;
   }
 
   isOtherRoleSelected = false;

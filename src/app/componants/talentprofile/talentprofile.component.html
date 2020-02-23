@@ -540,7 +540,7 @@
 
                                 </td>
                             </tr>
-                            <tr class="b-0">
+                            <tr class="b-0" *ngIf="data.professional_qualification">
                                 <td class="b-0 contact-title">PROFESSIONAL QUALIFICATION</td>
                                 <td class="b-0"><span>:</span>
                                     <span *ngIf="edit==false">{{data.professional_qualification}}</span>
@@ -550,7 +550,7 @@
                             <tr class="b-0">
                                 <td class="b-0 contact-title">UNIVERSITY NAME</td>
                                 <td class="b-0"><span>:</span>
-                                    <span *ngIf="edit==false">{{data.university_name}}</span>
+                                    <span *ngIf="edit==false">{{data.university_name == 'Others' ? data.other_university : data.university_name}}</span>
 
                                 </td>
                             </tr>
@@ -653,12 +653,12 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <select class="form-control" id="institution1"
-                                                        formControlName="institution"
+                                                        formControlName="institution"  (change)="onUniversityChangeOther($event,i,education)"
                                                         [ngClass]="{ 'is-invalid':education.controls.institution.errors&& submitted1 }">
                                                         <option [value]=null [selected]="true">Select Institute of
                                                             Learning </option>
                                                         <option *ngFor="let data of institutionsListCustom[i]"
-                                                            [value]="data.university_id">
+                                                            [value]="data.university_id" >
                                                             {{data.university_name}}
                                                         </option>
                                                     </select>
@@ -670,6 +670,20 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="form-group" *ngIf="education.controls.other_institution"> 
+                                                <input type="text" class="form-control" id="other_institution"
+                                                placeholder="Specify specity"
+                                                formControlName="other_institution" />
+                                                <div class="custom-invalid-feedback"
+                                                *ngIf="education.controls.other_institution.errors">
+                                                <div
+                                                    *ngIf="education.controls.other_institution.errors.required">
+                                                    University Name is required
+                                                </div>
+                                            </div>
+                                            </div>
+
                                             <div class="form-group">
                                                 <select class="form-control" id="year_of_completion1"
                                                     placeholder="Industry Type" formControlName="year_of_completion"
@@ -1177,7 +1191,18 @@
 
                                 <div class="form-group">
                                     <p class="dark-col">Desired employment type</p>
-                                    <div class="custom-control custom-radio custom-control-inline"
+
+                                    <div class="custom-control custom-checkbox custom-control-inline" *ngFor="let data of employmentTypes;let i = index" >
+                                    <input type="checkbox" id="check{{data.name}}"
+                                     [checked]="data.checked" class="custom-control-input" (change)="onEmploymentTypeCheck($event, data)"
+                                         > 
+                                    <label class="custom-control-label" for="check{{data.name}}">{{data.name}}</label>
+                                    </div>
+
+                                    <div  class="custom-invalid-feedback" *ngIf="!isEmploymentTypeValid()">
+                                            <div >Desired employment type is required</div>
+                                    </div>
+                                    <!-- <div class="custom-control custom-radio custom-control-inline"
                                         (change)="employeeType($event)">
                                         <input type="radio" id="customRadioInline12"
                                             formControlName="desired_employment_type" class="custom-control-input"
@@ -1198,7 +1223,7 @@
                                             value="Full time">
                                         <label class="custom-control-label" for="customRadioInline14">Full
                                             time</label>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div>
                                     <h6 class="add-details">Add Skills</h6>

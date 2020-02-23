@@ -1,0 +1,70 @@
+<!-- footer -->
+<div class="pre-footer-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <img src="../../../assets/images/logo.png" alt="">
+                <!-- <p class="para">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
+                <ul class="social-media mt-5">
+                    <li><i class="fab fa-facebook-f"></i>
+                    </li>
+                    <li><i class="fab fa-twitter"></i>
+                    </li>
+                    <li><i class="fab fa-linkedin-in"></i>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 site-map">
+                <h5>Site Map</h5>
+                <ul class="">
+                    <li><a href="#" routerLink="">Home</a></li>
+                    <li><a href="#" routerLink="/about-us">About</a></li>
+                    <li><a href="#" routerLink="/contact-us">Contact us</a></li>
+                    <li><a href="#" routerLink="/terms-and-conditions">Terms And Conditions</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="address">
+                    <h5>Contact</h5>
+                    <ul>
+                        <li>
+                            <p>SORGA INNOVATION SDN BHD</p>
+                        </li>
+                        <li>
+                            <p>No.7A, Jalan Tun Mohd Faud 3,</p>
+                        </li>
+                        <li>
+                            <p>Taman Tun Dr lsmail,</p>
+                        </li>
+                        <li>
+                            <p>60000 Kuala Lumpur,</p>
+                        </li>
+                        <li>
+                            <p>Malaysia</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <div class="mail-block">
+                    <h5>Join Our Gigx</h5>
+                    <form [formGroup]="subscribeFrom">
+                            <div class="input-group password-group mb-3">
+                                <input type="email" class="form-control" name="email" placeholder="Enter your email"
+                                    formControlName="email" [ngClass]="{'is-invalid':sub.email.errors&& submitEmail}">
+                                <div class="invalid-feedback" *ngIf="sub.email.errors">
+                                    <div *ngIf="sub.email.errors.required">Email is required</div>
+                                    <div *ngIf="sub.email.errors.email">Enter a valid Email</div>
+                                </div>
+                            </div>
+                            <button class="send-btn" type="submit" (click)="submitsubscribe()">SEND</button>
+                        </form>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="footer-text text-center">&copy; 2019 GigxGlobal. All Rights Reserved</p>
+    </div>
+</div>
+
+<!-- footer -->
