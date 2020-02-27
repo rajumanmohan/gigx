@@ -12,7 +12,7 @@
 }
 .header-main-block h1, .header-main-block h2, .header-main-block h3 {
 	position: relative;
-	font-size: 80px;
+	font-size: 72px;
 	font-weight: 800;
 }
 .header-main-block h1 {
@@ -55,7 +55,7 @@
 	position: relative;
 	color: #2c2e35;
 	font-size: 40px;
-	font-weight: 800;
+	font-weight: 500;
 	padding-bottom: 30px;
 }
 @keyframes anim-1 {
@@ -283,7 +283,7 @@ img.img-responsive {
     position: relative;
 	// color:#000000;
 	color:#208AC4;
-    font-family: serif;
+    font-family: arial;
 }
 .carousel-caption-txt span {
 	color: #000000;
@@ -298,7 +298,7 @@ img.img-responsive {
 	font-size: 83px;
     font-weight: 600;
     line-height: 93px;
-    font-family: serif;
+    font-family: arial;
 }
 .custom-color {
 	margin-left: 15px;
@@ -327,7 +327,7 @@ img.img-responsive {
     margin-top: -33px;
     color: #000000;
     left: 94px;
-    font-family: serif;
+    font-family: arial;
 }
 /*slider style end */
 
@@ -550,7 +550,8 @@ img.img-responsive {
 }
 .first-step-block .first-step-strip {
 	box-shadow: rgba(0, 0, 0, 0.5) 5px 8px 17px 0px;
-    height: 408px;
+	height: 408px;
+	margin-top: 32px;
 }
 .first-step-block {
 	width: 100%;
@@ -575,7 +576,7 @@ img.img-responsive {
     margin-bottom: 20px;
 }
 .first-step-block .first-step-strip h4 {
-	font-size: 1.3rem;
+	font-size: 1.25rem;
 	color: #2c2e35;
 	line-height: 30px;
 	font-weight: 800;

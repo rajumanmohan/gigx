@@ -35,6 +35,8 @@ export class PostagigComponent implements OnInit {
   submitted_MS = false;
   projectMileStones = [];
   isMileStoneInfoValid = false;
+  sum = 0;
+  val;  
 
   MileStoneStamp;
   public value: Date = new Date();
@@ -250,6 +252,7 @@ export class PostagigComponent implements OnInit {
   get f_ms() { return this.mileStoneForm.controls; }
 
   onAddMilestoneClick() {
+    this.sum = 0;
     this.submitted_MS = true;
     if (this.mileStoneForm.invalid) {
       return;
@@ -281,10 +284,18 @@ export class PostagigComponent implements OnInit {
       disableSince: {}
     }
 
+    for(let i = 0; i < this.projectMileStones.length; i++){ 
+      this.sum += parseInt(this.projectMileStones[i].milestone_price.slice(3)) 
+    }
+
   }
 
   removeMileStone(index){
+    this.sum = 0;
     this.projectMileStones.splice(index, 1);
+    for(let i = 0; i < this.projectMileStones.length; i++){ 
+      this.sum += parseInt(this.projectMileStones[i].milestone_price.slice(3)) 
+    }
   }
 
   onPostAGigSubmit() {

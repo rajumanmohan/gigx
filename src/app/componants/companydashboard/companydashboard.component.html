@@ -280,5 +280,38 @@
             </div>
 
         </div>
+
+        <div class="row dashboard">
+            <div class="col-md-12">
+                <h1 class="text-center mb-3">Upcoming Milestones</h1>
+                <div class="table-responsive">
+                    <table class="table table-bordered b-0">
+                        <thead>
+                            <tr>
+                                <th>S NO</th>
+                                <th>Gig Title</th>
+                                <th>Milestone Title</th>
+                                <th>Milestone Description</th>
+                                <th>Milestone StartDate</th>
+                                <th>Milestone EndDate</th>
+                                <th>Milestone Price</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let data of upcomingMilestores ; let i = index">
+                            <tr class="b-0">
+                                <td>{{i+1}}</td>
+                                <td>{{data.gig_title}}</td>
+                                <td>{{data.milestone_title}}</td>
+                                <td>{{data.milestone_description}}</td>
+                                <td>{{data.milestone_start_date}}</td>
+                                <td>{{data.milestone_end_date}}</td>
+                                <td>{{data.milestone_price}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
     </div>
 </section>

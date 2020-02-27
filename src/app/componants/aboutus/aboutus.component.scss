@@ -165,7 +165,7 @@ img.img-responsive {
 .header-block .carousel-caption-txt {
     position: relative;
     color:#000000;
-    font-family: serif;
+	font-family: arial;
 }
 .header-block .carousel-caption-main ul {
 	position: absolute;
@@ -176,7 +176,7 @@ img.img-responsive {
 	font-size: 83px;
     font-weight: 600;
     line-height: 93px;
-    font-family: serif;
+	font-family: arial;
 }
 .custom-color {
 	margin-left: 15px;
@@ -198,52 +198,54 @@ img.img-responsive {
 	position: absolute;
     margin-top: -20px;
     color:#000000;
-    font-family: serif;
+    font-family: arial;
 }
 /*slider style end */
 // banner styles
 .about-banner{
-    background-image: url(../../../assets/images/aboutus.jpg);
+    background-image: url(../../../assets/images/aboutus.png);
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: auto;
     position: relative;
     width: 100%;
-	height: 637px;
+	height: 680px;
 	h1{
-        color: #2c2e35;
-        top: 20%;
-        font-size: 60px;
-        font-family:Muli-Bold;
-        position: absolute;
-
+		color: rgba(255,255,255,0.4);
+		top: 5%;
+		font-size: 90.6667px;
+		font-family: arial;
+		position: absolute;
+		font-weight: 800;
+		line-height: 86px;
     }
     h2{
-        color: #2890c9;
-        top: 46%;
-        font-size: 50px;
-        font-family:Muli-Bold;
-        position: absolute;
+		color: #2890c9;
+		// color: #2089c2;
+		top: 40%;
+		font-size: 62.6667px;
+		font-family: arial;
+		position: absolute;
+		font-weight: 800;
 
     }
 }
 .banner-content{
     p{
-        top: 57%;
-        font-family: Muli-Regular;
-        position: absolute;
-        /* text-align: center; */
-        width: 53%;
-        color: #2c2e35;
-        font-size: 20px;
+        top: 52%;
+		font-family: arial;
+		position: absolute;
+		width: 43%;
+		color: #000;
+		font-size: 20px;
     }
 }
 .main-heading{
-    color: #2890c9;
-    text-align: center;
-    font-weight: 600;
+    color: rgba(216, 216, 216, 0.9);
+    font-weight: 800;
     margin-bottom: 18px;
     position: relative;
+    font-size: 62.6667px
 }
 // .main-heading:before{
 //     content: "";
@@ -265,6 +267,90 @@ img.img-responsive {
         margin-bottom: 12px;
         }
     }
+}
+.world-map-section {
+	background-color: #fff;
+	h1 {
+		color: rgba(216, 216, 216, 0.9);
+		font-weight: 800;
+		margin-bottom: 18px;
+		position: relative;
+		font-size: 62.6667px
+	}
+	h4 {
+		color: #2890c9;
+		font-weight: 800;
+		font-size: 26.6667px;
+		padding-top: 12px;
+	}
+	p{
+		color: #000;
+		padding-top: 20px;
+	}
+	button {
+		margin-top: 100px;
+		background-color: #2890c9;
+		border: 1px solid #2890c9;
+		color: #fff;
+	}
+	img {
+		padding-top: 12px;
+	}
+	.cont_address
+	{
+		margin:0 0 0 5px;
+	}
+	.cont_address li {
+		height: 45px
+	}
+	.malasia2 {
+		margin-top: 29%;
+		margin-left: 69%;
+		position: absolute;
+		display: block;
+	}
+	.add_con {
+		display: none;
+		padding: 5px;
+		background: #fff;
+		border-radius: 10px;
+		position: absolute;
+		margin-top: -108px;
+		border: 3px solid #22409a;
+		transition: all .5s;
+		font-size: 12px;
+		text-align: left;
+		z-index: 10;
+		min-height: 60px
+	}
+	.malaysia-con{
+		margin-top: -134px!important;
+	}
+	.add_con h2 {
+		width: 100px;
+		height: 100px;
+		position: absolute;
+		border-radius: 50%;
+		background: #22409a;
+		line-height:100px;
+		text-align: center;
+		color: #fff;
+		text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
+		right: 0;
+		font-size: 20px;
+		margin: -20px -30px 0 0
+	}
+	.spot:hover~.add_con {
+		width: 300px;
+		display: block;
+		transition: all .5s
+	}
+	.spot {
+		width: 12px;
+    	height: 15px;
+		display: inline-block;
+		cursor: pointer;
+	}
 }
 .footer-text{
     margin-bottom: 0px;
@@ -295,11 +381,16 @@ img.img-responsive {
 	background: #fff;
     .container-fluid{
      h1{
-        color: #2890c9;
-        text-align: center;
-        font-weight: 600;
-        margin-bottom: 18px;
-        position: relative;
+        // color: #2890c9;
+        // text-align: center;
+        // font-weight: 600;
+        // margin-bottom: 18px;
+		// position: relative;
+		color: rgba(216, 216, 216, 0.9);
+		font-weight: 800;
+		margin-bottom: 18px;
+		position: relative;
+		font-size: 62.6667px
      }
      h1:before{
         content: "";
@@ -326,7 +417,6 @@ img.img-responsive {
 	}
 }
 .click-section {
-    border-bottom: 2px solid #2890c9;
 	background: #ffc734;
 	h1{
 		font-size: 50px;
@@ -510,34 +600,52 @@ img.img-responsive {
 
 @media (max-width: 767px) {
 	.about-banner{
+		background-image: url(../../../assets/images/aboutus.png);
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		position: relative;
+		width: 100%;
 		height: 600px;
 		h1{
-			color: #2c2e35;
-			top: 24%;
-			font-size: 32px;
-			font-family:Muli-Bold;
+			color: rgba(255,255,255,0.4);
+			top: 5%;
+			font-size: 35.6667px;
+			font-family: arial;
 			position: absolute;
-	
+			font-weight: 800;
+			line-height: 50px;
 		}
 		h2{
 			color: #2890c9;
-			top: 39%;
-			font-size: 40px;
-			font-family:Muli-Bold;
+			// color: #2089c2;
+			top: 34%;
+    		font-size: 35.6667px;
+			font-family: arial;
 			position: absolute;
+			font-weight: 800;
 	
 		}
 	}
 	.banner-content{
 		p{
-			top: 48%;
-			font-family: Muli-Regular;
+			top: 42%;
+			font-family: arial;
 			position: absolute;
-			/* text-align: center; */
 			width: 80%;
-			color: #2c2e35;
+			color: #000;
 			font-size: 20px;
-			text-align: justify;
+		}
+	}
+	.main-heading{
+		font-size: 32px
+	}
+	.our-features {
+		background: #fff;
+		.container-fluid{
+		 h1{
+			font-size: 32px
+		 }
 		}
 	}
 	.click-section {

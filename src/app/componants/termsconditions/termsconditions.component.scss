@@ -130,7 +130,8 @@ color:#000000!important;
         color: #ffffff;
         top: 37%;
         font-size: 50px;
-        font-family:Muli-Bold;
+		// font-family:Muli-Bold;
+		font-family: arial;
         position: absolute;
 
     }
@@ -138,7 +139,8 @@ color:#000000!important;
 .banner-content{
     p{
         top: 47%;
-        font-family: Muli-Regular;
+		// font-family: Muli-Regular;
+		font-family: arial;
         position: absolute;
         /* text-align: center; */
         width: 53%;
@@ -242,7 +244,7 @@ img.img-responsive {
 .header-block .carousel-caption-txt {
     position: relative;
     color:#000000;
-    font-family: serif;
+    font-family: arial;
 }
 .header-block .carousel-caption-main ul {
 	position: absolute;
@@ -253,7 +255,7 @@ img.img-responsive {
 	font-size: 83px;
     font-weight: 600;
     line-height: 93px;
-    font-family: serif;
+    font-family: arial;
 }
 .custom-color {
 	margin-left: 15px;
@@ -275,7 +277,7 @@ img.img-responsive {
 	position: absolute;
     margin-top: -20px;
     color:#000000;
-    font-family: serif;
+    font-family: arial;
 }
 /*slider style end */
 

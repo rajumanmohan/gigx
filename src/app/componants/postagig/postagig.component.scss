@@ -1,3 +1,7 @@
+section.company-registration {
+    // background: #e6e6e6;
+    background: #f3f3f3;
+}
 .login {
     h1{
         font-weight: 600;
@@ -50,10 +54,10 @@
     color: #818181!important;
 }
 .company-registration {
-    .custom-control-inline {
-        width: 23%;
-        vertical-align: -webkit-baseline-middle;
-    }
+    // .custom-control-inline {
+    //     width: 23%;
+    //     vertical-align: -webkit-baseline-middle;
+    // }
     .form-group{
         margin-bottom:28px;
     }
@@ -103,15 +107,19 @@ background:#f1f1f1!important;
     }
 }
 
-.hiring{
-    .custom-checkbox{
-        width:30%
-    }
-}
+// .hiring{
+//     .custom-checkbox{
+//         width:30%
+//     }
+// }
 .form-group{
     .custom-radio{
-        width:45%!important;
+        width:40%!important;
     }
+}
+.custom-control-inline {
+    margin-right: 2rem;
+    margin-top: 5px;
 }
 
 // HEADER CSS
@@ -162,4 +170,16 @@ a{
 
 }
 
-.mile-stone-list{border: 1px solid #ddd;} 
+.mile-stone-list{border: 1px solid #ddd;}
+.col-md-3.content-change div {
+    padding: 20px 24px 4px;
+}
+.content-change .fa {
+    font-size: 32px;
+    color: #208AC4;
+    padding: 2px 0px 10px;
+}
+.content-change h3 {
+    font-size: 1rem;
+    font-weight: 600;
+} 
