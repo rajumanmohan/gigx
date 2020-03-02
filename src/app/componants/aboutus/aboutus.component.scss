@@ -513,6 +513,13 @@ img.img-responsive {
 .header-block .carousel-caption-main ul li {
 	font-size: 62px;
 }
+.world-map-section{
+	.spot:hover~.add_con {
+		width: 260px;
+		display: block;
+		transition: all .5s
+	}
+}
 }
 @media (max-width: 1400px) {
 
@@ -527,6 +534,20 @@ img.img-responsive {
 			width:93%;
 		}
 	}
+	.world-map-section{
+		.spot:hover~.add_con {
+			width: 230px;
+			display: block;
+			transition: all .5s
+		}
+	}
+	}
+
+	@media (max-width: 1320px) {
+		.world-map-section .malaysia-con {
+			margin-top: -134px !important;
+			margin-left: -220px;
+		}
 	}
 
 
