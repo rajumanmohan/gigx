@@ -667,16 +667,24 @@ complete(curStepBtn, status) {
       return;
     } else {
 
+      var tempSelectedSkills = this.jobPreferrences.controls['skills'].value;
+      var selectedSkillIds = this.skillsList.filter(x=> tempSelectedSkills.indexOf(x.skill_name) > -1).map(x=>x.skill_id).join(',');
+      var selectedSkillNames = this.skillsList.filter(x=> tempSelectedSkills.indexOf(x.skill_name) > -1).map(x=>x.skill_name);
+      var nonExistingSkillNames = tempSelectedSkills.filter(x=>selectedSkillNames.indexOf(x) == -1).join(',');
+
+
       var tempObj = {
         "preference_location": this.jobPreferrences.controls['preference_location'].value,
         "preference_industry_id": this.jobPreferrences.controls['preference_industry_type'].value,
         "preference_role_id": this.jobPreferrences.controls['preference_role'].value,
         "preference_other_role": this.jobPreferrences.controls['role_others'] ? this.jobPreferrences.controls['role_others'].value : '',
         "desired_employment_type": selectedEmploymentTypes, //this.jobPreferrences.controls['desired_employment_type'].value,
-        "skills": this.jobPreferrences.controls['skills'].value.join(','),
+        //"skills": this.jobPreferrences.controls['skills'].value.join(','),
+        "skills": selectedSkillIds,
+        "other_skills": nonExistingSkillNames,
         "work_preference": this.jobPreferrences.controls['work_preferences'].value
       };
-
+      
       this.stepfour_details = tempObj;
 
       var finalPayload = { ...this.stepone_details, ...this.steptwo_details, ...this.stepthree_details, ...this.stepfour_details };
@@ -1014,10 +1022,12 @@ complete(curStepBtn, status) {
   }
 
   skillsList = [];
+  skillsNameList = [];
   getSkills() {
     this.appSer.getSkillList().subscribe((res) => {
       //this.skillsList = res['skills'].map(x=>x.skill_name);
       this.skillsList = res['skills'];
+      this.skillsNameList = res['skills'].map(x=>x.skill_name);
     });
   }
 

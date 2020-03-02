@@ -9,6 +9,7 @@
                     <div class="form-group" class="form-group">
                         <select id="exampleFormControlSelect1" class="form-control" placeholder="Industry Type"
                             formControlName="industry_type"
+                            (change)="onIndustryChange($event)"
                             [ngClass]="{ 'is-invalid': submitted && f.industry_type.errors }">
                             <option value="" [selected]=true [disabled]="true">Industry type</option>
                             <option *ngFor="let data of IndustryList" [value]="data.industry_id"> {{data.industry_name}}
@@ -21,6 +22,19 @@
                         <div *ngIf="submitted && f.industry_type.errors" class="invalid-feedback">
                             <div *ngIf="f.industry_type.errors.required">Industry type is required</div>
                         </div>
+                    </div>
+
+                    <div class="form-group" *ngIf="f.other_industry_type"> 
+                        <input type="text" class="form-control" id="other_industry_type"
+                        placeholder="Specify specity"
+                        formControlName="other_industry_type" />
+                        <div class="custom-invalid-feedback"
+                        *ngIf="f.other_industry_type.errors">
+                        <div
+                            *ngIf="f.other_industry_type.errors.required">
+                            Industry Type is required
+                        </div>
+                    </div>
                     </div>
 
                     <div class="form-group">

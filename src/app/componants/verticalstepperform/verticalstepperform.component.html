@@ -992,7 +992,7 @@
 			<div class="row setup-content-3" id="step-8">
 				<div class="col-md-12">
 					<h3 class="font-weight-bold pl-0 my-4"><strong>Job Preferences</strong></h3>
-					<form class="mt-3" [formGroup]="jobPreferrences" (ngSubmit)="submitJob('step-8')">
+					<form class="mt-3" [formGroup]="jobPreferrences">
 					<div class="row form-group">
                         <div class="col-md-12 required-label">
 						<input type="text" class="form-control" id="exampleInputEmail1"
@@ -1097,9 +1097,14 @@
 					</div>
 					<div class="row form-group">
                         <div class="col-md-12">
-						<type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsList"
+						<!-- <type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsList"
 						formControlName="skills" [custom]="true" [multi]="true" idField="skill_id"
 						nameField="skill_name" [complex]="true"
+						[ngClass]="{'is-invalid':f4.skills.errors&& submitted4}">
+						</type-ahead> -->
+						<type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsNameList"
+						formControlName="skills" [custom]="true" [multi]="true" idField="skill_id"
+						nameField="skill_name" [complex]="false"
 						[ngClass]="{'is-invalid':f4.skills.errors&& submitted4}">
 						</type-ahead>
 						<div *ngIf="f4.skills.errors&& submitted4" class="invalid-feedback">
@@ -1123,8 +1128,8 @@
 					</div>
 					<div class="mt-5">
 						<button type="button" class="btn btn-danger col-md-5" (click)="backStepper('step-8')">BACK</button>
-						<button type="submit"
-							class="btn btn-primary col-md-5 pull-right " (click)="complete('step-8', '0')">CONTINUE</button>
+						<button type="button"
+							class="btn btn-primary col-md-5 pull-right " (click)="submitJob('step-8')">CONTINUE</button>
 					</div>
 					</form>
 				</div>

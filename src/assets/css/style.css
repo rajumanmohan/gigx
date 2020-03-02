@@ -10,3 +10,9 @@
     font-family: Muli-Light;
     src: url(/assets/fonts/Muli-Light);
 }
+
+
+.dropdown-menu{
+    height: 300px;
+    overflow: auto;
+}

@@ -3,7 +3,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
 import { AppServiceService } from './../../Services/app-service.service';
 import { Router, NavigationExtras } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { slideFadeIn, slideFadeOut, useSlideFadeInAnimation, useSlideFadeOutAnimation } from '../../animations';
 import {
   bounceInAndOut, enterAndLeaveFromLeft, enterAndLeaveFromRight, fadeInAndOut,
@@ -240,6 +240,17 @@ export class CompanyregistrationComponent implements OnInit {
           this.toast.error(res['message'], "Error");
         }
       })
+    }
+  }
+
+  onIndustryChange(event){
+    var IndustryName = this.IndustryList.find(x=>x.industry_id == event.currentTarget.value).industry_name;
+
+    if (IndustryName == 'Others') {
+      this.registrationForm.addControl('other_industry_type', new FormControl('', Validators.required));
+    }
+    else {
+      this.registrationForm.removeControl('other_industry_type');
     }
   }
 

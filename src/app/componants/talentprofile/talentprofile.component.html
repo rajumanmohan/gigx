@@ -1229,9 +1229,14 @@
                                     <h6 class="add-details">Add Skills</h6>
                                 </div>
                                 <div class="form-group">
-                                    <type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsList"
+                                    <!-- <type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsList"
                                         formControlName="skills" [custom]="true" [multi]="true" idField="skill_id"
                                         nameField="skill_name" [complex]="true"
+                                        [ngClass]="{'is-invalid':f4.skills.errors&& submitted4}">
+                                    </type-ahead> -->
+                                    <type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsNameList"
+                                        formControlName="skills" [custom]="true" [multi]="true" idField="skill_id"
+                                        nameField="skill_name" [complex]="false"
                                         [ngClass]="{'is-invalid':f4.skills.errors&& submitted4}">
                                     </type-ahead>
                                     <div *ngIf="f4.skills.errors&& submitted4" class="invalid-feedback">
@@ -1255,7 +1260,7 @@
 
                                 <div class="mt-5 row">
                                     <div class="col-md-6">
-                                        <button type="submit" class="btn btn-primary ">Save</button>
+                                        <button type="button" class="btn btn-primary " (click)="submitJob()">Save</button>
                                     </div>
                                     <div class="col-md-6">
                                         <button type="button" class="btn btn-danger"

@@ -190,10 +190,12 @@ export class PostagigComponent implements OnInit {
       this.rolesList = res['roles']
     })
   }
+  skillsNameList =[];
   getSkills() {
     this.appSer.getSkillList().subscribe((res) => {
      // this.skillsList = res['skills'].map(x => x.skill_name);
      this.skillsList = res['skills'];
+     this.skillsNameList = res['skills'].map(x=>x.skill_name);
     });
   }
   CountiresList;
@@ -331,6 +333,12 @@ export class PostagigComponent implements OnInit {
     }
     
 
+    var tempSelectedSkills = this.f["skills"].value;
+      var selectedSkillIds = this.skillsList.filter(x=> tempSelectedSkills.indexOf(x.skill_name) > -1).map(x=>x.skill_id).join(',');
+      var selectedSkillNames = this.skillsList.filter(x=> tempSelectedSkills.indexOf(x.skill_name) > -1).map(x=>x.skill_name);
+      var nonExistingSkillNames = tempSelectedSkills.filter(x=>selectedSkillNames.indexOf(x) == -1).join(',');
+
+
     
     var requestObject =
     {
@@ -339,7 +347,9 @@ export class PostagigComponent implements OnInit {
       "gig_title": this.f['gig_title'].value,
       "gig_description": this.f['gig_desc'].value,
       "industry_id": this.f['industry_type'].value,
-      "skills": this.f["skills"].value ? this.f["skills"].value.join(',') : '',
+      //"skills": this.f["skills"].value ? this.f["skills"].value.join(',') : '',
+      "skills": selectedSkillIds,
+      "other_skills": nonExistingSkillNames,
       "years_of_experience": this.f["years_of_exp"].value,
       "role_id": this.f["role"].value,
       "country_id": this.f["country"].value,
@@ -363,6 +373,7 @@ export class PostagigComponent implements OnInit {
       "key_deliverables": this.f["key_deliverables"].value,
       "payment": `${this.f["payment_currency"].value} ${this.f["payment_price"].value} ${this.f["payment_type"].value}`
     }
+
 
     this.appSer.postAGig(requestObject).subscribe((res)=>{
       if (res['status'] == 200) {

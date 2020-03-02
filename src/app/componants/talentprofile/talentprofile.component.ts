@@ -936,10 +936,12 @@ export class TalentprofileComponent implements OnInit {
   }
 
   skillsList = [];
+  skillsNameList = [];
   getSkills() {
     this.appSer.getSkillList().subscribe((res) => {
       //this.skillsList = res['skills'].map(x=>x.skill_name);
       this.skillsList = res['skills'];
+      this.skillsNameList = res['skills'].map(x=>x.skill_name);
     });
   }
 
@@ -968,7 +970,6 @@ export class TalentprofileComponent implements OnInit {
     this.editjobpreference = false;
     this.showjobPreferences = true;
     this.newArr = [];
-    
     this.jobPreferrences = this.fb.group({
       preference_location: [this.talentJobPreference.location, Validators.required],
       preference_industry_type: [this.talentJobPreference.industry_id, Validators.required],
@@ -976,7 +977,8 @@ export class TalentprofileComponent implements OnInit {
       //desired_employment_type: [this.talentJobPreference.employment_type, Validators.required],
       desired_employment_type: [this.talentJobPreference.employment_type],
       work_preferences: [this.talentJobPreference.work_preferences, Validators.required],
-      skills: [ this.talentJobPreference.skill_ids ? this.talentJobPreference.skill_ids.split(',') : [] , Validators.required],
+      //skills: [ this.talentJobPreference.skill_ids ? this.talentJobPreference.skill_ids.split(',') : [] , Validators.required],
+      skills: [ this.talentJobPreference.skills ? this.talentJobPreference.skills.split(',') : [] , Validators.required],
     })
     setTimeout(() => {
       this.jobPreferrences.patchValue({ 'preference_industry_type': this.talentJobPreference.industry_id });
@@ -1003,17 +1005,25 @@ export class TalentprofileComponent implements OnInit {
     if (this.jobPreferrences.invalid ||  !this.isEmploymentTypeValid()) {
       return;
     } else {
+      var tempSelectedSkills = this.jobPreferrences.controls['skills'].value;
+      var selectedSkillIds = this.skillsList.filter(x=> tempSelectedSkills.indexOf(x.skill_name) > -1).map(x=>x.skill_id).join(',');
+      var selectedSkillNames = this.skillsList.filter(x=> tempSelectedSkills.indexOf(x.skill_name) > -1).map(x=>x.skill_name);
+      var nonExistingSkillNames = tempSelectedSkills.filter(x=>selectedSkillNames.indexOf(x) == -1).join(',');
+
       var tempObj = {
         "preference_location": this.jobPreferrences.controls['preference_location'].value,
         "preference_industry_id": this.jobPreferrences.controls['preference_industry_type'].value,
         "preference_role_id": this.jobPreferrences.controls['preference_role'].value,
         "preference_other_role": this.jobPreferrences.controls['role_others'] ? this.jobPreferrences.controls['role_others'].value : '',
         "desired_employment_type": selectedEmploymentTypes,//this.jobPreferrences.controls['desired_employment_type'].value,
-        "skills": this.jobPreferrences.controls['skills'].value.join(','),
+        //"skills": this.jobPreferrences.controls['skills'].value.join(','),
+        "skills": selectedSkillIds,
+        "other_skills": nonExistingSkillNames,
         "work_preference": this.jobPreferrences.controls['work_preferences'].value,
         "talent_id": this.talentId,
         "form_type": 'step4'
       };
+     
       this.stepfour_details = tempObj; 
       this.appSer.talentEditJob(this.stepfour_details).subscribe(res => {
         if (res['status'] == 200) {

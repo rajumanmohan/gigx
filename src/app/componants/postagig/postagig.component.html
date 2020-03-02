@@ -100,11 +100,16 @@
                         <label for="inputPassword" class="col-sm-3 col-form-label">REQUIRED SKILLS:
                         </label>
                         <div class="col-sm-9">
-                                <type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsList"
+                                <!-- <type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsList"
                                 formControlName="skills" [custom]="true" [multi]="true" idField="skill_id" nameField="skill_name" [complex]="true"
                                 [ngClass]="{'is-invalid':f.skills.errors&& submitted}"
                              >
-                           </type-ahead>
+                           </type-ahead> -->
+                           <type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsNameList"
+                                        formControlName="skills" [custom]="true" [multi]="true" idField="skill_id"
+                                        nameField="skill_name" [complex]="false"
+                                        [ngClass]="{'is-invalid':f.skills.errors&& submitted4}">
+                                    </type-ahead>
                             <div *ngIf="submitted && f.skills.errors" class="invalid-feedback">
                                 <div *ngIf="f.skills.errors.required">Skills are required</div>
                             </div>
@@ -528,7 +533,7 @@
                         <div class="col-sm-2">
                            <div *ngIf="showMileStoneInputs == true">
                                 <input type="text" myNumberOnly class="form-control" formControlName="payment_price" placeholder="Price"
-                                [ngClass]="{ 'is-invalid': submitted && f.payment_price.errors }" value="{{sum}}">
+                                [ngClass]="{ 'is-invalid': submitted && f.payment_price.errors }" [(ngModel)]="sum">
                            </div>
                            <div *ngIf="showMileStoneInputs == false">
                                 <input type="text" myNumberOnly class="form-control" formControlName="payment_price" placeholder="Price"
