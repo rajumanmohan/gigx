@@ -28,6 +28,7 @@ export class InvitedGigsComponent implements OnInit {
   paginationIndex = 0;
   itemsPerPage = 5;
   invitedGigsList = [];
+  invitedGigsCount = 0;
 
   constructor(private router: Router,private toast: ToastrService, private dataStorage: DataStorageService, private appSer: AppServiceService) {
 
@@ -48,6 +49,7 @@ export class InvitedGigsComponent implements OnInit {
     };
     this.appSer.getTalentInvitedGigs(requestObj).subscribe((res) => {
         this.invitedGigsList = res['invitedGigs'];
+        this.invitedGigsCount = res['invitedGigs'].length;
     });
   }
 
