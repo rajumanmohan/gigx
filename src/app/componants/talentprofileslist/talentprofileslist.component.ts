@@ -31,6 +31,7 @@ export class TalentProfilesListComponent implements OnInit {
   gigDetails = {};
   paginationIndex = 0;
   itemsPerPage = 5;
+  matchPercentage = 0;
   
   constructor(public route: ActivatedRoute, private appSer: AppServiceService, private toast: ToastrService) { 
     this.postId = route.snapshot.params.postId;
@@ -45,6 +46,11 @@ export class TalentProfilesListComponent implements OnInit {
     this.appSer.getTalentProfilesByPostId(this.postId).subscribe((res) => {
         this.talentProfilesList = res['talentProfiles'];
         this.gigDetails = res['gigDetails'][0];
+       
+        for(let i =0;i<this.talentProfilesList.length;i++){
+          var splitpercentage = this.talentProfilesList[i].percentage.split(".");
+          this.matchPercentage = splitpercentage[0];
+        }
     });
   }
 

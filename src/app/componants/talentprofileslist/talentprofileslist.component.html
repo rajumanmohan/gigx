@@ -43,6 +43,9 @@
 
                             <div class="row">
                                 <!-- job details -->
+                                <div class="col-md-2">
+                                    <img [src]="item.image" class="img-profile img-fluid" *ngIf="item.image" onerror="this.style.display='none'">
+                                </div>
                                 <div class="col-md-7">
                                         <h3>{{item.first_name}} {{item.last_name}}</h3>
                                         
@@ -62,17 +65,36 @@
                                 </div>
                                 <!-- job details -->
                                 <!-- apply job -->
-                                <div class="col-md-4 text-right">
-                                        <button class="btn-applied"  *ngIf="item.is_applied">Already Applied</button>
-                                        <button class="btn-invite" *ngIf="!item.is_applied && !item.is_invited" (click)="onInviteClick(item)">Invite</button>
-                                        <button class="btn-applied" *ngIf="!item.is_applied && item.is_invited">Already Invited</button>
-                                        <img [src]="item.image" class="img-profile" *ngIf="item.image" onerror="this.style.display='none'">
+                                <div class="col-md-3 text-right">
+                                        <button class="btn-applied mb-4"  *ngIf="item.is_applied">Already Applied</button>
+                                        <button class="btn-invite mb-4" *ngIf="!item.is_applied && !item.is_invited" (click)="onInviteClick(item)">Invite</button>
+                                        <button class="btn-applied mb-4" *ngIf="!item.is_applied && item.is_invited">Already Invited</button>
+                                        <!-- <div class="progress blue">
+                                            <span class="progress-left">
+                                                <span class="progress-bar"></span>
+                                            </span>
+                                            <span class="progress-right">
+                                                <span class="progress-bar"></span>
+                                            </span>
+                                            <div class="progress-value">{{matchPercentage}}</div>
+                                        </div> -->
 
+                                        <circle-progress [percent]="matchPercentage" [radius]="50" [outerStrokeWidth]="8"
+                                            [innerStrokeWidth]="8" [outerStrokeColor]="'#0ac629'" [space] = "-9" [innerStrokeColor]="'#fff'"
+                                            [animation]="true" [animationDuration]="4000" [showSubtitle]="false">
+                                        </circle-progress>
+                                        <p  class="text-right mt-2">
+                                            <a class="hover-effect" [routerLink]="['/profiledetails', this.postId, item.talent_id, 1]">
+                                                View More Details
+                                                <img src="../../../assets/images/right-arrow.png">
+                                            </a>
+                                        </p>
+                                        
                                 </div>
                                 <!-- apply job -->
                             </div>
 
-                                <div class="row">
+                                <!-- <div class="row">
                                         <div class="row col-md-12 text-right">
                                             <p  class="col-md-12 text-right">
                                                 <a class="hover-effect" [routerLink]="['/profiledetails', this.postId, item.talent_id, 1]">
@@ -81,7 +103,7 @@
                                                 </a>
                                             </p>
                                         </div>
-                                    </div>
+                                    </div> -->
 
                         </div>
                     </div>
