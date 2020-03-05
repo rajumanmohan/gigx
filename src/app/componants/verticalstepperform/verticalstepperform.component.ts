@@ -682,7 +682,8 @@ complete(curStepBtn, status) {
         //"skills": this.jobPreferrences.controls['skills'].value.join(','),
         "skills": selectedSkillIds,
         "other_skills": nonExistingSkillNames,
-        "work_preference": this.jobPreferrences.controls['work_preferences'].value
+        "work_preference": this.jobPreferrences.controls['work_preferences'].value,
+        "other_industry_type": this.jobPreferrences.controls['other_industry_type'] ? this.jobPreferrences.controls['other_industry_type'].value : ''
       };
       
       this.stepfour_details = tempObj;
@@ -1052,6 +1053,17 @@ complete(curStepBtn, status) {
       tempForm[index].patchValue({ 'institution1': null });
     });
     //}
+  }
+
+  onJFIndustryChange(event){
+    var IndustryName = this.industryTypes.find(x=>x.industry_id == event.currentTarget.value).industry_name;
+
+    if (IndustryName == 'Others') {
+      this.jobPreferrences.addControl('other_industry_type', new FormControl('', Validators.required));
+    }
+    else {
+      this.jobPreferrences.removeControl('other_industry_type');
+    }
   }
 
 

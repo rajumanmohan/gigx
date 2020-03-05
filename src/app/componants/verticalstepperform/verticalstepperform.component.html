@@ -1009,6 +1009,7 @@
                         <div class="col-md-12 required-label">
 						<select class="form-control" id="exampleFormControlSelect1"
 							placeholder="Industry Type" formControlName="preference_industry_type"
+							(change)="onJFIndustryChange($event)"
 							[ngClass]="{'is-invalid':f4.preference_industry_type.errors&& submitted4}">
 						<option value=null [selected]="true" [disabled]="true">Industry Type
 						</option>
@@ -1023,6 +1024,20 @@
                         </div>
                     </div>
 					</div>
+
+					<div class="form-group" *ngIf="f4.other_industry_type"> 
+						<input type="text" class="form-control" id="other_industry_type"
+						placeholder="Specify specity"
+						formControlName="other_industry_type" />
+						<div class="custom-invalid-feedback"
+						*ngIf="f4.other_industry_type.errors">
+						<div
+							*ngIf="f4.other_industry_type.errors.required">
+							Industry Type is required
+						</div>
+					</div>
+					</div>      
+
 					<div class="row form-group">
                         <div class="col-md-12 required-label">
 						<select class="form-control" id="exampleFormControlSelect1" placeholder="Role"

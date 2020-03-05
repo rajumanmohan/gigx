@@ -547,14 +547,14 @@
                             <select class="form-control" id="payment_type" formControlName="payment_type"
                                 [ngClass]="{ 'is-invalid': submitted && f.payment_type.errors }"
                                 placeholder="Select Payment Type">
-                                <option *ngIf="showMileStoneInputs == false" value="" [selected]="true" [disabled]="true">Select Payment Type</option>
-                                <option *ngIf="showMileStoneInputs == true" value="" [disabled]="true">Select Payment Type</option>
+                                <option value="" [selected]="true" [disabled]="true">Select Payment Type</option>
+                                <!-- <option *ngIf="showMileStoneInputs == true" value="" [disabled]="true">Select Payment Type</option> -->
                                 <option value="Per Hour">Per Hour</option>
                                 <option value="Per Day">Per Day</option>
                                 <option value="Per Week">Per Week</option>
                                 <option value="Per Month">Per Month</option>
                                 <option value="Per Project/Gig">Per Project/Gig</option>
-                                <option *ngIf="showMileStoneInputs == true" value="Per MileStone" [selected]="true">Per MileStone</option>
+                                <option *ngIf="showMileStoneInputs == true" value="Per MileStone">Per MileStone</option>
                             </select>
                             <div *ngIf="submitted && f.payment_type.errors" class="invalid-feedback">
                                 <div *ngIf="f.payment_type.errors.required">Payment Type is required</div>

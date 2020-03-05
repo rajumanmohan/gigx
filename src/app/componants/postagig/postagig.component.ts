@@ -35,6 +35,7 @@ export class PostagigComponent implements OnInit {
   submitted_MS = false;
   projectMileStones = [];
   isMileStoneInfoValid = false;
+  profileDetails;
   sum = 0;
   val;  
 
@@ -203,30 +204,42 @@ export class PostagigComponent implements OnInit {
     this.appSer.countriesList().subscribe((res) => {
       this.CountiresList = res['countries'];
       this.postGigForm.patchValue({ 'country': null });
+      this.getCompanyProfileInfo();
     })
   }
   countryId; statesList; MobileCode;
-  changeCountryList(id) {
+  changeCountryList(id, onLoad = false) {
     this.countryId = id;
     let params = {
       country_id: this.countryId,
     }
     this.appSer.statesList(params).subscribe((res) => {
       this.statesList = res['states'];
-      this.postGigForm.patchValue({ 'state': null });// .reset();
-      this.postGigForm.patchValue({ 'city': null });
-
+      if(onLoad){
+      this.postGigForm.patchValue({ 'state': this.profileDetails.state_id });
+      this.stateId = this.profileDetails.state_id;
+      }
+      else{
+        this.postGigForm.patchValue({ 'state': null });// .reset();
+        this.postGigForm.patchValue({ 'city': null });
+      }
       let params1 = {
         state_id: this.stateId,
       }
       this.appSer.citiesList(params1).subscribe((res) => {
         this.citiesList = res['cities'];
+        if(onLoad){
+             this.postGigForm.patchValue({ 'city': this.profileDetails.city_id });
+          }
+          else{
+         
         this.postGigForm.patchValue({ 'city': null });
+          }
       })
     })
   }
   stateId; citiesList;
-  changeStateList(id) {
+  changeStateList(id, onLoad = false) {
     this.stateId = id;
     let params = {
       state_id: this.stateId,
@@ -289,6 +302,9 @@ export class PostagigComponent implements OnInit {
     for(let i = 0; i < this.projectMileStones.length; i++){ 
       this.sum += parseInt(this.projectMileStones[i].milestone_price.slice(3)) 
     }
+
+    this.postGigForm.controls['payment_currency'].patchValue('RM');
+    this.postGigForm.controls['payment_type'].patchValue('Per MileStone'); 
 
   }
 
@@ -394,5 +410,23 @@ export class PostagigComponent implements OnInit {
 
   }
 
+  getCompanyProfileInfo(){
+    var companyId = localStorage.getItem('company_id');
+    var loginType = localStorage.getItem('industry_type');
+    let params = {
+      company_type: loginType,
+      company_id: companyId
+    }
 
+    this.appSer.CompanyProfile(params).subscribe((res) => {
+      this.profileDetails = res['data'];  
+
+      this.postGigForm.patchValue({ 'country': this.profileDetails.country_id });
+      this.postGigForm.patchValue({ 'location': this.profileDetails.address });
+      
+      this.changeCountryList(this.profileDetails.country_id, true);
+    });
+  }
+
+ 
 }
