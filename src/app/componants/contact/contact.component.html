@@ -8,10 +8,7 @@
     <div class="container-fluid about-banner">
         <div class="container banner-content">
             <h2>Contact Us</h2>
-            <p>GigX is a work marketplace platform that specializes in connecting and facilitating between talent demand
-                and supply with the aim to manage talents in the age of uncertainty by providing strategic workforce
-                solutions through the XFactors for companies to find the right talent and for talents to find the right
-                gig opportunities</p>
+            <p>If you have any queries related to our platform, Please do not hesitate to contact us.</p>
         </div>
     </div>
 
@@ -30,10 +27,17 @@
                         <img src="../../../assets/images/placeholder.png" class="img-fluid">
                     </div>
                     <div class="col-md-10">
-                        <p>Address : No.7A, Jalan Tun Mohd Faud 3,
+                        <!-- <p>Address : No.7A, Jalan Tun Mohd Faud 3,
                             Taman Tun Dr lsmail,
                             60000 Kuala Lumpur,
-                            Malaysia</p>
+                            Malaysia
+                        </p> -->
+                        <p>Address : Unit 21-08,
+                            21st Floor,
+                            Q Sentral,
+                            Kuala Lumpur Sentral,
+                            50470 Kuala Lumpur, Malaysia
+                        </p>
                     </div>
                 </div>
             </div>
@@ -45,7 +49,9 @@
                     </div>
                     <div class="col-md-10">
                         <p>Contact Number</p>
-                        <p><a href="tel:+651967855873">+651 967855873</a></p>
+                        <!-- <p><a href="tel:+651967855873">+651 967855873</a></p> -->
+                        <p><a href="tel:+60192224324">+6019 222 4324</a></p>
+                        <p><a href="tel:+60172504279">+6017 250 4279</a></p>
                     </div>
                 </div>
             </div>
@@ -56,8 +62,9 @@
 
                     </div>
                     <div class="col-md-10">
-                        <p>Mail Us : </p>
-                        <p><a href="mailto:expert@gigxglobal.com">expert@gigxglobal.com</a></p>
+                        <p>email us : </p>
+                        <p><a href="mailto:info@gigxglobal.com">info@gigxglobal.com</a></p>
+                        <!-- <p><a href="mailto:shareen@gigxglobal.com">shareen@gigxglobal.com</a></p> -->
                     </div>
                 </div>
             </div>
@@ -67,12 +74,14 @@
 </section>
 <!-- our office address -->
 <!-- map -->
-<iframe
+<!--iframe
     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.82192014269!2d101.6285735353515!3d3.141671576229136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc49b5ddcf1569%3A0xea9d98e56d91b144!2sSorga%20Ventures%20Sdn%20Bhd!5e0!3m2!1sen!2sin!4v1575888854633!5m2!1sen!2sin"
     width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3983.841330234163!2d101.68528721426284!3d3.136581454105693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc4958f29afc35%3A0xce27c31f8af16307!2sCommon%20Ground%2C%20Q%20Sentral!5e0!3m2!1sen!2sin!4v1585054412827!5m2!1sen!2sin" 
+    width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe-->
 <!-- map -->
 <!-- get in touch -->
-<section class="login pb-5 pt-5">
+<section class="login pb-5">
     <div class="container">
         <h1 class="main-heading">GET IN TOUCH
         </h1>
@@ -83,7 +92,7 @@
                         <div class="col-md-6">
                             <div class="input-group password-group mb-3">
                                 <input type="text" class="form-control password-field" placeholder="Full Name"
-                                    formControlName="fullName"
+                                    formControlName="fullName" maxlength="50"
                                     [ngClass]="{'is-invalid':f.fullName.errors && submitted}" />
                                 <div class="invalid-feedback" *ngIf="f.fullName.errors">
                                     <div *ngIf="f.fullName.errors.required">Full Name is required</div>
@@ -93,7 +102,7 @@
                         <div class="col-md-6">
                             <div class="input-group password-group mb-3">
                                 <input type="email" class="form-control password-field" placeholder="Email"
-                                    formControlName="email" AlphaNumericOnly
+                                    formControlName="email" maxlength="50" AlphaNumericOnly
                                     [ngClass]="{'is-invalid':f.email.errors&& submitted}" />
                                 <div class="invalid-feedback" *ngIf="f.email.errors">
                                     <div *ngIf="f.email.errors.required">Email is required</div>
@@ -106,7 +115,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="input-group password-group mb-3">
-                                <input type="text" class="form-control password-field" placeholder="Mobile Number"
+                                <input type="text" class="form-control password-field" placeholder="Mobile Number" maxlength="15"
                                     formControlName="mobile" [ngClass]="{'is-invalid':f.mobile.errors&& submitted}" />
                                 <div class="invalid-feedback" *ngIf="f.mobile.errors">
                                     <div *ngIf="f.mobile.errors.required">Mobile Number is required</div>
@@ -115,7 +124,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="input-group password-group mb-3">
-                                <input type="text" class="form-control password-field" placeholder="Subject"
+                                <input type="text" class="form-control password-field" placeholder="Subject" maxlength="50"
                                     formControlName="subject" [ngClass]="{'is-invalid':f.subject.errors&& submitted}" />
                                 <div class="invalid-feedback" *ngIf="f.subject.errors">
                                     <div *ngIf="f.subject.errors.required">Subject is required</div>
@@ -160,19 +169,17 @@
                 <img src="../../../assets/images/logo.png" alt="">
                 <!-- <p class="para">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
                 <ul class="social-media mt-5">
-                    <li><i class="fab fa-facebook-f"></i>
-                    </li>
-                    <li><i class="fab fa-twitter"></i>
-                    </li>
-                    <li><i class="fab fa-linkedin-in"></i>
-                    </li>
+                    <li><a href="https://www.facebook.com/GigxGlobal-104848717767145/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="https://twitter.com/Gigxglobal1" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="https://www.linkedin.com/company/gigxglobal/" target="_blank" title="Linked In"><i class="fab fa-linkedin-in"></i></a></li>
+                    <li><a href="https://www.instagram.com/gigxglobal/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
                 </ul>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 site-map">
                 <h5>Site Map</h5>
                 <ul class="">
                     <li><a href="#" routerLink="">Home</a></li>
-                    <li><a href="#" routerLink="/about-us">About</a></li>
+                    <li><a href="#" routerLink="/about-us">About us</a></li>
                     <li><a href="#" routerLink="/contact-us">Contact us</a></li>
                     <li><a href="#" routerLink="/terms-and-conditions">Terms And Conditions</a></li>
                 </ul>
@@ -185,13 +192,13 @@
                             <p>SORGA INNOVATION SDN BHD</p>
                         </li>
                         <li>
-                            <p>No.7A, Jalan Tun Mohd Faud 3,</p>
+                            <p>Unit 21-08, 21st Floor, Q Sentral,</p>
                         </li>
                         <li>
-                            <p>Taman Tun Dr lsmail,</p>
+                            <p>Kuala Lumpur Sentral,</p>
                         </li>
                         <li>
-                            <p>60000 Kuala Lumpur,</p>
+                            <p>50470 Kuala Lumpur</p>
                         </li>
                         <li>
                             <p>Malaysia</p>
