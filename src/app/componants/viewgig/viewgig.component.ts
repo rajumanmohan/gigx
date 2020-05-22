@@ -14,8 +14,8 @@ export class ViewgigComponent implements OnInit {
 
   postId;
   flag;
-  companyPostDetails = {};
-  constructor(public route: ActivatedRoute, private appSer: AppServiceService,private toast: ToastrService, private dataStorage: DataStorageService, private router: Router) { 
+  companyPostDetails;
+  constructor(public route: ActivatedRoute, private appSer: AppServiceService,private toast: ToastrService, private dataStorage: DataStorageService, private router: Router) {
     this.postId = route.snapshot.params.postId;
     this.flag = route.snapshot.params.flag;
   }
@@ -28,7 +28,7 @@ export class ViewgigComponent implements OnInit {
     } else {
       this.getCompanyPostDetailsByPostId();
     }
-    
+
   }
 
   getCompanyPostDetailsByPostId(){
@@ -53,7 +53,7 @@ export class ViewgigComponent implements OnInit {
         this.toast.error(res['message'], "Error");
 
       }
-  }); 
+  });
   }
 
 }

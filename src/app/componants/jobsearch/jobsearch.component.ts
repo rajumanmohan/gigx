@@ -36,6 +36,9 @@ export class JobsearchComponent implements OnInit {
   selectedSkills = [];
   selectedIndustries = [];
   selectedCountries = [];
+  countryName;
+  industryName;
+  skillName;
 
   constructor(private router: Router,private toast: ToastrService, private appSer: AppServiceService, private dataStorage: DataStorageService) {
 
@@ -85,7 +88,7 @@ export class JobsearchComponent implements OnInit {
       this.selectedCountries.forEach(x=>{
         this.countriesList.filter(y=> {y.country_id == x.country_id ? y.checked = true : ''});
       });
-      
+
 
       this.onSearchClick();
     }
@@ -103,7 +106,7 @@ export class JobsearchComponent implements OnInit {
     var selectedIndustries =  this.selectedIndustries.map(x=>x.industry_id).join(',');
     this.selectedSkills =  this.skillsList.filter(x=>x.checked);
     var selectedSkills = this.selectedSkills.map(x=>x.skill_id).join(',');
-    
+
     var requestObj = {
       selectedCountryIds: selectedCountries,
       selectedSkillIds: selectedIndustries,
@@ -120,7 +123,7 @@ export class JobsearchComponent implements OnInit {
   }
 
   onCountryChange(event){
-    this.onSearchClick(); 
+    this.onSearchClick();
   }
 
   onIndustryChange(event){
@@ -159,7 +162,7 @@ export class JobsearchComponent implements OnInit {
         this.toast.error(res['message'], "Error");
 
       }
-  }); 
+  });
   }
 
   onViewMoreDetailsClick(){

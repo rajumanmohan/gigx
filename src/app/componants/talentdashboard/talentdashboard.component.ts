@@ -28,6 +28,7 @@ export class TalentdashboardComponent implements OnInit {
   paginationIndex = 0;
   itemsPerPage = 5;
   invitedGigsCount = 0;
+  filtroString;
 
   imgBaseUrl = "https://gigxglobal.com/talent_images/";
   constructor(private router: Router, private appSer: AppServiceService, private toast: ToastrService, private dataStorage: DataStorageService) {
@@ -46,7 +47,7 @@ export class TalentdashboardComponent implements OnInit {
     this.getCompanyPosts();
     this.getTalentInvitedGigs();
   }
-  talentPersonalDetails = {}; talentJobPreference = {}; talentFullName; talentLastName; LastName; FirstName; profileImage; profileUrl;
+  talentPersonalDetails; talentJobPreference; talentFullName; talentLastName; LastName; FirstName; profileImage; profileUrl;
   getTalentInvitedGigs(){
     var requestObj = {
       talent_id: this.dataStorage.loggedInUserData.talent_id

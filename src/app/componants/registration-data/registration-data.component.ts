@@ -10,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class RegistrationDataComponent implements OnInit {
   companyData: any;
   config: any;
+  p;
   imgBaseUrl = "https://gigxglobal.com/company/";
   constructor(private appSer: AppServiceService, private router: Router) {
 

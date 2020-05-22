@@ -30,7 +30,7 @@ export class TalentProfileDetailsComponent implements OnInit {
   postId;
   flag;
 
-  personalDetails = {};
+  personalDetails;
   educationalDetails = [];
   jobDetails = [];
   jobPreferences = [];
@@ -38,8 +38,8 @@ export class TalentProfileDetailsComponent implements OnInit {
 
   paginationIndex = 0;
   itemsPerPage = 5;
-  
-  constructor(public route: ActivatedRoute, private appSer: AppServiceService) { 
+
+  constructor(public route: ActivatedRoute, private appSer: AppServiceService) {
     this.talentId = route.snapshot.params.talentId;
     this.postId = route.snapshot.params.postId;
     this.flag = route.snapshot.params.flag;

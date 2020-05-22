@@ -37,6 +37,9 @@ export class TalentsearchComponent implements OnInit {
   selectedCountries = [];
   filteredTalentList = [];
   postedGigList = [];
+  countryName;
+  industryName;
+  skillName;
 
   constructor(private router: Router, private toast: ToastrService, private appSer: AppServiceService, private dataStorage: DataStorageService) {
     if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {

@@ -10,8 +10,8 @@ import { AppServiceService } from 'src/app/Services/app-service.service';
 })
 export class PostedgigdetailsComponent implements OnInit {
   postId;
-  companyPostDetails = {};
-  constructor(public route: ActivatedRoute, private appSer: AppServiceService) { 
+  companyPostDetails;
+  constructor(public route: ActivatedRoute, private appSer: AppServiceService) {
     this.postId = route.snapshot.params.postId;
   }
 

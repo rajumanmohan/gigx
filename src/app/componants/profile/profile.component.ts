@@ -25,6 +25,7 @@ import { DataStorageService } from '../../Services/data-storage.service';
 })
 export class ProfileComponent implements OnInit {
   page; companyId; loginType;
+  profile;
   editCompanyForm: FormGroup; submit = false;
   editIndividualForm: FormGroup;
   edit = false;
@@ -166,7 +167,7 @@ export class ProfileComponent implements OnInit {
     this.getCompanyProfile();
     this.strImage = '';
   }
-  profileDetails = []; profileFormDetails;
+  profileDetails; profileFormDetails;
   get f1() { return this.editCompanyForm.controls; };
   get f2() { return this.editIndividualForm.controls; };
   submitEdit() {
@@ -245,8 +246,8 @@ export class ProfileComponent implements OnInit {
       company_id: this.companyId
     }
     this.appSer.CompanyProfile(params).subscribe((res) => {
-      this.profileDetails = res['data'];  
-      //Header populate data        
+      this.profileDetails = res['data'];
+      //Header populate data
       localStorage.setItem('company_name', this.profileDetails['company_name']);
       this.dataStorage.loggedInUserData = localStorage;
       //Comapny profile populate data

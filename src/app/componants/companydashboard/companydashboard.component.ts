@@ -24,7 +24,7 @@ import {
 })
 export class CompanydashboardComponent implements OnInit {
   talentId; companyId; loginType;
-  dashboardInfo = {};
+  dashboardInfo;
   upcomingMilestores = [];
   // displayedColumns = ['id', 'title', 'description', 'status'];
   // dataSource:MatTableDataSource<Element[]>;
@@ -55,7 +55,7 @@ export class CompanydashboardComponent implements OnInit {
       this.router.navigate(['/companyprofile'], { queryParams: { page: 'individual' } });
     }
   }
-  profileDetails = []; profilename; companyName;
+  profileDetails; profilename; companyName;
   getCompanyProfile() {
     let params = {
       company_type: this.loginType,

@@ -26,7 +26,7 @@ export class RatingsComponent implements OnInit {
   ShowReview = true;
   ShowRating = false;
   profilesList =[];
-  selectedProfile = {submitted: false};
+  selectedProfile: any;
   ratedProfilesList = [];
   constructor(private router: Router, private toast: ToastrService, private appSer: AppServiceService) {
 
@@ -79,8 +79,8 @@ export class RatingsComponent implements OnInit {
       return false;
     }
     var requestObj =  {
-      company_id:localStorage.company_id, 
-      talent_id: profile.talent_id, 
+      company_id:localStorage.company_id,
+      talent_id: profile.talent_id,
       rating:  profile.rating,
       review:profile.review
     };

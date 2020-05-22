@@ -28,6 +28,7 @@ export class IntrestedjobsComponent implements OnInit {
   paginationIndex = 0;
   itemsPerPage = 5;
   interestedGigsList = [];
+  filtroString;
 
   constructor(private router: Router,private toast: ToastrService, private dataStorage: DataStorageService, private appSer: AppServiceService) {
 
@@ -41,7 +42,7 @@ export class IntrestedjobsComponent implements OnInit {
     window.scroll(0, 0);
     this.getInterestedGigs();
   }
- 
+
   getInterestedGigs(){
     var requestObj = {
       talent_id: this.dataStorage.loggedInUserData.talent_id

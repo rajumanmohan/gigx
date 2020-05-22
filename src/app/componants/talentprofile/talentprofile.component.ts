@@ -86,12 +86,12 @@ export class TalentprofileComponent implements OnInit {
   array2 = [];
   highestQualificationList = [];
   obj3 = {};
-  private workingSinceOptions: IMyDpOptions = {
+  public workingSinceOptions: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
   };
-  private workingFromOptions: IMyDpOptions[] = [];
-  private workingToOptions: IMyDpOptions[] = [];
-  private myDatePickerOptions: IMyDpOptions = {
+  public workingFromOptions: IMyDpOptions[] = [];
+  public workingToOptions: IMyDpOptions[] = [];
+  public myDatePickerOptions: IMyDpOptions = {
     // other options...
     dateFormat: 'dd/mm/yyyy',
   };
@@ -106,6 +106,7 @@ export class TalentprofileComponent implements OnInit {
   }
   stepone_details = {};
   employmentTypes = [{name: 'Gig', checked: false}, {name: 'Contract', checked: false}, {name: 'Full time', checked: false}]
+  profile;
 
   ngOnInit() {
     this.showtalentProfile();
@@ -318,7 +319,7 @@ export class TalentprofileComponent implements OnInit {
     this.editjobpreference = true;
 
   }
-  // edit personal details 
+  // edit personal details
   changeGender(e) {
     this.gender = e.target.value;
   }
@@ -401,7 +402,7 @@ export class TalentprofileComponent implements OnInit {
       city_id: [this.talentPersonalDetails['city_id'], Validators.required],
       // temp this.talentPersonalDetails['gender']
       gender: [this.talentPersonalDetails['gender'], Validators.required],
-      // 
+      //
       about_me: [this.talentPersonalDetails['about_me'], Validators.required],
       dob: [this.talentPersonalDetails['dob']],
       form_type: ["step1"],
@@ -532,7 +533,7 @@ export class TalentprofileComponent implements OnInit {
       this.imageUrl = res['step1'].image_url;
       this.videoUrlLink = res['step1'].video_url;
       this.pdfUrlLink = res['step1'].attachment_url;
-      
+
       localStorage.setItem('first_name', this.talentPersonalDetails['first_name']);
       localStorage.setItem('last_name', this.talentPersonalDetails['last_name']);
       this.dataStorage.loggedInUserData = localStorage;
@@ -719,7 +720,7 @@ export class TalentprofileComponent implements OnInit {
         currency_type: [null, Validators.required],
         salary_input: [null, Validators.required],
         working_from: [null, Validators.required],
-       
+
         location: [this.talentJobDetails[i].location, Validators.required],
         industry_type: [null, Validators.required],
         role: [null, Validators.required],
@@ -730,7 +731,7 @@ export class TalentprofileComponent implements OnInit {
       if(workingType[2] != 'present'){
         fieldSet['working_to'] =[null, Validators.required];
       }
-      
+
 
       this.f5.push(this.fb.group(fieldSet));
       this.JobDetailsId = this.talentJobDetails[i].jobdetails_id;
@@ -748,8 +749,8 @@ export class TalentprofileComponent implements OnInit {
         workExperience.patchValue({ 'currency_type': currencyType[0] });
         workExperience.patchValue({ 'salary_input': currencyType[1] });
         workExperience.patchValue({ 'jobdetails_id': this.talentJobDetails[i].jobdetails_id });
-       
-        workExperience.patchValue({ 'working_from': 
+
+        workExperience.patchValue({ 'working_from':
         {
           date: {
               year: workingType[0].split('-')[0],
@@ -759,7 +760,7 @@ export class TalentprofileComponent implements OnInit {
       });
         if(workingType[2] != 'present'){
           //workExperience.patchValue({ 'working_to': workingType[2] });
-          workExperience.patchValue({ 'working_to': 
+          workExperience.patchValue({ 'working_to':
           {
             date: {
                 year: workingType[2].split('-')[0],
@@ -768,7 +769,7 @@ export class TalentprofileComponent implements OnInit {
             }
         });
         }
-        
+
         console.log("0000000000000000000", this.workingToDate)
       }
 
@@ -785,7 +786,7 @@ export class TalentprofileComponent implements OnInit {
   }
 
   getInstitutionsListBasedOnCountryCustom(counrtyId, index, isDefault) {
-    //if(this.institutionsList.length == 0){ 
+    //if(this.institutionsList.length == 0){
     let params = {
       country_id: JSON.parse(counrtyId),
     }
@@ -891,7 +892,7 @@ export class TalentprofileComponent implements OnInit {
     }
   }
   getInstitutionsListBasedOnCountry(counrtyId) {
-    //if(this.institutionsList.length == 0){ 
+    //if(this.institutionsList.length == 0){
     let params = {
       country_id: JSON.parse(counrtyId),
     }
@@ -1023,8 +1024,8 @@ export class TalentprofileComponent implements OnInit {
         "talent_id": this.talentId,
         "form_type": 'step4'
       };
-     
-      this.stepfour_details = tempObj; 
+
+      this.stepfour_details = tempObj;
       this.appSer.talentEditJob(this.stepfour_details).subscribe(res => {
         if (res['status'] == 200) {
           this.toast.success(res['message'], "Success");

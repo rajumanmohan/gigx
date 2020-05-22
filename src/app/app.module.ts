@@ -1,6 +1,5 @@
 
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MatStepperModule, MatIconModule, MatTableModule, MatPaginatorModule } from '@angular/material';
@@ -17,7 +16,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { NgxPaginationModule } from 'ngx-pagination';
 
 import { NgSelectModule } from '@ng-select/ng-select';
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import {AutocompleteLibModule} from 'angular-ng-autocomplete';
 import { TypeaheadModule } from 'ngx-type-ahead';
 
@@ -49,10 +48,9 @@ import { TalentdashboardComponent } from './componants/talentdashboard/talentdas
 import { GetstartedComponent } from './componants/getstarted/getstarted.component';
 import { CompanydashboardComponent } from './componants/companydashboard/companydashboard.component';
 import { TakeatestComponent } from './componants/takeatest/takeatest.component';
-import { NumberOnlyDirective } from './directives/number';
+import { NumberOnlyDirective, AlphaNumericOnly, AlphabetsOnly, EmailOnly } from './directives/number';
 import { RegistrationDataComponent } from './componants/registration-data/registration-data.component';
 import { CompanysubscriptionsComponent } from './componants/companysubscriptions/companysubscriptions.component';
-import { IndividualRegistrationsComponent } from './componants/individual-registrations/individual-registrations.component';
 import { AboutusComponent } from './componants/aboutus/aboutus.component';
 import { ContactComponent } from './componants/contact/contact.component';
 import { TestlistComponent } from './componants/testlist/testlist.component';
@@ -74,7 +72,8 @@ import { VerticalstepperformComponent } from './componants/verticalstepperform/v
 import { LatestAnnoucementsComponent } from './componants/latest-annoucements/latest-annoucements.component';
 import { FooterComponent } from './componants/footer/footer.component';
 import { HeaderOneComponent } from './componants/header-one/header-one.component';
-@Pipe({ name: 'safe' })
+import { IndividualRegistrationsComponent } from './componants/individual-registrations/individual-registrations.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,6 +105,9 @@ import { HeaderOneComponent } from './componants/header-one/header-one.component
     CompanydashboardComponent,
     TakeatestComponent,
     NumberOnlyDirective,
+    AlphaNumericOnly,
+    EmailOnly,
+    AlphabetsOnly,
     RegistrationDataComponent,
     IndividualRegistrationsComponent,
     CompanysubscriptionsComponent,

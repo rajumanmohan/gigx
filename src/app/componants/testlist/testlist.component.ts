@@ -23,7 +23,7 @@ import { transition, trigger, useAnimation } from '@angular/animations';
 export class TestlistComponent implements OnInit {
 
   getCompletedAssessments= [];
-  assessmentReport = {};
+  assessmentReport;
   selectedTrackingNumber = '';
 
   constructor(private appService: AppServiceService) { }
@@ -66,6 +66,6 @@ export class TestlistComponent implements OnInit {
       //this.getCompletedAssessments = res['assessments'];
     })
   }
-  
+
 
 }

@@ -108,7 +108,7 @@
                            <type-ahead placeholder="Skills" class="form-control" [suggestions]="skillsNameList"
                                         formControlName="skills" [custom]="true" [multi]="true" idField="skill_id"
                                         nameField="skill_name" [complex]="false"
-                                        [ngClass]="{'is-invalid':f.skills.errors&& submitted4}">
+                                        [ngClass]="{'is-invalid':f.skills.errors&& submitted}">
                                     </type-ahead>
                             <div *ngIf="submitted && f.skills.errors" class="invalid-feedback">
                                 <div *ngIf="f.skills.errors.required">Skills are required</div>
@@ -255,7 +255,7 @@
                         <div class="col-sm-9">
                             <div class="custom-control custom-radio custom-control-inline"
                                 >
-                                <input type="radio" formControlName="project_process"  id="customRadioInline9" 
+                                <input type="radio" formControlName="project_process"  id="customRadioInline9"
                                     class="custom-control-input" value="Individual" [checked]='true'>
                                 <label class="custom-control-label" for="customRadioInline9">Individual</label>
                             </div>
@@ -277,8 +277,8 @@
                                     Project</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" formControlName="project_type" id="type2" 
-                                value="Global / International" 
+                                <input type="radio" formControlName="project_type" id="type2"
+                                value="Global / International"
                                     class="custom-control-input">
                                 <label class="custom-control-label" for="type2">Global /
                                     International</label>
@@ -290,7 +290,7 @@
                         <label for="inputPassword" class="col-sm-3 col-form-label">MODE&nbsp;OF&nbsp;ENGAGEMENT:</label>
                         <div class="col-sm-9">
                             <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" formControlName="mode_of_engagement" id="incountry" 
+                                <input type="radio" formControlName="mode_of_engagement" id="incountry"
                                     class="custom-control-input" value="Contract in country" [checked]='true'>
                                 <label class="custom-control-label" for="incountry">Contract in country</label>
                             </div>
@@ -314,7 +314,7 @@
                             </div>
                             <div class="custom-control custom-radio custom-control-inline"
                               >
-                                <input type="radio" id="exclusivity_no" formControlName="exclusivity" value="No" 
+                                <input type="radio" id="exclusivity_no" formControlName="exclusivity" value="No"
                                     class="custom-control-input">
                                 <label class="custom-control-label" for="exclusivity_no">No</label>
                             </div>
@@ -326,38 +326,38 @@
                         <div class="col-sm-9">
                             <div class="custom-control custom-radio custom-control-inline"
                                 (change)="changeMileStone($event.target.value)" >
-                                <input type="radio" id="milestone_yes" 
+                                <input type="radio" id="milestone_yes"
                                     class="custom-control-input" value="Yes" formControlName="project_milestone">
                                 <label class="custom-control-label" for="milestone_yes">Yes</label>
                             </div>
                             <div class="custom-control custom-radio custom-control-inline"
                                 (change)="changeMileStone($event.target.value)">
-                                <input type="radio" id="milestone_no" value="No" 
+                                <input type="radio" id="milestone_no" value="No"
                                     class="custom-control-input" [checked]='true' formControlName="project_milestone">
                                 <label class="custom-control-label" for="milestone_no">No</label>
                             </div>
 
-                            <div *ngIf="submitted && this.projectMileStones.length == '0' && this.f.project_milestone.value == 'Yes'" class="custom-invalid-feedback">
+                            <div *ngIf="submitted && this.projectMileStones.length == 0 && this.f.project_milestone.value == 'Yes'" class="custom-invalid-feedback">
                                     <div>Atleast one Milestone info is
                                         required</div>
                                 </div>
                         </div>
                     </div>
                     <div class="mile-stone-list container pt-5 mb-4" [formGroup]="mileStoneForm"  *ngIf="showMileStoneInputs == true">
-            
+
                             <div style="background: #fafafa; margin-bottom: 1rem;" *ngFor="let mileStone of projectMileStones;  let i = index">
                                 <div class="">
                                         <h2>GIG MILESTONE : {{i + 1}} <i class="fa fa-times-circle delete-icon"
-                                            (click)="removeMileStone(i)"></i> </h2> 
+                                            (click)="removeMileStone(i)"></i> </h2>
                                 </div>
                                 <div class="row col-sm-12">
                                     <label class="col-sm-2 col-form-label">TITLE:</label>
-                                    <label class="col-sm-4 col-form-label">{{mileStone.milestone_title}}</label>    
-                                    
+                                    <label class="col-sm-4 col-form-label">{{mileStone.milestone_title}}</label>
+
                                     <label class="col-sm-2 col-form-label">PRICE:</label>
                                     <label class="col-sm-4 col-form-label">{{mileStone.milestone_price}}</label>
                                 </div>
-                                
+
                                 <div class="row  col-sm-12">
                                     <label class="col-sm-2 col-form-label">START&nbsp;DATE:</label>
                                     <label class="col-sm-4 col-form-label">{{mileStone.milestone_start_date}}</label>
@@ -599,7 +599,7 @@
                         <li>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</li>
                     </ul>
                 </div>
-            </div>    
+            </div>
         </div>
     </div>
 </section>

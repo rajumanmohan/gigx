@@ -29,6 +29,7 @@ export class ViewpostedgigsComponent implements OnInit {
   postedGigList = [];
   paginationIndex = 0;
   itemsPerPage = 5;
+  filtroString;
   constructor(private route: ActivatedRoute, private router: Router, private appSer: AppServiceService, private dataStorage: DataStorageService, private toast: ToastrService) { }
 
   ngOnInit() {

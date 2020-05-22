@@ -29,6 +29,7 @@ export class InvitedGigsComponent implements OnInit {
   itemsPerPage = 5;
   invitedGigsList = [];
   invitedGigsCount = 0;
+  filtroString;
 
   constructor(private router: Router,private toast: ToastrService, private dataStorage: DataStorageService, private appSer: AppServiceService) {
 
@@ -42,7 +43,7 @@ export class InvitedGigsComponent implements OnInit {
     window.scroll(0, 0);
     this.getTalentInvitedGigs();
   }
- 
+
   getTalentInvitedGigs(){
     var requestObj = {
       talent_id: this.dataStorage.loggedInUserData.talent_id
@@ -66,6 +67,6 @@ export class InvitedGigsComponent implements OnInit {
         this.toast.error(res['message'], "Error");
 
       }
-  }); 
+  });
   }
 }

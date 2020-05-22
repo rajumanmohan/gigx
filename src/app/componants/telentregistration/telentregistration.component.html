@@ -772,8 +772,8 @@
                                                     formControlName="work_experience"
                                                     [ngClass]="{'is-invalid':employee.controls.work_experience.errors&& submitted3}">
                                                 <div class="invalid-feedback"
-                                                    *ngIf="employee.controls.work_experience.errors">
-                                                    <div *ngIf="employee.controls.work_experience.errors.required">
+                                                    *ngIf="employee.get('work_experience').errors">
+                                                    <div *ngIf="employee.get('work_experience').errors.required">
                                                         Work Experience
                                                         is
                                                         required
@@ -785,8 +785,8 @@
                                                     placeholder="Current company" formControlName="current_company"
                                                     [ngClass]="{'is-invalid':employee.controls.current_company.errors&& submitted3}">
                                                 <div class="invalid-feedback"
-                                                    *ngIf="employee.controls.current_company.errors">
-                                                    <div *ngIf="employee.controls.current_company.errors.required">
+                                                    *ngIf="employee.get('current_company').errors">
+                                                    <div *ngIf="employee.get('current_company').errors.required">
                                                         Company
                                                         is
                                                         required
@@ -807,9 +807,9 @@
                                                             <option value="RM">RM</option>
                                                         </select>
                                                         <div class="invalid-feedback"
-                                                            *ngIf="employee.controls.currency_type.errors">
+                                                            *ngIf="employee.get('currency_type').errors">
                                                             <div
-                                                                *ngIf="employee.controls.currency_type.errors.required">
+                                                                *ngIf="employee.get('currency_type').errors.required">
                                                                 Currency
                                                                 type
                                                                 is
@@ -824,8 +824,8 @@
                                                         formControlName="salary_input"
                                                         [ngClass]="{'is-invalid':employee.controls.salary_input.errors&& submitted3}">
                                                     <div class="invalid-feedback"
-                                                        *ngIf="employee.controls.salary_input.errors">
-                                                        <div *ngIf="employee.controls.salary_input.errors.required">
+                                                        *ngIf="employee.get('salary_input').errors">
+                                                        <div *ngIf="employee.get('salary_input').errors.required">
                                                             Salary/Fees is required
                                                         </div>
                                                     </div>
@@ -843,8 +843,8 @@
                                                         [ngClass]="{'is-invalid':employee.controls.working_from.errors&& submitted}">
                                                     </my-date-picker>
                                                     <div class="custom-invalid-feedback"
-                                                        *ngIf="employee.controls.working_from.errors && submitted3">
-                                                        <div *ngIf="employee.controls.working_from.errors.required">
+                                                        *ngIf="employee.get('working_from').errors && submitted3">
+                                                        <div *ngIf="employee.get('working_from').errors.required">
                                                             Working From is required
                                                         </div>
                                                     </div>
@@ -858,8 +858,8 @@
                                                         [ngClass]="{'is-invalid':employee.controls.working_to.errors&& submitted}">
                                                     </my-date-picker>
                                                     <div class="custom-invalid-feedback"
-                                                        *ngIf="employee.controls.working_to.errors && submitted3">
-                                                        <div *ngIf="employee.controls.working_to.errors.required">
+                                                        *ngIf="employee.get('working_to').errors && submitted3">
+                                                        <div *ngIf="employee.get('working_to').errors.required">
                                                             Working To is required
                                                         </div>
                                                     </div>
@@ -870,8 +870,8 @@
                                                 <input type="text" class="form-control" id="exampleInputPassword1"
                                                     placeholder="Location" formControlName="location"
                                                     [ngClass]="{'is-invalid':employee.controls.location.errors&& submitted3}">
-                                                <div class="invalid-feedback" *ngIf="employee.controls.location.errors">
-                                                    <div *ngIf="employee.controls.location.errors.required">
+                                                <div class="invalid-feedback" *ngIf="employee.get('location').errors">
+                                                    <div *ngIf="employee.get('location').errors.required">
                                                         Location is required
                                                     </div>
                                                 </div>
@@ -889,8 +889,8 @@
                                                     </option>
                                                 </select>
                                                 <div class="invalid-feedback"
-                                                    *ngIf="employee.controls.industry_type.errors">
-                                                    <div *ngIf="employee.controls.industry_type.errors.required">
+                                                    *ngIf="employee.get('industry_type').errors">
+                                                    <div *ngIf="employee.get('industry_type').errors.required">
                                                         Industy
                                                         type is
                                                         required
@@ -910,8 +910,8 @@
                                                     </option>
                                                 </select>
                                                 <div class="invalid-feedback"
-                                                    *ngIf="employee.controls.industry_type.errors">
-                                                    <div *ngIf="employee.controls.role.errors.required">Role is required
+                                                    *ngIf="employee.get('role').errors">
+                                                    <div *ngIf="employee.get('role').errors.required">Role is required
                                                     </div>
                                                 </div>
                                             </div>

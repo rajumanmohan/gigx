@@ -83,20 +83,21 @@ export class VerticalstepperformComponent implements OnInit {
   steptwo_details = {};
   steptwo_detailsArray = [];
   stepthree_details = {};
-  stepfour_details = {};  
+  stepfour_details = {};
   employmentTypes = [{name: 'Gig', checked: true}, {name: 'Contract', checked: false}, {name: 'Full time', checked: false}]
+  dob;
+  working_since_value;
 
-
-  private myDatePickerOptions: IMyDpOptions = {
+  public myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
   };
 
-  private workingSinceOptions: IMyDpOptions = {
+  public workingSinceOptions: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
   };
 
-  private workingFromOptions: IMyDpOptions[] = [];
-  private workingToOptions: IMyDpOptions[] = [];
+  public workingFromOptions: IMyDpOptions[] = [];
+  public workingToOptions: IMyDpOptions[] = [];
 
   constructor(private fb: FormBuilder, private toast: ToastrService, private appSer: AppServiceService, private router: Router, private route: ActivatedRoute, private spinner: NgxSpinnerService) {
     this.route.queryParams.subscribe(params => {
@@ -181,7 +182,7 @@ export class VerticalstepperformComponent implements OnInit {
     // });
 
     // allPrevBtn.click(function(){
-      
+
     //     var curStep = $(this).closest(".setup-content-3"),
     //         curStepBtn = curStep.attr("id"),
     //         prevStepSteps = $('div.setup-panel-3 div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
@@ -195,7 +196,7 @@ export class VerticalstepperformComponent implements OnInit {
     //         nextStepSteps = $('div.setup-panel-3 div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
     //         curInputs = curStep.find("input[type='text'],input[type='url']"),
     //         isValid = true;
-              
+
     //         if (isValid)
     //             nextStepSteps.removeAttr('disabled').trigger('click');
     // });
@@ -207,7 +208,7 @@ export class VerticalstepperformComponent implements OnInit {
     $('#step-5').show();
 
     navListItems.click(function (e) {
-        e.preventDefault();        
+        e.preventDefault();
     });
 
     // $(".btn-circle-3").on("click", function () {
@@ -219,7 +220,7 @@ export class VerticalstepperformComponent implements OnInit {
     //   $('#custom-img4 img').attr('src', '../../../assets/images/custom-gry-4.png');
     //   $(this).find('img').attr("src", "../../../assets/images/"+$(this).find('img').attr("data-hover-img")+".png");
     // });
-   
+
   }
   hidePassword() {
     this.showEye = !this.showEye;
@@ -428,14 +429,14 @@ backStepper(curStepBtn){
           $('#custom-img3 img').attr('src', '../../../assets/images/custom-img.png');
           $('#custom-img4 img').attr('src', '../../../assets/images/custom-blk-4.png');
         }
-    var prevStepSteps = $('div.setup-panel-3 div a[href="#' + curStepBtn + '"]').parent().prev().children("a");    
+    var prevStepSteps = $('div.setup-panel-3 div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
         prevStepSteps.removeAttr('disabled').trigger('click');
 }
 
 complete(curStepBtn, status) {
   var nextStepSteps = $('div.setup-panel-3 div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
   isValid = true;
-    
+
   if (isValid && status == "1") {
     $('.steps-step-3 a').removeClass('active');
     $('.setup-content-3').hide();
@@ -685,7 +686,7 @@ complete(curStepBtn, status) {
         "work_preference": this.jobPreferrences.controls['work_preferences'].value,
         "other_industry_type": this.jobPreferrences.controls['other_industry_type'] ? this.jobPreferrences.controls['other_industry_type'].value : ''
       };
-      
+
       this.stepfour_details = tempObj;
 
       var finalPayload = { ...this.stepone_details, ...this.steptwo_details, ...this.stepthree_details, ...this.stepfour_details };
@@ -930,7 +931,7 @@ complete(curStepBtn, status) {
     }
     //this.currentIndex = index + 1;
   }
-  
+
   onUniversityChangeCustom(event: any, index, ngForm) {
     var universityName = this.institutionsListCustom[index].find(x=>x.university_id == event.currentTarget.value).university_name;
 
@@ -1001,7 +1002,7 @@ complete(curStepBtn, status) {
   }
 
   getInstitutionsListBasedOnCountry(counrtyId) {
-    //if(this.institutionsList.length == 0){ 
+    //if(this.institutionsList.length == 0){
     let params = {
       country_id: JSON.parse(counrtyId),
     }
@@ -1041,7 +1042,7 @@ complete(curStepBtn, status) {
   }
 
   getInstitutionsListBasedOnCountryCustom(counrtyId, index) {
-    //if(this.institutionsList.length == 0){ 
+    //if(this.institutionsList.length == 0){
     let params = {
       country_id: JSON.parse(counrtyId),
     }

@@ -11,7 +11,7 @@ import { AppServiceService } from './../../Services/app-service.service';
 })
 export class TermsconditionsComponent implements OnInit {
 
-  constructor(private dataStorage: DataStorageService, private router: Router, private appSer: AppServiceService, private toast: ToastrService,
+  constructor(public dataStorage: DataStorageService, private router: Router, private appSer: AppServiceService, private toast: ToastrService,
     private formBuilder: FormBuilder) { }
   subscribeFrom: FormGroup;
   submitEmail = false;

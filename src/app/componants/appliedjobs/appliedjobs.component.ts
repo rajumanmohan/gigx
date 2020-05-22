@@ -28,7 +28,8 @@ export class AppliedjobsComponent implements OnInit {
   appliedGigList = [];
   paginationIndex = 0;
   itemsPerPage = 5;
-  
+  filtroString;
+
   constructor(private router: Router, private toast: ToastrService, private appSer: AppServiceService, private dataStorage: DataStorageService) {
     if (localStorage.industry_type === '' || localStorage.industry_type === undefined || localStorage.industry_type === null) {
       this.toast.warning('Please Login', "warning");
@@ -61,7 +62,7 @@ export class AppliedjobsComponent implements OnInit {
 
       }
   });
-    
+
   }
 
 }

@@ -81,16 +81,19 @@ export class TelentregistrationComponent implements OnInit {
   stepthree_details = {};
   stepfour_details = {};
 
-  private myDatePickerOptions: IMyDpOptions = {
+  dob;
+
+  public myDatePickerOptions: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
   };
 
-  private workingSinceOptions: IMyDpOptions = {
+  public workingSinceOptions: IMyDpOptions = {
     dateFormat: 'dd/mm/yyyy',
   };
 
-  private workingFromOptions: IMyDpOptions[] = [];
-  private workingToOptions: IMyDpOptions[] = [];
+  public workingFromOptions: IMyDpOptions[] = [];
+  public workingToOptions: IMyDpOptions[] = [];
+  working_since_value;
 
   constructor(private fb: FormBuilder, private toast: ToastrService, private appSer: AppServiceService, private router: Router, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
@@ -790,7 +793,7 @@ export class TelentregistrationComponent implements OnInit {
   }
 
   getInstitutionsListBasedOnCountry(counrtyId) {
-    //if(this.institutionsList.length == 0){ 
+    //if(this.institutionsList.length == 0){
     let params = {
       country_id: JSON.parse(counrtyId),
     }
@@ -828,7 +831,7 @@ export class TelentregistrationComponent implements OnInit {
   }
 
   getInstitutionsListBasedOnCountryCustom(counrtyId, index) {
-    //if(this.institutionsList.length == 0){ 
+    //if(this.institutionsList.length == 0){
     let params = {
       country_id: JSON.parse(counrtyId),
     }

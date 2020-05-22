@@ -30,9 +30,10 @@ export class RejectedProfilesListComponent implements OnInit {
   talentProfilesList = [];
   paginationIndex = 0;
   itemsPerPage = 5;
-  gigDetails ={};
-  
-  constructor(public route: ActivatedRoute, private appSer: AppServiceService, private toast: ToastrService) { 
+  gigDetails;
+  filtroString;
+
+  constructor(public route: ActivatedRoute, private appSer: AppServiceService, private toast: ToastrService) {
     this.postId = route.snapshot.params.postId;
   }
 
