@@ -36,6 +36,8 @@ export class ContactComponent implements OnInit {
     this.submitEmail = true;
     if (this.subscribeFrom.invalid) {
       return;
+    } else {
+      this.router.navigate(['/createaccount']);
     }
   }
 
@@ -44,6 +46,14 @@ export class ContactComponent implements OnInit {
     this.submitted = true;
     if (this.contactFrom.invalid) {
       return;
+    } else {
+      this.appSer.insertContactDetails(this.contactFrom.value).subscribe((res) => {
+        if(res['status'] == 200) {
+          this.toast.success(res['message'], "Success");
+        } else {
+          this.toast.error(res['message'], "Error");
+        }
+      })
     }
     // this.appSer
   }

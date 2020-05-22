@@ -203,7 +203,7 @@ img.img-responsive {
 /*slider style end */
 // banner styles
 .about-banner{
-    background-image: url(../../../assets/images/aboutus.png);
+    background-image: url(../../../assets/images/aboutus.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: auto;
@@ -235,9 +235,10 @@ img.img-responsive {
         top: 52%;
 		font-family: arial;
 		position: absolute;
-		width: 43%;
+		width: 50%;
 		color: #000;
 		font-size: 20px;
+		text-align: justify;
     }
 }
 .main-heading{
@@ -257,7 +258,23 @@ img.img-responsive {
 //     margin-top: 13px;
 //     border-bottom: 3px solid #2890c9;
 // }
-.objectives{
+.about-us {
+	background: #fff;
+	h5 {
+		text-align: center;
+		font-size: 24px;
+		font-weight: 600;
+	}
+	p {
+		font-size: 1rem;
+		text-align: justify;
+	}
+	.para {
+		font-size: 1.15rem;
+		font-weight: 600;
+	}
+}
+.objectives, .about-us{
     background-color: #fff;
     ul{
         list-style-image:url(../../../assets/images/arrow-list.png);
@@ -621,7 +638,7 @@ img.img-responsive {
 
 @media (max-width: 767px) {
 	.about-banner{
-		background-image: url(../../../assets/images/aboutus.png);
+		background-image: url(../../../assets/images/aboutus.jpg);
 		background-position: center center;
 		background-repeat: no-repeat;
 		background-size: cover;

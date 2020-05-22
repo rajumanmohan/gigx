@@ -48,8 +48,8 @@
                                 </div>
                                 <div class="col-md-7">
                                         <h3>{{item.first_name}} {{item.last_name}}</h3>
-                                        
-                                        <p><img src="../../../assets/images/maps.png" class="maps"> 
+
+                                        <p><img src="../../../assets/images/maps.png" class="maps">
                                             {{item.city}}, {{item.state}},  {{item.country}}
                                         </p>
                                         <p>Mobile Number: <span class="span-info">{{item.mobile}}</span></p>
@@ -57,12 +57,12 @@
                                         <p>Skills: <span class="span-info">{{item.skills}}</span></p>
                                         <p *ngIf="item.about_me">About me: <span class="span-info">{{item.about_me}}</span></p>
                                 </div>
-                                <!-- <div class="col-md-1">
+                                <!--div class="col-md-1">
                                     <circle-progress [percent]="item.percentage" [radius]="100" [outerStrokeWidth]="16"
                                     [innerStrokeWidth]="8" [outerStrokeColor]="'#0ac629'" [innerStrokeColor]="'#fed501'"
                                     [animation]="true" [animationDuration]="1000" [showSubtitle]="false">
                                 </circle-progress>
-                                </div> -->
+                                </div-->
                                 <!-- job details -->
                                 <!-- apply job -->
                                 <div class="col-md-3 text-right">
@@ -89,7 +89,7 @@
                                                 <img src="../../../assets/images/right-arrow.png">
                                             </a>
                                         </p>
-                                        
+
                                 </div>
                                 <!-- apply job -->
                             </div>
@@ -108,7 +108,7 @@
                         </div>
                     </div>
                     <!-- job preview -->
-                 
+
                 </div>
             </div>
 
@@ -116,7 +116,7 @@
         </div>
 
 
-        <div class="row text-center col-md-12 mt-3" style="display: block;" *ngIf="(talentProfilesList| filter:[{field:'first_name', value: filtroString}, {field:'last_name', value: filtroString}]).length > 0"> 
+        <div class="row text-center col-md-12 mt-3" style="display: block;" *ngIf="(talentProfilesList| filter:[{field:'first_name', value: filtroString}, {field:'last_name', value: filtroString}]).length > 0">
                 <pagination-controls (pageChange)="this.paginationIndex = $event">
                     </pagination-controls>
         </div>

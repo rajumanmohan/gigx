@@ -75,31 +75,49 @@ ul li {
 }
 // banner styles
 .about-banner{
-    background-image: linear-gradient(rgba(35, 31, 32, 0.66), rgba(35, 31, 32, 0.66)),url(../../../assets/images/contact-banner.jpg);
+    background-image: url(../../../assets/images/contact-banner.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
     width: 100%;
     height: 637px;
-    h2{
-        color: #ffffff;
-        top: 37%;
-        font-size: 50px;
-        font-family:Muli-Bold;
-        position: absolute;
+    // h2{
+    //     color: #ffffff;
+    //     top: 37%;
+    //     font-size: 50px;
+    //     font-family:Muli-Bold;
+    //     position: absolute;
+
+	// }
+	h2{
+		color: #2890c9;
+		// color: #2089c2;
+		top: 32%;
+		font-size: 62.6667px;
+		font-family: arial;
+		position: absolute;
+		font-weight: 800;
 
     }
 }
 .banner-content{
-    p{
-        top: 47%;
-        font-family: Muli-Regular;
-        position: absolute;
-        /* text-align: center; */
-        width: 53%;
-        color: #ffffff;
-        font-size: 20px;
+    // p{
+    //     top: 47%;
+    //     font-family: Muli-Regular;
+    //     position: absolute;
+    //     width: 53%;
+    //     color: #ffffff;
+    //     font-size: 20px;
+	// }
+	p{
+        top: 46%;
+		font-family: arial;
+		position: absolute;
+		// width: 53%;
+		color: #000;
+		font-size: 24px;
+		font-weight: 600;
     }
 }
 /* slider style start */

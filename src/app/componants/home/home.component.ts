@@ -68,6 +68,8 @@ export class HomeComponent implements OnInit {
     this.submitEmail = true;
     if (this.subscribeFrom.invalid) {
       return;
+    } else {
+      this.router.navigate(['/createaccount']);
     }
   }
   onDashboardClick() {

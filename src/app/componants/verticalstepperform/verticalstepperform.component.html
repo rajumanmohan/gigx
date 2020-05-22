@@ -309,7 +309,7 @@
 											[ngClass]="{'is-invalid':f.termsConditions.errors&& submitted}">
 										<label class="custom-control-label" for="customCheck1">I agreed to the
 										<span><a href="#" routerLink="/terms-and-conditions" target="_blank">Terms & conditions </a></span> governing the use of
-										gigx.com, I
+										gigxglobal.com, I
 										have
 										reviewed the
 										default mailer & Communications settings</label>
@@ -636,11 +636,11 @@
 					<div class="row form-group">
 						<div class="col-md-12 required-label">
 							<input type="text" class="form-control" id="exampleInputEmail1"
-								aria-describedby="emailHelp" placeholder="Work Experience"
+								aria-describedby="emailHelp" placeholder="Designation/JobTitle"
 								formControlName="work_experience"
 								[ngClass]="{'is-invalid':f3.work_experience.errors&& submitted3}">
 							<div class="invalid-feedback" *ngIf="f3.work_experience.errors">
-								<div *ngIf="f3.work_experience.errors.required">Work Experience is required
+								<div *ngIf="f3.work_experience.errors.required">Designation/JobTitle is required
 								</div>
 							</div>
 						</div>
@@ -1196,6 +1196,7 @@
 					<li><b>Skills</b>: Highlight your key skills and competencies. Include any skills applicable to the gigs you intend to apply for/interested in. It should include abilities you’ve gained through past jobs, hobbies, or other life experiences</li>
 					<li>Add approximately 10 skills, be specific about the skill-sets you have. Choose wisely what skills you wish to showcase.This will also help GigXGlobal’s back end technology to read and identify your true areas of expertise. The ‘narrower’ the skills tagging, the better the % of job match accuracy</li>
 					<li>Include general skills (eg: Business Strategy, Project Management, Marketing, etc) and specific skills (Eg: Market Research with focus on Market sizing OR Investment Strategy with a focus on Investment Analysis)</li>
+					<li>If you don’t find a relevant option in the skills drop down menu, please enter the complete word and press enter.</li>
 				</ul>
 			</div>
 		</div>
